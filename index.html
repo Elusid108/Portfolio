@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chris Moore Designs | Portfolio</title>
+    
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #09090b; /* Zinc 950 */
+            color: #e4e4e7; /* Zinc 200 */
+            overflow-x: hidden;
+        }
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .glass-panel {
+            background: rgba(24, 24, 27, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #09090b; 
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #27272a; 
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #3f3f46; 
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        // --- ICONS (Embedded SVGs) ---
+        const Icon = ({ children, size = 24, className = "" }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>{children}</svg>
+        );
+
+        const Lightbulb = (props) => <Icon {...props}><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-1 1.5-2.4 1.5-3.8 0-3.9-3.1-7-7-7s-7 3.1-7 7c0 1.4.5 2.8 1.5 3.8.8.8 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></Icon>;
+        const Cpu = (props) => <Icon {...props}><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></Icon>;
+        const Printer = (props) => <Icon {...props}><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></Icon>;
+        const Smartphone = (props) => <Icon {...props}><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></Icon>;
+        const Github = (props) => <Icon {...props}><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></Icon>;
+        const Download = (props) => <Icon {...props}><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></Icon>;
+        const ShoppingCart = (props) => <Icon {...props}><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></Icon>;
+        const Mail = (props) => <Icon {...props}><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></Icon>;
+        const Menu = (props) => <Icon {...props}><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></Icon>;
+        const X = (props) => <Icon {...props}><path d="M18 6 6 18"/><path d="m6 6 12 12"/></Icon>;
+        const Zap = (props) => <Icon {...props}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></Icon>;
+        const Layers = (props) => <Icon {...props}><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></Icon>;
+        const Maximize2 = (props) => <Icon {...props}><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" x2="14" y1="3" y2="10"/><line x1="3" x2="10" y1="21" y2="14"/></Icon>;
+        const ImageIcon = (props) => <Icon {...props}><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></Icon>;
+        const ChevronLeft = (props) => <Icon {...props}><path d="m15 18-6-6 6-6"/></Icon>;
+        const ChevronRight = (props) => <Icon {...props}><path d="m9 18 6-6-6-6"/></Icon>;
+        const ExternalLink = (props) => <Icon {...props}><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></Icon>;
+        const Instagram = (props) => <Icon {...props}><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></Icon>;
+        const Palette = (props) => <Icon {...props}><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></Icon>;
+        const Wrench = (props) => <Icon {...props}><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></Icon>;
+
+        // --- DATA ---
+        // Categories: "Lighting", "Art", "Circuits", "Apps", "Solutions", "Integration"
+        const projects = [
+            {
+                id: 1,
+                title: "Nebula Stage Design",
+                category: "Lighting",
+                tags: ["DMX", "Projection", "Stage"],
+                image: "https://images.unsplash.com/photo-1514525253440-b393452e8d26?q=80&w=1000&auto=format&fit=crop", 
+                description: "A fully immersive lighting setup for a contemporary ballet. Integrated 3D printed gobos for unique texture projection.",
+                longDescription: "The Nebula project was a commission for the City Ballet's summer season. The challenge was to create a lighting environment that felt organic and fluid, mirroring the dancers' movements. I utilized a custom DMX controller running on a Raspberry Pi to coordinate 24 moving heads. The unique textures were achieved by designing custom gobos in Blender, 3D printing them in high-temp resin, and retrofitting them into standard fixtures.",
+                gallery: [
+                    "https://images.unsplash.com/photo-1514525253440-b393452e8d26?q=80&w=1000&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1504197885-6088482976b9?auto=format&fit=crop&q=80&w=800",
+                    "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&q=80&w=800"
+                ],
+                featured: true
+            },
+            {
+                id: 2,
+                title: "VibeSync App",
+                category: "Apps",
+                tags: ["React Native", "Bluetooth", "Vibecoding"],
+                image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=1000&auto=format&fit=crop",
+                description: "Mobile controller for custom LED wearables. Built in a weekend using vibecoding techniques to rapid prototype the UI.",
+                longDescription: "VibeSync bridges the gap between complex lighting consoles and consumer ease-of-use. Built with React Native, it connects via BLE (Bluetooth Low Energy) to ESP32-based controllers. The key innovation here is the 'Vibe' engine, which allows users to paint colors onto a virtual representation of their wearable, which is then streamed in real-time to the hardware. I used AI-assisted coding (vibecoding) to generate the color-picker logic and Bluetooth handshake protocols, cutting development time by 60%.",
+                launchLink: "https://example.com/vibesync",
+                gallery: [
+                    "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=1000&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?auto=format&fit=crop&q=80&w=800"
+                ],
+                featured: true
+            },
+            {
+                id: 3,
+                title: "Luma-Core PCB",
+                category: "Circuits",
+                tags: ["KiCad", "ESP32", "Hardware"],
+                image: "https://images.unsplash.com/photo-1616469832301-ffaeadc68cf3?q=80&w=1000&auto=format&fit=crop",
+                description: "Custom driver board for high-power LED arrays. Designed to fit inside a 20mm tube.",
+                longDescription: "Standard LED drivers were too bulky for my 'light saber' style props, so I designed Luma-Core. It's a 4-layer PCB designed in KiCad featuring an ESP32-C3 for Wi-Fi/BLE control and a high-efficiency buck converter capable of driving 3A of current. The board measures just 18mm x 40mm. It includes onboard battery management and USB-C charging.",
+                gallery: [
+                    "https://images.unsplash.com/photo-1616469832301-ffaeadc68cf3?q=80&w=1000&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1597733336794-12d05021d510?auto=format&fit=crop&q=80&w=800"
+                ],
+                link: "#",
+                shopLink: "#",
+                featured: true
+            },
+            {
+                id: 4,
+                title: "Lithophane Series: Echo",
+                category: "Art",
+                tags: ["Resin", "Sculpture", "Illumination"],
+                image: "https://images.unsplash.com/photo-1617387688226-c215320579c6?q=80&w=1000&auto=format&fit=crop",
+                description: "High-resolution resin printed lithophanes mounted in custom wooden lightboxes.",
+                longDescription: "The Echo series explores the depth of memory. Using high-resolution SLA resin printing, I created lithophanes that reveal intricate landscapes only when backlit. The housing is CNC-milled walnut with a custom LED backlight panel that adjusts color temperature based on the time of day.",
+                gallery: [
+                    "https://images.unsplash.com/photo-1617387688226-c215320579c6?q=80&w=1000&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1622616239857-e6869e5d4a96?auto=format&fit=crop&q=80&w=800"
+                ],
+                featured: false
+            },
+            {
+                id: 5,
+                title: "Architectural Beam",
+                category: "Lighting",
+                tags: ["Install", "Architectural", "LED"],
+                image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000&auto=format&fit=crop",
+                description: "Permanent installation for a downtown jazz bar using warm-white COB LEDs.",
+                longDescription: "For the 'Blue Note' jazz lounge, the client wanted lighting that felt like 'visual brass'. I designed custom aluminum extrusions that house 2700K high-CRI COB LED strips. The fixtures highlight the exposed brickwork and create intimate pools of light for the tables. The entire system is DALI controllable and integrates with the venue's audio system to subtly pulse during high-energy sets.",
+                gallery: [
+                    "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&q=80&w=800"
+                ],
+                featured: false
+            },
+            {
+                id: 6,
+                title: "Macro Pad Jig",
+                category: "Solutions",
+                tags: ["Tooling", "FDM", "Fixture"],
+                image: "https://images.unsplash.com/photo-1615858691544-e591702d8291?q=80&w=1000&auto=format&fit=crop",
+                description: "Alignment jig for soldering mechanical keyboard switches. STL available below.",
+                longDescription: "Precision is key when hand-wiring custom mechanical keyboards. This 3D printed jig holds 16 switches in perfect grid alignment, allowing for cleaner soldering of the matrix. Printed in PETG for heat resistance. The design includes slots for diodes and pre-measured wire guides.",
+                gallery: [
+                    "https://images.unsplash.com/photo-1615858691544-e591702d8291?q=80&w=1000&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&q=80&w=800"
+                ],
+                link: "#",
+                featured: false
+            },
+            {
+                id: 7,
+                title: "Smart Venue System",
+                category: "Integration",
+                tags: ["MQTT", "NodeJS", "System Design"],
+                image: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?q=80&w=1000&auto=format&fit=crop", 
+                description: "Backend architecture integrating lighting control, audio triggers, and POS systems.",
+                longDescription: "A cohesive system design for a nightclub that allows the DJ to trigger lighting cues that are also synchronized with the bar's POS system (flashing lights when a 'champagne train' is ordered). Built on a local MQTT broker using Node-RED for logic flow. This integrates standard DMX lighting fixtures with custom ESP32 props and a web-dashboard for the venue manager.",
+                gallery: [
+                    "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?q=80&w=1000&auto=format&fit=crop"
+                ],
+                featured: false
+            }
+        ];
+
+        // --- COMPONENTS ---
+
+        const SectionHeader = ({ title, subtitle, icon: Icon }) => (
+            <div className="mb-12">
+                <div className="flex items-center gap-3 text-cyan-400 mb-2 font-mono text-sm uppercase tracking-widest">
+                    {Icon && <Icon size={16} />}
+                    <span>{subtitle}</span>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold">{title}</h2>
+            </div>
+        );
+
+        // --- LIGHTBOX COMPONENT ---
+        const Lightbox = ({ images, initialIndex, onClose }) => {
+            const [index, setIndex] = useState(initialIndex);
+            const touchStartX = useRef(null);
+            const touchEndX = useRef(null);
+            const minSwipeDistance = 50;
+
+            useEffect(() => {
+                const handleKeyDown = (e) => {
+                    if (e.key === 'Escape') onClose();
+                    if (e.key === 'ArrowLeft') prevImage();
+                    if (e.key === 'ArrowRight') nextImage();
+                };
+                window.addEventListener('keydown', handleKeyDown);
+                return () => window.removeEventListener('keydown', handleKeyDown);
+            }, [index]);
+
+            const nextImage = () => {
+                if (index < images.length - 1) setIndex(index + 1);
+                else setIndex(0); // Loop
+            };
+
+            const prevImage = () => {
+                if (index > 0) setIndex(index - 1);
+                else setIndex(images.length - 1); // Loop
+            };
+
+            const onTouchStart = (e) => {
+                touchEndX.current = null; 
+                touchStartX.current = e.targetTouches[0].clientX;
+            };
+
+            const onTouchMove = (e) => {
+                touchEndX.current = e.targetTouches[0].clientX;
+            };
+
+            const onTouchEnd = () => {
+                if (!touchStartX.current || !touchEndX.current) return;
+                const distance = touchStartX.current - touchEndX.current;
+                const isLeftSwipe = distance > minSwipeDistance;
+                const isRightSwipe = distance < -minSwipeDistance;
+                if (isLeftSwipe) nextImage();
+                if (isRightSwipe) prevImage();
+            };
+
+            return (
+                <div className="fixed inset-0 z-[200] bg-black flex items-center justify-center animate-fade-in"
+                     onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
+                    <button onClick={onClose} className="absolute top-4 right-4 p-3 bg-zinc-800/80 rounded-full text-white hover:bg-zinc-700 transition-colors z-[210]">
+                        <X size={24} />
+                    </button>
+                    <button onClick={prevImage} className="hidden md:block absolute left-4 p-4 text-white/50 hover:text-white transition-colors z-[210]">
+                        <ChevronLeft size={48} />
+                    </button>
+                    <div className="w-full h-full p-4 md:p-10 flex items-center justify-center">
+                        <img src={images[index]} alt={`Gallery ${index}`} className="max-w-full max-h-full object-contain select-none" draggable="false" />
+                    </div>
+                    <button onClick={nextImage} className="hidden md:block absolute right-4 p-4 text-white/50 hover:text-white transition-colors z-[210]">
+                        <ChevronRight size={48} />
+                    </button>
+                    <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-zinc-800/80 px-4 py-2 rounded-full text-sm font-mono text-zinc-300">
+                        {index + 1} / {images.length}
+                    </div>
+                </div>
+            );
+        };
+
+        const ProjectModal = ({ project, onClose }) => {
+            const [lightboxIndex, setLightboxIndex] = useState(null);
+
+            useEffect(() => {
+                document.body.style.overflow = 'hidden';
+                return () => document.body.style.overflow = 'unset';
+            }, []);
+
+            return (
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">
+                    <div className="absolute inset-0 bg-black/90 backdrop-blur-md transition-opacity" onClick={onClose}></div>
+                    <div className="relative bg-zinc-950 w-full max-w-5xl max-h-[90vh] rounded-2xl overflow-hidden flex flex-col border border-zinc-800 shadow-2xl animate-fade-in">
+                        <div className="overflow-y-auto custom-scrollbar flex-1">
+                            <div className="relative h-64 md:h-96 w-full group cursor-pointer" onClick={() => setLightboxIndex(0)}>
+                                <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 to-transparent"></div>
+                                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                                     <Maximize2 className="text-white opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg" size={48}/>
+                                </div>
+                                <button onClick={(e) => { e.stopPropagation(); onClose(); }} className="absolute top-4 right-4 p-2 bg-black/50 rounded-full text-white hover:bg-red-500/80 transition-colors backdrop-blur z-20">
+                                    <X size={24} />
+                                </button>
+                                <div className="absolute bottom-6 left-6 md:left-10 pointer-events-none">
+                                    <div className="flex gap-2 mb-3">
+                                        {project.tags.map(tag => (
+                                            <span key={tag} className="text-xs font-mono px-2 py-1 bg-black/60 text-cyan-400 border border-cyan-500/30 rounded backdrop-blur-md uppercase tracking-wider">
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                    <h2 className="text-3xl md:text-5xl font-bold text-white shadow-black drop-shadow-lg">{project.title}</h2>
+                                </div>
+                            </div>
+
+                            <div className="p-6 md:p-10 grid md:grid-cols-3 gap-10">
+                                <div className="md:col-span-2 space-y-8">
+                                    <div>
+                                        <h3 className="text-xl font-bold text-white mb-4">About the Project</h3>
+                                        <p className="text-zinc-300 text-lg leading-relaxed">{project.longDescription || project.description}</p>
+                                    </div>
+
+                                    {project.gallery && project.gallery.length > 0 && (
+                                        <div>
+                                            <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                                                <ImageIcon size={20} className="text-zinc-500"/> Project Gallery
+                                            </h3>
+                                            <div className="grid grid-cols-2 gap-4">
+                                                {project.gallery.map((img, i) => (
+                                                    <div key={i} onClick={() => setLightboxIndex(i)} className="rounded-lg overflow-hidden border border-zinc-800 aspect-video group cursor-pointer relative">
+                                                        <img src={img} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={`Gallery ${i}`} />
+                                                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+                                                            <Maximize2 className="text-white opacity-0 group-hover:opacity-100 transition-opacity" size={24}/>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+
+                                <div className="space-y-6">
+                                    <div className="bg-zinc-900/50 border border-zinc-800 p-6 rounded-xl">
+                                        <h4 className="text-sm font-bold text-zinc-500 uppercase tracking-widest mb-4">Actions</h4>
+                                        <div className="space-y-3">
+                                            {/* LAUNCH BUTTON */}
+                                            {project.launchLink && (
+                                                <a href={project.launchLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full py-3 bg-purple-600 hover:bg-purple-500 text-white rounded-lg transition-colors font-medium shadow-lg shadow-purple-900/20">
+                                                    <ExternalLink size={18} /> Launch App
+                                                </a>
+                                            )}
+
+                                            {project.link ? (
+                                                <a href={project.link} className="flex items-center justify-center gap-2 w-full py-3 bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg transition-colors font-medium">
+                                                    <Download size={18} /> Download Files
+                                                </a>
+                                            ) : (
+                                                <button disabled className="flex items-center justify-center gap-2 w-full py-3 bg-zinc-800/50 text-zinc-500 rounded-lg cursor-not-allowed font-medium">
+                                                    <Download size={18} /> Files Private
+                                                </button>
+                                            )}
+                                            
+                                            {project.shopLink ? (
+                                                <a href={project.shopLink} className="flex items-center justify-center gap-2 w-full py-3 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg transition-colors font-medium shadow-lg shadow-cyan-900/20">
+                                                    <ShoppingCart size={18} /> Buy Kit
+                                                </a>
+                                            ) : (
+                                                <button disabled className="flex items-center justify-center gap-2 w-full py-3 bg-zinc-800/50 text-zinc-500 rounded-lg cursor-not-allowed font-medium">
+                                                    <ShoppingCart size={18} /> Not for Sale
+                                                </button>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {lightboxIndex !== null && <Lightbox images={project.gallery} initialIndex={lightboxIndex} onClose={() => setLightboxIndex(null)} />}
+                </div>
+            );
+        };
+
+        const ProjectCard = ({ project, onOpen }) => {
+            return (
+                <div 
+                    onClick={() => onOpen(project)}
+                    className="group relative rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800 hover:border-cyan-500/50 transition-all duration-300 h-full flex flex-col cursor-pointer"
+                >
+                    <div className="relative aspect-video overflow-hidden">
+                        <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
+                            <div className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 bg-black/60 backdrop-blur px-4 py-2 rounded-full border border-white/20 flex items-center gap-2 text-white font-bold text-sm">
+                                <Maximize2 size={16} /> View Project
+                            </div>
+                        </div>
+                        <div className="absolute top-2 right-2 flex gap-1">
+                             {project.tags.slice(0,2).map(tag => (
+                                <span key={tag} className="px-2 py-1 bg-black/60 backdrop-blur text-[10px] font-mono rounded border border-white/10 uppercase">
+                                    {tag}
+                                </span>
+                             ))}
+                        </div>
+                    </div>
+                    
+                    <div className="p-5 flex-grow flex flex-col">
+                        <h3 className="text-xl font-bold mb-2 text-white group-hover:text-cyan-400 transition-colors">{project.title}</h3>
+                        <p className="text-zinc-400 text-sm mb-4 leading-relaxed flex-grow line-clamp-3">{project.description}</p>
+                        
+                        <div className="pt-4 border-t border-zinc-800 flex gap-3 mt-auto flex-wrap">
+                            {/* Card Launch Button */}
+                            {project.launchLink && (
+                                <button onClick={(e) => {e.stopPropagation(); window.open(project.launchLink, '_blank')}} className="flex items-center gap-2 text-xs font-bold text-purple-400 hover:text-purple-300 z-10 mr-2">
+                                    <ExternalLink size={14} /> LAUNCH
+                                </button>
+                            )}
+
+                            {project.link && (
+                                <button onClick={(e) => {e.stopPropagation(); window.location.href=project.link}} className="flex items-center gap-2 text-xs font-bold text-zinc-300 hover:text-white z-10">
+                                    <Download size={14} /> FILES
+                                </button>
+                            )}
+                            {project.shopLink && (
+                                <button onClick={(e) => {e.stopPropagation(); window.location.href=project.shopLink}} className="flex items-center gap-2 text-xs font-bold text-cyan-400 hover:text-cyan-300 z-10 ml-auto">
+                                    <ShoppingCart size={14} /> KIT
+                                </button>
+                            )}
+                            {!project.link && !project.shopLink && !project.launchLink && (
+                                <span className="text-xs text-zinc-600 italic">Portfolio Item</span>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const Nav = () => {
+            const [isOpen, setIsOpen] = useState(false);
+            const [scrolled, setScrolled] = useState(false);
+
+            useEffect(() => {
+                const handleScroll = () => setScrolled(window.scrollY > 50);
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            const scrollTo = (id) => {
+                setIsOpen(false);
+                const element = document.getElementById(id);
+                if (element) element.scrollIntoView({ behavior: 'smooth' });
+            };
+
+            const links = [
+                { id: 'lighting', label: 'Lighting' },
+                { id: 'art', label: 'Art' },
+                { id: 'circuits', label: 'Circuits' },
+                { id: 'apps', label: 'Apps' },
+                { id: 'solutions', label: 'Fabrication' },
+                { id: 'integration', label: 'Integration' },
+            ];
+
+            return (
+                <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'glass-panel py-3' : 'bg-transparent py-6'}`}>
+                    <div className="container mx-auto px-6 flex justify-between items-center">
+                        <div className="font-bold text-xl tracking-tighter flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo(0,0)}>
+                            <Zap className="text-cyan-400" size={20} />
+                            <span>CHRIS MOORE<span className="text-cyan-400">.Designs</span></span>
+                        </div>
+
+                        {/* Desktop Nav */}
+                        <div className="hidden lg:flex gap-6 text-sm font-medium text-zinc-400">
+                            {links.map(link => (
+                                <button key={link.id} onClick={() => scrollTo(link.id)} className="hover:text-white transition-colors uppercase tracking-wide text-xs">{link.label}</button>
+                            ))}
+                            <button onClick={() => scrollTo('contact')} className="hover:text-white transition-colors uppercase tracking-wide text-xs bg-zinc-800 px-3 py-1 rounded-full">Contact</button>
+                        </div>
+
+                        {/* Mobile Menu Button */}
+                        <button className="lg:hidden text-white" onClick={() => setIsOpen(!isOpen)}>
+                            {isOpen ? <X /> : <Menu />}
+                        </button>
+                    </div>
+
+                    {/* Mobile Menu */}
+                    {isOpen && (
+                        <div className="absolute top-full left-0 w-full glass-panel border-t border-zinc-800 p-6 lg:hidden flex flex-col gap-4 animate-fade-in">
+                            {links.map(link => (
+                                <button key={link.id} onClick={() => scrollTo(link.id)} className="text-left text-zinc-300 uppercase tracking-widest font-bold">{link.label}</button>
+                            ))}
+                            <button onClick={() => scrollTo('contact')} className="text-left text-zinc-300 uppercase tracking-widest font-bold">Contact</button>
+                        </div>
+                    )}
+                </nav>
+            );
+        };
+
+        const Hero = () => (
+            <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+                <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
+                    <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500 rounded-full blur-[128px]"></div>
+                    <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600 rounded-full blur-[128px]"></div>
+                </div>
+
+                <div className="container mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-12 items-center">
+                    <div className="space-y-6">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-700 text-xs font-mono text-cyan-400">
+                            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                            AVAILABLE FOR HIRE
+                        </div>
+                        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
+                            Chris Moore <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
+                                Designs.
+                            </span>
+                        </h1>
+                        <p className="text-zinc-400 text-lg max-w-lg leading-relaxed">
+                            A multidisciplinary portfolio bridging the gap between digital code and physical reality. 
+                            From <span className="text-white font-semibold">Lighting Design</span> to <span className="text-white font-semibold">Circuit Fabrication</span>.
+                        </p>
+                        <div className="flex gap-4 pt-4">
+                            <button onClick={() => document.getElementById('lighting').scrollIntoView({behavior:'smooth'})} className="px-6 py-3 bg-white text-black font-bold rounded-lg hover:bg-zinc-200 transition-colors">
+                                View Work
+                            </button>
+                            <button onClick={() => document.getElementById('contact').scrollIntoView({behavior:'smooth'})} className="px-6 py-3 border border-zinc-700 rounded-lg hover:bg-zinc-900 transition-colors text-white">
+                                Contact Me
+                            </button>
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4 h-full md:h-[500px] auto-rows-fr">
+                        <div className="glass-panel p-6 rounded-2xl flex flex-col justify-between hover:border-cyan-500/50 transition-colors group">
+                            <Lightbulb className="text-yellow-400 mb-4 group-hover:scale-110 transition-transform" size={32} />
+                            <div><h3 className="font-bold text-xl">Lighting</h3></div>
+                        </div>
+                        <div className="glass-panel p-6 rounded-2xl flex flex-col justify-between hover:border-purple-500/50 transition-colors group bg-zinc-900/50">
+                            <Smartphone className="text-purple-400 mb-4 group-hover:scale-110 transition-transform" size={32} />
+                            <div><h3 className="font-bold text-xl">Apps</h3></div>
+                        </div>
+                        <div className="glass-panel p-6 rounded-2xl flex flex-col justify-between hover:border-green-500/50 transition-colors group col-span-2 md:col-span-1">
+                            <Cpu className="text-green-400 mb-4 group-hover:scale-110 transition-transform" size={32} />
+                            <div><h3 className="font-bold text-xl">Electronics</h3></div>
+                        </div>
+                         <div className="glass-panel p-6 rounded-2xl flex flex-col justify-between hover:border-orange-500/50 transition-colors group hidden md:flex">
+                            <Printer className="text-orange-400 mb-4 group-hover:scale-110 transition-transform" size={32} />
+                            <div><h3 className="font-bold text-xl">Fabrication</h3></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        );
+
+        const SimpleSection = ({ id, title, subtitle, icon, category, onOpenProject, bgColor = "bg-black" }) => {
+            const sectionProjects = projects.filter(p => p.category === category);
+            return (
+                <section id={id} className={`py-20 ${bgColor} border-t border-zinc-900`}>
+                    <div className="container mx-auto px-6">
+                        <SectionHeader title={title} subtitle={subtitle} icon={icon} />
+                        {sectionProjects.length > 0 ? (
+                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {sectionProjects.map(p => (
+                                    <ProjectCard key={p.id} project={p} onOpen={onOpenProject} />
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="p-8 border border-dashed border-zinc-800 rounded-xl text-center text-zinc-600">
+                                No projects currently listed in this category.
+                            </div>
+                        )}
+                    </div>
+                </section>
+            );
+        };
+
+        const Contact = () => (
+            <section id="contact" className="py-24 bg-zinc-950 border-t border-zinc-900">
+                <div className="container mx-auto px-6 text-center">
+                    <h2 className="text-3xl font-bold mb-6">Let's Build Something</h2>
+                    <p className="text-zinc-400 max-w-xl mx-auto mb-10">
+                        Whether you need a custom lighting controller, a React Native app prototype, 
+                        or a specialized PCB, I'm available for freelance work.
+                    </p>
+                    
+                    <div className="flex flex-col md:flex-row justify-center gap-6">
+                        <a href="mailto:hello@example.com" className="px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-cyan-400 hover:text-black transition-all transform hover:-translate-y-1 shadow-lg flex items-center justify-center gap-2">
+                            <Mail size={18} /> Email Me
+                        </a>
+                        <a href="https://instagram.com" target="_blank" className="px-8 py-4 border border-zinc-700 text-white font-bold rounded-full hover:bg-pink-600 hover:border-pink-600 transition-all flex items-center justify-center gap-2">
+                            <Instagram size={18} /> Instagram
+                        </a>
+                        <a href="#" className="px-8 py-4 border border-zinc-700 text-white font-bold rounded-full hover:bg-zinc-900 transition-all flex items-center justify-center gap-2">
+                            <Github size={18} /> GitHub
+                        </a>
+                    </div>
+                    
+                    <footer className="mt-20 text-zinc-600 text-sm font-mono">
+                        &copy; 2026 Chris Moore Designs. All rights reserved.
+                    </footer>
+                </div>
+            </section>
+        );
+
+        const App = () => {
+            const [selectedProject, setSelectedProject] = useState(null);
+
+            const handleOpenProject = (project) => setSelectedProject(project);
+            const handleCloseProject = () => setSelectedProject(null);
+
+            return (
+                <div className="min-h-screen bg-zinc-950 text-zinc-200 selection:bg-cyan-500/30">
+                    <Nav />
+                    <Hero />
+                    
+                    <SimpleSection 
+                        id="lighting" 
+                        title="Illumination" 
+                        subtitle="Lighting Design" 
+                        icon={Lightbulb} 
+                        category="Lighting" 
+                        onOpenProject={handleOpenProject} 
+                        bgColor="bg-black"
+                    />
+                    
+                    <SimpleSection 
+                        id="art" 
+                        title="Sculpture & Form" 
+                        subtitle="Art" 
+                        icon={Palette} 
+                        category="Art" 
+                        onOpenProject={handleOpenProject} 
+                        bgColor="bg-zinc-950"
+                    />
+
+                    <SimpleSection 
+                        id="circuits" 
+                        title="Hardware Design" 
+                        subtitle="Electronics & PCBs" 
+                        icon={Cpu} 
+                        category="Circuits" 
+                        onOpenProject={handleOpenProject} 
+                        bgColor="bg-black"
+                    />
+
+                    <SimpleSection 
+                        id="apps" 
+                        title="Interactive Software" 
+                        subtitle="Apps & Games" 
+                        icon={Smartphone} 
+                        category="Apps" 
+                        onOpenProject={handleOpenProject} 
+                        bgColor="bg-zinc-950"
+                    />
+
+                    <SimpleSection 
+                        id="solutions" 
+                        title="Custom Tooling" 
+                        subtitle="Fabrication & Solutions" 
+                        icon={Wrench} 
+                        category="Solutions" 
+                        onOpenProject={handleOpenProject} 
+                        bgColor="bg-black"
+                    />
+
+                    <SimpleSection 
+                        id="integration" 
+                        title="The Backbone" 
+                        subtitle="Systems Integration" 
+                        icon={Layers} 
+                        category="Integration" 
+                        onOpenProject={handleOpenProject} 
+                        bgColor="bg-zinc-950"
+                    />
+
+                    <Contact />
+                    
+                    {selectedProject && (
+                        <ProjectModal 
+                            project={selectedProject} 
+                            onClose={handleCloseProject} 
+                        />
+                    )}
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
