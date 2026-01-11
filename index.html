@@ -58,144 +58,156 @@
 <body>
     <div id="root"></div>
 
+    <!-- DATA SOURCE: This script tag holds the content for the portfolio generator -->
+    <script id="portfolio-data" type="application/json">
+    [
+        {
+            "id": 1,
+            "title": "Nebula Stage Design",
+            "category": "Lighting",
+            "tags": ["DMX", "Projection", "Stage"],
+            "image": "https://images.unsplash.com/photo-1514525253440-b393452e8d26?q=80&w=1000&auto=format&fit=crop", 
+            "description": "A fully immersive lighting setup for a contemporary ballet. Integrated 3D printed gobos for unique texture projection.",
+            "longDescription": "The Nebula project was a commission for the City Ballet's summer season. The challenge was to create a lighting environment that felt organic and fluid, mirroring the dancers' movements. I utilized a custom DMX controller running on a Raspberry Pi to coordinate 24 moving heads. The unique textures were achieved by designing custom gobos in Blender, 3D printing them in high-temp resin, and retrofitting them into standard fixtures.",
+            "gallery": [
+                "https://images.unsplash.com/photo-1514525253440-b393452e8d26?q=80&w=1000&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1504197885-6088482976b9?auto=format&fit=crop&q=80&w=800",
+                "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&q=80&w=800"
+            ],
+            "featured": true
+        },
+        {
+            "id": 2,
+            "title": "VibeSync App",
+            "category": "Apps",
+            "tags": ["React Native", "Bluetooth", "Vibecoding"],
+            "image": "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=1000&auto=format&fit=crop",
+            "description": "Mobile controller for custom LED wearables. Built in a weekend using vibecoding techniques to rapid prototype the UI.",
+            "longDescription": "VibeSync bridges the gap between complex lighting consoles and consumer ease-of-use. Built with React Native, it connects via BLE (Bluetooth Low Energy) to ESP32-based controllers. The key innovation here is the 'Vibe' engine, which allows users to paint colors onto a virtual representation of their wearable, which is then streamed in real-time to the hardware. I used AI-assisted coding (vibecoding) to generate the color-picker logic and Bluetooth handshake protocols, cutting development time by 60%.",
+            "launchLink": "https://example.com/vibesync",
+            "githubLink": "https://github.com/chrismoore/vibesync",
+            "gallery": [
+                "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=1000&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?auto=format&fit=crop&q=80&w=800"
+            ],
+            "featured": true
+        },
+        {
+            "id": 3,
+            "title": "Luma-Core PCB",
+            "category": "Circuits",
+            "tags": ["KiCad", "ESP32", "Hardware"],
+            "image": "https://images.unsplash.com/photo-1616469832301-ffaeadc68cf3?q=80&w=1000&auto=format&fit=crop",
+            "description": "Custom driver board for high-power LED arrays. Designed to fit inside a 20mm tube.",
+            "longDescription": "Standard LED drivers were too bulky for my 'light saber' style props, so I designed Luma-Core. It's a 4-layer PCB designed in KiCad featuring an ESP32-C3 for Wi-Fi/BLE control and a high-efficiency buck converter capable of driving 3A of current. The board measures just 18mm x 40mm. It includes onboard battery management and USB-C charging.",
+            "gallery": [
+                "https://images.unsplash.com/photo-1616469832301-ffaeadc68cf3?q=80&w=1000&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1597733336794-12d05021d510?auto=format&fit=crop&q=80&w=800"
+            ],
+            "files": [
+                { "name": "Schematic PDF", "url": "assets/luma-schematic.pdf", "size": "1.2 MB" },
+                { "name": "Gerber Files", "url": "assets/luma-gerbers.zip", "size": "450 KB" },
+                { "name": "BOM (Bill of Materials)", "url": "assets/luma-bom.csv", "size": "12 KB" }
+            ],
+            "shopLink": "#",
+            "featured": true
+        },
+        {
+            "id": 4,
+            "title": "Lithophane Series: Echo",
+            "category": "Art",
+            "tags": ["Resin", "Sculpture", "Illumination"],
+            "image": "https://images.unsplash.com/photo-1617387688226-c215320579c6?q=80&w=1000&auto=format&fit=crop",
+            "description": "High-resolution resin printed lithophanes mounted in custom wooden lightboxes.",
+            "longDescription": "The Echo series explores the depth of memory. Using high-resolution SLA resin printing, I created lithophanes that reveal intricate landscapes only when backlit. The housing is CNC-milled walnut with a custom LED backlight panel that adjusts color temperature based on the time of day.",
+            "gallery": [
+                "https://images.unsplash.com/photo-1617387688226-c215320579c6?q=80&w=1000&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1622616239857-e6869e5d4a96?auto=format&fit=crop&q=80&w=800"
+            ],
+            "featured": false
+        },
+        {
+            "id": 5,
+            "title": "Architectural Beam",
+            "category": "Lighting",
+            "tags": ["Install", "Architectural", "LED"],
+            "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000&auto=format&fit=crop",
+            "description": "Permanent installation for a downtown jazz bar using warm-white COB LEDs.",
+            "longDescription": "For the 'Blue Note' jazz lounge, the client wanted lighting that felt like 'visual brass'. I designed custom aluminum extrusions that house 2700K high-CRI COB LED strips. The fixtures highlight the exposed brickwork and create intimate pools of light for the tables. The entire system is DALI controllable and integrates with the venue's audio system to subtly pulse during high-energy sets.",
+            "gallery": [
+                "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&q=80&w=800"
+            ],
+            "featured": false
+        },
+        {
+            "id": 6,
+            "title": "Macro Pad Jig",
+            "category": "Solutions",
+            "tags": ["Tooling", "FDM", "Fixture"],
+            "image": "https://images.unsplash.com/photo-1615858691544-e591702d8291?q=80&w=1000&auto=format&fit=crop",
+            "description": "Alignment jig for soldering mechanical keyboard switches. STL available below.",
+            "longDescription": "Precision is key when hand-wiring custom mechanical keyboards. This 3D printed jig holds 16 switches in perfect grid alignment, allowing for cleaner soldering of the matrix. Printed in PETG for heat resistance. The design includes slots for diodes and pre-measured wire guides.",
+            "gallery": [
+                "https://images.unsplash.com/photo-1615858691544-e591702d8291?q=80&w=1000&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&q=80&w=800"
+            ],
+            "files": [
+                { "name": "Jig STL (16-Key)", "url": "assets/jig-16key.stl", "size": "3 MB" },
+                { "name": "Assembly Guide", "url": "assets/guide.txt", "size": "2 KB" }
+            ],
+            "featured": false
+        },
+        {
+            "id": 7,
+            "title": "Smart Venue System",
+            "category": "Integration",
+            "tags": ["MQTT", "NodeJS", "System Design"],
+            "image": "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?q=80&w=1000&auto=format&fit=crop", 
+            "description": "Backend architecture integrating lighting control, audio triggers, and POS systems.",
+            "longDescription": "A cohesive system design for a nightclub that allows the DJ to trigger lighting cues that are also synchronized with the bar's POS system (flashing lights when a 'champagne train' is ordered). Built on a local MQTT broker using Node-RED for logic flow. This integrates standard DMX lighting fixtures with custom ESP32 props and a web-dashboard for the venue manager.",
+            "gallery": [
+                "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?q=80&w=1000&auto=format&fit=crop"
+            ],
+            "featured": false
+        }
+    ]
+    </script>
+
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
 
-        // --- ICONS (Embedded SVGs) ---
-        const Icon = ({ children, size = 24, className = "" }) => (
-            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>{children}</svg>
-        );
+        // --- ICONS ---
+        const Icon = ({ children, size = 24, className = "" }) => (<svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>{children}</svg>);
+        
+        const Lightbulb = (p) => <Icon {...p}><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-1 1.5-2.4 1.5-3.8 0-3.9-3.1-7-7-7s-7 3.1-7 7c0 1.4.5 2.8 1.5 3.8.8.8 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></Icon>;
+        const Cpu = (p) => <Icon {...p}><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></Icon>;
+        const Printer = (p) => <Icon {...p}><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></Icon>;
+        const Smartphone = (p) => <Icon {...p}><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></Icon>;
+        const Github = (p) => <Icon {...p}><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></Icon>;
+        const Download = (p) => <Icon {...p}><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></Icon>;
+        const ShoppingCart = (p) => <Icon {...p}><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></Icon>;
+        const Mail = (p) => <Icon {...p}><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></Icon>;
+        const Menu = (p) => <Icon {...p}><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></Icon>;
+        const X = (p) => <Icon {...p}><path d="M18 6 6 18"/><path d="m6 6 12 12"/></Icon>;
+        const Zap = (p) => <Icon {...p}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></Icon>;
+        const Layers = (p) => <Icon {...p}><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></Icon>;
+        const Maximize2 = (p) => <Icon {...p}><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" x2="14" y1="3" y2="10"/><line x1="3" x2="10" y1="21" y2="14"/></Icon>;
+        const ImageIcon = (p) => <Icon {...p}><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></Icon>;
+        const ChevronLeft = (p) => <Icon {...p}><path d="m15 18-6-6 6-6"/></Icon>;
+        const ChevronRight = (p) => <Icon {...p}><path d="m9 18 6-6-6-6"/></Icon>;
+        const ExternalLink = (p) => <Icon {...p}><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></Icon>;
+        const Instagram = (p) => <Icon {...p}><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></Icon>;
+        const Linkedin = (p) => <Icon {...p}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></Icon>;
+        const Palette = (p) => <Icon {...p}><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></Icon>;
+        const Wrench = (p) => <Icon {...p}><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></Icon>;
+        const FileIcon = (p) => <Icon {...p}><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></Icon>;
 
-        const Lightbulb = (props) => <Icon {...props}><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-1 1.5-2.4 1.5-3.8 0-3.9-3.1-7-7-7s-7 3.1-7 7c0 1.4.5 2.8 1.5 3.8.8.8 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></Icon>;
-        const Cpu = (props) => <Icon {...props}><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></Icon>;
-        const Printer = (props) => <Icon {...props}><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></Icon>;
-        const Smartphone = (props) => <Icon {...props}><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></Icon>;
-        const Github = (props) => <Icon {...props}><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></Icon>;
-        const Download = (props) => <Icon {...props}><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></Icon>;
-        const ShoppingCart = (props) => <Icon {...props}><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></Icon>;
-        const Mail = (props) => <Icon {...props}><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></Icon>;
-        const Menu = (props) => <Icon {...props}><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></Icon>;
-        const X = (props) => <Icon {...props}><path d="M18 6 6 18"/><path d="m6 6 12 12"/></Icon>;
-        const Zap = (props) => <Icon {...props}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></Icon>;
-        const Layers = (props) => <Icon {...props}><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></Icon>;
-        const Maximize2 = (props) => <Icon {...props}><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" x2="14" y1="3" y2="10"/><line x1="3" x2="10" y1="21" y2="14"/></Icon>;
-        const ImageIcon = (props) => <Icon {...props}><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></Icon>;
-        const ChevronLeft = (props) => <Icon {...props}><path d="m15 18-6-6 6-6"/></Icon>;
-        const ChevronRight = (props) => <Icon {...props}><path d="m9 18 6-6-6-6"/></Icon>;
-        const ExternalLink = (props) => <Icon {...props}><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></Icon>;
-        const Instagram = (props) => <Icon {...props}><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></Icon>;
-        const Palette = (props) => <Icon {...props}><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></Icon>;
-        const Wrench = (props) => <Icon {...props}><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></Icon>;
-
-        // --- DATA ---
-        // Categories: "Lighting", "Art", "Circuits", "Apps", "Solutions", "Integration"
-        const projects = [
-            {
-                id: 1,
-                title: "Nebula Stage Design",
-                category: "Lighting",
-                tags: ["DMX", "Projection", "Stage"],
-                image: "https://images.unsplash.com/photo-1514525253440-b393452e8d26?q=80&w=1000&auto=format&fit=crop", 
-                description: "A fully immersive lighting setup for a contemporary ballet. Integrated 3D printed gobos for unique texture projection.",
-                longDescription: "The Nebula project was a commission for the City Ballet's summer season. The challenge was to create a lighting environment that felt organic and fluid, mirroring the dancers' movements. I utilized a custom DMX controller running on a Raspberry Pi to coordinate 24 moving heads. The unique textures were achieved by designing custom gobos in Blender, 3D printing them in high-temp resin, and retrofitting them into standard fixtures.",
-                gallery: [
-                    "https://images.unsplash.com/photo-1514525253440-b393452e8d26?q=80&w=1000&auto=format&fit=crop",
-                    "https://images.unsplash.com/photo-1504197885-6088482976b9?auto=format&fit=crop&q=80&w=800",
-                    "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&q=80&w=800"
-                ],
-                featured: true
-            },
-            {
-                id: 2,
-                title: "VibeSync App",
-                category: "Apps",
-                tags: ["React Native", "Bluetooth", "Vibecoding"],
-                image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=1000&auto=format&fit=crop",
-                description: "Mobile controller for custom LED wearables. Built in a weekend using vibecoding techniques to rapid prototype the UI.",
-                longDescription: "VibeSync bridges the gap between complex lighting consoles and consumer ease-of-use. Built with React Native, it connects via BLE (Bluetooth Low Energy) to ESP32-based controllers. The key innovation here is the 'Vibe' engine, which allows users to paint colors onto a virtual representation of their wearable, which is then streamed in real-time to the hardware. I used AI-assisted coding (vibecoding) to generate the color-picker logic and Bluetooth handshake protocols, cutting development time by 60%.",
-                launchLink: "https://example.com/vibesync",
-                gallery: [
-                    "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=1000&auto=format&fit=crop",
-                    "https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?auto=format&fit=crop&q=80&w=800"
-                ],
-                featured: true
-            },
-            {
-                id: 3,
-                title: "Luma-Core PCB",
-                category: "Circuits",
-                tags: ["KiCad", "ESP32", "Hardware"],
-                image: "https://images.unsplash.com/photo-1616469832301-ffaeadc68cf3?q=80&w=1000&auto=format&fit=crop",
-                description: "Custom driver board for high-power LED arrays. Designed to fit inside a 20mm tube.",
-                longDescription: "Standard LED drivers were too bulky for my 'light saber' style props, so I designed Luma-Core. It's a 4-layer PCB designed in KiCad featuring an ESP32-C3 for Wi-Fi/BLE control and a high-efficiency buck converter capable of driving 3A of current. The board measures just 18mm x 40mm. It includes onboard battery management and USB-C charging.",
-                gallery: [
-                    "https://images.unsplash.com/photo-1616469832301-ffaeadc68cf3?q=80&w=1000&auto=format&fit=crop",
-                    "https://images.unsplash.com/photo-1597733336794-12d05021d510?auto=format&fit=crop&q=80&w=800"
-                ],
-                link: "#",
-                shopLink: "#",
-                featured: true
-            },
-            {
-                id: 4,
-                title: "Lithophane Series: Echo",
-                category: "Art",
-                tags: ["Resin", "Sculpture", "Illumination"],
-                image: "https://images.unsplash.com/photo-1617387688226-c215320579c6?q=80&w=1000&auto=format&fit=crop",
-                description: "High-resolution resin printed lithophanes mounted in custom wooden lightboxes.",
-                longDescription: "The Echo series explores the depth of memory. Using high-resolution SLA resin printing, I created lithophanes that reveal intricate landscapes only when backlit. The housing is CNC-milled walnut with a custom LED backlight panel that adjusts color temperature based on the time of day.",
-                gallery: [
-                    "https://images.unsplash.com/photo-1617387688226-c215320579c6?q=80&w=1000&auto=format&fit=crop",
-                    "https://images.unsplash.com/photo-1622616239857-e6869e5d4a96?auto=format&fit=crop&q=80&w=800"
-                ],
-                featured: false
-            },
-            {
-                id: 5,
-                title: "Architectural Beam",
-                category: "Lighting",
-                tags: ["Install", "Architectural", "LED"],
-                image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000&auto=format&fit=crop",
-                description: "Permanent installation for a downtown jazz bar using warm-white COB LEDs.",
-                longDescription: "For the 'Blue Note' jazz lounge, the client wanted lighting that felt like 'visual brass'. I designed custom aluminum extrusions that house 2700K high-CRI COB LED strips. The fixtures highlight the exposed brickwork and create intimate pools of light for the tables. The entire system is DALI controllable and integrates with the venue's audio system to subtly pulse during high-energy sets.",
-                gallery: [
-                    "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000&auto=format&fit=crop",
-                    "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&q=80&w=800"
-                ],
-                featured: false
-            },
-            {
-                id: 6,
-                title: "Macro Pad Jig",
-                category: "Solutions",
-                tags: ["Tooling", "FDM", "Fixture"],
-                image: "https://images.unsplash.com/photo-1615858691544-e591702d8291?q=80&w=1000&auto=format&fit=crop",
-                description: "Alignment jig for soldering mechanical keyboard switches. STL available below.",
-                longDescription: "Precision is key when hand-wiring custom mechanical keyboards. This 3D printed jig holds 16 switches in perfect grid alignment, allowing for cleaner soldering of the matrix. Printed in PETG for heat resistance. The design includes slots for diodes and pre-measured wire guides.",
-                gallery: [
-                    "https://images.unsplash.com/photo-1615858691544-e591702d8291?q=80&w=1000&auto=format&fit=crop",
-                    "https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&q=80&w=800"
-                ],
-                link: "#",
-                featured: false
-            },
-            {
-                id: 7,
-                title: "Smart Venue System",
-                category: "Integration",
-                tags: ["MQTT", "NodeJS", "System Design"],
-                image: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?q=80&w=1000&auto=format&fit=crop", 
-                description: "Backend architecture integrating lighting control, audio triggers, and POS systems.",
-                longDescription: "A cohesive system design for a nightclub that allows the DJ to trigger lighting cues that are also synchronized with the bar's POS system (flashing lights when a 'champagne train' is ordered). Built on a local MQTT broker using Node-RED for logic flow. This integrates standard DMX lighting fixtures with custom ESP32 props and a web-dashboard for the venue manager.",
-                gallery: [
-                    "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?q=80&w=1000&auto=format&fit=crop"
-                ],
-                featured: false
-            }
-        ];
+        // --- READ DATA FROM SCRIPT TAG ---
+        // This is the efficient way to load data generated by the Google Apps Script
+        const projects = JSON.parse(document.getElementById('portfolio-data').textContent);
 
         // --- COMPONENTS ---
-
         const SectionHeader = ({ title, subtitle, icon: Icon }) => (
             <div className="mb-12">
                 <div className="flex items-center gap-3 text-cyan-400 mb-2 font-mono text-sm uppercase tracking-widest">
@@ -281,6 +293,11 @@
                 return () => document.body.style.overflow = 'unset';
             }, []);
 
+            const getFileExt = (url) => {
+                if(!url) return "FILE";
+                return url.split('.').pop().slice(0,4).toUpperCase();
+            };
+
             return (
                 <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">
                     <div className="absolute inset-0 bg-black/90 backdrop-blur-md transition-opacity" onClick={onClose}></div>
@@ -311,8 +328,31 @@
                                 <div className="md:col-span-2 space-y-8">
                                     <div>
                                         <h3 className="text-xl font-bold text-white mb-4">About the Project</h3>
-                                        <p className="text-zinc-300 text-lg leading-relaxed">{project.longDescription || project.description}</p>
+                                        <p className="text-zinc-300 text-lg leading-relaxed whitespace-pre-wrap">{project.longDescription || project.description}</p>
                                     </div>
+
+                                    {/* Video Section */}
+                                    {project.video && (
+                                        <div className="mb-8">
+                                            <h3 className="text-xl font-bold text-white mb-4">Project Video</h3>
+                                            <div className="aspect-video w-full rounded-xl overflow-hidden border border-zinc-800 bg-black">
+                                                {project.video.includes('youtube.com') || project.video.includes('youtu.be') ? (
+                                                    <iframe 
+                                                        src={project.video} 
+                                                        className="w-full h-full" 
+                                                        frameBorder="0" 
+                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                                        allowFullScreen
+                                                    ></iframe>
+                                                ) : (
+                                                    <video controls className="w-full h-full">
+                                                        <source src={project.video} type="video/mp4" />
+                                                        Your browser does not support the video tag.
+                                                    </video>
+                                                )}
+                                            </div>
+                                        </div>
+                                    )}
 
                                     {project.gallery && project.gallery.length > 0 && (
                                         <div>
@@ -344,27 +384,53 @@
                                                 </a>
                                             )}
 
-                                            {project.link ? (
-                                                <a href={project.link} className="flex items-center justify-center gap-2 w-full py-3 bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg transition-colors font-medium">
-                                                    <Download size={18} /> Download Files
-                                                </a>
-                                            ) : (
-                                                <button disabled className="flex items-center justify-center gap-2 w-full py-3 bg-zinc-800/50 text-zinc-500 rounded-lg cursor-not-allowed font-medium">
-                                                    <Download size={18} /> Files Private
-                                                </button>
-                                            )}
-                                            
-                                            {project.shopLink ? (
+                                            {/* SHOP BUTTON */}
+                                            {project.shopLink && (
                                                 <a href={project.shopLink} className="flex items-center justify-center gap-2 w-full py-3 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg transition-colors font-medium shadow-lg shadow-cyan-900/20">
                                                     <ShoppingCart size={18} /> Buy Kit
                                                 </a>
-                                            ) : (
-                                                <button disabled className="flex items-center justify-center gap-2 w-full py-3 bg-zinc-800/50 text-zinc-500 rounded-lg cursor-not-allowed font-medium">
-                                                    <ShoppingCart size={18} /> Not for Sale
-                                                </button>
+                                            )}
+
+                                            {/* GITHUB BUTTON */}
+                                            {project.githubLink && (
+                                                <a href={project.githubLink} target="_blank" className="flex items-center justify-center gap-2 w-full py-3 bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg transition-colors font-medium border border-zinc-700">
+                                                    <Github size={18} /> View Code
+                                                </a>
                                             )}
                                         </div>
                                     </div>
+
+                                    {/* FILES LIST (Dynamic) */}
+                                    {(project.files && project.files.length > 0) && (
+                                        <div className="bg-zinc-900/50 border border-zinc-800 p-6 rounded-xl">
+                                            <h4 className="text-sm font-bold text-zinc-500 uppercase tracking-widest mb-4">Downloads</h4>
+                                            <ul className="space-y-3">
+                                                {project.files.map((f, i) => (
+                                                    <li key={i}>
+                                                        <a href={f.url} download className="flex items-center gap-3 p-3 rounded-lg bg-zinc-800 hover:bg-zinc-700 transition-colors group">
+                                                            <div className="bg-zinc-900 p-2 rounded text-zinc-400 group-hover:text-white">
+                                                                <FileIcon size={20}/>
+                                                            </div>
+                                                            <div className="flex-1 min-w-0">
+                                                                <div className="text-sm font-bold text-white truncate">{f.name}</div>
+                                                                <div className="text-xs text-zinc-500 uppercase tracking-wider">{getFileExt(f.url)} {f.size ? `• ${f.size}` : ''}</div>
+                                                            </div>
+                                                            <Download size={16} className="text-zinc-500 group-hover:text-cyan-400 transition-colors"/>
+                                                        </a>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    )}
+
+                                    {/* Legacy Link Fallback (If no files array but legacy link exists) */}
+                                    {(!project.files || project.files.length === 0) && project.link && (
+                                         <div className="bg-zinc-900/50 border border-zinc-800 p-6 rounded-xl">
+                                            <a href={project.link} className="flex items-center justify-center gap-2 w-full py-3 bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg transition-colors font-medium">
+                                                <Download size={18} /> Download Files
+                                            </a>
+                                         </div>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -408,17 +474,20 @@
                                 </button>
                             )}
 
-                            {project.link && (
-                                <button onClick={(e) => {e.stopPropagation(); window.location.href=project.link}} className="flex items-center gap-2 text-xs font-bold text-zinc-300 hover:text-white z-10">
-                                    <Download size={14} /> FILES
+                            {/* GitHub Button on Card */}
+                            {project.githubLink && (
+                                <button onClick={(e) => {e.stopPropagation(); window.open(project.githubLink, '_blank')}} className="flex items-center gap-2 text-xs font-bold text-zinc-300 hover:text-white z-10 mr-2">
+                                    <Github size={14} /> CODE
                                 </button>
                             )}
+
                             {project.shopLink && (
                                 <button onClick={(e) => {e.stopPropagation(); window.location.href=project.shopLink}} className="flex items-center gap-2 text-xs font-bold text-cyan-400 hover:text-cyan-300 z-10 ml-auto">
                                     <ShoppingCart size={14} /> KIT
                                 </button>
                             )}
-                            {!project.link && !project.shopLink && !project.launchLink && (
+                            
+                            {!project.shopLink && !project.launchLink && !project.githubLink && (
                                 <span className="text-xs text-zinc-600 italic">Portfolio Item</span>
                             )}
                         </div>
@@ -487,60 +556,71 @@
             );
         };
 
-        const Hero = () => (
-            <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-                <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
-                    <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500 rounded-full blur-[128px]"></div>
-                    <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600 rounded-full blur-[128px]"></div>
-                </div>
-
-                <div className="container mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-12 items-center">
-                    <div className="space-y-6">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-700 text-xs font-mono text-cyan-400">
-                            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-                            AVAILABLE FOR HIRE
-                        </div>
-                        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
-                            Chris Moore <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
-                                Designs.
-                            </span>
-                        </h1>
-                        <p className="text-zinc-400 text-lg max-w-lg leading-relaxed">
-                            A multidisciplinary portfolio bridging the gap between digital code and physical reality. 
-                            From <span className="text-white font-semibold">Lighting Design</span> to <span className="text-white font-semibold">Circuit Fabrication</span>.
-                        </p>
-                        <div className="flex gap-4 pt-4">
-                            <button onClick={() => document.getElementById('lighting').scrollIntoView({behavior:'smooth'})} className="px-6 py-3 bg-white text-black font-bold rounded-lg hover:bg-zinc-200 transition-colors">
-                                View Work
-                            </button>
-                            <button onClick={() => document.getElementById('contact').scrollIntoView({behavior:'smooth'})} className="px-6 py-3 border border-zinc-700 rounded-lg hover:bg-zinc-900 transition-colors text-white">
-                                Contact Me
-                            </button>
-                        </div>
+        const Hero = () => {
+            const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+            
+            const HeroBadge = ({ id, label, icon: Icon, color, bgImage }) => (
+                <div 
+                    onClick={() => scrollTo(id)} 
+                    className="relative rounded-2xl overflow-hidden group cursor-pointer border border-zinc-800 hover:border-zinc-600 transition-all duration-300"
+                >
+                    <div className="absolute inset-0">
+                        <img src={bgImage} className="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-500 scale-100 group-hover:scale-110" alt={label} />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
                     </div>
-
-                    <div className="grid grid-cols-2 gap-4 h-full md:h-[500px] auto-rows-fr">
-                        <div className="glass-panel p-6 rounded-2xl flex flex-col justify-between hover:border-cyan-500/50 transition-colors group">
-                            <Lightbulb className="text-yellow-400 mb-4 group-hover:scale-110 transition-transform" size={32} />
-                            <div><h3 className="font-bold text-xl">Lighting</h3></div>
-                        </div>
-                        <div className="glass-panel p-6 rounded-2xl flex flex-col justify-between hover:border-purple-500/50 transition-colors group bg-zinc-900/50">
-                            <Smartphone className="text-purple-400 mb-4 group-hover:scale-110 transition-transform" size={32} />
-                            <div><h3 className="font-bold text-xl">Apps</h3></div>
-                        </div>
-                        <div className="glass-panel p-6 rounded-2xl flex flex-col justify-between hover:border-green-500/50 transition-colors group col-span-2 md:col-span-1">
-                            <Cpu className="text-green-400 mb-4 group-hover:scale-110 transition-transform" size={32} />
-                            <div><h3 className="font-bold text-xl">Electronics</h3></div>
-                        </div>
-                         <div className="glass-panel p-6 rounded-2xl flex flex-col justify-between hover:border-orange-500/50 transition-colors group hidden md:flex">
-                            <Printer className="text-orange-400 mb-4 group-hover:scale-110 transition-transform" size={32} />
-                            <div><h3 className="font-bold text-xl">Fabrication</h3></div>
-                        </div>
+                    <div className="relative p-6 h-full flex flex-col justify-end">
+                        <Icon className={`${color} mb-2 group-hover:scale-110 transition-transform duration-300`} size={32} />
+                        <h3 className="font-bold text-xl text-white">{label}</h3>
                     </div>
                 </div>
-            </section>
-        );
+            );
+
+            return (
+                <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 pb-12">
+                    <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
+                        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500 rounded-full blur-[128px]"></div>
+                        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600 rounded-full blur-[128px]"></div>
+                    </div>
+
+                    <div className="container mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+                        <div className="space-y-6">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-700 text-xs font-mono text-cyan-400">
+                                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                                AVAILABLE FOR HIRE
+                            </div>
+                            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
+                                Chris Moore <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
+                                    Designs.
+                                </span>
+                            </h1>
+                            <p className="text-zinc-400 text-lg max-w-lg leading-relaxed">
+                                A multidisciplinary portfolio bridging the gap between digital code and physical reality. 
+                                From <span className="text-white font-semibold">Lighting Design</span> to <span className="text-white font-semibold">Circuit Fabrication</span>.
+                            </p>
+                            <div className="flex gap-4 pt-4">
+                                <button onClick={() => document.getElementById('lighting').scrollIntoView({behavior:'smooth'})} className="px-6 py-3 bg-white text-black font-bold rounded-lg hover:bg-zinc-200 transition-colors">
+                                    View Work
+                                </button>
+                                <button onClick={() => document.getElementById('contact').scrollIntoView({behavior:'smooth'})} className="px-6 py-3 border border-zinc-700 rounded-lg hover:bg-zinc-900 transition-colors text-white">
+                                    Contact Me
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* Grid - 2 cols, 3 rows */}
+                        <div className="grid grid-cols-2 gap-4 h-[600px] w-full">
+                            <HeroBadge id="lighting" label="Lighting" icon={Lightbulb} color="text-yellow-400" bgImage="https://images.unsplash.com/photo-1514525253440-b393452e8d26?q=80&w=800&auto=format&fit=crop" />
+                            <HeroBadge id="art" label="Art" icon={Palette} color="text-pink-400" bgImage="https://images.unsplash.com/photo-1544531586-fde5298cdd40?q=80&w=800&auto=format&fit=crop" />
+                            <HeroBadge id="circuits" label="Electronics" icon={Cpu} color="text-green-400" bgImage="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop" />
+                            <HeroBadge id="apps" label="Apps" icon={Smartphone} color="text-purple-400" bgImage="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?q=80&w=800&auto=format&fit=crop" />
+                            <HeroBadge id="solutions" label="Fabrication" icon={Printer} color="text-orange-400" bgImage="https://images.unsplash.com/photo-1622616239857-e6869e5d4a96?q=80&w=800&auto=format&fit=crop" />
+                            <HeroBadge id="integration" label="Integration" icon={Layers} color="text-blue-400" bgImage="https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?q=80&w=800&auto=format&fit=crop" />
+                        </div>
+                    </div>
+                </section>
+            );
+        };
 
         const SimpleSection = ({ id, title, subtitle, icon, category, onOpenProject, bgColor = "bg-black" }) => {
             const sectionProjects = projects.filter(p => p.category === category);
@@ -579,6 +659,9 @@
                         </a>
                         <a href="https://instagram.com" target="_blank" className="px-8 py-4 border border-zinc-700 text-white font-bold rounded-full hover:bg-pink-600 hover:border-pink-600 transition-all flex items-center justify-center gap-2">
                             <Instagram size={18} /> Instagram
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" className="px-8 py-4 border border-zinc-700 text-white font-bold rounded-full hover:bg-blue-600 hover:border-blue-600 transition-all flex items-center justify-center gap-2">
+                            <Linkedin size={18} /> LinkedIn
                         </a>
                         <a href="#" className="px-8 py-4 border border-zinc-700 text-white font-bold rounded-full hover:bg-zinc-900 transition-all flex items-center justify-center gap-2">
                             <Github size={18} /> GitHub
