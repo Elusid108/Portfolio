@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chris Moore Designs | Portfolio</title>
     
+    <!-- PERFORMANCE: Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    
     <!-- Google Analytics (GA4) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MN0NMMXNWX"></script>
     <script>
@@ -103,7 +109,7 @@
         },
         {
             "id": 1,
-            "title": "Temple - San Francisco",
+            "title": "Temple Nightclub - San Francisco",
             "category": "Lighting",
             "tags": [
                 "LIGHTING DESIGN",
@@ -295,14 +301,12 @@
             }
 
             projects = Array.isArray(parsedData) ? parsedData : (parsedData.projects || []);
-            
-            // SORTING: Newest first (highest timestamp or ID)
+            // Newest first
             projects.sort((a, b) => {
                 const dateA = a.timestamp ? new Date(a.timestamp) : new Date(0);
                 const dateB = b.timestamp ? new Date(b.timestamp) : new Date(0);
                 return dateB - dateA;
             });
-            
             settings = parsedData.settings || {};
 
         } catch (e) {
@@ -329,7 +333,14 @@
                     className="group relative rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800 hover:border-cyan-500/50 transition-all duration-300 h-full flex flex-col cursor-pointer"
                 >
                     <div className="relative aspect-video overflow-hidden">
-                        <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" />
+                        {/* PERFORMANCE: Lazy Loading */}
+                        <img 
+                            src={project.image} 
+                            alt={project.title} 
+                            loading="lazy"
+                            decoding="async"
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" 
+                        />
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
                             <div className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 bg-black/60 backdrop-blur px-4 py-2 rounded-full border border-white/20 flex items-center gap-2 text-white font-bold text-sm">
                                 <Maximize2 size={16} /> View Project
@@ -666,12 +677,12 @@
                                                     </a>
                                                 )}
                                                 {project.shopLink && (
-                                                    <a href={ensureProtocol(project.shopLink)} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full py-3 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg transition-colors font-medium shadow-lg shadow-cyan-900/20">
+                                                    <a href={ensureProtocol(project.shopLink)} className="flex items-center justify-center gap-2 w-full py-3 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg transition-colors font-medium shadow-lg shadow-cyan-900/20">
                                                         <ShoppingCart size={18} /> Buy Kit
                                                     </a>
                                                 )}
                                                 {project.githubLink && (
-                                                    <a href={ensureProtocol(project.githubLink)} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full py-3 bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg transition-colors font-medium border border-zinc-700">
+                                                    <a href={ensureProtocol(project.githubLink)} target="_blank" className="flex items-center justify-center gap-2 w-full py-3 bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg transition-colors font-medium border border-zinc-700">
                                                         <Github size={18} /> View Code
                                                     </a>
                                                 )}
@@ -732,7 +743,14 @@
                         <SectionHeader title="About Me" subtitle="Professional Profile" icon={null} />
                         <div className="flex flex-col md:flex-row gap-12 items-start">
                             <div className="w-full md:w-1/3 aspect-square relative rounded-2xl overflow-hidden border border-zinc-700 shadow-2xl">
-                                <img src={headshot} alt="Profile" className="w-full h-full object-cover" />
+                                {/* PERFORMANCE: Lazy Loading on About Me Headshot */}
+                                <img 
+                                    src={headshot} 
+                                    alt="Profile" 
+                                    loading="lazy"
+                                    decoding="async"
+                                    className="w-full h-full object-cover" 
+                                />
                             </div>
                             <div className="w-full md:w-2/3 space-y-6 text-zinc-300 text-lg leading-relaxed rich-text">
                                 <div dangerouslySetInnerHTML={{ __html: text }} />
@@ -762,7 +780,7 @@
             const links = [
                 { id: 'lighting', label: 'Lighting' },
                 { id: 'art', label: 'Art' },
-                { id: 'circuits', label: 'Circuits' },
+                { id: 'circuits', label: 'Electronics' }, // Updated Label
                 { id: 'apps', label: 'Apps' },
                 { id: 'solutions', label: 'Fabrication' },
                 { id: 'integration', label: 'Integration' },
@@ -833,7 +851,14 @@
                     className="relative rounded-2xl overflow-hidden group cursor-pointer border border-zinc-800 hover:border-zinc-600 transition-all duration-300"
                 >
                     <div className="absolute inset-0">
-                        <img src={getHeroImage(id)} className="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-500 scale-100 group-hover:scale-110" alt={label} />
+                        {/* PERFORMANCE: Lazy Loading on Hero Badges */}
+                        <img 
+                            src={getHeroImage(id)} 
+                            alt={label} 
+                            loading="lazy"
+                            decoding="async"
+                            className="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-500 scale-100 group-hover:scale-110" 
+                        />
                         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
                     </div>
                     <div className="relative p-6 h-full flex flex-col justify-end">
@@ -873,9 +898,7 @@
                                 <button onClick={() => document.getElementById('about').scrollIntoView({behavior:'smooth'})} className="px-6 py-3 border border-zinc-700 rounded-lg hover:bg-zinc-900 transition-colors text-white">
                                     About Me
                                 </button>
-                                <button onClick={() => document.getElementById('contact').scrollIntoView({behavior:'smooth'})} className="px-6 py-3 border border-zinc-700 rounded-lg hover:bg-zinc-900 transition-colors text-white">
-                                    Contact Me
-                                </button>
+                                {/* Removed Contact Me Button */}
                             </div>
                         </div>
 
