@@ -251,9 +251,7 @@
             "longDescription": "<p><br></p>",
             "video": "",
             "gallery": [
-                "https://github.com/Elusid108/Portfolio/blob/main/media/Art/Pixel%20Mini%20Pyramid/20230726_201532.jpg?raw=true",
-                "https://github.com/Elusid108/Portfolio/blob/main/media/Art/Pixel%20Mini%20Pyramid/20230221_181031.jpg?raw=true",
-                "https://github.com/Elusid108/Portfolio/blob/main/media/Art/Pixel%20Mini%20Pyramid/20240316_134932.jpg?raw=true"
+                "https://github.com/Elusid108/Portfolio/blob/main/media/Art/Pixel%20Mini%20Pyramid/20230726_201532.jpg?raw=true"
             ],
             "launchLink": "",
             "githubLink": "",
@@ -680,8 +678,9 @@
                     <button onClick={onClose} className="absolute top-4 right-4 p-3 bg-zinc-800/80 rounded-full text-white hover:bg-zinc-700 transition-colors z-[210]">
                         <X size={24} />
                     </button>
-                    <button onClick={prevImage} className="hidden md:block absolute left-4 p-4 text-white/50 hover:text-white transition-colors z-[210]">
-                        <ChevronLeft size={48} />
+                    {/* Navigation Arrows - Always visible now, with background for better visibility over video */}
+                    <button onClick={prevImage} className="absolute left-4 p-4 text-white/70 hover:text-white transition-colors z-[210] bg-black/40 rounded-full backdrop-blur-sm">
+                        <ChevronLeft size={32} />
                     </button>
                     <div className="w-full h-full p-4 md:p-10 flex items-center justify-center">
                         {ytId ? (
@@ -695,10 +694,11 @@
                             <img src={currentUrl} alt={`Gallery ${index}`} className="max-w-full max-h-full object-contain select-none" draggable="false" />
                         )}
                     </div>
-                    <button onClick={nextImage} className="hidden md:block absolute right-4 p-4 text-white/50 hover:text-white transition-colors z-[210]">
-                        <ChevronRight size={48} />
+                    {/* Navigation Arrows */}
+                    <button onClick={nextImage} className="absolute right-4 p-4 text-white/70 hover:text-white transition-colors z-[210] bg-black/40 rounded-full backdrop-blur-sm">
+                        <ChevronRight size={32} />
                     </button>
-                    <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-zinc-800/80 px-4 py-2 rounded-full text-sm font-mono text-zinc-300">
+                    <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-zinc-800/80 px-4 py-2 rounded-full text-sm font-mono text-zinc-300 z-[210]">
                         {index + 1} / {images.length}
                     </div>
                 </div>
@@ -732,7 +732,14 @@
 
                         <div className="overflow-y-auto custom-scrollbar flex-1">
                             <div className="relative h-64 md:h-96 w-full">
-                                <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+                                {/* PERFORMANCE: Lazy Loading on Modal Header */}
+                                <img 
+                                    src={project.image} 
+                                    alt={project.title} 
+                                    loading="lazy"
+                                    decoding="async"
+                                    className="w-full h-full object-cover" 
+                                />
                                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 to-transparent"></div>
                                 <div className="absolute bottom-6 left-6 md:left-10 pointer-events-none">
                                     <div className="flex gap-2 mb-3">
@@ -1049,8 +1056,8 @@
                             </div>
                         </div>
 
-                        {/* Grid - 2 cols, 3 rows */}
-                        <div className="grid grid-cols-2 gap-4 h-[600px] w-full">
+                        {/* Grid - 2 cols, 3 rows - ADJUSTED HEIGHT FOR MOBILE */}
+                        <div className="grid grid-cols-2 gap-2 md:gap-4 h-[350px] md:h-[600px] w-full">
                             <HeroBadge id="lighting" label="Lighting" icon={Lightbulb} color="text-yellow-400" />
                             <HeroBadge id="art" label="Art" icon={Palette} color="text-pink-400" />
                             <HeroBadge id="circuits" label="Electronics" icon={Cpu} color="text-green-400" />
