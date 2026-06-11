@@ -636,13 +636,13 @@
                 "Lithophane",
                 "Calibration"
             ],
-            "image": "https://github.com/Elusid108/Portfolio/blob/main/media/Apps/LithoPalletGen/lithopalletgen1.png",
+            "image": "https://github.com/Elusid108/Portfolio/blob/main/media/Apps/LithoPalletGen/lithopalletgen1.png?raw=true",
             "description": "<p>A browser-based palette generator for color lithophane 3D printing. Upload reference images, sample colors with an area-averaging eyedropper, and export structured JSON palettes compatible with PIXEstl.</p>",
             "longDescription": "<p><strong>LithoPalletGen</strong> is a specialized color calibration tool designed for multi-material lithophane workflows. Unlike simple color pickers, this application employs an area-averaging eyedropper that samples every pixel within a configurable region (32 to 256px), producing statistically accurate color values that account for print texture, lighting variance, and filament translucency across photographed swatch samples.</p><p><br></p><p>The application features a split-pane workspace pairing a canvas-based image viewer with a hierarchical palette builder. Users upload photographs of their printed filament swatches, then systematically build multi-layer color profiles—each base color containing ordered layers representing increasing material thickness. The eyedropper overlays a live-updating sampling box on the image, averaging hundreds of pixels per capture to eliminate noise from surface inconsistencies inherent in FDM prints.</p><p><br></p><p>Built as a zero-dependency vanilla JavaScript application with no build step, the entire state architecture relies on IndexedDB for persistent image storage and localStorage for palette serialization. The primary technical achievement is the real-time pixel averaging engine, which performs per-frame getImageData computations across thousands of pixels while maintaining responsive cursor tracking, and a dual-format export system that generates PIXEstl-compatible JSON in either HSL or hex notation from a single unified color model.</p>",
             "video": "",
             "gallery": [
                 "https://github.com/Elusid108/Portfolio/blob/main/media/Apps/LithoPalletGen/lithopalletgen2.png?raw=true",
-                "https://github.com/Elusid108/Portfolio/blob/main/media/Apps/LithoPalletGen/lithopalletgen1.png"
+                "https://github.com/Elusid108/Portfolio/blob/main/media/Apps/LithoPalletGen/lithopalletgen1.png?raw=true"
             ],
             "launchLink": "https://elusid108.github.io/LithoPalletGen/",
             "githubLink": "https://github.com/Elusid108/LithoPalletGen",
