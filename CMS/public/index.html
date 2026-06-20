@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio CMS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+  <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+  <style>
+    .list-item-enter { animation: fadeIn 0.3s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+    .ql-toolbar { border-top-left-radius: 0.5rem; border-top-right-radius: 0.5rem; background-color: #f8fafc; border-color: #e2e8f0 !important; }
+    .ql-container { border-bottom-left-radius: 0.5rem; border-bottom-right-radius: 0.5rem; background-color: #ffffff; border-color: #e2e8f0 !important; font-family: inherit !important; font-size: 0.875rem !important; }
+    .ql-editor { min-height: 80px; }
+    .upload-zone { transition: all 0.2s; }
+    .upload-zone.dragover { border-color: #6366f1; background-color: #eef2ff; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen relative">
+
+  <div id="loadingOverlay" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm">
+      <div class="bg-white p-6 rounded-xl shadow-2xl flex items-center gap-4 animate-bounce">
+          <div class="w-6 h-6 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
+          <span id="loadingText" class="font-bold text-slate-700 text-lg">Saving Changes...</span>
+      </div>
+  </div>
+
+  <div id="app" class="max-w-5xl mx-auto p-6">
+    <div class="flex justify-between items-center mb-8">
+      <div>
+        <h1 class="text-3xl font-bold text-slate-800">Portfolio CMS <span class="text-sm font-medium text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full align-middle">v2.0 Local</span></h1>
+        <p class="text-slate-500 text-sm mt-1">Local portfolio manager</p>
+      </div>
+      <div class="flex gap-3">
+        <button onclick="tryRefresh()" class="px-4 py-2 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-600 flex items-center gap-2">
+          <i class="ph ph-arrow-clockwise"></i> Refresh
+        </button>
+        <a href="/preview" target="_blank" class="px-4 py-2 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-600 flex items-center gap-2">
+          <i class="ph ph-desktop"></i> Preview
+        </a>
+        <button onclick="publish()" id="pubBtn" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 shadow-md flex items-center gap-2 font-medium">
+          <i class="ph ph-export"></i> Publish Website
+        </button>
+      </div>
+    </div>
+
+    <div id="status" class="hidden mb-6 p-4 rounded-lg bg-blue-50 text-blue-800 border border-blue-100 flex items-center justify-between">
+      <span id="statusMsg">Loading...</span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="md:col-span-1 space-y-4">
+        <button onclick="tryShowSettings()" class="w-full py-3 bg-slate-800 text-white rounded-xl font-bold hover:bg-slate-700 transition-colors flex items-center justify-center gap-2 shadow-sm">
+          <i class="ph ph-sliders-horizontal"></i> Main Interface
+        </button>
+        <div class="border-t border-slate-200 my-2"></div>
+        <button onclick="tryNewItem()" class="w-full py-3 border-2 border-dashed border-slate-300 rounded-xl text-slate-400 font-bold hover:border-indigo-400 hover:text-indigo-500 transition-colors">
+          + New Project
+        </button>
+        <div id="projectList" class="space-y-2 max-h-[70vh] overflow-y-auto pr-2">
+          <div class="animate-pulse bg-white h-20 rounded-xl"></div>
+        </div>
+      </div>
+
+      <div class="md:col-span-2 bg-white rounded-2xl shadow-xl border border-slate-100 p-6 sticky top-6 min-h-[600px]">
+
+        <div id="emptyState" class="h-full flex flex-col items-center justify-center text-slate-300">
+          <i class="ph ph-pencil-simple-slash text-6xl mb-4"></i>
+          <p>Select a project or the Main Interface to edit</p>
+        </div>
+
+        <!-- PROJECT EDITOR -->
+        <form id="editor" class="hidden space-y-4" onsubmit="event.preventDefault(); saveCurrent();">
+          <div class="flex justify-between items-center mb-4 border-b border-slate-100 pb-2">
+            <h2 class="text-lg font-bold text-slate-700">Edit Project</h2>
+            <div class="flex items-center gap-3">
+               <div class="flex items-center gap-2 bg-yellow-50 px-3 py-1 rounded border border-yellow-200">
+                  <input type="checkbox" id="featured" class="w-4 h-4 text-yellow-500 rounded focus:ring-yellow-500 border-gray-300">
+                  <label for="featured" class="text-xs font-bold text-yellow-700 uppercase cursor-pointer">Featured</label>
+               </div>
+               <div class="flex items-center gap-2 bg-purple-50 px-3 py-1 rounded border border-purple-200">
+                  <input type="checkbox" id="wip" class="w-4 h-4 text-purple-500 rounded focus:ring-purple-500 border-gray-300">
+                  <label for="wip" class="text-xs font-bold text-purple-700 uppercase cursor-pointer">WIP</label>
+               </div>
+            </div>
+          </div>
+
+          <input type="hidden" id="id">
+          <input type="hidden" id="timestamp">
+
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Title</label>
+              <input type="text" id="title" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Category</label>
+              <select id="category" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2">
+                <option>Lighting</option>
+                <option>Art</option>
+                <option>Circuits</option>
+                <option>Apps</option>
+                <option>Solutions</option>
+                <option>Integration</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+             <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Banner Image</label>
+             <div class="flex gap-2">
+               <input type="text" id="image" placeholder="Path or URL" class="flex-1 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-mono">
+               <label class="cursor-pointer bg-indigo-100 text-indigo-600 px-3 py-2 rounded-lg hover:bg-indigo-200 flex items-center gap-1 text-sm font-bold whitespace-nowrap">
+                 <i class="ph ph-upload-simple"></i> Upload
+                 <input type="file" accept="image/*" class="hidden" onchange="handleImageUpload(this, 'image')">
+               </label>
+             </div>
+          </div>
+
+          <div>
+             <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Description (Short)</label>
+             <div id="description-editor" class="bg-white"></div>
+          </div>
+
+          <div>
+             <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Long Description (Detailed)</label>
+             <div id="longDescription-editor" class="bg-white"></div>
+          </div>
+
+          <!-- Gallery -->
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+             <div class="flex justify-between items-center mb-3 border-b border-slate-200 pb-2">
+                 <h3 class="text-xs font-bold text-slate-500 uppercase">Gallery Images / Video URLs</h3>
+                 <div class="flex gap-2">
+                   <label class="cursor-pointer text-xs bg-green-100 text-green-600 px-2 py-1 rounded hover:bg-green-200 font-bold flex items-center gap-1">
+                     <i class="ph ph-upload-simple"></i> Upload
+                     <input type="file" accept="image/*" multiple class="hidden" onchange="handleGalleryMultiUpload(this)">
+                   </label>
+                   <button type="button" onclick="addGalleryRow()" class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded hover:bg-indigo-200 font-bold">+ Add URL</button>
+                 </div>
+             </div>
+             <div id="gallery-container" class="space-y-2"></div>
+          </div>
+
+          <!-- Actions -->
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+             <h3 class="text-xs font-bold text-slate-500 uppercase mb-3 border-b border-slate-200 pb-2">Actions</h3>
+             <div class="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Website / Project Link</label>
+                  <input type="text" id="websiteLink" placeholder="https://mysite.com" class="w-full bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono">
+                </div>
+                <div>
+                  <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Launch App Link</label>
+                  <input type="text" id="launchLink" placeholder="https://app..." class="w-full bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono">
+                </div>
+                <div>
+                  <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">GitHub Link</label>
+                  <input type="text" id="githubLink" placeholder="https://github.com/..." class="w-full bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono">
+                </div>
+                <div>
+                  <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Shop Link</label>
+                  <input type="text" id="shopLink" placeholder="https://store..." class="w-full bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono">
+                </div>
+             </div>
+          </div>
+
+          <!-- Downloads -->
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+             <div class="flex justify-between items-center mb-3 border-b border-slate-200 pb-2">
+                 <h3 class="text-xs font-bold text-slate-500 uppercase">Downloadable Files</h3>
+                 <button type="button" onclick="addFileRow()" class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded hover:bg-indigo-200 font-bold">+ Add File</button>
+             </div>
+             <div id="files-container" class="space-y-2"></div>
+          </div>
+
+          <div class="mt-4">
+            <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Tags (Comma separated)</label>
+            <textarea id="tags" rows="2" placeholder="Arduino, LED, Design" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs font-mono"></textarea>
+          </div>
+
+          <div class="pt-4 flex justify-between items-center border-t border-slate-100 mt-4">
+             <button type="button" onclick="deleteCurrent()" class="text-red-400 hover:text-red-600 text-sm font-bold px-3">Delete</button>
+             <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-lg shadow-lg shadow-indigo-200 transition-all">Save Project</button>
+          </div>
+        </form>
+
+        <!-- SETTINGS FORM -->
+        <form id="settingsForm" class="hidden space-y-6" onsubmit="event.preventDefault(); saveSettings();">
+          <div class="flex justify-between items-center mb-4 border-b border-slate-100 pb-2">
+            <h2 class="text-lg font-bold text-slate-700">Main Interface Settings</h2>
+          </div>
+
+          <div class="mb-6 border-b border-slate-200 pb-6">
+              <h3 class="text-xs font-bold text-slate-500 uppercase mb-3">About Me Configuration</h3>
+              <div class="mb-4">
+                  <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Headshot</label>
+                  <div class="flex gap-2">
+                    <input type="text" id="about_headshot" placeholder="Path or URL" class="flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono">
+                    <label class="cursor-pointer bg-indigo-100 text-indigo-600 px-3 py-1 rounded hover:bg-indigo-200 flex items-center gap-1 text-sm font-bold whitespace-nowrap">
+                      <i class="ph ph-upload-simple"></i> Upload
+                      <input type="file" accept="image/*" class="hidden" onchange="handleHeadshotUpload(this)">
+                    </label>
+                  </div>
+              </div>
+              <div>
+                   <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">About Me Content</label>
+                   <div id="about-editor" class="bg-white"></div>
+              </div>
+          </div>
+
+          <div>
+            <h3 class="text-xs font-bold text-slate-500 uppercase mb-3">Social Links</h3>
+            <div class="space-y-3">
+              <div class="flex gap-2 items-center">
+                <i class="ph ph-envelope text-slate-400 text-lg w-6"></i>
+                <input type="text" id="email" placeholder="Email Address" class="w-full bg-slate-50 border border-slate-200 rounded px-3 py-2 text-sm">
+              </div>
+              <div class="flex gap-2 items-center">
+                <i class="ph ph-instagram-logo text-slate-400 text-lg w-6"></i>
+                <input type="text" id="instagram" placeholder="Instagram URL" class="w-full bg-slate-50 border border-slate-200 rounded px-3 py-2 text-sm font-mono">
+              </div>
+              <div class="flex gap-2 items-center">
+                <i class="ph ph-linkedin-logo text-slate-400 text-lg w-6"></i>
+                <input type="text" id="linkedin" placeholder="LinkedIn URL" class="w-full bg-slate-50 border border-slate-200 rounded px-3 py-2 text-sm font-mono">
+              </div>
+              <div class="flex gap-2 items-center">
+                <i class="ph ph-github-logo text-slate-400 text-lg w-6"></i>
+                <input type="text" id="github" placeholder="GitHub URL" class="w-full bg-slate-50 border border-slate-200 rounded px-3 py-2 text-sm font-mono">
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-100 mt-4">
+            <h3 class="text-xs font-bold text-indigo-800 uppercase mb-2">Contact Form Configuration (EmailJS)</h3>
+            <p class="text-[10px] text-indigo-600 mb-3">Leave blank to use default email client (mailto). To send directly from the site, sign up at <a href="https://www.emailjs.com/" target="_blank" class="underline">emailjs.com</a>.</p>
+            <div class="grid grid-cols-3 gap-2">
+                <input type="text" id="emailjs_service" placeholder="Service ID" class="bg-white border border-indigo-200 rounded px-2 py-1 text-xs font-mono">
+                <input type="text" id="emailjs_template" placeholder="Template ID" class="bg-white border border-indigo-200 rounded px-2 py-1 text-xs font-mono">
+                <input type="text" id="emailjs_public_key" placeholder="Public Key" class="bg-white border border-indigo-200 rounded px-2 py-1 text-xs font-mono">
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-slate-100 flex justify-end">
+             <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-lg shadow-lg shadow-indigo-200 transition-all">Save Settings</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Unsaved Changes Modal -->
+  <div id="unsavedModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center backdrop-blur-sm p-4">
+    <div class="bg-white rounded-xl shadow-2xl p-6 max-w-sm w-full mx-4">
+        <h3 class="text-lg font-bold text-slate-800 mb-2">Unsaved Changes</h3>
+        <p class="text-sm text-slate-600 mb-6">You have unsaved changes. What would you like to do?</p>
+        <div class="flex flex-col gap-3">
+            <button onclick="resolveUnsaved('save')" class="w-full py-2 bg-indigo-600 text-white rounded-lg font-bold hover:bg-indigo-700">Save & Continue</button>
+            <button onclick="resolveUnsaved('discard')" class="w-full py-2 bg-red-100 text-red-700 rounded-lg font-bold hover:bg-red-200">Discard Changes</button>
+            <button onclick="resolveUnsaved('cancel')" class="w-full py-2 border border-slate-300 text-slate-600 rounded-lg font-bold hover:bg-slate-50">Cancel</button>
+        </div>
+    </div>
+  </div>
+
+  <!-- Publish Modal -->
+  <div id="publishModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center backdrop-blur-sm p-4">
+      <div class="bg-white rounded-xl shadow-2xl p-6 max-w-2xl w-full flex flex-col h-[80vh]">
+          <div class="flex justify-between items-center mb-4">
+              <h2 class="text-xl font-bold text-slate-800">Website Published!</h2>
+              <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600"><i class="ph ph-x text-xl"></i></button>
+          </div>
+          <div class="mb-4 space-y-2">
+            <p class="text-sm text-slate-600">Your site has been generated at <code class="bg-slate-100 px-1 rounded text-xs">index.html</code> in the Portfolio root.</p>
+            <div class="flex gap-3 text-sm">
+                <a href="/preview" target="_blank" class="text-indigo-600 hover:underline flex items-center gap-1"><i class="ph ph-desktop"></i> Preview Locally</a>
+            </div>
+          </div>
+          <div class="flex-grow relative border border-slate-200 rounded-lg bg-slate-50 overflow-hidden mb-4">
+              <textarea id="publishCode" class="w-full h-full p-4 font-mono text-xs focus:outline-none resize-none" readonly></textarea>
+          </div>
+          <div class="flex gap-3 justify-end">
+              <button onclick="downloadSource()" class="px-4 py-2 border border-slate-300 rounded-lg hover:bg-slate-50 font-medium text-slate-700 flex items-center gap-2">
+                   <i class="ph ph-download-simple"></i> Download HTML
+              </button>
+              <button onclick="copyCode()" class="px-4 py-2 border border-slate-300 rounded-lg hover:bg-slate-50 font-medium text-slate-700"><i class="ph ph-copy"></i> Copy Code</button>
+              <a href="/preview" target="_blank" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-medium flex items-center gap-2"><i class="ph ph-desktop"></i> Preview Site</a>
+          </div>
+      </div>
+  </div>
+
+  <script>
+    // --- API HELPER ---
+    const api = {
+      async get(path) {
+        const res = await fetch(`/api${path}`);
+        if (!res.ok) throw new Error(await res.text());
+        return res.json();
+      },
+      async post(path, data) {
+        const res = await fetch(`/api${path}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        if (!res.ok) throw new Error(await res.text());
+        return res.json();
+      },
+      async del(path) {
+        const res = await fetch(`/api${path}`, { method: 'DELETE' });
+        if (!res.ok) throw new Error(await res.text());
+        return res.json();
+      },
+      async upload(file, category, project) {
+        const form = new FormData();
+        form.append('file', file);
+        form.append('category', category);
+        form.append('project', project);
+        const res = await fetch('/api/media/upload', { method: 'POST', body: form });
+        if (!res.ok) throw new Error(await res.text());
+        return res.json();
+      }
+    };
+
+    // --- APP STATE ---
+    let projects = [];
+    let isDirty = false;
+    let lastSavedId = null;
+    let pendingNavigation = null;
+    let currentEditIndex = -1;
+    let quillShort, quillLong, quillAbout;
+
+    window.onload = () => {
+        initQuill();
+        refreshData();
+        setupDirtyTracking();
+    };
+
+    function initQuill() {
+        const toolbarBasic = [['bold', 'italic', 'underline', 'strike']];
+        const toolbarFull = [
+            ['bold', 'italic', 'underline', 'strike'],
+            [{ 'header': 1 }, { 'header': 2 }],
+            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+            [{ 'indent': '-1'}, { 'indent': '+1' }],
+            ['link', 'clean']
+        ];
+
+        const stripColors = [Node.ELEMENT_NODE, function(node, delta) {
+            delta.ops.forEach(function(op) {
+                if (op.attributes) {
+                    delete op.attributes.color;
+                    delete op.attributes.background;
+                    delete op.attributes.font;
+                    delete op.attributes.size;
+                }
+            });
+            return delta;
+        }];
+
+        quillShort = new Quill('#description-editor', {
+            theme: 'snow',
+            modules: { toolbar: toolbarBasic, clipboard: { matchers: [stripColors] } },
+            placeholder: 'Short summary...'
+        });
+
+        quillLong = new Quill('#longDescription-editor', {
+            theme: 'snow',
+            modules: { toolbar: toolbarFull, clipboard: { matchers: [stripColors] } },
+            placeholder: 'Detailed project breakdown...'
+        });
+
+        quillAbout = new Quill('#about-editor', {
+            theme: 'snow',
+            modules: { toolbar: toolbarFull, clipboard: { matchers: [stripColors] } },
+            placeholder: 'Write about yourself...'
+        });
+
+        quillShort.on('text-change', () => isDirty = true);
+        quillLong.on('text-change', () => isDirty = true);
+        quillAbout.on('text-change', () => isDirty = true);
+    }
+
+    function setupDirtyTracking() {
+        document.body.addEventListener('input', (e) => {
+            if(e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') {
+                isDirty = true;
+            }
+        });
+    }
+
+    // --- NAVIGATION GUARDS ---
+    function handleNavigation(action) {
+        if (isDirty) {
+            pendingNavigation = action;
+            document.getElementById('unsavedModal').classList.remove('hidden');
+        } else {
+            action();
+        }
+    }
+
+    function resolveUnsaved(choice) {
+        document.getElementById('unsavedModal').classList.add('hidden');
+        if (choice === 'cancel') { pendingNavigation = null; return; }
+        if (choice === 'discard') {
+            isDirty = false;
+            if (pendingNavigation) pendingNavigation();
+        }
+        if (choice === 'save') {
+            if(!document.getElementById('editor').classList.contains('hidden')) {
+                 saveCurrent(() => { if(pendingNavigation) pendingNavigation(); });
+            } else {
+                 saveSettings(() => { if(pendingNavigation) pendingNavigation(); });
+            }
+        }
+    }
+
+    function tryRefresh() { handleNavigation(refreshData); }
+    function tryNewItem() { handleNavigation(newItem); }
+    function tryShowSettings() { handleNavigation(showSettings); }
+    function tryEditItem(i) { handleNavigation(() => editItem(i)); }
+
+    // --- DATA LOADING ---
+    function refreshData() {
+      api.get('/projects').then(onDataLoaded).catch(onError);
+    }
+
+    function onDataLoaded(data) {
+      if (!data) { onError("No data returned"); return; }
+      projects = data.sort((a, b) => (a.title || "").localeCompare(b.title || ""));
+      renderList();
+      hideStatus();
+
+      document.getElementById('loadingOverlay').classList.add('hidden');
+      document.getElementById('loadingText').innerText = "Saving Changes...";
+
+      if (lastSavedId) {
+          const idx = projects.findIndex(p => String(p.id) === String(lastSavedId));
+          if (idx !== -1) {
+              editItem(idx);
+              Toastify({ text: "Project Saved!", duration: 3000, backgroundColor: "#4f46e5" }).showToast();
+          }
+          lastSavedId = null;
+      } else if (projects.length > 0 && document.getElementById('editor').classList.contains('hidden') && document.getElementById('settingsForm').classList.contains('hidden')) {
+          editItem(0);
+      }
+    }
+
+    function renderList() {
+      const list = document.getElementById('projectList');
+      if(projects.length === 0) { list.innerHTML = '<div class="text-center text-slate-400 py-4">No projects found.</div>'; return; }
+      list.innerHTML = projects.map((p, i) => {
+        const isActive = i === currentEditIndex;
+        const imgSrc = p.image || 'https://via.placeholder.com/50';
+        return `
+        <div onclick="tryEditItem(${i})" class="bg-white p-4 rounded-xl border ${isActive ? 'border-indigo-500 ring-2 ring-indigo-500 bg-indigo-50' : 'border-slate-200'} hover:border-indigo-400 cursor-pointer transition-all shadow-sm hover:shadow-md flex gap-3 items-center group list-item-enter">
+          <div class="w-12 h-12 bg-slate-100 rounded-lg overflow-hidden flex-shrink-0 relative">
+             <img src="${imgSrc}" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/50'"/>
+             ${p.featured ? '<div class="absolute bottom-0 right-0 w-3 h-3 bg-yellow-400 border border-white rounded-full shadow-sm"></div>' : ''}
+             ${p.wip ? '<div class="absolute top-0 left-0 bg-purple-600 text-white text-[8px] font-bold px-1 rounded-br">WIP</div>' : ''}
+          </div>
+          <div class="overflow-hidden">
+             <h3 class="font-bold text-slate-800 truncate group-hover:text-indigo-600">${p.title}</h3>
+             <span class="text-xs bg-slate-100 text-slate-500 px-2 py-0.5 rounded uppercase tracking-wide">${p.category}</span>
+          </div>
+        </div>
+      `}).join('');
+    }
+
+    function hideAllForms() {
+      document.getElementById('emptyState').classList.add('hidden');
+      document.getElementById('editor').classList.add('hidden');
+      document.getElementById('settingsForm').classList.add('hidden');
+    }
+
+    // --- PROJECT EDITOR ---
+    function editItem(index) {
+      isDirty = false;
+      hideAllForms();
+      currentEditIndex = index;
+      renderList();
+
+      const p = projects[index];
+      document.getElementById('editor').classList.remove('hidden');
+
+      ['id', 'title', 'category', 'image', 'websiteLink', 'launchLink', 'githubLink', 'shopLink', 'timestamp'].forEach(id => {
+         document.getElementById(id).value = p[id] || '';
+      });
+      document.getElementById('featured').checked = !!p.featured;
+      document.getElementById('wip').checked = !!p.wip;
+      document.getElementById('tags').value = Array.isArray(p.tags) ? p.tags.join(', ') : '';
+
+      if (p.description) quillShort.clipboard.dangerouslyPasteHTML(p.description);
+      else quillShort.setText('');
+
+      if (p.longDescription) quillLong.clipboard.dangerouslyPasteHTML(p.longDescription);
+      else quillLong.setText('');
+
+      const fileContainer = document.getElementById('files-container');
+      fileContainer.innerHTML = '';
+      if (Array.isArray(p.files) && p.files.length > 0) {
+         p.files.forEach(f => {
+            if (typeof f === 'string') addFileRow("Download", f, true);
+            else addFileRow(f.name, f.url, true);
+         });
+      } else {
+        addFileRow("", "", true);
+      }
+
+      const galleryContainer = document.getElementById('gallery-container');
+      galleryContainer.innerHTML = '';
+      if (Array.isArray(p.gallery) && p.gallery.length > 0) {
+         p.gallery.forEach(url => addGalleryRow(url, true));
+      } else {
+        addGalleryRow("", true);
+      }
+
+      setTimeout(() => isDirty = false, 200);
+    }
+
+    function newItem() {
+      isDirty = false;
+      currentEditIndex = -1;
+      renderList();
+      hideAllForms();
+      document.getElementById('editor').reset();
+      quillShort.setText('');
+      quillLong.setText('');
+      document.getElementById('files-container').innerHTML = '';
+      document.getElementById('gallery-container').innerHTML = '';
+
+      addFileRow("", "", true);
+      addGalleryRow("", true);
+
+      document.getElementById('editor').classList.remove('hidden');
+      document.getElementById('id').value = "";
+      document.getElementById('timestamp').value = "";
+      setTimeout(() => isDirty = false, 200);
+    }
+
+    // --- SETTINGS ---
+    function showSettings() {
+      hideAllForms();
+      currentEditIndex = -1;
+      renderList();
+      showStatus("Loading Settings...");
+      document.getElementById('loadingOverlay').classList.remove('hidden');
+      document.getElementById('loadingText').innerText = "Loading...";
+
+      api.get('/settings').then(settings => {
+            hideStatus();
+            document.getElementById('loadingOverlay').classList.add('hidden');
+            document.getElementById('loadingText').innerText = "Saving Changes...";
+
+            isDirty = false;
+            document.getElementById('settingsForm').classList.remove('hidden');
+            ['email', 'instagram', 'linkedin', 'github', 'emailjs_service', 'emailjs_template', 'emailjs_public_key', 'about_headshot'].forEach(key => {
+                document.getElementById(key).value = settings[key] || '';
+            });
+
+            if (settings.about_text) quillAbout.clipboard.dangerouslyPasteHTML(settings.about_text);
+            else quillAbout.setText('');
+
+            setTimeout(() => isDirty = false, 200);
+      }).catch(onError);
+    }
+
+    // --- DYNAMIC ROWS ---
+    function updateListIndices(containerId) {
+        const container = document.getElementById(containerId);
+        const badges = container.querySelectorAll('.index-badge');
+        badges.forEach((badge, index) => { badge.innerText = `#${index + 1}`; });
+    }
+
+    function addFileRow(name = "", url = "", isBulk = false) {
+        const container = document.getElementById('files-container');
+        const div = document.createElement('div');
+        div.className = "flex gap-2 file-row items-center";
+        div.innerHTML = `
+            <span class="index-badge text-[10px] font-bold text-slate-400 w-6"></span>
+            <input type="text" placeholder="File Name" value="${name}" class="file-name flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="isDirty=true">
+            <input type="text" placeholder="Download URL" value="${url}" class="file-url flex-[2] bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="isDirty=true">
+            <button type="button" onclick="this.parentElement.remove(); updateListIndices('files-container'); isDirty=true;" class="text-red-400 hover:text-red-600 px-2 transition-colors"><i class="ph ph-trash"></i></button>
+        `;
+        container.appendChild(div);
+        updateListIndices('files-container');
+        if (!isBulk) isDirty = true;
+    }
+
+    function addGalleryRow(url = "", isBulk = false) {
+        const container = document.getElementById('gallery-container');
+        const div = document.createElement('div');
+        div.className = "flex gap-2 gallery-row items-center";
+        div.innerHTML = `
+            <span class="index-badge text-[10px] font-bold text-slate-400 w-6"></span>
+            <input type="text" placeholder="Image path, URL, or YouTube link" value="${url}" class="gallery-url w-full bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="isDirty=true">
+            <button type="button" onclick="this.parentElement.remove(); updateListIndices('gallery-container'); isDirty=true;" class="text-red-400 hover:text-red-600 px-2 transition-colors"><i class="ph ph-trash"></i></button>
+        `;
+        container.appendChild(div);
+        updateListIndices('gallery-container');
+        if (!isBulk) isDirty = true;
+    }
+
+    // --- UPLOAD HANDLERS ---
+    async function handleImageUpload(input, targetFieldId) {
+      const file = input.files[0];
+      if (!file) return;
+      const category = document.getElementById('category').value;
+      const project = document.getElementById('title').value;
+      if (!project) { alert('Please enter a project title first.'); input.value = ''; return; }
+
+      try {
+        showStatus("Uploading image...");
+        const result = await api.upload(file, category, project);
+        document.getElementById(targetFieldId).value = result.path;
+        isDirty = true;
+        hideStatus();
+        Toastify({ text: "Image uploaded!", duration: 2000, backgroundColor: "#10b981" }).showToast();
+      } catch (err) {
+        hideStatus();
+        onError(err);
+      }
+      input.value = '';
+    }
+
+    async function handleGalleryMultiUpload(input) {
+      const files = Array.from(input.files);
+      if (!files.length) return;
+      const category = document.getElementById('category').value;
+      const project = document.getElementById('title').value;
+      if (!project) { alert('Please enter a project title first.'); input.value = ''; return; }
+
+      showStatus(`Uploading ${files.length} image(s)...`);
+      for (const file of files) {
+        try {
+          const result = await api.upload(file, category, project);
+          addGalleryRow(result.path);
+        } catch (err) {
+          console.error('Upload failed for', file.name, err);
+        }
+      }
+      isDirty = true;
+      hideStatus();
+      Toastify({ text: `${files.length} image(s) uploaded!`, duration: 2000, backgroundColor: "#10b981" }).showToast();
+      input.value = '';
+    }
+
+    async function handleHeadshotUpload(input) {
+      const file = input.files[0];
+      if (!file) return;
+      try {
+        showStatus("Uploading headshot...");
+        const form = new FormData();
+        form.append('file', file);
+        form.append('category', '_root');
+        form.append('project', '');
+        const res = await fetch('/api/media/upload', { method: 'POST', body: form });
+        if (!res.ok) throw new Error(await res.text());
+        const result = await res.json();
+        document.getElementById('about_headshot').value = result.path;
+        isDirty = true;
+        hideStatus();
+        Toastify({ text: "Headshot uploaded!", duration: 2000, backgroundColor: "#10b981" }).showToast();
+      } catch (err) {
+        hideStatus();
+        onError(err);
+      }
+      input.value = '';
+    }
+
+    // --- SAVE ---
+    function saveCurrent(postSaveCallback = null) {
+      document.getElementById('loadingOverlay').classList.remove('hidden');
+
+      const csvToArray = (str) => (!str ? [] : str.split(',').map(item => item.trim()).filter(i => i !== ''));
+
+      const fileRows = document.querySelectorAll('.file-row');
+      const filesList = Array.from(fileRows).map(row => ({
+          name: row.querySelector('.file-name').value,
+          url: row.querySelector('.file-url').value
+      })).filter(f => f.name && f.url);
+
+      const galleryRows = document.querySelectorAll('.gallery-row');
+      const galleryList = Array.from(galleryRows).map(row => row.querySelector('.gallery-url').value).filter(url => url);
+
+      const formData = {
+        id: document.getElementById('id').value || undefined,
+        timestamp: document.getElementById('timestamp').value || undefined,
+        title: document.getElementById('title').value,
+        category: document.getElementById('category').value,
+        image: document.getElementById('image').value,
+        description: quillShort.root.innerHTML,
+        longDescription: quillLong.root.innerHTML,
+        websiteLink: document.getElementById('websiteLink').value,
+        launchLink: document.getElementById('launchLink').value,
+        githubLink: document.getElementById('githubLink').value,
+        shopLink: document.getElementById('shopLink').value,
+        featured: document.getElementById('featured').checked,
+        wip: document.getElementById('wip').checked,
+        tags: csvToArray(document.getElementById('tags').value),
+        gallery: galleryList,
+        files: filesList,
+        video: ''
+      };
+
+      lastSavedId = formData.id;
+
+      api.post('/projects', formData).then(() => {
+           isDirty = false;
+           refreshData();
+           if(postSaveCallback) postSaveCallback();
+      }).catch(err => {
+          document.getElementById('loadingOverlay').classList.add('hidden');
+          onError(err);
+      });
+    }
+
+    function saveSettings(postSaveCallback = null) {
+      document.getElementById('loadingOverlay').classList.remove('hidden');
+
+      const settings = {
+        email: document.getElementById('email').value,
+        instagram: document.getElementById('instagram').value,
+        linkedin: document.getElementById('linkedin').value,
+        github: document.getElementById('github').value,
+        emailjs_service: document.getElementById('emailjs_service').value,
+        emailjs_template: document.getElementById('emailjs_template').value,
+        emailjs_public_key: document.getElementById('emailjs_public_key').value,
+        about_headshot: document.getElementById('about_headshot').value,
+        about_text: quillAbout.root.innerHTML
+      };
+
+      api.post('/settings', settings).then(() => {
+          isDirty = false;
+          showStatus("Settings Saved!", "green");
+          Toastify({ text: "Settings Saved!", duration: 3000, backgroundColor: "#10b981" }).showToast();
+          document.getElementById('loadingOverlay').classList.add('hidden');
+          setTimeout(hideStatus, 1500);
+          if(postSaveCallback) postSaveCallback();
+      }).catch(err => {
+          document.getElementById('loadingOverlay').classList.add('hidden');
+          onError(err);
+      });
+    }
+
+    // --- DELETE ---
+    function deleteCurrent() {
+      if(!confirm("Are you sure?")) return;
+      const id = document.getElementById('id').value;
+      if(!id) return;
+      document.getElementById('loadingText').innerText = "Deleting Project...";
+      document.getElementById('loadingOverlay').classList.remove('hidden');
+
+      api.del(`/projects/${id}`).then(() => {
+          document.getElementById('loadingOverlay').classList.add('hidden');
+          document.getElementById('loadingText').innerText = "Saving Changes...";
+          lastSavedId = null;
+          currentEditIndex = -1;
+          refreshData();
+      }).catch(err => {
+          document.getElementById('loadingOverlay').classList.add('hidden');
+          onError(err);
+      });
+    }
+
+    // --- PUBLISH ---
+    function publish() {
+      if (isDirty) {
+          if(!document.getElementById('editor').classList.contains('hidden')) {
+                saveCurrent(performPublish);
+          } else {
+                saveSettings(performPublish);
+          }
+      } else {
+          performPublish();
+      }
+    }
+
+    function performPublish() {
+      const btn = document.getElementById('pubBtn');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<i class="ph ph-spinner animate-spin"></i> Building...';
+      btn.disabled = true;
+      document.getElementById('loadingOverlay').classList.remove('hidden');
+      document.getElementById('loadingText').innerText = "Publishing Website...";
+
+      api.post('/publish').then(res => {
+           btn.innerHTML = originalText;
+           btn.disabled = false;
+           hideStatus();
+           document.getElementById('loadingOverlay').classList.add('hidden');
+           document.getElementById('loadingText').innerText = "Saving Changes...";
+           if(res.success) {
+             document.getElementById('publishCode').value = res.html;
+             document.getElementById('publishModal').classList.remove('hidden');
+             Toastify({ text: "Website Published!", duration: 3000, backgroundColor: "#10b981" }).showToast();
+           } else {
+             onError(res.error || "Publish failed");
+           }
+      }).catch(err => {
+          document.getElementById('loadingOverlay').classList.add('hidden');
+          btn.innerHTML = originalText;
+          btn.disabled = false;
+          onError(err);
+      });
+    }
+
+    async function downloadSource() {
+        const htmlContent = document.getElementById('publishCode').value;
+        const blob = new Blob([htmlContent], { type: 'text/html' });
+        try {
+            if (window.showSaveFilePicker) {
+                const handle = await window.showSaveFilePicker({
+                    suggestedName: 'index.html',
+                    types: [{ description: 'HTML File', accept: { 'text/html': ['.html'] } }],
+                });
+                const writable = await handle.createWritable();
+                await writable.write(blob);
+                await writable.close();
+                Toastify({ text: "File saved!", duration: 3000, backgroundColor: "#10b981" }).showToast();
+            } else {
+                throw new Error("API not supported");
+            }
+        } catch (err) {
+            if (err.name === 'AbortError') return;
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url; a.download = 'index.html';
+            document.body.appendChild(a); a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    }
+
+    function closeModal() { document.getElementById('publishModal').classList.add('hidden'); }
+    function copyCode() {
+        const el = document.getElementById("publishCode");
+        el.select();
+        navigator.clipboard.writeText(el.value);
+        Toastify({ text: "Copied to clipboard!", duration: 2000, backgroundColor: "#4f46e5" }).showToast();
+    }
+
+    function showStatus(msg, color="blue") {
+      const el = document.getElementById('status');
+      el.classList.remove('hidden', 'bg-red-50', 'text-red-800', 'bg-green-50', 'text-green-800', 'bg-blue-50', 'text-blue-800');
+      const colors = { red: ['bg-red-50', 'text-red-800'], green: ['bg-green-50', 'text-green-800'], blue: ['bg-blue-50', 'text-blue-800'] };
+      el.classList.add(...(colors[color] || colors.blue));
+      document.getElementById('statusMsg').innerText = msg;
+    }
+    function hideStatus() { document.getElementById('status').classList.add('hidden'); }
+    function onError(err) { showStatus("Error: " + (err.message || err), "red"); console.error(err); }
+  </script>
+</body>
+</html>
