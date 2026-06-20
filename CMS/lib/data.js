@@ -15,8 +15,33 @@ function writeJSON(filename, data) {
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
 }
 
+function normalizeOrder(projects) {
+  const needsOrder = projects.some(p => typeof p.order !== 'number');
+  if (!needsOrder) return false;
+
+  const byCategory = {};
+  projects.forEach(p => {
+    (byCategory[p.category] = byCategory[p.category] || []).push(p);
+  });
+
+  Object.values(byCategory).forEach(group => {
+    group.sort((a, b) => {
+      const dateA = a.timestamp ? new Date(a.timestamp) : new Date(0);
+      const dateB = b.timestamp ? new Date(b.timestamp) : new Date(0);
+      return dateB - dateA;
+    });
+    group.forEach((p, i) => { p.order = i; });
+  });
+
+  return true;
+}
+
 function getProjects() {
-  return readJSON('projects.json');
+  const projects = readJSON('projects.json');
+  if (normalizeOrder(projects)) {
+    writeJSON('projects.json', projects);
+  }
+  return projects;
 }
 
 function getSettings() {
@@ -46,11 +71,29 @@ function saveProject(project) {
   if (existingIndex !== -1) {
     projects[existingIndex] = project;
   } else {
+    if (typeof project.order !== 'number') {
+      const catCount = projects.filter(p => p.category === project.category).length;
+      project.order = catCount;
+    }
     projects.push(project);
   }
 
   writeJSON('projects.json', projects);
   return { success: true, project };
+}
+
+function reorderProjects(items) {
+  const projects = getProjects();
+  const counters = {};
+  (items || []).forEach(({ id, category }) => {
+    const p = projects.find(pr => String(pr.id) === String(id));
+    if (!p) return;
+    p.category = category;
+    counters[category] = (counters[category] || 0);
+    p.order = counters[category]++;
+  });
+  writeJSON('projects.json', projects);
+  return { success: true };
 }
 
 function deleteProject(id) {
@@ -65,4 +108,4 @@ function saveSettings(settings) {
   return { success: true };
 }
 
-module.exports = { getProjects, getSettings, saveProject, deleteProject, saveSettings };
+module.exports = { getProjects, getSettings, saveProject, deleteProject, saveSettings, reorderProjects };

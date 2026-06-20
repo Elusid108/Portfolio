@@ -724,9 +724,11 @@
                 // Find project in this category that is featured
                 const featuredProj = projects.find(p => p.category === categoryName && p.featured === true);
                 
-                // Fallback to first project in category if no featured, or placeholder
+                // Fallback to lowest-order project in category if no featured, or placeholder
                 if (featuredProj) return featuredProj.image;
-                const firstProj = projects.find(p => p.category === categoryName);
+                const firstProj = projects
+                    .filter(p => p.category === categoryName)
+                    .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))[0];
                 if (firstProj) return firstProj.image;
                 
                 return "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80"; // Generic fallback
@@ -799,7 +801,9 @@
         };
 
         const SimpleSection = ({ id, title, subtitle, icon, category, onOpenProject, bgColor = "bg-black" }) => {
-            const sectionProjects = projects.filter(p => p.category === category);
+            const sectionProjects = projects
+                .filter(p => p.category === category)
+                .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
             return (
                 <section id={id} className={`py-20 ${bgColor} border-t border-zinc-900`}>
                     <div className="container mx-auto px-6">

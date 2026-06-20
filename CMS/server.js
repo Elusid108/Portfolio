@@ -55,6 +55,14 @@ app.delete('/api/projects/:id', (req, res) => {
   }
 });
 
+app.post('/api/projects/reorder', (req, res) => {
+  try {
+    res.json(data.reorderProjects(req.body.items));
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // --- Settings ---
 
 app.get('/api/settings', (req, res) => {

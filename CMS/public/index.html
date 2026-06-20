@@ -326,6 +326,9 @@
         const res = await fetch('/api/media/upload', { method: 'POST', body: form });
         if (!res.ok) throw new Error(await res.text());
         return res.json();
+      },
+      async reorderProjects(items) {
+        return this.post('/projects/reorder', { items });
       }
     };
 
@@ -336,6 +339,28 @@
     let pendingNavigation = null;
     let currentEditIndex = -1;
     let quillShort, quillLong, quillAbout;
+
+    const CATEGORY_ORDER = ['Lighting','Art','Circuits','Apps','Solutions','Integration'];
+    const CATEGORY_LABELS = { Lighting:'Lighting', Art:'Art', Circuits:'Electronics', Apps:'Apps', Solutions:'Fabrication', Integration:'Integration' };
+
+    function getCollapsedSet() {
+        try { return new Set(JSON.parse(localStorage.getItem('cms_collapsed') || '[]')); }
+        catch (_) { return new Set(); }
+    }
+    function setCollapsed(cat, collapsed) {
+        const s = getCollapsedSet();
+        if (collapsed) s.add(cat); else s.delete(cat);
+        localStorage.setItem('cms_collapsed', JSON.stringify([...s]));
+    }
+    function toggleCategory(cat) {
+        const body = document.querySelector(`.cat-body[data-category="${cat}"]`);
+        const chevron = document.querySelector(`.cat-chevron[data-category="${cat}"]`);
+        if (!body) return;
+        const willCollapse = !body.classList.contains('hidden');
+        body.classList.toggle('hidden', willCollapse);
+        if (chevron) chevron.style.transform = willCollapse ? 'rotate(-90deg)' : '';
+        setCollapsed(cat, willCollapse);
+    }
 
     window.onload = () => {
         initQuill();
@@ -451,7 +476,12 @@
 
     function onDataLoaded(data) {
       if (!data) { onError("No data returned"); return; }
-      projects = data.sort((a, b) => (a.title || "").localeCompare(b.title || ""));
+      projects = data.sort((a, b) => {
+        const ca = CATEGORY_ORDER.indexOf(a.category);
+        const cb = CATEGORY_ORDER.indexOf(b.category);
+        if (ca !== cb) return ca - cb;
+        return (a.order ?? 0) - (b.order ?? 0);
+      });
       renderList();
       hideStatus();
 
@@ -470,14 +500,12 @@
       }
     }
 
-    function renderList() {
-      const list = document.getElementById('projectList');
-      if(projects.length === 0) { list.innerHTML = '<div class="text-center text-slate-400 py-4">No projects found.</div>'; return; }
-      list.innerHTML = projects.map((p, i) => {
-        const isActive = i === currentEditIndex;
+    function projectCardHtml(p) {
+        const isActive = String(p.id) === String(projects[currentEditIndex]?.id);
         const imgSrc = p.image || 'https://via.placeholder.com/50';
         return `
-        <div onclick="tryEditItem(${i})" class="bg-white p-4 rounded-xl border ${isActive ? 'border-indigo-500 ring-2 ring-indigo-500 bg-indigo-50' : 'border-slate-200'} hover:border-indigo-400 cursor-pointer transition-all shadow-sm hover:shadow-md flex gap-3 items-center group list-item-enter">
+        <div draggable="true" data-id="${p.id}" onclick="tryEditById('${p.id}')" class="project-card bg-white p-3 rounded-xl border ${isActive ? 'border-indigo-500 ring-2 ring-indigo-500 bg-indigo-50' : 'border-slate-200'} hover:border-indigo-400 cursor-pointer transition-all shadow-sm hover:shadow-md flex gap-3 items-center group list-item-enter">
+          <span class="card-drag-handle cursor-grab text-slate-300 hover:text-slate-500" onclick="event.stopPropagation()"><i class="ph ph-dots-six-vertical"></i></span>
           <div class="w-12 h-12 bg-slate-100 rounded-lg overflow-hidden flex-shrink-0 relative">
              <img src="${imgSrc}" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/50'"/>
              ${p.featured ? '<div class="absolute bottom-0 right-0 w-3 h-3 bg-yellow-400 border border-white rounded-full shadow-sm"></div>' : ''}
@@ -485,10 +513,42 @@
           </div>
           <div class="overflow-hidden">
              <h3 class="font-bold text-slate-800 truncate group-hover:text-indigo-600">${p.title}</h3>
-             <span class="text-xs bg-slate-100 text-slate-500 px-2 py-0.5 rounded uppercase tracking-wide">${p.category}</span>
           </div>
-        </div>
-      `}).join('');
+        </div>`;
+    }
+
+    function renderList() {
+      const list = document.getElementById('projectList');
+      if(projects.length === 0) { list.innerHTML = '<div class="text-center text-slate-400 py-4">No projects found.</div>'; return; }
+
+      const collapsed = getCollapsedSet();
+      list.innerHTML = CATEGORY_ORDER.map(cat => {
+        const items = projects
+          .filter(p => p.category === cat)
+          .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+        const isCollapsed = collapsed.has(cat);
+        const cardsHtml = items.map(projectCardHtml).join('');
+        return `
+        <div class="cat-group mb-2">
+          <div onclick="toggleCategory('${cat}')" class="flex items-center justify-between px-3 py-2 bg-slate-100 rounded-lg cursor-pointer select-none hover:bg-slate-200 transition-colors">
+            <div class="flex items-center gap-2">
+              <i class="ph ph-caret-down cat-chevron text-slate-500 transition-transform" data-category="${cat}" style="${isCollapsed ? 'transform: rotate(-90deg);' : ''}"></i>
+              <span class="font-bold text-slate-700 text-sm uppercase tracking-wide">${CATEGORY_LABELS[cat]}</span>
+            </div>
+            <span class="text-xs font-bold text-slate-400 bg-white px-2 py-0.5 rounded-full">${items.length}</span>
+          </div>
+          <div class="cat-body space-y-2 mt-2 ${isCollapsed ? 'hidden' : ''}" data-category="${cat}">
+            ${cardsHtml || '<div class="text-center text-slate-300 text-xs py-3 border border-dashed border-slate-200 rounded-lg">Drop here</div>'}
+          </div>
+        </div>`;
+      }).join('');
+
+      setupListDragDrop();
+    }
+
+    function tryEditById(id) {
+      const idx = projects.findIndex(p => String(p.id) === String(id));
+      if (idx !== -1) tryEditItem(idx);
     }
 
     function hideAllForms() {
@@ -673,6 +733,67 @@
             if (offset < 0 && offset > closest.offset) return { offset, element: child };
             return closest;
         }, { offset: -Infinity }).element;
+    }
+
+    let listDragInitialized = false;
+    let listDragEl = null;
+
+    function getCardAfterElement(body, y) {
+        const cards = [...body.querySelectorAll('.project-card:not(.opacity-50)')];
+        return cards.reduce((closest, child) => {
+            const box = child.getBoundingClientRect();
+            const offset = y - box.top - box.height / 2;
+            if (offset < 0 && offset > closest.offset) return { offset, element: child };
+            return closest;
+        }, { offset: -Infinity }).element;
+    }
+
+    function setupListDragDrop() {
+        if (listDragInitialized) return;
+        listDragInitialized = true;
+        const container = document.getElementById('projectList');
+
+        container.addEventListener('dragstart', (e) => {
+            const card = e.target.closest('.project-card');
+            if (!card) return;
+            listDragEl = card;
+            setTimeout(() => card.classList.add('opacity-50'), 0);
+        });
+
+        container.addEventListener('dragover', (e) => {
+            if (!listDragEl) return;
+            const body = e.target.closest('.cat-body');
+            if (!body) return;
+            e.preventDefault();
+            const placeholder = body.querySelector('.border-dashed');
+            if (placeholder) placeholder.remove();
+            const after = getCardAfterElement(body, e.clientY);
+            if (after == null) body.appendChild(listDragEl);
+            else body.insertBefore(listDragEl, after);
+        });
+
+        container.addEventListener('dragend', () => {
+            if (!listDragEl) return;
+            listDragEl.classList.remove('opacity-50');
+            listDragEl = null;
+            persistListOrder();
+        });
+    }
+
+    async function persistListOrder() {
+        const items = [];
+        document.querySelectorAll('.cat-body').forEach(body => {
+            const category = body.getAttribute('data-category');
+            body.querySelectorAll('.project-card').forEach(card => {
+                items.push({ id: card.getAttribute('data-id'), category });
+            });
+        });
+        try {
+            await api.reorderProjects(items);
+            await refreshData();
+        } catch (err) {
+            onError(err.message || 'Reorder failed');
+        }
     }
 
     function setupGalleryHoverPreview() {
