@@ -40,6 +40,9 @@
         <button onclick="tryRefresh()" class="px-4 py-2 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-600 flex items-center gap-2">
           <i class="ph ph-arrow-clockwise"></i> Refresh
         </button>
+        <button onclick="convertAllMedia()" id="convertBtn" class="px-4 py-2 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-600 flex items-center gap-2">
+          <i class="ph ph-images-square"></i> Convert Media
+        </button>
         <a href="/preview" target="_blank" class="px-4 py-2 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-600 flex items-center gap-2">
           <i class="ph ph-desktop"></i> Preview
         </a>
@@ -338,7 +341,24 @@
         initQuill();
         refreshData();
         setupDirtyTracking();
+        setupGalleryDragDrop();
+        setupGalleryHoverPreview();
     };
+
+    // --- THUMBNAIL HELPERS ---
+    function getYouTubeId(url) {
+        if (!url || typeof url !== 'string') return null;
+        const m = url.trim().match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=|shorts\/)([^#&?]*).*/);
+        return (m && m[2].length === 11) ? m[2] : null;
+    }
+
+    function getThumbnailSrc(url) {
+        if (!url) return '';
+        const yt = getYouTubeId(url);
+        if (yt) return `https://img.youtube.com/vi/${yt}/hqdefault.jpg`;
+        if (url.startsWith('media/')) return '/' + url;
+        return url;
+    }
 
     function initQuill() {
         const toolbarBasic = [['bold', 'italic', 'underline', 'strike']];
@@ -594,15 +614,103 @@
     function addGalleryRow(url = "", isBulk = false) {
         const container = document.getElementById('gallery-container');
         const div = document.createElement('div');
-        div.className = "flex gap-2 gallery-row items-center";
+        div.className = "flex gap-2 gallery-row items-center bg-white border border-slate-200 rounded p-1";
+        div.draggable = true;
         div.innerHTML = `
+            <span class="drag-handle cursor-grab text-slate-300 hover:text-slate-500 px-1"><i class="ph ph-dots-six-vertical"></i></span>
             <span class="index-badge text-[10px] font-bold text-slate-400 w-6"></span>
-            <input type="text" placeholder="Image path, URL, or YouTube link" value="${url}" class="gallery-url w-full bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="isDirty=true">
-            <button type="button" onclick="this.parentElement.remove(); updateListIndices('gallery-container'); isDirty=true;" class="text-red-400 hover:text-red-600 px-2 transition-colors"><i class="ph ph-trash"></i></button>
+            <div class="gallery-thumb-wrap relative w-10 h-10 flex-shrink-0 ${url ? '' : 'hidden'}">
+                <img class="gallery-thumb w-10 h-10 object-cover rounded bg-slate-100 cursor-zoom-in" src="${getThumbnailSrc(url)}" onerror="this.closest('.gallery-thumb-wrap').classList.add('hidden')">
+            </div>
+            <input type="text" placeholder="Image path, URL, or YouTube link" value="${url}" class="gallery-url flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="onGalleryUrlChange(this)">
+            <button type="button" onclick="this.closest('.gallery-row').remove(); updateListIndices('gallery-container'); isDirty=true;" class="text-red-400 hover:text-red-600 px-2 transition-colors"><i class="ph ph-trash"></i></button>
         `;
         container.appendChild(div);
         updateListIndices('gallery-container');
         if (!isBulk) isDirty = true;
+    }
+
+    function onGalleryUrlChange(input) {
+        isDirty = true;
+        const row = input.closest('.gallery-row');
+        const wrap = row.querySelector('.gallery-thumb-wrap');
+        const thumb = row.querySelector('.gallery-thumb');
+        const src = getThumbnailSrc(input.value);
+        if (src) { thumb.src = src; wrap.classList.remove('hidden'); }
+        else { wrap.classList.add('hidden'); }
+    }
+
+    function setupGalleryDragDrop() {
+        const container = document.getElementById('gallery-container');
+        let dragEl = null;
+
+        container.addEventListener('dragstart', (e) => {
+            const row = e.target.closest('.gallery-row');
+            if (!row) return;
+            dragEl = row;
+            row.classList.add('opacity-50');
+        });
+        container.addEventListener('dragend', () => {
+            if (dragEl) dragEl.classList.remove('opacity-50');
+            dragEl = null;
+            updateListIndices('gallery-container');
+            isDirty = true;
+        });
+        container.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            if (!dragEl) return;
+            const after = getDragAfterElement(container, e.clientY);
+            if (after == null) container.appendChild(dragEl);
+            else container.insertBefore(dragEl, after);
+        });
+    }
+
+    function getDragAfterElement(container, y) {
+        const rows = [...container.querySelectorAll('.gallery-row:not(.opacity-50)')];
+        return rows.reduce((closest, child) => {
+            const box = child.getBoundingClientRect();
+            const offset = y - box.top - box.height / 2;
+            if (offset < 0 && offset > closest.offset) return { offset, element: child };
+            return closest;
+        }, { offset: -Infinity }).element;
+    }
+
+    function setupGalleryHoverPreview() {
+        const container = document.getElementById('gallery-container');
+        let pop = document.getElementById('thumb-popout');
+        if (!pop) {
+            pop = document.createElement('div');
+            pop.id = 'thumb-popout';
+            pop.className = 'hidden fixed z-[100] pointer-events-none rounded-lg overflow-hidden shadow-2xl border-2 border-white bg-black';
+            pop.innerHTML = '<img class="block max-w-[320px] max-h-[320px] object-contain"><span class="thumb-popout-play hidden absolute inset-0 flex items-center justify-center"><i class="ph ph-play-circle text-red-500 text-6xl" style="filter: drop-shadow(0 2px 6px rgba(0,0,0,0.8));"></i></span>';
+            document.body.appendChild(pop);
+        }
+        const popImg = pop.querySelector('img');
+        const popPlay = pop.querySelector('.thumb-popout-play');
+
+        container.addEventListener('mouseover', (e) => {
+            const thumb = e.target.closest('.gallery-thumb');
+            if (!thumb || !thumb.src) return;
+            popImg.src = thumb.src;
+            if (thumb.src.includes('img.youtube.com')) popPlay.classList.remove('hidden');
+            else popPlay.classList.add('hidden');
+            pop.classList.remove('hidden');
+        });
+        container.addEventListener('mousemove', (e) => {
+            if (pop.classList.contains('hidden')) return;
+            const offset = 16;
+            const rect = pop.getBoundingClientRect();
+            let x = e.clientX + offset;
+            let y = e.clientY + offset;
+            if (x + rect.width > window.innerWidth) x = e.clientX - rect.width - offset;
+            if (y + rect.height > window.innerHeight) y = window.innerHeight - rect.height - offset;
+            if (y < 0) y = offset;
+            pop.style.left = x + 'px';
+            pop.style.top = y + 'px';
+        });
+        container.addEventListener('mouseout', (e) => {
+            if (e.target.closest('.gallery-thumb')) pop.classList.add('hidden');
+        });
     }
 
     // --- UPLOAD HANDLERS ---
@@ -752,6 +860,7 @@
       if(!confirm("Are you sure?")) return;
       const id = document.getElementById('id').value;
       if(!id) return;
+      const deletedIndex = currentEditIndex;
       document.getElementById('loadingText').innerText = "Deleting Project...";
       document.getElementById('loadingOverlay').classList.remove('hidden');
 
@@ -759,7 +868,15 @@
           document.getElementById('loadingOverlay').classList.add('hidden');
           document.getElementById('loadingText').innerText = "Saving Changes...";
           lastSavedId = null;
-          currentEditIndex = -1;
+          const remaining = projects.length - 1;
+          if (remaining <= 0) {
+              currentEditIndex = -1;
+              hideAllForms();
+              document.getElementById('emptyState').classList.remove('hidden');
+          } else {
+              currentEditIndex = deletedIndex >= remaining ? remaining - 1 : deletedIndex;
+              lastSavedId = projects.filter(p => String(p.id) !== String(id))[currentEditIndex]?.id;
+          }
           refreshData();
       }).catch(err => {
           document.getElementById('loadingOverlay').classList.add('hidden');
@@ -777,6 +894,32 @@
           }
       } else {
           performPublish();
+      }
+    }
+
+    async function convertAllMedia() {
+      if (!confirm("This will convert all non-WebP images to WebP and move originals to an archive folder. Continue?")) return;
+      const btn = document.getElementById('convertBtn');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<i class="ph ph-spinner animate-spin"></i> Converting...';
+      btn.disabled = true;
+      document.getElementById('loadingOverlay').classList.remove('hidden');
+      document.getElementById('loadingText').innerText = "Converting media to WebP...";
+
+      try {
+        const result = await api.post('/media/convert-all');
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        document.getElementById('loadingOverlay').classList.add('hidden');
+        document.getElementById('loadingText').innerText = "Saving Changes...";
+        Toastify({ text: `Converted ${result.converted}, re-fixed ${result.refixed || 0}, archived ${result.archived} originals`, duration: 5000, backgroundColor: "#10b981" }).showToast();
+        refreshData();
+      } catch (err) {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        document.getElementById('loadingOverlay').classList.add('hidden');
+        document.getElementById('loadingText').innerText = "Saving Changes...";
+        onError(err);
       }
     }
 

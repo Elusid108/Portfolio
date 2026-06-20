@@ -11,7 +11,7 @@ function convertGitHubUrl(url) {
   const prefix = 'https://github.com/Elusid108/Portfolio/blob/main/';
   if (!url.startsWith(prefix)) return url;
 
-  let rel = url.replace(prefix, '/');
+  let rel = url.replace(prefix, '');
   rel = rel.replace(/\?raw=true$/, '');
   rel = decodeURIComponent(rel);
   return rel;

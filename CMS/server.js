@@ -88,9 +88,9 @@ app.post('/api/media/upload', upload.single('file'), async (req, res) => {
   }
 });
 
-app.post('/api/media/optimize', async (req, res) => {
+app.post('/api/media/convert-all', async (req, res) => {
   try {
-    const result = await media.optimizeExistingMedia();
+    const result = await media.convertAllMedia();
     res.json({ success: true, ...result });
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -108,7 +108,17 @@ app.post('/api/publish', (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`\n  Portfolio CMS running at http://localhost:${PORT}`);
   console.log(`  Preview:  http://localhost:${PORT}/preview\n`);
+});
+
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`\n  ERROR: Port ${PORT} is already in use by another server.`);
+    console.error(`  Close all CMS windows (or run launch.bat again) and retry.\n`);
+  } else {
+    console.error(err);
+  }
+  process.exit(1);
 });
