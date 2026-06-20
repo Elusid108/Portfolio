@@ -1412,19 +1412,32 @@
         };
 
         const SimpleSection = ({ id, title, subtitle, icon, category, onOpenProject, bgColor = "bg-black" }) => {
+            const [expanded, setExpanded] = useState(false);
             const sectionProjects = projects
                 .filter(p => p.category === category)
                 .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+            const visibleProjects = expanded ? sectionProjects : sectionProjects.slice(0, 3);
+            const hasMore = sectionProjects.length > 3;
             return (
                 <section id={id} className={`py-20 ${bgColor} border-t border-zinc-900`}>
                     <div className="container mx-auto px-6">
                         <SectionHeader title={title} subtitle={subtitle} icon={icon} />
                         {sectionProjects.length > 0 ? (
-                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {sectionProjects.map(p => (
-                                    <ProjectCard key={p.id} project={p} onOpen={onOpenProject} />
-                                ))}
-                            </div>
+                            <>
+                                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    {visibleProjects.map(p => (
+                                        <ProjectCard key={p.id} project={p} onOpen={onOpenProject} />
+                                    ))}
+                                </div>
+                                {hasMore && (
+                                    <button
+                                        onClick={() => setExpanded(!expanded)}
+                                        className="mt-6 w-full py-2 border border-zinc-800 rounded-xl text-zinc-300 font-bold hover:bg-zinc-900 hover:border-zinc-600 transition-all"
+                                    >
+                                        {expanded ? "Show Less" : `Show More (${sectionProjects.length - 3})`}
+                                    </button>
+                                )}
+                            </>
                         ) : (
                             <div className="p-8 border border-dashed border-zinc-800 rounded-xl text-center text-zinc-600">
                                 No projects currently listed in this category.
