@@ -22,11 +22,11 @@
     </script>
 
     <!-- React & ReactDOM -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     
     <!-- Babel for JSX -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7/babel.min.js"></script>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -747,7 +747,9 @@
                  console.log("Template mode detected.");
                  parsedData = { projects: [], settings: {} }; // Fallback
             } else {
-                parsedData = JSON.parse(rawContent);
+                // Sanitize non-breaking spaces before parsing
+                const sanitizedContent = rawContent.replace(/\u00A0/g, ' ');
+                parsedData = JSON.parse(sanitizedContent);
             }
 
             projects = Array.isArray(parsedData) ? parsedData : (parsedData.projects || []);
