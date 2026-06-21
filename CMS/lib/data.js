@@ -16,24 +16,29 @@ function writeJSON(filename, data) {
 }
 
 function normalizeOrder(projects) {
-  const needsOrder = projects.some(p => typeof p.order !== 'number');
-  if (!needsOrder) return false;
-
+  let changed = false;
   const byCategory = {};
   projects.forEach(p => {
     (byCategory[p.category] = byCategory[p.category] || []).push(p);
   });
 
   Object.values(byCategory).forEach(group => {
-    group.sort((a, b) => {
+    const withoutOrder = group.filter(p => typeof p.order !== 'number');
+    if (withoutOrder.length === 0) return;
+
+    changed = true;
+    const withOrder = group.filter(p => typeof p.order === 'number');
+    let next = withOrder.length ? Math.max(...withOrder.map(p => p.order)) + 1 : 0;
+
+    withoutOrder.sort((a, b) => {
       const dateA = a.timestamp ? new Date(a.timestamp) : new Date(0);
       const dateB = b.timestamp ? new Date(b.timestamp) : new Date(0);
       return dateB - dateA;
     });
-    group.forEach((p, i) => { p.order = i; });
+    withoutOrder.forEach(p => { p.order = next++; });
   });
 
-  return true;
+  return changed;
 }
 
 function getProjects() {
@@ -69,12 +74,25 @@ function saveProject(project) {
 
   const existingIndex = projects.findIndex(p => String(p.id) === String(project.id));
   if (existingIndex !== -1) {
-    projects[existingIndex] = project;
-  } else {
-    if (typeof project.order !== 'number') {
-      const catCount = projects.filter(p => p.category === project.category).length;
-      project.order = catCount;
+    const existing = projects[existingIndex];
+    if (project.category !== existing.category) {
+      projects.forEach(p => {
+        if (p.category === project.category && String(p.id) !== String(project.id)) {
+          p.order = (p.order ?? 0) + 1;
+        }
+      });
+      project.order = 0;
+    } else {
+      project.order = existing.order;
     }
+    projects[existingIndex] = { ...existing, ...project, order: project.order };
+  } else {
+    projects.forEach(p => {
+      if (p.category === project.category) {
+        p.order = (p.order ?? 0) + 1;
+      }
+    });
+    project.order = 0;
     projects.push(project);
   }
 

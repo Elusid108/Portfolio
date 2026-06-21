@@ -335,6 +335,7 @@
     // --- APP STATE ---
     let projects = [];
     let isDirty = false;
+    let listOrderDirty = false;
     let lastSavedId = null;
     let pendingNavigation = null;
     let currentEditIndex = -1;
@@ -440,7 +441,7 @@
 
     // --- NAVIGATION GUARDS ---
     function handleNavigation(action) {
-        if (isDirty) {
+        if (isDirty || listOrderDirty) {
             pendingNavigation = action;
             document.getElementById('unsavedModal').classList.remove('hidden');
         } else {
@@ -453,13 +454,29 @@
         if (choice === 'cancel') { pendingNavigation = null; return; }
         if (choice === 'discard') {
             isDirty = false;
-            if (pendingNavigation) pendingNavigation();
+            listOrderDirty = false;
+            refreshData().then(() => {
+                if (pendingNavigation) pendingNavigation();
+                pendingNavigation = null;
+            });
+            return;
         }
         if (choice === 'save') {
             if(!document.getElementById('editor').classList.contains('hidden')) {
-                 saveCurrent(() => { if(pendingNavigation) pendingNavigation(); });
+                 saveCurrent(() => { if(pendingNavigation) pendingNavigation(); pendingNavigation = null; });
+            } else if(!document.getElementById('settingsForm').classList.contains('hidden')) {
+                 saveSettings(async () => {
+                     await flushListOrder();
+                     isDirty = false;
+                     if(pendingNavigation) pendingNavigation();
+                     pendingNavigation = null;
+                 });
             } else {
-                 saveSettings(() => { if(pendingNavigation) pendingNavigation(); });
+                 flushListOrder().then(() => {
+                     isDirty = false;
+                     if(pendingNavigation) pendingNavigation();
+                     pendingNavigation = null;
+                 });
             }
         }
     }
@@ -471,7 +488,7 @@
 
     // --- DATA LOADING ---
     function refreshData() {
-      api.get('/projects').then(onDataLoaded).catch(onError);
+      return api.get('/projects').then(onDataLoaded).catch(onError);
     }
 
     function onDataLoaded(data) {
@@ -776,24 +793,30 @@
             if (!listDragEl) return;
             listDragEl.classList.remove('opacity-50');
             listDragEl = null;
-            persistListOrder();
+            syncListOrderFromDOM();
+            listOrderDirty = true;
+            isDirty = true;
         });
     }
 
-    async function persistListOrder() {
+    function syncListOrderFromDOM() {
         const items = [];
         document.querySelectorAll('.cat-body').forEach(body => {
             const category = body.getAttribute('data-category');
-            body.querySelectorAll('.project-card').forEach(card => {
-                items.push({ id: card.getAttribute('data-id'), category });
+            body.querySelectorAll('.project-card').forEach((card, i) => {
+                const id = card.getAttribute('data-id');
+                items.push({ id, category });
+                const p = projects.find(pr => String(pr.id) === String(id));
+                if (p) { p.category = category; p.order = i; }
             });
         });
-        try {
-            await api.reorderProjects(items);
-            await refreshData();
-        } catch (err) {
-            onError(err.message || 'Reorder failed');
-        }
+        return items;
+    }
+
+    async function flushListOrder() {
+        if (!listOrderDirty) return;
+        await api.reorderProjects(syncListOrderFromDOM().map(({ id, category }) => ({ id, category })));
+        listOrderDirty = false;
     }
 
     function setupGalleryHoverPreview() {
@@ -938,8 +961,10 @@
 
       lastSavedId = formData.id;
 
-      api.post('/projects', formData).then(() => {
+      api.post('/projects', formData).then(async (res) => {
+           await flushListOrder();
            isDirty = false;
+           lastSavedId = res.project?.id || formData.id;
            refreshData();
            if(postSaveCallback) postSaveCallback();
       }).catch(err => {
@@ -1010,9 +1035,16 @@
       if (isDirty) {
           if(!document.getElementById('editor').classList.contains('hidden')) {
                 saveCurrent(performPublish);
+          } else if(!document.getElementById('settingsForm').classList.contains('hidden')) {
+                saveSettings(async () => {
+                    await flushListOrder();
+                    performPublish();
+                });
           } else {
-                saveSettings(performPublish);
+                flushListOrder().then(performPublish);
           }
+      } else if (listOrderDirty) {
+          flushListOrder().then(performPublish);
       } else {
           performPublish();
       }
