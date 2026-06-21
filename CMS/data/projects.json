@@ -81,6 +81,9 @@
     ],
     "gallery": [
       "media/Art/Emmy Stand/20250415_215715.webp",
+      "media/Art/Emmy Stand/20250415_215552.webp",
+      "media/Art/Emmy Stand/20250415_215613.webp",
+      "media/Art/Emmy Stand/20250415_215637.webp",
       "https://youtube.com/shorts/zextSW-yDhg?feature=share",
       "https://youtube.com/shorts/i7x93fquHZ8?feature=share",
       "https://youtube.com/shorts/WkcuIyIyOwY?feature=share",
@@ -114,7 +117,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-12T01:03:01.269Z",
     "wip": true,
-    "order": 0
+    "order": 1
   },
   {
     "id": 3670,
@@ -172,7 +175,7 @@
     ],
     "files": [],
     "video": "",
-    "order": 3
+    "order": 1
   },
   {
     "id": 5632,
@@ -198,7 +201,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-13T00:01:33.897Z",
     "wip": false,
-    "order": 2
+    "order": 3
   },
   {
     "id": "8000",
@@ -224,33 +227,34 @@
     ],
     "files": [],
     "video": "",
-    "order": 1
+    "order": 2
   },
   {
-    "id": 8252,
+    "id": "8252",
+    "timestamp": "2026-01-13T00:14:02.780Z",
     "title": "Temple Nightclub - San Francisco",
     "category": "Integration",
+    "image": "media/Integration/Temple - San Francisco/banner.webp",
+    "description": "<p><br></p>",
+    "longDescription": "<p><br></p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": true,
+    "wip": false,
     "tags": [
       "OSC",
       "ArtNet",
       "sACN",
       "MIDI"
     ],
-    "image": "media/Integration/Temple - San Francisco/banner.webp",
-    "description": "<p><br></p>",
-    "longDescription": "<p><br></p>",
-    "video": "",
     "gallery": [
-      "media/Integration/Temple - San Francisco/20210514_2025472.webp"
+      "media/Integration/Temple - San Francisco/20210514_2025472.webp",
+      "media/Integration/Temple Nightclub - San Francisco/IMG_20200504_185605.webp"
     ],
-    "launchLink": "",
-    "githubLink": "",
-    "shopLink": "",
     "files": [],
-    "featured": true,
-    "websiteLink": "",
-    "timestamp": "2026-01-13T00:14:02.780Z",
-    "wip": false,
+    "video": "",
     "order": 0
   },
   {
@@ -332,7 +336,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-17T17:46:42.266Z",
     "wip": false,
-    "order": 1
+    "order": 2
   },
   {
     "id": 4939,
@@ -357,7 +361,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-17T17:47:45.485Z",
     "wip": false,
-    "order": 2
+    "order": 4
   },
   {
     "id": "8787",
@@ -420,7 +424,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-18T13:45:57.049Z",
     "wip": true,
-    "order": 4
+    "order": 8
   },
   {
     "id": 3991,
@@ -445,7 +449,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-18T14:24:23.784Z",
     "wip": false,
-    "order": 6
+    "order": 7
   },
   {
     "id": 7085,
@@ -485,7 +489,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-19T00:26:00.827Z",
     "wip": true,
-    "order": 8
+    "order": 6
   },
   {
     "id": 6638,
@@ -512,7 +516,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-24T02:36:52.522Z",
     "wip": true,
-    "order": 3
+    "order": 5
   },
   {
     "id": 6962,
@@ -541,7 +545,7 @@
     "websiteLink": "",
     "timestamp": "2026-02-15T04:59:58.733Z",
     "wip": true,
-    "order": 5
+    "order": 4
   },
   {
     "id": 648,
@@ -567,7 +571,7 @@
     "websiteLink": "",
     "timestamp": "2026-03-22T16:37:25.240Z",
     "wip": true,
-    "order": 7
+    "order": 3
   },
   {
     "id": 968,
@@ -594,6 +598,98 @@
     "websiteLink": "",
     "timestamp": "2026-06-11T17:19:00.407Z",
     "wip": false,
+    "order": 0
+  },
+  {
+    "title": "Field Bench PSU",
+    "category": "Solutions",
+    "image": "media/Fabrication/Field Bench PSU/20250317_180727.webp",
+    "description": "<p>Placeholder</p>",
+    "longDescription": "<p>Placeholder</p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "tags": [],
+    "gallery": [
+      "media/Fabrication/Field Bench PSU/20250317_180727.webp"
+    ],
+    "files": [],
+    "video": "",
+    "timestamp": "2026-06-21T22:41:13.337Z",
+    "id": 707,
     "order": 1
+  },
+  {
+    "title": "Club Lexi",
+    "category": "Lighting",
+    "image": "media/Lighting/Club Lexi/20230508_171150.webp",
+    "description": "<p>Placeholder</p>",
+    "longDescription": "<p>Placeholder</p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "tags": [],
+    "gallery": [
+      "media/Lighting/Club Lexi/20230413_155003.webp",
+      "media/Lighting/Club Lexi/20230508_171150.webp",
+      "media/Lighting/Club Lexi/20230509_100642.webp",
+      "media/Lighting/Club Lexi/20230508_163509~2.webp"
+    ],
+    "files": [],
+    "video": "",
+    "timestamp": "2026-06-21T22:45:09.610Z",
+    "id": 6350,
+    "order": 1
+  },
+  {
+    "title": "The Orb - Temple Denver",
+    "category": "Lighting",
+    "image": "media/Lighting/The Orb - Temple Denver/IMG_20181228_171913.webp",
+    "description": "<p>Placeholder</p>",
+    "longDescription": "<p><br></p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "tags": [],
+    "gallery": [
+      "media/Lighting/The Orb - Temple Denver/IMG_20181228_171913.webp",
+      "media/Lighting/The Orb - Temple Denver/IMG_20181230_145358.webp"
+    ],
+    "files": [],
+    "video": "",
+    "timestamp": "2026-06-21T22:54:46.396Z",
+    "id": 6841,
+    "order": 5
+  },
+  {
+    "title": "The Triangle",
+    "category": "Lighting",
+    "image": "media/Lighting/The Triangle/IMG_20180614_174327.webp",
+    "description": "<p>Placeholder</p>",
+    "longDescription": "<p><br></p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "tags": [],
+    "gallery": [
+      "media/Lighting/The Triangle/IMG_20180614_174327.webp"
+    ],
+    "files": [],
+    "video": "",
+    "timestamp": "2026-06-21T22:55:23.650Z",
+    "id": 5045,
+    "order": 6
   }
 ]
