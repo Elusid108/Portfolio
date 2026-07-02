@@ -169,6 +169,9 @@
       "DYNAMIC"
     ],
     "gallery": [
+      "https://youtube.com/shorts/f9XdY2zM_Gg?feature=share",
+      "https://youtube.com/shorts/f9XdY2zM_Gg?feature=share",
+      "https://youtube.com/shorts/bLjtqLrDk3Q?feature=share",
       "media/Art/Pixel Pyramid/20230717_154810.webp",
       "media/Art/Pixel Pyramid/20230717_154820.webp",
       "media/Art/Pixel Pyramid/20230808_152320.webp",
@@ -224,6 +227,7 @@
       "AMBIENT"
     ],
     "gallery": [
+      "https://youtube.com/shorts/a7uLXj7EiVc?feature=share",
       "media/Art/Pixel Plane Warp/20230719_221111.webp"
     ],
     "files": [],
@@ -737,5 +741,51 @@
     "timestamp": "2026-06-21T23:30:44.785Z",
     "id": "4411",
     "order": 1
+  },
+  {
+    "title": "Pixel Negative \"X\"",
+    "category": "Art",
+    "image": "media/Art/Pixel Negative _X_/20230717_155724.webp",
+    "description": "<p>PLACEHOLDER</p>",
+    "longDescription": "<p>Placeholder</p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "tags": [],
+    "gallery": [
+      "media/Art/Pixel Negative _X_/20230717_155724.webp",
+      "media/Art/Pixel Negative _X_/20230717_155731.webp"
+    ],
+    "files": [],
+    "video": "",
+    "timestamp": "2026-07-02T22:15:06.716Z",
+    "id": "2285",
+    "order": 4
+  },
+  {
+    "title": "Pixel Seed of Life",
+    "category": "Art",
+    "image": "media/Art/Pixel Seed of Life/20230717_155617.webp",
+    "description": "<p>Placeholder</p>",
+    "longDescription": "<p>Placeholder</p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "tags": [],
+    "gallery": [
+      "media/Art/Pixel Seed of Life/20230717_155617.webp",
+      "media/Art/Pixel Seed of Life/20230717_155640.webp"
+    ],
+    "files": [],
+    "video": "",
+    "timestamp": "2026-07-02T22:16:10.943Z",
+    "id": "9896",
+    "order": 5
   }
 ]
