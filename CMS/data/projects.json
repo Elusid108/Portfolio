@@ -169,12 +169,12 @@
       "DYNAMIC"
     ],
     "gallery": [
-      "https://youtube.com/shorts/f9XdY2zM_Gg?feature=share",
-      "https://youtube.com/shorts/bLjtqLrDk3Q?feature=share",
-      "https://youtube.com/shorts/nsSoZqkJbKQ?feature=share",
       "media/Art/Pixel Pyramid/20230717_154810.webp",
       "media/Art/Pixel Pyramid/20230717_154820.webp",
-      "media/Art/Pixel Pyramid/20230808_152320.webp"
+      "media/Art/Pixel Pyramid/20230808_152320.webp",
+      "https://youtube.com/shorts/f9XdY2zM_Gg?feature=share",
+      "https://youtube.com/shorts/bLjtqLrDk3Q?feature=share",
+      "https://youtube.com/shorts/nsSoZqkJbKQ?feature=share"
     ],
     "files": [],
     "video": "",
@@ -204,7 +204,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-13T00:01:33.897Z",
     "wip": false,
-    "order": 3
+    "order": 4
   },
   {
     "id": "8000",
@@ -226,8 +226,8 @@
       "AMBIENT"
     ],
     "gallery": [
-      "https://youtube.com/shorts/a7uLXj7EiVc?feature=share",
-      "media/Art/Pixel Plane Warp/20230719_221111.webp"
+      "media/Art/Pixel Plane Warp/20230719_221111.webp",
+      "https://youtube.com/shorts/a7uLXj7EiVc?feature=share"
     ],
     "files": [],
     "video": "",
@@ -762,7 +762,7 @@
     "video": "",
     "timestamp": "2026-07-02T22:15:06.716Z",
     "id": "2285",
-    "order": 4
+    "order": 5
   },
   {
     "title": "Pixel Seed of Life",
@@ -785,6 +785,29 @@
     "video": "",
     "timestamp": "2026-07-02T22:16:10.943Z",
     "id": "9896",
-    "order": 5
+    "order": 6
+  },
+  {
+    "title": "Pixel Celtic Owl",
+    "category": "Art",
+    "image": "media/Art/Pixel Celtic Owl/Screenshot 2026-07-02 185618.webp",
+    "description": "<p>Placeholder</p>",
+    "longDescription": "<p>Placeholder</p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "tags": [],
+    "gallery": [
+      "media/Art/Pixel Celtic Owl/Screenshot 2026-07-02 185618.webp",
+      "https://youtube.com/shorts/ls8r6dnBQiw?feature=share"
+    ],
+    "files": [],
+    "video": "",
+    "timestamp": "2026-07-02T23:00:41.951Z",
+    "id": "8609",
+    "order": 3
   }
 ]
