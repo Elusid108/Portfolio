@@ -27,8 +27,8 @@
     "order": 9
   },
   {
-    "id": 1,
-    "title": "Temple Nightclub - San Francisco",
+    "id": "1",
+    "title": "Main Room - Temple Nightclub | San Francisco",
     "category": "Lighting",
     "tags": [
       "PIXELS",
@@ -317,8 +317,8 @@
     "order": 0
   },
   {
-    "id": 5416,
-    "title": "LVL - Denver",
+    "id": "5416",
+    "title": "LVL - Temple | Denver",
     "category": "Lighting",
     "tags": [
       "PIXELS",
@@ -370,10 +370,10 @@
   {
     "id": "8787",
     "timestamp": "2026-01-17T17:49:41.986Z",
-    "title": "Reelworks - Denver",
+    "title": "Pixel Inflatable Tubes - Reelworks | Denver",
     "category": "Lighting",
     "image": "media/Lighting/Reelworks - Denver/20230621_172727.webp",
-    "description": "<p><br></p>",
+    "description": "<p>Add some WIP pictures </p>",
     "longDescription": "<p><br></p>",
     "websiteLink": "",
     "launchLink": "",
@@ -654,7 +654,7 @@
   {
     "id": "6841",
     "timestamp": "2026-06-21T22:54:46.396Z",
-    "title": "The Orb - Temple Denver",
+    "title": "The Orb - Temple | Denver",
     "category": "Lighting",
     "image": "media/Lighting/The Orb - Temple Denver/IMG_20181228_171913.webp",
     "description": "<p>Placeholder</p>",
