@@ -39,7 +39,7 @@
     ],
     "image": "media/Lighting/Temple San Francisco/20210516_134200.webp",
     "description": "<p>A lighting rig that combined everything I've learned in my career into a single design.</p>",
-    "longDescription": "<p>Description - work in progress</p>",
+    "longDescription": "<p>Add anything related to how the room looks and the build of the system. Talk about the additional power that was installed for this rig, the international logistics, and what makes this rig special. </p><p><br></p><p>Talk specifically about the custom pixel pillars, the LED video ceiling, the double sided video monolith, the marquees, the wireless pixel tables that were upgraded etc</p><p><br></p><p>The custom pixel pillars, the wireless tables could be features in the fabrication section. The electronics section could have the wireless modules used for the tables</p>",
     "video": "",
     "gallery": [
       "media/Lighting/Temple San Francisco/20210516_134200.webp",
@@ -240,7 +240,7 @@
     "category": "Integration",
     "image": "media/Integration/Temple - San Francisco/banner.webp",
     "description": "<p><br></p>",
-    "longDescription": "<p><br></p>",
+    "longDescription": "<p>Break down all the systems used in the main room, the rack, all the backend stuff goes in here. All the software and control systems we used to run the rig. Anything control related</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -343,8 +343,8 @@
     "order": 2
   },
   {
-    "id": 4939,
-    "title": "Mirus Art Gallery - Denver",
+    "id": "4939",
+    "title": "Mirus Art Gallery | Denver",
     "category": "Lighting",
     "tags": [
       "LEDs",
@@ -365,7 +365,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-17T17:47:45.485Z",
     "wip": false,
-    "order": 7
+    "order": 8
   },
   {
     "id": "8787",
@@ -673,7 +673,7 @@
     ],
     "files": [],
     "video": "",
-    "order": 5
+    "order": 6
   },
   {
     "title": "The Triangle",
@@ -695,14 +695,14 @@
     "video": "",
     "timestamp": "2026-06-21T22:55:23.650Z",
     "id": "5045",
-    "order": 6
+    "order": 7
   },
   {
     "title": "Que Bueno Suerte! - Denver",
     "category": "Integration",
     "image": "media/Integration/Que Bueno Suerte! - Denver/20240606_211259.webp",
     "description": "<p>Placeholder</p>",
-    "longDescription": "<p><br></p>",
+    "longDescription": "<p>Add all the different independent systems that were listed above in lighting design and how they were all combined into one control system. Talk about server rack in here, the trials with ELM and Madrix, the challenges of running hundreds of pixels of universes and trying to get it simplified enough for the restaurant staff to operate. </p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -716,7 +716,7 @@
     "files": [],
     "video": "",
     "timestamp": "2026-06-21T23:26:29.795Z",
-    "id": 4113,
+    "id": "4113",
     "order": 0
   },
   {
@@ -809,5 +809,45 @@
     "timestamp": "2026-07-02T23:00:41.951Z",
     "id": "8609",
     "order": 3
+  },
+  {
+    "title": "VIP Mezz - Temple | San Francisco",
+    "category": "Lighting",
+    "image": "",
+    "description": "<p>LED wall on the mezz vip lounge</p>",
+    "longDescription": "<p><br></p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "tags": [],
+    "gallery": [],
+    "files": [],
+    "video": "",
+    "timestamp": "2026-07-02T23:13:06.770Z",
+    "id": "3014",
+    "order": 5
+  },
+  {
+    "title": "Temple Nightclub - Denver",
+    "category": "Integration",
+    "image": "",
+    "description": "<p>Madrix / resolume / hog integration</p>",
+    "longDescription": "<p><br></p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "tags": [],
+    "gallery": [],
+    "files": [],
+    "video": "",
+    "timestamp": "2026-07-02T23:15:58.978Z",
+    "id": "9045",
+    "order": 2
   }
 ]
