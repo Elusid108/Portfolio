@@ -365,7 +365,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-17T17:47:45.485Z",
     "wip": false,
-    "order": 8
+    "order": 7
   },
   {
     "id": "8787",
@@ -673,7 +673,7 @@
     ],
     "files": [],
     "video": "",
-    "order": 6
+    "order": 5
   },
   {
     "title": "The Triangle",
@@ -695,7 +695,7 @@
     "video": "",
     "timestamp": "2026-06-21T22:55:23.650Z",
     "id": "5045",
-    "order": 7
+    "order": 6
   },
   {
     "title": "Que Bueno Suerte! - Denver",
@@ -811,10 +811,10 @@
     "order": 3
   },
   {
-    "title": "VIP Mezz - Temple | San Francisco",
+    "title": "Lobby Wall - Tracks | Denver",
     "category": "Lighting",
-    "image": "",
-    "description": "<p>LED wall on the mezz vip lounge</p>",
+    "image": "media/Lighting/Lobby Wall - Tracks _ Denver/0321151647.webp",
+    "description": "<p>My first LED pixel project - Tracks Danceclub circa. 2015</p>",
     "longDescription": "<p><br></p>",
     "websiteLink": "",
     "launchLink": "",
@@ -823,31 +823,23 @@
     "featured": false,
     "wip": false,
     "tags": [],
-    "gallery": [],
+    "gallery": [
+      "https://www.youtube.com/watch?v=-yTSHYxmWhg",
+      "https://www.youtube.com/watch?v=bK93I4jco1U",
+      "https://www.youtube.com/watch?v=V7PaQ3CBYY0",
+      "media/Lighting/Lobby Wall - Tracks _ Denver/0321151647.webp",
+      "media/Lighting/Lobby Wall - Tracks _ Denver/0317152322.webp",
+      "media/Lighting/Lobby Wall - Tracks _ Denver/0317152321.webp",
+      "media/Lighting/Lobby Wall - Tracks _ Denver/0317152050.webp",
+      "media/Lighting/Lobby Wall - Tracks _ Denver/0315151546.webp",
+      "media/Lighting/Lobby Wall - Tracks _ Denver/0313151634.webp",
+      "media/Lighting/Lobby Wall - Tracks _ Denver/0312151534.webp",
+      "media/Lighting/Lobby Wall - Tracks _ Denver/0221152259b.webp"
+    ],
     "files": [],
     "video": "",
-    "timestamp": "2026-07-02T23:13:06.770Z",
-    "id": "3014",
-    "order": 5
-  },
-  {
-    "title": "Temple Nightclub - Denver",
-    "category": "Integration",
-    "image": "",
-    "description": "<p>Madrix / resolume / hog integration</p>",
-    "longDescription": "<p><br></p>",
-    "websiteLink": "",
-    "launchLink": "",
-    "githubLink": "",
-    "shopLink": "",
-    "featured": false,
-    "wip": false,
-    "tags": [],
-    "gallery": [],
-    "files": [],
-    "video": "",
-    "timestamp": "2026-07-02T23:15:58.978Z",
-    "id": "9045",
-    "order": 2
+    "timestamp": "2026-07-20T20:00:01.882Z",
+    "id": "7590",
+    "order": 8
   }
 ]
