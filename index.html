@@ -198,7 +198,7 @@
             ],
             "image": "media/Apps/LithoLab/image2.webp",
             "description": "<p>A fully browser-based web application for generating custom-shaped, multi-color 3D printable lithophanes with AI-assisted design tools.</p>",
-            "longDescription": "<p><strong>LithoLab </strong>is a client-side web application designed to generate high-fidelity, custom-shaped lithophanes for 3D printing. While standard generators are restricted to traditional four-color CMYK constraints, LithoLab supports customizable, multi-color palettes to achieve superior color accuracy in the final physical print. The project differentiates itself by introducing custom masking capabilities that trim the lithophane into non-standard shapes, along with generating an independently exportable geometric border for polished, multi-part assemblies.</p><p>The system architecture was developed by porting the open-source PIXEStl backend to execute entirely within the browser, avoiding server-side processing overhead. The workflow is managed through a custom frontend interface where users upload source imagery, define masking parameters, and configure border dimensions. Upon export, the software isolates the customized border as a discrete 3D object, allowing users to assign specific filaments and colors when preparing the files in slicing software like Bambu Studio.</p><p>The standout technical achievement is the robust JavaScript implementation of the modified PIXEStl engine, paired with an integrated Google Gemini API for generating base images, structural masks, and file metadata. To solve the hardware constraints of color mapping on advanced machines like the Bambu Lab X1C, a dedicated companion utility called LithoPalletGen was built in parallel. This secondary application handles precise color palette generation, import/export functionality, and material calibration to ensure accurate physical reproduction of the digital models.</p>",
+            "longDescription": "<p><strong>LithoLab </strong>is a client-side web application designed to generate high-fidelity, custom-shaped lithophanes for 3D printing. While standard generators are restricted to traditional four-color CMYK constraints, LithoLab supports customizable, multi-color palettes to achieve superior color accuracy in the final physical print. The project differentiates itself by introducing custom masking capabilities that trim the lithophane into non-standard shapes, along with generating an independently exportable geometric border for polished, multi-part assemblies.</p><p>The system architecture was developed by porting the open-source PIXEStl backend to execute entirely within the browser, avoiding server-side processing overhead. The workflow is managed through a custom frontend interface where users upload source imagery, define masking parameters, and configure border dimensions. Upon export, the software isolates the customized border as a discrete 3D object, allowing users to assign specific filaments and colors when preparing the files in slicing software like Bambu Studio.</p><p>The standout technical achievement is the robust JavaScript implementation of the modified PIXEStl engine, paired with an integrated Google Gemini API for generating base images, structural masks, and file metadata. To solve the hardware constraints of color mapping on advanced machines like the Bambu Lab X1C, a dedicated companion utility called LithoPalletGen was built in parallel. This secondary application handles precise color palette generation, import/export functionality, and material calibration to ensure accurate physical reproduction of the digital models.</p><p><br></p><p>Check out the companion app <a href=\"https://elusid108.github.io/LithoPalletGen/\" target=\"_blank\">LithoPalletGen</a> to generate calibrated pallet files for LithoLab.</p>",
             "video": "",
             "gallery": [
                 "media/Apps/LithoLab/image2.webp",
@@ -242,7 +242,7 @@
             "websiteLink": "",
             "timestamp": "2026-01-12T01:03:01.269Z",
             "wip": false,
-            "order": 2
+            "order": 1
         },
         {
             "id": "670",
@@ -537,19 +537,27 @@
             "order": 8
         },
         {
-            "id": 3991,
+            "id": "3991",
             "title": "PixelForge AI",
             "category": "Apps",
             "tags": [
                 "AI",
                 "CREATIVE"
             ],
-            "image": "media/Apps/PixelForge AI/banner.webp",
-            "description": "<p><strong>PixelForge AI</strong> is a serverless, client-side generative art studio that leverages Google's Gemini and Imagen models. It features a robust local database for gallery management, intelligent prompt augmentation, and a \"Bring Your Own Key\" architecture that prioritizes user privacy and ease of deployment.</p>",
-            "longDescription": "<p><strong>PixelForge AI</strong> is a dedicated workspace application designed to streamline the generation and curation of AI artwork. Unlike standard chat interfaces, this application provides a highly structured environment optimized specifically for image synthesis, exposing advanced granular controls like aspect ratios, negative prompts, and resolution settings. Its primary differentiator is the direct, flexible integration with Google's Imagen 4.0 API, supporting dual-endpoint routing to handle various generation parameters and safety filters natively.</p><p><br></p><p>The user journey is centered around a unified workspace module where creators construct and refine prompts using integrated templating tools. Once a generation is triggered, the asynchronous process is managed via global state, allowing users to continue working without interruption. Completed images flow directly into a comprehensive history dashboard, where users can inspect generation metadata, view high-resolution details, and export their assets in batch using built-in client-side ZIP compression capabilities.</p><p><br></p><p>Under the hood, the application is powered by a React 18 frontend written in TypeScript and styled with Tailwind CSS for a responsive, dark-mode-first aesthetic. Complex asynchronous API interactions and cross-component data synchronization are orchestrated seamlessly through Zustand, ensuring a highly performant and stable user experience even when handling large base64 image payloads.</p>",
+            "image": "media/Apps/PixelForge AI/Screenshot 2026-07-25 173231.webp",
+            "description": "<p>An interactive generative artwork studio that uses controlled text hallucinations to kickstart creative visual exploration.</p>",
+            "longDescription": "<p><strong>PixelForge </strong>is an interactive web application designed to kickstart creative exploration by bridging abstract text generation with high-fidelity image synthesis. Unlike conventional generation interfaces that rely strictly on literal user inputs, PixelForge utilizes controlled AI hallucinations to construct poetic, open-ended prompt foundations. This approach pushes image models past predictable outputs and gives creators a sandbox to discover nuanced visual concepts through either category-focused or open-ended random generation.</p><p>The system workflow coordinates a multi-stage creative pipeline. Activating the randomizer triggers targeted prompt frameworks that generate abstract, poem-like descriptions. Users maintain full creative control with the ability to inspect, refine, or manually edit these text outputs prior to rendering the final image. As generations occur, the platform automatically maintains a comprehensive session history on the left sidebar. This allows users to compare iterative variations, review parameter metadata, and package assets into bulk ZIP downloads directly within the workspace.</p><p>Built on React, TypeScript, Vite, and Tailwind CSS, the application integrates the Gemini API for prompt generation and the Imagen API for visual rendering. A primary technical hurdle involved overcoming model output convergence, where similar prompts yielded overly repetitive visual styles. To solve this, the application features a manual model selector within the settings menu. This allows users to route identical prompts across different model versions to leverage their distinct stylistic interpretations. Local data persistence relies on IndexedDB and LocalStorage to manage client-side image storage and history tracking without external database dependencies.</p>",
             "video": "",
             "gallery": [
-                "media/Apps/PixelForge AI/Screenshot 2026-01-18 091639.webp"
+                "media/Apps/PixelForge AI/Screenshot 2026-07-25 173332.webp",
+                "media/Apps/PixelForge AI/Screenshot 2026-07-25 173246.webp",
+                "media/Apps/PixelForge AI/Screenshot 2026-07-25 173231.webp",
+                "media/Apps/PixelForge AI/Screenshot 2026-07-25 173207.webp",
+                "media/Apps/PixelForge AI/Screenshot 2026-07-25 173147.webp",
+                "media/Apps/PixelForge AI/Screenshot 2026-07-25 173126.webp",
+                "media/Apps/PixelForge AI/Screenshot 2026-07-25 173111.webp",
+                "media/Apps/PixelForge AI/Screenshot 2026-07-25 173100.webp",
+                "media/Apps/PixelForge AI/Screenshot 2026-07-25 173040.webp"
             ],
             "launchLink": "https://elusid108.github.io/PixelForge-AI/",
             "githubLink": "https://github.com/Elusid108/PixelForge-AI",
@@ -558,7 +566,7 @@
             "featured": false,
             "websiteLink": "",
             "timestamp": "2026-01-18T14:24:23.784Z",
-            "wip": false,
+            "wip": true,
             "order": 5
         },
         {
@@ -602,7 +610,7 @@
             "order": 7
         },
         {
-            "id": 6638,
+            "id": "6638",
             "title": "Strata - Digital Notebook",
             "category": "Apps",
             "tags": [
@@ -611,8 +619,8 @@
                 "GOOGLE"
             ],
             "image": "media/Apps/Strata/Screenshot 2026-01-23 200024.webp",
-            "description": "<p>A modern, block-based note-taking web application with Google Drive integration and an infinite canvas workspace.</p>",
-            "longDescription": "<h3><strong>Overview</strong></h3><p>Strata is a full-featured note-taking app built with React, offering hierarchical organization, cloud sync, and a flexible canvas for visual notes. It runs entirely in the browser with no backend server, using Google Drive for cloud storage and localStorage as an offline fallback.</p><p><br></p><h3><strong>Key Features</strong></h3><p><strong>Organizational Structure</strong></p><ul><li>Hierarchical organization: Notebooks&nbsp;→ Tabs → Pages</li><li>Color-coded tabs with automatic cycling</li><li>Favorites system for quick access</li><li>Responsive tab navigation with fish-eye hover effects</li></ul><p><br></p><p><strong>Rich Text Editing</strong></p><ul><li>Block-based editor supporting headings, lists, todos, images, videos, links, and dividers</li><li>Slash commands (/) for quick block insertion</li><li>Drag-and-drop block reordering</li><li>Real-time formatting with keyboard shortcuts</li></ul><p><br></p><p><strong>Canvas Pages</strong></p><ul><li>Infinite canvas with pan and zoom (Alt+scroll wheel)</li><li>Freeform drawing with customizable brush colors and&nbsp;widths</li><li>Text containers for annotations</li><li>Image pasting and manipulation</li><li>Transform state persistence per page</li><li>Live drawing feedback</li></ul><p><br></p><p><strong>Cloud Integration</strong></p><ul><li>Google Drive sync with automatic debounced saves</li><li>Embed Google Docs, Sheets, and Slides directly in pages</li><li>PDF viewing from URLs or Google Drive</li><li>Portable backup system with offline viewer</li><li>Two-way sync with conflict resolution</li></ul><p><br></p><p><strong>User Experience</strong></p><ul><li>Full dark mode support</li><li>System preference detection for theme</li><li>Session-wide page caching for fast navigation</li><li>Offline support with localStorage fallback</li><li>No backend required — runs entirely client-side</li></ul><p><br></p><h3><strong>Technical Highlights</strong></h3><ul><li>Built with React&nbsp;(JSX) and transpiled in-browser with Babel</li><li>Google Drive API integration for cloud storage</li><li>Coordinate system handling for infinite canvas with viewport culling</li><li>Real-time drawing with SVG path rendering</li><li>Responsive design with&nbsp;Tailwind CSS</li><li>Zero-dependency architecture (except Google APIs)</li></ul>",
+            "description": "<p>A serverless, browser-based note-taking application combining block-level editing with infinite canvas workspaces and Google Drive synchronization.</p>",
+            "longDescription": "<p><strong>Strata </strong>is a client-side note-taking application designed to provide hierarchical organization alongside flexible visual workspaces. The primary goal is to deliver a robust productivity tool that runs entirely in the browser without relying on a dedicated backend server. The project differentiates itself by seamlessly blending structured, block-based text editing with an infinite drawing canvas, utilizing the user's existing Google Drive as the primary cloud storage and database mechanism.</p><p>The engineering workflow focuses on delivering a resilient user experience that bridges offline availability and cloud connectivity. The application caches data locally using localStorage for immediate access and pushes updates to Google Drive via automatic debounced saves. The project is currently an active work in progress, with current development focused on resolving known sync issues and refining conflict resolution logic. The development journey included prototyping a standalone desktop variant to enable direct webpage embedding, but active development has pivoted back to the web application to maximize accessibility and maintain a streamlined user workflow.</p><p>The core application is built with React and styled with Tailwind CSS, maintaining a strict zero-dependency architecture outside of the necessary Google APIs. A major technical component of the build is the in-browser Babel transpilation, which allows the application to function entirely on the client side. The infinite canvas relies on custom coordinate system handling with viewport culling and real-time SVG path rendering to ensure smooth panning, zooming, and drawing performance. By directly integrating with the Google Drive API, the system can bypass traditional server storage limitations while natively embedding Google Docs, Sheets, and Slides directly into the workspace.</p>",
             "video": "",
             "gallery": [
                 "media/Apps/Strata/Screenshot 2026-01-23 195925.webp",
@@ -626,10 +634,10 @@
             "websiteLink": "",
             "timestamp": "2026-01-24T02:36:52.522Z",
             "wip": true,
-            "order": 3
+            "order": 4
         },
         {
-            "id": 6962,
+            "id": "6962",
             "title": "IdeaForge.AI",
             "category": "Apps",
             "tags": [
@@ -639,8 +647,8 @@
                 "project planning"
             ],
             "image": "media/Apps/Brainstormer/Screenshot 2026-02-14 232928.webp",
-            "description": "<p>IdeaForge AI is an ideation and execution workspace designed to eliminate the friction between conceptualizing a product and building it. It replaces fragmented note-taking tools by providing a continuous pipeline for raw idea capture, interactive brainstorming, and campaign management.&nbsp;</p>",
-            "longDescription": "<p>IdeaForge AI is a personal, AI-powered workspace designed to capture and structure raw creative thoughts. Unlike standard note-taking tools that rely on proprietary cloud backends, this application ensures total data sovereignty by utilizing the user's personal Google Drive and Google Sheets as a headless, relational database.</p><p><br></p><p>The application guides users through a structured creative lifecycle. The journey begins in the Ideas module, where users capture stream-of-consciousness text or voice notes. These raw inputs are processed by AI into organized concepts, which can then be escalated through dedicated Brainstorming workspaces, structured Project task boards, and final marketing Campaign trackers.&nbsp;</p><p><br></p><p>Under the hood, the system is built on a modern React and TypeScript frontend, heavily utilizing TanStack Query for state management and data synchronization. Its primary technical achievement is the complex integration of the Google Sheets REST API to perform robust database operations—including filtering, row migrations, and schema updates—entirely client-side.</p>",
+            "description": "<p>IdeaForge.AI is a comprehensive ideation pipeline that transforms raw thoughts into actionable project strategies utilizing a serverless Google Drive backend.</p>",
+            "longDescription": "<p>IdeaForge.AI is a multi-stage idea sifter designed to capture, expand, and execute concepts without initial critique. The core goal is to provide a frictionless environment where users can verbally or textually dump ideas and seamlessly transition them into fully realized projects. This application differentiates itself by completely eliminating traditional cloud database dependencies, opting instead to use the user's personal Google Drive and Google Sheets as the sole backend architecture.</p><p>The workflow begins with an uninhibited idea dump, where users log their thoughts to be automatically tagged and summarized. When an idea shows promise, it is promoted to the brainstorm phase where an AI assistant conducts an interview to extract deeper details and compiles a structured breakdown. Promoting the brainstorm to a project generates an execution strategy, an expense tracker, and a task list. Finally, the campaign section conducts a comprehensive interview to compile a playbook, breaking down discovery, monetization, distribution, and logistics into actionable phases.</p><p>The application frontend is built with React, TypeScript, and Tailwind CSS, utilizing Vite for optimized builds. The standout technical achievement is the custom data layer that interfaces directly with the Google Sheets API and Google Drive API, transforming a standard spreadsheet into a fully functional database. A local database implementation handles offline state and data reconciliation, while a user-provided Gemini API key securely powers the core intelligence for summarizing concepts and generating execution playbooks.</p>",
             "video": "",
             "gallery": [
                 "media/Apps/Brainstormer/Screenshot 2026-02-14 232928.webp",
@@ -648,30 +656,41 @@
                 "media/Apps/Brainstormer/Screenshot 2026-02-14 233053.webp"
             ],
             "launchLink": "https://elusid108.github.io/IdeaForge-AI/",
-            "githubLink": "https://github.com/Elusid108/idea-forge",
+            "githubLink": "https://github.com/Elusid108/IdeaForge-AI",
             "shopLink": "",
             "files": [],
             "featured": false,
             "websiteLink": "",
             "timestamp": "2026-02-15T04:59:58.733Z",
             "wip": true,
-            "order": 4
+            "order": 2
         },
         {
-            "id": 648,
+            "id": "648",
             "title": "CharGen.AI",
             "category": "Apps",
             "tags": [
                 "AI",
                 "CHARACTER"
             ],
-            "image": "media/Apps/CharGen AI/banner.webp",
-            "description": "<p><strong>CharGen AI </strong>is a comprehensive design suite that automates the creation of multi-dimensional character profiles and visual assets. Unlike standard random generators, this application enforces strict logical consistency across psychological, physical, and demographic traits. It utilizes structured JSON generation via Google's Gemini API to ensure every attribute contextually aligns with the character's core identity.</p>",
-            "longDescription": "<p><strong>CharGen AI</strong> is a comprehensive design suite that automates the creation of multi-dimensional character profiles and visual assets. Unlike standard random generators, this application enforces strict logical consistency across psychological, physical, and demographic traits. It utilizes structured JSON generation via Google's Gemini API to ensure every attribute contextually aligns with the character's core identity.</p><p><br></p><p>The application features a modular workflow guiding users from initial ideation to asset export. Users begin in the trait manipulation forms to fine-tune attributes like MBTI, physical build, and origin. This data feeds into the Generation Panel, where prompt engines synthesize visual representations—ranging from profile portraits to technical T-pose reference sheets—and author narrative backstories tailored to specific genres.</p><p><br></p><p>Built on a React and Vite frontend, the application utilizes Zustand for complex state management across its creation modules. The primary technical achievement is the custom prompt translation layer, which dynamically parses dozens of UI inputs into optimized, high-fidelity instructions for seamless integration with multimodal AI endpoints.</p>",
+            "image": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174417.webp",
+            "description": "<p>CharGen.AI is a comprehensive, client-side character development engine utilizing Google AI for text and image generation.</p>",
+            "longDescription": "<p><strong>CharGen.AI</strong> is a universal character development engine designed to build highly detailed profiles for any archetype, ranging from humans to complex sci-fi and fantasy subjects. The primary goal is to provide a unified workspace for character creation that seamlessly bridges the gap between statistical attributes and visual representation. Unlike standard text-based character generators, this platform features a unique bidirectional workflow. Users can define over 100 conditional attributes to synthesize distinct reference images, or they can reverse the process by using vision models to extract structured physical and psychological data directly from an uploaded piece of reference art.</p><p>The application operates entirely on the client side to prioritize user privacy and eliminate traditional backend infrastructure. Users navigate through an eight-section attribute builder that dynamically adapts its input fields based on the selected species type. As users modify attributes, generate custom outfits, or draft backstories, all data is saved persistently in the browser using IndexedDB. When a user initiates a generation request, the application bundles the current character state and interfaces directly with Google API endpoints. The state management system coordinates these external responses, updating the local character library in real time and allowing users to organize, bulk export, or iterate on their designs without a central server.</p><p>The platform is engineered using React 18 and Vite, relying on Zustand for efficient state management across the complex, deeply nested attribute trees. The standout technical achievement is the synchronized integration of Google Gemini 2.5 Flash for nuanced text generation and image analysis, alongside Imagen 4.0 for high-fidelity visual synthesis. By committing to a strictly serverless architecture, the system requires users to supply their own API keys, guaranteeing zero telemetry and eliminating hosting costs for heavy AI workloads. This constraint necessitated the heavy optimization of IndexedDB to reliably store and manage large payloads of image data and complex JSON character objects locally within the browser.</p>",
             "video": "",
             "gallery": [
-                "media/Apps/CharGen AI/Screenshot 2026-03-22 122902.webp",
-                "media/Apps/CharGen AI/Screenshot 2026-03-22 123423.webp"
+                "media/Apps/CharGen.AI/Screenshot 2026-07-25 174417.webp",
+                "media/Apps/CharGen.AI/Screenshot 2026-07-25 174050.webp",
+                "media/Apps/CharGen.AI/Screenshot 2026-07-25 174702.webp",
+                "media/Apps/CharGen.AI/Screenshot 2026-07-25 174709.webp",
+                "media/Apps/CharGen.AI/Screenshot 2026-07-25 174717.webp",
+                "media/Apps/CharGen.AI/Screenshot 2026-07-25 174725.webp",
+                "media/Apps/CharGen.AI/Screenshot 2026-07-25 174647.webp",
+                "media/Apps/CharGen.AI/Screenshot 2026-07-25 174641.webp",
+                "media/Apps/CharGen.AI/Screenshot 2026-07-25 174635.webp",
+                "media/Apps/CharGen.AI/Screenshot 2026-07-25 174607.webp",
+                "media/Apps/CharGen.AI/Screenshot 2026-07-25 174504.webp",
+                "media/Apps/CharGen.AI/Screenshot 2026-07-25 174752.webp",
+                "media/Apps/CharGen.AI/Screenshot 2026-07-25 174744.webp"
             ],
             "launchLink": "https://elusid108.github.io/CharGen.AI/",
             "githubLink": "https://github.com/Elusid108/CharGen.AI",
@@ -708,7 +727,7 @@
             "websiteLink": "",
             "timestamp": "2026-06-11T17:19:00.407Z",
             "wip": false,
-            "order": 1
+            "order": 3
         },
         {
             "title": "Field Bench PSU",
