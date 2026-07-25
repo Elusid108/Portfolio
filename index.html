@@ -1206,9 +1206,6 @@
                                 </a>
                             )}
                             
-                            {!project.shopLink && !project.launchLink && !project.githubLink && !project.websiteLink && (
-                                <span className="text-xs text-zinc-600 italic">Portfolio Item</span>
-                            )}
                         </div>
                     </div>
                 </div>
@@ -1656,13 +1653,16 @@
                     </div>
                     {/* Mobile Menu */}
                     {isOpen && (
-                        <div className="absolute top-full left-0 w-full glass-panel border-t border-zinc-800 p-6 lg:hidden flex flex-col gap-4 animate-fade-in">
-                            {links.map(link => (
-                                <button key={link.id} onClick={() => scrollTo(link.id)} className="text-left text-zinc-300 uppercase tracking-widest font-bold">{link.label}</button>
-                            ))}
-                            <button onClick={() => scrollTo('about')} className="text-left text-zinc-300 uppercase tracking-widest font-bold">About</button>
-                            <button onClick={() => scrollTo('contact')} className="text-left text-zinc-300 uppercase tracking-widest font-bold">Contact</button>
-                        </div>
+                        <>
+                            <div className="fixed inset-0 bg-black/60 z-40 lg:hidden" onClick={() => setIsOpen(false)} />
+                            <div className="absolute top-full left-0 w-full glass-panel border-t border-zinc-800 p-6 lg:hidden flex flex-col gap-4 animate-fade-in z-50">
+                                {links.map(link => (
+                                    <button key={link.id} onClick={() => { scrollTo(link.id); setIsOpen(false); }} className="text-left text-zinc-300 uppercase tracking-widest font-bold">{link.label}</button>
+                                ))}
+                                <button onClick={() => { scrollTo('about'); setIsOpen(false); }} className="text-left text-zinc-300 uppercase tracking-widest font-bold">About</button>
+                                <button onClick={() => { scrollTo('contact'); setIsOpen(false); }} className="text-left text-zinc-300 uppercase tracking-widest font-bold">Contact</button>
+                            </div>
+                        </>
                     )}
                 </nav>
             );
@@ -1707,7 +1707,7 @@
                             alt={label} 
                             loading="lazy"
                             decoding="async"
-                            className="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-500 scale-100 group-hover:scale-110" 
+                            className="w-full h-full object-cover opacity-60 lg:opacity-40 group-hover:opacity-70 transition-opacity duration-500 scale-100 group-hover:scale-110" 
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
                     </div>
@@ -1824,8 +1824,8 @@
                     <div className="container mx-auto px-6 text-center">
                         <h2 className="text-3xl font-bold mb-6">Let's Build Something</h2>
                         <p className="text-zinc-400 max-w-xl mx-auto mb-10">
-                            Whether you need a custom lighting controller, a React Native app prototype, 
-                            or a specialized PCB, I'm available for freelance work.
+                            Available for freelance projects and open to full-time opportunities —
+                            lighting systems, embedded electronics, rapid prototyping, and software.
                         </p>
                         
                         <div className="flex flex-col md:flex-row justify-center gap-6">
