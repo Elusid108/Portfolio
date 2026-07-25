@@ -47,6 +47,7 @@
       "media/Lighting/Main Room - Temple Nightclub _ San Francisco/Screenshot 2025-03-12 151235.webp",
       "media/Lighting/Main Room - Temple Nightclub _ San Francisco/Screenshot 2025-03-12 151156.webp",
       "media/Lighting/Main Room - Temple Nightclub _ San Francisco/20210304_181820.webp",
+      "media/Lighting/Main Room - Temple Nightclub _ San Francisco/Screenshot 2025-03-14 124321.webp",
       "https://youtu.be/GrSkUee2oF0",
       "https://youtu.be/8V60HmyFubU",
       "https://youtu.be/OsVW8SkViUQ",
@@ -331,8 +332,8 @@
       "MADRIX"
     ],
     "image": "media/Lighting/LVL - Denver/IMG_20191009_231844.webp",
-    "description": "<p><br></p>",
-    "longDescription": "<p><br></p>",
+    "description": "<p>An electrical and data overhaul of an immersive pixel lighting rig to ensure stability and enable 3D voxel mapping.</p>",
+    "longDescription": "<p>The LVL room at Temple Denver features an immersive, exclusively pixel-based lighting installation with continuous lines running across the floor, ceiling, and pillars. The core goal of this project was to execute a comprehensive structural rewiring of the power and data distribution to transform an unstable installation into a robust, production-ready system. Unlike standard rig assemblies, this overhaul required retrofitting an existing design, demanding precise power management and signal integrity to support advanced, whole-room spatial mapping without compromising the original aesthetic.</p><p><br></p><p>The project workflow centered on meticulous hardware restoration and systemic reconfiguration. Every segment of the existing LED tape was systematically removed, rigorously tested, resoldered, heat-shrinked, and reinstalled to guarantee structural and electrical integrity. To handle the data load, the LED decoder lines were strategically decentralized across the network. Concurrently, the entire power infrastructure was redesigned, efficiently routing power from supplies located in the back room and beneath the DJ booth to ensure consistent performance across the venue's footprint.</p><p><br></p><p>The primary technical constraint of the installation was the extreme length of the pixel runs, which inherently caused severe voltage drop and data signal degradation. This was overcome by running DC wire in parallel with the LED strips to introduce strategic power injection points, guaranteeing uniform brightness and absolute data stability. With the hardware stabilized, the entire room was 3D voxel mapped, allowing the control system to execute volumetric, full-room effects like spatial line sweeps. By isolating specific structural elements into distinct groups, the system can also effectively simulate the behavior of traditional lighting fixtures within a continuous pixel environment.</p>",
     "video": "",
     "gallery": [
       "media/Lighting/LVL - Denver/IMG_20191009_231844.webp",
