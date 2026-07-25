@@ -127,19 +127,19 @@
     "order": 0
   },
   {
-    "id": 3670,
+    "id": "3670",
     "title": "Unfold",
     "category": "Apps",
     "tags": [
       "GAME",
       "SOCIAL"
     ],
-    "image": "media/Apps/Unfold/Screenshot 2026-01-11 183024.webp",
-    "description": "<p><strong>Unfold</strong> is a high-fidelity reflection platform that transforms prompt-based journaling into an interactive, digital experience. Unlike static journaling applications, Unfold utilizes a dynamic card-shuffling engine and a sophisticated deck-based architecture to provide structured introspection. Its primary value lies in its ability to balance pre-curated psychological prompts with a robust user-defined content system, making it adaptable for both therapeutic use and creative professional workflows.</p>",
-    "longDescription": "<p><strong>Unfold</strong> is a high-fidelity reflection platform that transforms prompt-based journaling into an interactive, digital experience. Unlike static journaling applications, Unfold utilizes a dynamic card-shuffling engine and a sophisticated deck-based architecture to provide structured introspection. Its primary value lies in its ability to balance pre-curated psychological prompts with a robust user-defined content system, making it adaptable for both therapeutic use and creative professional workflows.</p><p><br></p><p>The application is organized into three functional modules: the Journey Setup for session parameterization, the immersive Card Display for active reflection, and a History Panel for auditing past insights. Users navigate from an initial configuration phase through a focused session where they can flip cards, mark favorites, and track their progress through a deck. This workflow ensures that data moves seamlessly from high-level session parameters to granular, individual prompt interactions and eventual long-term archival.</p><p><br></p><p>Built on a modern React and TypeScript foundation, Unfold prioritizes performance and data privacy. The technical core features a custom-built state management layer using React Hooks and the LocalStorage API, ensuring all sensitive user reflections remain strictly client-side. The UI is powered by Tailwind CSS and Radix UI primitives, providing an accessible, responsive, and aesthetically refined interface that maintains smooth transitions during complex deck interactions.</p>",
+    "image": "media/Apps/Unfold/Screenshot 2026-07-25 154856.webp",
+    "description": "<p>A React based web application featuring interactive card decks designed to facilitate meaningful conversations and reconnect people.</p>",
+    "longDescription": "<p><strong>Unfold </strong>is a web application designed to help users reconnect with friends and family when relationships become routine. The interactive card game provides structured questions across four distinct decks to prompt reflection and meaningful dialogue. Unlike standard physical card games, Unfold adapts to user preferences by offering three distinct play modes, including a curated journey sequence that gradually deepens the interaction. The digital format optimizes the experience for remote communication over video calls.</p><p>The development process began with rapid prototyping using the Lovable platform to establish the core user experience and interaction logic. Following the initial proof of concept, the project was migrated to a dedicated GitHub repository for independent development and architectural refinement. The primary workflow centers on user choice, allowing individuals to pull from specific decks, combine all cards randomly, or set a defined number of prompts for a structured progression. This flexible logic ensures that users can tailor the depth and pace of their conversations.</p><p>The application operates on a modern React and TypeScript foundation that prioritizes performance and data privacy. The technical core utilizes a custom state management layer built with React Hooks and the LocalStorage API, ensuring all sensitive user interactions remain securely on the client side. The front end integrates Tailwind CSS and Radix UI primitives to deliver an accessible, responsive, and visually refined interface. This UI architecture maintains fluid transitions and robust state handling during complex card drawing interactions.</p>",
     "video": "",
     "gallery": [
-      "media/Apps/Unfold/Screenshot 2026-01-11 183024.webp",
+      "media/Apps/Unfold/Screenshot 2026-07-25 154856.webp",
       "media/Apps/Unfold/Screenshot 2026-01-11 183035.webp",
       "media/Apps/Unfold/Screenshot 2026-01-11 183054.webp",
       "media/Apps/Unfold/Screenshot 2026-01-11 183115.webp",
@@ -271,7 +271,7 @@
     "order": 1
   },
   {
-    "id": 9517,
+    "id": "9517",
     "title": "Field Solder Station",
     "category": "Solutions",
     "tags": [
@@ -280,8 +280,8 @@
       "PROTOTYPE"
     ],
     "image": "media/Fabrication/Field Solder Station/20250317_180657.webp",
-    "description": "<p><br></p>",
-    "longDescription": "<p><br></p>",
+    "description": "<p>A portable, field soldering station designed to streamline complex live entertainment installations.</p>",
+    "longDescription": "<p>The field solder station is a highly compact, tool carrier engineered to solve the logistical challenges of on site LED installations. Working in unconventional locations like high ladders or cramped spaces under a stage requires immediate access to tools without the burden of a bulky bench setup. This solution differentiates itself by consolidating an entire soldering toolkit into a single portable chassis driven by a standard USB PD battery bank.</p><p>This tool emerged from an iterative prototyping process tested directly in the field during a major San Francisco nightclub installation. Initial concepts explored integrated batteries and complex wiring before the design converged on a simplified approach to maximize reliability and reduce weight. The final iteration logically organizes a TS100 or TS101 iron, solder spool, a bottle of flux, desoldering pump, wick, wet and wire sponges, and rubber feet into an optimized spatial layout.</p><p>I designed the chassis in SolidWorks to tightly pack the required tools into a minimal footprint. Fabricated from PLA using Bambu Lab 3D printers, the structure leverages precision tolerances to secure mechanical hardware like the dual helping hands through a robust friction fit. This precise 3D modeling eliminated the need for secondary mechanical fasteners, resulting in a streamlined and self contained system that reliably supports mobile fabrication work.</p>",
     "video": "",
     "gallery": [
       "media/Fabrication/Field Solder Station/20250317_180657.webp"
@@ -306,8 +306,8 @@
       "CUSTOM"
     ],
     "image": "media/Electronics/Pixel Panel PCB/20200910_134441.webp",
-    "description": "<p>Modified design of PCB for special purpose</p>",
-    "longDescription": "<p><br></p>",
+    "description": "<p>A high-impact LED ceiling installation engineered for ultra-low headroom environments using custom-modified dancefloor PCBs.</p>",
+    "longDescription": "<p>The objective was to create an immersive LED pixel lighting design for the basement level of Temple nightclub in San Francisco despite severe headroom limitations. This project diverges from standard fixture installations by utilizing custom-modified LED dancefloor PCBs repurposed for ceiling mounting. By stripping the technology down to its bare circuit boards, the design achieves a massive visual impact within a fraction of the traditional spatial footprint.</p><p><br></p><p>The workflow began by sourcing an LED dancefloor manufacturer and collaborating directly with them to engineer custom boards. The physical design required specific functional alterations, including adjusted pixel spacing, enlarged mounting holes, 90-degree wire headers, and a specialized protective backing material. For the physical integration, an aluminum T-track system was mounted directly to the ceiling infrastructure, allowing the custom PCBs to bolt securely into the track for a seamless fit.</p><p><br></p><p>The primary engineering achievement was compressing a high-density lighting matrix into a total vertical profile of under one inch. The system operates on a 24-volt power architecture and utilizes WS2818 addressable pixels. The selection of WS2818 components ensures robust performance through redundant data transmission, preventing single-pixel failures from interrupting the visual array during demanding live operations.</p>",
     "video": "",
     "gallery": [
       "media/Electronics/Pixel Panel PCB/20200910_134441.webp",
@@ -320,7 +320,7 @@
     "githubLink": "",
     "shopLink": "",
     "files": [],
-    "featured": true,
+    "featured": false,
     "websiteLink": "",
     "timestamp": "2026-01-13T00:48:58.329Z",
     "wip": false,
@@ -626,8 +626,8 @@
     "title": "Field Bench PSU",
     "category": "Solutions",
     "image": "media/Fabrication/Field Bench PSU/20250317_180727.webp",
-    "description": "<p>Placeholder</p>",
-    "longDescription": "<p>Placeholder</p>",
+    "description": "<p>A compact, 3D printed bench power supply designed for testing LED lighting installations in the field.</p>",
+    "longDescription": "<p>The Field Bench PSU is a portable tool designed to power and test diverse LED products during on-site installations. While standard bench power supplies are bulky and tied to AC mains, this custom unit leverages modular components and a highly versatile interface architecture to provide reliable testing capabilities directly on the job site.</p><p>The physical enclosure was modeled in SolidWorks and fabricated using PLA+ for structural durability. The internal hardware workflow routes power from a 5521-DC input jack through a mini rocker switch into the voltage conversion module. The output side maximizes field flexibility by providing a 5525-DC jack alongside a pair of banana plug jacks equipped with wire screw terminals. This layout allows the hardware to interface with a wide array of standard connectors, or rely on bare wire connections paired with WAGO terminals for rapid setup.</p><p>The primary technical driver is an embedded buck-boost converter capable of handling a 5 to 32VDC input and delivering an equivalent voltage output at up to 5A. A standout operational achievement is the integration of standard USB PD sources, allowing the system to accept a 19V 100W input and reliably convert it to precise 5V, 12V, or 24V outputs. This capability ensures immediate, adaptable power delivery for any low voltage LED architecture encountered in the field.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -641,7 +641,7 @@
     "files": [],
     "video": "",
     "timestamp": "2026-06-21T22:41:13.337Z",
-    "id": 707,
+    "id": "707",
     "order": 1
   },
   {
