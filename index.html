@@ -1758,16 +1758,18 @@
                             <p className="text-sm font-semibold tracking-widest text-cyan-400 uppercase">
                                 Creative Technologist &amp; Systems Integrator
                             </p>
-                            <div className="flex flex-wrap gap-4 pt-2">
-                                <button onClick={() => document.getElementById('lighting').scrollIntoView({behavior:'smooth'})} className="px-6 py-3 bg-white text-black font-bold rounded-lg hover:bg-zinc-200 transition-colors">
+                            <div className="flex flex-col gap-3 pt-2 w-fit">
+                                <div className="flex gap-4">
+                                    <button onClick={() => document.getElementById('about').scrollIntoView({behavior:'smooth'})} className="px-6 py-3 border border-zinc-700 rounded-lg hover:bg-zinc-900 transition-colors text-white font-medium">
+                                        About Me
+                                    </button>
+                                    <a href="media/Resume/Robotics%20CV%20v002.pdf" target="_blank" rel="noopener" className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-zinc-600 rounded-lg text-zinc-300 hover:border-cyan-500 hover:text-white transition-colors font-medium">
+                                        <FileIcon size={16} /> View Resume
+                                    </a>
+                                </div>
+                                <button onClick={() => document.getElementById('lighting').scrollIntoView({behavior:'smooth'})} className="w-full py-3 bg-white text-black font-bold rounded-lg hover:bg-zinc-200 transition-colors">
                                     View Work
                                 </button>
-                                <button onClick={() => document.getElementById('about').scrollIntoView({behavior:'smooth'})} className="px-6 py-3 border border-zinc-700 rounded-lg hover:bg-zinc-900 transition-colors text-white">
-                                    About Me
-                                </button>
-                                <a href="media/Resume/Robotics%20CV%20v002.pdf" target="_blank" rel="noopener" className="inline-flex items-center gap-2 px-6 py-3 border border-zinc-600 rounded-lg text-zinc-300 hover:border-cyan-500 hover:text-white transition-colors font-medium">
-                                    <FileIcon size={16} /> View Resume
-                                </a>
                             </div>
                         </div>
 
