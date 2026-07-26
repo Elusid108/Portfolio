@@ -64,7 +64,7 @@
     "timestamp": "2026-01-12T01:03:01.269Z",
     "wip": false,
     "order": 0,
-    "specs": "<p>(144) PixelDots</p><p>(12) 150w Hybrid Zoom Lights</p><p>(40) RGBWA+UV Wash Fixtures</p><p>(2) Radiance Hazers</p><p>(6400) RGBW LED Pixel Pillars</p><p>(234) 1m x 0.5m Video Panels (4.81p)</p><p>(60) 0.5m x 0.5m Video Panels (4.81p)</p>",
+    "specs": "<h2><strong>Lighting Fixtures</strong></h2><ul><li><strong>144x</strong> PixelDots RGBW</li><li><strong>12x</strong> Hybrid Zoom 150W</li><li><strong>40x</strong> LED Wash RGBWA+UV</li></ul><h2><strong>LED Pixels</strong></h2><ul><li><strong>6400x</strong> SM16703 RGBW (3x1)</li><li class=\"ql-indent-1\"><strong>80x</strong> 4m @ 60/m 12vdc</li></ul><h2><strong>Video</strong></h2><ul><li><strong>234x</strong> 1m x 0.5m (4.81p)</li><li><strong>60x</strong> 0.5m x 0.5m (4.81p)</li></ul><h2><strong>SFX</strong></h2><ul><li><strong>2x</strong> Radiance Hazers</li></ul>",
     "related": []
   },
   {

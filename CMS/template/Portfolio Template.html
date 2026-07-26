@@ -700,6 +700,7 @@
 
             const scrollTo = (id) => {
                 setIsOpen(false);
+                history.replaceState(null, '', '#' + id);
                 const element = document.getElementById(id);
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
             };
@@ -970,8 +971,39 @@
 
         const App = () => {
             const [selectedProject, setSelectedProject] = useState(null);
-            const handleOpenProject = (project) => setSelectedProject(project);
-            const handleCloseProject = () => setSelectedProject(null);
+            const pushedHash = useRef(false);
+
+            useEffect(() => {
+                const syncFromHash = () => {
+                    const hash = window.location.hash;
+                    if (hash.startsWith('#project/')) {
+                        const id = decodeURIComponent(hash.slice('#project/'.length));
+                        const found = projects.find(p => p.id === id);
+                        setSelectedProject(found || null);
+                    } else {
+                        setSelectedProject(null);
+                        pushedHash.current = false;
+                    }
+                };
+                syncFromHash();
+                window.addEventListener('hashchange', syncFromHash);
+                return () => window.removeEventListener('hashchange', syncFromHash);
+            }, []);
+
+            const handleOpenProject = (project) => {
+                pushedHash.current = true;
+                window.location.hash = 'project/' + encodeURIComponent(project.id);
+            };
+
+            const handleCloseProject = () => {
+                if (pushedHash.current) {
+                    pushedHash.current = false;
+                    history.back();
+                } else {
+                    history.replaceState(null, '', window.location.pathname + window.location.search);
+                    setSelectedProject(null);
+                }
+            };
 
             return (
                 <div className="min-h-screen bg-zinc-950 text-zinc-200 selection:bg-cyan-500/30">
