@@ -1199,7 +1199,7 @@
             "timestamp": "2026-07-20T21:09:12.884Z",
             "id": "6808",
             "order": 1,
-            "specs": "",
+            "specs": "<h2><strong>Pixels</strong></h2><ul><li><strong>1152x</strong> WS2815 RGB</li><li class=\"ql-indent-1\"><strong>96x</strong> 0.2m @ 60/m 12vdc</li></ul><p><br></p>",
             "related": [
                 {
                     "name": "Control system",
@@ -2230,12 +2230,7 @@
                         const found = projects.find(p => p.id === id);
                         if (found) {
                             if (justOpenedFromCard.current) {
-                                // Normal card click — history entry already pushed, clear the flag
                                 justOpenedFromCard.current = false;
-                            } else if (pushedHash.current) {
-                                // Hash changed to a project while another was open (related link)
-                                // Replace instead of stack so X / back doesn't reveal the old project
-                                history.replaceState(null, '', hash);
                             }
                             setSelectedProject(found);
                         } else {
@@ -2261,13 +2256,10 @@
             };
 
             const handleCloseProject = () => {
-                if (pushedHash.current) {
-                    pushedHash.current = false;
-                    history.back();
-                } else {
-                    history.replaceState(null, '', window.location.pathname + window.location.search);
-                    setSelectedProject(null);
-                }
+                pushedHash.current = false;
+                justOpenedFromCard.current = false;
+                history.replaceState(null, '', window.location.pathname + window.location.search);
+                setSelectedProject(null);
             };
 
             return (

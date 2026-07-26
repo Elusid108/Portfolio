@@ -1101,7 +1101,7 @@
     "timestamp": "2026-07-20T21:09:12.884Z",
     "id": "6808",
     "order": 1,
-    "specs": "",
+    "specs": "<h2><strong>Pixels</strong></h2><ul><li><strong>1152x</strong> WS2815 RGB</li><li class=\"ql-indent-1\"><strong>96x</strong> 0.2m @ 60/m 12vdc</li></ul><p><br></p>",
     "related": [
       {
         "name": "Control system",

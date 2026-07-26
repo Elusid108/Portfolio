@@ -1070,12 +1070,7 @@
                         const found = projects.find(p => p.id === id);
                         if (found) {
                             if (justOpenedFromCard.current) {
-                                // Normal card click — history entry already pushed, clear the flag
                                 justOpenedFromCard.current = false;
-                            } else if (pushedHash.current) {
-                                // Hash changed to a project while another was open (related link)
-                                // Replace instead of stack so X / back doesn't reveal the old project
-                                history.replaceState(null, '', hash);
                             }
                             setSelectedProject(found);
                         } else {
@@ -1101,13 +1096,10 @@
             };
 
             const handleCloseProject = () => {
-                if (pushedHash.current) {
-                    pushedHash.current = false;
-                    history.back();
-                } else {
-                    history.replaceState(null, '', window.location.pathname + window.location.search);
-                    setSelectedProject(null);
-                }
+                pushedHash.current = false;
+                justOpenedFromCard.current = false;
+                history.replaceState(null, '', window.location.pathname + window.location.search);
+                setSelectedProject(null);
             };
 
             return (
