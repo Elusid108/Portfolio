@@ -546,6 +546,14 @@
                                 </div>
 
                                 <div className="space-y-6">
+                                    {project.specs && (
+                                        <div className="bg-zinc-900/50 border border-zinc-800 p-6 rounded-xl">
+                                            <h4 className="text-sm font-bold text-zinc-500 uppercase tracking-widest mb-4">Specifications</h4>
+                                            <div className="rich-text text-zinc-300 text-sm leading-relaxed"
+                                                 dangerouslySetInnerHTML={{ __html: project.specs }} />
+                                        </div>
+                                    )}
+
                                     {hasActions && (
                                         <div className="bg-zinc-900/50 border border-zinc-800 p-6 rounded-xl">
                                             <h4 className="text-sm font-bold text-zinc-500 uppercase tracking-widest mb-4">Actions</h4>
@@ -606,6 +614,23 @@
                                                 <Download size={18} /> Download Files
                                             </a>
                                          </div>
+                                    )}
+
+                                    {(project.related && project.related.length > 0) && (
+                                        <div className="bg-zinc-900/50 border border-zinc-800 p-6 rounded-xl">
+                                            <h4 className="text-sm font-bold text-zinc-500 uppercase tracking-widest mb-4">Related</h4>
+                                            <ul className="space-y-3">
+                                                {project.related.map((r, i) => (
+                                                    <li key={i}>
+                                                        <a href={ensureProtocol(r.url)} target="_blank" rel="noopener"
+                                                           className="flex items-center gap-3 text-sm text-zinc-300 hover:text-cyan-400 transition-colors group">
+                                                            <ExternalLink size={14} className="text-zinc-600 group-hover:text-cyan-400 shrink-0" />
+                                                            <span>{r.name}</span>
+                                                        </a>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
                                     )}
                                 </div>
                             </div>
