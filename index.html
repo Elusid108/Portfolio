@@ -1817,7 +1817,7 @@
                                                                     <ChevronRight size={14} className="text-zinc-600 group-hover:text-cyan-400 shrink-0 transition-colors"/>
                                                                 </a>
                                                                 {hoveredRelated === i && linkedProject && (
-                                                                    <div className="absolute right-full top-0 mr-3 z-50 w-72 pointer-events-none">
+                                                                    <div className="absolute right-full bottom-0 mr-3 z-50 w-72 pointer-events-none">
                                                                         <div className="bg-zinc-900 border border-zinc-700 rounded-xl shadow-2xl overflow-hidden">
                                                                             {linkedProject.image && (
                                                                                 <div className="aspect-video w-full overflow-hidden">
@@ -1834,7 +1834,7 @@
                                                                                     </div>
                                                                                 )}
                                                                                 {linkedProject.description && (
-                                                                                    <p className="text-xs text-zinc-400 line-clamp-3 leading-relaxed">{linkedProject.description}</p>
+                                                                                    <p className="text-xs text-zinc-400 line-clamp-3 leading-relaxed">{linkedProject.description.replace(/<[^>]*>/g, '')}</p>
                                                                                 )}
                                                                             </div>
                                                                         </div>
