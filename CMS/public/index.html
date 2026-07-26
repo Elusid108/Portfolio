@@ -653,11 +653,11 @@
       fileContainer.innerHTML = '';
       if (Array.isArray(p.files) && p.files.length > 0) {
          p.files.forEach(f => {
-            if (typeof f === 'string') addFileRow("Download", f, true);
-            else addFileRow(f.name, f.url, true);
+            if (typeof f === 'string') addFileRow("Download", f, '', true);
+            else addFileRow(f.name, f.url, f.description || '', true);
          });
       } else {
-        addFileRow("", "", true);
+        addFileRow("", "", '', true);
       }
 
       const galleryContainer = document.getElementById('gallery-container');
@@ -736,15 +736,18 @@
         badges.forEach((badge, index) => { badge.innerText = `#${index + 1}`; });
     }
 
-    function addFileRow(name = "", url = "", isBulk = false) {
+    function addFileRow(name = "", url = "", description = "", isBulk = false) {
         const container = document.getElementById('files-container');
         const div = document.createElement('div');
-        div.className = "flex gap-2 file-row items-center";
+        div.className = "file-row space-y-1";
         div.innerHTML = `
-            <span class="index-badge text-[10px] font-bold text-slate-400 w-6"></span>
-            <input type="text" placeholder="File Name" value="${name}" class="file-name flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="isDirty=true">
-            <input type="text" placeholder="Download URL" value="${url}" class="file-url flex-[2] bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="isDirty=true">
-            <button type="button" onclick="this.parentElement.remove(); updateListIndices('files-container'); isDirty=true;" class="text-red-400 hover:text-red-600 px-2 transition-colors"><i class="ph ph-trash"></i></button>
+            <div class="flex gap-2 items-center">
+                <span class="index-badge text-[10px] font-bold text-slate-400 w-6"></span>
+                <input type="text" placeholder="File Name" value="${name}" class="file-name flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="isDirty=true">
+                <input type="text" placeholder="Download URL" value="${url}" class="file-url flex-[2] bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="isDirty=true">
+                <button type="button" onclick="this.closest('.file-row').remove(); updateListIndices('files-container'); isDirty=true;" class="text-red-400 hover:text-red-600 px-2 transition-colors"><i class="ph ph-trash"></i></button>
+            </div>
+            <input type="text" placeholder="Description (optional — shown in popout on portfolio)" value="${description}" class="file-desc w-full bg-white border border-slate-200 rounded px-2 py-1 text-xs text-slate-500 focus:border-indigo-500 outline-none" oninput="isDirty=true">
         `;
         container.appendChild(div);
         updateListIndices('files-container');
@@ -996,7 +999,7 @@
           const res = await fetch('/api/media/upload-file', { method: 'POST', body: form });
           if (!res.ok) throw new Error(await res.text());
           const result = await res.json();
-          addFileRow(file.name, result.path);
+          addFileRow(file.name, result.path, '');
         } catch (err) {
           console.error('Upload failed for', file.name, err);
         }
@@ -1039,7 +1042,8 @@
       const fileRows = document.querySelectorAll('.file-row');
       const filesList = Array.from(fileRows).map(row => ({
           name: row.querySelector('.file-name').value,
-          url: row.querySelector('.file-url').value
+          url: row.querySelector('.file-url').value,
+          description: row.querySelector('.file-desc').value
       })).filter(f => f.name && f.url);
 
       const galleryRows = document.querySelectorAll('.gallery-row');
