@@ -366,6 +366,8 @@
     "video": "",
     "gallery": [
       "media/Electronics/Pixel Panel PCB/20200910_134441.webp",
+      "media/Electronics/LED Pixel Panel/20200910_13437.webp",
+      "media/Electronics/LED Pixel Panel/20200910_134533.webp",
       "media/Electronics/Pixel Panel PCB/20211118_155135.webp",
       "media/Electronics/Pixel Panel PCB/20211118_154350.webp",
       "media/Electronics/Pixel Panel PCB/20211202_171343.webp",
@@ -379,7 +381,9 @@
     "websiteLink": "",
     "timestamp": "2026-01-13T00:48:58.329Z",
     "wip": false,
-    "order": 0
+    "order": 0,
+    "specs": "",
+    "related": []
   },
   {
     "id": "5416",
@@ -1144,5 +1148,39 @@
         "url": "#project/6841"
       }
     ]
+  },
+  {
+    "title": "Extrusion Centering Sled",
+    "category": "Solutions",
+    "image": "media/Fabrication/Extrusion Centering Sled/20200909_213244.webp",
+    "description": "<p>A custom modular 3D printed alignment jig designed to perfectly center LED extrusion tracks on uneven nightclub pillars.</p>",
+    "longDescription": "<p>This project required designing a custom alignment tool to install LED strip extrusions on the foundational pillars of Temple nightclub in San Francisco. The primary goal was to achieve visually perfect vertical alignment of center tracks on boxed pillars that were irregularly shaped and wavy. Unlike standard measuring methods, this unique solution utilized a physical jig that referenced the outer edge tracks to automatically find the relative center at any given height, ensuring the final installation appeared flawlessly straight.</p><p>The workflow began with a rudimentary prototype using scrap material and a ruler to test the alignment concept. The final tool functioned as a dynamic sled that rode inside the center LED extrusion track during the physical installation. As the jig slid upward along the track, notched ends highlighted with yellow china marker allowed for constant visual verification against the outer corner extrusions. This continuous referencing system made it possible to secure the center track with a pneumatic nailer progressively, actively compensating for the hidden waves in the underlying pillar casing.</p><p>The standout technical achievement was engineering a rigid tool that bypassed spatial manufacturing constraints. Because the required length of the jig exceeded the available 3D printer build plate, the component was designed as a four-part modular assembly. These interlocking sections maintained the structural integrity required to withstand the physical forces of the pneumatic nailing process while keeping the sled firmly on track. This custom hardware solution successfully transformed a highly irregular architectural environment into a precise, uniform lighting canvas.</p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "tags": [
+      "FDM",
+      "TOOL",
+      "CENTERING",
+      "EXTRUSION",
+      "LEDS"
+    ],
+    "gallery": [
+      "media/Fabrication/Extrusion Centering Sled/20200909_213244.webp",
+      "media/Fabrication/Extrusion Centering Sled/20200907_234532.webp",
+      "media/Fabrication/Extrusion Centering Sled/20200909_013406.webp",
+      "media/Fabrication/Extrusion Centering Sled/20200908_090628.webp",
+      "media/Fabrication/Extrusion Centering Sled/20200907_231655.webp"
+    ],
+    "files": [],
+    "specs": "<h2>Material</h2><ul><li>PLA+</li></ul><h2>Printer</h2><ul><li>Tenlog TL-D3 Pro</li></ul>",
+    "related": [],
+    "video": "",
+    "timestamp": "2026-07-26T23:20:01.923Z",
+    "id": "5376",
+    "order": 2
   }
 ]
