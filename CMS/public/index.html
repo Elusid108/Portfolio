@@ -183,7 +183,13 @@
           <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
              <div class="flex justify-between items-center mb-3 border-b border-slate-200 pb-2">
                  <h3 class="text-xs font-bold text-slate-500 uppercase">Downloadable Files</h3>
-                 <button type="button" onclick="addFileRow()" class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded hover:bg-indigo-200 font-bold">+ Add File</button>
+                 <div class="flex gap-2">
+                     <label class="cursor-pointer text-xs bg-green-100 text-green-600 px-2 py-1 rounded hover:bg-green-200 font-bold flex items-center gap-1">
+                         <i class="ph ph-upload-simple"></i> Upload
+                         <input type="file" class="hidden" multiple onchange="handleFileUpload(this)">
+                     </label>
+                     <button type="button" onclick="addFileRow()" class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded hover:bg-indigo-200 font-bold">+ Add URL</button>
+                 </div>
              </div>
              <div id="files-container" class="space-y-2"></div>
           </div>
@@ -550,9 +556,14 @@
              ${p.featured ? '<div class="absolute bottom-0 right-0 w-3 h-3 bg-yellow-400 border border-white rounded-full shadow-sm"></div>' : ''}
              ${p.wip ? '<div class="absolute top-0 left-0 bg-purple-600 text-white text-[8px] font-bold px-1 rounded-br">WIP</div>' : ''}
           </div>
-          <div class="overflow-hidden">
+          <div class="overflow-hidden flex-1 min-w-0">
              <h3 class="font-bold text-slate-800 truncate group-hover:text-indigo-600">${p.title}</h3>
           </div>
+          <button
+            onclick="event.stopPropagation(); copyProjectHash('${p.id}')"
+            title="Copy project link"
+            class="opacity-0 group-hover:opacity-100 text-slate-400 hover:text-indigo-500 transition-all p-1 rounded flex-shrink-0"
+          ><i class="ph ph-link-simple"></i></button>
         </div>`;
     }
 
@@ -588,6 +599,22 @@
     function tryEditById(id) {
       const idx = projects.findIndex(p => String(p.id) === String(id));
       if (idx !== -1) tryEditItem(idx);
+    }
+
+    function copyProjectHash(id) {
+      const hash = '#project/' + encodeURIComponent(id);
+      navigator.clipboard.writeText(hash)
+        .catch(() => {
+          const el = document.createElement('textarea');
+          el.value = hash;
+          document.body.appendChild(el);
+          el.select();
+          document.execCommand('copy');
+          document.body.removeChild(el);
+        })
+        .finally(() => {
+          Toastify({ text: '📋 Copied: ' + hash, duration: 3000, backgroundColor: '#4f46e5' }).showToast();
+        });
     }
 
     function hideAllForms() {
@@ -949,6 +976,34 @@
       isDirty = true;
       hideStatus();
       Toastify({ text: `${files.length} image(s) uploaded!`, duration: 2000, backgroundColor: "#10b981" }).showToast();
+      input.value = '';
+    }
+
+    async function handleFileUpload(input) {
+      const files = Array.from(input.files);
+      if (!files.length) return;
+      const category = document.getElementById('category').value;
+      const project = document.getElementById('title').value;
+      if (!project) { alert('Please enter a project title first.'); input.value = ''; return; }
+
+      showStatus(`Uploading ${files.length} file(s)...`);
+      for (const file of files) {
+        try {
+          const form = new FormData();
+          form.append('file', file);
+          form.append('category', category);
+          form.append('project', project);
+          const res = await fetch('/api/media/upload-file', { method: 'POST', body: form });
+          if (!res.ok) throw new Error(await res.text());
+          const result = await res.json();
+          addFileRow(file.name, result.path);
+        } catch (err) {
+          console.error('Upload failed for', file.name, err);
+        }
+      }
+      isDirty = true;
+      hideStatus();
+      Toastify({ text: `${files.length} file(s) uploaded!`, duration: 2000, backgroundColor: '#10b981' }).showToast();
       input.value = '';
     }
 

@@ -80,14 +80,14 @@
         .rich-text li { display: list-item !important; }
         .rich-text a { color: #22d3ee; text-decoration: underline; }
         /* Quill indent classes (used by CMS rich text editor) */
-        .rich-text .ql-indent-1 { padding-left: 3em; }
-        .rich-text .ql-indent-2 { padding-left: 6em; }
-        .rich-text .ql-indent-3 { padding-left: 9em; }
-        .rich-text .ql-indent-4 { padding-left: 12em; }
-        .rich-text .ql-indent-5 { padding-left: 15em; }
-        .rich-text .ql-indent-6 { padding-left: 18em; }
-        .rich-text .ql-indent-7 { padding-left: 21em; }
-        .rich-text .ql-indent-8 { padding-left: 24em; }
+        .rich-text .ql-indent-1 { margin-left: 3em; }
+        .rich-text .ql-indent-2 { margin-left: 6em; }
+        .rich-text .ql-indent-3 { margin-left: 9em; }
+        .rich-text .ql-indent-4 { margin-left: 12em; }
+        .rich-text .ql-indent-5 { margin-left: 15em; }
+        .rich-text .ql-indent-6 { margin-left: 18em; }
+        .rich-text .ql-indent-7 { margin-left: 21em; }
+        .rich-text .ql-indent-8 { margin-left: 24em; }
     </style>
 </head>
 <body>
@@ -125,7 +125,14 @@
             "websiteLink": "",
             "timestamp": "2026-01-12T01:03:01.269Z",
             "wip": false,
-            "order": 9
+            "order": 9,
+            "specs": "",
+            "related": [
+                {
+                    "name": "chrismoore.me",
+                    "url": "http://chrismoore.me"
+                }
+            ]
         },
         {
             "id": "1",
@@ -160,14 +167,24 @@
             "launchLink": "",
             "githubLink": "",
             "shopLink": "",
-            "files": [],
+            "files": [
+                {
+                    "name": "Instrument schedule",
+                    "url": "media/Lighting/Main Room - Temple Nightclub _ San Francisco/files/Temple SF instrument schedule.pdf"
+                }
+            ],
             "featured": true,
             "websiteLink": "",
             "timestamp": "2026-01-12T01:03:01.269Z",
             "wip": false,
             "order": 0,
             "specs": "<h2><strong>Lighting</strong></h2><ul><li><strong>144x</strong> PixelDots RGBW</li><li><strong>12x</strong> Hybrid Zoom 150W</li><li><strong>40x</strong> LED Wash RGBWA+UV</li></ul><h2><strong>Pixels</strong></h2><ul><li><strong>6400x</strong> SM16703 RGBW (3x1)</li><li class=\"ql-indent-1\"><strong>80x</strong> 4m @ 60/m 12vdc</li></ul><h2><strong>Video</strong></h2><ul><li><strong>234x</strong> 1m x 0.5m (4.81p)</li><li><strong>60x</strong> 0.5m x 0.5m (4.81p)</li></ul><h2><strong>SFX</strong></h2><ul><li><strong>2x</strong> Radiance Hazers</li></ul>",
-            "related": []
+            "related": [
+                {
+                    "name": "Control System",
+                    "url": "#project/8252"
+                }
+            ]
         },
         {
             "id": "8147",
@@ -217,7 +234,7 @@
             ],
             "image": "media/Apps/LithoLab/image2.webp",
             "description": "<p>A fully browser-based web application for generating custom-shaped, multi-color 3D printable lithophanes with AI-assisted design tools.</p>",
-            "longDescription": "<p><strong>LithoLab </strong>is a client-side web application designed to generate high-fidelity, custom-shaped lithophanes for 3D printing. While standard generators are restricted to traditional four-color CMYK constraints, LithoLab supports customizable, multi-color palettes to achieve superior color accuracy in the final physical print. The project differentiates itself by introducing custom masking capabilities that trim the lithophane into non-standard shapes, along with generating an independently exportable geometric border for polished, multi-part assemblies.</p><p>The system architecture was developed by porting the open-source PIXEStl backend to execute entirely within the browser, avoiding server-side processing overhead. The workflow is managed through a custom frontend interface where users upload source imagery, define masking parameters, and configure border dimensions. Upon export, the software isolates the customized border as a discrete 3D object, allowing users to assign specific filaments and colors when preparing the files in slicing software like Bambu Studio.</p><p>The standout technical achievement is the robust JavaScript implementation of the modified PIXEStl engine, paired with an integrated Google Gemini API for generating base images, structural masks, and file metadata. To solve the hardware constraints of color mapping on advanced machines like the Bambu Lab X1C, a dedicated companion utility called LithoPalletGen was built in parallel. This secondary application handles precise color palette generation, import/export functionality, and material calibration to ensure accurate physical reproduction of the digital models.</p><p><br></p><p>Check out the companion app <a href=\"https://elusid108.github.io/LithoPalletGen/\" target=\"_blank\">LithoPalletGen</a> to generate calibrated pallet files for LithoLab.</p>",
+            "longDescription": "<p><strong>LithoLab </strong>is a client-side web application designed to generate high-fidelity, custom-shaped lithophanes for 3D printing. While standard generators are restricted to traditional four-color CMYK constraints, LithoLab supports customizable, multi-color palettes to achieve superior color accuracy in the final physical print. The project differentiates itself by introducing custom masking capabilities that trim the lithophane into non-standard shapes, along with generating an independently exportable geometric border for polished, multi-part assemblies.</p><p>The system architecture was developed by porting the open-source PIXEStl backend to execute entirely within the browser, avoiding server-side processing overhead. The workflow is managed through a custom frontend interface where users upload source imagery, define masking parameters, and configure border dimensions. Upon export, the software isolates the customized border as a discrete 3D object, allowing users to assign specific filaments and colors when preparing the files in slicing software like Bambu Studio.</p><p>The standout technical achievement is the robust JavaScript implementation of the modified PIXEStl engine, paired with an integrated Google Gemini API for generating base images, structural masks, and file metadata. To solve the hardware constraints of color mapping on advanced machines like the Bambu Lab X1C, a dedicated companion utility called LithoPalletGen was built in parallel. This secondary application handles precise color palette generation, import/export functionality, and material calibration to ensure accurate physical reproduction of the digital models.</p>",
             "video": "",
             "gallery": [
                 "media/Apps/LithoLab/image2.webp",
@@ -231,7 +248,14 @@
             "websiteLink": "",
             "timestamp": "2026-01-12T01:03:01.269Z",
             "wip": true,
-            "order": 0
+            "order": 0,
+            "specs": "",
+            "related": [
+                {
+                    "name": "Pallet generator",
+                    "url": "#project/968"
+                }
+            ]
         },
         {
             "id": "3670",
@@ -385,7 +409,14 @@
             ],
             "files": [],
             "video": "",
-            "order": 1
+            "order": 1,
+            "specs": "",
+            "related": [
+                {
+                    "name": "Lighting design",
+                    "url": "#project/1"
+                }
+            ]
         },
         {
             "id": "9517",
@@ -785,7 +816,14 @@
             "websiteLink": "",
             "timestamp": "2026-06-11T17:19:00.407Z",
             "wip": false,
-            "order": 3
+            "order": 3,
+            "specs": "",
+            "related": [
+                {
+                    "name": "Color lithophane generator",
+                    "url": "#project/2944"
+                }
+            ]
         },
         {
             "title": "Field Bench PSU",
@@ -884,7 +922,14 @@
             ],
             "files": [],
             "video": "",
-            "order": 6
+            "order": 6,
+            "specs": "",
+            "related": [
+                {
+                    "name": "Control system",
+                    "url": "#project/4382"
+                }
+            ]
         },
         {
             "title": "Basement - Triangle | Denver",
@@ -919,7 +964,7 @@
             "category": "Integration",
             "image": "media/Integration/Que Bueno Suerte! - Denver/20240606_211259.webp",
             "description": "<p>Placeholder</p>",
-            "longDescription": "<p>Add all the different independent systems that were listed above in lighting design and how they were all combined into one control system. Talk about server rack in here, the trials with ELM and Madrix, the challenges of running hundreds of pixels of universes and trying to get it simplified enough for the restaurant staff to operate. </p>",
+            "longDescription": "<p>Add all the different independent systems that were listed above in lighting design and how they were all combined into one control system. Talk about server rack in here, the trials with ELM and Madrix, the challenges of running hundreds of pixels of universes and trying to get it simplified enough for the restaurant staff to operate.</p>",
             "websiteLink": "",
             "launchLink": "",
             "githubLink": "",
@@ -940,7 +985,18 @@
             "video": "",
             "timestamp": "2026-06-21T23:26:29.795Z",
             "id": "4113",
-            "order": 0
+            "order": 0,
+            "specs": "",
+            "related": [
+                {
+                    "name": "Curved bottle shelf",
+                    "url": "#project/6808"
+                },
+                {
+                    "name": "Vertical bar tubes",
+                    "url": "#project/4411"
+                }
+            ]
         },
         {
             "title": "Vertical Pixel Tubes - Que Bueno Suerte!",
@@ -968,7 +1024,14 @@
             "video": "",
             "timestamp": "2026-06-21T23:30:44.785Z",
             "id": "4411",
-            "order": 4
+            "order": 4,
+            "specs": "",
+            "related": [
+                {
+                    "name": "Control system",
+                    "url": "#project/4113"
+                }
+            ]
         },
         {
             "title": "Pixel Negative \"X\"",
@@ -1134,7 +1197,14 @@
             "video": "",
             "timestamp": "2026-07-20T21:09:12.884Z",
             "id": "6808",
-            "order": 1
+            "order": 1,
+            "specs": "",
+            "related": [
+                {
+                    "name": "Control system",
+                    "url": "#project/4113"
+                }
+            ]
         },
         {
             "title": "Temple Nightclub - Denver",
@@ -1163,7 +1233,14 @@
             "video": "",
             "timestamp": "2026-07-25T16:47:23.504Z",
             "id": "4382",
-            "order": 2
+            "order": 2,
+            "specs": "",
+            "related": [
+                {
+                    "name": "The Orb",
+                    "url": "#project/6841"
+                }
+            ]
         }
     ],
     "settings": {
@@ -1217,9 +1294,14 @@
         const ensureProtocol = (url) => {
             if (!url) return '';
             if (url.startsWith('mailto:')) return url;
+            if (url.startsWith('#')) return url;
+            if (url.startsWith('/') || url.startsWith('./') || url.startsWith('../')) return url;
             const trimmed = url.trim();
-            // Check if it already starts with http:// or https://
             if (!/^https?:\/\//i.test(trimmed)) {
+                // Relative paths (e.g. media/...) should be served as-is
+                if (!/^[a-zA-Z0-9+\-.]+:\/\//.test(trimmed) && !trimmed.includes('://') && trimmed.match(/^[a-zA-Z]+\//)) {
+                    return trimmed;
+                }
                 return `https://${trimmed}`;
             }
             return trimmed;
@@ -1524,6 +1606,7 @@
 
         const ProjectModal = ({ project, onClose }) => {
             const [lightboxIndex, setLightboxIndex] = useState(null);
+            const [hoveredRelated, setHoveredRelated] = useState(null);
             
             useEffect(() => {
                 document.body.style.overflow = 'hidden';
@@ -1666,6 +1749,14 @@
                                         </div>
                                     )}
 
+                                    {project.specs && (
+                                        <div className="bg-zinc-900/50 border border-zinc-800 p-6 rounded-xl">
+                                            <h4 className="text-sm font-bold text-zinc-500 uppercase tracking-widest mb-4">Specifications</h4>
+                                            <div className="rich-text text-zinc-300 text-sm leading-relaxed"
+                                                 dangerouslySetInnerHTML={{ __html: project.specs }} />
+                                        </div>
+                                    )}
+
                                     {(project.files && project.files.length > 0) && (
                                         <div className="bg-zinc-900/50 border border-zinc-800 p-6 rounded-xl">
                                             <h4 className="text-sm font-bold text-zinc-500 uppercase tracking-widest mb-4">Downloads</h4>
@@ -1704,24 +1795,68 @@
                                         <div className="bg-zinc-900/50 border border-zinc-800 p-6 rounded-xl">
                                             <h4 className="text-sm font-bold text-zinc-500 uppercase tracking-widest mb-4">Related</h4>
                                             <ul className="space-y-3">
-                                                {project.related.map((r, i) => (
-                                                    <li key={i}>
-                                                        <a href={ensureProtocol(r.url)} target="_blank" rel="noopener"
-                                                           className="flex items-center gap-3 text-sm text-zinc-300 hover:text-cyan-400 transition-colors group">
-                                                            <ExternalLink size={14} className="text-zinc-600 group-hover:text-cyan-400 shrink-0" />
-                                                            <span>{r.name}</span>
-                                                        </a>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    )}
+                                                {project.related.map((r, i) => {
+                                                    const isLocalHash = r.url && r.url.startsWith('#project/');
+                                                    const linkedId = isLocalHash ? decodeURIComponent(r.url.slice('#project/'.length)) : null;
+                                                    const linkedProject = linkedId ? projects.find(p => p.id === linkedId) : null;
+                                                    const displayTitle = (isLocalHash && linkedProject) ? linkedProject.title : r.name;
+                                                    const displayImage = (isLocalHash && linkedProject) ? linkedProject.image : null;
 
-                                    {project.specs && (
-                                        <div className="bg-zinc-900/50 border border-zinc-800 p-6 rounded-xl">
-                                            <h4 className="text-sm font-bold text-zinc-500 uppercase tracking-widest mb-4">Specifications</h4>
-                                            <div className="rich-text text-zinc-300 text-sm leading-relaxed"
-                                                 dangerouslySetInnerHTML={{ __html: project.specs }} />
+                                                    if (isLocalHash) {
+                                                        return (
+                                                            <li key={i} className="relative" onMouseEnter={() => setHoveredRelated(i)} onMouseLeave={() => setHoveredRelated(null)}>
+                                                                <a href={r.url} className="flex items-center gap-3 p-3 rounded-lg bg-zinc-800 hover:bg-zinc-700 transition-colors group">
+                                                                    {displayImage ? (
+                                                                        <img src={displayImage} alt={displayTitle} className="w-10 h-10 rounded object-cover shrink-0 bg-zinc-700" />
+                                                                    ) : (
+                                                                        <div className="w-10 h-10 rounded bg-zinc-700 shrink-0 flex items-center justify-center text-zinc-500">
+                                                                            <FileIcon size={18}/>
+                                                                        </div>
+                                                                    )}
+                                                                    <span className="flex-1 min-w-0 text-sm font-medium text-white truncate">{displayTitle}</span>
+                                                                    <ChevronRight size={14} className="text-zinc-600 group-hover:text-cyan-400 shrink-0 transition-colors"/>
+                                                                </a>
+                                                                {hoveredRelated === i && linkedProject && (
+                                                                    <div className="absolute right-full top-0 mr-3 z-50 w-72 pointer-events-none">
+                                                                        <div className="bg-zinc-900 border border-zinc-700 rounded-xl shadow-2xl overflow-hidden">
+                                                                            {linkedProject.image && (
+                                                                                <div className="aspect-video w-full overflow-hidden">
+                                                                                    <img src={linkedProject.image} alt={linkedProject.title} className="w-full h-full object-cover" />
+                                                                                </div>
+                                                                            )}
+                                                                            <div className="p-3">
+                                                                                <div className="font-bold text-white text-sm mb-2">{linkedProject.title}</div>
+                                                                                {linkedProject.tags && linkedProject.tags.length > 0 && (
+                                                                                    <div className="flex flex-wrap gap-1 mb-2">
+                                                                                        {linkedProject.tags.slice(0, 5).map((tag, ti) => (
+                                                                                            <span key={ti} className="text-xs px-2 py-0.5 rounded-full bg-zinc-800 text-cyan-400 border border-zinc-700">{tag}</span>
+                                                                                        ))}
+                                                                                    </div>
+                                                                                )}
+                                                                                {linkedProject.description && (
+                                                                                    <p className="text-xs text-zinc-400 line-clamp-3 leading-relaxed">{linkedProject.description}</p>
+                                                                                )}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                )}
+                                                            </li>
+                                                        );
+                                                    }
+
+                                                    return (
+                                                        <li key={i}>
+                                                            <a href={ensureProtocol(r.url)} target="_blank" rel="noopener" className="flex items-center gap-3 p-3 rounded-lg bg-zinc-800 hover:bg-zinc-700 transition-colors group">
+                                                                <div className="bg-zinc-900 p-2 rounded text-zinc-400 group-hover:text-cyan-400 shrink-0 transition-colors">
+                                                                    <ExternalLink size={16}/>
+                                                                </div>
+                                                                <span className="flex-1 min-w-0 text-sm font-medium text-white truncate">{r.name}</span>
+                                                                <ChevronRight size={14} className="text-zinc-600 group-hover:text-cyan-400 shrink-0 transition-colors"/>
+                                                            </a>
+                                                        </li>
+                                                    );
+                                                })}
+                                            </ul>
                                         </div>
                                     )}
                                 </div>
@@ -2064,6 +2199,7 @@
         const App = () => {
             const [selectedProject, setSelectedProject] = useState(null);
             const pushedHash = useRef(false);
+            const justOpenedFromCard = useRef(false);
 
             useEffect(() => {
                 const syncFromHash = () => {
@@ -2071,10 +2207,25 @@
                     if (hash.startsWith('#project/')) {
                         const id = decodeURIComponent(hash.slice('#project/'.length));
                         const found = projects.find(p => p.id === id);
-                        setSelectedProject(found || null);
+                        if (found) {
+                            if (justOpenedFromCard.current) {
+                                // Normal card click — history entry already pushed, clear the flag
+                                justOpenedFromCard.current = false;
+                            } else if (pushedHash.current) {
+                                // Hash changed to a project while another was open (related link)
+                                // Replace instead of stack so X / back doesn't reveal the old project
+                                history.replaceState(null, '', hash);
+                            }
+                            setSelectedProject(found);
+                        } else {
+                            setSelectedProject(null);
+                            pushedHash.current = false;
+                            justOpenedFromCard.current = false;
+                        }
                     } else {
                         setSelectedProject(null);
                         pushedHash.current = false;
+                        justOpenedFromCard.current = false;
                     }
                 };
                 syncFromHash();
@@ -2084,6 +2235,7 @@
 
             const handleOpenProject = (project) => {
                 pushedHash.current = true;
+                justOpenedFromCard.current = true;
                 window.location.hash = 'project/' + encodeURIComponent(project.id);
             };
 

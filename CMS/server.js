@@ -96,6 +96,18 @@ app.post('/api/media/upload', upload.single('file'), async (req, res) => {
   }
 });
 
+app.post('/api/media/upload-file', upload.single('file'), async (req, res) => {
+  try {
+    const { category, project } = req.body;
+    if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
+    if (!category || !project) return res.status(400).json({ error: 'Category and project name required' });
+    const relativePath = await media.processFileUpload(req.file, category, project);
+    res.json({ success: true, path: relativePath });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 app.post('/api/media/convert-all', async (req, res) => {
   try {
     const result = await media.convertAllMedia();

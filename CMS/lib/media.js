@@ -164,4 +164,18 @@ function updateDataReferences(pathMap) {
   }
 }
 
-module.exports = { processUpload, convertAllMedia, CATEGORY_FOLDER_MAP };
+async function processFileUpload(file, category, projectName) {
+  const originalName = sanitize(file.originalname);
+  const folder = CATEGORY_FOLDER_MAP[category] || category;
+  const safeProject = sanitize(projectName);
+  const destDir = path.join(MEDIA_DIR, folder, safeProject, 'files');
+  const webPath = `media/${folder}/${safeProject}/files/${originalName}`;
+
+  fs.mkdirSync(destDir, { recursive: true });
+  fs.copyFileSync(file.path, path.join(destDir, originalName));
+  try { fs.unlinkSync(file.path); } catch (_) {}
+
+  return webPath;
+}
+
+module.exports = { processUpload, processFileUpload, convertAllMedia, CATEGORY_FOLDER_MAP };

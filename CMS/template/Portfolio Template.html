@@ -80,14 +80,14 @@
         .rich-text li { display: list-item !important; }
         .rich-text a { color: #22d3ee; text-decoration: underline; }
         /* Quill indent classes (used by CMS rich text editor) */
-        .rich-text .ql-indent-1 { padding-left: 3em; }
-        .rich-text .ql-indent-2 { padding-left: 6em; }
-        .rich-text .ql-indent-3 { padding-left: 9em; }
-        .rich-text .ql-indent-4 { padding-left: 12em; }
-        .rich-text .ql-indent-5 { padding-left: 15em; }
-        .rich-text .ql-indent-6 { padding-left: 18em; }
-        .rich-text .ql-indent-7 { padding-left: 21em; }
-        .rich-text .ql-indent-8 { padding-left: 24em; }
+        .rich-text .ql-indent-1 { margin-left: 3em; }
+        .rich-text .ql-indent-2 { margin-left: 6em; }
+        .rich-text .ql-indent-3 { margin-left: 9em; }
+        .rich-text .ql-indent-4 { margin-left: 12em; }
+        .rich-text .ql-indent-5 { margin-left: 15em; }
+        .rich-text .ql-indent-6 { margin-left: 18em; }
+        .rich-text .ql-indent-7 { margin-left: 21em; }
+        .rich-text .ql-indent-8 { margin-left: 24em; }
     </style>
 </head>
 <body>
@@ -135,9 +135,14 @@
         const ensureProtocol = (url) => {
             if (!url) return '';
             if (url.startsWith('mailto:')) return url;
+            if (url.startsWith('#')) return url;
+            if (url.startsWith('/') || url.startsWith('./') || url.startsWith('../')) return url;
             const trimmed = url.trim();
-            // Check if it already starts with http:// or https://
             if (!/^https?:\/\//i.test(trimmed)) {
+                // Relative paths (e.g. media/...) should be served as-is
+                if (!/^[a-zA-Z0-9+\-.]+:\/\//.test(trimmed) && !trimmed.includes('://') && trimmed.match(/^[a-zA-Z]+\//)) {
+                    return trimmed;
+                }
                 return `https://${trimmed}`;
             }
             return trimmed;
@@ -442,6 +447,7 @@
 
         const ProjectModal = ({ project, onClose }) => {
             const [lightboxIndex, setLightboxIndex] = useState(null);
+            const [hoveredRelated, setHoveredRelated] = useState(null);
             
             useEffect(() => {
                 document.body.style.overflow = 'hidden';
@@ -584,6 +590,14 @@
                                         </div>
                                     )}
 
+                                    {project.specs && (
+                                        <div className="bg-zinc-900/50 border border-zinc-800 p-6 rounded-xl">
+                                            <h4 className="text-sm font-bold text-zinc-500 uppercase tracking-widest mb-4">Specifications</h4>
+                                            <div className="rich-text text-zinc-300 text-sm leading-relaxed"
+                                                 dangerouslySetInnerHTML={{ __html: project.specs }} />
+                                        </div>
+                                    )}
+
                                     {(project.files && project.files.length > 0) && (
                                         <div className="bg-zinc-900/50 border border-zinc-800 p-6 rounded-xl">
                                             <h4 className="text-sm font-bold text-zinc-500 uppercase tracking-widest mb-4">Downloads</h4>
@@ -622,24 +636,68 @@
                                         <div className="bg-zinc-900/50 border border-zinc-800 p-6 rounded-xl">
                                             <h4 className="text-sm font-bold text-zinc-500 uppercase tracking-widest mb-4">Related</h4>
                                             <ul className="space-y-3">
-                                                {project.related.map((r, i) => (
-                                                    <li key={i}>
-                                                        <a href={ensureProtocol(r.url)} target="_blank" rel="noopener"
-                                                           className="flex items-center gap-3 text-sm text-zinc-300 hover:text-cyan-400 transition-colors group">
-                                                            <ExternalLink size={14} className="text-zinc-600 group-hover:text-cyan-400 shrink-0" />
-                                                            <span>{r.name}</span>
-                                                        </a>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    )}
+                                                {project.related.map((r, i) => {
+                                                    const isLocalHash = r.url && r.url.startsWith('#project/');
+                                                    const linkedId = isLocalHash ? decodeURIComponent(r.url.slice('#project/'.length)) : null;
+                                                    const linkedProject = linkedId ? projects.find(p => p.id === linkedId) : null;
+                                                    const displayTitle = (isLocalHash && linkedProject) ? linkedProject.title : r.name;
+                                                    const displayImage = (isLocalHash && linkedProject) ? linkedProject.image : null;
 
-                                    {project.specs && (
-                                        <div className="bg-zinc-900/50 border border-zinc-800 p-6 rounded-xl">
-                                            <h4 className="text-sm font-bold text-zinc-500 uppercase tracking-widest mb-4">Specifications</h4>
-                                            <div className="rich-text text-zinc-300 text-sm leading-relaxed"
-                                                 dangerouslySetInnerHTML={{ __html: project.specs }} />
+                                                    if (isLocalHash) {
+                                                        return (
+                                                            <li key={i} className="relative" onMouseEnter={() => setHoveredRelated(i)} onMouseLeave={() => setHoveredRelated(null)}>
+                                                                <a href={r.url} className="flex items-center gap-3 p-3 rounded-lg bg-zinc-800 hover:bg-zinc-700 transition-colors group">
+                                                                    {displayImage ? (
+                                                                        <img src={displayImage} alt={displayTitle} className="w-10 h-10 rounded object-cover shrink-0 bg-zinc-700" />
+                                                                    ) : (
+                                                                        <div className="w-10 h-10 rounded bg-zinc-700 shrink-0 flex items-center justify-center text-zinc-500">
+                                                                            <FileIcon size={18}/>
+                                                                        </div>
+                                                                    )}
+                                                                    <span className="flex-1 min-w-0 text-sm font-medium text-white truncate">{displayTitle}</span>
+                                                                    <ChevronRight size={14} className="text-zinc-600 group-hover:text-cyan-400 shrink-0 transition-colors"/>
+                                                                </a>
+                                                                {hoveredRelated === i && linkedProject && (
+                                                                    <div className="absolute right-full top-0 mr-3 z-50 w-72 pointer-events-none">
+                                                                        <div className="bg-zinc-900 border border-zinc-700 rounded-xl shadow-2xl overflow-hidden">
+                                                                            {linkedProject.image && (
+                                                                                <div className="aspect-video w-full overflow-hidden">
+                                                                                    <img src={linkedProject.image} alt={linkedProject.title} className="w-full h-full object-cover" />
+                                                                                </div>
+                                                                            )}
+                                                                            <div className="p-3">
+                                                                                <div className="font-bold text-white text-sm mb-2">{linkedProject.title}</div>
+                                                                                {linkedProject.tags && linkedProject.tags.length > 0 && (
+                                                                                    <div className="flex flex-wrap gap-1 mb-2">
+                                                                                        {linkedProject.tags.slice(0, 5).map((tag, ti) => (
+                                                                                            <span key={ti} className="text-xs px-2 py-0.5 rounded-full bg-zinc-800 text-cyan-400 border border-zinc-700">{tag}</span>
+                                                                                        ))}
+                                                                                    </div>
+                                                                                )}
+                                                                                {linkedProject.description && (
+                                                                                    <p className="text-xs text-zinc-400 line-clamp-3 leading-relaxed">{linkedProject.description}</p>
+                                                                                )}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                )}
+                                                            </li>
+                                                        );
+                                                    }
+
+                                                    return (
+                                                        <li key={i}>
+                                                            <a href={ensureProtocol(r.url)} target="_blank" rel="noopener" className="flex items-center gap-3 p-3 rounded-lg bg-zinc-800 hover:bg-zinc-700 transition-colors group">
+                                                                <div className="bg-zinc-900 p-2 rounded text-zinc-400 group-hover:text-cyan-400 shrink-0 transition-colors">
+                                                                    <ExternalLink size={16}/>
+                                                                </div>
+                                                                <span className="flex-1 min-w-0 text-sm font-medium text-white truncate">{r.name}</span>
+                                                                <ChevronRight size={14} className="text-zinc-600 group-hover:text-cyan-400 shrink-0 transition-colors"/>
+                                                            </a>
+                                                        </li>
+                                                    );
+                                                })}
+                                            </ul>
                                         </div>
                                     )}
                                 </div>
@@ -982,6 +1040,7 @@
         const App = () => {
             const [selectedProject, setSelectedProject] = useState(null);
             const pushedHash = useRef(false);
+            const justOpenedFromCard = useRef(false);
 
             useEffect(() => {
                 const syncFromHash = () => {
@@ -989,10 +1048,25 @@
                     if (hash.startsWith('#project/')) {
                         const id = decodeURIComponent(hash.slice('#project/'.length));
                         const found = projects.find(p => p.id === id);
-                        setSelectedProject(found || null);
+                        if (found) {
+                            if (justOpenedFromCard.current) {
+                                // Normal card click — history entry already pushed, clear the flag
+                                justOpenedFromCard.current = false;
+                            } else if (pushedHash.current) {
+                                // Hash changed to a project while another was open (related link)
+                                // Replace instead of stack so X / back doesn't reveal the old project
+                                history.replaceState(null, '', hash);
+                            }
+                            setSelectedProject(found);
+                        } else {
+                            setSelectedProject(null);
+                            pushedHash.current = false;
+                            justOpenedFromCard.current = false;
+                        }
                     } else {
                         setSelectedProject(null);
                         pushedHash.current = false;
+                        justOpenedFromCard.current = false;
                     }
                 };
                 syncFromHash();
@@ -1002,6 +1076,7 @@
 
             const handleOpenProject = (project) => {
                 pushedHash.current = true;
+                justOpenedFromCard.current = true;
                 window.location.hash = 'project/' + encodeURIComponent(project.id);
             };
 

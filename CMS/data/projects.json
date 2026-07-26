@@ -27,7 +27,14 @@
     "websiteLink": "",
     "timestamp": "2026-01-12T01:03:01.269Z",
     "wip": false,
-    "order": 9
+    "order": 9,
+    "specs": "",
+    "related": [
+      {
+        "name": "chrismoore.me",
+        "url": "http://chrismoore.me"
+      }
+    ]
   },
   {
     "id": "1",
@@ -62,14 +69,24 @@
     "launchLink": "",
     "githubLink": "",
     "shopLink": "",
-    "files": [],
+    "files": [
+      {
+        "name": "Instrument schedule",
+        "url": "media/Lighting/Main Room - Temple Nightclub _ San Francisco/files/Temple SF instrument schedule.pdf"
+      }
+    ],
     "featured": true,
     "websiteLink": "",
     "timestamp": "2026-01-12T01:03:01.269Z",
     "wip": false,
     "order": 0,
     "specs": "<h2><strong>Lighting</strong></h2><ul><li><strong>144x</strong> PixelDots RGBW</li><li><strong>12x</strong> Hybrid Zoom 150W</li><li><strong>40x</strong> LED Wash RGBWA+UV</li></ul><h2><strong>Pixels</strong></h2><ul><li><strong>6400x</strong> SM16703 RGBW (3x1)</li><li class=\"ql-indent-1\"><strong>80x</strong> 4m @ 60/m 12vdc</li></ul><h2><strong>Video</strong></h2><ul><li><strong>234x</strong> 1m x 0.5m (4.81p)</li><li><strong>60x</strong> 0.5m x 0.5m (4.81p)</li></ul><h2><strong>SFX</strong></h2><ul><li><strong>2x</strong> Radiance Hazers</li></ul>",
-    "related": []
+    "related": [
+      {
+        "name": "Control System",
+        "url": "#project/8252"
+      }
+    ]
   },
   {
     "id": "8147",
@@ -119,7 +136,7 @@
     ],
     "image": "media/Apps/LithoLab/image2.webp",
     "description": "<p>A fully browser-based web application for generating custom-shaped, multi-color 3D printable lithophanes with AI-assisted design tools.</p>",
-    "longDescription": "<p><strong>LithoLab </strong>is a client-side web application designed to generate high-fidelity, custom-shaped lithophanes for 3D printing. While standard generators are restricted to traditional four-color CMYK constraints, LithoLab supports customizable, multi-color palettes to achieve superior color accuracy in the final physical print. The project differentiates itself by introducing custom masking capabilities that trim the lithophane into non-standard shapes, along with generating an independently exportable geometric border for polished, multi-part assemblies.</p><p>The system architecture was developed by porting the open-source PIXEStl backend to execute entirely within the browser, avoiding server-side processing overhead. The workflow is managed through a custom frontend interface where users upload source imagery, define masking parameters, and configure border dimensions. Upon export, the software isolates the customized border as a discrete 3D object, allowing users to assign specific filaments and colors when preparing the files in slicing software like Bambu Studio.</p><p>The standout technical achievement is the robust JavaScript implementation of the modified PIXEStl engine, paired with an integrated Google Gemini API for generating base images, structural masks, and file metadata. To solve the hardware constraints of color mapping on advanced machines like the Bambu Lab X1C, a dedicated companion utility called LithoPalletGen was built in parallel. This secondary application handles precise color palette generation, import/export functionality, and material calibration to ensure accurate physical reproduction of the digital models.</p><p><br></p><p>Check out the companion app <a href=\"https://elusid108.github.io/LithoPalletGen/\" target=\"_blank\">LithoPalletGen</a> to generate calibrated pallet files for LithoLab.</p>",
+    "longDescription": "<p><strong>LithoLab </strong>is a client-side web application designed to generate high-fidelity, custom-shaped lithophanes for 3D printing. While standard generators are restricted to traditional four-color CMYK constraints, LithoLab supports customizable, multi-color palettes to achieve superior color accuracy in the final physical print. The project differentiates itself by introducing custom masking capabilities that trim the lithophane into non-standard shapes, along with generating an independently exportable geometric border for polished, multi-part assemblies.</p><p>The system architecture was developed by porting the open-source PIXEStl backend to execute entirely within the browser, avoiding server-side processing overhead. The workflow is managed through a custom frontend interface where users upload source imagery, define masking parameters, and configure border dimensions. Upon export, the software isolates the customized border as a discrete 3D object, allowing users to assign specific filaments and colors when preparing the files in slicing software like Bambu Studio.</p><p>The standout technical achievement is the robust JavaScript implementation of the modified PIXEStl engine, paired with an integrated Google Gemini API for generating base images, structural masks, and file metadata. To solve the hardware constraints of color mapping on advanced machines like the Bambu Lab X1C, a dedicated companion utility called LithoPalletGen was built in parallel. This secondary application handles precise color palette generation, import/export functionality, and material calibration to ensure accurate physical reproduction of the digital models.</p>",
     "video": "",
     "gallery": [
       "media/Apps/LithoLab/image2.webp",
@@ -133,7 +150,14 @@
     "websiteLink": "",
     "timestamp": "2026-01-12T01:03:01.269Z",
     "wip": true,
-    "order": 0
+    "order": 0,
+    "specs": "",
+    "related": [
+      {
+        "name": "Pallet generator",
+        "url": "#project/968"
+      }
+    ]
   },
   {
     "id": "3670",
@@ -287,7 +311,14 @@
     ],
     "files": [],
     "video": "",
-    "order": 1
+    "order": 1,
+    "specs": "",
+    "related": [
+      {
+        "name": "Lighting design",
+        "url": "#project/1"
+      }
+    ]
   },
   {
     "id": "9517",
@@ -687,7 +718,14 @@
     "websiteLink": "",
     "timestamp": "2026-06-11T17:19:00.407Z",
     "wip": false,
-    "order": 3
+    "order": 3,
+    "specs": "",
+    "related": [
+      {
+        "name": "Color lithophane generator",
+        "url": "#project/2944"
+      }
+    ]
   },
   {
     "title": "Field Bench PSU",
@@ -786,7 +824,14 @@
     ],
     "files": [],
     "video": "",
-    "order": 6
+    "order": 6,
+    "specs": "",
+    "related": [
+      {
+        "name": "Control system",
+        "url": "#project/4382"
+      }
+    ]
   },
   {
     "title": "Basement - Triangle | Denver",
@@ -821,7 +866,7 @@
     "category": "Integration",
     "image": "media/Integration/Que Bueno Suerte! - Denver/20240606_211259.webp",
     "description": "<p>Placeholder</p>",
-    "longDescription": "<p>Add all the different independent systems that were listed above in lighting design and how they were all combined into one control system. Talk about server rack in here, the trials with ELM and Madrix, the challenges of running hundreds of pixels of universes and trying to get it simplified enough for the restaurant staff to operate. </p>",
+    "longDescription": "<p>Add all the different independent systems that were listed above in lighting design and how they were all combined into one control system. Talk about server rack in here, the trials with ELM and Madrix, the challenges of running hundreds of pixels of universes and trying to get it simplified enough for the restaurant staff to operate.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -842,7 +887,18 @@
     "video": "",
     "timestamp": "2026-06-21T23:26:29.795Z",
     "id": "4113",
-    "order": 0
+    "order": 0,
+    "specs": "",
+    "related": [
+      {
+        "name": "Curved bottle shelf",
+        "url": "#project/6808"
+      },
+      {
+        "name": "Vertical bar tubes",
+        "url": "#project/4411"
+      }
+    ]
   },
   {
     "title": "Vertical Pixel Tubes - Que Bueno Suerte!",
@@ -870,7 +926,14 @@
     "video": "",
     "timestamp": "2026-06-21T23:30:44.785Z",
     "id": "4411",
-    "order": 4
+    "order": 4,
+    "specs": "",
+    "related": [
+      {
+        "name": "Control system",
+        "url": "#project/4113"
+      }
+    ]
   },
   {
     "title": "Pixel Negative \"X\"",
@@ -1036,7 +1099,14 @@
     "video": "",
     "timestamp": "2026-07-20T21:09:12.884Z",
     "id": "6808",
-    "order": 1
+    "order": 1,
+    "specs": "",
+    "related": [
+      {
+        "name": "Control system",
+        "url": "#project/4113"
+      }
+    ]
   },
   {
     "title": "Temple Nightclub - Denver",
@@ -1065,6 +1135,13 @@
     "video": "",
     "timestamp": "2026-07-25T16:47:23.504Z",
     "id": "4382",
-    "order": 2
+    "order": 2,
+    "specs": "",
+    "related": [
+      {
+        "name": "The Orb",
+        "url": "#project/6841"
+      }
+    ]
   }
 ]
