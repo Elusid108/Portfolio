@@ -4,7 +4,11 @@
     "title": "Portfolio CMS",
     "category": "Apps",
     "tags": [
-      "APP"
+      "cms",
+      "static",
+      "nodejs",
+      "react",
+      "generator"
     ],
     "image": "media/Apps/Portfolio CMS/Screenshot 2026-07-25 181136.webp",
     "description": "<p>A custom local content management system that generates the fully static React portfolio you are viewing.</p>",
@@ -64,7 +68,7 @@
     "timestamp": "2026-01-12T01:03:01.269Z",
     "wip": false,
     "order": 0,
-    "specs": "<h2><strong>Lighting Fixtures</strong></h2><ul><li><strong>144x</strong> PixelDots RGBW</li><li><strong>12x</strong> Hybrid Zoom 150W</li><li><strong>40x</strong> LED Wash RGBWA+UV</li></ul><h2><strong>LED Pixels</strong></h2><ul><li><strong>6400x</strong> SM16703 RGBW (3x1)</li><li class=\"ql-indent-1\"><strong>80x</strong> 4m @ 60/m 12vdc</li></ul><h2><strong>Video</strong></h2><ul><li><strong>234x</strong> 1m x 0.5m (4.81p)</li><li><strong>60x</strong> 0.5m x 0.5m (4.81p)</li></ul><h2><strong>SFX</strong></h2><ul><li><strong>2x</strong> Radiance Hazers</li></ul>",
+    "specs": "<h2><strong>Lighting</strong></h2><ul><li><strong>144x</strong> PixelDots RGBW</li><li><strong>12x</strong> Hybrid Zoom 150W</li><li><strong>40x</strong> LED Wash RGBWA+UV</li></ul><h2><strong>Pixels</strong></h2><ul><li><strong>6400x</strong> SM16703 RGBW (3x1)</li><li class=\"ql-indent-1\"><strong>80x</strong> 4m @ 60/m 12vdc</li></ul><h2><strong>Video</strong></h2><ul><li><strong>234x</strong> 1m x 0.5m (4.81p)</li><li><strong>60x</strong> 0.5m x 0.5m (4.81p)</li></ul><h2><strong>SFX</strong></h2><ul><li><strong>2x</strong> Radiance Hazers</li></ul>",
     "related": []
   },
   {
@@ -82,9 +86,11 @@
     "featured": true,
     "wip": false,
     "tags": [
-      "PIXELS",
-      "SOLIDWORKS",
-      "3D PRINTING"
+      "pixels",
+      "printed",
+      "wled",
+      "desktop",
+      "sculpture"
     ],
     "gallery": [
       "media/Art/Emmy Stand/20250415_215715.webp",
@@ -105,9 +111,11 @@
     "title": "LithoLab",
     "category": "Apps",
     "tags": [
-      "LITHOPHANE",
-      "APP",
-      "3D PRINTING"
+      "lithophane",
+      "browser",
+      "printed",
+      "ai",
+      "generative"
     ],
     "image": "media/Apps/LithoLab/image2.webp",
     "description": "<p>A fully browser-based web application for generating custom-shaped, multi-color 3D printable lithophanes with AI-assisted design tools.</p>",
@@ -132,8 +140,11 @@
     "title": "Unfold",
     "category": "Apps",
     "tags": [
-      "GAME",
-      "SOCIAL"
+      "cards",
+      "react",
+      "social",
+      "interactive",
+      "browser"
     ],
     "image": "media/Apps/Unfold/Screenshot 2026-07-25 154856.webp",
     "description": "<p>A React based web application featuring interactive card decks designed to facilitate meaningful conversations and reconnect people.</p>",
@@ -172,9 +183,11 @@
     "featured": false,
     "wip": false,
     "tags": [
-      "PIXELS",
-      "FDM",
-      "DYNAMIC"
+      "sculpture",
+      "pixels",
+      "printed",
+      "wled",
+      "geometric"
     ],
     "gallery": [
       "media/Art/Pixel Pyramid/20230717_154810.webp",
@@ -193,9 +206,11 @@
     "title": "Pixel Mini Pyramid",
     "category": "Art",
     "tags": [
-      "PIXELS",
-      "FDM",
-      "AMBIENT"
+      "desktop",
+      "pixels",
+      "printed",
+      "wled",
+      "qr"
     ],
     "image": "media/Art/Pixel Mini Pyramid/20230726_201532.webp",
     "description": "<p>A compact, USB-C powered 8x8 LED matrix desk piece featuring a scannable 3D printed QR code base.</p>",
@@ -231,9 +246,11 @@
     "featured": false,
     "wip": false,
     "tags": [
-      "PIXELS",
-      "FDM",
-      "AMBIENT"
+      "sculpture",
+      "pixels",
+      "printed",
+      "ambient",
+      "geometric"
     ],
     "gallery": [
       "media/Art/Pixel Plane Warp/20230719_221111.webp",
@@ -258,10 +275,11 @@
     "featured": true,
     "wip": false,
     "tags": [
-      "OSC",
-      "ArtNet",
-      "sACN",
-      "MIDI"
+      "artnet",
+      "sacn",
+      "osc",
+      "madrix",
+      "control"
     ],
     "gallery": [
       "media/Integration/Temple - San Francisco/20210514_2025472.webp",
@@ -276,9 +294,11 @@
     "title": "Field Solder Station",
     "category": "Solutions",
     "tags": [
-      "MOBILE",
-      "COMPACT",
-      "PROTOTYPE"
+      "portable",
+      "soldering",
+      "printed",
+      "field",
+      "tools"
     ],
     "image": "media/Fabrication/Field Solder Station/20250317_180657.webp",
     "description": "<p>A portable, field soldering station designed to streamline complex live entertainment installations.</p>",
@@ -302,9 +322,11 @@
     "title": "LED Pixel Panel",
     "category": "Circuits",
     "tags": [
-      "WS2818",
-      "LOW PROFILE",
-      "CUSTOM"
+      "pcb",
+      "pixels",
+      "ceiling",
+      "custom",
+      "ws2818"
     ],
     "image": "media/Electronics/Pixel Panel PCB/20200910_134441.webp",
     "description": "<p>A high-impact LED ceiling installation engineered for ultra-low headroom environments using custom-modified dancefloor PCBs.</p>",
@@ -332,8 +354,11 @@
     "title": "LVL - Temple | Denver",
     "category": "Lighting",
     "tags": [
-      "PIXELS",
-      "MADRIX"
+      "pixels",
+      "voxel",
+      "madrix",
+      "nightclub",
+      "rewire"
     ],
     "image": "media/Lighting/LVL - Denver/IMG_20191009_231844.webp",
     "description": "<p>An electrical and data overhaul of an immersive pixel lighting rig to ensure stability and enable 3D voxel mapping.</p>",
@@ -361,8 +386,11 @@
     "title": "Mirus Art Gallery | Denver",
     "category": "Lighting",
     "tags": [
-      "LEDs",
-      "MADRIX"
+      "gallery",
+      "rgbw",
+      "strips",
+      "madrix",
+      "architectural"
     ],
     "image": "media/Lighting/MIrus Art Gallery - Denver/IMG_20180614_235653.webp",
     "description": "<p>A dynamic RGBW LED lighting installation integrated into custom wooden ceiling louvers for a modern art gallery.</p>",
@@ -399,7 +427,11 @@
     "featured": false,
     "wip": false,
     "tags": [
-      "PIXELS"
+      "pixels",
+      "event",
+      "inflatable",
+      "resolume",
+      "outdoor"
     ],
     "gallery": [
       "media/Lighting/Reelworks - Denver/20230621_172739.webp",
@@ -421,9 +453,11 @@
     "title": "GeoLens Pro",
     "category": "Apps",
     "tags": [
-      "MOBILE",
-      "GEOFENCE",
-      "FIELD"
+      "gps",
+      "pwa",
+      "geofence",
+      "fieldwork",
+      "mobile"
     ],
     "image": "media/Apps/GeoLens/Screenshot_20260118_082950_Chrome.webp",
     "description": "<p><strong>GeoLens Pro</strong> is a local-first PWA that automatically sorts and annotates field photos using GPS geofencing.</p>",
@@ -454,8 +488,11 @@
     "title": "PixelForge AI",
     "category": "Apps",
     "tags": [
-      "AI",
-      "CREATIVE"
+      "ai",
+      "generative",
+      "imagen",
+      "creative",
+      "browser"
     ],
     "image": "media/Apps/PixelForge AI/Screenshot 2026-07-25 173231.webp",
     "description": "<p>An interactive generative artwork studio that uses controlled text hallucinations to kickstart creative visual exploration.</p>",
@@ -487,9 +524,11 @@
     "title": "Chronicle: Iterative Fiction Engine",
     "category": "Apps",
     "tags": [
-      "AI",
-      "GAME",
-      "RETRO"
+      "ai",
+      "fiction",
+      "gemini",
+      "interactive",
+      "storytelling"
     ],
     "image": "media/Apps/Chronicle AI/Screenshot 2026-01-26 182215.webp",
     "description": "<p><strong>Chronicle </strong>is a zero-build, browser-based interactive fiction engine that generates multimodal, AI-driven storytelling in real time.</p>",
@@ -527,9 +566,11 @@
     "title": "Strata - Digital Notebook",
     "category": "Apps",
     "tags": [
-      "3-TIER",
-      "BLOCK PAGE",
-      "GOOGLE"
+      "notes",
+      "canvas",
+      "google",
+      "drive",
+      "browser"
     ],
     "image": "media/Apps/Strata/Screenshot 2026-01-23 200024.webp",
     "description": "<p>A serverless, browser-based note-taking application combining block-level editing with infinite canvas workspaces and Google Drive synchronization.</p>",
@@ -554,10 +595,11 @@
     "title": "IdeaForge.AI",
     "category": "Apps",
     "tags": [
-      "AI-powered",
-      "idea management",
-      "brainstorming",
-      "project planning"
+      "ai",
+      "ideation",
+      "planning",
+      "sheets",
+      "google"
     ],
     "image": "media/Apps/Brainstormer/Screenshot 2026-02-14 232928.webp",
     "description": "<p>IdeaForge.AI is a comprehensive ideation pipeline that transforms raw thoughts into actionable project strategies utilizing a serverless Google Drive backend.</p>",
@@ -583,8 +625,11 @@
     "title": "CharGen.AI",
     "category": "Apps",
     "tags": [
-      "AI",
-      "CHARACTER"
+      "ai",
+      "characters",
+      "imagen",
+      "generative",
+      "browser"
     ],
     "image": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174417.webp",
     "description": "<p>CharGen.AI is a comprehensive, client-side character development engine utilizing Google AI for text and image generation.</p>",
@@ -620,9 +665,11 @@
     "title": "LithoPalletGen",
     "category": "Apps",
     "tags": [
-      "FDM",
-      "Lithophane",
-      "Calibration"
+      "calibration",
+      "lithophane",
+      "color",
+      "fdm",
+      "canvas"
     ],
     "image": "media/Apps/LithoPalletGen/lithopalletgen1.webp",
     "description": "<p>A vanilla JavaScript color calibration tool utilizing area-averaged pixel sampling for precise multi-material lithophane generation.</p>",
@@ -654,7 +701,13 @@
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "tags": [],
+    "tags": [
+      "power",
+      "portable",
+      "printed",
+      "field",
+      "testing"
+    ],
     "gallery": [
       "media/Fabrication/Field Bench PSU/20250317_180727.webp"
     ],
@@ -676,7 +729,13 @@
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "tags": [],
+    "tags": [
+      "nightclub",
+      "wolfmix",
+      "dmx",
+      "zones",
+      "installation"
+    ],
     "gallery": [
       "media/Lighting/Club Lexi/20230508_171150.webp",
       "media/Lighting/Club Lexi/20230508_163509~2.webp",
@@ -704,7 +763,13 @@
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "tags": [],
+    "tags": [
+      "kinetic",
+      "sphere",
+      "pixels",
+      "voxel",
+      "madrix"
+    ],
     "gallery": [
       "media/Lighting/The Orb - Temple _ Denver/IMG_20190105_011459.webp",
       "media/Lighting/The Orb - Temple _ Denver/MVIMG_20190309_005437.webp",
@@ -735,7 +800,13 @@
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "tags": [],
+    "tags": [
+      "nightclub",
+      "pixels",
+      "video",
+      "ceiling",
+      "bounce"
+    ],
     "gallery": [
       "media/Lighting/The Triangle/IMG_20180614_174327.webp"
     ],
@@ -757,7 +828,13 @@
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "tags": [],
+    "tags": [
+      "restaurant",
+      "madrix",
+      "pixels",
+      "control",
+      "network"
+    ],
     "gallery": [
       "media/Integration/Que Bueno Suerte! - Denver/20240606_211259.webp"
     ],
@@ -779,7 +856,13 @@
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "tags": [],
+    "tags": [
+      "pixels",
+      "restoration",
+      "ws2813",
+      "tubes",
+      "venue"
+    ],
     "gallery": [
       "media/Lighting/Vertical Pixel Tubes - Que Bueno Suerte!/20240619_122306.webp"
     ],
@@ -801,7 +884,13 @@
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "tags": [],
+    "tags": [
+      "minimalist",
+      "sculpture",
+      "pixels",
+      "printed",
+      "geometric"
+    ],
     "gallery": [
       "media/Art/Pixel Negative _X_/20230717_155724.webp",
       "media/Art/Pixel Negative _X_/20230717_155731.webp",
@@ -825,7 +914,13 @@
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "tags": [],
+    "tags": [
+      "geometric",
+      "sacred",
+      "pixels",
+      "printed",
+      "ambient"
+    ],
     "gallery": [
       "media/Art/Pixel Seed of Life/20230717_155617.webp",
       "media/Art/Pixel Seed of Life/20230717_155640.webp",
@@ -849,7 +944,13 @@
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "tags": [],
+    "tags": [
+      "sculpture",
+      "organic",
+      "pixels",
+      "printed",
+      "wled"
+    ],
     "gallery": [
       "media/Art/Pixel Celtic Owl/20220315_175342.webp",
       "media/Art/Pixel Celtic Owl/Screenshot 2026-07-02 185618.webp",
@@ -873,7 +974,13 @@
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "tags": [],
+    "tags": [
+      "pixels",
+      "modular",
+      "wall",
+      "madrix",
+      "nightclub"
+    ],
     "gallery": [
       "media/Lighting/Lobby Wall - Tracks _ Denver/0321151647.webp",
       "https://www.youtube.com/watch?v=V7PaQ3CBYY0",
@@ -905,7 +1012,13 @@
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "tags": [],
+    "tags": [
+      "pixels",
+      "printed",
+      "custom",
+      "restaurant",
+      "madrix"
+    ],
     "gallery": [
       "media/Lighting/Curved Bottle Shelf - Que Bueno Suerte! _ Denver/20240419_101740.webp",
       "https://www.youtube.com/watch?v=26DFkO4ZL24",
@@ -937,7 +1050,13 @@
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "tags": [],
+    "tags": [
+      "nightclub",
+      "artnet",
+      "madrix",
+      "control",
+      "integration"
+    ],
     "gallery": [
       "media/Integration/Temple Nightclub - Denver/MVIMG_20190817_211751.webp",
       "https://www.youtube.com/watch?v=soiWr2U0qEs"
