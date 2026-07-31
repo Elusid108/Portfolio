@@ -74,6 +74,14 @@
       {
         "name": "Control System",
         "url": "#project/8252"
+      },
+      {
+        "name": "Pixel Pillars",
+        "url": "#project/6371"
+      },
+      {
+        "name": "Extrusion Centering Sled",
+        "url": "#project/5376"
       }
     ]
   },
@@ -326,7 +334,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-13T00:48:58.329Z",
     "wip": false,
-    "order": 0,
+    "order": 1,
     "specs": "",
     "related": []
   },
@@ -1005,10 +1013,92 @@
     ],
     "files": [],
     "specs": "<h2>Material</h2><ul><li>PLA+</li></ul><h2>Printer</h2><ul><li>Tenlog TL-D3 Pro</li></ul>",
-    "related": [],
+    "related": [
+      {
+        "name": "Pixel Pillars",
+        "url": "#project/6371"
+      },
+      {
+        "name": "Immersive Lighting Rig",
+        "url": "#project/1"
+      },
+      {
+        "name": "Cross System Integration",
+        "url": "#project/8252"
+      }
+    ],
     "video": "",
     "timestamp": "2026-07-26T23:20:01.923Z",
     "id": "5376",
     "order": 2
+  },
+  {
+    "title": "Pillars - Temple Nightclub | San Francisco",
+    "category": "Circuits",
+    "image": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210403_103112.webp",
+    "description": "<p>A ruggedized 320-meter pixel mapping installation engineered to deliver floor-to-ceiling architectural lighting within an immersive nightclub environment.</p>",
+    "longDescription": "<p>The Temple Nightclub San Francisco main room remodel required powering and controlling 320 meters of high-density pixel tape across ten floor-to-ceiling architectural pillars. The primary objective was to immerse the dance floor in dynamic lighting while protecting fragile electronics from direct crowd contact. Unlike conventional stage lighting that operates at a safe distance, this installation integrated custom illumination directly into public structural elements, requiring a tamper-proof and visually seamless enclosure system that extends from the dance floor to above the main high-resolution LED video ceiling.</p><p>To achieve a clean aesthetic and prevent physical damage from venue patrons, the structural supports were wrapped in oriented strand board to mount mud-in aluminum extrusions using a pneumatic nailer. The remaining gaps were filled with additional board material, finished with drywall mud, sanded, primed, painted black, and sealed at the base with silicone caulk for spill resistance. Power injection wiring was concealed inside the corner moldings to mitigate voltage drop over the vertical spans, while thin metal tubing protected three-conductor 18 AWG wiring at the bottom of each column to reliably bridge power and data without exposing cables to the crowd.</p><p>The technical core of the installation relies on a modular, serviceable power and data distribution architecture engineered to support ten pillars, each featuring eight four-meter pixel strips across its corners and faces. Dedicated switched electrical outlets were professionally installed to provide isolated power across the system. At the top of each pillar, the individual strips converge into four consolidated data runs using a screw terminal block that interfaces with a 24-pin ATX power coupler. This coupler connects directly to a custom power distribution, fuse, and data control board housed safely above the video ceiling, ensuring safe current delivery, clean data transmission, and streamlined maintenance during live event operations.</p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": true,
+    "wip": false,
+    "tags": [],
+    "gallery": [
+      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210423_185515.webp",
+      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210403_195111.webp",
+      "https://www.youtube.com/watch?v=3iogvH6i8V0",
+      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210403_125209.webp",
+      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210403_152329.webp",
+      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210407_133839.webp",
+      "https://www.youtube.com/watch?v=atiKDcx4ldA",
+      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210403_103112.webp",
+      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210402_131904.webp",
+      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210401_160248.webp",
+      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210327_151713.webp",
+      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210303_163104.webp",
+      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210325_170232.webp",
+      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20201103_011401.webp",
+      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20201210_211419.webp",
+      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20201108_183241.webp",
+      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200905_191652.webp",
+      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/Screenshot_20210306-180716_Photos~2.webp",
+      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20201025_233007.webp",
+      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20201107_150146.webp",
+      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200921_152509.webp",
+      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200926_205346.webp",
+      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200908_155818.webp",
+      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200905_223735.webp",
+      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200925_105443.webp",
+      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200826_201228.webp",
+      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200826_201238.webp",
+      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200901_173408.webp",
+      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200921_135156.webp",
+      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200905_171937.webp",
+      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200828_155006.webp",
+      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200830_215210.webp",
+      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/IMG_20200706_140158.webp"
+    ],
+    "files": [],
+    "specs": "<h2><strong>Pixels</strong></h2><ul><li><strong>SM16704</strong> RGBW (6000k)</li><li><strong>60/m</strong> (3x1) 12vdc</li><li><strong>10 sets</strong> of 8x @ 4m</li></ul><h2><strong>Decoder</strong></h2><ul><li><strong>2x</strong> Advatek PixLite16 Long Range Mk2</li><li><strong>10x</strong> Advatek PixLite Long Range Receiver</li></ul><h2><strong>Power</strong></h2><ul><li><strong>10x</strong> Meanwell 12vdc 50a</li></ul>",
+    "related": [
+      {
+        "name": "Extrusion Center Sled",
+        "url": "#project/5376"
+      },
+      {
+        "name": "Immersive Lighting Rig",
+        "url": "#project/1"
+      },
+      {
+        "name": "Cross System Control",
+        "url": "#project/8252"
+      }
+    ],
+    "video": "",
+    "timestamp": "2026-07-31T21:40:01.374Z",
+    "id": "6371",
+    "order": 0
   }
 ]

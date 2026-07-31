@@ -499,11 +499,17 @@
 
         const Lightbox = ({ images, initialIndex, onClose, projectTitle }) => {
             const [index, setIndex] = useState(initialIndex);
+            // Keyed to the index rather than reset in an effect, so navigating to the
+            // next item collapses its caption without a frame of expanded text first.
+            const [expandedFor, setExpandedFor] = useState(null);
+            const [captionOverflows, setCaptionOverflows] = useState(false);
             const touchStartX = useRef(null);
             const touchEndX = useRef(null);
             const didSwipe = useRef(false);
             const dialogRef = useRef(null);
+            const captionRef = useRef(null);
             const minSwipeDistance = 50;
+            const captionId = 'lightbox-caption';
 
             useDialog(dialogRef, onClose);
 
@@ -549,25 +555,47 @@
             const currentItem = images[index];
             const currentUrl = mediaSrc(currentItem);
             const caption = mediaCaption(currentItem);
+            const captionExpanded = expandedFor === index;
             const ytId = getYouTubeId(currentUrl);
+
+            // Only offer the toggle when the text is actually cut off. Measuring is
+            // skipped while expanded (nothing is clamped then), which leaves the last
+            // clamped result standing so the collapse control stays available.
+            // A single measurement here reads equal heights and misses the overflow:
+            // Tailwind's runtime CDN injects the line-clamp rule after this commit, and
+            // the web font reflows the text later still. Observing the box catches both,
+            // and covers viewport resizes for free.
+            useEffect(() => {
+                const el = captionRef.current;
+                if (!el || captionExpanded) return;
+                const measure = () => setCaptionOverflows(el.scrollHeight > el.clientHeight + 1);
+                measure();
+                const observer = new ResizeObserver(measure);
+                observer.observe(el);
+                return () => observer.disconnect();
+            }, [caption, captionExpanded]);
 
             return (
                 <div ref={dialogRef} role="dialog" aria-modal="true" aria-label={`Media viewer for ${projectTitle || 'project'}`}
-                     className="fixed inset-0 z-[200] bg-black flex items-center justify-center animate-fade-in"
+                     className="fixed inset-0 z-[200] bg-black flex flex-col animate-fade-in"
                      onClick={onBackdropClick}
                      onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
                     <button onClick={(e) => { e.stopPropagation(); onClose(); }} aria-label="Close media viewer" className="absolute top-4 right-4 p-3 bg-zinc-800/80 rounded-full text-white hover:bg-zinc-700 transition-colors z-[210]">
                         <X size={24} aria-hidden="true" />
                     </button>
-                    <button onClick={(e) => { e.stopPropagation(); prevImage(); }} aria-label="Previous item" className="absolute left-1 md:left-4 p-2 md:p-4 bg-black/40 md:bg-transparent rounded-full text-white/70 hover:text-white transition-colors z-[210]">
-                        <ChevronLeft className="w-8 h-8 md:w-12 md:h-12" aria-hidden="true" />
-                    </button>
-                    <div className="w-full h-full p-4 md:p-10 flex items-center justify-center">
+                    {/* min-h-0 lets this shrink below its content so the image's max-h-full
+                        resolves against the space left over by the caption, instead of
+                        pushing the caption off-screen. */}
+                    <div className="relative flex-1 min-h-0 w-full flex items-center justify-center p-4 md:p-10">
+                        <button onClick={(e) => { e.stopPropagation(); prevImage(); }} aria-label="Previous item" className="absolute left-1 md:left-4 top-1/2 -translate-y-1/2 p-2 md:p-4 bg-black/40 md:bg-transparent rounded-full text-white/70 hover:text-white transition-colors z-[210]">
+                            <ChevronLeft className="w-8 h-8 md:w-12 md:h-12" aria-hidden="true" />
+                        </button>
                         {ytId ? (
                             <div className="relative w-full h-full max-w-5xl aspect-video" onClick={stopClick}>
                                 <iframe 
                                     src={`https://www.youtube.com/embed/${ytId}?autoplay=1`} 
-                                    title={caption || `Video ${index + 1} of ${images.length} for ${projectTitle || 'project'}`}
+                                    title={`Video ${index + 1} of ${images.length} for ${projectTitle || 'project'}`}
+                                    aria-describedby={caption ? captionId : undefined}
                                     className="w-full h-full border-0 rounded-lg shadow-2xl bg-black relative z-10"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                     allowFullScreen
@@ -592,21 +620,43 @@
                                 </div>
                             </div>
                         ) : (
-                            <img src={currentUrl} alt={caption || describeMedia(currentUrl, index, images.length, projectTitle || 'Project')} onClick={stopClick} className="max-w-full max-h-full object-contain select-none" draggable="false" />
+                            <img
+                                src={currentUrl}
+                                alt={describeMedia(currentUrl, index, images.length, projectTitle || 'Project')}
+                                aria-describedby={caption ? captionId : undefined}
+                                onClick={stopClick}
+                                className="max-w-full max-h-full object-contain select-none"
+                                draggable="false"
+                            />
                         )}
+                        <button onClick={(e) => { e.stopPropagation(); nextImage(); }} aria-label="Next item" className="absolute right-1 md:right-4 top-1/2 -translate-y-1/2 p-2 md:p-4 bg-black/40 md:bg-transparent rounded-full text-white/70 hover:text-white transition-colors z-[210]">
+                            <ChevronRight className="w-8 h-8 md:w-12 md:h-12" aria-hidden="true" />
+                        </button>
                     </div>
-                    <button onClick={(e) => { e.stopPropagation(); nextImage(); }} aria-label="Next item" className="absolute right-1 md:right-4 p-2 md:p-4 bg-black/40 md:bg-transparent rounded-full text-white/70 hover:text-white transition-colors z-[210]">
-                        <ChevronRight className="w-8 h-8 md:w-12 md:h-12" aria-hidden="true" />
-                    </button>
-                    <div className="absolute bottom-6 left-0 right-0 flex flex-col items-center gap-2 px-4 pointer-events-none">
+                    <div className="flex-shrink-0 w-full px-4 pb-6 flex flex-col items-center gap-2">
                         {caption && (
-                            /* The caption is already the img alt / iframe title, so hide the
-                               visual copy from assistive tech rather than announcing it twice. */
-                            <p aria-hidden="true" onClick={stopClick} className="pointer-events-auto max-w-2xl text-center text-sm md:text-base text-zinc-100 bg-zinc-900/80 backdrop-blur-sm px-4 py-2 rounded-lg border border-zinc-700/60">
-                                {caption}
-                            </p>
+                            <div className="max-w-3xl w-full flex flex-col items-center" onClick={stopClick}>
+                                <p
+                                    ref={captionRef}
+                                    id={captionId}
+                                    className={`text-center text-sm md:text-base leading-relaxed text-zinc-200 ${captionExpanded ? 'max-h-[30vh] overflow-y-auto custom-scrollbar' : 'line-clamp-3'}`}
+                                >
+                                    {caption}
+                                </p>
+                                {(captionOverflows || captionExpanded) && (
+                                    <button
+                                        type="button"
+                                        onClick={(e) => { e.stopPropagation(); setExpandedFor(captionExpanded ? null : index); }}
+                                        aria-expanded={captionExpanded}
+                                        aria-controls={captionId}
+                                        className="mt-1 text-xs font-bold uppercase tracking-widest text-cyan-400 hover:text-cyan-300 transition-colors"
+                                    >
+                                        {captionExpanded ? 'Show less' : 'Show more'}
+                                    </button>
+                                )}
+                            </div>
                         )}
-                        <div aria-live="polite" onClick={stopClick} className="pointer-events-auto bg-zinc-800/80 px-4 py-2 rounded-full text-sm font-mono text-zinc-300">
+                        <div aria-live="polite" onClick={stopClick} className="bg-zinc-800/80 px-4 py-2 rounded-full text-sm font-mono text-zinc-300">
                             <span aria-hidden="true">{index + 1} / {images.length}</span>
                             <span className="sr-only">Item {index + 1} of {images.length}</span>
                         </div>
