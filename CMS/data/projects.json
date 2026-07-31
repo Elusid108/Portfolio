@@ -81,7 +81,7 @@
     "timestamp": "2026-01-12T01:03:01.269Z",
     "wip": false,
     "order": 0,
-    "specs": "<h2><strong>Lighting</strong></h2><ul><li><strong>144x</strong> PixelDots RGBW</li><li><strong>12x</strong> Hybrid Zoom 150W</li><li><strong>40x</strong> LED Wash RGBWA+UV</li></ul><h2><strong>Pixels</strong></h2><ul><li><strong>6400x</strong> SM16703 RGBW (3x1)</li><li class=\"ql-indent-1\"><strong>80x</strong> 4m @ 60/m 12vdc</li></ul><h2><strong>Video</strong></h2><ul><li><strong>234x</strong> 1m x 0.5m (4.81p)</li><li><strong>60x</strong> 0.5m x 0.5m (4.81p)</li></ul><h2><strong>SFX</strong></h2><ul><li><strong>2x</strong> Radiance Hazers</li></ul>",
+    "specs": "<h2><strong>Lighting</strong></h2><ul><li><strong>144x</strong> PixelDots RGBW</li><li><strong>12x</strong> Hybrid Zoom 150W</li><li><strong>40x</strong> LED Wash RGBWA+UV</li></ul><h2><strong>Pixels</strong></h2><ul><li><strong>6400x</strong> SM16703 RGBW (3x1)</li><li class=\"ql-indent-1\"><strong>80x</strong> 4m @ 60/m 12vdc</li></ul><h2><strong>Video</strong></h2><ul><li><strong>234x</strong> 1m x 0.5m (4.81p)</li><li><strong>60x</strong> 0.5m x 0.5m (4.81p)</li></ul><h2><strong>SFX</strong></h2><ul><li><strong>2x</strong> Radiance Hazers</li></ul><h2><strong>Control</strong></h2><ul><li>Resolume Arena 7.x</li><li>Madrix 5.x</li><li>Roadhog 4</li></ul>",
     "related": [
       {
         "name": "Control System",
@@ -342,12 +342,20 @@
     "launchLink": "",
     "githubLink": "",
     "shopLink": "",
-    "files": [],
+    "files": [
+      {
+        "name": "Field Solder Station",
+        "url": "media/Fabrication/Field Solder Station/files/fieldsolderstation.zip",
+        "description": "Zip file containing the 3mf of the field solder station. Ready to download and print."
+      }
+    ],
     "featured": true,
     "websiteLink": "",
     "timestamp": "2026-01-13T00:23:48.073Z",
     "wip": false,
-    "order": 0
+    "order": 0,
+    "specs": "<h2><strong>Designed In</strong></h2><ul><li>SolidWorks 2022</li></ul><h2><strong>Printed On</strong></h2><ul><li>Bambulabs X1C</li></ul><h2><strong>Made With</strong></h2><ul><li>Black PLA+</li></ul>",
+    "related": []
   },
   {
     "id": "9469",
@@ -482,7 +490,9 @@
     ],
     "files": [],
     "video": "",
-    "order": 5
+    "order": 5,
+    "specs": "<h2><strong>Pixels</strong></h2><ul><li><strong>2100x</strong> SK6812 RGBW (3 x 2)</li><li class=\"ql-indent-1\"><strong>8x</strong> 30m @ 5/m 24vdc</li><li class=\"ql-indent-1\"><strong>8x </strong>23m @ 5/m 24vdc</li></ul><h2><strong>Control</strong></h2><ul><li>Resolume Arena 7.x</li></ul>",
+    "related": []
   },
   {
     "id": "9925",
@@ -754,11 +764,19 @@
     "gallery": [
       "media/Fabrication/Field Bench PSU/20250317_180727.webp"
     ],
-    "files": [],
+    "files": [
+      {
+        "name": "Field Bench PSU",
+        "url": "media/Fabrication/Field Bench PSU/files/fieldbenchpsu.zip",
+        "description": "Download, print, and assemble the Field Bench PSU. Zip file containing 3mf."
+      }
+    ],
     "video": "",
     "timestamp": "2026-06-21T22:41:13.337Z",
     "id": "707",
-    "order": 1
+    "order": 1,
+    "specs": "<h2><strong>Designed In</strong></h2><ul><li>SolidWorks 2022</li></ul><h2><strong>Printed On</strong></h2><ul><li>Tenlog TL-D3</li></ul><h2><strong>Made With</strong></h2><ul><li>Black PLA+</li></ul>",
+    "related": []
   },
   {
     "title": "Club Lexi",
@@ -790,7 +808,9 @@
     "video": "",
     "timestamp": "2026-06-21T22:45:09.610Z",
     "id": "6350",
-    "order": 3
+    "order": 3,
+    "specs": "<h2><strong>Lighting</strong></h2><ul><li><strong>34x</strong> PixelDots RGBW</li><li><strong>12x</strong> Profile Zoom 150W</li><li><strong>18x </strong>6x40w Beye RGBW</li></ul><h2><strong>SFX</strong></h2><ul><li>1x Radiance Hazer</li></ul><h2><strong>Control</strong></h2><ul><li>Wolfmix WMX1</li></ul>",
+    "related": []
   },
   {
     "id": "6841",
@@ -1035,7 +1055,7 @@
     "category": "Lighting",
     "image": "media/Lighting/Lobby Wall - Tracks _ Denver/0321151647.webp",
     "description": "<p>A modular, double-sided LED pixel wall engineered for rapid nightclub deployment and controlled via Madrix software.</p>",
-    "longDescription": "<p>This project involved designing and deploying a double-sided LED pixel wall for a major facility remodel at Tracks nightclub in Denver. To overcome a highly compressed installation window, the system was engineered as a fully modular framework rather than a traditional in-place build. This approach allowed for comprehensive off-site assembly and testing, minimizing on-site risk and enabling a complete installation over the course of just two days.</p><p>The fabrication process required custom physical formatting to achieve the necessary visual density. Raw LED pucks were manually soldered with custom wire lengths to account for specific pixel spacing requirements. These custom arrays were then contact-cemented onto standardized pegboard panels in eight-pixel configurations. This modular panelized workflow enabled rigorous pre-installation testing of every segment. Once mounted in the venue, the arrays were finished with frosted plexiglass panels secured on standoffs, providing even light diffusion across both sides of the wall.</p><p>The installation's hardware architecture relies on the WS2801 two-wire protocol, driven by a 16-output SanDevices E682 decoder. To streamline the physical wiring and digital mapping, the power and data topology was organized so that each horizontal row of pegboard modules connects to a dedicated output on the controller. The entire double-sided array is mapped and dynamically driven using Madrix 3.6 lighting control software, allowing for complex, real-time pixel manipulation across the network.</p><p><br></p><h2><strong>Specs</strong></h2><p><strong>Fixtures: </strong>LED Pixels</p><p><strong>Pixels: </strong>520</p><p><strong>Driver: </strong>WS2801 (RGB)</p><p><strong>Decoder: </strong>SanDevices E682</p><p><strong>Software:</strong> Madrix 3.6</p>",
+    "longDescription": "<p>This project involved designing and deploying a double-sided LED pixel wall for a major facility remodel at Tracks nightclub in Denver. To overcome a highly compressed installation window, the system was engineered as a fully modular framework rather than a traditional in-place build. This approach allowed for comprehensive off-site assembly and testing, minimizing on-site risk and enabling a complete installation over the course of just two days.</p><p>The fabrication process required custom physical formatting to achieve the necessary visual density. Raw LED pucks were manually soldered with custom wire lengths to account for specific pixel spacing requirements. These custom arrays were then contact-cemented onto standardized pegboard panels in eight-pixel configurations. This modular panelized workflow enabled rigorous pre-installation testing of every segment. Once mounted in the venue, the arrays were finished with frosted plexiglass panels secured on standoffs, providing even light diffusion across both sides of the wall.</p><p>The installation's hardware architecture relies on the WS2801 two-wire protocol, driven by a 16-output SanDevices E682 decoder. To streamline the physical wiring and digital mapping, the power and data topology was organized so that each horizontal row of pegboard modules connects to a dedicated output on the controller. The entire double-sided array is mapped and dynamically driven using Madrix 3.6 lighting control software, allowing for complex, real-time pixel manipulation across the network.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -1066,7 +1086,9 @@
     "video": "",
     "timestamp": "2026-07-20T20:00:01.882Z",
     "id": "7590",
-    "order": 9
+    "order": 9,
+    "specs": "<h2><strong>Pixels</strong></h2><ul><li><strong>520x</strong> WS2801 RGB (6 x 1), 12vdc</li></ul><h2><strong>Control</strong></h2><ul><li>Madrix 3.6</li></ul><p><br></p>",
+    "related": []
   },
   {
     "title": "Curved Bottle Shelf - Que Bueno Suerte! | Denver",
@@ -1105,7 +1127,7 @@
     "timestamp": "2026-07-20T21:09:12.884Z",
     "id": "6808",
     "order": 1,
-    "specs": "<h2><strong>Pixels</strong></h2><ul><li><strong>1152x</strong> WS2815 RGB</li><li class=\"ql-indent-1\"><strong>96x</strong> 0.2m @ 60/m 12vdc</li></ul><p><br></p>",
+    "specs": "<h2><strong>Pixels</strong></h2><ul><li><strong>1152x</strong> WS2815 RGB</li><li class=\"ql-indent-1\"><strong>96x</strong> 0.2m @ 60/m 12vdc</li></ul><h2><strong>Control</strong></h2><ul><li>Madrix 5.x</li></ul>",
     "related": [
       {
         "name": "Control system",
