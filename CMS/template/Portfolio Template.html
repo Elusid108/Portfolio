@@ -130,6 +130,10 @@
         const Play = (p) => <Icon {...p}><polygon points="5 3 19 12 5 21 5 3"/></Icon>;
         const Copy = (p) => <Icon {...p}><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></Icon>;
         const Send = (p) => <Icon {...p}><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></Icon>;
+        const Share2 = (p) => <Icon {...p}><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></Icon>;
+        const Check = (p) => <Icon {...p}><polyline points="20 6 9 17 4 12"/></Icon>;
+        const Facebook = (p) => <Icon {...p}><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></Icon>;
+        const TikTok = (p) => <Icon {...p}><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></Icon>;
 
         // --- GLOBAL HELPER: URL NORMALIZER ---
         const ensureProtocol = (url) => {
@@ -444,11 +448,38 @@
             const [lightboxIndex, setLightboxIndex] = useState(null);
             const [hoveredRelated, setHoveredRelated] = useState(null);
             const [hoveredFile, setHoveredFile] = useState(null);
+            const [showShare, setShowShare] = useState(false);
+            const [copied, setCopied] = useState(false);
             
             useEffect(() => {
                 document.body.style.overflow = 'hidden';
                 return () => document.body.style.overflow = 'unset';
             }, []);
+
+            useEffect(() => {
+                if (!showShare) return;
+                const onKey = (e) => { if (e.key === 'Escape') setShowShare(false); };
+                window.addEventListener('keydown', onKey);
+                return () => window.removeEventListener('keydown', onKey);
+            }, [showShare]);
+
+            const shareUrl = `${window.location.origin}${window.location.pathname}#project/${encodeURIComponent(project.id)}`;
+
+            const handleShare = (e) => {
+                e.stopPropagation();
+                if (navigator.share) {
+                    navigator.share({ title: project.title, url: shareUrl }).catch(() => {});
+                } else {
+                    setShowShare(true);
+                }
+            };
+
+            const handleCopyShare = () => {
+                navigator.clipboard.writeText(shareUrl).then(() => {
+                    setCopied(true);
+                    setTimeout(() => setCopied(false), 2000);
+                });
+            };
 
             const getFileExt = (url) => {
                 if(!url) return "FILE";
@@ -462,6 +493,11 @@
                     <div className="absolute inset-0 bg-black/90 backdrop-blur-md transition-opacity" onClick={onClose}></div>
                     <div className="relative bg-zinc-950 w-full max-w-5xl max-h-[90vh] rounded-2xl overflow-hidden flex flex-col border border-zinc-800 shadow-2xl animate-fade-in">
                         
+                        {/* SHARE BUTTON */}
+                        <button onClick={handleShare} className="absolute top-4 left-4 p-2 bg-black/50 rounded-full text-white hover:bg-cyan-500/80 transition-colors backdrop-blur z-50">
+                            <Share2 size={20} />
+                        </button>
+
                         {/* CLOSE BUTTON - Fixed outside scroll */}
                         <button onClick={(e) => { e.stopPropagation(); onClose(); }} className="absolute top-4 right-4 p-2 bg-black/50 rounded-full text-white hover:bg-red-500/80 transition-colors backdrop-blur z-50">
                             <X size={24} />
@@ -729,6 +765,46 @@
                         </div>
                     </div>
                     {lightboxIndex !== null && <Lightbox images={project.gallery} initialIndex={lightboxIndex} onClose={() => setLightboxIndex(null)} />}
+                    {showShare && (
+                        <div className="fixed inset-0 z-[200] flex items-center justify-center p-4" onClick={() => setShowShare(false)}>
+                            <div className="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+                            <div className="relative bg-zinc-900 border border-zinc-700 rounded-2xl shadow-2xl w-full max-w-sm p-6" onClick={(e) => e.stopPropagation()}>
+                                <div className="flex items-center justify-between mb-5">
+                                    <h3 className="text-lg font-bold text-white">Share this Project</h3>
+                                    <button onClick={() => setShowShare(false)} className="text-zinc-500 hover:text-white transition-colors">
+                                        <X size={20} />
+                                    </button>
+                                </div>
+                                <div className="flex gap-2 mb-6">
+                                    <input readOnly value={shareUrl} className="flex-1 min-w-0 bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-300 font-mono truncate" />
+                                    <button onClick={handleCopyShare} className={`shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-bold transition-colors ${copied ? 'bg-green-600 text-white' : 'bg-zinc-700 hover:bg-zinc-600 text-white'}`}>
+                                        {copied ? <><Check size={15}/> Copied!</> : <><Copy size={15}/> Copy</>}
+                                    </button>
+                                </div>
+                                <div className="grid grid-cols-2 gap-3">
+                                    <a href={`mailto:?subject=${encodeURIComponent('Check out: ' + project.title)}&body=${encodeURIComponent(shareUrl)}`} className="flex items-center gap-2.5 p-3 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white transition-colors">
+                                        <div className="w-8 h-8 rounded-lg bg-zinc-600 flex items-center justify-center shrink-0"><Mail size={16}/></div>
+                                        <span className="text-sm font-medium">Email</span>
+                                    </a>
+                                    <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 p-3 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white transition-colors">
+                                        <div className="w-8 h-8 rounded-lg bg-blue-700 flex items-center justify-center shrink-0"><Facebook size={16}/></div>
+                                        <span className="text-sm font-medium">Facebook</span>
+                                    </a>
+                                    <button onClick={() => { handleCopyShare(); }} className="flex items-center gap-2.5 p-3 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white transition-colors text-left">
+                                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 flex items-center justify-center shrink-0"><Instagram size={16}/></div>
+                                        <span className="text-sm font-medium">Instagram</span>
+                                    </button>
+                                    <button onClick={() => { handleCopyShare(); }} className="flex items-center gap-2.5 p-3 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white transition-colors text-left">
+                                        <div className="w-8 h-8 rounded-lg bg-black border border-zinc-600 flex items-center justify-center shrink-0"><TikTok size={16}/></div>
+                                        <span className="text-sm font-medium">TikTok</span>
+                                    </button>
+                                </div>
+                                {copied && (
+                                    <p className="text-center text-xs text-zinc-400 mt-3">Link copied — paste it in the app to share</p>
+                                )}
+                            </div>
+                        </div>
+                    )}
                 </div>
             );
         };
@@ -757,11 +833,11 @@
                                 <div dangerouslySetInnerHTML={{ __html: text }} />
                                 <div className="pt-4 border-t border-zinc-700 space-y-4">
                                     {[
-                                        { label: "Hardware & Electronics", tags: ["PCB Design", "SMD Soldering", "Power Distribution", "Arduino", "Raspberry Pi", "Embedded Systems", "AC/DC Load Calc"] },
-                                        { label: "Lighting & Show Control", tags: ["DMX", "ArtNet", "sACN", "OSC", "Madrix", "WLED", "xLights", "Pixel Mapping", "TouchDesigner"] },
-                                        { label: "Software & Automation", tags: ["React", "JavaScript", "Node.js", "REST APIs", "LLM Integration", "Google Drive API"] },
-                                        { label: "Fabrication & R&D", tags: ["FDM 3D Printing", "SolidWorks", "Custom Fabrication", "Rapid Prototyping"] },
-                                        { label: "Systems Integration", tags: ["Ethernet", "SPI", "I2C", "CAN", "Networking", "Show Control"] },
+                                        { label: "Hardware & Electronics", tags: (settings.skills_hardware || "PCB Design, SMD Soldering, Power Distribution, Arduino, Raspberry Pi, Embedded Systems, AC/DC Load Calc").split(',').map(t => t.trim()).filter(Boolean) },
+                                        { label: "Lighting & Show Control", tags: (settings.skills_lighting  || "DMX, ArtNet, sACN, OSC, Madrix, WLED, xLights, Pixel Mapping, TouchDesigner").split(',').map(t => t.trim()).filter(Boolean) },
+                                        { label: "Software & Automation",   tags: (settings.skills_software  || "React, JavaScript, Node.js, REST APIs, LLM Integration, Google Drive API").split(',').map(t => t.trim()).filter(Boolean) },
+                                        { label: "Fabrication & R&D",       tags: (settings.skills_fabrication || "FDM 3D Printing, SolidWorks, Custom Fabrication, Rapid Prototyping").split(',').map(t => t.trim()).filter(Boolean) },
+                                        { label: "Systems Integration",     tags: (settings.skills_systems   || "Ethernet, SPI, I2C, CAN, Networking, Show Control").split(',').map(t => t.trim()).filter(Boolean) },
                                     ].map(({ label, tags }) => (
                                         <div key={label}>
                                             <p className="text-xs font-semibold tracking-widest text-zinc-500 uppercase mb-2">{label}</p>
