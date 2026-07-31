@@ -415,6 +415,15 @@
         setupGalleryHoverPreview();
     };
 
+    function escAttr(value) {
+        return String(value ?? '')
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+    }
+
     // --- THUMBNAIL HELPERS ---
     function getYouTubeId(url) {
         if (!url || typeof url !== 'string') return null;
@@ -686,9 +695,12 @@
       const galleryContainer = document.getElementById('gallery-container');
       galleryContainer.innerHTML = '';
       if (Array.isArray(p.gallery) && p.gallery.length > 0) {
-         p.gallery.forEach(url => addGalleryRow(url, true));
+         p.gallery.forEach(item => {
+            if (typeof item === 'string') addGalleryRow(item, '', true);
+            else addGalleryRow(item?.url || '', item?.caption || '', true);
+         });
       } else {
-        addGalleryRow("", true);
+        addGalleryRow("", "", true);
       }
 
       const relatedContainer = document.getElementById('related-container');
@@ -715,8 +727,8 @@
       document.getElementById('gallery-container').innerHTML = '';
       document.getElementById('related-container').innerHTML = '';
 
-      addFileRow("", "", true);
-      addGalleryRow("", true);
+      addFileRow("", "", "", true);
+      addGalleryRow("", "", true);
       addRelatedRow("", "", true);
 
       document.getElementById('editor').classList.remove('hidden');
@@ -766,11 +778,11 @@
         div.innerHTML = `
             <div class="flex gap-2 items-center">
                 <span class="index-badge text-[10px] font-bold text-slate-400 w-6"></span>
-                <input type="text" placeholder="File Name" value="${name}" class="file-name flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="isDirty=true">
-                <input type="text" placeholder="Download URL" value="${url}" class="file-url flex-[2] bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="isDirty=true">
+                <input type="text" placeholder="File Name" value="${escAttr(name)}" class="file-name flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="isDirty=true">
+                <input type="text" placeholder="Download URL" value="${escAttr(url)}" class="file-url flex-[2] bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="isDirty=true">
                 <button type="button" onclick="this.closest('.file-row').remove(); updateListIndices('files-container'); isDirty=true;" class="text-red-400 hover:text-red-600 px-2 transition-colors"><i class="ph ph-trash"></i></button>
             </div>
-            <input type="text" placeholder="Description (optional — shown in popout on portfolio)" value="${description}" class="file-desc w-full bg-white border border-slate-200 rounded px-2 py-1 text-xs text-slate-500 focus:border-indigo-500 outline-none" oninput="isDirty=true">
+            <input type="text" placeholder="Description (optional — shown in popout on portfolio)" value="${escAttr(description)}" class="file-desc w-full bg-white border border-slate-200 rounded px-2 py-1 text-xs text-slate-500 focus:border-indigo-500 outline-none" oninput="isDirty=true">
         `;
         container.appendChild(div);
         updateListIndices('files-container');
@@ -783,8 +795,8 @@
         div.className = "flex gap-2 related-row items-center";
         div.innerHTML = `
             <span class="index-badge text-[10px] font-bold text-slate-400 w-6"></span>
-            <input type="text" placeholder="Link Name" value="${name}" class="related-name flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="isDirty=true">
-            <input type="text" placeholder="URL" value="${url}" class="related-url flex-[2] bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="isDirty=true">
+            <input type="text" placeholder="Link Name" value="${escAttr(name)}" class="related-name flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="isDirty=true">
+            <input type="text" placeholder="URL" value="${escAttr(url)}" class="related-url flex-[2] bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="isDirty=true">
             <button type="button" onclick="this.parentElement.remove(); updateListIndices('related-container'); isDirty=true;" class="text-red-400 hover:text-red-600 px-2 transition-colors"><i class="ph ph-trash"></i></button>
         `;
         container.appendChild(div);
@@ -792,19 +804,22 @@
         if (!isBulk) isDirty = true;
     }
 
-    function addGalleryRow(url = "", isBulk = false) {
+    function addGalleryRow(url = "", caption = "", isBulk = false) {
         const container = document.getElementById('gallery-container');
         const div = document.createElement('div');
-        div.className = "flex gap-2 gallery-row items-center bg-white border border-slate-200 rounded p-1";
+        div.className = "gallery-row space-y-1 bg-white border border-slate-200 rounded p-1";
         div.draggable = true;
         div.innerHTML = `
-            <span class="drag-handle cursor-grab text-slate-300 hover:text-slate-500 px-1"><i class="ph ph-dots-six-vertical"></i></span>
-            <span class="index-badge text-[10px] font-bold text-slate-400 w-6"></span>
-            <div class="gallery-thumb-wrap relative w-10 h-10 flex-shrink-0 ${url ? '' : 'hidden'}">
-                <img class="gallery-thumb w-10 h-10 object-cover rounded bg-slate-100 cursor-zoom-in" src="${getThumbnailSrc(url)}" onerror="this.closest('.gallery-thumb-wrap').classList.add('hidden')">
+            <div class="flex gap-2 items-center">
+                <span class="drag-handle cursor-grab text-slate-300 hover:text-slate-500 px-1"><i class="ph ph-dots-six-vertical"></i></span>
+                <span class="index-badge text-[10px] font-bold text-slate-400 w-6"></span>
+                <div class="gallery-thumb-wrap relative w-10 h-10 flex-shrink-0 ${url ? '' : 'hidden'}">
+                    <img class="gallery-thumb w-10 h-10 object-cover rounded bg-slate-100 cursor-zoom-in" src="${escAttr(getThumbnailSrc(url))}" onerror="this.closest('.gallery-thumb-wrap').classList.add('hidden')">
+                </div>
+                <input type="text" placeholder="Image path, URL, or YouTube link" value="${escAttr(url)}" class="gallery-url flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="onGalleryUrlChange(this)">
+                <button type="button" onclick="this.closest('.gallery-row').remove(); updateListIndices('gallery-container'); isDirty=true;" class="text-red-400 hover:text-red-600 px-2 transition-colors"><i class="ph ph-trash"></i></button>
             </div>
-            <input type="text" placeholder="Image path, URL, or YouTube link" value="${url}" class="gallery-url flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="onGalleryUrlChange(this)">
-            <button type="button" onclick="this.closest('.gallery-row').remove(); updateListIndices('gallery-container'); isDirty=true;" class="text-red-400 hover:text-red-600 px-2 transition-colors"><i class="ph ph-trash"></i></button>
+            <input type="text" placeholder="Caption (optional — shown in the media viewer)" value="${escAttr(caption)}" class="gallery-caption w-full bg-white border border-slate-200 rounded px-2 py-1 text-xs text-slate-500 focus:border-indigo-500 outline-none" oninput="isDirty=true">
         `;
         container.appendChild(div);
         updateListIndices('gallery-container');
@@ -994,7 +1009,7 @@
       for (const file of files) {
         try {
           const result = await api.upload(file, category, project);
-          addGalleryRow(result.path);
+          addGalleryRow(result.path, '');
         } catch (err) {
           console.error('Upload failed for', file.name, err);
         }
@@ -1070,7 +1085,11 @@
       })).filter(f => f.name && f.url);
 
       const galleryRows = document.querySelectorAll('.gallery-row');
-      const galleryList = Array.from(galleryRows).map(row => row.querySelector('.gallery-url').value).filter(url => url);
+      const galleryList = Array.from(galleryRows).map(row => {
+          const url = row.querySelector('.gallery-url').value.trim();
+          const caption = row.querySelector('.gallery-caption').value.trim();
+          return caption ? { url, caption } : url;
+      }).filter(item => (typeof item === 'string' ? item : item.url));
 
       const formData = {
         id: document.getElementById('id').value || undefined,
