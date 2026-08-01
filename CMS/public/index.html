@@ -203,9 +203,10 @@
              <div id="related-container" class="space-y-2"></div>
           </div>
 
-          <div class="mt-4">
+          <div class="mt-4 relative" id="tags-autocomplete-wrapper">
             <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Tags (Comma separated)</label>
             <textarea id="tags" rows="2" placeholder="Arduino, LED, Design" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs font-mono"></textarea>
+            <div id="tags-dropdown" class="hidden absolute left-0 right-0 z-50 bg-white border border-slate-200 rounded-lg shadow-lg max-h-40 overflow-y-auto mt-1"></div>
           </div>
 
           <div class="pt-4 flex justify-between items-center border-t border-slate-100 mt-4">
@@ -378,6 +379,7 @@
 
     // --- APP STATE ---
     let projects = [];
+    let cachedSettings = {};
     let isDirty = false;
     let listOrderDirty = false;
     let lastSavedId = null;
@@ -413,7 +415,116 @@
         setupDirtyTracking();
         setupGalleryDragDrop();
         setupGalleryHoverPreview();
+        setupTagsAutocomplete();
     };
+
+    // --- TAGS AUTOCOMPLETE ---
+    function getAllSkills() {
+        const keys = ['skills_hardware','skills_lighting','skills_software','skills_fabrication','skills_systems'];
+        const all = new Set();
+        keys.forEach(k => {
+            (cachedSettings[k] || '').split(',').map(s => s.trim()).filter(Boolean).forEach(s => all.add(s));
+        });
+        return [...all].sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
+    }
+
+    function setupTagsAutocomplete() {
+        const textarea = document.getElementById('tags');
+        const dropdown = document.getElementById('tags-dropdown');
+        let highlightedIdx = -1;
+
+        function getCurrentToken() {
+            const val = textarea.value;
+            const cursor = textarea.selectionStart;
+            const before = val.substring(0, cursor);
+            const lastComma = before.lastIndexOf(',');
+            return { token: before.substring(lastComma + 1).trim(), lastComma, cursor };
+        }
+
+        function getExistingTags() {
+            return textarea.value.split(',').map(t => t.trim().toLowerCase()).filter(Boolean);
+        }
+
+        function showSuggestions() {
+            const { token } = getCurrentToken();
+            if (!token) { dropdown.classList.add('hidden'); highlightedIdx = -1; return; }
+
+            const existing = getExistingTags();
+            const lower = token.toLowerCase();
+            const matches = getAllSkills().filter(s =>
+                s.toLowerCase().startsWith(lower) && !existing.includes(s.toLowerCase())
+            );
+
+            if (matches.length === 0) { dropdown.classList.add('hidden'); highlightedIdx = -1; return; }
+
+            highlightedIdx = -1;
+            dropdown.innerHTML = matches.map((s, i) =>
+                `<div class="tag-suggestion px-3 py-1.5 text-xs font-mono cursor-pointer hover:bg-indigo-50 hover:text-indigo-700 transition-colors" data-index="${i}" data-value="${escAttr(s)}">${escAttr(s)}</div>`
+            ).join('');
+            dropdown.classList.remove('hidden');
+        }
+
+        function pickSuggestion(value) {
+            const { lastComma } = getCurrentToken();
+            const before = lastComma >= 0 ? textarea.value.substring(0, lastComma + 1) + ' ' : '';
+            const afterCursor = textarea.value.substring(textarea.selectionStart);
+            const nextComma = afterCursor.indexOf(',');
+            const after = nextComma >= 0 ? afterCursor.substring(nextComma) : '';
+            textarea.value = before + value + ', ' + after.replace(/^,\s*/, '');
+            const newPos = (before + value + ', ').length;
+            textarea.setSelectionRange(newPos, newPos);
+            dropdown.classList.add('hidden');
+            highlightedIdx = -1;
+            textarea.focus();
+            isDirty = true;
+        }
+
+        function updateHighlight() {
+            const items = dropdown.querySelectorAll('.tag-suggestion');
+            items.forEach((el, i) => {
+                el.classList.toggle('bg-indigo-50', i === highlightedIdx);
+                el.classList.toggle('text-indigo-700', i === highlightedIdx);
+            });
+        }
+
+        textarea.addEventListener('input', showSuggestions);
+        textarea.addEventListener('focus', showSuggestions);
+
+        textarea.addEventListener('keydown', (e) => {
+            if (dropdown.classList.contains('hidden')) return;
+            const items = dropdown.querySelectorAll('.tag-suggestion');
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                highlightedIdx = Math.min(highlightedIdx + 1, items.length - 1);
+                updateHighlight();
+                if (items[highlightedIdx]) items[highlightedIdx].scrollIntoView({ block: 'nearest' });
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                highlightedIdx = Math.max(highlightedIdx - 1, 0);
+                updateHighlight();
+                if (items[highlightedIdx]) items[highlightedIdx].scrollIntoView({ block: 'nearest' });
+            } else if ((e.key === 'Enter' || e.key === 'Tab') && highlightedIdx >= 0) {
+                e.preventDefault();
+                pickSuggestion(items[highlightedIdx].dataset.value);
+            } else if (e.key === 'Escape') {
+                dropdown.classList.add('hidden');
+                highlightedIdx = -1;
+            }
+        });
+
+        dropdown.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+            const item = e.target.closest('.tag-suggestion');
+            if (item) pickSuggestion(item.dataset.value);
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('#tags-autocomplete-wrapper')) {
+                dropdown.classList.add('hidden');
+                highlightedIdx = -1;
+            }
+        });
+    }
 
     function escAttr(value) {
         return String(value ?? '')
@@ -548,7 +659,13 @@
 
     // --- DATA LOADING ---
     function refreshData() {
-      return api.get('/projects').then(onDataLoaded).catch(onError);
+      return Promise.all([
+        api.get('/projects'),
+        api.get('/settings')
+      ]).then(([projectData, settingsData]) => {
+        cachedSettings = settingsData || {};
+        onDataLoaded(projectData);
+      }).catch(onError);
     }
 
     function onDataLoaded(data) {

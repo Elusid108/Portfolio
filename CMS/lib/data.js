@@ -53,6 +53,27 @@ function getSettings() {
   return readJSON('settings.json');
 }
 
+const SKILL_KEYS = ['skills_hardware','skills_lighting','skills_software','skills_fabrication','skills_systems'];
+
+const CATEGORY_TO_SKILL_KEY = {
+  Lighting:    'skills_lighting',
+  Art:         'skills_fabrication',
+  Circuits:    'skills_hardware',
+  Apps:        'skills_software',
+  Solutions:   'skills_fabrication',
+  Integration: 'skills_systems'
+};
+
+function parseSkillsCSV(str) {
+  return (str || '').split(',').map(s => s.trim()).filter(Boolean);
+}
+
+function allSkillsSet(settings) {
+  const set = new Set();
+  SKILL_KEYS.forEach(k => parseSkillsCSV(settings[k]).forEach(s => set.add(s)));
+  return set;
+}
+
 function saveProject(project) {
   const projects = getProjects();
 
@@ -97,6 +118,28 @@ function saveProject(project) {
   }
 
   writeJSON('projects.json', projects);
+
+  // Auto-add new tags to the corresponding skills group
+  const tags = Array.isArray(project.tags) ? project.tags : [];
+  if (tags.length > 0) {
+    const settings = getSettings();
+    const existing = allSkillsSet(settings);
+    const targetKey = CATEGORY_TO_SKILL_KEY[project.category] || 'skills_fabrication';
+    let added = false;
+
+    tags.forEach(tag => {
+      if (!existing.has(tag)) {
+        const current = parseSkillsCSV(settings[targetKey]);
+        current.push(tag);
+        settings[targetKey] = current.join(', ');
+        existing.add(tag);
+        added = true;
+      }
+    });
+
+    if (added) writeJSON('settings.json', settings);
+  }
+
   return { success: true, project };
 }
 
@@ -121,8 +164,31 @@ function deleteProject(id) {
   return { success: true };
 }
 
-function saveSettings(settings) {
-  writeJSON('settings.json', settings);
+function saveSettings(newSettings) {
+  const oldSettings = getSettings();
+  const oldSkills = allSkillsSet(oldSettings);
+  const newSkills = allSkillsSet(newSettings);
+
+  // Find skills that were removed
+  const removed = new Set();
+  oldSkills.forEach(s => { if (!newSkills.has(s)) removed.add(s); });
+
+  // Cascade-delete removed skills from all project tags
+  if (removed.size > 0) {
+    const projects = getProjects();
+    let changed = false;
+    projects.forEach(p => {
+      if (!Array.isArray(p.tags) || p.tags.length === 0) return;
+      const filtered = p.tags.filter(t => !removed.has(t));
+      if (filtered.length !== p.tags.length) {
+        p.tags = filtered;
+        changed = true;
+      }
+    });
+    if (changed) writeJSON('projects.json', projects);
+  }
+
+  writeJSON('settings.json', newSettings);
   return { success: true };
 }
 

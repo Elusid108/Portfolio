@@ -163,6 +163,7 @@
         const Check = (p) => <Icon {...p}><polyline points="20 6 9 17 4 12"/></Icon>;
         const Facebook = (p) => <Icon {...p}><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></Icon>;
         const TikTok = (p) => <Icon {...p}><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></Icon>;
+        const Filter = (p) => <Icon {...p}><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></Icon>;
 
         // --- GLOBAL HELPER: URL NORMALIZER ---
         const ensureProtocol = (url) => {
@@ -665,7 +666,7 @@
             );
         };
 
-        const ProjectModal = ({ project, onClose }) => {
+        const ProjectModal = ({ project, onClose, onFilterByTag }) => {
             const [lightboxIndex, setLightboxIndex] = useState(null);
             const [hoveredRelated, setHoveredRelated] = useState(null);
             const [hoveredFile, setHoveredFile] = useState(null);
@@ -757,12 +758,13 @@
                                 </div>
                             </div>
 
-                            <div className="p-6 md:p-10 grid md:grid-cols-3 gap-10">
-                                {/* min-w-0: grid items default to min-width:auto, which stops them
-                                    shrinking below their content's intrinsic minimum and made this
-                                    column overflow the modal on narrow viewports. */}
-                                <div className="md:col-span-2 space-y-8 min-w-0">
-                                    <div>
+                            <div className="p-6 md:p-10 flex flex-col gap-8 md:grid md:grid-cols-3 md:gap-10">
+                                {/* On mobile: wrappers use display:contents so sections become
+                                    direct flex children, reordered via order-N classes.
+                                    On desktop (md+): wrappers become block grid items and
+                                    order has no effect inside them. */}
+                                <div className="contents md:block md:col-span-2 md:space-y-8 md:min-w-0">
+                                    <div className="order-1">
                                         <h3 className="text-xl font-bold text-white mb-4">About the Project</h3>
                                         <div 
                                             className="text-zinc-300 text-lg leading-relaxed break-words rich-text"
@@ -771,16 +773,16 @@
                                         {project.tags && project.tags.length > 0 && (
                                             <div className="flex flex-wrap gap-2 mt-4">
                                                 {project.tags.map(tag => (
-                                                    <span key={tag} className="text-xs font-mono px-2 py-1 bg-zinc-800 text-cyan-400 border border-cyan-500/30 rounded uppercase tracking-wider">
+                                                    <button type="button" key={tag} onClick={() => onFilterByTag && onFilterByTag(tag)} className="text-xs font-mono px-2 py-1 bg-zinc-800 text-cyan-400 border border-cyan-500/30 rounded uppercase tracking-wider hover:bg-cyan-500/20 hover:border-cyan-500/50 hover:text-cyan-300 cursor-pointer transition-colors">
                                                         {tag}
-                                                    </span>
+                                                    </button>
                                                 ))}
                                             </div>
                                         )}
                                     </div>
 
                                     {project.video && (
-                                        <div className="mb-8">
+                                        <div className="order-2 mb-8">
                                             <h3 className="text-xl font-bold text-white mb-4">Project Video</h3>
                                             <div className="aspect-video w-full rounded-xl overflow-hidden border border-zinc-800 bg-black">
                                                 {project.video.includes('youtube.com') || project.video.includes('youtu.be') ? (
@@ -803,7 +805,7 @@
                                     )}
 
                                     {project.gallery && project.gallery.length > 0 && (
-                                        <div>
+                                        <div className="order-4">
                                             <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
                                                 <ImageIcon size={20} className="text-zinc-500" aria-hidden="true"/> Project Gallery
                                             </h3>
@@ -839,9 +841,9 @@
                                     )}
                                 </div>
 
-                                <div className="space-y-6 min-w-0">
+                                <div className="contents md:block md:space-y-6 md:min-w-0">
                                     {hasActions && (
-                                        <div className="bg-zinc-900/50 border border-zinc-800 p-6 rounded-xl">
+                                        <div className="order-5 bg-zinc-900/50 border border-zinc-800 p-6 rounded-xl">
                                             <h4 className="text-sm font-bold text-zinc-500 uppercase tracking-widest mb-4">Actions</h4>
                                             <div className="space-y-3">
                                                 {project.websiteLink && (
@@ -872,7 +874,7 @@
                                     )}
 
                                     {project.specs && (
-                                        <div className="bg-zinc-900/50 border border-zinc-800 p-6 rounded-xl">
+                                        <div className="order-3 bg-zinc-900/50 border border-zinc-800 p-6 rounded-xl">
                                             <h4 className="text-sm font-bold text-zinc-500 uppercase tracking-widest mb-4">Specifications</h4>
                                             <div className="rich-text text-zinc-300 text-sm leading-relaxed"
                                                  dangerouslySetInnerHTML={{ __html: demoteHeadings(project.specs, 5) }} />
@@ -880,7 +882,7 @@
                                     )}
 
                                     {(project.files && project.files.length > 0) && (
-                                        <div className="bg-zinc-900/50 border border-zinc-800 p-6 rounded-xl">
+                                        <div className="order-6 bg-zinc-900/50 border border-zinc-800 p-6 rounded-xl">
                                             <h4 className="text-sm font-bold text-zinc-500 uppercase tracking-widest mb-4">Downloads</h4>
                                             <ul className="space-y-3">
                                                 {project.files.map((f, i) => {
@@ -925,7 +927,7 @@
                                     )}
 
                                     {(!project.files || project.files.length === 0) && project.link && (
-                                         <div className="bg-zinc-900/50 border border-zinc-800 p-6 rounded-xl">
+                                         <div className="order-7 bg-zinc-900/50 border border-zinc-800 p-6 rounded-xl">
                                             <a href={ensureProtocol(project.link)} className="flex items-center justify-center gap-2 w-full py-3 bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg transition-colors font-medium">
                                                 <Download size={18} /> Download Files
                                             </a>
@@ -933,7 +935,7 @@
                                     )}
 
                                     {(project.related && project.related.length > 0) && (
-                                        <div className="bg-zinc-900/50 border border-zinc-800 p-6 rounded-xl">
+                                        <div className="order-8 bg-zinc-900/50 border border-zinc-800 p-6 rounded-xl">
                                             <h4 className="text-sm font-bold text-zinc-500 uppercase tracking-widest mb-4">Related</h4>
                                             <ul className="space-y-3">
                                                 {project.related.map((r, i) => {
@@ -1051,7 +1053,7 @@
             );
         };
 
-        const AboutMe = () => {
+        const AboutMe = ({ onFilterBySkill }) => {
              // Fallback data if settings are empty
              const headshot = settings.about_headshot || "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80";
              const text = settings.about_text || `<p>With over a decade of experience bridging the gap between physical hardware and digital experiences, I specialize in creating robust, interactive systems.</p><p>I thrive on complex challenges that require a multidisciplinary approach.</p>`;
@@ -1085,7 +1087,9 @@
                                             <p className="text-xs font-semibold tracking-widest text-zinc-500 uppercase mb-2">{label}</p>
                                             <div className="flex flex-wrap gap-2">
                                                 {tags.map(tag => (
-                                                    <span key={tag} className="px-2 py-0.5 rounded text-xs bg-zinc-800 text-zinc-300 border border-zinc-700">{tag}</span>
+                                                    <button type="button" key={tag} onClick={() => onFilterBySkill && onFilterBySkill(tag)} className="px-2 py-0.5 rounded text-xs bg-zinc-800 text-zinc-300 border border-zinc-700 hover:bg-cyan-500/20 hover:border-cyan-500/50 hover:text-cyan-300 cursor-pointer transition-colors">
+                                                        {tag}
+                                                    </button>
                                                 ))}
                                             </div>
                                         </div>
@@ -1409,8 +1413,43 @@
             );
         };
 
+        const FilteredView = ({ filter, onClear, onOpenProject }) => {
+            const matching = projects.filter(p => p.tags && p.tags.includes(filter));
+            return (
+                <section className="pt-32 pb-20 bg-black min-h-[60vh]">
+                    <div className="container mx-auto px-6">
+                        <div className="mb-12">
+                            <div className="flex items-center gap-3 text-cyan-400 mb-2 font-mono text-sm uppercase tracking-widest">
+                                <Filter size={16} />
+                                <span>Filtered by Skill</span>
+                            </div>
+                            <div className="flex items-center gap-4 flex-wrap">
+                                <h2 className="text-3xl md:text-4xl font-bold">{filter}</h2>
+                                <button type="button" onClick={onClear} className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-zinc-400 bg-zinc-800 border border-zinc-700 rounded-lg hover:bg-zinc-700 hover:text-white transition-colors">
+                                    <X size={14} /> Clear Filter
+                                </button>
+                            </div>
+                        </div>
+                        {matching.length > 0 ? (
+                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {matching.map(p => (
+                                    <ProjectCard key={p.id} project={p} onOpen={onOpenProject} />
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="p-12 border border-dashed border-zinc-800 rounded-xl text-center text-zinc-500">
+                                <p className="text-lg mb-2">No projects tagged with "{filter}" yet.</p>
+                                <p className="text-sm">Tag projects with this skill in the CMS to see them here.</p>
+                            </div>
+                        )}
+                    </div>
+                </section>
+            );
+        };
+
         const App = () => {
             const [selectedProject, setSelectedProject] = useState(null);
+            const [activeFilter, setActiveFilter] = useState(null);
             const pushedHash = useRef(false);
             const justOpenedFromCard = useRef(false);
 
@@ -1454,70 +1493,86 @@
                 setSelectedProject(null);
             };
 
+            const handleSetFilter = (tag) => {
+                setActiveFilter(tag);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+
+            const handleFilterByTag = (tag) => {
+                handleCloseProject();
+                handleSetFilter(tag);
+            };
+
             return (
                 <div className="min-h-screen bg-zinc-950 text-zinc-200 selection:bg-cyan-500/30">
                     <a href="#main-content" className="skip-link">Skip to main content</a>
                     <Nav />
                     <main id="main-content">
-                    <Hero />
+                    {activeFilter ? (
+                        <FilteredView filter={activeFilter} onClear={() => setActiveFilter(null)} onOpenProject={handleOpenProject} />
+                    ) : (
+                        <>
+                        <Hero />
+                        
+                        <SimpleSection 
+                            id="lighting" 
+                            title="Illumination" 
+                            subtitle="Lighting Design" 
+                            icon={Lightbulb} 
+                            category="Lighting" 
+                            onOpenProject={handleOpenProject} 
+                            bgColor="bg-black"
+                        />
+                        
+                        <SimpleSection 
+                            id="art" 
+                            title="Sculpture & Form" 
+                            subtitle="Art" 
+                            icon={Palette} 
+                            category="Art" 
+                            onOpenProject={handleOpenProject} 
+                            bgColor="bg-zinc-950"
+                        />
+                        <SimpleSection 
+                            id="circuits" 
+                            title="Hardware Design" 
+                            subtitle="Electronics & PCBs" 
+                            icon={Cpu} 
+                            category="Circuits" 
+                            onOpenProject={handleOpenProject} 
+                            bgColor="bg-black"
+                        />
+                        <SimpleSection 
+                            id="apps" 
+                            title="Interactive Software" 
+                            subtitle="Apps & Games" 
+                            icon={Smartphone} 
+                            category="Apps" 
+                            onOpenProject={handleOpenProject} 
+                            bgColor="bg-zinc-950"
+                        />
+                        <SimpleSection 
+                            id="solutions" 
+                            title="Custom Tooling" 
+                            subtitle="Fabrication & Solutions" 
+                            icon={Wrench} 
+                            category="Solutions" 
+                            onOpenProject={handleOpenProject} 
+                            bgColor="bg-black"
+                        />
+                        <SimpleSection 
+                            id="integration" 
+                            title="The Backbone" 
+                            subtitle="Systems Integration" 
+                            icon={Layers} 
+                            category="Integration" 
+                            onOpenProject={handleOpenProject} 
+                            bgColor="bg-zinc-950"
+                        />
+                        </>
+                    )}
                     
-                    <SimpleSection 
-                        id="lighting" 
-                        title="Illumination" 
-                        subtitle="Lighting Design" 
-                        icon={Lightbulb} 
-                        category="Lighting" 
-                        onOpenProject={handleOpenProject} 
-                        bgColor="bg-black"
-                    />
-                    
-                    <SimpleSection 
-                        id="art" 
-                        title="Sculpture & Form" 
-                        subtitle="Art" 
-                        icon={Palette} 
-                        category="Art" 
-                        onOpenProject={handleOpenProject} 
-                        bgColor="bg-zinc-950"
-                    />
-                    <SimpleSection 
-                        id="circuits" 
-                        title="Hardware Design" 
-                        subtitle="Electronics & PCBs" 
-                        icon={Cpu} 
-                        category="Circuits" 
-                        onOpenProject={handleOpenProject} 
-                        bgColor="bg-black"
-                    />
-                    <SimpleSection 
-                        id="apps" 
-                        title="Interactive Software" 
-                        subtitle="Apps & Games" 
-                        icon={Smartphone} 
-                        category="Apps" 
-                        onOpenProject={handleOpenProject} 
-                        bgColor="bg-zinc-950"
-                    />
-                    <SimpleSection 
-                        id="solutions" 
-                        title="Custom Tooling" 
-                        subtitle="Fabrication & Solutions" 
-                        icon={Wrench} 
-                        category="Solutions" 
-                        onOpenProject={handleOpenProject} 
-                        bgColor="bg-black"
-                    />
-                    <SimpleSection 
-                        id="integration" 
-                        title="The Backbone" 
-                        subtitle="Systems Integration" 
-                        icon={Layers} 
-                        category="Integration" 
-                        onOpenProject={handleOpenProject} 
-                        bgColor="bg-zinc-950"
-                    />
-                    
-                    <AboutMe />
+                    <AboutMe onFilterBySkill={handleSetFilter} />
                     
                     <Contact />
                     </main>
@@ -1525,7 +1580,8 @@
                     {selectedProject && (
                         <ProjectModal 
                             project={selectedProject} 
-                            onClose={handleCloseProject} 
+                            onClose={handleCloseProject}
+                            onFilterByTag={handleFilterByTag}
                         />
                     )}
                 </div>

@@ -34,7 +34,17 @@
     "id": "1",
     "title": "Main Room - Temple Nightclub | San Francisco",
     "category": "Lighting",
-    "tags": [],
+    "tags": [
+      "DMX",
+      "ArtNet",
+      "sACN",
+      "Show Cockpit",
+      "Resolume Arena",
+      "Madrix",
+      "MIDI",
+      "OSC",
+      "OSCpilot"
+    ],
     "image": "media/Lighting/Temple San Francisco/20210516_134200.webp",
     "description": "<p>A comprehensive, hybrid lighting and video installation engineered for seamless cross-system pixel mapping and total venue immersion.</p>",
     "longDescription": "<p>The main room remodel at Temple Nightclub in San Francisco is a dense, hybrid lighting and video installation designed to deliver maximum environmental immersion and operational flexibility. The core architecture integrates a curved video ceiling that wraps behind the DJ, ten custom floor-to-ceiling LED pixel pillars, and a vast array of moving wash fixtures. The primary differentiator of this design is its meticulous flat-black construction across all hardware components. This design choice allows the entire complex infrastructure to vanish completely into the dark when unlit, contrasting sharply with the massive visual output of the active rig.</p><p>Constructed during the 2020 pandemic shutdown, the installation required profound physical and electrical infrastructure modifications before aesthetic integration could begin. To safely accommodate the curved video ceiling, a fire-suppression team was brought in to entirely reroute the sprinklers to deploy beneath the wall. The venue's power capacity was completely overhauled with new 400-amp and 200-amp services and breaker panels, feeding a meticulously mapped network of dedicated and shared circuits based on strict component specifications. Operational efficiency was prioritized throughout the physical build; all rig power was placed on switched relays for centralized shut-down, and independent, hardwired house lighting was installed to allow staff maintenance without activating the complex show systems.</p><p>The defining technical achievement of the installation is the cohesive, cross-system pixel mapping infrastructure layered on top of this robust electrical foundation. By linking the video playback engine directly to the room's environmental lighting—including custom edge-lit VIP tables, illuminated booths, and a double-sided dancefloor monolith—the system translates localized video content into precise color and intensity data distributed across the entire venue. To manage the sheer density and potential output of this rig, the operational strategy enforces highly selective, limited use across all combined systems. This strict design discipline avoids over-lighting the dancefloor while ensuring massive, unified full-room looks can be generated efficiently from centralized media inputs.</p>",
@@ -951,7 +961,12 @@
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "tags": [],
+    "tags": [
+      "Madrix",
+      "OSC",
+      "FDM 3D Printing",
+      "SolidWorks"
+    ],
     "gallery": [
       "media/Lighting/Curved Bottle Shelf - Que Bueno Suerte! _ Denver/20240419_101740.webp",
       "https://www.youtube.com/watch?v=26DFkO4ZL24",
