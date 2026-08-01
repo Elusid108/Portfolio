@@ -641,7 +641,7 @@
   },
   {
     "id": "4939",
-    "title": "Mirus Art Gallery | Denver",
+    "title": "MIRUS",
     "category": "Lighting",
     "tags": [
       "Madrix",
@@ -651,7 +651,7 @@
       "Power tools"
     ],
     "image": "media/Lighting/MIrus Art Gallery - Denver/IMG_20180614_235653.webp",
-    "description": "<p>A dynamic RGBW LED lighting installation integrated into custom wooden ceiling louvers for a modern art gallery.</p>",
+    "description": "<p><strong>Mirus Art Gallery | Denver </strong>- A dynamic RGBW LED lighting installation integrated into custom wooden ceiling louvers for a modern art gallery.</p>",
     "longDescription": "<p>This project involved the execution and build of a dynamic ceiling lighting installation at the MIRUS Art Gallery in Denver. The primary goal was to provide a versatile lighting environment capable of delivering vibrant psychedelic visuals for modern events while maintaining the ability to produce a clean, solid white wash for displaying traditional paintings. The installation stands out by seamlessly integrating technology into the architecture, utilizing custom fabricated wooden louvers with routed edges to conceal the lighting hardware while maximizing the wash effect across the room.</p><p>Working from a finalized design and parts specification, the build process required precise physical assembly and electrical routing. The workflow began with mounting the RGBW wash LED strips directly into the routed channels of the wooden ceiling louvers. From there, the low voltage wiring was routed through the ceiling infrastructure to connect with the necessary high current power supply units and DMX decoders. This required careful cable management and power distribution planning to ensure reliable operation and clean aesthetics within the gallery space.</p><p>The technical backbone of this installation relies on a streamlined DMX control architecture driven by Madrix Basic software. Because the system utilizes wash strips rather than individually addressable pixels, the entire room's channel count efficiently fits within a single DMX universe. This efficient use of control data, combined with robust high current power supplies and DMX decoders, ensures stable and responsive lighting transitions whether the gallery requires immersive color chases or pristine white illumination.</p>",
     "video": "",
     "gallery": [
@@ -1052,7 +1052,7 @@
     "title": "Club Lexi",
     "category": "Lighting",
     "image": "media/Lighting/Club Lexi/20230508_171150.webp",
-    "description": "<p>A low-profile, multi-zone lighting installation designed for simplified DJ operation using a standalone hardware controller.</p>",
+    "description": "<p><strong>CrazyHorse | Denver</strong> - A low-profile, multi-zone lighting installation designed for simplified DJ operation using a standalone hardware controller.</p>",
     "longDescription": "<p>The Club Lexi project required designing a dual-room lighting rig that merged modern fixture capabilities with a classic discotheque aesthetic. The core goal was to deliver a cohesive, high-energy dance floor experience across two adjacent spaces restricted by low ceilings. This installation differentiates itself through its spatial economy; by utilizing a high-density spine of RGBW moving lights alongside hybrid profile fixtures, the design maximizes limited headroom while generating an immersive visual environment.</p><p>The installation process prioritized both structural efficiency and operational flexibility. To navigate the strict vertical constraints, the entire rig was hung using strut channel mounted flush to the ceiling, bypassing the bulk of standard lighting truss. Custom electrical infrastructure was integrated directly into the layout, placing all fixture power on dedicated switches for safe and immediate equipment management. For the operational workflow, the physical layout was divided into distinct software zones, allowing the venue to scale the lighting footprint and keep half the system powered down during the early hours of operation.</p><p>The primary technical driver of this project is the integration of a Wolfmix WMX1 standalone controller. Because the venue operates without a dedicated lighting director, the control architecture needed to allow DJs to easily manage complex visual states in real-time. The optical package leverages hybrid beam effect fixtures and profile units fitted with custom gobos to properly texture the low-ceiling space. By routing the hardware array through the WMX1, the system overcomes the operational constraint of lacking a technician, successfully balancing sophisticated automated programming with accessible, tactile user control.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -1254,10 +1254,10 @@
     }
   },
   {
-    "title": "Basement - Triangle | Denver",
+    "title": "The Basement",
     "category": "Lighting",
     "image": "media/Lighting/The Triangle/IMG_20180614_174327.webp",
-    "description": "<p>A mixed-rig nightclub lighting installation featuring video integration, moving profiles, and a custom indirect pixel ceiling.</p>",
+    "description": "<p><strong>Triangle Bar | Denver</strong> - A mixed-rig nightclub lighting installation featuring video integration, moving profiles, and a custom indirect pixel ceiling.</p>",
     "longDescription": "<p>The basement installation at Triangle in Denver is a comprehensive entertainment environment utilizing a mixed rig of pixels, conventional lighting, and video elements. The primary goal was to create an immersive visual experience across the DJ booth, dancefloor, and bar areas. What sets this design apart is the custom bounce-effect ceiling array. Instead of directing light straight down at the audience, each ceiling slat houses twenty pixel modules pointing upwards. The spaced slats allow the reflected light to bleed through, producing a highly unique and perfectly smooth color gradient effect overhead.</p><p>Executing this design required orchestrating multiple distinct zones into a unified visual system. The physical workflow integrated a front screen and rear backdrop for the DJ booth, moving profile fixtures for the dancefloor, and high impact under-lighting for the bar rails. A major spatial constraint was the acoustic noise generated by the large number of power supplies required for the overhead pixels. To solve this, the installation process involved routing all power and data from an isolated adjacent room, keeping the main club environment entirely free of hardware clutter and fan noise.</p><p>The technical success of this project relies heavily on the implementation of long-range pixel decoders. Transmitting high-speed data and stable power over extended distances introduces significant signal integrity challenges. By leveraging specialized long-range decoding hardware, the system effectively bridges the physical gap between the remote power racks and the ceiling array. This solution overcomes the structural limitations of the venue, ensuring flawless pixel mapping and synchronization across the ceiling without compromising the acoustic or visual aesthetic.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -1560,10 +1560,10 @@
     }
   },
   {
-    "title": "Lobby Wall - Tracks | Denver",
+    "title": "Lobby Wall",
     "category": "Lighting",
     "image": "media/Lighting/Lobby Wall - Tracks _ Denver/0321151647.webp",
-    "description": "<p>A modular, double-sided LED pixel wall engineered for rapid nightclub deployment and controlled via Madrix software.</p>",
+    "description": "<p><strong>Tracks | Denver </strong>- A modular, double-sided LED pixel wall engineered for rapid nightclub deployment and controlled via Madrix software.</p>",
     "longDescription": "<p>This project involved designing and deploying a double-sided LED pixel wall for a major facility remodel at Tracks nightclub in Denver. To overcome a highly compressed installation window, the system was engineered as a fully modular framework rather than a traditional in-place build. This approach allowed for comprehensive off-site assembly and testing, minimizing on-site risk and enabling a complete installation over the course of just two days.</p><p>The fabrication process required custom physical formatting to achieve the necessary visual density. Raw LED pucks were manually soldered with custom wire lengths to account for specific pixel spacing requirements. These custom arrays were then contact-cemented onto standardized pegboard panels in eight-pixel configurations. This modular panelized workflow enabled rigorous pre-installation testing of every segment. Once mounted in the venue, the arrays were finished with frosted plexiglass panels secured on standoffs, providing even light diffusion across both sides of the wall.</p><p>The installation's hardware architecture relies on the WS2801 two-wire protocol, driven by a 16-output SanDevices E682 decoder. To streamline the physical wiring and digital mapping, the power and data topology was organized so that each horizontal row of pegboard modules connects to a dedicated output on the controller. The entire double-sided array is mapped and dynamically driven using Madrix 3.6 lighting control software, allowing for complex, real-time pixel manipulation across the network.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -1668,7 +1668,6 @@
     "tags": [
       "Madrix",
       "FDM 3D Printing",
-      "SolidWorks",
       "Lighting Design"
     ],
     "gallery": [
@@ -2130,7 +2129,13 @@
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "tags": [],
+    "tags": [
+      "FDM 3D Printing",
+      "SolidWorks",
+      "Through-Hole Soldering",
+      "Lighting Design",
+      "Hand tools"
+    ],
     "gallery": [
       {
         "url": "media/Fabrication/Pixel Louver Lights/20240401_103859.webp",
@@ -2163,10 +2168,17 @@
           "x": 74.5,
           "y": 27.6
         }
+      },
+      "media/Fabrication/Pixel Louver Lights/Screenshot 2026-08-01 140532.webp"
+    ],
+    "files": [
+      {
+        "name": "Louver Light Model",
+        "url": "media/Fabrication/Pixel Louver Lights/files/LouverLight.zip",
+        "description": "ZIP containing STL files for the pixel louver lights I designed and installed at Que Bueno Suerte! specifically for the curved liquor display install."
       }
     ],
-    "files": [],
-    "specs": "",
+    "specs": "<h2><strong>Designed In</strong></h2><ul><li>SolidWorks 2022</li></ul><h2><strong>Printed On</strong></h2><ul><li>Bambulabs X1C</li></ul><h2><strong>Made With</strong></h2><ul><li>Black PLA+</li></ul>",
     "related": [
       {
         "name": "Bottle shelf",
@@ -2202,7 +2214,7 @@
       "x": 100,
       "y": 48.4
     },
-    "description": "<p>Placeholder</p>",
+    "description": "<p><strong>Que Bueno Suerte! | Denver</strong></p>",
     "longDescription": "<p>Placeholder</p>",
     "websiteLink": "",
     "launchLink": "",
