@@ -107,10 +107,6 @@
       {
         "name": "Pixel Pillars",
         "url": "#project/6371"
-      },
-      {
-        "name": "Extrusion Centering Sled",
-        "url": "#project/5376"
       }
     ],
     "bannerFit": {
@@ -347,6 +343,10 @@
       {
         "name": "Lighting design",
         "url": "#project/1"
+      },
+      {
+        "name": "Dancefloor pillars",
+        "url": "#project/6371"
       }
     ]
   },
@@ -413,9 +413,30 @@
       "media/Electronics/Pixel Panel PCB/20200910_134441.webp",
       "media/Electronics/LED Pixel Panel/20200910_13437.webp",
       "media/Electronics/LED Pixel Panel/20200910_134533.webp",
-      "media/Electronics/Pixel Panel PCB/20211118_155135.webp",
-      "media/Electronics/Pixel Panel PCB/20211118_154350.webp",
-      "media/Electronics/Pixel Panel PCB/20211202_171343.webp",
+      {
+        "url": "media/Electronics/Pixel Panel PCB/20211118_155135.webp",
+        "fit": {
+          "scale": 1,
+          "x": 50.9,
+          "y": 77.8
+        }
+      },
+      {
+        "url": "media/Electronics/Pixel Panel PCB/20211118_154350.webp",
+        "fit": {
+          "scale": 1.3,
+          "x": 41.6,
+          "y": 80.7
+        }
+      },
+      {
+        "url": "media/Electronics/Pixel Panel PCB/20211202_171343.webp",
+        "fit": {
+          "scale": 1.5,
+          "x": 62.1,
+          "y": 68.4
+        }
+      },
       "https://www.youtube.com/watch?v=bxIpeqLU4mc"
     ],
     "launchLink": "",
@@ -428,7 +449,12 @@
     "wip": false,
     "order": 4,
     "specs": "",
-    "related": []
+    "related": [],
+    "bannerFit": {
+      "scale": 1,
+      "x": 47.9,
+      "y": 27.7
+    }
   },
   {
     "id": "5416",
@@ -440,10 +466,38 @@
     "longDescription": "<p>The LVL room at Temple Denver features an immersive, exclusively pixel-based lighting installation with continuous lines running across the floor, ceiling, and pillars. The core goal of this project was to execute a comprehensive structural rewiring of the power and data distribution to transform an unstable installation into a robust, production-ready system. Unlike standard rig assemblies, this overhaul required retrofitting an existing design, demanding precise power management and signal integrity to support advanced, whole-room spatial mapping without compromising the original aesthetic.</p><p>The project workflow centered on meticulous hardware restoration and systemic reconfiguration. Every segment of the existing LED tape was systematically removed, rigorously tested, resoldered, heat-shrinked, and reinstalled to guarantee structural and electrical integrity. To handle the data load, the LED decoder lines were strategically decentralized across the network. Concurrently, the entire power infrastructure was redesigned, efficiently routing power from supplies located in the back room and beneath the DJ booth to ensure consistent performance across the venue's footprint.</p><p>The primary technical constraint of the installation was the extreme length of the pixel runs, which inherently caused severe voltage drop and data signal degradation. This was overcome by running DC wire in parallel with the LED strips to introduce strategic power injection points, guaranteeing uniform brightness and absolute data stability. With the hardware stabilized, the entire room was 3D voxel mapped, allowing the control system to execute volumetric, full-room effects like spatial line sweeps. By isolating specific structural elements into distinct groups, the system can also effectively simulate the behavior of traditional lighting fixtures within a continuous pixel environment.</p>",
     "video": "",
     "gallery": [
-      "media/Lighting/LVL - Denver/IMG_20191009_231844.webp",
-      "media/Lighting/LVL - Temple _ Denver/IMG_20191009_231900.webp",
-      "media/Lighting/LVL - Temple _ Denver/IMG_20180926_042731.webp",
-      "media/Lighting/LVL - Temple _ Denver/IMG_20181107_194215.webp",
+      {
+        "url": "media/Lighting/LVL - Denver/IMG_20191009_231844.webp",
+        "fit": {
+          "scale": 1,
+          "x": 47.3,
+          "y": 17
+        }
+      },
+      {
+        "url": "media/Lighting/LVL - Temple _ Denver/IMG_20191009_231900.webp",
+        "fit": {
+          "scale": 1,
+          "x": 46.1,
+          "y": 6.5
+        }
+      },
+      {
+        "url": "media/Lighting/LVL - Temple _ Denver/IMG_20180926_042731.webp",
+        "fit": {
+          "scale": 1,
+          "x": 49.1,
+          "y": 1
+        }
+      },
+      {
+        "url": "media/Lighting/LVL - Temple _ Denver/IMG_20181107_194215.webp",
+        "fit": {
+          "scale": 1,
+          "x": 48.2,
+          "y": 42.9
+        }
+      },
       "https://www.youtube.com/watch?v=U_t3yydvrPY"
     ],
     "launchLink": "",
@@ -456,7 +510,17 @@
     "wip": false,
     "order": 3,
     "specs": "",
-    "related": []
+    "related": [],
+    "thumbnailFit": {
+      "scale": 1,
+      "x": 0,
+      "y": 37.7
+    },
+    "bannerFit": {
+      "scale": 1,
+      "x": 42.1,
+      "y": 24.6
+    }
   },
   {
     "id": "4939",
@@ -940,18 +1004,88 @@
     "wip": false,
     "tags": [],
     "gallery": [
-      "media/Lighting/The Orb - Temple _ Denver/IMG_20190105_011459.webp",
-      "media/Lighting/The Orb - Temple _ Denver/MVIMG_20190309_005437.webp",
-      "media/Lighting/The Orb - Temple _ Denver/MVIMG_20190203_004035.webp",
+      {
+        "url": "media/Lighting/The Orb - Temple _ Denver/IMG_20190105_011459.webp",
+        "fit": {
+          "scale": 1.35,
+          "x": 0,
+          "y": 52.3
+        }
+      },
+      {
+        "url": "media/Lighting/The Orb - Temple _ Denver/MVIMG_20190309_005437.webp",
+        "fit": {
+          "scale": 1.25,
+          "x": 35.9,
+          "y": 51.8
+        }
+      },
+      {
+        "url": "media/Lighting/The Orb - Temple _ Denver/MVIMG_20190203_004035.webp",
+        "fit": {
+          "scale": 1.3,
+          "x": 0,
+          "y": 62.7
+        }
+      },
       "https://www.youtube.com/watch?v=VYTQBapCFX8",
-      "media/Lighting/The Orb - Temple _ Denver/IMG_20181229_194431.webp",
-      "media/Lighting/The Orb - Temple _ Denver/IMG_20181228_174028.webp",
-      "media/Lighting/The Orb - Temple Denver/IMG_20181230_145358.webp",
-      "media/Lighting/The Orb - Temple _ Denver/MVIMG_20190912_124434.webp",
-      "media/Lighting/The Orb - Temple Denver/IMG_20181228_171913.webp",
+      {
+        "url": "media/Lighting/The Orb - Temple _ Denver/IMG_20181229_194431.webp",
+        "fit": {
+          "scale": 1,
+          "x": 48.4,
+          "y": 20.2
+        }
+      },
+      {
+        "url": "media/Lighting/The Orb - Temple _ Denver/IMG_20181228_174028.webp",
+        "fit": {
+          "scale": 1,
+          "x": 41.2,
+          "y": 40.8
+        }
+      },
+      {
+        "url": "media/Lighting/The Orb - Temple Denver/IMG_20181230_145358.webp",
+        "fit": {
+          "scale": 1,
+          "x": 93,
+          "y": 32.3
+        }
+      },
+      {
+        "url": "media/Lighting/The Orb - Temple _ Denver/MVIMG_20190912_124434.webp",
+        "fit": {
+          "scale": 1.05,
+          "x": 27.5,
+          "y": 74.2
+        }
+      },
+      {
+        "url": "media/Lighting/The Orb - Temple Denver/IMG_20181228_171913.webp",
+        "fit": {
+          "scale": 1,
+          "x": 45.9,
+          "y": 38.6
+        }
+      },
       "https://www.youtube.com/watch?v=iUyuO0OBPTg",
-      "media/Lighting/The Orb - Temple _ Denver/ORB2.webp",
-      "media/Lighting/The Orb - Temple Denver/IMG-20181222-WA0000.webp"
+      {
+        "url": "media/Lighting/The Orb - Temple _ Denver/ORB2.webp",
+        "fit": {
+          "scale": 1.1,
+          "x": 47.4,
+          "y": 58.5
+        }
+      },
+      {
+        "url": "media/Lighting/The Orb - Temple Denver/IMG-20181222-WA0000.webp",
+        "fit": {
+          "scale": 1.45,
+          "x": 49.8,
+          "y": 38.8
+        }
+      }
     ],
     "files": [],
     "video": "",
@@ -962,7 +1096,17 @@
         "name": "Control system",
         "url": "#project/4382"
       }
-    ]
+    ],
+    "thumbnailFit": {
+      "scale": 1.1,
+      "x": 65.9,
+      "y": 55
+    },
+    "bannerFit": {
+      "scale": 1,
+      "x": 41.8,
+      "y": 48.3
+    }
   },
   {
     "title": "Basement - Triangle | Denver",
@@ -1097,7 +1241,17 @@
         "name": "Curved Bottle Shelf",
         "url": "#project/6808"
       }
-    ]
+    ],
+    "thumbnailFit": {
+      "scale": 1.1,
+      "x": 33.8,
+      "y": 9.4
+    },
+    "bannerFit": {
+      "scale": 1.2,
+      "x": 30.8,
+      "y": 41
+    }
   },
   {
     "title": "Pixel Negative \"X\"",
@@ -1422,14 +1576,6 @@
       {
         "name": "Pixel Pillars",
         "url": "#project/6371"
-      },
-      {
-        "name": "Immersive Lighting Rig",
-        "url": "#project/1"
-      },
-      {
-        "name": "Cross System Integration",
-        "url": "#project/8252"
       }
     ],
     "video": "",
@@ -1461,40 +1607,264 @@
     "wip": false,
     "tags": [],
     "gallery": [
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210423_185515.webp",
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210403_195111.webp",
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210423_185515.webp",
+        "fit": {
+          "scale": 1.25,
+          "x": 58.3,
+          "y": 44.9
+        }
+      },
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210403_195111.webp",
+        "fit": {
+          "scale": 1.85,
+          "x": 70.6,
+          "y": 76.4
+        }
+      },
       "https://www.youtube.com/watch?v=3iogvH6i8V0",
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210403_125209.webp",
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210403_152329.webp",
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210407_133839.webp",
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210403_125209.webp",
+        "fit": {
+          "scale": 1,
+          "x": 50.4,
+          "y": 65.9
+        }
+      },
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210403_152329.webp",
+        "fit": {
+          "scale": 1.2,
+          "x": 41,
+          "y": 0
+        }
+      },
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210407_133839.webp",
+        "fit": {
+          "scale": 1.4,
+          "x": 19.6,
+          "y": 24.8
+        }
+      },
       "https://www.youtube.com/watch?v=atiKDcx4ldA",
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210403_103112.webp",
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210402_131904.webp",
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210401_160248.webp",
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210327_151713.webp",
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210303_163104.webp",
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210325_170232.webp",
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210304_181820.webp",
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20201103_011401.webp",
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20201210_211419.webp",
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20201108_183241.webp",
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200905_191652.webp",
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/Screenshot_20210306-180716_Photos~2.webp",
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20201025_233007.webp",
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20201107_150146.webp",
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200921_152509.webp",
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200926_205346.webp",
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200908_155818.webp",
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200905_223735.webp",
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200925_105443.webp",
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200826_201228.webp",
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200826_201238.webp",
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200901_173408.webp",
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200921_135156.webp",
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200905_171937.webp",
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200828_155006.webp",
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200830_215210.webp",
-      "media/Electronics/Pillars - Temple Nightclub _ San Francisco/IMG_20200706_140158.webp"
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210403_103112.webp",
+        "fit": {
+          "scale": 1.65,
+          "x": 51.4,
+          "y": 84.8
+        }
+      },
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210402_131904.webp",
+        "fit": {
+          "scale": 1.25,
+          "x": 84.1,
+          "y": 59.1
+        }
+      },
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210401_160248.webp",
+        "fit": {
+          "scale": 1,
+          "x": 51.1,
+          "y": 58.7
+        }
+      },
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210327_151713.webp",
+        "fit": {
+          "scale": 1.15,
+          "x": 15.7,
+          "y": 75.2
+        }
+      },
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210303_163104.webp",
+        "fit": {
+          "scale": 1,
+          "x": 0,
+          "y": 74.9
+        }
+      },
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210325_170232.webp",
+        "fit": {
+          "scale": 1.1,
+          "x": 74.4,
+          "y": 75.4
+        }
+      },
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210304_181820.webp",
+        "fit": {
+          "scale": 1,
+          "x": 49.8,
+          "y": 66.8
+        }
+      },
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20201103_011401.webp",
+        "fit": {
+          "scale": 1.5,
+          "x": 0,
+          "y": 53.4
+        }
+      },
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20201210_211419.webp",
+        "fit": {
+          "scale": 1.25,
+          "x": 76.3,
+          "y": 73.8
+        }
+      },
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20201108_183241.webp",
+        "fit": {
+          "scale": 1.1,
+          "x": 26.3,
+          "y": 48.8
+        }
+      },
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200905_191652.webp",
+        "fit": {
+          "scale": 1.15,
+          "x": 6.5,
+          "y": 65.4
+        }
+      },
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/Screenshot_20210306-180716_Photos~2.webp",
+        "fit": {
+          "scale": 1.1,
+          "x": 44.5,
+          "y": 32.7
+        }
+      },
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20201025_233007.webp",
+        "fit": {
+          "scale": 1.2,
+          "x": 0,
+          "y": 51.6
+        }
+      },
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20201107_150146.webp",
+        "fit": {
+          "scale": 1,
+          "x": 37.5,
+          "y": 59.4
+        }
+      },
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200921_152509.webp",
+        "fit": {
+          "scale": 1.15,
+          "x": 89.6,
+          "y": 14.5
+        }
+      },
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200926_205346.webp",
+        "fit": {
+          "scale": 1.25,
+          "x": 0,
+          "y": 56.7
+        }
+      },
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200908_155818.webp",
+        "fit": {
+          "scale": 1.35,
+          "x": 42.6,
+          "y": 55.4
+        }
+      },
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200905_223735.webp",
+        "fit": {
+          "scale": 1.4,
+          "x": 30.7,
+          "y": 47.5
+        }
+      },
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200925_105443.webp",
+        "fit": {
+          "scale": 1.65,
+          "x": 41.4,
+          "y": 54.6
+        }
+      },
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200826_201228.webp",
+        "fit": {
+          "scale": 1.25,
+          "x": 36.4,
+          "y": 45.6
+        }
+      },
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200826_201238.webp",
+        "fit": {
+          "scale": 1.3,
+          "x": 100,
+          "y": 53.7
+        }
+      },
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200901_173408.webp",
+        "fit": {
+          "scale": 1.4,
+          "x": 41.1,
+          "y": 65.2
+        }
+      },
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200921_135156.webp",
+        "fit": {
+          "scale": 1.1,
+          "x": 59.4,
+          "y": 94.5
+        }
+      },
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200905_171937.webp",
+        "fit": {
+          "scale": 1.1,
+          "x": 39.1,
+          "y": 41.9
+        }
+      },
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200828_155006.webp",
+        "fit": {
+          "scale": 1.35,
+          "x": 22.8,
+          "y": 53.1
+        }
+      },
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200830_215210.webp",
+        "fit": {
+          "scale": 1.5,
+          "x": 45.1,
+          "y": 29.3
+        }
+      },
+      {
+        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/IMG_20200706_140158.webp",
+        "fit": {
+          "scale": 1.3,
+          "x": 71.4,
+          "y": 67.1
+        }
+      }
     ],
     "files": [],
     "specs": "<h2><strong>Pixels</strong></h2><ul><li><strong>SM16704</strong> RGBW (6000k)</li><li><strong>60/m</strong> (3x1) 12vdc</li><li><strong>10 sets</strong> of 8x @ 4m</li></ul><h2><strong>Decoder</strong></h2><ul><li><strong>2x</strong> Advatek PixLite16 Long Range Mk2</li><li><strong>10x</strong> Advatek PixLite Long Range Receiver</li></ul><h2><strong>Power</strong></h2><ul><li><strong>10x</strong> Meanwell 12vdc 50a</li></ul>",
@@ -1515,7 +1885,17 @@
     "video": "",
     "timestamp": "2026-07-31T21:40:01.374Z",
     "id": "6371",
-    "order": 0
+    "order": 0,
+    "thumbnailFit": {
+      "scale": 1.15,
+      "x": 33.2,
+      "y": 41.7
+    },
+    "bannerFit": {
+      "scale": 1,
+      "x": 50.4,
+      "y": 55.7
+    }
   },
   {
     "title": "Pixel Louver Lights",
