@@ -47,7 +47,10 @@
       "Through-Hole Soldering",
       "TCP/IP",
       "Pixel Mapping",
-      "Video Mapping"
+      "Video Mapping",
+      "Custom Fabrication",
+      "Hand tools",
+      "Power tools"
     ],
     "image": "media/Lighting/Temple San Francisco/20210516_134200.webp",
     "description": "<p><strong>Temple Nightclub | San Francisco </strong>- A comprehensive, hybrid lighting and video installation engineered for seamless cross-system pixel mapping and total venue immersion.</p>",
@@ -350,7 +353,15 @@
           "y": 46.5
         }
       },
-      "https://www.youtube.com/watch?v=j66jBEcYyys"
+      "https://www.youtube.com/watch?v=j66jBEcYyys",
+      {
+        "url": "media/Art/Pixel Mini Pyramid/20230808_152641.webp",
+        "fit": {
+          "scale": 1,
+          "x": 48.4,
+          "y": 40.2
+        }
+      }
     ],
     "launchLink": "",
     "githubLink": "",
@@ -401,7 +412,15 @@
           "y": 41.8
         }
       },
-      "https://youtube.com/shorts/a7uLXj7EiVc?feature=share"
+      "https://youtube.com/shorts/a7uLXj7EiVc?feature=share",
+      {
+        "url": "media/Art/Pixel Plane Warp/20230808_152350.webp",
+        "fit": {
+          "scale": 1,
+          "x": 87.5,
+          "y": 37.5
+        }
+      }
     ],
     "files": [],
     "video": "",
@@ -722,7 +741,8 @@
       "Resolume Arena",
       "Pixel Mapping",
       "Lighting Design",
-      "AC/DC Load Calc"
+      "AC/DC Load Calc",
+      "WLED"
     ],
     "gallery": [
       {
@@ -1034,7 +1054,7 @@
     "video": "",
     "timestamp": "2026-06-21T22:41:13.337Z",
     "id": "707",
-    "order": 3,
+    "order": 4,
     "specs": "<h2><strong>Designed In</strong></h2><ul><li>SolidWorks 2022</li></ul><h2><strong>Printed On</strong></h2><ul><li>Tenlog TL-D3</li></ul><h2><strong>Made With</strong></h2><ul><li>Black PLA+</li></ul>",
     "related": [],
     "thumbnailFit": {
@@ -1082,6 +1102,22 @@
           "scale": 1,
           "x": 51.4,
           "y": 59.7
+        }
+      },
+      {
+        "url": "media/Lighting/Club Lexi/20230508_144750.webp",
+        "fit": {
+          "scale": 1,
+          "x": 50,
+          "y": 81.1
+        }
+      },
+      {
+        "url": "media/Lighting/Club Lexi/20230509_182124.webp",
+        "fit": {
+          "scale": 1.65,
+          "x": 53.6,
+          "y": 89.4
         }
       },
       {
@@ -1668,7 +1704,12 @@
     "tags": [
       "Madrix",
       "FDM 3D Printing",
-      "Lighting Design"
+      "Lighting Design",
+      "Power Distribution",
+      "AC/DC Load Calc",
+      "Pixel Mapping",
+      "Custom Fabrication",
+      "sACN"
     ],
     "gallery": [
       {
@@ -1801,7 +1842,7 @@
     "video": "",
     "timestamp": "2026-07-26T23:20:01.923Z",
     "id": "5376",
-    "order": 2,
+    "order": 3,
     "thumbnailFit": {
       "scale": 1.05,
       "x": 5.3,
@@ -2087,7 +2128,7 @@
       }
     ],
     "files": [],
-    "specs": "<h2><strong>Pixels</strong></h2><ul><li><strong>SM16704</strong> RGBW (6000k)</li><li><strong>60/m</strong> (3x1) 12vdc</li><li><strong>10 sets</strong> of 8x @ 4m</li></ul><h2><strong>Decoder</strong></h2><ul><li><strong>2x</strong> Advatek PixLite16 Long Range Mk2</li><li><strong>10x</strong> Advatek PixLite Long Range Receiver</li></ul><h2><strong>Power</strong></h2><ul><li><strong>10x</strong> Meanwell 12vdc 50a</li></ul>",
+    "specs": "<h2><strong>Pixels</strong></h2><ul><li><strong>SM16704</strong> RGBW (6000k)</li><li><strong>60/m</strong> (3x1) 12vdc</li><li><strong>10 sets</strong> of 8x @ 4m</li></ul><h2><strong>Decoder</strong></h2><ul><li><strong>2x</strong> Advatek PixLite16 Long Range Mk2</li><li><strong>10x</strong> Advatek PixLite Long Range Receiver</li></ul><h2><strong>Power</strong></h2><ul><li><strong>10x</strong> MEAN WELL 12vdc 50a</li></ul>",
     "related": [
       {
         "name": "Extrusion Center Sled",
@@ -2133,7 +2174,6 @@
       "FDM 3D Printing",
       "SolidWorks",
       "Through-Hole Soldering",
-      "Lighting Design",
       "Hand tools"
     ],
     "gallery": [
@@ -2188,7 +2228,7 @@
     "video": "",
     "timestamp": "2026-08-01T15:14:28.453Z",
     "id": "2052",
-    "order": 1,
+    "order": 2,
     "thumbnailFit": {
       "scale": 1.2,
       "x": 0.4,
@@ -2214,8 +2254,8 @@
       "x": 100,
       "y": 48.4
     },
-    "description": "<p><strong>Que Bueno Suerte! | Denver</strong></p>",
-    "longDescription": "<p>Placeholder</p>",
+    "description": "<p><strong>Que Bueno Suerte! | Denver - </strong>18 fanless power supplies drive a blackout 3000K pixel array below a low mezzanine HVAC duct.</p>",
+    "longDescription": "<p>A central HVAC duct and a low ceiling above the Que Bueno Suerte! mezzanine had already killed one designer's lighting concept years earlier. I took the lowest point of that duct as a hard clearance limit and shot a laser level across the room to hang a flat array of blackout tubes. The venue needed warm 3000K white for early evening dinner service and high-impact RGBW pixel chases for Latin dance nights. Standard milky white LED diffusion looks cheap when powered off, so I used black diffusion against the dark ceiling paint so the rig would visually disappear during the day.</p><p>I spent a month working overhead from 6ft ladders and restaurant benches, cutting strutchannel and setting cable anchors every 12 in along the beams. I originally ran 18/2 wire inside the tubes for power injection at the far end, but the wire drooped inside the casing and cast obvious shadows. I ripped the extra wiring out entirely and tested the strips from a single end, which ran full white with zero color shift.</p><p>Silent operation meant no fanned power supplies. I specced 18 waterproof MEAN WELL HLG units across 3 new 20A circuits, with each circuit powering a bank of 6 supplies and each supply driving 2 bars through independent fuses. Booting 6 fanless supplies at once tripped the breakers instantly from inrush current. I built custom sequencer boxes to stagger startup by 5 seconds so the capacitors could charge. Long-range decoders fed over 24 universes of sACN pixel data from a rack server in the office, running ENTTEC ELM before I moved the venue to Madrix 5.</p><p>The owner finally got his mezzanine installation without a low-hanging mess above the tables. The array blends into the ceiling paint by afternoon, gives a warm incandescent glow over dinner, and hits hard when the dance floor opens.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -2230,23 +2270,118 @@
       "AC/DC Load Calc",
       "Pixel Mapping",
       "Power tools",
-      "Hand tools"
+      "Hand tools",
+      "sACN",
+      "Custom Fabrication"
     ],
     "gallery": [
       "media/Lighting/Mezzanine Ceiling Tubes/20240619_123414.webp",
-      "media/Lighting/Mezzanine Ceiling Tubes/20240619_123416.webp"
+      "media/Lighting/Mezzanine Ceiling Tubes/20240619_123416.webp",
+      "https://www.youtube.com/watch?v=VvVYAEQJYy4",
+      "https://www.youtube.com/watch?v=obL6uEZXaNs",
+      "https://www.youtube.com/watch?v=OqBuz3VsJoo",
+      "media/Lighting/Blackout Ceiling Tubes/IMG_20230103_125326_123.webp",
+      "media/Lighting/Blackout Ceiling Tubes/20221222_134716.webp",
+      "media/Lighting/Blackout Ceiling Tubes/20221231_112756.webp",
+      "media/Lighting/Blackout Ceiling Tubes/IMG_20221221_111336_620.webp",
+      "https://www.youtube.com/watch?v=U2BPg05TNQ4",
+      "media/Lighting/Blackout Ceiling Tubes/20221219_140531.webp",
+      "media/Lighting/Blackout Ceiling Tubes/20221206_172954.webp"
     ],
     "files": [],
-    "specs": "<p>Placeholder</p>",
+    "specs": "<h2><strong>Pixels</strong></h2><ul><li><strong>3088x</strong> SK6812 RGBW</li><li class=\"ql-indent-1\"><strong>15x</strong> 3.9m @ 60/m (3x1)12vdc</li><li class=\"ql-indent-1\"><strong>14x</strong> 4.4m @ 60/m (3x1)12vdc</li><li class=\"ql-indent-1\"><strong>7x</strong> 4.9m @ 60/m (3x1)12vdc</li></ul><h2><strong>Decoder</strong></h2><ul><li>1x Advatek PixLite T8S MK3</li><li>3x Advatek PixLite R4D-S</li></ul><h2><strong>Power</strong></h2><ul><li><strong>3x</strong> 20a 120vac switched circuits</li><li><strong>18x </strong>MEAN WELL HLG-320H-12</li></ul><h2><strong>Control</strong></h2><ul><li>Madrix 5.x</li><li>ELM (Depreciated)</li></ul>",
     "related": [
       {
         "name": "Que Bueno Suerte!",
         "url": "#project/4113"
+      },
+      {
+        "name": "PSU Sequencer",
+        "url": "#project/1430"
       }
     ],
     "video": "",
     "timestamp": "2026-08-01T17:08:27.719Z",
     "id": "1612",
     "order": 2
+  },
+  {
+    "title": "LED PSU Boot Sequencer",
+    "category": "Solutions",
+    "image": "media/Fabrication/LED PSU Boot Sequencer/20221201_184622.webp",
+    "thumbnailFit": {
+      "scale": 1.4,
+      "x": 66.9,
+      "y": 46.3
+    },
+    "bannerFit": {
+      "scale": 1.6,
+      "x": 64.6,
+      "y": 54.8
+    },
+    "description": "<p>Placeholder</p>",
+    "longDescription": "<p>Placeholder</p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "tags": [],
+    "gallery": [
+      "media/Fabrication/LED PSU Boot Sequencer/20221201_184622.webp",
+      {
+        "url": "media/Fabrication/LED PSU Boot Sequencer/20221121_105826.webp",
+        "fit": {
+          "scale": 1.3,
+          "x": 72.1,
+          "y": 79.8
+        }
+      },
+      {
+        "url": "media/Fabrication/LED PSU Boot Sequencer/20221121_105841.webp",
+        "fit": {
+          "scale": 1.2,
+          "x": 20.8,
+          "y": 94.4
+        }
+      },
+      {
+        "url": "media/Fabrication/LED PSU Boot Sequencer/20221121_105849.webp",
+        "fit": {
+          "scale": 1.2,
+          "x": 14.9,
+          "y": 34.1
+        }
+      },
+      {
+        "url": "media/Fabrication/LED PSU Boot Sequencer/20221121_190624.webp",
+        "fit": {
+          "scale": 1,
+          "x": 43,
+          "y": 36.2
+        }
+      },
+      {
+        "url": "media/Fabrication/LED PSU Boot Sequencer/20221130_082043.webp",
+        "fit": {
+          "scale": 1,
+          "x": 52.7,
+          "y": 41.3
+        }
+      }
+    ],
+    "files": [],
+    "specs": "<p>Placeholder</p>",
+    "related": [
+      {
+        "name": "Blackout ceiling",
+        "url": "#project/1612"
+      }
+    ],
+    "video": "",
+    "timestamp": "2026-08-01T21:44:42.857Z",
+    "id": "1430",
+    "order": 1
   }
 ]
