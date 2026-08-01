@@ -1135,7 +1135,8 @@
                 "Madrix",
                 "OSC",
                 "FDM 3D Printing",
-                "SolidWorks"
+                "SolidWorks",
+                "Lighting Design"
             ],
             "gallery": [
                 "media/Lighting/Curved Bottle Shelf - Que Bueno Suerte! _ Denver/20240419_101740.webp",
@@ -1877,6 +1878,7 @@
             const [showShare, setShowShare] = useState(false);
             const [copied, setCopied] = useState(false);
             const dialogRef = useRef(null);
+            const scrollRef = useRef(null);
             const titleId = `project-modal-title-${project.id}`;
 
             // Escape peels off one layer at a time; the lightbox owns the trap when open.
@@ -1890,6 +1892,10 @@
                 document.body.style.overflow = 'hidden';
                 return () => document.body.style.overflow = 'unset';
             }, []);
+
+            useEffect(() => {
+                if (scrollRef.current) scrollRef.current.scrollTop = 0;
+            }, [project.id]);
 
             const shareUrl = `${window.location.origin}${window.location.pathname}#project/${encodeURIComponent(project.id)}`;
 
@@ -1933,7 +1939,7 @@
                             <X size={24} aria-hidden="true" />
                         </button>
 
-                        <div className="overflow-y-auto overflow-x-hidden custom-scrollbar flex-1">
+                        <div ref={scrollRef} className="overflow-y-auto overflow-x-hidden custom-scrollbar flex-1">
                             <div className="relative h-64 md:h-96 w-full">
                                 {/* PERFORMANCE: Lazy Loading on Modal Header */}
                                 {/* Empty alt: the h2 below is the accessible name for this dialog. */}
@@ -2306,7 +2312,7 @@
              );
         };
 
-        const Nav = () => {
+        const Nav = ({ onNavToSection }) => {
             const [isOpen, setIsOpen] = useState(false);
             const [scrolled, setScrolled] = useState(false);
 
@@ -2330,10 +2336,16 @@
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
             };
 
+            const handleSectionClick = (id) => {
+                setIsOpen(false);
+                if (onNavToSection) onNavToSection(id);
+                else scrollTo(id);
+            };
+
             const links = [
                 { id: 'lighting', label: 'Lighting' },
                 { id: 'art', label: 'Art' },
-                { id: 'circuits', label: 'Electronics' }, // Updated Label
+                { id: 'circuits', label: 'Electronics' },
                 { id: 'apps', label: 'Apps' },
                 { id: 'solutions', label: 'Fabrication' },
                 { id: 'integration', label: 'Integration' },
@@ -2349,7 +2361,7 @@
                         {/* Desktop Nav */}
                         <div className="hidden lg:flex gap-6 text-sm font-medium text-zinc-400">
                             {links.map(link => (
-                                <button key={link.id} onClick={() => scrollTo(link.id)} className="hover:text-white transition-colors uppercase tracking-wide text-xs">{link.label}</button>
+                                <button key={link.id} onClick={() => handleSectionClick(link.id)} className="hover:text-white transition-colors uppercase tracking-wide text-xs">{link.label}</button>
                             ))}
                             <button onClick={() => scrollTo('about')} className="hover:text-white transition-colors uppercase tracking-wide text-xs">About</button>
                             <button onClick={() => scrollTo('contact')} className="hover:text-white transition-colors uppercase tracking-wide text-xs bg-zinc-800 px-3 py-1 rounded-full">Contact</button>
@@ -2371,7 +2383,7 @@
                             <div aria-hidden="true" className="fixed inset-0 bg-black/60 z-40 lg:hidden" onClick={() => setIsOpen(false)} />
                             <div id="mobile-menu" className="absolute top-full left-0 w-full glass-panel border-t border-zinc-800 p-6 lg:hidden flex flex-col gap-4 animate-fade-in z-50">
                                 {links.map(link => (
-                                    <button key={link.id} onClick={() => { scrollTo(link.id); setIsOpen(false); }} className="text-left text-zinc-300 uppercase tracking-widest font-bold">{link.label}</button>
+                                    <button key={link.id} onClick={() => handleSectionClick(link.id)} className="text-left text-zinc-300 uppercase tracking-widest font-bold">{link.label}</button>
                                 ))}
                                 <button onClick={() => { scrollTo('about'); setIsOpen(false); }} className="text-left text-zinc-300 uppercase tracking-widest font-bold">About</button>
                                 <button onClick={() => { scrollTo('contact'); setIsOpen(false); }} className="text-left text-zinc-300 uppercase tracking-widest font-bold">Contact</button>
@@ -2707,10 +2719,18 @@
                 handleSetFilter(tag);
             };
 
+            const handleNavToSection = (id) => {
+                setActiveFilter(null);
+                setTimeout(() => {
+                    history.replaceState(null, '', '#' + id);
+                    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+                }, 0);
+            };
+
             return (
                 <div className="min-h-screen bg-zinc-950 text-zinc-200 selection:bg-cyan-500/30">
                     <a href="#main-content" className="skip-link">Skip to main content</a>
-                    <Nav />
+                    <Nav onNavToSection={handleNavToSection} />
                     <main id="main-content">
                     {activeFilter ? (
                         <FilteredView filter={activeFilter} onClear={() => setActiveFilter(null)} onOpenProject={handleOpenProject} />
