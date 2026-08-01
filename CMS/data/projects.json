@@ -111,7 +111,9 @@
     ],
     "files": [],
     "video": "",
-    "order": 0
+    "order": 0,
+    "specs": "<p><strong>Medium:</strong> PLA+ (3 material)</p><p><strong>Color:</strong> Black, White, Transparent</p><p><strong>LEDs: </strong>256</p><p><strong>Driver: </strong>WS2815 (RGB)</p><p><strong>Decoder:</strong> Wasatch Pixels Basic Eight</p><p><strong>Firmware: </strong>WLED</p>",
+    "related": []
   },
   {
     "id": "2944",
@@ -224,7 +226,9 @@
     "websiteLink": "",
     "timestamp": "2026-01-13T00:01:33.897Z",
     "wip": false,
-    "order": 4
+    "order": 4,
+    "specs": "<p><strong>Medium:</strong> PLA+ (3 material)</p><p><strong>Color:</strong> Black, White, Transparent</p><p><strong>LEDs: </strong>64</p><p><strong>Driver: </strong>WS2813 (RGB)</p><p><strong>Decoder:</strong> ESP32-s3</p><p><strong>Firmware: </strong>WLED</p>",
+    "related": []
   },
   {
     "id": "8000",
@@ -247,7 +251,9 @@
     ],
     "files": [],
     "video": "",
-    "order": 2
+    "order": 2,
+    "specs": "<p><strong>Medium:</strong> PLA+ (3 material)</p><p><strong>Color:</strong> Black, White, Transparent</p><p><strong>LEDs: </strong>256</p><p><strong>Driver: </strong>WS2815 (RGB)</p><p><strong>Decoder:</strong> ATHOM (ESP8266)</p><p><strong>Firmware: </strong>WLED</p>",
+    "related": []
   },
   {
     "id": "8252",
@@ -814,6 +820,10 @@
       {
         "name": "Control system",
         "url": "#project/4113"
+      },
+      {
+        "name": "Curved Bottle Shelf",
+        "url": "#project/6808"
       }
     ]
   },
@@ -839,7 +849,9 @@
     "video": "",
     "timestamp": "2026-07-02T22:15:06.716Z",
     "id": "2285",
-    "order": 5
+    "order": 5,
+    "specs": "<p><strong>Medium:</strong> PLA+ (2 material)</p><p><strong>Color:</strong> Black, White</p><p><strong>LEDs: </strong>256</p><p><strong>Driver: </strong>WS2815 (RGB)</p><p><strong>Decoder:</strong> ATHOM (ESP8266)</p><p><strong>Firmware: </strong>WLED</p>",
+    "related": []
   },
   {
     "title": "Pixel Seed of Life",
@@ -863,7 +875,9 @@
     "video": "",
     "timestamp": "2026-07-02T22:16:10.943Z",
     "id": "9896",
-    "order": 6
+    "order": 6,
+    "specs": "<p><strong>Medium:</strong> PLA+ (2 material)</p><p><strong>Color:</strong> Black, White</p><p><strong>LEDs: </strong>256</p><p><strong>Driver: </strong>WS2815 (RGB)</p><p><strong>Decoder:</strong> ATHOM (ESP8266)</p><p><strong>Firmware: </strong>WLED</p>",
+    "related": []
   },
   {
     "title": "Pixel Celtic Owl",
@@ -887,7 +901,9 @@
     "video": "",
     "timestamp": "2026-07-02T23:00:41.951Z",
     "id": "8609",
-    "order": 3
+    "order": 3,
+    "specs": "<p><strong>Medium:</strong> PLA+ (2 material)</p><p><strong>Color:</strong> Black, White</p><p><strong>LEDs: </strong>256</p><p><strong>Driver: </strong>WS2815 (RGB)</p><p><strong>Decoder:</strong> ATHOM (ESP8266)</p><p><strong>Firmware: </strong>WLED</p>",
+    "related": []
   },
   {
     "title": "Lobby Wall - Tracks | Denver",
@@ -959,6 +975,10 @@
       {
         "name": "Control system",
         "url": "#project/4113"
+      },
+      {
+        "name": "Vertical Tubes",
+        "url": "#project/4411"
       }
     ]
   },
@@ -1013,7 +1033,7 @@
       "media/Fabrication/Extrusion Centering Sled/20200907_231655.webp"
     ],
     "files": [],
-    "specs": "<h2>Material</h2><ul><li>PLA+</li></ul><h2>Printer</h2><ul><li>Tenlog TL-D3 Pro</li></ul>",
+    "specs": "<h2><strong>Designed In</strong></h2><ul><li>SolidWorks 2022</li></ul><h2><strong>Printed On</strong></h2><ul><li>Tenlog TL-D3</li></ul><h2><strong>Made With</strong></h2><ul><li>Black PLA+</li></ul>",
     "related": [
       {
         "name": "Pixel Pillars",
