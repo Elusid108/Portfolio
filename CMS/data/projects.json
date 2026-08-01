@@ -32,13 +32,13 @@
   },
   {
     "id": "1",
-    "title": "Main Room - Temple Nightclub | San Francisco",
+    "title": "Immersive Dance Lighting Rig",
     "category": "Lighting",
     "tags": [
       "Lighting Design"
     ],
     "image": "media/Lighting/Temple San Francisco/20210516_134200.webp",
-    "description": "<p>A comprehensive, hybrid lighting and video installation engineered for seamless cross-system pixel mapping and total venue immersion.</p>",
+    "description": "<p><strong>Temple Nightclub | San Francisco </strong>- A comprehensive, hybrid lighting and video installation engineered for seamless cross-system pixel mapping and total venue immersion.</p>",
     "longDescription": "<p>The main room remodel at Temple Nightclub in San Francisco is a dense, hybrid lighting and video installation designed to deliver maximum environmental immersion and operational flexibility. The core architecture integrates a curved video ceiling that wraps behind the DJ, ten custom floor-to-ceiling LED pixel pillars, and a vast array of moving wash fixtures. The primary differentiator of this design is its meticulous flat-black construction across all hardware components. This design choice allows the entire complex infrastructure to vanish completely into the dark when unlit, contrasting sharply with the massive visual output of the active rig.</p><p>Constructed during the 2020 pandemic shutdown, the installation required profound physical and electrical infrastructure modifications before aesthetic integration could begin. To safely accommodate the curved video ceiling, a fire-suppression team was brought in to entirely reroute the sprinklers to deploy beneath the wall. The venue's power capacity was completely overhauled with new 400-amp and 200-amp services and breaker panels, feeding a meticulously mapped network of dedicated and shared circuits based on strict component specifications. Operational efficiency was prioritized throughout the physical build; all rig power was placed on switched relays for centralized shut-down, and independent, hardwired house lighting was installed to allow staff maintenance without activating the complex show systems.</p><p>The defining technical achievement of the installation is the cohesive, cross-system pixel mapping infrastructure layered on top of this robust electrical foundation. By linking the video playback engine directly to the room's environmental lighting—including custom edge-lit VIP tables, illuminated booths, and a double-sided dancefloor monolith—the system translates localized video content into precise color and intensity data distributed across the entire venue. To manage the sheer density and potential output of this rig, the operational strategy enforces highly selective, limited use across all combined systems. This strict design discipline avoids over-lighting the dancefloor while ensuring massive, unified full-room looks can be generated efficiently from centralized media inputs.</p>",
     "video": "",
     "gallery": [
@@ -431,10 +431,10 @@
   {
     "id": "8787",
     "timestamp": "2026-01-17T17:49:41.986Z",
-    "title": "Pixel Inflatable Tubes - Reelworks | Denver",
+    "title": "Inflatable Tubes",
     "category": "Lighting",
     "image": "media/Lighting/Reelworks - Denver/20230621_172727.webp",
-    "description": "<p>Custom ultra-bright LED illumination architecture designed for 100-foot inflatable centerpieces at Denver Pride 2023.</p>",
+    "description": "<p><strong>Reelworks | Denver</strong> - Custom ultra-bright LED illumination architecture designed for 100-foot inflatable centerpieces at Denver Pride 2023.</p>",
     "longDescription": "<p>This project delivered the centerpiece lighting architecture for Reelworks and Tracks during Denver Pride 2023, designed specifically to illuminate massive 100-foot inflatable tubes. The primary objective was to achieve an exceptionally high brightness level capable of standing out in a highly saturated live event environment. To exceed standard luminous constraints, the project bypassed off-the-shelf solutions in favor of custom-manufactured pixel strands. These bespoke strands featured double-sided LEDs housed behind clear lenses, maximizing light transmission and ensuring high-fidelity color rendering from every viewing angle.</p><p>Executing the design required a precise electrical and mechanical workflow to manage extreme cable lengths and power demands. Two of the custom 100-foot LED strands were run in parallel inside each inflatable structure to compound the overall brightness. Overcoming the inevitable voltage drop across a 100-foot span required an isolated power distribution strategy. Power supplies were strategically mounted at both ends of the tubes, and the positive voltage lines were physically severed at the midpoint. This safely prevented power back-feeding between the discrete power supply units while allowing data to travel seamlessly across the entire fixture.</p><p>The technical foundation of the installation was built on a 24V LED system equipped with redundant data lines, mitigating the risk of pixel failure during the live show. Visual programming and real-time system control were driven entirely through Resolume Arena for large-scale pixel mapping. A significant engineering constraint emerged regarding signal transmission: while wireless decoders performed flawlessly during closed testing, the deployment revealed severe RF interference caused by the dense concentration of attendee cell phones. This provided a critical validation for utilizing hardwired data infrastructure to maintain system stability in electromagnetically noisy, large-scale event spaces.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -1002,10 +1002,10 @@
     "related": []
   },
   {
-    "title": "Curved Bottle Shelf - Que Bueno Suerte! | Denver",
+    "title": "Curved Liquor Bottle Display",
     "category": "Lighting",
     "image": "media/Lighting/Curved Bottle Shelf - Que Bueno Suerte! _ Denver/Screenshot 2026-07-20 171107.webp",
-    "description": "<p>A custom-integrated, 3D-printed addressable LED lighting system designed to illuminate a central curved bottle shelf.</p>",
+    "description": "<p><strong>Que Bueno Suerte! | Denver</strong> - A custom-integrated, 3D-printed addressable LED lighting system designed to illuminate a central curved bottle shelf.</p>",
     "longDescription": "<p>The objective of this project was to provide functional, elegant illumination for a custom-fabricated metal curved bottle shelf serving as the primary visual focal point at Que Bueno Suerte!. Instead of relying on standard off-the-shelf LED extrusions that often produce unwanted glare, the solution required a highly tailored approach. The core differentiator is a series of custom-designed, 3D-printed corner pixel fixtures featuring integrated louvers, specifically engineered to direct light toward the display while completely blocking direct sightlines to the diodes for passing guests.</p><p>The workflow centered on designing fixtures that matched the specific geometry of the existing metalwork. Following the fabrication phase, the physical installation prioritized seamless integration and discreet cable management to maintain a clean aesthetic. The entire pixel array was meticulously hardwired and routed using black wire wrap to blend directly into the shelf's architecture. This routing ensured the design of the metalwork remained uninterrupted by the underlying electrical infrastructure.</p><p>The technical execution relies on precisely manufactured physical components produced on Bambu Lab 3D printers, ensuring exact tolerances for the light-blocking louvers. Operationally, the individual fixtures function as part of a comprehensive, venue-wide network. The shelf's lighting system is fully tied into the restaurant's overarching control infrastructure and driven by a centralized server running Madrix 5.x, enabling robust, synchronized control over the installation.</p>",
     "websiteLink": "",
     "launchLink": "",
