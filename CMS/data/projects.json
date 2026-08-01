@@ -42,16 +42,44 @@
     "longDescription": "<p>The main room remodel at Temple Nightclub in San Francisco is a dense, hybrid lighting and video installation designed to deliver maximum environmental immersion and operational flexibility. The core architecture integrates a curved video ceiling that wraps behind the DJ, ten custom floor-to-ceiling LED pixel pillars, and a vast array of moving wash fixtures. The primary differentiator of this design is its meticulous flat-black construction across all hardware components. This design choice allows the entire complex infrastructure to vanish completely into the dark when unlit, contrasting sharply with the massive visual output of the active rig.</p><p>Constructed during the 2020 pandemic shutdown, the installation required profound physical and electrical infrastructure modifications before aesthetic integration could begin. To safely accommodate the curved video ceiling, a fire-suppression team was brought in to entirely reroute the sprinklers to deploy beneath the wall. The venue's power capacity was completely overhauled with new 400-amp and 200-amp services and breaker panels, feeding a meticulously mapped network of dedicated and shared circuits based on strict component specifications. Operational efficiency was prioritized throughout the physical build; all rig power was placed on switched relays for centralized shut-down, and independent, hardwired house lighting was installed to allow staff maintenance without activating the complex show systems.</p><p>The defining technical achievement of the installation is the cohesive, cross-system pixel mapping infrastructure layered on top of this robust electrical foundation. By linking the video playback engine directly to the room's environmental lighting—including custom edge-lit VIP tables, illuminated booths, and a double-sided dancefloor monolith—the system translates localized video content into precise color and intensity data distributed across the entire venue. To manage the sheer density and potential output of this rig, the operational strategy enforces highly selective, limited use across all combined systems. This strict design discipline avoids over-lighting the dancefloor while ensuring massive, unified full-room looks can be generated efficiently from centralized media inputs.</p>",
     "video": "",
     "gallery": [
-      "media/Lighting/Temple San Francisco/20210516_134200.webp",
+      {
+        "url": "media/Lighting/Temple San Francisco/20210516_134200.webp",
+        "fit": {
+          "scale": 1.15,
+          "x": 32,
+          "y": 69.3
+        }
+      },
       "https://youtu.be/OsVW8SkViUQ",
       "https://youtu.be/5N7lZFtAKT4",
       "https://youtu.be/5TdNw5zgZrc",
       "https://youtu.be/b26X133u2o4",
       "https://youtu.be/8V60HmyFubU",
       "https://youtu.be/GrSkUee2oF0",
-      "media/Lighting/Main Room - Temple Nightclub _ San Francisco/Screenshot 2025-03-12 151156.webp",
-      "media/Lighting/Main Room - Temple Nightclub _ San Francisco/Screenshot 2025-03-17 193550.webp",
-      "media/Lighting/Main Room - Temple Nightclub _ San Francisco/Screenshot 2025-03-12 151235.webp",
+      {
+        "url": "media/Lighting/Main Room - Temple Nightclub _ San Francisco/Screenshot 2025-03-12 151156.webp",
+        "fit": {
+          "scale": 1,
+          "x": 50.5,
+          "y": 1.6
+        }
+      },
+      {
+        "url": "media/Lighting/Main Room - Temple Nightclub _ San Francisco/Screenshot 2025-03-17 193550.webp",
+        "fit": {
+          "scale": 1,
+          "x": 33.6,
+          "y": 54.6
+        }
+      },
+      {
+        "url": "media/Lighting/Main Room - Temple Nightclub _ San Francisco/Screenshot 2025-03-12 151235.webp",
+        "fit": {
+          "scale": 1,
+          "x": 47.7,
+          "y": 49
+        }
+      },
       "https://www.youtube.com/watch?v=yeFIdQywa5U",
       "media/Lighting/Main Room - Temple Nightclub _ San Francisco/Screenshot 2025-03-14 124321.webp"
     ],
@@ -88,7 +116,12 @@
     "bannerFit": {
       "scale": 1,
       "x": 50,
-      "y": 64.9
+      "y": 57.5
+    },
+    "thumbnailFit": {
+      "scale": 1.3,
+      "x": 44.1,
+      "y": 72
     }
   },
   {
@@ -330,7 +363,14 @@
     "longDescription": "<p>The field solder station is a highly compact, tool carrier engineered to solve the logistical challenges of on site LED installations. Working in unconventional locations like high ladders or cramped spaces under a stage requires immediate access to tools without the burden of a bulky bench setup. This solution differentiates itself by consolidating an entire soldering toolkit into a single portable chassis driven by a standard USB PD battery bank.</p><p>This tool emerged from an iterative prototyping process tested directly in the field during a major San Francisco nightclub installation. Initial concepts explored integrated batteries and complex wiring before the design converged on a simplified approach to maximize reliability and reduce weight. The final iteration logically organizes a TS100 or TS101 iron, solder spool, a bottle of flux, desoldering pump, wick, wet and wire sponges, and rubber feet into an optimized spatial layout.</p><p>I designed the chassis in SolidWorks to tightly pack the required tools into a minimal footprint. Fabricated from PLA using Bambu Lab 3D printers, the structure leverages precision tolerances to secure mechanical hardware like the dual helping hands through a robust friction fit. This precise 3D modeling eliminated the need for secondary mechanical fasteners, resulting in a streamlined and self contained system that reliably supports mobile fabrication work.</p>",
     "video": "",
     "gallery": [
-      "media/Fabrication/Field Solder Station/20250317_180657.webp"
+      {
+        "url": "media/Fabrication/Field Solder Station/20250317_180657.webp",
+        "fit": {
+          "scale": 1,
+          "x": 48.8,
+          "y": 71.6
+        }
+      }
     ],
     "launchLink": "",
     "githubLink": "",
@@ -348,7 +388,17 @@
     "wip": false,
     "order": 1,
     "specs": "<h2><strong>Designed In</strong></h2><ul><li>SolidWorks 2022</li></ul><h2><strong>Printed On</strong></h2><ul><li>Bambulabs X1C</li></ul><h2><strong>Made With</strong></h2><ul><li>Black PLA+</li></ul>",
-    "related": []
+    "related": [],
+    "thumbnailFit": {
+      "scale": 1,
+      "x": 51.8,
+      "y": 72.2
+    },
+    "bannerFit": {
+      "scale": 1,
+      "x": 49.5,
+      "y": 58
+    }
   },
   {
     "id": "9469",
@@ -418,10 +468,31 @@
     "longDescription": "<p>This project involved the execution and build of a dynamic ceiling lighting installation at the MIRUS Art Gallery in Denver. The primary goal was to provide a versatile lighting environment capable of delivering vibrant psychedelic visuals for modern events while maintaining the ability to produce a clean, solid white wash for displaying traditional paintings. The installation stands out by seamlessly integrating technology into the architecture, utilizing custom fabricated wooden louvers with routed edges to conceal the lighting hardware while maximizing the wash effect across the room.</p><p>Working from a finalized design and parts specification, the build process required precise physical assembly and electrical routing. The workflow began with mounting the RGBW wash LED strips directly into the routed channels of the wooden ceiling louvers. From there, the low voltage wiring was routed through the ceiling infrastructure to connect with the necessary high current power supply units and DMX decoders. This required careful cable management and power distribution planning to ensure reliable operation and clean aesthetics within the gallery space.</p><p>The technical backbone of this installation relies on a streamlined DMX control architecture driven by Madrix Basic software. Because the system utilizes wash strips rather than individually addressable pixels, the entire room's channel count efficiently fits within a single DMX universe. This efficient use of control data, combined with robust high current power supplies and DMX decoders, ensures stable and responsive lighting transitions whether the gallery requires immersive color chases or pristine white illumination.</p>",
     "video": "",
     "gallery": [
-      "media/Lighting/MIrus Art Gallery - Denver/IMG_20180614_235653.webp",
+      {
+        "url": "media/Lighting/MIrus Art Gallery - Denver/IMG_20180614_235653.webp",
+        "fit": {
+          "scale": 1,
+          "x": 46.8,
+          "y": 0
+        }
+      },
       "https://www.youtube.com/watch?v=vcewTT5rh_Y",
-      "media/Lighting/Mirus Art Gallery _ Denver/IMG_20180417_174333.webp",
-      "media/Lighting/Mirus Art Gallery _ Denver/IMG_20180408_233818~2.webp"
+      {
+        "url": "media/Lighting/Mirus Art Gallery _ Denver/IMG_20180417_174333.webp",
+        "fit": {
+          "scale": 1,
+          "x": 6.6,
+          "y": 77.1
+        }
+      },
+      {
+        "url": "media/Lighting/Mirus Art Gallery _ Denver/IMG_20180408_233818~2.webp",
+        "fit": {
+          "scale": 1,
+          "x": 49.6,
+          "y": 81.7
+        }
+      }
     ],
     "launchLink": "",
     "githubLink": "",
@@ -431,7 +502,19 @@
     "websiteLink": "",
     "timestamp": "2026-01-17T17:47:45.485Z",
     "wip": false,
-    "order": 5
+    "order": 5,
+    "thumbnailFit": {
+      "scale": 1.2,
+      "x": 0,
+      "y": 23.8
+    },
+    "bannerFit": {
+      "scale": 1,
+      "x": 50.4,
+      "y": 27.4
+    },
+    "specs": "",
+    "related": []
   },
   {
     "id": "8787",
@@ -760,7 +843,17 @@
     "id": "707",
     "order": 2,
     "specs": "<h2><strong>Designed In</strong></h2><ul><li>SolidWorks 2022</li></ul><h2><strong>Printed On</strong></h2><ul><li>Tenlog TL-D3</li></ul><h2><strong>Made With</strong></h2><ul><li>Black PLA+</li></ul>",
-    "related": []
+    "related": [],
+    "thumbnailFit": {
+      "scale": 1.15,
+      "x": 2.2,
+      "y": 42.1
+    },
+    "bannerFit": {
+      "scale": 1.4,
+      "x": 28.2,
+      "y": 41.4
+    }
   },
   {
     "title": "Club Lexi",
@@ -779,10 +872,38 @@
       "DMX"
     ],
     "gallery": [
-      "media/Lighting/Club Lexi/20230508_171150.webp",
-      "media/Lighting/Club Lexi/20230508_163509~2.webp",
-      "media/Lighting/Club Lexi/20230509_100642.webp",
-      "media/Lighting/Club Lexi/20230413_155003.webp",
+      {
+        "url": "media/Lighting/Club Lexi/20230508_171150.webp",
+        "fit": {
+          "scale": 1.1,
+          "x": 70.6,
+          "y": 35.8
+        }
+      },
+      {
+        "url": "media/Lighting/Club Lexi/20230508_163509~2.webp",
+        "fit": {
+          "scale": 1,
+          "x": 51.4,
+          "y": 59.7
+        }
+      },
+      {
+        "url": "media/Lighting/Club Lexi/20230509_100642.webp",
+        "fit": {
+          "scale": 1.1,
+          "x": 49.6,
+          "y": 44.8
+        }
+      },
+      {
+        "url": "media/Lighting/Club Lexi/20230413_155003.webp",
+        "fit": {
+          "scale": 1,
+          "x": 50.2,
+          "y": 31.3
+        }
+      },
       "https://www.youtube.com/watch?v=2s8riHVxi80"
     ],
     "files": [],
@@ -791,7 +912,17 @@
     "id": "6350",
     "order": 3,
     "specs": "<h2><strong>Lighting</strong></h2><ul><li><strong>34x</strong> PixelDots RGBW</li><li><strong>12x</strong> Profile Zoom 150W</li><li><strong>18x </strong>6x40w Beye RGBW</li></ul><h2><strong>SFX</strong></h2><ul><li>1x Radiance Hazer</li></ul><h2><strong>Control</strong></h2><ul><li>Wolfmix WMX1</li></ul>",
-    "related": []
+    "related": [],
+    "thumbnailFit": {
+      "scale": 1,
+      "x": 49.8,
+      "y": 32.5
+    },
+    "bannerFit": {
+      "scale": 1,
+      "x": 63.4,
+      "y": 48
+    }
   },
   {
     "id": "6841",
@@ -847,9 +978,30 @@
     "wip": false,
     "tags": [],
     "gallery": [
-      "media/Lighting/The Triangle/IMG_20180614_174327.webp",
-      "media/Lighting/Basement - Triangle _ Denver/IMG_20180605_151314.webp",
-      "media/Lighting/Basement - Triangle _ Denver/IMG_20180610_214856.webp",
+      {
+        "url": "media/Lighting/The Triangle/IMG_20180614_174327.webp",
+        "fit": {
+          "scale": 1,
+          "x": 50,
+          "y": 70
+        }
+      },
+      {
+        "url": "media/Lighting/Basement - Triangle _ Denver/IMG_20180605_151314.webp",
+        "fit": {
+          "scale": 1,
+          "x": 57.2,
+          "y": 46.7
+        }
+      },
+      {
+        "url": "media/Lighting/Basement - Triangle _ Denver/IMG_20180610_214856.webp",
+        "fit": {
+          "scale": 1.3,
+          "x": 35.7,
+          "y": 39.1
+        }
+      },
       "https://www.youtube.com/watch?v=fcp1V_zoitQ"
     ],
     "files": [],
@@ -858,7 +1010,17 @@
     "id": "5045",
     "order": 4,
     "specs": "",
-    "related": []
+    "related": [],
+    "thumbnailFit": {
+      "scale": 1,
+      "x": 52,
+      "y": 68.9
+    },
+    "bannerFit": {
+      "scale": 1,
+      "x": 50,
+      "y": 66.9
+    }
   },
   {
     "title": "Que Bueno Suerte! | Denver",
@@ -1038,25 +1200,78 @@
     "wip": false,
     "tags": [],
     "gallery": [
-      "media/Lighting/Lobby Wall - Tracks _ Denver/0321151647.webp",
       "https://www.youtube.com/watch?v=V7PaQ3CBYY0",
       "https://www.youtube.com/watch?v=bK93I4jco1U",
-      "media/Lighting/Lobby Wall - Tracks _ Denver/0317152322.webp",
-      "media/Lighting/Lobby Wall - Tracks _ Denver/0317152321.webp",
+      {
+        "url": "media/Lighting/Lobby Wall - Tracks _ Denver/0317152322.webp",
+        "fit": {
+          "scale": 1.25,
+          "x": 100,
+          "y": 45.8
+        }
+      },
+      {
+        "url": "media/Lighting/Lobby Wall - Tracks _ Denver/0317152321.webp",
+        "fit": {
+          "scale": 1.35,
+          "x": 0,
+          "y": 25.4
+        }
+      },
       "https://www.youtube.com/watch?v=-yTSHYxmWhg",
-      "media/Lighting/Lobby Wall - Tracks _ Denver/0315151546.webp",
-      "media/Lighting/Lobby Wall - Tracks _ Denver/0317152050.webp",
-      "media/Lighting/Lobby Wall - Tracks _ Denver/0313151634.webp",
-      "media/Lighting/Lobby Wall - Tracks _ Denver/0312151534.webp",
-      "media/Lighting/Lobby Wall - Tracks _ Denver/0221152259b.webp"
+      {
+        "url": "media/Lighting/Lobby Wall - Tracks _ Denver/0317152050.webp",
+        "fit": {
+          "scale": 1.5,
+          "x": 25.9,
+          "y": 100
+        }
+      },
+      {
+        "url": "media/Lighting/Lobby Wall - Tracks _ Denver/0315151546.webp",
+        "fit": {
+          "scale": 1.3,
+          "x": 23.8,
+          "y": 100
+        }
+      },
+      {
+        "url": "media/Lighting/Lobby Wall - Tracks _ Denver/0313151634.webp",
+        "fit": {
+          "scale": 1.15,
+          "x": 100,
+          "y": 55
+        }
+      },
+      {
+        "url": "media/Lighting/Lobby Wall - Tracks _ Denver/0312151534.webp",
+        "fit": {
+          "scale": 2.45,
+          "x": 46.9,
+          "y": 53.3
+        }
+      },
+      {
+        "url": "media/Lighting/Lobby Wall - Tracks _ Denver/0221152259b.webp",
+        "fit": {
+          "scale": 1.3,
+          "x": 17.6,
+          "y": 11.8
+        }
+      }
     ],
     "files": [],
     "video": "",
     "timestamp": "2026-07-20T20:00:01.882Z",
     "id": "7590",
     "order": 6,
-    "specs": "<h2><strong>Pixels</strong></h2><ul><li><strong>520x</strong> WS2801 RGB (6 x 1), 12vdc</li></ul><h2><strong>Control</strong></h2><ul><li>Madrix 3.6</li></ul><p><br></p>",
-    "related": []
+    "specs": "<h2><strong>Pixels</strong></h2><ul><li><strong>520x</strong> WS2801 RGB (6 x 1), 12vdc</li></ul><h2><strong>Control</strong></h2><ul><li>Madrix 3.6</li></ul>",
+    "related": [],
+    "bannerFit": {
+      "scale": 1.2,
+      "x": 66.7,
+      "y": 47.6
+    }
   },
   {
     "title": "Curved Liquor Bottle Display",
@@ -1220,7 +1435,17 @@
     "video": "",
     "timestamp": "2026-07-26T23:20:01.923Z",
     "id": "5376",
-    "order": 3
+    "order": 3,
+    "thumbnailFit": {
+      "scale": 1.05,
+      "x": 5.3,
+      "y": 1.8
+    },
+    "bannerFit": {
+      "scale": 1,
+      "x": 48.8,
+      "y": 41.4
+    }
   },
   {
     "title": "Dance Floor Pillars",
@@ -1341,10 +1566,25 @@
     ],
     "files": [],
     "specs": "",
-    "related": [],
+    "related": [
+      {
+        "name": "Bottle shelf",
+        "url": "#project/6808"
+      }
+    ],
     "video": "",
     "timestamp": "2026-08-01T15:14:28.453Z",
     "id": "2052",
-    "order": 0
+    "order": 0,
+    "thumbnailFit": {
+      "scale": 1.2,
+      "x": 0.4,
+      "y": 41.6
+    },
+    "bannerFit": {
+      "scale": 1.15,
+      "x": 0.2,
+      "y": 40.8
+    }
   }
 ]

@@ -797,6 +797,11 @@
       const p = projects[index];
       document.getElementById('editor').classList.remove('hidden');
 
+      setTimeout(() => {
+        if (document.activeElement) document.activeElement.blur();
+        window.scrollTo({ top: 0 });
+      }, 0);
+
       ['id', 'title', 'category', 'image', 'websiteLink', 'launchLink', 'githubLink', 'shopLink', 'timestamp'].forEach(id => {
          document.getElementById(id).value = p[id] || '';
       });
