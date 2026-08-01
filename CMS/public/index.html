@@ -19,6 +19,8 @@
     .ql-editor { min-height: 80px; }
     .upload-zone { transition: all 0.2s; }
     .upload-zone.dragover { border-color: #6366f1; background-color: #eef2ff; }
+    .crop-grabbing { cursor: grabbing !important; }
+    #crop-zoom-slider { height: 4px; }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen relative">
@@ -95,6 +97,8 @@
 
           <input type="hidden" id="id">
           <input type="hidden" id="timestamp">
+          <input type="hidden" id="thumbnailFit">
+          <input type="hidden" id="bannerFit">
 
           <div class="grid grid-cols-2 gap-4">
             <div>
@@ -122,6 +126,17 @@
                  <i class="ph ph-upload-simple"></i> Upload
                  <input type="file" accept="image/*" class="hidden" onchange="handleImageUpload(this, 'image')">
                </label>
+             </div>
+             <div class="flex gap-2 mt-2 items-center">
+               <button type="button" onclick="openBannerCrop('thumbnail')"
+                       class="flex items-center gap-1 text-xs bg-slate-100 hover:bg-indigo-100 hover:text-indigo-600 text-slate-600 px-3 py-1.5 rounded-lg font-bold transition-colors">
+                 <i class="ph ph-crop"></i> Thumbnail Crop
+               </button>
+               <button type="button" onclick="openBannerCrop('banner')"
+                       class="flex items-center gap-1 text-xs bg-slate-100 hover:bg-indigo-100 hover:text-indigo-600 text-slate-600 px-3 py-1.5 rounded-lg font-bold transition-colors">
+                 <i class="ph ph-crop"></i> Banner Crop
+               </button>
+               <span id="banner-fit-status" class="text-xs text-indigo-500 font-medium ml-auto"></span>
              </div>
           </div>
 
@@ -788,6 +803,9 @@
       document.getElementById('featured').checked = !!p.featured;
       document.getElementById('wip').checked = !!p.wip;
       document.getElementById('tags').value = Array.isArray(p.tags) ? p.tags.join(', ') : '';
+      document.getElementById('thumbnailFit').value = p.thumbnailFit ? JSON.stringify(p.thumbnailFit) : '';
+      document.getElementById('bannerFit').value = p.bannerFit ? JSON.stringify(p.bannerFit) : '';
+      updateBannerFitStatus();
 
       if (p.description) quillShort.clipboard.dangerouslyPasteHTML(p.description);
       else quillShort.setText('');
@@ -813,11 +831,11 @@
       galleryContainer.innerHTML = '';
       if (Array.isArray(p.gallery) && p.gallery.length > 0) {
          p.gallery.forEach(item => {
-            if (typeof item === 'string') addGalleryRow(item, '', true);
-            else addGalleryRow(item?.url || '', item?.caption || '', true);
+            if (typeof item === 'string') addGalleryRow(item, '', null, true);
+            else addGalleryRow(item?.url || '', item?.caption || '', item?.fit || null, true);
          });
       } else {
-        addGalleryRow("", "", true);
+        addGalleryRow("", "", null, true);
       }
 
       const relatedContainer = document.getElementById('related-container');
@@ -843,9 +861,12 @@
       document.getElementById('files-container').innerHTML = '';
       document.getElementById('gallery-container').innerHTML = '';
       document.getElementById('related-container').innerHTML = '';
+      document.getElementById('thumbnailFit').value = '';
+      document.getElementById('bannerFit').value = '';
+      updateBannerFitStatus();
 
       addFileRow("", "", "", true);
-      addGalleryRow("", "", true);
+      addGalleryRow("", "", null, true);
       addRelatedRow("", "", true);
 
       document.getElementById('editor').classList.remove('hidden');
@@ -921,11 +942,13 @@
         if (!isBulk) isDirty = true;
     }
 
-    function addGalleryRow(url = "", caption = "", isBulk = false) {
+    function addGalleryRow(url = "", caption = "", fit = null, isBulk = false) {
         const container = document.getElementById('gallery-container');
         const div = document.createElement('div');
         div.className = "gallery-row space-y-1 bg-white border border-slate-200 rounded p-1";
         div.draggable = true;
+        const fitJson = fit ? JSON.stringify(fit) : '';
+        const hasFit = !!fitJson;
         div.innerHTML = `
             <div class="flex gap-2 items-center">
                 <span class="drag-handle cursor-grab text-slate-300 hover:text-slate-500 px-1"><i class="ph ph-dots-six-vertical"></i></span>
@@ -934,9 +957,14 @@
                     <img class="gallery-thumb w-10 h-10 object-cover rounded bg-slate-100 cursor-zoom-in" src="${escAttr(getThumbnailSrc(url))}" onerror="this.closest('.gallery-thumb-wrap').classList.add('hidden')">
                 </div>
                 <input type="text" placeholder="Image path, URL, or YouTube link" value="${escAttr(url)}" class="gallery-url flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="onGalleryUrlChange(this)">
+                <button type="button" onclick="openGalleryCrop(this.closest('.gallery-row'))" title="Set crop"
+                        class="gallery-crop-btn flex-shrink-0 px-2 transition-colors ${hasFit ? 'text-indigo-500' : 'text-slate-300 hover:text-indigo-500'}">
+                    <i class="ph ph-crop"></i>
+                </button>
                 <button type="button" onclick="this.closest('.gallery-row').remove(); updateListIndices('gallery-container'); isDirty=true;" class="text-red-400 hover:text-red-600 px-2 transition-colors"><i class="ph ph-trash"></i></button>
             </div>
             <input type="text" placeholder="Caption (optional — shown in the media viewer)" value="${escAttr(caption)}" class="gallery-caption w-full bg-white border border-slate-200 rounded px-2 py-1 text-xs text-slate-500 focus:border-indigo-500 outline-none" oninput="isDirty=true">
+            <input type="hidden" class="gallery-fit" value="${escAttr(fitJson)}">
         `;
         container.appendChild(div);
         updateListIndices('gallery-container');
@@ -1205,8 +1233,23 @@
       const galleryList = Array.from(galleryRows).map(row => {
           const url = row.querySelector('.gallery-url').value.trim();
           const caption = row.querySelector('.gallery-caption').value.trim();
-          return caption ? { url, caption } : url;
+          const fitRaw = row.querySelector('.gallery-fit')?.value?.trim() || '';
+          let fit = null;
+          try { fit = fitRaw ? JSON.parse(fitRaw) : null; } catch {}
+          const hasExtra = caption || fit;
+          if (hasExtra) {
+              const obj = { url };
+              if (caption) obj.caption = caption;
+              if (fit) obj.fit = fit;
+              return obj;
+          }
+          return url;
       }).filter(item => (typeof item === 'string' ? item : item.url));
+
+      const parseFit = (id) => {
+          const v = document.getElementById(id)?.value?.trim() || '';
+          try { return v ? JSON.parse(v) : undefined; } catch { return undefined; }
+      };
 
       const formData = {
         id: document.getElementById('id').value || undefined,
@@ -1214,6 +1257,8 @@
         title: document.getElementById('title').value,
         category: document.getElementById('category').value,
         image: document.getElementById('image').value,
+        thumbnailFit: parseFit('thumbnailFit'),
+        bannerFit: parseFit('bannerFit'),
         description: quillShort.root.innerHTML,
         longDescription: quillLong.root.innerHTML,
         websiteLink: document.getElementById('websiteLink').value,
@@ -1238,9 +1283,16 @@
       api.post('/projects', formData).then(async (res) => {
            await flushListOrder();
            isDirty = false;
-           lastSavedId = res.project?.id || formData.id;
-           refreshData();
-           if(postSaveCallback) postSaveCallback();
+           if (postSaveCallback) {
+               // A pending navigation is waiting — skip lastSavedId so onDataLoaded
+               // doesn't re-navigate back to the saved project after the refresh.
+               await refreshData();
+               Toastify({ text: "Project Saved!", duration: 3000, backgroundColor: "#4f46e5" }).showToast();
+               postSaveCallback();
+           } else {
+               lastSavedId = res.project?.id || formData.id;
+               refreshData();
+           }
       }).catch(err => {
           document.getElementById('loadingOverlay').classList.add('hidden');
           onError(err);
@@ -1428,6 +1480,217 @@
     }
     function hideStatus() { document.getElementById('status').classList.add('hidden'); }
     function onError(err) { showStatus("Error: " + (err.message || err), "red"); console.error(err); }
+
+    // ---- CROP MODAL ----
+    const cropState = { x: 50, y: 50, scale: 1, dragging: false, lastX: 0, lastY: 0, onSave: null };
+
+    function openCropModal(imgSrc, aspectW, aspectH, label, currentFit, onSave) {
+      const fit = currentFit || {};
+      cropState.x = fit.x != null ? fit.x : 50;
+      cropState.y = fit.y != null ? fit.y : 50;
+      cropState.scale = fit.scale != null ? fit.scale : 1;
+      cropState.dragging = false;
+      cropState.onSave = onSave;
+
+      document.getElementById('crop-modal-label').textContent = label;
+
+      const box = document.getElementById('crop-preview-box');
+      const maxW = Math.min(560, document.documentElement.clientWidth - 80);
+      box.style.width = maxW + 'px';
+      box.style.height = Math.round(maxW * aspectH / aspectW) + 'px';
+
+      const img = document.getElementById('crop-preview-img');
+      img.src = imgSrc;
+
+      updateCropPreview();
+      document.getElementById('crop-modal').classList.remove('hidden');
+    }
+
+    function updateCropPreview() {
+      const { x, y, scale } = cropState;
+      const img = document.getElementById('crop-preview-img');
+      img.style.transform = `scale(${scale})`;
+      img.style.transformOrigin = `${x}% ${y}%`;
+      img.style.objectPosition = `${x}% ${y}%`;
+      document.getElementById('crop-zoom-slider').value = scale;
+      document.getElementById('crop-readout').textContent =
+        `Zoom ${scale.toFixed(2)}\u00d7  \u00b7  X ${Math.round(x)}%  \u00b7  Y ${Math.round(y)}%`;
+    }
+
+    function closeCropModal() {
+      cropState.dragging = false;
+      document.getElementById('crop-modal').classList.add('hidden');
+    }
+
+    function saveCropModal() {
+      const fit = {
+        scale: parseFloat(cropState.scale.toFixed(3)),
+        x: parseFloat(cropState.x.toFixed(1)),
+        y: parseFloat(cropState.y.toFixed(1))
+      };
+      if (cropState.onSave) cropState.onSave(fit);
+      closeCropModal();
+    }
+
+    function resetCrop() {
+      cropState.x = 50; cropState.y = 50; cropState.scale = 1;
+      updateCropPreview();
+    }
+
+    function openBannerCrop(type) {
+      const imgSrc = document.getElementById('image').value.trim();
+      if (!imgSrc) {
+        Toastify({ text: "Add a banner image URL first", duration: 2000, backgroundColor: "#ef4444" }).showToast();
+        return;
+      }
+      const isThumbnail = type === 'thumbnail';
+      const fitId = isThumbnail ? 'thumbnailFit' : 'bannerFit';
+      const label = isThumbnail ? 'Card Thumbnail  (16 : 9)' : 'Page Banner  (16 : 5)';
+      const [aw, ah] = isThumbnail ? [16, 9] : [16, 5];
+      let currentFit = null;
+      try { currentFit = JSON.parse(document.getElementById(fitId).value || 'null'); } catch {}
+      openCropModal(imgSrc, aw, ah, label, currentFit, (fit) => {
+        document.getElementById(fitId).value = JSON.stringify(fit);
+        isDirty = true;
+        updateBannerFitStatus();
+      });
+    }
+
+    function updateBannerFitStatus() {
+      const hasThumbnail = !!(document.getElementById('thumbnailFit')?.value?.trim());
+      const hasBanner = !!(document.getElementById('bannerFit')?.value?.trim());
+      const parts = [];
+      if (hasThumbnail) parts.push('thumbnail');
+      if (hasBanner) parts.push('banner');
+      const el = document.getElementById('banner-fit-status');
+      if (el) el.textContent = parts.length ? `Crop saved: ${parts.join(' + ')}` : '';
+    }
+
+    function openGalleryCrop(row) {
+      const imgSrc = row.querySelector('.gallery-url').value.trim();
+      if (!imgSrc) {
+        Toastify({ text: "Add an image URL to this row first", duration: 2000, backgroundColor: "#ef4444" }).showToast();
+        return;
+      }
+      if (imgSrc.includes('youtu.be') || imgSrc.includes('youtube.com')) {
+        Toastify({ text: "Crop is not available for YouTube links", duration: 2000, backgroundColor: "#ef4444" }).showToast();
+        return;
+      }
+      const fitInput = row.querySelector('.gallery-fit');
+      let currentFit = null;
+      try { currentFit = JSON.parse(fitInput?.value || 'null'); } catch {}
+      const label = 'Gallery Thumbnail  (16 : 9)';
+      openCropModal(imgSrc, 16, 9, label, currentFit, (fit) => {
+        fitInput.value = JSON.stringify(fit);
+        isDirty = true;
+        const cropBtn = row.querySelector('.gallery-crop-btn');
+        if (cropBtn) cropBtn.className = cropBtn.className.replace('text-slate-300', 'text-indigo-500');
+      });
+    }
+
+    // Drag + scroll events for the crop preview
+    (function () {
+      const getBox = () => document.getElementById('crop-preview-box');
+
+      document.addEventListener('mousedown', (e) => {
+        const box = getBox();
+        if (!box || !box.contains(e.target)) return;
+        if (e.button !== 0) return;
+        e.preventDefault();
+        cropState.dragging = true;
+        cropState.lastX = e.clientX;
+        cropState.lastY = e.clientY;
+        box.classList.add('crop-grabbing');
+      });
+
+      document.addEventListener('mousemove', (e) => {
+        if (!cropState.dragging) return;
+        const box = getBox();
+        if (!box) return;
+        const rect = box.getBoundingClientRect();
+        const dx = e.clientX - cropState.lastX;
+        const dy = e.clientY - cropState.lastY;
+        cropState.lastX = e.clientX;
+        cropState.lastY = e.clientY;
+        // Grab-and-drag: moving mouse right reveals more of left side → x decreases.
+        // Divide by scale so panning is finer when zoomed in.
+        const sensitivity = 100 / cropState.scale;
+        cropState.x = Math.max(0, Math.min(100, cropState.x - (dx / rect.width) * sensitivity));
+        cropState.y = Math.max(0, Math.min(100, cropState.y - (dy / rect.height) * sensitivity));
+        updateCropPreview();
+      });
+
+      document.addEventListener('mouseup', () => {
+        if (cropState.dragging) {
+          cropState.dragging = false;
+          const box = getBox();
+          if (box) box.classList.remove('crop-grabbing');
+        }
+      });
+
+      document.addEventListener('wheel', (e) => {
+        const box = getBox();
+        if (!box || !box.contains(e.target)) return;
+        e.preventDefault();
+        const delta = e.deltaY > 0 ? -0.1 : 0.1;
+        cropState.scale = Math.max(1, Math.min(4, parseFloat((cropState.scale + delta).toFixed(3))));
+        updateCropPreview();
+      }, { passive: false });
+
+      // Close on backdrop click
+      document.getElementById('crop-modal').addEventListener('click', (e) => {
+        if (e.target === document.getElementById('crop-modal')) closeCropModal();
+      });
+    })();
   </script>
+  <!-- CROP MODAL -->
+  <div id="crop-modal" class="hidden fixed inset-0 bg-black/60 z-[60] flex items-center justify-center backdrop-blur-sm p-4">
+    <div class="bg-white rounded-xl shadow-2xl p-6 w-full flex flex-col gap-4" style="max-width:640px;">
+      <div class="flex justify-between items-start">
+        <div>
+          <h2 class="text-lg font-bold text-slate-800">Set Crop</h2>
+          <p id="crop-modal-label" class="text-sm text-slate-500"></p>
+        </div>
+        <button type="button" onclick="closeCropModal()" class="text-slate-400 hover:text-slate-600 mt-0.5"><i class="ph ph-x text-xl"></i></button>
+      </div>
+      <p class="text-xs text-slate-400 -mt-2">
+        <i class="ph ph-hand"></i> Drag to pan &nbsp;·&nbsp;
+        <i class="ph ph-magnifying-glass"></i> Scroll or use slider to zoom
+      </p>
+      <div id="crop-preview-box"
+           class="relative overflow-hidden rounded-lg bg-zinc-800 mx-auto select-none"
+           style="width:560px; height:315px; cursor:grab;">
+        <img id="crop-preview-img"
+             class="absolute inset-0 w-full h-full object-cover pointer-events-none"
+             style="transform-origin:50% 50%; transform:scale(1); object-position:50% 50%;"
+             src="" alt="">
+      </div>
+      <div class="flex items-center gap-3">
+        <i class="ph ph-magnifying-glass-minus text-slate-400 text-lg"></i>
+        <input type="range" id="crop-zoom-slider" min="1" max="4" step="0.05" value="1"
+               class="flex-1 accent-indigo-600"
+               oninput="cropState.scale = parseFloat(this.value); updateCropPreview();">
+        <i class="ph ph-magnifying-glass-plus text-slate-400 text-lg"></i>
+      </div>
+      <div id="crop-readout" class="text-xs text-center font-mono text-slate-500 -mt-1">Zoom 1.00× · X 50% · Y 50%</div>
+      <div class="flex justify-between items-center pt-2 border-t border-slate-100">
+        <button type="button" onclick="resetCrop()"
+                class="text-sm text-slate-500 hover:text-slate-700 px-3 py-1.5 rounded hover:bg-slate-100 transition-colors">
+          <i class="ph ph-arrow-counter-clockwise"></i> Reset
+        </button>
+        <div class="flex gap-3">
+          <button type="button" onclick="closeCropModal()"
+                  class="px-4 py-2 border border-slate-200 rounded-lg text-slate-600 hover:bg-slate-50 text-sm transition-colors">
+            Cancel
+          </button>
+          <button type="button" onclick="saveCropModal()"
+                  class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-bold text-sm transition-colors">
+            Save Crop
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>

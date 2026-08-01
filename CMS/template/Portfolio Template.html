@@ -193,6 +193,16 @@
         // caption has been authored in the CMS.
         const mediaSrc = (item) => (typeof item === 'string' ? item : (item?.url || ''));
         const mediaCaption = (item) => (typeof item === 'string' ? '' : (item?.caption || ''));
+        const mediaFit = (item) => (typeof item === 'string' ? null : (item?.fit || null));
+
+        // Returns inline style for a cropped image. When scale=1, only objectPosition
+        // is set so CSS hover transitions (e.g. group-hover:scale-105) still work.
+        const fitStyle = (fit) => {
+            if (!fit) return {};
+            const { scale = 1, x = 50, y = 50 } = fit;
+            if (scale <= 1) return { objectPosition: `${x}% ${y}%` };
+            return { transform: `scale(${scale})`, transformOrigin: `${x}% ${y}%`, objectPosition: `${x}% ${y}%` };
+        };
 
         const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), iframe, [tabindex]:not([tabindex="-1"])';
 
@@ -342,6 +352,7 @@
                             loading="lazy"
                             decoding="async"
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" 
+                            style={fitStyle(project.thumbnailFit)}
                         />
                         <div aria-hidden="true" className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
                             <div className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 bg-black/60 backdrop-blur px-4 py-2 rounded-full border border-white/20 flex items-center gap-2 text-white font-bold text-sm">
@@ -735,7 +746,7 @@
                         </button>
 
                         <div ref={scrollRef} className="overflow-y-auto overflow-x-hidden custom-scrollbar flex-1">
-                            <div className="relative h-64 md:h-96 w-full">
+                            <div className="relative h-64 md:h-96 w-full overflow-hidden">
                                 {/* PERFORMANCE: Lazy Loading on Modal Header */}
                                 {/* Empty alt: the h2 below is the accessible name for this dialog. */}
                                 <img 
@@ -744,6 +755,7 @@
                                     loading="lazy"
                                     decoding="async"
                                     className="w-full h-full object-cover" 
+                                    style={fitStyle(project.bannerFit)}
                                 />
                                 <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-zinc-950 to-transparent"></div>
                                 {/* SHARE BUTTON - scrolls with header */}
@@ -832,7 +844,7 @@
                                                                 </>
                                                             ) : (
                                                                 <>
-                                                                    <img src={mediaUrl} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="" />
+                                                                    <img src={mediaUrl} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="" style={fitStyle(mediaFit(item))} />
                                                                     <div aria-hidden="true" className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
                                                                         <Maximize2 className="text-white opacity-0 group-hover:opacity-100 transition-opacity" size={24}/>
                                                                     </div>
