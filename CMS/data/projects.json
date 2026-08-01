@@ -35,15 +35,7 @@
     "title": "Main Room - Temple Nightclub | San Francisco",
     "category": "Lighting",
     "tags": [
-      "DMX",
-      "ArtNet",
-      "sACN",
-      "Show Cockpit",
-      "Resolume Arena",
-      "Madrix",
-      "MIDI",
-      "OSC",
-      "OSCpilot"
+      "Lighting Design"
     ],
     "image": "media/Lighting/Temple San Francisco/20210516_134200.webp",
     "description": "<p>A comprehensive, hybrid lighting and video installation engineered for seamless cross-system pixel mapping and total venue immersion.</p>",
@@ -108,7 +100,10 @@
     "shopLink": "",
     "featured": true,
     "wip": false,
-    "tags": [],
+    "tags": [
+      "FDM 3D Printing",
+      "SolidWorks"
+    ],
     "gallery": [
       "media/Art/Emmy Stand/20250415_215715.webp",
       "media/Art/Emmy Stand/20250415_215552.webp",
@@ -199,7 +194,10 @@
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "tags": [],
+    "tags": [
+      "FDM 3D Printing",
+      "SolidWorks"
+    ],
     "gallery": [
       "media/Art/Pixel Pyramid/20230717_154810.webp",
       "media/Art/Pixel Pyramid/20230717_154820.webp",
@@ -218,7 +216,10 @@
     "id": "5632",
     "title": "Pixel Mini Pyramid",
     "category": "Art",
-    "tags": [],
+    "tags": [
+      "FDM 3D Printing",
+      "SolidWorks"
+    ],
     "image": "media/Art/Pixel Mini Pyramid/20230726_201532.webp",
     "description": "<p>A compact, USB-C powered 8x8 LED matrix desk piece featuring a scannable 3D printed QR code base.</p>",
     "longDescription": "<p>The Pixel Mini Pyramid is a compact 8x8 LED matrix display tailored specifically for desktop environments. The primary goal was to scale down a previous 16x16 design into a highly portable footprint powered entirely by a standard 5V USB-C connection. It differentiates itself by integrating a giant physical QR code directly into the base structure, transforming a standard lighting piece into an interactive promotional tool that links users directly to my web portfolio.</p><p>The development process required a hybrid modeling approach to balance mechanical and aesthetic requirements. SolidWorks provided the mechanical precision necessary for securely housing the internal electronics, while Blender handled the external geometric elements. During fabrication, the physical assembly was streamlined by utilizing a Bambu Lab X1C to extrude three distinct materials in a single print job. This manufacturing workflow allowed the intricate QR code base and the structural enclosure to be produced cohesively, ensuring tight tolerances for the internal hardware without complex post processing.</p><p>At the core of the project is an ESP32 microcontroller running WLED firmware, providing robust control over the complex light patterns across the addressable 8x8 pixel grid. Integrating 5V USB-C power delivery was a crucial technical requirement, eliminating the need for bulky external power adapters and making the unit self contained. The standout fabrication achievement remains the seamless three material 3D printing process, which successfully merged the interactive promotional requirements with strict mechanical constraints in one automated step.</p>",
@@ -254,7 +255,10 @@
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "tags": [],
+    "tags": [
+      "FDM 3D Printing",
+      "SolidWorks"
+    ],
     "gallery": [
       "media/Art/Pixel Plane Warp/20230719_221111.webp",
       "https://youtube.com/shorts/a7uLXj7EiVc?feature=share"
@@ -279,7 +283,19 @@
     "shopLink": "",
     "featured": true,
     "wip": false,
-    "tags": [],
+    "tags": [
+      "OSCpilot",
+      "OSC",
+      "MIDI",
+      "DMX",
+      "ArtNet",
+      "sACN",
+      "Show Cockpit",
+      "HOG",
+      "Madrix",
+      "Resolume Arena",
+      "TCP/IP"
+    ],
     "gallery": [
       "media/Integration/Temple - San Francisco/20210514_2025472.webp",
       "media/Integration/Temple Nightclub - San Francisco/IMG_20200504_185605.webp"
@@ -299,7 +315,10 @@
     "id": "9517",
     "title": "Field Solder Station",
     "category": "Solutions",
-    "tags": [],
+    "tags": [
+      "FDM 3D Printing",
+      "SolidWorks"
+    ],
     "image": "media/Fabrication/Field Solder Station/20250317_180657.webp",
     "description": "<p>A portable, field soldering station designed to streamline complex live entertainment installations.</p>",
     "longDescription": "<p>The field solder station is a highly compact, tool carrier engineered to solve the logistical challenges of on site LED installations. Working in unconventional locations like high ladders or cramped spaces under a stage requires immediate access to tools without the burden of a bulky bench setup. This solution differentiates itself by consolidating an entire soldering toolkit into a single portable chassis driven by a standard USB PD battery bank.</p><p>This tool emerged from an iterative prototyping process tested directly in the field during a major San Francisco nightclub installation. Initial concepts explored integrated batteries and complex wiring before the design converged on a simplified approach to maximize reliability and reduce weight. The final iteration logically organizes a TS100 or TS101 iron, solder spool, a bottle of flux, desoldering pump, wick, wet and wire sponges, and rubber feet into an optimized spatial layout.</p><p>I designed the chassis in SolidWorks to tightly pack the required tools into a minimal footprint. Fabricated from PLA using Bambu Lab 3D printers, the structure leverages precision tolerances to secure mechanical hardware like the dual helping hands through a robust friction fit. This precise 3D modeling eliminated the need for secondary mechanical fasteners, resulting in a streamlined and self contained system that reliably supports mobile fabrication work.</p>",
@@ -656,7 +675,10 @@
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "tags": [],
+    "tags": [
+      "FDM 3D Printing",
+      "SolidWorks"
+    ],
     "gallery": [
       "media/Fabrication/Field Bench PSU/20250317_180727.webp"
     ],
@@ -686,7 +708,10 @@
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "tags": [],
+    "tags": [
+      "Capture",
+      "DMX"
+    ],
     "gallery": [
       "media/Lighting/Club Lexi/20230508_171150.webp",
       "media/Lighting/Club Lexi/20230508_163509~2.webp",
@@ -781,7 +806,16 @@
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "tags": [],
+    "tags": [
+      "Madrix",
+      "ELM",
+      "TCP/IP",
+      "OSC",
+      "OSCpilot",
+      "MIDI",
+      "sACN",
+      "ArtNet"
+    ],
     "gallery": [
       "media/Integration/Que Bueno Suerte! - Denver/20240606_211259.webp",
       "media/Integration/Que Bueno Suerte! - Denver/20230222_105213.webp"
@@ -849,7 +883,10 @@
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "tags": [],
+    "tags": [
+      "FDM 3D Printing",
+      "SolidWorks"
+    ],
     "gallery": [
       "media/Art/Pixel Negative _X_/20230717_155724.webp",
       "media/Art/Pixel Negative _X_/20230717_155731.webp",
@@ -875,7 +912,10 @@
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "tags": [],
+    "tags": [
+      "FDM 3D Printing",
+      "SolidWorks"
+    ],
     "gallery": [
       "media/Art/Pixel Seed of Life/20230717_155617.webp",
       "media/Art/Pixel Seed of Life/20230717_155640.webp",
@@ -901,7 +941,10 @@
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "tags": [],
+    "tags": [
+      "FDM 3D Printing",
+      "SolidWorks"
+    ],
     "gallery": [
       "media/Art/Pixel Celtic Owl/20220315_175342.webp",
       "media/Art/Pixel Celtic Owl/Screenshot 2026-07-02 185618.webp",
@@ -1039,7 +1082,10 @@
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "tags": [],
+    "tags": [
+      "FDM 3D Printing",
+      "SolidWorks"
+    ],
     "gallery": [
       "media/Fabrication/Extrusion Centering Sled/20200909_213244.webp",
       "media/Fabrication/Extrusion Centering Sled/20200907_234532.webp",
