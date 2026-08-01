@@ -847,6 +847,14 @@
                                 </div>
 
                                 <div className="contents md:block md:space-y-6 md:min-w-0">
+                                    {project.specs && (
+                                        <div className="order-3 bg-zinc-900/50 border border-zinc-800 p-6 rounded-xl">
+                                            <h4 className="text-sm font-bold text-zinc-500 uppercase tracking-widest mb-4">Specifications</h4>
+                                            <div className="rich-text text-zinc-300 text-sm leading-relaxed"
+                                                 dangerouslySetInnerHTML={{ __html: demoteHeadings(project.specs, 5) }} />
+                                        </div>
+                                    )}
+
                                     {hasActions && (
                                         <div className="order-5 bg-zinc-900/50 border border-zinc-800 p-6 rounded-xl">
                                             <h4 className="text-sm font-bold text-zinc-500 uppercase tracking-widest mb-4">Actions</h4>
@@ -875,14 +883,6 @@
                                                     </a>
                                                 )}
                                             </div>
-                                        </div>
-                                    )}
-
-                                    {project.specs && (
-                                        <div className="order-3 bg-zinc-900/50 border border-zinc-800 p-6 rounded-xl">
-                                            <h4 className="text-sm font-bold text-zinc-500 uppercase tracking-widest mb-4">Specifications</h4>
-                                            <div className="rich-text text-zinc-300 text-sm leading-relaxed"
-                                                 dangerouslySetInnerHTML={{ __html: demoteHeadings(project.specs, 5) }} />
                                         </div>
                                     )}
 
