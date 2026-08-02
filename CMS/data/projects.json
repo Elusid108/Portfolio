@@ -53,7 +53,7 @@
       "Power tools"
     ],
     "image": "media/Lighting/Temple San Francisco/20210516_134200.webp",
-    "description": "<p><strong>Temple Nightclub | San Francisco </strong>- A comprehensive, hybrid lighting and video installation engineered for seamless cross-system pixel mapping and total venue immersion.</p>",
+    "description": "<p><strong>Temple Nightclub | San Francisco </strong>- The main room remodel at Temple San Francisco wraps a 208V curved video ceiling and 10 custom pixel pillars into a flat-black, switched-relay infrastructure built across a two-year pandemic shutdown.</p>",
     "longDescription": "<p>The main room remodel at Temple Nightclub in San Francisco is a dense, hybrid lighting and video installation designed to deliver maximum environmental immersion and operational flexibility. The core architecture integrates a curved video ceiling that wraps behind the DJ, ten custom floor-to-ceiling LED pixel pillars, and a vast array of moving wash fixtures. The primary differentiator of this design is its meticulous flat-black construction across all hardware components. This design choice allows the entire complex infrastructure to vanish completely into the dark when unlit, contrasting sharply with the massive visual output of the active rig.</p><p>Constructed during the 2020 pandemic shutdown, the installation required profound physical and electrical infrastructure modifications before aesthetic integration could begin. To safely accommodate the curved video ceiling, a fire-suppression team was brought in to entirely reroute the sprinklers to deploy beneath the wall. The venue's power capacity was completely overhauled with new 400-amp and 200-amp services and breaker panels, feeding a meticulously mapped network of dedicated and shared circuits based on strict component specifications. Operational efficiency was prioritized throughout the physical build; all rig power was placed on switched relays for centralized shut-down, and independent, hardwired house lighting was installed to allow staff maintenance without activating the complex show systems.</p><p>The defining technical achievement of the installation is the cohesive, cross-system pixel mapping infrastructure layered on top of this robust electrical foundation. By linking the video playback engine directly to the room's environmental lighting—including custom edge-lit VIP tables, illuminated booths, and a double-sided dancefloor monolith—the system translates localized video content into precise color and intensity data distributed across the entire venue. To manage the sheer density and potential output of this rig, the operational strategy enforces highly selective, limited use across all combined systems. This strict design discipline avoids over-lighting the dancefloor while ensuring massive, unified full-room looks can be generated efficiently from centralized media inputs.</p>",
     "video": "",
     "gallery": [
@@ -96,7 +96,15 @@
         }
       },
       "https://www.youtube.com/watch?v=yeFIdQywa5U",
-      "media/Lighting/Main Room - Temple Nightclub _ San Francisco/Screenshot 2025-03-14 124321.webp"
+      "media/Lighting/Main Room - Temple Nightclub _ San Francisco/Screenshot 2025-03-14 124321.webp",
+      {
+        "url": "media/Lighting/Immersive Dance Lighting Rig/IMG_20200205_234101.webp",
+        "fit": {
+          "scale": 1.3,
+          "x": 67,
+          "y": 47.8
+        }
+      }
     ],
     "launchLink": "",
     "githubLink": "",
@@ -667,7 +675,8 @@
       "Through-Hole Soldering",
       "AC/DC Load Calc",
       "Power Distribution",
-      "Power tools"
+      "Power tools",
+      "DMX"
     ],
     "image": "media/Lighting/MIrus Art Gallery - Denver/IMG_20180614_235653.webp",
     "description": "<p><strong>Mirus Art Gallery | Denver </strong>- A dynamic RGBW LED lighting installation integrated into custom wooden ceiling louvers for a modern art gallery.</p>",
@@ -1693,8 +1702,8 @@
     "title": "Curved Liquor Bottle Display",
     "category": "Lighting",
     "image": "media/Lighting/Curved Liquor Bottle Display/Screenshot 2026-08-01 112340.webp",
-    "description": "<p><strong>Que Bueno Suerte! | Denver</strong> - A custom-integrated, 3D-printed addressable LED lighting system designed to illuminate a central curved bottle shelf.</p>",
-    "longDescription": "<p>The objective of this project was to provide functional, elegant illumination for a custom-fabricated metal curved bottle shelf serving as the primary visual focal point at Que Bueno Suerte!. Instead of relying on standard off-the-shelf LED extrusions that often produce unwanted glare, the solution required a highly tailored approach. The core differentiator is a series of custom-designed, 3D-printed corner pixel fixtures featuring integrated louvers, specifically engineered to direct light toward the display while completely blocking direct sightlines to the diodes for passing guests.</p><p>The workflow centered on designing fixtures that matched the specific geometry of the existing metalwork. Following the fabrication phase, the physical installation prioritized seamless integration and discreet cable management to maintain a clean aesthetic. The entire pixel array was meticulously hardwired and routed using black wire wrap to blend directly into the shelf's architecture. This routing ensured the design of the metalwork remained uninterrupted by the underlying electrical infrastructure.</p><p>The technical execution relies on precisely manufactured physical components produced on Bambu Lab 3D printers, ensuring exact tolerances for the light-blocking louvers. Operationally, the individual fixtures function as part of a comprehensive, venue-wide network. The shelf's lighting system is fully tied into the restaurant's overarching control infrastructure and driven by a centralized server running Madrix 5.x, enabling robust, synchronized control over the installation.</p>",
+    "description": "<p><strong>Que Bueno Suerte! | Denver</strong> - I designed and hardwired 96 custom louvered corner fixtures to illuminate a see-through sheet metal bottle shelf without blinding guests.</p>",
+    "longDescription": "<p>Off-the-shelf extrusion was out of the question for the main bottle display at Que Bueno Suerte!. I wanted to aim light up at the bottles from the corners of the display sections without putting a lens or diffuser in front of the LEDs, preserving maximum throw distance and brightness. To keep raw diodes out of the guests' eyes, I 3D printed custom corner fixtures with integrated light-blocking louvers. Getting the louver spacing and angle right took a few rapid prototyping iterations, and the alignment pins snapped off on almost every print, but the LED tape track itself held the end caps in line.</p><p>The shelf is a see-through metal grid, which made hiding the wiring for 96 individual fixtures a project in itself. I handwired the entire array and wrapped the routing in black tubing secured with mini zip ties. Because there was no closed conduit to hide inside, I used double-sided foam tape to mount the louvers and leaned on the physical stiffness of the bundled wire to support its own weight across the grid.</p><p>In action, the shelf is mapped into the rest of the venue's LED pixel installations through a centralized Madrix server, running unified, building-wide dynamic looks. It worked cleanly until the restaurant opened for dancing and guests started abandoning drinks on every flat surface in the room. I had built the shelf for empty display bottles and never anticipated liquids up there. Spills dripped into the tracks and corroded the LED tape, and because of how the louver tracks were dimensioned, standard waterproof silicone tape would not fit as a drop-in replacement. I ended up requesting a sign to keep drinks off the display and keeping spare parts on hand.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -2125,6 +2134,14 @@
           "x": 71.4,
           "y": 67.1
         }
+      },
+      {
+        "url": "media/Electronics/Dance Floor Pillars/IMG_20200325_202122.webp",
+        "fit": {
+          "scale": 1.1,
+          "x": 22.2,
+          "y": 48.6
+        }
       }
     ],
     "files": [],
@@ -2281,7 +2298,6 @@
       "https://www.youtube.com/watch?v=obL6uEZXaNs",
       "https://www.youtube.com/watch?v=OqBuz3VsJoo",
       "media/Lighting/Blackout Ceiling Tubes/IMG_20230103_125326_123.webp",
-      "media/Lighting/Blackout Ceiling Tubes/20221222_134716.webp",
       "media/Lighting/Blackout Ceiling Tubes/20221231_112756.webp",
       "media/Lighting/Blackout Ceiling Tubes/IMG_20221221_111336_620.webp",
       "https://www.youtube.com/watch?v=U2BPg05TNQ4",
