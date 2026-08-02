@@ -159,7 +159,11 @@
     "wip": false,
     "tags": [
       "FDM 3D Printing",
-      "SolidWorks"
+      "SolidWorks",
+      "WLED",
+      "Through-Hole Soldering",
+      "Power Distribution",
+      "Lighting Design"
     ],
     "gallery": [
       {
@@ -400,7 +404,7 @@
     "category": "Art",
     "image": "media/Art/Pixel Plane Warp/20230719_221111.webp",
     "description": "<p>By combining black light-isolation walls with reflective white cell linings and frosted diffusion, this sweeping surface installation achieves sharp, vibrant patterns at low operating temperatures and current limits.</p>",
-    "longDescription": "<p>I destroyed an early print trying to push enough light into the high corner of the wave. The piece is a subdivided grid with a sweeping surface distortion that terminates in sharp points. Because the peak sits far above the LEDs, lighting the far corners required running the strips at full brightness. The trapped heat ruined the print. Plastic and hot LEDs do not get along.</p><p>I modeled the unit in SolidWorks for dimensional accuracy. A Bambu Lab X1C printed the unified model with black walls to isolate each light channel. For the final version, I lined the cells in white and added a frosted layer. That combination let me cap the WLED output on the ATHOM ESP8266 controller to a <code>1A</code> limit at <code>12V</code> without losing clarity.</p><p>It ended up on the ceiling at Glow Lounge for a while. In a dark room, the black walls disappear and leave only the distorted pattern floating overhead. The simple geometry did the work without needing to fight for brightness.</p>",
+    "longDescription": "<p>I destroyed an early print trying to push enough light into the high corner of the wave. The piece is a subdivided grid with a sweeping surface distortion that terminates in sharp points. Because the peak sits far above the LEDs, lighting the far corners required running the strips at full brightness. The trapped heat ruined the print. Plastic and hot LEDs do not get along.</p><p>I modeled the unit in SolidWorks for dimensional accuracy. A Bambu Lab X1C printed the unified model with black walls to isolate each light channel. For the final version, I lined the cells in white and added a frosted layer. That combination let me cap the WLED output on the ATHOM ESP8266 controller to a 1a limit at 12vdc without losing clarity.</p><p>It ended up on the ceiling at Glow Lounge for a while. In a dark room, the black walls disappear and leave only the distorted pattern floating overhead. The simple geometry did the work without needing to fight for brightness.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -546,10 +550,19 @@
     "id": "9469",
     "title": "LED Pixel Panel",
     "category": "Circuits",
-    "tags": [],
+    "tags": [
+      "Power Distribution",
+      "AC/DC Load Calc",
+      "Resolume Arena",
+      "Pixel Mapping",
+      "Video Mapping",
+      "Custom Fabrication",
+      "Hand tools",
+      "SPI"
+    ],
     "image": "media/Electronics/Pixel Panel PCB/20200910_134441.webp",
-    "description": "<p><strong>Temple Nightclub | San Francisco</strong> - A high-impact LED ceiling installation engineered for ultra-low headroom environments using custom-modified dancefloor PCBs.</p>",
-    "longDescription": "<p>The objective was to create an immersive LED pixel lighting design for the basement level of Temple nightclub in San Francisco despite severe headroom limitations. This project diverges from standard fixture installations by utilizing custom-modified LED dancefloor PCBs repurposed for ceiling mounting. By stripping the technology down to its bare circuit boards, the design achieves a massive visual impact within a fraction of the traditional spatial footprint.</p><p><br></p><p>The workflow began by sourcing an LED dancefloor manufacturer and collaborating directly with them to engineer custom boards. The physical design required specific functional alterations, including adjusted pixel spacing, enlarged mounting holes, 90-degree wire headers, and a specialized protective backing material. For the physical integration, an aluminum T-track system was mounted directly to the ceiling infrastructure, allowing the custom PCBs to bolt securely into the track for a seamless fit.</p><p><br></p><p>The primary engineering achievement was compressing a high-density lighting matrix into a total vertical profile of under one inch. The system operates on a 24-volt power architecture and utilizes WS2818 addressable pixels. The selection of WS2818 components ensures robust performance through redundant data transmission, preventing single-pixel failures from interrupting the visual array during demanding live operations.</p>",
+    "description": "<p><strong>Temple Nightclub | San Francisco</strong> - With eight feet from tile to joists and a basement ceiling gutted to the wood, we bolted custom LED dancefloor boards directly to aluminum T-track to build an array under an inch thick.</p>",
+    "longDescription": "<p>We ripped out and rerouted the fire suppression system and two layers of ceiling drywall just to buy a little breathing room. From the tile floor to the bottom of the wooden joists was exactly 8 feet, and every 1/4\" mattered. Half the joists up there were broken anyway, so I had those fixed and the others restructured to push electrical, data, and HVAC down the runs of the room in line with the pillars, leaving the center in between clear.</p><p>We needed a rigid, identical grid that could hold a diffuser at an even distance without sagging. Strips droop, and wiring them is a mess. Large, cheap rigid PCBs are a good solution, so we took LED dancefloor boards and had the manufacturer alter the pixel spacing, enlarge the mounting holes, and swap in 90-degree headers. We bolted them straight into aluminum T-track mounted to the ceiling infrastructure, compressing a 24-volt WS2818 pixel matrix into a vertical profile under an inch.</p><p>I never actually saw it powered on overhead. By the time the basement was ready for the hang, I had hit my breaking point with the remodel and walked away. I had completed the upstairs main room immersive dance lighting rig during the COVID-19 pandemic and had designed and procured the parts for the basement. I pixel-mapped the array flat across a sea of road cases in the unfinished basement, proved it worked, and handed the plans off to my crew to finish the hang.</p>",
     "video": "",
     "gallery": [
       "media/Electronics/Pixel Panel PCB/20200910_134441.webp",
@@ -603,11 +616,18 @@
     "title": "LVL",
     "category": "Circuits",
     "tags": [
-      "Pixel Mapping"
+      "Pixel Mapping",
+      "Madrix",
+      "Hand tools",
+      "Power tools",
+      "ArtNet",
+      "MIDI",
+      "TCP/IP",
+      "SPI"
     ],
     "image": "media/Lighting/LVL - Denver/IMG_20191009_231844.webp",
-    "description": "<p><strong>Temple Nightclub | Denver</strong> - An electrical and data overhaul of an immersive pixel lighting rig to ensure stability and enable 3D voxel mapping.</p>",
-    "longDescription": "<p>The LVL room at Temple Denver features an immersive, exclusively pixel-based lighting installation with continuous lines running across the floor, ceiling, and pillars. The core goal of this project was to execute a comprehensive structural rewiring of the power and data distribution to transform an unstable installation into a robust, production-ready system. Unlike standard rig assemblies, this overhaul required retrofitting an existing design, demanding precise power management and signal integrity to support advanced, whole-room spatial mapping without compromising the original aesthetic.</p><p>The project workflow centered on meticulous hardware restoration and systemic reconfiguration. Every segment of the existing LED tape was systematically removed, rigorously tested, resoldered, heat-shrinked, and reinstalled to guarantee structural and electrical integrity. To handle the data load, the LED decoder lines were strategically decentralized across the network. Concurrently, the entire power infrastructure was redesigned, efficiently routing power from supplies located in the back room and beneath the DJ booth to ensure consistent performance across the venue's footprint.</p><p>The primary technical constraint of the installation was the extreme length of the pixel runs, which inherently caused severe voltage drop and data signal degradation. This was overcome by running DC wire in parallel with the LED strips to introduce strategic power injection points, guaranteeing uniform brightness and absolute data stability. With the hardware stabilized, the entire room was 3D voxel mapped, allowing the control system to execute volumetric, full-room effects like spatial line sweeps. By isolating specific structural elements into distinct groups, the system can also effectively simulate the behavior of traditional lighting fixtures within a continuous pixel environment.</p>",
+    "description": "<p><strong>Temple Nightclub | Denver</strong> - I salvaged 8 dead pixel runs from ruined floor channels and rewired them for 3D voxel mapping.</p>",
+    "longDescription": "<p>When I walked into LVL, the side room at Temple Denver, the lighting rig was dead or stuck on solid blue. Someone had installed unsealed channels in the floor, and the wood support strips had absorbed months of spilled drinks, mop water, and sewage backups until the diffusion caved in and shattered. Even the foam tape holding the strips smelled like club funk. The EnvironmentalLighting pixel tape itself was expensive and salvageable, so I cut out the shorted sections, scrubbed the tracks, and built new structural support out of acrylic.</p><p>Wiring 16 strip runs across a room requires heavy power injection to stop voltage drop. My first attempt was immediately unstable. I ran DC wire in parallel and tied the negative leads together back in the supply room, which wasn't sufficient and triggered ground loop flicker across part of the system. The fix was coupling the negative leads close to the pixels above the dancefloor in addition to at the power supplies. The 12V pillar modules also fought me because of undersized wire, so I added more injection points and ground jumpers between sections until the signal stabilized. The ceiling and floor ran on 24V tape and behaved once the grounds were tied overhead.</p><p>With the power and data lines stable, I mapped all 16 floor and ceiling runs plus the pillars into a 3D voxel setup. The room runs almost entirely on those pixels, so getting the hardware clean mattered. Now the control system drives spatial sweeps through the floor, pillars, and ceiling without a single drop.</p>",
     "video": "",
     "gallery": [
       {
@@ -1171,8 +1191,8 @@
     "title": "The Orb",
     "category": "Circuits",
     "image": "media/Lighting/The Orb - Temple _ Denver/ORB2.webp",
-    "description": "<p><strong>Temple Nightclub | Denver</strong> - An 8 foot diameter kinetic LED sphere featuring complex voxel mapping and remote high current DC power distribution.</p>",
-    "longDescription": "<p>The Orb is an 8 foot diameter kinetic lighting centerpiece designed for Temple nightclub in Denver. The primary objective was to deliver a massive, three dimensional visual experience that physically interacts with the crowd by moving dynamically on a motorized hoist during headliner performances. It stands apart from standard LED installations by intentionally maximizing negative space within the aluminum frame to create a true volumetric 3D effect rather than a solid luminous surface.</p><p>Inheriting the project in an unfinished state required an immediate evaluation of the system architecture to ensure structural safety and electrical reliability. The physical build involved securing hundreds of individual LED pixel modules to the frame while carefully managing weight and visual sightlines. To preserve the open aesthetic, only the data decoders were housed inside the sphere. The bulky power supply units were relocated above the ceiling, requiring thick gauge copper wiring to transport the power safely down the hoist lines and into the moving structure.</p><p>The core technical achievement of this build was engineering safe and reliable high current DC power distribution over a significant distance. Mitigating the voltage drop from the remote ceiling power supplies to the suspended orb required precise load calculations and rigorous power protection methods. On the control side, the physical layout of the LEDs was translated into an exact 3D voxel map using Madrix software to enable complex volumetric lighting programming.</p>",
+    "description": "<p><strong>Temple Nightclub | Denver</strong> - I finished an 8 ft aluminum LED sphere and ran high-current DC power over 35 ft.</p>",
+    "longDescription": "<p>The original installer walked away mid-job, leaving an 8 ft aluminum sphere sitting in 2 halves on the top-floor. 1 dome was partly covered in LED pixel modules zip-tied to the metal, with tape over the lenses and black spray paint over the rest. Masked strands lay scattered across the floor. I stripped the mess and started over.</p><p>Keeping the power supplies in the ceiling left empty space inside the frame for the 3D effect, but it meant pushing DC power across a 35 ft run. To beat the voltage drop, I installed MEAN WELL supplies with load sharing and remote sense that adjusted output voltage in real time. Every circuit stayed under 80% capacity at 100% white load. Inside the sphere, decoders handled the signal for a 3D voxel map in Madrix.</p><p>The whole rig hung from a hoist that dropped it over the crowd. Moving heavy copper without snagging required a PVC pipe with a flange mounted through the center of the orb. I spiral-wrapped 2/0 welding cables around each other and fed them down through the pipe. That guide kept the cables clean during motion and stopped the sphere from spinning as it traveled.</p><p>We finished the build for New Year's Eve 2018. People on the dance floor mostly miss it, but the surrounding VIP tiers get a clear view of the full voxel map. Every night around midnight, the hoist dropped the sphere with the headliner.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -1183,7 +1203,12 @@
       "Power Distribution",
       "ArtNet",
       "AC/DC Load Calc",
-      "Pixel Mapping"
+      "Pixel Mapping",
+      "SPI",
+      "Madrix",
+      "MIDI",
+      "Hand tools",
+      "TCP/IP"
     ],
     "gallery": [
       {
@@ -1416,8 +1441,8 @@
     "title": "Vertical Pixel Bar Tubes",
     "category": "Circuits",
     "image": "media/Lighting/Vertical Pixel Tubes - Que Bueno Suerte!/20240619_122306.webp",
-    "description": "<p><strong>Que Bueno Suerte! | Denver</strong> - Restoration of a custom, high-channel-count LED installation integrating recycled fluorescent tubes into a modernized venue network.</p>",
-    "longDescription": "<p>This project involved the structural restoration and system integration of a legacy lighting centerpiece suspended above the main bar at Que Bueno Suerte!. The primary goal was to salvage an inherited visual asset constructed from recycled four-foot and eight-foot fluorescent tubes and bring it online with a newly installed venue-wide control system. The key differentiator was the strict constraint of working within a pre-existing physical framework, which required reverse-engineering and modernizing a failing, custom-built design rather than executing a standard blank-slate installation.</p><p>The physical workflow required systematically uninstalling dead fixtures, separating the three-tube clusters, and extracting the degraded LED tape from the core of each bundle. Concurrently, the electrical infrastructure underwent a complete overhaul to replace obsolete decoders housed in custom overhead power boxes. This hardware intervention established the necessary communication link, bridging the repaired legacy physical structures with the modern, centralized data network governing the rest of the venue's lighting.</p><p>The upgraded fixtures utilize 5V WS2813 LED strips, selected specifically for their backup data line to provide signal redundancy and prevent future cascade failures within hard-to-access overhead locations. Because the physical design dictated maintaining the original 60-pixel-per-meter density, the resulting display requires an astronomical channel count to operate. Managing this immense data footprint required integrating upgraded decoders capable of processing high-density pixel output while staying continuously synchronized with the venue's overarching control system.</p>",
+    "description": "<p><strong>Que Bueno Suerte! | Denver</strong> - Rebuilding an inherited array of 131 recycled fluorescent tube bundles over an operating bar required 70 universes of control and a 3D voxel map.</p>",
+    "longDescription": "<p>The vertical tubes above the main bar at Que Bueno Suerte! came with the building, and by the time I got to them, they needed serious help. The array was made of 62 four-foot and 69 eight-foot recycled fluorescent tubes hung in clusters of 3, with 60/m density LED tape running down the center. After years above a bar, the materials were brittle, and because the restaurant was open every day, I could only take down a few clusters at a time. I stood on a telescoping ladder resting on the ceiling grid (which flexed enough to make every climb interesting), lowered the clusters onto the bar, broke the old wraps, and pulled the dead strip from the center.</p><p>I kept the original pixel spacing so I wouldn't have to redesign the physical bundle, but I swapped the strip for WS2813 LEDs. The backup data line meant a single failed pixel wouldn't force another sketchy ladder climb over an open bar. Up in the custom power boxes, I gutted the original decoders, which had zero documentation, and replaced them with Advatek PixLite 16s to tie the array into the venue-wide system I installed. When I first fired the rig up, it immediately tripped breakers and blew the inline fuses. I eventually bumped the fuse rating to 7A per tube to handle the inrush, and the rig stabilized.</p><p>Because I was locked into the original 60/m density, the display takes an astronomical 35,640 channels across 70 universes to run. Once the hardware was solid, I built a 3D voxel map of the entire layout. Because the tubes hang at uneven lengths and the display isn't a straight line, clean 3D effects can get lost if you push them too hard. But isolating different zones and mapping through the depth of the room turned a partially dead, inherited fixture into the centerpiece of the bar.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -1430,7 +1455,8 @@
       "ELM",
       "Through-Hole Soldering",
       "TCP/IP",
-      "Pixel Mapping"
+      "Pixel Mapping",
+      "SPI"
     ],
     "gallery": [
       "media/Lighting/Vertical Pixel Tubes - Que Bueno Suerte!/20240619_122306.webp",
@@ -1441,7 +1467,7 @@
     "timestamp": "2026-06-21T23:30:44.785Z",
     "id": "4411",
     "order": 2,
-    "specs": "",
+    "specs": "<p>Pixels: 11880</p><p>Channels: 35,640 (70 universes)</p><p>Short(4ft): 62x 60px</p><p>Long(8ft): 69x 120px</p>",
     "related": [
       {
         "name": "Control system",
@@ -1519,7 +1545,12 @@
     "wip": false,
     "tags": [
       "FDM 3D Printing",
-      "SolidWorks"
+      "SolidWorks",
+      "Through-Hole Soldering",
+      "ESP8266",
+      "WLED",
+      "SPI",
+      "Lighting Design"
     ],
     "gallery": [
       {
@@ -1867,15 +1898,27 @@
     "title": "Dance Floor Pillars",
     "category": "Circuits",
     "image": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/Screenshot_20210306-180716_Photos~2.webp",
-    "description": "<p><strong>Temple Nightclub | San Francisco</strong> - A ruggedized 320-meter pixel mapping installation engineered to deliver floor-to-ceiling architectural lighting within an immersive nightclub environment.</p>",
-    "longDescription": "<p>The Temple Nightclub San Francisco main room remodel required powering and controlling 320 meters of high-density pixel tape across ten floor-to-ceiling architectural pillars. The primary objective was to immerse the dance floor in dynamic lighting while protecting fragile electronics from direct crowd contact. Unlike conventional stage lighting that operates at a safe distance, this installation integrated custom illumination directly into public structural elements, requiring a tamper-proof and visually seamless enclosure system that extends from the dance floor to above the main high-resolution LED video ceiling.</p><p>To achieve a clean aesthetic and prevent physical damage from venue patrons, the structural supports were wrapped in oriented strand board to mount mud-in aluminum extrusions using a pneumatic nailer. The remaining gaps were filled with additional board material, finished with drywall mud, sanded, primed, painted black, and sealed at the base with silicone caulk for spill resistance. Power injection wiring was concealed inside the corner moldings to mitigate voltage drop over the vertical spans, while thin metal tubing protected three-conductor 18 AWG wiring at the bottom of each column to reliably bridge power and data without exposing cables to the crowd.</p><p>The technical core of the installation relies on a modular, serviceable power and data distribution architecture engineered to support ten pillars, each featuring eight four-meter pixel strips across its corners and faces. Dedicated switched electrical outlets were professionally installed to provide isolated power across the system. At the top of each pillar, the individual strips converge into four consolidated data runs using a screw terminal block that interfaces with a 24-pin ATX power coupler. This coupler connects directly to a custom power distribution, fuse, and data control board housed safely above the video ceiling, ensuring safe current delivery, clean data transmission, and streamlined maintenance during live event operations.</p>",
+    "description": "<p><strong>Temple Nightclub | San Francisco</strong> - I built 320 meters of custom recessed pixel tape into 10 floor-to-ceiling structural pillars on a skeleton budget.</p>",
+    "longDescription": "<p>We remodeled the main room at Temple Nightclub in San Francisco during the pandemic lockdowns with a skeleton crew and no budget. I was putting 320 meters of SM16704 RGBW (6000k) pixel tape seemingly built directly into 10 structural pillars on the dance floor. To build recessed tracks without expensive hardware, I wrapped the columns in OSB and mounted mud-in aluminum extrusions with a pneumatic nailer. I filled the remaining gaps with more board, plastered everything with drywall mud, and spent weeks on a scissor lift with an orbital sander hooked to a shop vac. Then I primed the columns, painted them flat black, and sealed the bottoms with silicone caulk.</p><p>The wiring had to survive crowd contact below and attic heat above. At the bottom of each column, thin metal tubing protected 3-conductor 18 AWG wiring from kick damage. Power injection runs went up inside the corner moldings to fight voltage drop across the 4 m strips. At the top, the lines met at a 24-pin ATX power coupler that connected to custom distribution boards above the video ceiling. Working up there meant crawling across strut channel and the backs of video panels in a 16 in gap, fighting condensation and heat while carpet blower fans pushed air toward the rear wall.</p><p>Just 2 weeks before we opened, the owner decided to flip the building entrance 180 degrees, but the main room layout held. Firing all 10 pillars from the dance floor looked like light jumping out of the concrete and vanishing into the ceiling above. Building custom distribution boards for morning hardware swaps took extra time that I would handle differently today, but the rig survived the crowds exactly as built.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
     "shopLink": "",
     "featured": true,
     "wip": false,
-    "tags": [],
+    "tags": [
+      "Power Distribution",
+      "Power tools",
+      "Through-Hole Soldering",
+      "AC/DC Load Calc",
+      "Madrix",
+      "Pixel Mapping",
+      "Lighting Design",
+      "Custom Fabrication",
+      "sACN",
+      "TCP/IP",
+      "SPI"
+    ],
     "gallery": [
       {
         "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210423_185515.webp",
