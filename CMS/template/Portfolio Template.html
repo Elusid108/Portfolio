@@ -1217,7 +1217,7 @@
             const [showShopToast, setShowShopToast] = useState(false);
             const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
             
-            // Get featured image for a category
+            // Get featured image + thumbnail crop for a category
             const getHeroImage = (catId) => {
                 const catMap = {
                     'lighting': 'Lighting',
@@ -1232,16 +1232,18 @@
                 const featuredProj = projects.find(p => p.category === categoryName && p.featured === true);
                 
                 // Fallback to lowest-order project in category if no featured, or placeholder
-                if (featuredProj) return featuredProj.image;
+                if (featuredProj) return { image: featuredProj.image, thumbnailFit: featuredProj.thumbnailFit || null };
                 const firstProj = projects
                     .filter(p => p.category === categoryName)
                     .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))[0];
-                if (firstProj) return firstProj.image;
+                if (firstProj) return { image: firstProj.image, thumbnailFit: firstProj.thumbnailFit || null };
                 
-                return "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80"; // Generic fallback
+                return { image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80", thumbnailFit: null };
             };
 
-            const HeroBadge = ({ id, label, icon: Icon, color }) => (
+            const HeroBadge = ({ id, label, icon: Icon, color }) => {
+                const { image, thumbnailFit } = getHeroImage(id);
+                return (
                 <button
                     type="button"
                     onClick={() => scrollTo(id)}
@@ -1251,11 +1253,12 @@
                     <div className="absolute inset-0">
                         {/* PERFORMANCE: Lazy Loading on Hero Badges */}
                         <img 
-                            src={getHeroImage(id)} 
+                            src={image} 
                             alt="" 
                             loading="lazy"
                             decoding="async"
                             className="w-full h-full object-cover opacity-60 lg:opacity-40 group-hover:opacity-70 transition-opacity duration-500 scale-100 group-hover:scale-110" 
+                            style={fitStyle(thumbnailFit)}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
                     </div>
@@ -1264,7 +1267,8 @@
                         <h3 className="font-bold text-xl text-white">{label}</h3>
                     </div>
                 </button>
-            );
+                );
+            };
 
             return (
                 <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 pb-12">
