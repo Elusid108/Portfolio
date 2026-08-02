@@ -454,10 +454,10 @@
   {
     "id": "8252",
     "timestamp": "2026-01-13T00:14:02.780Z",
-    "title": "Temple Nightclub | San Francisco",
+    "title": "Main Room - Temple SF",
     "category": "Integration",
     "image": "media/Integration/Temple - San Francisco/banner.webp",
-    "description": "<p><br></p>",
+    "description": "<p>Temple - Main Room | San Francisco</p>",
     "longDescription": "<p>Break down all the systems used in the main room, the rack, all the backend stuff goes in here. All the software and control systems we used to run the rig. Anything control related</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -972,8 +972,8 @@
     "category": "Apps",
     "tags": [],
     "image": "media/Apps/Brainstormer/Screenshot 2026-02-14 232928.webp",
-    "description": "<p>IdeaForge.AI is a comprehensive ideation pipeline that transforms raw thoughts into actionable project strategies utilizing a serverless Google Drive backend.</p>",
-    "longDescription": "<p>IdeaForge.AI is a multi-stage idea sifter designed to capture, expand, and execute concepts without initial critique. The core goal is to provide a frictionless environment where users can verbally or textually dump ideas and seamlessly transition them into fully realized projects. This application differentiates itself by completely eliminating traditional cloud database dependencies, opting instead to use the user's personal Google Drive and Google Sheets as the sole backend architecture.</p><p>The workflow begins with an uninhibited idea dump, where users log their thoughts to be automatically tagged and summarized. When an idea shows promise, it is promoted to the brainstorm phase where an AI assistant conducts an interview to extract deeper details and compiles a structured breakdown. Promoting the brainstorm to a project generates an execution strategy, an expense tracker, and a task list. Finally, the campaign section conducts a comprehensive interview to compile a playbook, breaking down discovery, monetization, distribution, and logistics into actionable phases.</p><p>The application frontend is built with React, TypeScript, and Tailwind CSS, utilizing Vite for optimized builds. The standout technical achievement is the custom data layer that interfaces directly with the Google Sheets API and Google Drive API, transforming a standard spreadsheet into a fully functional database. A local database implementation handles offline state and data reconciliation, while a user-provided Gemini API key securely powers the core intelligence for summarizing concepts and generating execution playbooks.</p>",
+    "description": "<p>I built a multi-stage idea sifter that runs its entire backend on the Google Sheets and Drive APIs.</p>",
+    "longDescription": "<p>People like to treat early concepts like target practice. They shoot holes in an idea before it has room to breathe. I wanted a sifter that takes raw dumps of thought and builds them up without initial critique. I first prototyped the workflow in Notion and rebuilt it with Supabase, but both meant recurring monthly subscriptions. I stripped out the cloud database entirely and wired the application directly into the Google Sheets and Google Drive APIs.</p><p>The frontend runs on React and TypeScript, with a local data layer handling offline edits and reconciliation against the spreadsheet. Users drop in raw thoughts, and a Gemini integration tags and summarizes them. When a concept shows promise, you promote it to a brainstorm. The model runs an interview to extract missing detail, then compiles an execution strategy, an expense tracker, and a structured task list.</p><p>Every user already has a Google account, so the backend infrastructure costs nothing to run. I put my custom lithophane generator, LithoLab, through the campaign pipeline to test the playbook generation. Instead of killing half-formed ideas early, the workflow pushes them into actionable phases until you can see whether they actually work.</p>",
     "video": "",
     "gallery": [
       "media/Apps/Brainstormer/Screenshot 2026-02-14 232928.webp",
@@ -989,7 +989,8 @@
     "timestamp": "2026-02-15T04:59:58.733Z",
     "wip": true,
     "order": 2,
-    "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite (SWC)</p><p><strong>Styling:</strong> Tailwind CSS, Radix UI</p><p><strong>State:</strong> Zustand</p><p><strong>AI:</strong> Google Gemini</p><p><strong>Cloud:</strong> Google Drive API, Google Sheets API</p><p><strong>Testing:</strong> Vitest</p><p><strong>Deploy:</strong> GitHub Pages</p>"
+    "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite (SWC)</p><p><strong>Styling:</strong> Tailwind CSS, Radix UI</p><p><strong>State:</strong> Zustand</p><p><strong>AI:</strong> Google Gemini</p><p><strong>Cloud:</strong> Google Drive API, Google Sheets API</p><p><strong>Testing:</strong> Vitest</p><p><strong>Deploy:</strong> GitHub Pages</p>",
+    "related": []
   },
   {
     "id": "648",
@@ -1393,11 +1394,11 @@
     }
   },
   {
-    "title": "Que Bueno Suerte! | Denver",
+    "title": "Que Bueno Suerte!",
     "category": "Integration",
     "image": "media/Integration/Que Bueno Suerte! - Denver/20240606_211259.webp",
-    "description": "<p>Placeholder</p>",
-    "longDescription": "<p>Add all the different independent systems that were listed above in lighting design and how they were all combined into one control system. Talk about server rack in here, the trials with ELM and Madrix, the challenges of running hundreds of pixels of universes and trying to get it simplified enough for the restaurant staff to operate.</p>",
+    "description": "<p><strong>Que Bueno Suerte! | Denver</strong> - Over 2 years, I wired 11 custom lighting installations into a single restaurant server rack.</p>",
+    "longDescription": "<p>My friend let me perpetually add lighting inside Que Bueno Suerte! over 2 years, eventually totaling 11 distinct installations. With so many LEDs, the system risked overpowering the dining room. Finesse was key. Deep reds, oranges, and yellows looked phenomenal against the gold walls and red accents, but only if the hardware stayed invisible in broad daylight. I ran long-range decoders back to a server rack in the upstairs office. Wires snaked under bars, behind walls, above the kitchen ceiling, and inside rafters upstairs. Retrofitting the acrylic etchings meant climbing over tables while brittle adhesive exploded into fine powder that turned sticky again the second I sweated.</p><p>I built an iPad remote early on using OSCpilot for touch control and Show Cockpit for signal distribution. Originally, I ran ELM on the server because it was cheaper and isolated the different rigs easily. The tradeoff was programming flexibility. I couldn't transition one element at a time without shifting the entire building. Switching to Madrix solved the visual output, creating room looks that shifted together across the mezzanine ceiling, alabaster bartop, bottle shelves, and roof liners.</p><p>A rig of this complexity in a packed restaurant breaks in predictable ways. The PixLite 16 controllers above the main bar occasionally drop data and require a breaker flip to reboot. The wireless etchings lose signal through dense crowds. Outdoor fixtures leak water, break their IP rating, and trip breakers. Even the iPad control drops out if staff connect to the wrong network or the WLAN hiccups.</p><p>To keep the system usable for bartenders during a rush, I locked the iPad interface down to basic parameters and playlists of preset looks. For everything else, I installed a slide-out KVM in the rack so I could fix server issues directly. The fine control over the building proved worth the routing headaches, and the warm palettes still sit right in the room.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -1423,7 +1424,7 @@
     "timestamp": "2026-06-21T23:26:29.795Z",
     "id": "4113",
     "order": 0,
-    "specs": "",
+    "specs": "<p>Software: Madrix 5.x | Show Control | OSCpilot</p><p>GPU: RTX 2080TI</p>",
     "related": [
       {
         "name": "Curved bottle shelf",
@@ -1821,18 +1822,29 @@
     }
   },
   {
-    "title": "Temple Nightclub | Denver",
+    "title": "Main Room - Temple Denver",
     "category": "Integration",
     "image": "media/Integration/Temple Nightclub - Denver/MVIMG_20190817_211751.webp",
-    "description": "<p>Temple Denver system integration</p>",
-    "longDescription": "<p>Temple Denver system integration</p>",
+    "description": "<p><strong>Temple - Main Room | Denver</strong> - Bridging Resolume and Madrix over NDI to stretch a 196 pixel canvas across an entire nightclub room.</p>",
+    "longDescription": "<p>Touring DJs kept coming through with custom VJ content and nowhere to realistically play it. The venue had 3 screens with a 48x48 resolution, giving the main room an accumulative resolution smaller than a phone icon. To give those artists a usable canvas, I needed to span the room without tearing out the existing hardware.</p><p>This was my first time integrating systems past DMX and MIDI cross triggers alone. Resolume Arena pushed slices of video to converter boxes that output SPI pixel signals, while Madrix ran the floor-to-ceiling custom pixel pillars with about 12 modules per row. Bridging the two over NDI let the content cross between machines. From there, I added DMX triggers from our Roadhog 4 console to the main pixel and video rigs, plus the orb and hallway computers, so we could grab master intensity and speed live.</p><p>Getting the low resolution pixel mesh to map onto the frosted pillars was the hardest problem to solve. The pixel spacing was not an even grid, which made scaling irregular shapes across the room a constant headache. If I were building the rig from the ground up, I would have chosen Madrix for the entire system.</p><p>Combining the setups got us an uninterrupted canvas just under 200 pixels wide. A couple of friends were working with me at the time, and we all geeked out when it finally came together. We could display logos and short messages across the whole wall.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "tags": [],
+    "tags": [
+      "DMX",
+      "ArtNet",
+      "sACN",
+      "MIDI",
+      "Madrix",
+      "Resolume Arena",
+      "HOG",
+      "TCP/IP",
+      "Video Mapping",
+      "Pixel Mapping"
+    ],
     "gallery": [
       "media/Integration/Temple Nightclub - Denver/MVIMG_20190817_211751.webp",
       "https://www.youtube.com/watch?v=soiWr2U0qEs"
@@ -1842,7 +1854,7 @@
     "timestamp": "2026-07-25T16:47:23.504Z",
     "id": "4382",
     "order": 2,
-    "specs": "",
+    "specs": "<p><strong>Lighting: </strong>Roadhog 4</p><p><strong>Pixel:</strong> Madrix 5.x (Main, Orb, Hall)</p><p><strong>Video:</strong> Resolume Arena</p>",
     "related": [
       {
         "name": "The Orb",
