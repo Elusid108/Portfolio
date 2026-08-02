@@ -352,8 +352,8 @@
             "category": "Apps",
             "tags": [],
             "image": "media/Apps/LithoLab/image2.webp",
-            "description": "<p>A fully browser-based web application for generating custom-shaped, multi-color 3D printable lithophanes with AI-assisted design tools.</p>",
-            "longDescription": "<p><strong>LithoLab </strong>is a client-side web application designed to generate high-fidelity, custom-shaped lithophanes for 3D printing. While standard generators are restricted to traditional four-color CMYK constraints, LithoLab supports customizable, multi-color palettes to achieve superior color accuracy in the final physical print. The project differentiates itself by introducing custom masking capabilities that trim the lithophane into non-standard shapes, along with generating an independently exportable geometric border for polished, multi-part assemblies.</p><p>The system architecture was developed by porting the open-source PIXEStl backend to execute entirely within the browser, avoiding server-side processing overhead. The workflow is managed through a custom frontend interface where users upload source imagery, define masking parameters, and configure border dimensions. Upon export, the software isolates the customized border as a discrete 3D object, allowing users to assign specific filaments and colors when preparing the files in slicing software like Bambu Studio.</p><p>The standout technical achievement is the robust JavaScript implementation of the modified PIXEStl engine, paired with an integrated Google Gemini API for generating base images, structural masks, and file metadata. To solve the hardware constraints of color mapping on advanced machines like the Bambu Lab X1C, a dedicated companion utility called LithoPalletGen was built in parallel. This secondary application handles precise color palette generation, import/export functionality, and material calibration to ensure accurate physical reproduction of the digital models.</p>",
+            "description": "<p>A client-side web application that generates multi-color lithophanes in custom shapes with an exportable border for 3D printing.</p>",
+            "longDescription": "<p>Four-color generators output rectangular prints and turn skin tones into magenta splotches. I wanted multi-color prints in custom shapes with an independent border, so I ported the PIXEStl engine to run client-side in a browser. Hosting the application on GitHub Pages kept it lightweight without server overhead.</p><p>Running mesh processing locally hit strict cache limits in the browser immediately. Early prints on a Bambu Lab X1C also exposed a persistent micro-gap along the right edge between the lithophane and its border, which took several of failed attempts to eliminate. I stripped the calibration tools out of the main application and built LithoPalletGen as a standalone utility to keep the primary interface clean. This companion app handles color mapping for any filament palette, extending past 4 colors to fix the banding on faces.</p><p>My own printer runs an 8 color setup across 2 AMS2 units, but the software supports any palette size. Once calibrated and backlit, the physical prints match the source photos.</p>",
             "video": "",
             "gallery": [
                 {
@@ -1028,7 +1028,8 @@
             "timestamp": "2026-01-18T14:24:23.784Z",
             "wip": true,
             "order": 5,
-            "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite</p><p><strong>Styling:</strong> Tailwind CSS</p><p><strong>State:</strong> Zustand</p><p><strong>AI:</strong> Google Gemini (text), Google Imagen (image)</p><p><strong>Storage:</strong> IndexedDB, localStorage</p><p><strong>Export:</strong> JSZip</p><p><strong>Deploy:</strong> GitHub Pages</p>"
+            "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite</p><p><strong>Styling:</strong> Tailwind CSS</p><p><strong>State:</strong> Zustand</p><p><strong>AI:</strong> Google Gemini (text), Google Imagen (image)</p><p><strong>Storage:</strong> IndexedDB, localStorage</p><p><strong>Export:</strong> JSZip</p><p><strong>Deploy:</strong> GitHub Pages</p>",
+            "related": []
         },
         {
             "id": "7085",
@@ -1432,7 +1433,7 @@
             "files": [],
             "video": "",
             "order": 1,
-            "specs": "",
+            "specs": "<p><strong>Control:</strong> Madrix 5.x</p><p><strong>Voltage: </strong>12vdc</p>",
             "related": [
                 {
                     "name": "Control system",
@@ -2315,7 +2316,7 @@
                 }
             ],
             "files": [],
-            "specs": "<h2><strong>Pixels</strong></h2><ul><li><strong>SM16704</strong> RGBW (6000k)</li><li><strong>60/m</strong> (3x1) 12vdc</li><li><strong>10 sets</strong> of 8x @ 4m</li></ul><h2><strong>Decoder</strong></h2><ul><li><strong>2x</strong> Advatek PixLite16 Long Range Mk2</li><li><strong>10x</strong> Advatek PixLite Long Range Receiver</li></ul><h2><strong>Power</strong></h2><ul><li><strong>10x</strong> MEAN WELL 12vdc 50a</li></ul>",
+            "specs": "<p><strong>Control:</strong> Madrix 5.x</p><p><strong>Fixtures:</strong> (80) 4m </p><p><strong>LED: </strong>5050 RGBW (6000k)</p><p><strong>Pixel Driver:</strong> SM16704</p><p><strong>Pixel Size: </strong>3 LEDs</p><p><strong>LED Spacing: </strong>60/m</p><p><strong>Pixel Voltage: </strong>12vdc</p><p><strong>Decoder Tx: </strong>(2) Advatek PixLite 16 Long Range MK2</p><p><strong>Decoder Rx: </strong>(10) Advatek PixLite Long Range Receiver</p><p><strong>Power:</strong> (10) MEAN WELL 50a,12vdc</p><p><br></p>",
             "related": [
                 {
                     "name": "Extrusion Center Sled",
