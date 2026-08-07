@@ -724,11 +724,14 @@
             "category": "Solutions",
             "tags": [
                 "FDM 3D Printing",
-                "SolidWorks"
+                "SolidWorks",
+                "Custom Fabrication",
+                "Rapid Prototyping",
+                "Through-Hole Soldering"
             ],
             "image": "media/Fabrication/Field Solder Station/20250317_180657.webp",
-            "description": "<p>A portable, field soldering station designed to streamline complex live entertainment installations.</p>",
-            "longDescription": "<p>The field solder station is a highly compact, tool carrier engineered to solve the logistical challenges of on site LED installations. Working in unconventional locations like high ladders or cramped spaces under a stage requires immediate access to tools without the burden of a bulky bench setup. This solution differentiates itself by consolidating an entire soldering toolkit into a single portable chassis driven by a standard USB PD battery bank.</p><p>This tool emerged from an iterative prototyping process tested directly in the field during a major San Francisco nightclub installation. Initial concepts explored integrated batteries and complex wiring before the design converged on a simplified approach to maximize reliability and reduce weight. The final iteration logically organizes a TS100 or TS101 iron, solder spool, a bottle of flux, desoldering pump, wick, wet and wire sponges, and rubber feet into an optimized spatial layout.</p><p>I designed the chassis in SolidWorks to tightly pack the required tools into a minimal footprint. Fabricated from PLA using Bambu Lab 3D printers, the structure leverages precision tolerances to secure mechanical hardware like the dual helping hands through a robust friction fit. This precise 3D modeling eliminated the need for secondary mechanical fasteners, resulting in a streamlined and self contained system that reliably supports mobile fabrication work.</p>",
+            "description": "<p>A compact solder station built to survive ladder work and crawl spaces during a nightclub remodel.</p>",
+            "longDescription": "<p>The Temple SF remodel required 80 vertical pixel strips running 4m straight up from the dance floor. 8 strips covered each pillar, which meant soldering bases at ground level or working from lifts and ladders. My bench setup was useless there. I needed a compact carrier for a TS100 iron, solder spool, flux, wick, desoldering pump, sponges, and 2 helping hands.</p><p>Early prototypes used integrated rechargeable batteries. That added too much risk, so I stripped the design down to not integrate power at all. The first field version was a rough assembly held together by tape and magnets. I iterated on it over 1 year as the remodel expanded.</p><p>I modeled the final chassis in SolidWorks and printed it in PLA on Bambu Lab printers. Precision tolerances secure the hardware through a friction fit without secondary fasteners. The helping hands are stiff enough that I have to hold the base down to bend them, but it became my main iron for pixel work.</p>",
             "video": "",
             "gallery": [
                 {
@@ -1329,8 +1332,8 @@
             "title": "Field Bench PSU",
             "category": "Solutions",
             "image": "media/Fabrication/Field Bench PSU/20250317_180727.webp",
-            "description": "<p>A compact, 3D printed bench power supply designed for testing LED lighting installations in the field.</p>",
-            "longDescription": "<p>The Field Bench PSU is a portable tool designed to power and test diverse LED products during on-site installations. While standard bench power supplies are bulky and tied to AC mains, this custom unit leverages modular components and a highly versatile interface architecture to provide reliable testing capabilities directly on the job site.</p><p>The physical enclosure was modeled in SolidWorks and fabricated using PLA+ for structural durability. The internal hardware workflow routes power from a 5521-DC input jack through a mini rocker switch into the voltage conversion module. The output side maximizes field flexibility by providing a 5525-DC jack alongside a pair of banana plug jacks equipped with wire screw terminals. This layout allows the hardware to interface with a wide array of standard connectors, or rely on bare wire connections paired with WAGO terminals for rapid setup.</p><p>The primary technical driver is an embedded buck-boost converter capable of handling a 5 to 32VDC input and delivering an equivalent voltage output at up to 5A. A standout operational achievement is the integration of standard USB PD sources, allowing the system to accept a 19V 100W input and reliably convert it to precise 5V, 12V, or 24V outputs. This capability ensures immediate, adaptable power delivery for any low voltage LED architecture encountered in the field.</p>",
+            "description": "<p>A 3D printed, portable, DC power supply built from a buck-boost converter designed for testing LED lighting installations in the field.</p>",
+            "longDescription": "<p>On-site LED pixel work always runs on 5V, 12V, or 24V DC at under 5A. I wanted to test new strips and isolate lighting sections without dragging a heavy bench supply up a ladder. A PLA+ enclosure housed a buck-boost converter, commonly fed 19V from a 100W laptop brick through a USB-C to 5521-DC adapter cable or a 24v 5a brick. I left a direct USB-C port off the chassis because my print tolerances could not hold one cleanly.</p><p>Assembling the wiring inside the box was a challenge. I had to build an awkward ring-crimp split to feed the banana plugs, and threading the retaining nuts on in that cramped footprint was frustrating. The screw terminals on the back of the converter module also fought me as I slid the unit into the shell.</p><p>I first brought it to Que Bueno Suerte to test 5m blackout pixel tubes on the mezzanine, verifying every strip before and after cutting. It survived a few years of site work until the built-in voltage meter drifted out of spec and I retired it.</p>",
             "websiteLink": "",
             "launchLink": "",
             "githubLink": "",
@@ -1339,10 +1342,20 @@
             "wip": false,
             "tags": [
                 "FDM 3D Printing",
-                "SolidWorks"
+                "SolidWorks",
+                "Custom Fabrication",
+                "Power Distribution",
+                "Rapid Prototyping"
             ],
             "gallery": [
-                "media/Fabrication/Field Bench PSU/20250317_180727.webp"
+                {
+                    "url": "media/Fabrication/Field Bench PSU/20250317_180727.webp",
+                    "fit": {
+                        "scale": 1,
+                        "x": 55.2,
+                        "y": 40.8
+                    }
+                }
             ],
             "files": [
                 {
@@ -2182,8 +2195,8 @@
             "title": "Extrusion Centering Sled",
             "category": "Solutions",
             "image": "media/Fabrication/Extrusion Centering Sled/20200909_213244.webp",
-            "description": "<p>A custom modular 3D printed alignment jig designed to perfectly center LED extrusion tracks on uneven nightclub pillars.</p>",
-            "longDescription": "<p>This project required designing a custom alignment tool to install LED strip extrusions on the foundational pillars of Temple nightclub in San Francisco. The primary goal was to achieve visually perfect vertical alignment of center tracks on boxed pillars that were irregularly shaped and wavy. Unlike standard measuring methods, this unique solution utilized a physical jig that referenced the outer edge tracks to automatically find the relative center at any given height, ensuring the final installation appeared flawlessly straight.</p><p>The workflow began with a rudimentary prototype using scrap material and a ruler to test the alignment concept. The final tool functioned as a dynamic sled that rode inside the center LED extrusion track during the physical installation. As the jig slid upward along the track, notched ends highlighted with yellow china marker allowed for constant visual verification against the outer corner extrusions. This continuous referencing system made it possible to secure the center track with a pneumatic nailer progressively, actively compensating for the hidden waves in the underlying pillar casing.</p><p>The standout technical achievement was engineering a rigid tool that bypassed spatial manufacturing constraints. Because the required length of the jig exceeded the available 3D printer build plate, the component was designed as a four-part modular assembly. These interlocking sections maintained the structural integrity required to withstand the physical forces of the pneumatic nailing process while keeping the sled firmly on track. This custom hardware solution successfully transformed a highly irregular architectural environment into a precise, uniform lighting canvas.</p>",
+            "description": "<p>A 4 part 3D printed sled aligned 160m of vertical LED track across 10 wavy nightclub pillars.</p>",
+            "longDescription": "<p>Temple nightclub in San Francisco had 10 foundational pillars going from floor to ceiling. Each 4m column was boxed in and wavy, but needed 12mm LED track centered vertically on all 4 sides. Because the thin lines mirrored across the room, any drift would be obvious.</p><p>Standard measuring was useless on the uneven casing. I built a 4 part sled that rode inside the center track, breaking the jig into pieces to beat my 3D printer build plate limit. Notched ends marked with yellow china marker referenced the outer corner extrusions at any height. My first prints did not fit inside the channel, taking a couple of tries to dial in the sled width. Once the sizing was right, the interlocking joints held rigid.</p><p>Using the tool on site was fast. As I slid the jig upward, it actively found true center while I tacked the extrusion progressively with a pneumatic nailer. I finished all 160m of track in a couple of hours. The installation hid the wavy casing and kept every line straight.</p>",
             "websiteLink": "",
             "launchLink": "",
             "githubLink": "",
@@ -2192,7 +2205,9 @@
             "wip": false,
             "tags": [
                 "FDM 3D Printing",
-                "SolidWorks"
+                "SolidWorks",
+                "Custom Fabrication",
+                "Rapid Prototyping"
             ],
             "gallery": [
                 "media/Fabrication/Extrusion Centering Sled/20200909_213244.webp",
@@ -2558,8 +2573,8 @@
             "title": "Pixel Louver Lights",
             "category": "Solutions",
             "image": "media/Fabrication/Pixel Louver Lights/20240322_115100.webp",
-            "description": "<p><br></p>",
-            "longDescription": "<p><br></p>",
+            "description": "<p>96 3D-printed louver fixtures that illuminate 48 bar cubbies without shining raw RGB pixels at patrons.</p>",
+            "longDescription": "<p>The bar display at Que Bueno Suerte! has 48 cubbies arranged in 4 sets of 3x4. I needed a way to light the bottles from the front corners without blinding patrons walking past the shelves. Using Solidworks, I modeled louver fixtures and printed 96 of them across a Bambu labs X1C and a P1P. Each unit houses 12 WS2815 RGB pixels and mounts to the metal shelf with double-sided tape for simple servicing.</p><p>Getting the slide-in backing to fit required several revisions. Solder splices along the LED tape cause height variations that block the backing from sliding into place, so I cut the tape to avoid the splices entirely. I also added zip ties to hold the wiring. They act as strain relief so hanging cables never rip the solder pads off the strips.</p><p>Because the bottles sit on dry shelves, I installed non-waterproof strips. That caused problems later on. During dancing nights, patrons set drinks on the cubbies, and spills corroded and shorted the pixel strips inside the fixtures. Even with a redundant data line, a fried strip stops working, so I had to pull the dead units and replace the tape.</p><p>Running the strips into the shelves creates a 3D voxel display that sweeps light across the glass from every angle. This was the first time I designed and manufactured a 3D-printed pixel fixture for a live rig.</p>",
             "websiteLink": "",
             "launchLink": "",
             "githubLink": "",
@@ -2570,7 +2585,10 @@
                 "FDM 3D Printing",
                 "SolidWorks",
                 "Through-Hole Soldering",
-                "Hand tools"
+                "Hand tools",
+                "Custom Fabrication",
+                "SPI",
+                "Rapid Prototyping"
             ],
             "gallery": [
                 {
