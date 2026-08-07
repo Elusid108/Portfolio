@@ -65,12 +65,14 @@
           "y": 69.3
         }
       },
-      "https://youtu.be/OsVW8SkViUQ",
-      "https://youtu.be/5N7lZFtAKT4",
-      "https://youtu.be/5TdNw5zgZrc",
-      "https://youtu.be/b26X133u2o4",
-      "https://youtu.be/8V60HmyFubU",
-      "https://youtu.be/GrSkUee2oF0",
+      {
+        "url": "media/Lighting/Immersive Dance Lighting Rig/VID_20200416_142554.mp4",
+        "poster": "media/Lighting/Immersive Dance Lighting Rig/VID_20200416_142554-poster.webp"
+      },
+      {
+        "url": "media/Lighting/Immersive Dance Lighting Rig/20210517_112418~2.mp4",
+        "poster": "media/Lighting/Immersive Dance Lighting Rig/20210517_112418~2-poster.webp"
+      },
       {
         "url": "media/Lighting/Immersive Dance Lighting Rig/Screenshot 2025-03-12 151156.webp",
         "fit": {
@@ -95,7 +97,10 @@
           "y": 49
         }
       },
-      "https://www.youtube.com/watch?v=yeFIdQywa5U",
+      {
+        "url": "media/Lighting/Immersive Dance Lighting Rig/Screen Recording 2025-03-14 124624.mp4",
+        "poster": "media/Lighting/Immersive Dance Lighting Rig/Screen Recording 2025-03-14 124624-poster.webp"
+      },
       "media/Lighting/Immersive Dance Lighting Rig/Screenshot 2025-03-14 124321.webp",
       {
         "url": "media/Lighting/Immersive Dance Lighting Rig/IMG_20200205_234101.webp",
@@ -198,10 +203,22 @@
           "y": 20.5
         }
       },
-      "https://youtube.com/shorts/zextSW-yDhg?feature=share",
-      "https://youtube.com/shorts/i7x93fquHZ8?feature=share",
-      "https://youtube.com/shorts/WkcuIyIyOwY?feature=share",
-      "https://youtube.com/shorts/vFu9t9hsT1Y?feature=share"
+      {
+        "url": "media/Art/Emmy Stand/20250415_214902.mp4",
+        "poster": "media/Art/Emmy Stand/20250415_214902-poster.webp"
+      },
+      {
+        "url": "media/Art/Emmy Stand/20250415_215408.mp4",
+        "poster": "media/Art/Emmy Stand/20250415_215408-poster.webp"
+      },
+      {
+        "url": "media/Art/Emmy Stand/20250415_215438.mp4",
+        "poster": "media/Art/Emmy Stand/20250415_215438-poster.webp"
+      },
+      {
+        "url": "media/Art/Emmy Stand/20250415_215506.mp4",
+        "poster": "media/Art/Emmy Stand/20250415_215506-poster.webp"
+      }
     ],
     "files": [],
     "video": "",
@@ -326,9 +343,18 @@
           "y": 16
         }
       },
-      "https://youtube.com/shorts/f9XdY2zM_Gg?feature=share",
-      "https://youtube.com/shorts/bLjtqLrDk3Q?feature=share",
-      "https://youtube.com/shorts/nsSoZqkJbKQ?feature=share"
+      {
+        "url": "media/Art/Pixel Pyramid/20230707_072443~2.mp4",
+        "poster": "media/Art/Pixel Pyramid/20230707_072443~2-poster.webp"
+      },
+      {
+        "url": "media/Art/Pixel Pyramid/20230612_131709~2.mp4",
+        "poster": "media/Art/Pixel Pyramid/20230612_131709~2-poster.webp"
+      },
+      {
+        "url": "media/Art/Pixel Pyramid/20230707_082949~2.mp4",
+        "poster": "media/Art/Pixel Pyramid/20230707_082949~2-poster.webp"
+      }
     ],
     "files": [],
     "video": "",
@@ -419,7 +445,9 @@
     "wip": false,
     "tags": [
       "FDM 3D Printing",
-      "SolidWorks"
+      "SolidWorks",
+      "WLED",
+      "Custom Fabrication"
     ],
     "gallery": [
       {
@@ -430,7 +458,10 @@
           "y": 41.8
         }
       },
-      "https://youtube.com/shorts/a7uLXj7EiVc?feature=share",
+      {
+        "url": "media/Art/Pixel Plane Warp/20230605_021706~3.mp4",
+        "poster": "media/Art/Pixel Plane Warp/20230605_021706~3-poster.webp"
+      },
       {
         "url": "media/Art/Pixel Plane Warp/20230808_152350.webp",
         "fit": {
@@ -485,10 +516,22 @@
     ],
     "gallery": [
       {
+        "url": "media/Integration/Main Room - Temple SF/20210516_190216.mp4",
+        "poster": "media/Integration/Main Room - Temple SF/20210516_190216-poster.webp"
+      },
+      {
+        "url": "media/Integration/Main Room - Temple SF/20210516_195648_1.mp4",
+        "poster": "media/Integration/Main Room - Temple SF/20210516_195648_1-poster.webp"
+      },
+      "media/Integration/Main Room - Temple SF/20210514_2025472.webp",
+      {
         "url": "media/Integration/Main Room - Temple SF/20210510_141521.mp4",
         "poster": "media/Integration/Main Room - Temple SF/20210510_141521-poster.webp"
       },
-      "media/Integration/Main Room - Temple SF/20210514_2025472.webp",
+      {
+        "url": "media/Integration/Main Room - Temple SF/VID_20200427_140434.mp4",
+        "poster": "media/Integration/Main Room - Temple SF/VID_20200427_140434-poster.webp"
+      },
       "media/Integration/Main Room - Temple SF/IMG_20200504_185605.webp",
       "media/Integration/Main Room - Temple SF/20210515_184126.webp",
       "media/Integration/Main Room - Temple SF/20210429_122346.webp",
@@ -738,7 +781,10 @@
           "y": 0
         }
       },
-      "https://www.youtube.com/watch?v=vcewTT5rh_Y",
+      {
+        "url": "media/Lighting/MIRUS/Video Project 10 (5).mp4",
+        "poster": "media/Lighting/MIRUS/Video Project 10 (5)-poster.webp"
+      },
       {
         "url": "media/Lighting/MIRUS/IMG_20180417_174333.webp",
         "fit": {
@@ -817,7 +863,22 @@
           "y": 76.7
         }
       },
-      "https://www.youtube.com/watch?v=wvrrT8pFGQk",
+      {
+        "url": "media/Lighting/Inflatable Tubes/Video Project 22 (4).mp4",
+        "poster": "media/Lighting/Inflatable Tubes/Video Project 22 (4)-poster.webp"
+      },
+      {
+        "url": "media/Lighting/Inflatable Tubes/20230621_172427.mp4",
+        "poster": "media/Lighting/Inflatable Tubes/20230621_172427-poster.webp"
+      },
+      {
+        "url": "media/Lighting/Inflatable Tubes/20230621_172541.mp4",
+        "poster": "media/Lighting/Inflatable Tubes/20230621_172541-poster.webp"
+      },
+      {
+        "url": "media/Lighting/Inflatable Tubes/20230621_172621.mp4",
+        "poster": "media/Lighting/Inflatable Tubes/20230621_172621-poster.webp"
+      },
       "media/Lighting/Inflatable Tubes/20230615_205214.webp",
       "media/Lighting/Inflatable Tubes/20230616_091904.webp",
       {
@@ -851,7 +912,10 @@
           "x": 47.9,
           "y": 28.1
         }
-      }
+      },
+      "media/Lighting/Inflatable Tubes/20230616_095821.webp",
+      "media/Lighting/Inflatable Tubes/20230605_162502.webp",
+      "media/Lighting/Inflatable Tubes/20230615_172756.webp"
     ],
     "files": [],
     "video": "",
@@ -1159,6 +1223,10 @@
     ],
     "gallery": [
       {
+        "url": "media/Lighting/Club Lexi/Club Lexi Comp.mp4",
+        "poster": "media/Lighting/Club Lexi/Club Lexi Comp-poster.webp"
+      },
+      {
         "url": "media/Lighting/Club Lexi/20230508_171150.webp",
         "fit": {
           "scale": 1.1,
@@ -1205,8 +1273,7 @@
           "x": 50.2,
           "y": 31.3
         }
-      },
-      "https://www.youtube.com/watch?v=2s8riHVxi80"
+      }
     ],
     "files": [],
     "video": "",
@@ -1406,6 +1473,14 @@
         }
       },
       {
+        "url": "media/Lighting/The Basement/VID_20180708_050000.mp4",
+        "poster": "media/Lighting/The Basement/VID_20180708_050000-poster.webp"
+      },
+      {
+        "url": "media/Lighting/The Basement/VID_20180612_163951 (1).mp4",
+        "poster": "media/Lighting/The Basement/VID_20180612_163951 (1)-poster.webp"
+      },
+      {
         "url": "media/Lighting/The Basement/IMG_20180605_151314.webp",
         "fit": {
           "scale": 1,
@@ -1421,7 +1496,7 @@
           "y": 39.1
         }
       },
-      "https://www.youtube.com/watch?v=fcp1V_zoitQ"
+      "media/Lighting/The Basement/IMG_20180611_005701.webp"
     ],
     "files": [],
     "video": "",
@@ -1713,8 +1788,14 @@
       "Power tools"
     ],
     "gallery": [
-      "https://www.youtube.com/watch?v=V7PaQ3CBYY0",
-      "https://www.youtube.com/watch?v=bK93I4jco1U",
+      {
+        "url": "media/Lighting/Lobby Wall/Trackswall3.mp4",
+        "poster": "media/Lighting/Lobby Wall/Trackswall3-poster.webp"
+      },
+      {
+        "url": "media/Lighting/Lobby Wall/Trackswall2.mp4",
+        "poster": "media/Lighting/Lobby Wall/Trackswall2-poster.webp"
+      },
       {
         "url": "media/Lighting/Lobby Wall/0317152322.webp",
         "fit": {
@@ -1731,7 +1812,10 @@
           "y": 25.4
         }
       },
-      "https://www.youtube.com/watch?v=-yTSHYxmWhg",
+      {
+        "url": "media/Lighting/Lobby Wall/Trackswall1.mp4",
+        "poster": "media/Lighting/Lobby Wall/Trackswall1-poster.webp"
+      },
       {
         "url": "media/Lighting/Lobby Wall/0317152050.webp",
         "fit": {
@@ -1825,9 +1909,18 @@
           "y": 97.2
         }
       },
-      "https://www.youtube.com/watch?v=26DFkO4ZL24",
-      "https://www.youtube.com/watch?v=vC1bRR_PYYY",
-      "https://www.youtube.com/watch?v=6CrwcCQdFDI",
+      {
+        "url": "media/Lighting/Curved Liquor Bottle Display/QBS Bottle shelf 2.mp4",
+        "poster": "media/Lighting/Curved Liquor Bottle Display/QBS Bottle shelf 2-poster.webp"
+      },
+      {
+        "url": "media/Lighting/Curved Liquor Bottle Display/QBS Bottle shelf 3.mp4",
+        "poster": "media/Lighting/Curved Liquor Bottle Display/QBS Bottle shelf 3-poster.webp"
+      },
+      {
+        "url": "media/Lighting/Curved Liquor Bottle Display/QBS Bottle shelf 1.mp4",
+        "poster": "media/Lighting/Curved Liquor Bottle Display/QBS Bottle shelf 1-poster.webp"
+      },
       {
         "url": "media/Lighting/Curved Liquor Bottle Display/20240409_124553.webp",
         "fit": {
@@ -2401,7 +2494,6 @@
     "wip": false,
     "tags": [
       "Madrix",
-      "elm",
       "Lighting Design",
       "Power Distribution",
       "AC/DC Load Calc",
@@ -2414,9 +2506,18 @@
     "gallery": [
       "media/Lighting/Blackout Ceiling Tubes/20240619_123414.webp",
       "media/Lighting/Blackout Ceiling Tubes/20240619_123416.webp",
-      "https://www.youtube.com/watch?v=VvVYAEQJYy4",
-      "https://www.youtube.com/watch?v=obL6uEZXaNs",
-      "https://www.youtube.com/watch?v=OqBuz3VsJoo",
+      {
+        "url": "media/Lighting/Blackout Ceiling Tubes/20230106_152451.mp4",
+        "poster": "media/Lighting/Blackout Ceiling Tubes/20230106_152451-poster.webp"
+      },
+      {
+        "url": "media/Lighting/Blackout Ceiling Tubes/20230810_113739.mp4",
+        "poster": "media/Lighting/Blackout Ceiling Tubes/20230810_113739-poster.webp"
+      },
+      {
+        "url": "media/Lighting/Blackout Ceiling Tubes/20230810_113542.mp4",
+        "poster": "media/Lighting/Blackout Ceiling Tubes/20230810_113542-poster.webp"
+      },
       {
         "url": "media/Lighting/Blackout Ceiling Tubes/IMG_20230103_125326_123.webp",
         "fit": {
@@ -2434,7 +2535,10 @@
           "y": 41.5
         }
       },
-      "https://www.youtube.com/watch?v=U2BPg05TNQ4",
+      {
+        "url": "media/Lighting/Blackout Ceiling Tubes/20221215_153203.mp4",
+        "poster": "media/Lighting/Blackout Ceiling Tubes/20221215_153203-poster.webp"
+      },
       "media/Lighting/Blackout Ceiling Tubes/20221219_140531.webp",
       "media/Lighting/Blackout Ceiling Tubes/20221206_172954.webp"
     ],
