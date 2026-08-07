@@ -361,6 +361,10 @@
     "gallery": [
       "media/Art/Pixel Mini Pyramid/20230726_201532.webp",
       {
+        "url": "media/Art/Pixel Mini Pyramid/20240316_141546~2.mp4",
+        "poster": "media/Art/Pixel Mini Pyramid/20240316_141546~2-poster.webp"
+      },
+      {
         "url": "media/Art/Pixel Mini Pyramid/20240316_134702.webp",
         "fit": {
           "scale": 1.1,
@@ -368,7 +372,6 @@
           "y": 46.5
         }
       },
-      "https://www.youtube.com/watch?v=j66jBEcYyys",
       {
         "url": "media/Art/Pixel Mini Pyramid/20230808_152641.webp",
         "fit": {
@@ -1664,9 +1667,12 @@
       "SolidWorks"
     ],
     "gallery": [
+      {
+        "url": "media/Art/Pixel Celtic Owl/20240203_174318~2.mp4",
+        "poster": "media/Art/Pixel Celtic Owl/20240203_174318~2-poster.webp"
+      },
       "media/Art/Pixel Celtic Owl/20220315_175342.webp",
-      "media/Art/Pixel Celtic Owl/Screenshot 2026-07-02 185618.webp",
-      "https://youtube.com/shorts/ls8r6dnBQiw?feature=share"
+      "media/Art/Pixel Celtic Owl/Screenshot 2026-07-02 185618.webp"
     ],
     "files": [],
     "video": "",
@@ -2001,7 +2007,10 @@
           "y": 76.4
         }
       },
-      "https://www.youtube.com/watch?v=3iogvH6i8V0",
+      {
+        "url": "media/Electronics/Dance Floor Pillars/Video Project 18.mp4",
+        "poster": "media/Electronics/Dance Floor Pillars/Video Project 18-poster.webp"
+      },
       {
         "url": "media/Electronics/Dance Floor Pillars/20210403_125209.webp",
         "fit": {
@@ -2026,7 +2035,10 @@
           "y": 24.8
         }
       },
-      "https://www.youtube.com/watch?v=atiKDcx4ldA",
+      {
+        "url": "media/Electronics/Dance Floor Pillars/Video Project 17 (2).mp4",
+        "poster": "media/Electronics/Dance Floor Pillars/Video Project 17 (2)-poster.webp"
+      },
       {
         "url": "media/Electronics/Dance Floor Pillars/20210403_103112.webp",
         "fit": {
@@ -2253,7 +2265,7 @@
       }
     ],
     "files": [],
-    "specs": "<p><strong>Control:</strong> Madrix 5.x</p><p><strong>Fixtures:</strong> (80) 4m </p><p><strong>LED: </strong>5050 RGBW (6000k)</p><p><strong>Pixel Driver:</strong> SM16704</p><p><strong>Pixel Size: </strong>3 LEDs</p><p><strong>LED Spacing: </strong>60/m</p><p><strong>Pixel Voltage: </strong>12vdc</p><p><strong>Decoder Tx: </strong>(2) Advatek PixLite 16 Long Range MK2</p><p><strong>Decoder Rx: </strong>(10) Advatek PixLite Long Range Receiver</p><p><strong>Power:</strong> (10) MEAN WELL 50a,12vdc</p><p><br></p>",
+    "specs": "<p><strong>Control:</strong> Madrix 5.x</p><p><strong>Fixtures:</strong> (80) 4m</p><p><strong>LED: </strong>5050 RGBW (6000k)</p><p><strong>Pixel Driver:</strong> SM16704</p><p><strong>Pixel Size: </strong>3 LEDs</p><p><strong>LED Spacing: </strong>60/m</p><p><strong>Pixel Voltage: </strong>12vdc</p><p><strong>Decoder Tx: </strong>(2) Advatek PixLite 16 Long Range MK2</p><p><strong>Decoder Rx: </strong>(10) Advatek PixLite Long Range Receiver</p><p><strong>Power:</strong> (10) MEAN WELL 50a,12vdc</p>",
     "related": [
       {
         "name": "Extrusion Center Sled",

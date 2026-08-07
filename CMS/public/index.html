@@ -453,6 +453,43 @@
             isDirty = true;
             syncTagPills();
         });
+        document.getElementById('gallery-container').addEventListener('click', (e) => {
+            const badge = e.target.closest('.index-badge');
+            if (!badge || badge.querySelector('input')) return;
+
+            const row = badge.closest('.gallery-row');
+            const container = document.getElementById('gallery-container');
+            const rows = [...container.querySelectorAll('.gallery-row')];
+            const current = rows.indexOf(row) + 1;
+            const total = rows.length;
+
+            const input = document.createElement('input');
+            input.type = 'number';
+            input.value = current;
+            input.className = 'w-8 text-[10px] font-bold text-indigo-600 border border-indigo-300 rounded text-center outline-none p-0';
+            badge.innerHTML = '';
+            badge.appendChild(input);
+            input.focus();
+            input.select();
+
+            let committed = false;
+            const commit = () => {
+                if (committed) return;
+                committed = true;
+                const target = Math.min(Math.max(parseInt(input.value, 10) || current, 1), total);
+                container.removeChild(row);
+                const remaining = [...container.querySelectorAll('.gallery-row')];
+                container.insertBefore(row, remaining[target - 1] || null);
+                updateListIndices('gallery-container');
+                isDirty = true;
+            };
+
+            input.addEventListener('keydown', (ev) => {
+                if (ev.key === 'Enter') { commit(); input.blur(); }
+                if (ev.key === 'Escape') { committed = true; updateListIndices('gallery-container'); input.blur(); }
+            });
+            input.addEventListener('blur', commit);
+        });
     };
 
     // --- TAGS AUTOCOMPLETE ---
@@ -951,7 +988,13 @@
     function updateListIndices(containerId) {
         const container = document.getElementById(containerId);
         const badges = container.querySelectorAll('.index-badge');
-        badges.forEach((badge, index) => { badge.innerText = `#${index + 1}`; });
+        badges.forEach((badge, index) => {
+            badge.innerText = `#${index + 1}`;
+            if (containerId === 'gallery-container') {
+                badge.title = 'Click to move to position';
+                badge.style.cursor = 'pointer';
+            }
+        });
     }
 
     function addFileRow(name = "", url = "", description = "", isBulk = false) {
@@ -1059,7 +1102,16 @@
             const after = getDragAfterElement(container, e.clientY);
             if (after == null) container.appendChild(dragEl);
             else container.insertBefore(dragEl, after);
+
+            const zone = 80;
+            if (e.clientY < zone) window.scrollBy(0, -10);
+            else if (e.clientY > window.innerHeight - zone) window.scrollBy(0, 10);
         });
+
+        window.addEventListener('wheel', (e) => {
+            if (!dragEl) return;
+            window.scrollBy(0, e.deltaY);
+        }, { passive: true });
     }
 
     function getDragAfterElement(container, y) {
