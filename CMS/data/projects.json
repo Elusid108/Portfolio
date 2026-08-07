@@ -21,7 +21,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-12T01:03:01.269Z",
     "wip": false,
-    "order": 12,
+    "order": 9,
     "specs": "<p><strong>Framework:</strong> React 18 (CDN), Node.js</p><p><strong>Language:</strong> Vanilla JavaScript</p><p><strong>Backend:</strong> Express, Sharp, Multer</p><p><strong>Styling:</strong> Tailwind CSS, Quill</p><p><strong>Storage:</strong> Local JSON (filesystem)</p><p><strong>Deploy:</strong> GitHub Pages (static output)</p>",
     "related": [
       {
@@ -125,7 +125,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-12T01:03:01.269Z",
     "wip": false,
-    "order": 1,
+    "order": 0,
     "specs": "<h2><strong>Lighting</strong></h2><ul><li><strong>144x</strong> PixelDots RGBW</li><li><strong>12x</strong> Hybrid Zoom 150W</li><li><strong>40x</strong> LED Wash RGBWA+UV</li></ul><h2><strong>Pixels</strong></h2><ul><li><strong>10x</strong> Custom Pixel Pillars</li><li class=\"ql-indent-1\"><strong>640x</strong> SM16703 RGBW</li><li class=\"ql-indent-1\"><strong>8x</strong> 4m @ 60/m (3x1) 12vdc</li></ul><h2><strong>Video</strong></h2><ul><li><strong>234x</strong> 1m x 0.5m (4.81p)</li><li><strong>60x</strong> 0.5m x 0.5m (4.81p)</li></ul><h2><strong>SFX</strong></h2><ul><li><strong>2x</strong> Radiance Hazers</li></ul><h2><strong>Control</strong></h2><ul><li>Resolume Arena 7.x</li><li>Madrix 5.x</li><li>Roadhog 4</li></ul>",
     "related": [
       {
@@ -262,7 +262,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-12T01:03:01.269Z",
     "wip": true,
-    "order": 3,
+    "order": 0,
     "specs": "<p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite</p><p><strong>3D Engine:</strong> JSCAD Modeling</p><p><strong>AI:</strong> Google Gemini (text/image)</p><p><strong>Export:</strong> JSZip (STL bundling)</p><p><strong>Deploy:</strong> GitHub Pages</p>",
     "related": [
       {
@@ -296,7 +296,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-12T01:03:01.269Z",
     "wip": false,
-    "order": 4,
+    "order": 1,
     "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite (SWC)</p><p><strong>Styling:</strong> Tailwind CSS, Radix UI</p><p><strong>Storage:</strong> localStorage</p><p><strong>Deploy:</strong> GitHub Pages</p>",
     "related": []
   },
@@ -523,6 +523,14 @@
         "url": "media/Integration/Main Room - Temple SF/20210516_195648_1.mp4",
         "poster": "media/Integration/Main Room - Temple SF/20210516_195648_1-poster.webp"
       },
+      {
+        "url": "media/Integration/Main Room - Temple SF/20210517_114547.mp4",
+        "poster": "media/Integration/Main Room - Temple SF/20210517_114547-poster.webp"
+      },
+      {
+        "url": "media/Integration/Main Room - Temple SF/20210517_111653.mp4",
+        "poster": "media/Integration/Main Room - Temple SF/20210517_111653-poster.webp"
+      },
       "media/Integration/Main Room - Temple SF/20210514_2025472.webp",
       {
         "url": "media/Integration/Main Room - Temple SF/20210510_141521.mp4",
@@ -588,7 +596,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-13T00:23:48.073Z",
     "wip": false,
-    "order": 0,
+    "order": 3,
     "specs": "<h2><strong>Designed In</strong></h2><ul><li>SolidWorks 2022</li></ul><h2><strong>Printed On</strong></h2><ul><li>Bambulabs X1C</li></ul><h2><strong>Made With</strong></h2><ul><li>Black PLA+</li></ul>",
     "related": [],
     "thumbnailFit": {
@@ -742,7 +750,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-17T17:46:42.266Z",
     "wip": false,
-    "order": 3,
+    "order": 2,
     "specs": "",
     "related": [],
     "thumbnailFit": {
@@ -810,7 +818,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-17T17:47:45.485Z",
     "wip": false,
-    "order": 7,
+    "order": 6,
     "thumbnailFit": {
       "scale": 1.2,
       "x": 0,
@@ -919,7 +927,7 @@
     ],
     "files": [],
     "video": "",
-    "order": 4,
+    "order": 2,
     "specs": "<h2><strong>Pixels</strong></h2><ul><li><strong>2100x</strong> SK6812 RGBW (3 x 2)</li><li class=\"ql-indent-1\"><strong>8x</strong> 30m @ 5/m 24vdc</li><li class=\"ql-indent-1\"><strong>8x </strong>23m @ 5/m 24vdc</li></ul><h2><strong>Control</strong></h2><ul><li>Resolume Arena 7.x</li></ul>",
     "related": [],
     "thumbnailFit": {
@@ -960,13 +968,13 @@
     "websiteLink": "",
     "timestamp": "2026-01-18T13:45:57.049Z",
     "wip": true,
-    "order": 11,
+    "order": 8,
     "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite (SWC)</p><p><strong>Styling:</strong> Tailwind CSS, Radix UI</p><p><strong>Maps:</strong> Leaflet, React-Leaflet</p><p><strong>Geo:</strong> exifr (EXIF extraction)</p><p><strong>Storage:</strong> Dexie (IndexedDB)</p><p><strong>Export:</strong> jsPDF</p><p><strong>Backend:</strong> Supabase</p><p><strong>Deploy:</strong> Lovable</p>",
     "related": []
   },
   {
     "id": "3991",
-    "title": "PixelForge AI",
+    "title": "PixelForge",
     "category": "Apps",
     "tags": [
       "LLM Integration"
@@ -994,7 +1002,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-18T14:24:23.784Z",
     "wip": true,
-    "order": 8,
+    "order": 2,
     "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite</p><p><strong>Styling:</strong> Tailwind CSS</p><p><strong>State:</strong> Zustand</p><p><strong>AI:</strong> Google Gemini (text), Google Imagen (image)</p><p><strong>Storage:</strong> IndexedDB, localStorage</p><p><strong>Export:</strong> JSZip</p><p><strong>Deploy:</strong> GitHub Pages</p>",
     "related": []
   },
@@ -1034,7 +1042,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-19T00:26:00.827Z",
     "wip": true,
-    "order": 10,
+    "order": 5,
     "specs": "<p><strong>Framework:</strong> React 18 (CDN, zero-build)</p><p><strong>Language:</strong> JavaScript (ES Modules)</p><p><strong>Styling:</strong> Tailwind CSS (CDN)</p><p><strong>AI:</strong> Google Gemini (text/image/TTS)</p><p><strong>Audio:</strong> Web Speech API (fallback)</p><p><strong>Storage:</strong> localStorage</p><p><strong>Deploy:</strong> GitHub Pages</p>",
     "related": []
   },
@@ -1087,7 +1095,7 @@
     "websiteLink": "",
     "timestamp": "2026-02-15T04:59:58.733Z",
     "wip": true,
-    "order": 5,
+    "order": 4,
     "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite (SWC)</p><p><strong>Styling:</strong> Tailwind CSS, Radix UI</p><p><strong>State:</strong> Zustand</p><p><strong>AI:</strong> Google Gemini</p><p><strong>Cloud:</strong> Google Drive API, Google Sheets API</p><p><strong>Testing:</strong> Vitest</p><p><strong>Deploy:</strong> GitHub Pages</p>",
     "related": []
   },
@@ -1125,7 +1133,7 @@
     "websiteLink": "",
     "timestamp": "2026-03-22T16:37:25.240Z",
     "wip": true,
-    "order": 9,
+    "order": 6,
     "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite</p><p><strong>Styling:</strong> Tailwind CSS</p><p><strong>State:</strong> Zustand</p><p><strong>AI:</strong> Google Gemini 2.5 Flash, Imagen 4.0</p><p><strong>Storage:</strong> IndexedDB</p><p><strong>Export:</strong> JSZip</p><p><strong>Deploy:</strong> GitHub Pages</p>",
     "related": []
   },
@@ -1150,7 +1158,7 @@
     "websiteLink": "",
     "timestamp": "2026-06-11T17:19:00.407Z",
     "wip": false,
-    "order": 6,
+    "order": 3,
     "specs": "<p><strong>Language:</strong> Vanilla JavaScript</p><p><strong>Build:</strong> None (zero-dependency)</p><p><strong>Engine:</strong> Canvas API (pixel averaging)</p><p><strong>Storage:</strong> IndexedDB, localStorage</p><p><strong>Export:</strong> PIXEstl JSON (HSL/Hex)</p><p><strong>Deploy:</strong> GitHub Pages</p>",
     "related": [
       {
@@ -1279,7 +1287,7 @@
     "video": "",
     "timestamp": "2026-06-21T22:45:09.610Z",
     "id": "6350",
-    "order": 5,
+    "order": 4,
     "specs": "<h2><strong>Lighting</strong></h2><ul><li><strong>34x</strong> PixelDots RGBW</li><li><strong>12x</strong> Profile Zoom 150W</li><li><strong>18x </strong>6x40w Beye RGBW</li></ul><h2><strong>SFX</strong></h2><ul><li>1x Radiance Hazer</li></ul><h2><strong>Control</strong></h2><ul><li>Wolfmix WMX1</li></ul>",
     "related": [],
     "thumbnailFit": {
@@ -1502,7 +1510,7 @@
     "video": "",
     "timestamp": "2026-06-21T22:55:23.650Z",
     "id": "5045",
-    "order": 6,
+    "order": 5,
     "specs": "",
     "related": [],
     "thumbnailFit": {
@@ -1595,7 +1603,7 @@
     "video": "",
     "timestamp": "2026-06-21T23:30:44.785Z",
     "id": "4411",
-    "order": 2,
+    "order": 3,
     "specs": "<p>Pixels: 11880</p><p>Channels: 35,640 (70 universes)</p><p>Short(4ft): 62x 60px</p><p>Long(8ft): 69x 120px</p>",
     "related": [
       {
@@ -1861,7 +1869,7 @@
     "video": "",
     "timestamp": "2026-07-20T20:00:01.882Z",
     "id": "7590",
-    "order": 8,
+    "order": 7,
     "specs": "<h2><strong>Pixels</strong></h2><ul><li><strong>520x</strong> WS2801 RGB (6 x 1), 12vdc</li></ul><h2><strong>Control</strong></h2><ul><li>Madrix 3.6</li></ul>",
     "related": [],
     "bannerFit": {
@@ -1950,7 +1958,7 @@
     "video": "",
     "timestamp": "2026-07-20T21:09:12.884Z",
     "id": "6808",
-    "order": 2,
+    "order": 3,
     "specs": "<h2><strong>Pixels</strong></h2><ul><li><strong>1152x</strong> WS2815 RGB</li><li class=\"ql-indent-1\"><strong>96x</strong> 0.2m @ 60/m 12vdc</li></ul><h2><strong>Control</strong></h2><ul><li>Madrix 5.x</li></ul>",
     "related": [
       {
@@ -2046,7 +2054,7 @@
     "video": "",
     "timestamp": "2026-07-26T23:20:01.923Z",
     "id": "5376",
-    "order": 3,
+    "order": 2,
     "thumbnailFit": {
       "scale": 1.05,
       "x": 5.3,
@@ -2458,7 +2466,7 @@
     "video": "",
     "timestamp": "2026-08-01T15:14:28.453Z",
     "id": "2052",
-    "order": 2,
+    "order": 1,
     "thumbnailFit": {
       "scale": 1.2,
       "x": 0.4,
@@ -2557,7 +2565,7 @@
     "video": "",
     "timestamp": "2026-08-01T17:08:27.719Z",
     "id": "1612",
-    "order": 3
+    "order": 1
   },
   {
     "title": "LED PSU Boot Sequencer",
@@ -2636,6 +2644,6 @@
     "video": "",
     "timestamp": "2026-08-01T21:44:42.857Z",
     "id": "1430",
-    "order": 1
+    "order": 0
   }
 ]
