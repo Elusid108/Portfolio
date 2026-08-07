@@ -117,6 +117,41 @@
         .rich-text .ql-indent-6 { margin-left: 18em; }
         .rich-text .ql-indent-7 { margin-left: 21em; }
         .rich-text .ql-indent-8 { margin-left: 24em; }
+
+        /* Custom video player progress scrubber (click + drag to seek) */
+        .video-progress {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 4px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.25);
+            cursor: pointer;
+            outline: none;
+        }
+        .video-progress::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #22d3ee;
+            box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.25);
+            margin-top: -4px;
+        }
+        .video-progress::-moz-range-thumb {
+            width: 12px;
+            height: 12px;
+            border: none;
+            border-radius: 50%;
+            background: #22d3ee;
+            box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.25);
+        }
+        .video-progress::-moz-range-track {
+            height: 4px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.25);
+        }
     </style>
 </head>
 <body>
@@ -157,6 +192,9 @@
         const FileIcon = (p) => <Icon {...p}><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></Icon>;
         const Globe = (p) => <Icon {...p}><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></Icon>;
         const Play = (p) => <Icon {...p}><polygon points="5 3 19 12 5 21 5 3"/></Icon>;
+        const Pause = (p) => <Icon {...p}><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></Icon>;
+        const Maximize = (p) => <Icon {...p}><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></Icon>;
+        const Minimize = (p) => <Icon {...p}><path d="M8 3v3a2 2 0 0 1-2 2H3"/><path d="M21 8h-3a2 2 0 0 1-2-2V3"/><path d="M3 16h3a2 2 0 0 1 2 2v3"/><path d="M16 21v-3a2 2 0 0 1 2-2h3"/></Icon>;
         const Copy = (p) => <Icon {...p}><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></Icon>;
         const Send = (p) => <Icon {...p}><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></Icon>;
         const Share2 = (p) => <Icon {...p}><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></Icon>;
@@ -194,6 +232,12 @@
         const mediaSrc = (item) => (typeof item === 'string' ? item : (item?.url || ''));
         const mediaCaption = (item) => (typeof item === 'string' ? '' : (item?.caption || ''));
         const mediaFit = (item) => (typeof item === 'string' ? null : (item?.fit || null));
+        const mediaPoster = (item) => (typeof item === 'string' ? null : (item?.poster || null));
+
+        // Self-hosted (non-YouTube) video files uploaded via the CMS's video
+        // converter always come out as .mp4, but a manually-typed URL could point
+        // at another common container.
+        const isVideoUrl = (url) => typeof url === 'string' && /\.(mp4|webm|mov|m4v)$/i.test(url.split('?')[0]);
 
         // Returns inline style for a cropped image. When scale=1, only objectPosition
         // is set so CSS hover transitions (e.g. group-hover:scale-105) still work.
@@ -283,7 +327,7 @@
         // label is the most accurate description available.
         const describeMedia = (url, index, total, projectTitle) => {
             const position = `${index + 1} of ${total}`;
-            return getYouTubeId(url)
+            return (getYouTubeId(url) || isVideoUrl(url))
                 ? `Play video ${position} for ${projectTitle}`
                 : `${projectTitle}, image ${position}`;
         };
@@ -509,6 +553,118 @@
             );
         };
 
+        // Self-hosted video playback with custom chrome (no native browser controls):
+        // click-to-play, a click/drag-to-seek progress bar, and a fullscreen toggle
+        // that keeps the custom controls visible (fullscreening the wrapper, not the
+        // bare <video> element).
+        const VideoPlayer = ({ src, poster, className = "", autoPlay = false }) => {
+            const videoRef = useRef(null);
+            const containerRef = useRef(null);
+            const [playing, setPlaying] = useState(false);
+            const [currentTime, setCurrentTime] = useState(0);
+            const [duration, setDuration] = useState(0);
+            const [isFullscreen, setIsFullscreen] = useState(false);
+            const [seeking, setSeeking] = useState(false);
+
+            useEffect(() => {
+                if (!autoPlay) return;
+                videoRef.current?.play().catch(() => {});
+            }, [src, autoPlay]);
+
+            useEffect(() => {
+                const onFsChange = () => setIsFullscreen(document.fullscreenElement === containerRef.current);
+                document.addEventListener('fullscreenchange', onFsChange);
+                return () => document.removeEventListener('fullscreenchange', onFsChange);
+            }, []);
+
+            const togglePlay = (e) => {
+                e?.stopPropagation();
+                const v = videoRef.current;
+                if (!v) return;
+                if (v.paused) v.play().catch(() => {});
+                else v.pause();
+            };
+
+            const handleSeekInput = (e) => {
+                e.stopPropagation();
+                setSeeking(true);
+                setCurrentTime(parseFloat(e.target.value));
+            };
+
+            const commitSeek = (e) => {
+                e.stopPropagation();
+                const v = videoRef.current;
+                if (v) v.currentTime = parseFloat(e.target.value);
+                setSeeking(false);
+            };
+
+            const toggleFullscreen = (e) => {
+                e.stopPropagation();
+                if (document.fullscreenElement) document.exitFullscreen();
+                else containerRef.current?.requestFullscreen?.();
+            };
+
+            const formatTime = (s) => {
+                if (!isFinite(s) || s < 0) s = 0;
+                const m = Math.floor(s / 60);
+                const sec = Math.floor(s % 60).toString().padStart(2, '0');
+                return `${m}:${sec}`;
+            };
+
+            const pct = duration > 0 ? (currentTime / duration) * 100 : 0;
+
+            return (
+                <div ref={containerRef} onClick={(e) => e.stopPropagation()} className={`relative bg-black flex items-center justify-center group ${className}`}>
+                    <video
+                        ref={videoRef}
+                        src={src}
+                        poster={poster || undefined}
+                        playsInline
+                        onClick={togglePlay}
+                        onPlay={() => setPlaying(true)}
+                        onPause={() => setPlaying(false)}
+                        onEnded={() => setPlaying(false)}
+                        onLoadedMetadata={(e) => setDuration(e.target.duration || 0)}
+                        onTimeUpdate={(e) => { if (!seeking) setCurrentTime(e.target.currentTime); }}
+                        className="w-full h-full max-h-full object-contain cursor-pointer"
+                    />
+
+                    {!playing && (
+                        <button type="button" onClick={togglePlay} aria-label="Play video" className="absolute inset-0 flex items-center justify-center">
+                            <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
+                                <Play className="text-zinc-900 fill-zinc-900 ml-1" size={28} />
+                            </div>
+                        </button>
+                    )}
+
+                    <div className="absolute bottom-0 left-0 right-0 px-3 pb-2 pt-6 bg-gradient-to-t from-black/80 to-transparent flex items-center gap-3">
+                        <button type="button" onClick={togglePlay} aria-label={playing ? 'Pause' : 'Play'} className="text-white hover:text-cyan-400 transition-colors flex-shrink-0">
+                            {playing ? <Pause size={18} /> : <Play size={18} />}
+                        </button>
+                        <span className="text-xs font-mono text-zinc-300 flex-shrink-0 hidden sm:inline">
+                            {formatTime(currentTime)} / {formatTime(duration)}
+                        </span>
+                        <input
+                            type="range"
+                            className="video-progress flex-1"
+                            min="0"
+                            max={duration || 0}
+                            step="0.01"
+                            value={currentTime}
+                            style={{ background: `linear-gradient(to right, #22d3ee ${pct}%, rgba(255,255,255,0.25) ${pct}%)` }}
+                            onInput={handleSeekInput}
+                            onChange={commitSeek}
+                            onClick={(e) => e.stopPropagation()}
+                            aria-label="Seek"
+                        />
+                        <button type="button" onClick={toggleFullscreen} aria-label={isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'} className="text-white hover:text-cyan-400 transition-colors flex-shrink-0">
+                            {isFullscreen ? <Minimize size={18} /> : <Maximize size={18} />}
+                        </button>
+                    </div>
+                </div>
+            );
+        };
+
         const Lightbox = ({ images, initialIndex, onClose, projectTitle }) => {
             const [index, setIndex] = useState(initialIndex);
             // Keyed to the index rather than reset in an effect, so navigating to the
@@ -569,6 +725,7 @@
             const caption = mediaCaption(currentItem);
             const captionExpanded = expandedFor === index;
             const ytId = getYouTubeId(currentUrl);
+            const isVid = !ytId && isVideoUrl(currentUrl);
 
             // Only offer the toggle when the text is actually cut off. Measuring is
             // skipped while expanded (nothing is clamped then), which leaves the last
@@ -630,6 +787,10 @@
                                         onTouchEnd={onTouchEnd}
                                     ></div>
                                 </div>
+                            </div>
+                        ) : isVid ? (
+                            <div className="relative w-full h-full max-w-5xl aspect-video" onClick={stopClick}>
+                                <VideoPlayer src={currentUrl} poster={mediaPoster(currentItem)} className="w-full h-full rounded-lg shadow-2xl" autoPlay />
                             </div>
                         ) : (
                             <img
@@ -830,15 +991,29 @@
                                                 {project.gallery.map((item, i) => {
                                                     const mediaUrl = mediaSrc(item);
                                                     const ytId = getYouTubeId(mediaUrl);
+                                                    const isVid = !ytId && isVideoUrl(mediaUrl);
                                                     const label = mediaCaption(item) || describeMedia(mediaUrl, i, project.gallery.length, project.title);
                                                     return (
-                                                        <button type="button" key={i} onClick={() => setLightboxIndex(i)} aria-label={ytId ? label : `Open full size: ${label}`} className="w-full rounded-lg overflow-hidden border border-zinc-800 aspect-video group cursor-pointer relative bg-zinc-900">
+                                                        <button type="button" key={i} onClick={() => setLightboxIndex(i)} aria-label={(ytId || isVid) ? label : `Open full size: ${label}`} className="w-full rounded-lg overflow-hidden border border-zinc-800 aspect-video group cursor-pointer relative bg-zinc-900">
                                                             {ytId ? (
                                                                 <>
                                                                     <img src={`https://img.youtube.com/vi/${ytId}/hqdefault.jpg`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90" alt="" />
                                                                     <div aria-hidden="true" className="absolute inset-0 flex items-center justify-center">
                                                                         <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                                                                             <Play className="text-white fill-white ml-1" size={20} /> 
+                                                                        </div>
+                                                                    </div>
+                                                                </>
+                                                            ) : isVid ? (
+                                                                <>
+                                                                    {mediaPoster(item) ? (
+                                                                        <img src={mediaPoster(item)} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90" alt="" />
+                                                                    ) : (
+                                                                        <div className="w-full h-full bg-zinc-800" />
+                                                                    )}
+                                                                    <div aria-hidden="true" className="absolute inset-0 flex items-center justify-center">
+                                                                        <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                                                            <Play className="text-zinc-900 fill-zinc-900 ml-1" size={20} />
                                                                         </div>
                                                                     </div>
                                                                 </>

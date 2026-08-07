@@ -20,6 +20,34 @@ function sanitize(name) {
   return name.replace(/[<>:"/\\|?*]/g, '_');
 }
 
+// This repo lives inside a synced OneDrive folder, which briefly locks
+// newly-written files (EPERM on unlink) while it hashes/uploads them. That
+// can outlast a naive single-attempt delete, so cleanup of multer's temp
+// upload file runs in the background with backoff, well outside the
+// request/response path, and simply gives up (leaving a harmless leftover
+// temp file) if the lock never clears.
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function scheduleUnlink(filePath, delays = [300, 800, 1500, 3000, 6000, 10000]) {
+  (async () => {
+    for (let i = 0; i < delays.length; i++) {
+      try {
+        fs.unlinkSync(filePath);
+        return;
+      } catch (err) {
+        if ((err.code === 'EPERM' || err.code === 'EBUSY') && i < delays.length - 1) {
+          await sleep(delays[i]);
+          continue;
+        }
+        console.error(`Failed to delete temp file ${filePath}:`, err.message);
+        return;
+      }
+    }
+  })();
+}
+
 async function processUpload(file, category, projectName) {
   const originalName = sanitize(file.originalname);
   const stem = path.parse(originalName).name;
@@ -52,7 +80,7 @@ async function processUpload(file, category, projectName) {
   }
 
   if (srcPath) {
-    try { fs.unlinkSync(srcPath); } catch (_) {}
+    scheduleUnlink(srcPath);
   }
 
   return webPath;
@@ -67,7 +95,7 @@ async function processFileUpload(file, category, projectName) {
 
   fs.mkdirSync(destDir, { recursive: true });
   fs.copyFileSync(file.path, path.join(destDir, originalName));
-  try { fs.unlinkSync(file.path); } catch (_) {}
+  scheduleUnlink(file.path);
 
   return webPath;
 }
@@ -190,7 +218,11 @@ function fixFileStructure() {
           return relocateAsset(item, targetWebDir, ctx);
         }
         if (item && typeof item === 'object' && typeof item.url === 'string') {
-          return { ...item, url: relocateAsset(item.url, targetWebDir, ctx) };
+          const updated = { ...item, url: relocateAsset(item.url, targetWebDir, ctx) };
+          if (typeof item.poster === 'string') {
+            updated.poster = relocateAsset(item.poster, targetWebDir, ctx);
+          }
+          return updated;
         }
         return item;
       });
@@ -220,4 +252,4 @@ function fixFileStructure() {
   };
 }
 
-module.exports = { processUpload, processFileUpload, fixFileStructure, CATEGORY_FOLDER_MAP };
+module.exports = { processUpload, processFileUpload, fixFileStructure, CATEGORY_FOLDER_MAP, sanitize, scheduleUnlink };

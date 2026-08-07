@@ -117,6 +117,41 @@
         .rich-text .ql-indent-6 { margin-left: 18em; }
         .rich-text .ql-indent-7 { margin-left: 21em; }
         .rich-text .ql-indent-8 { margin-left: 24em; }
+
+        /* Custom video player progress scrubber (click + drag to seek) */
+        .video-progress {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 4px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.25);
+            cursor: pointer;
+            outline: none;
+        }
+        .video-progress::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #22d3ee;
+            box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.25);
+            margin-top: -4px;
+        }
+        .video-progress::-moz-range-thumb {
+            width: 12px;
+            height: 12px;
+            border: none;
+            border-radius: 50%;
+            background: #22d3ee;
+            box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.25);
+        }
+        .video-progress::-moz-range-track {
+            height: 4px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.25);
+        }
     </style>
 </head>
 <body>
@@ -148,7 +183,7 @@
             "websiteLink": "",
             "timestamp": "2026-01-12T01:03:01.269Z",
             "wip": false,
-            "order": 9,
+            "order": 11,
             "specs": "<p><strong>Framework:</strong> React 18 (CDN), Node.js</p><p><strong>Language:</strong> Vanilla JavaScript</p><p><strong>Backend:</strong> Express, Sharp, Multer</p><p><strong>Styling:</strong> Tailwind CSS, Quill</p><p><strong>Storage:</strong> Local JSON (filesystem)</p><p><strong>Deploy:</strong> GitHub Pages (static output)</p>",
             "related": [
                 {
@@ -247,7 +282,7 @@
             "websiteLink": "",
             "timestamp": "2026-01-12T01:03:01.269Z",
             "wip": false,
-            "order": 0,
+            "order": 1,
             "specs": "<h2><strong>Lighting</strong></h2><ul><li><strong>144x</strong> PixelDots RGBW</li><li><strong>12x</strong> Hybrid Zoom 150W</li><li><strong>40x</strong> LED Wash RGBWA+UV</li></ul><h2><strong>Pixels</strong></h2><ul><li><strong>10x</strong> Custom Pixel Pillars</li><li class=\"ql-indent-1\"><strong>640x</strong> SM16703 RGBW</li><li class=\"ql-indent-1\"><strong>8x</strong> 4m @ 60/m (3x1) 12vdc</li></ul><h2><strong>Video</strong></h2><ul><li><strong>234x</strong> 1m x 0.5m (4.81p)</li><li><strong>60x</strong> 0.5m x 0.5m (4.81p)</li></ul><h2><strong>SFX</strong></h2><ul><li><strong>2x</strong> Radiance Hazers</li></ul><h2><strong>Control</strong></h2><ul><li>Resolume Arena 7.x</li><li>Madrix 5.x</li><li>Roadhog 4</li></ul>",
             "related": [
                 {
@@ -372,7 +407,7 @@
             "websiteLink": "",
             "timestamp": "2026-01-12T01:03:01.269Z",
             "wip": true,
-            "order": 0,
+            "order": 2,
             "specs": "<p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite</p><p><strong>3D Engine:</strong> JSCAD Modeling</p><p><strong>AI:</strong> Google Gemini (text/image)</p><p><strong>Export:</strong> JSZip (STL bundling)</p><p><strong>Deploy:</strong> GitHub Pages</p>",
             "related": [
                 {
@@ -406,7 +441,7 @@
             "websiteLink": "",
             "timestamp": "2026-01-12T01:03:01.269Z",
             "wip": false,
-            "order": 1,
+            "order": 3,
             "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite (SWC)</p><p><strong>Styling:</strong> Tailwind CSS, Radix UI</p><p><strong>Storage:</strong> localStorage</p><p><strong>Deploy:</strong> GitHub Pages</p>",
             "related": []
         },
@@ -608,6 +643,10 @@
                 "TCP/IP"
             ],
             "gallery": [
+                {
+                    "url": "media/Integration/Main Room - Temple SF/20210510_141521.mp4",
+                    "poster": "media/Integration/Main Room - Temple SF/20210510_141521-poster.webp"
+                },
                 "media/Integration/Main Room - Temple SF/20210514_2025472.webp",
                 "media/Integration/Main Room - Temple SF/IMG_20200504_185605.webp",
                 "media/Integration/Main Room - Temple SF/20210515_184126.webp",
@@ -617,7 +656,7 @@
             "files": [],
             "video": "",
             "order": 1,
-            "specs": "<p>Lighting Console: Roadhog 4</p><p>Video: Resolume Arena</p><p>Pixels: Madrix</p><p>DJ link: ShowKontrol</p><p>Signal Manipulation: Show Cockpit</p><p>Touch Software: OSCPilot</p><p><br></p>",
+            "specs": "<p>Lighting Console: Roadhog 4</p><p>Video: Resolume Arena</p><p>Pixels: Madrix</p><p>DJ link: ShowKontrol</p><p>Signal Manipulation: Show Cockpit</p><p>Touch Software: OSCPilot</p>",
             "related": [
                 {
                     "name": "Lighting design",
@@ -870,7 +909,7 @@
             "websiteLink": "",
             "timestamp": "2026-01-17T17:47:45.485Z",
             "wip": false,
-            "order": 6,
+            "order": 7,
             "thumbnailFit": {
                 "scale": 1.2,
                 "x": 0,
@@ -961,7 +1000,7 @@
             ],
             "files": [],
             "video": "",
-            "order": 3,
+            "order": 4,
             "specs": "<h2><strong>Pixels</strong></h2><ul><li><strong>2100x</strong> SK6812 RGBW (3 x 2)</li><li class=\"ql-indent-1\"><strong>8x</strong> 30m @ 5/m 24vdc</li><li class=\"ql-indent-1\"><strong>8x </strong>23m @ 5/m 24vdc</li></ul><h2><strong>Control</strong></h2><ul><li>Resolume Arena 7.x</li></ul>",
             "related": [],
             "thumbnailFit": {
@@ -1002,7 +1041,7 @@
             "websiteLink": "",
             "timestamp": "2026-01-18T13:45:57.049Z",
             "wip": true,
-            "order": 8,
+            "order": 10,
             "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite (SWC)</p><p><strong>Styling:</strong> Tailwind CSS, Radix UI</p><p><strong>Maps:</strong> Leaflet, React-Leaflet</p><p><strong>Geo:</strong> exifr (EXIF extraction)</p><p><strong>Storage:</strong> Dexie (IndexedDB)</p><p><strong>Export:</strong> jsPDF</p><p><strong>Backend:</strong> Supabase</p><p><strong>Deploy:</strong> Lovable</p>"
         },
         {
@@ -1013,8 +1052,8 @@
                 "LLM Integration"
             ],
             "image": "media/Apps/PixelForge AI/Screenshot 2026-07-25 173231.webp",
-            "description": "<p>An interactive generative artwork studio that uses controlled text hallucinations to kickstart creative visual exploration.</p>",
-            "longDescription": "<p><strong>PixelForge </strong>is an interactive web application designed to kickstart creative exploration by bridging abstract text generation with high-fidelity image synthesis. Unlike conventional generation interfaces that rely strictly on literal user inputs, PixelForge utilizes controlled AI hallucinations to construct poetic, open-ended prompt foundations. This approach pushes image models past predictable outputs and gives creators a sandbox to discover nuanced visual concepts through either category-focused or open-ended random generation.</p><p>The system workflow coordinates a multi-stage creative pipeline. Activating the randomizer triggers targeted prompt frameworks that generate abstract, poem-like descriptions. Users maintain full creative control with the ability to inspect, refine, or manually edit these text outputs prior to rendering the final image. As generations occur, the platform automatically maintains a comprehensive session history on the left sidebar. This allows users to compare iterative variations, review parameter metadata, and package assets into bulk ZIP downloads directly within the workspace.</p><p>Built on React, TypeScript, Vite, and Tailwind CSS, the application integrates the Gemini API for prompt generation and the Imagen API for visual rendering. A primary technical hurdle involved overcoming model output convergence, where similar prompts yielded overly repetitive visual styles. To solve this, the application features a manual model selector within the settings menu. This allows users to route identical prompts across different model versions to leverage their distinct stylistic interpretations. Local data persistence relies on IndexedDB and LocalStorage to manage client-side image storage and history tracking without external database dependencies.</p>",
+            "description": "<p>A web workspace that uses hallucinated text prompts to break repetitive visual loops in image generation.</p>",
+            "longDescription": "<p>Standard image generators get boring fast. I built PixelForge to see what happens when a language model hallucinates an abstract, poetic foundation before any rendering starts. The frontend runs on React, TypeScript, Vite, and Tailwind CSS. It connects the Gemini API for prompt generation to the Imagen or NanoBanana API for the final render, and stores the whole session history locally in IndexedDB and LocalStorage.</p><p>Early iterations got stuck in a visual loop. The app kept generating characters in the same poses or returning to identical themes. It was accidentally feeding pieces of previous prompts into the new input context. I spent hours going back and forth with Gemini and later Cursor to isolate the client-side state and force the app to forget old generations between runs.</p><p>Even with a clean state, individual models drift toward repetitive styles over time. I added a manual model selector in the settings menu to route prompts across different versions. That switch breaks the visual convergence by letting different models interpret the same parameters, and it keeps the app functional as older models retire.</p>",
             "video": "",
             "gallery": [
                 "media/Apps/PixelForge AI/Screenshot 2026-07-25 173332.webp",
@@ -1035,7 +1074,7 @@
             "websiteLink": "",
             "timestamp": "2026-01-18T14:24:23.784Z",
             "wip": true,
-            "order": 5,
+            "order": 7,
             "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite</p><p><strong>Styling:</strong> Tailwind CSS</p><p><strong>State:</strong> Zustand</p><p><strong>AI:</strong> Google Gemini (text), Google Imagen (image)</p><p><strong>Storage:</strong> IndexedDB, localStorage</p><p><strong>Export:</strong> JSZip</p><p><strong>Deploy:</strong> GitHub Pages</p>",
             "related": []
         },
@@ -1047,8 +1086,8 @@
                 "LLM Integration"
             ],
             "image": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 182215.webp",
-            "description": "<p><strong>Chronicle </strong>is a zero-build, browser-based interactive fiction engine that generates multimodal, AI-driven storytelling in real time.</p>",
-            "longDescription": "<p><strong>Chronicle </strong>is a browser-based interactive fiction engine designed to dynamically generate text, images, and audio for a cohesive choose-your-own-adventure experience. It shifts away from standard conversational AI interfaces by enforcing a rigid narrative structure through strict schema validation. This approach ensures every generated turn consistently delivers prose, four distinct choices, scene illustration prompts, and backend lore updates, creating a predictable game loop without relying on a traditional server.</p><p>The application operates entirely client-side using a zero-build React architecture with ES modules and Tailwind CSS. During a session, a user selects a genre and visual style, initiating a turn loop that builds a layered system prompt based on player decisions. The system manages state by maintaining a persistent memory stack, compressing older narrative beats into long-term summaries while preserving recent verbatim prose and relevant character lore. When a player makes a choice, the engine merges the updated codex, appends the new beat, and processes parallel requests for image and audio generation to construct a complete multimodal page.</p><p>The standout technical achievement is the memory engine and structured data parsing powered by the Google Gemini API. By utilizing a strict JSON response schema, the application guarantees that the large language model outputs precisely formatted game data for immediate UI rendering and state management. The engine also tackles the challenge of long-context drift in AI storytelling by filtering and injecting only the most relevant codex entries per turn. Additionally, the system supports real-time text streaming by parsing partial JSON outputs and includes resilient fallback integrations for both text-to-speech and image generation.</p>",
+            "description": "<p>I built a browser-based storytelling engine in zero-build React that generates text, illustrations, and audio entirely client-side.</p>",
+            "longDescription": "<p>I wanted an interactive storytelling game inspired by the retro aesthetic in Mr. Robot, and I wanted to host it for free on GitHub Pages. That meant zero backend and no bundlers. I started the prototype in a Gemini Canvas and kept the zero-build architecture when I moved the codebase over to GitHub, wiring React 18, ES modules, and Tailwind CSS directly through the browser. Every turn runs client-side and hits the Google Gemini API to build the narrative, 4 player choices, an illustration, and spoken audio.</p><p>The first attempts fell apart fast. Without a strict memory structure, image styles drifted after a few turns, the story got stuck in loops, and the narrative would ramble with no clear end. Keeping track of earlier events inside a growing prompt was the hardest part. I had to build a memory stack that compresses older beats into shorthand summaries while passing along the recent prose and visual reference tags.</p><p>Each turn triggers several API calls at once to generate the prose, questions, image, audio, and log updates. With heavier models, a single turn took upwards of 2 minutes to load. I switched to default models to drop the wait down to 15 to 20 seconds. It works well enough for my own playthroughs, but managing that much client-side state without a build step is painful enough that I plan to rebuild the entire engine from scratch.</p>",
             "video": "",
             "gallery": [
                 "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-18 184721.webp",
@@ -1075,7 +1114,7 @@
             "websiteLink": "",
             "timestamp": "2026-01-19T00:26:00.827Z",
             "wip": true,
-            "order": 7,
+            "order": 9,
             "specs": "<p><strong>Framework:</strong> React 18 (CDN, zero-build)</p><p><strong>Language:</strong> JavaScript (ES Modules)</p><p><strong>Styling:</strong> Tailwind CSS (CDN)</p><p><strong>AI:</strong> Google Gemini (text/image/TTS)</p><p><strong>Audio:</strong> Web Speech API (fallback)</p><p><strong>Storage:</strong> localStorage</p><p><strong>Deploy:</strong> GitHub Pages</p>",
             "related": []
         },
@@ -1085,8 +1124,8 @@
             "category": "Apps",
             "tags": [],
             "image": "media/Apps/Strata - Digital Notebook/Screenshot 2026-01-23 200024.webp",
-            "description": "<p>A serverless, browser-based note-taking application combining block-level editing with infinite canvas workspaces and Google Drive synchronization.</p>",
-            "longDescription": "<p><strong>Strata </strong>is a client-side note-taking application designed to provide hierarchical organization alongside flexible visual workspaces. The primary goal is to deliver a robust productivity tool that runs entirely in the browser without relying on a dedicated backend server. The project differentiates itself by seamlessly blending structured, block-based text editing with an infinite drawing canvas, utilizing the user's existing Google Drive as the primary cloud storage and database mechanism.</p><p>The engineering workflow focuses on delivering a resilient user experience that bridges offline availability and cloud connectivity. The application caches data locally using localStorage for immediate access and pushes updates to Google Drive via automatic debounced saves. The project is currently an active work in progress, with current development focused on resolving known sync issues and refining conflict resolution logic. The development journey included prototyping a standalone desktop variant to enable direct webpage embedding, but active development has pivoted back to the web application to maximize accessibility and maintain a streamlined user workflow.</p><p>The core application is built with React and styled with Tailwind CSS, maintaining a strict zero-dependency architecture outside of the necessary Google APIs. A major technical component of the build is the in-browser Babel transpilation, which allows the application to function entirely on the client side. The infinite canvas relies on custom coordinate system handling with viewport culling and real-time SVG path rendering to ensure smooth panning, zooming, and drawing performance. By directly integrating with the Google Drive API, the system can bypass traditional server storage limitations while natively embedding Google Docs, Sheets, and Slides directly into the workspace.</p>",
+            "description": "<p>I built a serverless digital notebook that embeds Google Drive files inside a custom client-side canvas.</p>",
+            "longDescription": "<p>Flipping through dozens of Google Docs, Sheets, and Slides every day at Boston Dynamics got exhausting without a clear hierarchy to organize them. I wanted a OneNote layout with notebooks, tabs, and pages, but I refused to pay for a server. Piping everything straight through the Google Drive API and browser storage solved the hosting cost, but it meant building the engine from scratch.</p><p>To embed webpages directly into notebook pages, I built a desktop prototype to dodge iframe security blocks. The desktop build worked, but needing an installed app killed the convenience of opening a workspace on any browser. I abandoned the desktop build, accepted the iframe limitations, and pivoted back to the web application.</p><p>The browser fought back on performance. Canvas zooming stuttered, and touchscreen inputs refused to line up with SVG drawings. While I sorted out the coordinate math, sync remains a headache. Edits sometimes drop, and deleted pages occasionally resurrect themselves on reload. Strata is still an active work in progress, but the client-side layout is set.</p>",
             "video": "",
             "gallery": [
                 "media/Apps/Strata - Digital Notebook/Screenshot 2026-01-23 195925.webp",
@@ -1100,8 +1139,9 @@
             "websiteLink": "",
             "timestamp": "2026-01-24T02:36:52.522Z",
             "wip": true,
-            "order": 4,
-            "specs": "<p><strong>Framework:</strong> React 19</p><p><strong>Build:</strong> Vite 7</p><p><strong>Styling:</strong> Tailwind CSS 4</p><p><strong>Editor:</strong> CodeMirror (JS/HTML/Python)</p><p><strong>Diagrams:</strong> Mermaid</p><p><strong>Maps:</strong> Leaflet</p><p><strong>Cloud:</strong> Google Drive API</p><p><strong>Storage:</strong> localStorage</p><p><strong>Deploy:</strong> GitHub Pages</p>"
+            "order": 6,
+            "specs": "<p><strong>Framework:</strong> React 19</p><p><strong>Build:</strong> Vite 7</p><p><strong>Styling:</strong> Tailwind CSS 4</p><p><strong>Editor:</strong> CodeMirror (JS/HTML/Python)</p><p><strong>Diagrams:</strong> Mermaid</p><p><strong>Maps:</strong> Leaflet</p><p><strong>Cloud:</strong> Google Drive API</p><p><strong>Storage:</strong> localStorage</p><p><strong>Deploy:</strong> GitHub Pages</p>",
+            "related": []
         },
         {
             "id": "6962",
@@ -1127,7 +1167,7 @@
             "websiteLink": "",
             "timestamp": "2026-02-15T04:59:58.733Z",
             "wip": true,
-            "order": 2,
+            "order": 4,
             "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite (SWC)</p><p><strong>Styling:</strong> Tailwind CSS, Radix UI</p><p><strong>State:</strong> Zustand</p><p><strong>AI:</strong> Google Gemini</p><p><strong>Cloud:</strong> Google Drive API, Google Sheets API</p><p><strong>Testing:</strong> Vitest</p><p><strong>Deploy:</strong> GitHub Pages</p>",
             "related": []
         },
@@ -1139,8 +1179,8 @@
                 "LLM Integration"
             ],
             "image": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174417.webp",
-            "description": "<p>CharGen.AI is a comprehensive, client-side character development engine utilizing Google AI for text and image generation.</p>",
-            "longDescription": "<p><strong>CharGen.AI</strong> is a universal character development engine designed to build highly detailed profiles for any archetype, ranging from humans to complex sci-fi and fantasy subjects. The primary goal is to provide a unified workspace for character creation that seamlessly bridges the gap between statistical attributes and visual representation. Unlike standard text-based character generators, this platform features a unique bidirectional workflow. Users can define over 100 conditional attributes to synthesize distinct reference images, or they can reverse the process by using vision models to extract structured physical and psychological data directly from an uploaded piece of reference art.</p><p>The application operates entirely on the client side to prioritize user privacy and eliminate traditional backend infrastructure. Users navigate through an eight-section attribute builder that dynamically adapts its input fields based on the selected species type. As users modify attributes, generate custom outfits, or draft backstories, all data is saved persistently in the browser using IndexedDB. When a user initiates a generation request, the application bundles the current character state and interfaces directly with Google API endpoints. The state management system coordinates these external responses, updating the local character library in real time and allowing users to organize, bulk export, or iterate on their designs without a central server.</p><p>The platform is engineered using React 18 and Vite, relying on Zustand for efficient state management across the complex, deeply nested attribute trees. The standout technical achievement is the synchronized integration of Google Gemini 2.5 Flash for nuanced text generation and image analysis, alongside Imagen 4.0 for high-fidelity visual synthesis. By committing to a strictly serverless architecture, the system requires users to supply their own API keys, guaranteeing zero telemetry and eliminating hosting costs for heavy AI workloads. This constraint necessitated the heavy optimization of IndexedDB to reliably store and manage large payloads of image data and complex JSON character objects locally within the browser.</p>",
+            "description": "<p>I built a browser-based character engine that turns 100 attributes into structured profiles and Imagen 4.0 artwork.</p>",
+            "longDescription": "<p>I wanted to generate varied, realistic characters across human and fantasy archetypes without paying for server infrastructure or storing user data. I built the entire engine to run locally in the browser using React 18, Vite, and Zustand. The interface uses an 8 section builder with over 100 conditional attributes that adapt dynamically to species selection. Users plug in their own Google API keys, and the application coordinates Gemini 2.5 Flash for text generation and Imagen 4.0 for visual synthesis, saving complex JSON objects and image payloads directly to IndexedDB.</p><p>I started the build in Gemini Canvas, but the app rotted once the single file hit 1000 lines of code. Options disappeared, previous settings reverted, and the interface broke completely. I moved the project to Cursor and GitHub to break the architecture into modular files. Once the app compiled reliably, the AI models struggled with basic logic. Without context, the randomizer picked identical stats repeatedly. The vision pipeline also fought clothing layers. When a prompt described muscle definition, the model rendered bare skin right through the shirt. I reduced that visual bleed by looping reference images back through NanoBanana to enforce outfit consistency.</p><p>The engine now operates in 2 directions. I can generate a character from scratch and lock specific parameters like species or clothing, or I can feed reference art into the vision model to extract structured physical and psychological data. It serves as a working proof of concept, and I plan to use the underlying system to drive an AI tabletop RPG generator and a random persona chat tool.</p>",
             "video": "",
             "gallery": [
                 "media/Apps/CharGen.AI/Screenshot 2026-07-25 174417.webp",
@@ -1165,7 +1205,7 @@
             "websiteLink": "",
             "timestamp": "2026-03-22T16:37:25.240Z",
             "wip": true,
-            "order": 6,
+            "order": 8,
             "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite</p><p><strong>Styling:</strong> Tailwind CSS</p><p><strong>State:</strong> Zustand</p><p><strong>AI:</strong> Google Gemini 2.5 Flash, Imagen 4.0</p><p><strong>Storage:</strong> IndexedDB</p><p><strong>Export:</strong> JSZip</p><p><strong>Deploy:</strong> GitHub Pages</p>",
             "related": []
         },
@@ -1175,8 +1215,8 @@
             "category": "Apps",
             "tags": [],
             "image": "media/Apps/LithoPalletGen/lithopalletgen1.webp",
-            "description": "<p>A vanilla JavaScript color calibration tool utilizing area-averaged pixel sampling for precise multi-material lithophane generation.</p>",
-            "longDescription": "<p><strong>LithoPalletGen</strong> is a specialized color calibration application designed to streamline multi-material lithophane workflows by accurately mapping printed filament swatches. Unlike standard single-pixel color pickers, this tool utilizes a configurable area-averaging eyedropper that samples regions ranging from 32 to 256 pixels. This distinct approach neutralizes surface noise, lighting variances, and filament translucency, ensuring statistically accurate color profiles that reflect the physical characteristics of the printed material.</p><p>The tool operates through a split-pane interface that directly pairs a canvas-based image viewer with a hierarchical palette builder. Users upload photographs of physical prints and systematically construct multi-layer color profiles, categorizing base colors alongside ordered layers of increasing material thickness. As users sample the image, a live-updating bounding box overlays the canvas, aggregating color data across hundreds of pixels to actively filter out the textural inconsistencies inherent in FDM prints.</p><p>Engineered as a zero-dependency vanilla JavaScript application with no build step, the system operates entirely client-side, utilizing IndexedDB for persistent image storage and localStorage for palette serialization. The core technical achievement is the real-time pixel averaging engine, which rapidly executes per-frame <code>getImageData</code> computations across large pixel arrays while maintaining fluid cursor responsiveness. A unified color model anchors the architecture, driving a dual-format export system that outputs PIXEstl-compatible JSON in either HSL or hex notation for immediate downstream processing.</p>",
+            "description": "<p>A zero-dependency calibration tool that averages pixel data from physical filament swatches for multi-material lithophane printing.</p>",
+            "longDescription": "<p>A sunflower field photo of my partner and me printed in CMYW left our faces covered in maroon splotches. Layer thickness kills light transmission before CMYW can produce realistic skin tones. I bought a 2nd AMS2 for extra filaments, but I still needed accurate calibration data.</p><p>My calibration template is a 4x5 grid of 25 mm squares scaling in 0.05 mm steps over a 0.15 mm white backing. I print the swatches at 100% infill, photograph them on a light panel, and upload the image. Even off an X1C, surface texture breaks a single-pixel eyedropper reading. I wrote an area-averaging sampler in vanilla JavaScript that aggregates up to 256 pixels to grab the true color of each thickness. Collapsible palette sets keep the interface readable across multiple materials.</p><p>Having zero dependencies lets me host the app free on GitHub Pages. The engine exports a HSL or hex JSON to import into LithoLab, my PIXEStl-based generator. Skin tones on the next print came out clean, and I dropped to a 0.2 mm nozzle to push the detail.</p>",
             "video": "",
             "gallery": [
                 "media/Apps/LithoPalletGen/lithopalletgen2.webp",
@@ -1190,7 +1230,7 @@
             "websiteLink": "",
             "timestamp": "2026-06-11T17:19:00.407Z",
             "wip": false,
-            "order": 3,
+            "order": 5,
             "specs": "<p><strong>Language:</strong> Vanilla JavaScript</p><p><strong>Build:</strong> None (zero-dependency)</p><p><strong>Engine:</strong> Canvas API (pixel averaging)</p><p><strong>Storage:</strong> IndexedDB, localStorage</p><p><strong>Export:</strong> PIXEstl JSON (HSL/Hex)</p><p><strong>Deploy:</strong> GitHub Pages</p>",
             "related": [
                 {
@@ -1316,7 +1356,7 @@
             "video": "",
             "timestamp": "2026-06-21T22:45:09.610Z",
             "id": "6350",
-            "order": 4,
+            "order": 5,
             "specs": "<h2><strong>Lighting</strong></h2><ul><li><strong>34x</strong> PixelDots RGBW</li><li><strong>12x</strong> Profile Zoom 150W</li><li><strong>18x </strong>6x40w Beye RGBW</li></ul><h2><strong>SFX</strong></h2><ul><li>1x Radiance Hazer</li></ul><h2><strong>Control</strong></h2><ul><li>Wolfmix WMX1</li></ul>",
             "related": [],
             "thumbnailFit": {
@@ -1521,7 +1561,7 @@
             "video": "",
             "timestamp": "2026-06-21T22:55:23.650Z",
             "id": "5045",
-            "order": 5,
+            "order": 6,
             "specs": "",
             "related": [],
             "thumbnailFit": {
@@ -1865,7 +1905,7 @@
             "video": "",
             "timestamp": "2026-07-20T20:00:01.882Z",
             "id": "7590",
-            "order": 7,
+            "order": 8,
             "specs": "<h2><strong>Pixels</strong></h2><ul><li><strong>520x</strong> WS2801 RGB (6 x 1), 12vdc</li></ul><h2><strong>Control</strong></h2><ul><li>Madrix 3.6</li></ul>",
             "related": [],
             "bannerFit": {
@@ -1945,7 +1985,7 @@
             "video": "",
             "timestamp": "2026-07-20T21:09:12.884Z",
             "id": "6808",
-            "order": 1,
+            "order": 2,
             "specs": "<h2><strong>Pixels</strong></h2><ul><li><strong>1152x</strong> WS2815 RGB</li><li class=\"ql-indent-1\"><strong>96x</strong> 0.2m @ 60/m 12vdc</li></ul><h2><strong>Control</strong></h2><ul><li>Madrix 5.x</li></ul>",
             "related": [
                 {
@@ -2532,7 +2572,7 @@
             "video": "",
             "timestamp": "2026-08-01T17:08:27.719Z",
             "id": "1612",
-            "order": 2
+            "order": 3
         },
         {
             "title": "LED PSU Boot Sequencer",
@@ -2663,6 +2703,9 @@
         const FileIcon = (p) => <Icon {...p}><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></Icon>;
         const Globe = (p) => <Icon {...p}><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></Icon>;
         const Play = (p) => <Icon {...p}><polygon points="5 3 19 12 5 21 5 3"/></Icon>;
+        const Pause = (p) => <Icon {...p}><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></Icon>;
+        const Maximize = (p) => <Icon {...p}><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></Icon>;
+        const Minimize = (p) => <Icon {...p}><path d="M8 3v3a2 2 0 0 1-2 2H3"/><path d="M21 8h-3a2 2 0 0 1-2-2V3"/><path d="M3 16h3a2 2 0 0 1 2 2v3"/><path d="M16 21v-3a2 2 0 0 1 2-2h3"/></Icon>;
         const Copy = (p) => <Icon {...p}><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></Icon>;
         const Send = (p) => <Icon {...p}><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></Icon>;
         const Share2 = (p) => <Icon {...p}><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></Icon>;
@@ -2700,6 +2743,12 @@
         const mediaSrc = (item) => (typeof item === 'string' ? item : (item?.url || ''));
         const mediaCaption = (item) => (typeof item === 'string' ? '' : (item?.caption || ''));
         const mediaFit = (item) => (typeof item === 'string' ? null : (item?.fit || null));
+        const mediaPoster = (item) => (typeof item === 'string' ? null : (item?.poster || null));
+
+        // Self-hosted (non-YouTube) video files uploaded via the CMS's video
+        // converter always come out as .mp4, but a manually-typed URL could point
+        // at another common container.
+        const isVideoUrl = (url) => typeof url === 'string' && /\.(mp4|webm|mov|m4v)$/i.test(url.split('?')[0]);
 
         // Returns inline style for a cropped image. When scale=1, only objectPosition
         // is set so CSS hover transitions (e.g. group-hover:scale-105) still work.
@@ -2789,7 +2838,7 @@
         // label is the most accurate description available.
         const describeMedia = (url, index, total, projectTitle) => {
             const position = `${index + 1} of ${total}`;
-            return getYouTubeId(url)
+            return (getYouTubeId(url) || isVideoUrl(url))
                 ? `Play video ${position} for ${projectTitle}`
                 : `${projectTitle}, image ${position}`;
         };
@@ -3015,6 +3064,118 @@
             );
         };
 
+        // Self-hosted video playback with custom chrome (no native browser controls):
+        // click-to-play, a click/drag-to-seek progress bar, and a fullscreen toggle
+        // that keeps the custom controls visible (fullscreening the wrapper, not the
+        // bare <video> element).
+        const VideoPlayer = ({ src, poster, className = "", autoPlay = false }) => {
+            const videoRef = useRef(null);
+            const containerRef = useRef(null);
+            const [playing, setPlaying] = useState(false);
+            const [currentTime, setCurrentTime] = useState(0);
+            const [duration, setDuration] = useState(0);
+            const [isFullscreen, setIsFullscreen] = useState(false);
+            const [seeking, setSeeking] = useState(false);
+
+            useEffect(() => {
+                if (!autoPlay) return;
+                videoRef.current?.play().catch(() => {});
+            }, [src, autoPlay]);
+
+            useEffect(() => {
+                const onFsChange = () => setIsFullscreen(document.fullscreenElement === containerRef.current);
+                document.addEventListener('fullscreenchange', onFsChange);
+                return () => document.removeEventListener('fullscreenchange', onFsChange);
+            }, []);
+
+            const togglePlay = (e) => {
+                e?.stopPropagation();
+                const v = videoRef.current;
+                if (!v) return;
+                if (v.paused) v.play().catch(() => {});
+                else v.pause();
+            };
+
+            const handleSeekInput = (e) => {
+                e.stopPropagation();
+                setSeeking(true);
+                setCurrentTime(parseFloat(e.target.value));
+            };
+
+            const commitSeek = (e) => {
+                e.stopPropagation();
+                const v = videoRef.current;
+                if (v) v.currentTime = parseFloat(e.target.value);
+                setSeeking(false);
+            };
+
+            const toggleFullscreen = (e) => {
+                e.stopPropagation();
+                if (document.fullscreenElement) document.exitFullscreen();
+                else containerRef.current?.requestFullscreen?.();
+            };
+
+            const formatTime = (s) => {
+                if (!isFinite(s) || s < 0) s = 0;
+                const m = Math.floor(s / 60);
+                const sec = Math.floor(s % 60).toString().padStart(2, '0');
+                return `${m}:${sec}`;
+            };
+
+            const pct = duration > 0 ? (currentTime / duration) * 100 : 0;
+
+            return (
+                <div ref={containerRef} onClick={(e) => e.stopPropagation()} className={`relative bg-black flex items-center justify-center group ${className}`}>
+                    <video
+                        ref={videoRef}
+                        src={src}
+                        poster={poster || undefined}
+                        playsInline
+                        onClick={togglePlay}
+                        onPlay={() => setPlaying(true)}
+                        onPause={() => setPlaying(false)}
+                        onEnded={() => setPlaying(false)}
+                        onLoadedMetadata={(e) => setDuration(e.target.duration || 0)}
+                        onTimeUpdate={(e) => { if (!seeking) setCurrentTime(e.target.currentTime); }}
+                        className="w-full h-full max-h-full object-contain cursor-pointer"
+                    />
+
+                    {!playing && (
+                        <button type="button" onClick={togglePlay} aria-label="Play video" className="absolute inset-0 flex items-center justify-center">
+                            <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
+                                <Play className="text-zinc-900 fill-zinc-900 ml-1" size={28} />
+                            </div>
+                        </button>
+                    )}
+
+                    <div className="absolute bottom-0 left-0 right-0 px-3 pb-2 pt-6 bg-gradient-to-t from-black/80 to-transparent flex items-center gap-3">
+                        <button type="button" onClick={togglePlay} aria-label={playing ? 'Pause' : 'Play'} className="text-white hover:text-cyan-400 transition-colors flex-shrink-0">
+                            {playing ? <Pause size={18} /> : <Play size={18} />}
+                        </button>
+                        <span className="text-xs font-mono text-zinc-300 flex-shrink-0 hidden sm:inline">
+                            {formatTime(currentTime)} / {formatTime(duration)}
+                        </span>
+                        <input
+                            type="range"
+                            className="video-progress flex-1"
+                            min="0"
+                            max={duration || 0}
+                            step="0.01"
+                            value={currentTime}
+                            style={{ background: `linear-gradient(to right, #22d3ee ${pct}%, rgba(255,255,255,0.25) ${pct}%)` }}
+                            onInput={handleSeekInput}
+                            onChange={commitSeek}
+                            onClick={(e) => e.stopPropagation()}
+                            aria-label="Seek"
+                        />
+                        <button type="button" onClick={toggleFullscreen} aria-label={isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'} className="text-white hover:text-cyan-400 transition-colors flex-shrink-0">
+                            {isFullscreen ? <Minimize size={18} /> : <Maximize size={18} />}
+                        </button>
+                    </div>
+                </div>
+            );
+        };
+
         const Lightbox = ({ images, initialIndex, onClose, projectTitle }) => {
             const [index, setIndex] = useState(initialIndex);
             // Keyed to the index rather than reset in an effect, so navigating to the
@@ -3075,6 +3236,7 @@
             const caption = mediaCaption(currentItem);
             const captionExpanded = expandedFor === index;
             const ytId = getYouTubeId(currentUrl);
+            const isVid = !ytId && isVideoUrl(currentUrl);
 
             // Only offer the toggle when the text is actually cut off. Measuring is
             // skipped while expanded (nothing is clamped then), which leaves the last
@@ -3136,6 +3298,10 @@
                                         onTouchEnd={onTouchEnd}
                                     ></div>
                                 </div>
+                            </div>
+                        ) : isVid ? (
+                            <div className="relative w-full h-full max-w-5xl aspect-video" onClick={stopClick}>
+                                <VideoPlayer src={currentUrl} poster={mediaPoster(currentItem)} className="w-full h-full rounded-lg shadow-2xl" autoPlay />
                             </div>
                         ) : (
                             <img
@@ -3336,15 +3502,29 @@
                                                 {project.gallery.map((item, i) => {
                                                     const mediaUrl = mediaSrc(item);
                                                     const ytId = getYouTubeId(mediaUrl);
+                                                    const isVid = !ytId && isVideoUrl(mediaUrl);
                                                     const label = mediaCaption(item) || describeMedia(mediaUrl, i, project.gallery.length, project.title);
                                                     return (
-                                                        <button type="button" key={i} onClick={() => setLightboxIndex(i)} aria-label={ytId ? label : `Open full size: ${label}`} className="w-full rounded-lg overflow-hidden border border-zinc-800 aspect-video group cursor-pointer relative bg-zinc-900">
+                                                        <button type="button" key={i} onClick={() => setLightboxIndex(i)} aria-label={(ytId || isVid) ? label : `Open full size: ${label}`} className="w-full rounded-lg overflow-hidden border border-zinc-800 aspect-video group cursor-pointer relative bg-zinc-900">
                                                             {ytId ? (
                                                                 <>
                                                                     <img src={`https://img.youtube.com/vi/${ytId}/hqdefault.jpg`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90" alt="" />
                                                                     <div aria-hidden="true" className="absolute inset-0 flex items-center justify-center">
                                                                         <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                                                                             <Play className="text-white fill-white ml-1" size={20} /> 
+                                                                        </div>
+                                                                    </div>
+                                                                </>
+                                                            ) : isVid ? (
+                                                                <>
+                                                                    {mediaPoster(item) ? (
+                                                                        <img src={mediaPoster(item)} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90" alt="" />
+                                                                    ) : (
+                                                                        <div className="w-full h-full bg-zinc-800" />
+                                                                    )}
+                                                                    <div aria-hidden="true" className="absolute inset-0 flex items-center justify-center">
+                                                                        <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                                                            <Play className="text-zinc-900 fill-zinc-900 ml-1" size={20} />
                                                                         </div>
                                                                     </div>
                                                                 </>

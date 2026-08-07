@@ -165,6 +165,10 @@
                      <i class="ph ph-upload-simple"></i> Upload
                      <input type="file" accept="image/*" multiple class="hidden" onchange="handleGalleryMultiUpload(this)">
                    </label>
+                   <label class="cursor-pointer text-xs bg-sky-100 text-sky-600 px-2 py-1 rounded hover:bg-sky-200 font-bold flex items-center gap-1">
+                     <i class="ph ph-film-slate"></i> Upload Video
+                     <input type="file" accept="video/*" multiple class="hidden" onchange="handleGalleryVideoUpload(this)">
+                   </label>
                    <button type="button" onclick="addGalleryRow()" class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded hover:bg-indigo-200 font-bold">+ Add URL</button>
                  </div>
              </div>
@@ -387,6 +391,15 @@
         if (!res.ok) throw new Error(await res.text());
         return res.json();
       },
+      async uploadVideo(file, category, project) {
+        const form = new FormData();
+        form.append('file', file);
+        form.append('category', category);
+        form.append('project', project);
+        const res = await fetch('/api/media/upload-video', { method: 'POST', body: form });
+        if (!res.ok) throw new Error(await res.text());
+        return res.json();
+      },
       async reorderProjects(items) {
         return this.post('/projects/reorder', { items });
       }
@@ -563,6 +576,10 @@
         if (yt) return `https://img.youtube.com/vi/${yt}/hqdefault.jpg`;
         if (url.startsWith('media/')) return '/' + url;
         return url;
+    }
+
+    function isVideoPath(url) {
+        return typeof url === 'string' && /\.(mp4|webm|mov|m4v)$/i.test(url.split('?')[0]);
     }
 
     function initQuill() {
@@ -837,7 +854,7 @@
       if (Array.isArray(p.gallery) && p.gallery.length > 0) {
          p.gallery.forEach(item => {
             if (typeof item === 'string') addGalleryRow(item, '', null, true);
-            else addGalleryRow(item?.url || '', item?.caption || '', item?.fit || null, true);
+            else addGalleryRow(item?.url || '', item?.caption || '', item?.fit || null, true, item?.poster || '');
          });
       } else {
         addGalleryRow("", "", null, true);
@@ -947,29 +964,33 @@
         if (!isBulk) isDirty = true;
     }
 
-    function addGalleryRow(url = "", caption = "", fit = null, isBulk = false) {
+    function addGalleryRow(url = "", caption = "", fit = null, isBulk = false, poster = "") {
         const container = document.getElementById('gallery-container');
         const div = document.createElement('div');
         div.className = "gallery-row space-y-1 bg-white border border-slate-200 rounded p-1";
         div.draggable = true;
         const fitJson = fit ? JSON.stringify(fit) : '';
         const hasFit = !!fitJson;
+        const isVideo = isVideoPath(url);
+        const thumbSrc = poster ? getThumbnailSrc(poster) : getThumbnailSrc(url);
         div.innerHTML = `
             <div class="flex gap-2 items-center">
                 <span class="drag-handle cursor-grab text-slate-300 hover:text-slate-500 px-1"><i class="ph ph-dots-six-vertical"></i></span>
                 <span class="index-badge text-[10px] font-bold text-slate-400 w-6"></span>
                 <div class="gallery-thumb-wrap relative w-10 h-10 flex-shrink-0 ${url ? '' : 'hidden'}">
-                    <img class="gallery-thumb w-10 h-10 object-cover rounded bg-slate-100 cursor-zoom-in" src="${escAttr(getThumbnailSrc(url))}" onerror="this.closest('.gallery-thumb-wrap').classList.add('hidden')">
+                    <img class="gallery-thumb w-10 h-10 object-cover rounded bg-slate-100 cursor-zoom-in" src="${escAttr(thumbSrc)}" onerror="this.closest('.gallery-thumb-wrap').classList.add('hidden')">
+                    ${isVideo ? '<i class="ph ph-play-circle absolute inset-0 flex items-center justify-center text-white text-lg drop-shadow"></i>' : ''}
                 </div>
-                <input type="text" placeholder="Image path, URL, or YouTube link" value="${escAttr(url)}" class="gallery-url flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="onGalleryUrlChange(this)">
+                <input type="text" placeholder="Image path, video path, URL, or YouTube link" value="${escAttr(url)}" class="gallery-url flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="onGalleryUrlChange(this)">
                 <button type="button" onclick="openGalleryCrop(this.closest('.gallery-row'))" title="Set crop"
-                        class="gallery-crop-btn flex-shrink-0 px-2 transition-colors ${hasFit ? 'text-indigo-500' : 'text-slate-300 hover:text-indigo-500'}">
+                        class="gallery-crop-btn flex-shrink-0 px-2 transition-colors ${isVideo ? 'hidden' : ''} ${hasFit ? 'text-indigo-500' : 'text-slate-300 hover:text-indigo-500'}">
                     <i class="ph ph-crop"></i>
                 </button>
                 <button type="button" onclick="this.closest('.gallery-row').remove(); updateListIndices('gallery-container'); isDirty=true;" class="text-red-400 hover:text-red-600 px-2 transition-colors"><i class="ph ph-trash"></i></button>
             </div>
             <input type="text" placeholder="Caption (optional — shown in the media viewer)" value="${escAttr(caption)}" class="gallery-caption w-full bg-white border border-slate-200 rounded px-2 py-1 text-xs text-slate-500 focus:border-indigo-500 outline-none" oninput="isDirty=true">
             <input type="hidden" class="gallery-fit" value="${escAttr(fitJson)}">
+            <input type="hidden" class="gallery-poster" value="${escAttr(poster)}">
         `;
         container.appendChild(div);
         updateListIndices('gallery-container');
@@ -981,6 +1002,11 @@
         const row = input.closest('.gallery-row');
         const wrap = row.querySelector('.gallery-thumb-wrap');
         const thumb = row.querySelector('.gallery-thumb');
+        const cropBtn = row.querySelector('.gallery-crop-btn');
+        const posterInput = row.querySelector('.gallery-poster');
+        // The URL changed by hand, so any previously-generated poster no longer applies.
+        if (posterInput) posterInput.value = '';
+        if (cropBtn) cropBtn.classList.toggle('hidden', isVideoPath(input.value));
         const src = getThumbnailSrc(input.value);
         if (src) { thumb.src = src; wrap.classList.remove('hidden'); }
         else { wrap.classList.add('hidden'); }
@@ -1170,6 +1196,33 @@
       input.value = '';
     }
 
+    async function handleGalleryVideoUpload(input) {
+      const files = Array.from(input.files);
+      if (!files.length) return;
+      const category = document.getElementById('category').value;
+      const project = document.getElementById('title').value;
+      if (!project) { alert('Please enter a project title first.'); input.value = ''; return; }
+
+      showStatus(`Converting ${files.length} video(s)... this can take a minute per video`);
+      let succeeded = 0;
+      for (const file of files) {
+        try {
+          const result = await api.uploadVideo(file, category, project);
+          addGalleryRow(result.path, '', null, false, result.poster || '');
+          succeeded++;
+        } catch (err) {
+          console.error('Video upload failed for', file.name, err);
+          onError(err);
+        }
+      }
+      isDirty = true;
+      hideStatus();
+      if (succeeded > 0) {
+        Toastify({ text: `${succeeded} video(s) converted and uploaded!`, duration: 3000, backgroundColor: "#10b981" }).showToast();
+      }
+      input.value = '';
+    }
+
     async function handleFileUpload(input) {
       const files = Array.from(input.files);
       if (!files.length) return;
@@ -1239,13 +1292,15 @@
           const url = row.querySelector('.gallery-url').value.trim();
           const caption = row.querySelector('.gallery-caption').value.trim();
           const fitRaw = row.querySelector('.gallery-fit')?.value?.trim() || '';
+          const poster = row.querySelector('.gallery-poster')?.value?.trim() || '';
           let fit = null;
           try { fit = fitRaw ? JSON.parse(fitRaw) : null; } catch {}
-          const hasExtra = caption || fit;
+          const hasExtra = caption || fit || poster;
           if (hasExtra) {
               const obj = { url };
               if (caption) obj.caption = caption;
               if (fit) obj.fit = fit;
+              if (poster) obj.poster = poster;
               return obj;
           }
           return url;
