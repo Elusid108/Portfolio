@@ -108,10 +108,11 @@ app.post('/api/media/upload-file', upload.single('file'), async (req, res) => {
   }
 });
 
-app.post('/api/media/convert-all', async (req, res) => {
+app.post('/api/media/fix-structure', async (req, res) => {
   try {
-    const result = await media.convertAllMedia();
-    res.json({ success: true, ...result });
+    const result = media.fixFileStructure();
+    const publishResult = publish();
+    res.json({ success: true, ...result, published: publishResult.success });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

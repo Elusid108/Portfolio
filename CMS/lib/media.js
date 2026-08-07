@@ -1,11 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 const sharp = require('sharp');
-const { getProjects, getSettings, saveProject } = require('./data');
+const { getProjects } = require('./data');
 
 const PORTFOLIO_ROOT = path.join(__dirname, '..', '..');
 const MEDIA_DIR = path.join(PORTFOLIO_ROOT, 'media');
-const ARCHIVE_DIR = path.join(PORTFOLIO_ROOT, 'archive');
 const DATA_DIR = path.join(__dirname, '..', 'data');
 
 const CATEGORY_FOLDER_MAP = {
@@ -16,8 +15,6 @@ const CATEGORY_FOLDER_MAP = {
   'Solutions': 'Fabrication',
   'Integration': 'Integration'
 };
-
-const NON_WEBP_PATTERN = /\.(jpg|jpeg|png|gif|bmp|tiff|tif|heic|heif)$/i;
 
 function sanitize(name) {
   return name.replace(/[<>:"/\\|?*]/g, '_');
@@ -61,109 +58,6 @@ async function processUpload(file, category, projectName) {
   return webPath;
 }
 
-function walkImages(dir, skipDirs = []) {
-  let results = [];
-  if (!fs.existsSync(dir)) return results;
-
-  for (const entry of fs.readdirSync(dir)) {
-    const full = path.join(dir, entry);
-    if (skipDirs.includes(entry)) continue;
-
-    if (fs.statSync(full).isDirectory()) {
-      results = results.concat(walkImages(full, skipDirs));
-    } else if (NON_WEBP_PATTERN.test(entry)) {
-      results.push(full);
-    }
-  }
-  return results;
-}
-
-async function convertAllMedia() {
-  let converted = 0;
-  let archived = 0;
-  let refixed = 0;
-  const pathMap = {};
-
-  // Pass 1: re-convert any archived originals to fix images that were
-  // converted before EXIF orientation handling was added. Regenerates the
-  // WebP at the mirrored media/ path (overwriting), with .rotate() applied.
-  const archivedPaths = walkImages(ARCHIVE_DIR);
-  for (const archivedPath of archivedPaths) {
-    const relFromArchive = path.relative(ARCHIVE_DIR, archivedPath);
-    const dir = path.dirname(path.join(MEDIA_DIR, relFromArchive));
-    const stem = path.parse(archivedPath).name;
-    const webpDest = path.join(dir, `${stem}.webp`);
-
-    if (!fs.existsSync(webpDest)) continue;
-
-    try {
-      fs.mkdirSync(dir, { recursive: true });
-      await sharp(archivedPath).rotate().webp({ quality: 85 }).toFile(webpDest);
-      refixed++;
-    } catch (err) {
-      console.error(`Failed to re-fix ${archivedPath}:`, err.message);
-    }
-  }
-
-  // Pass 2: convert any non-WebP originals still sitting in media/.
-  const imagePaths = walkImages(MEDIA_DIR, ['.optimized']);
-
-  for (const imgPath of imagePaths) {
-    const dir = path.dirname(imgPath);
-    const stem = path.parse(imgPath).name;
-    const webpDest = path.join(dir, `${stem}.webp`);
-
-    try {
-      await sharp(imgPath).rotate().webp({ quality: 85 }).toFile(webpDest);
-      converted++;
-
-      const relFromMedia = path.relative(MEDIA_DIR, imgPath);
-      const archiveDest = path.join(ARCHIVE_DIR, relFromMedia);
-      fs.mkdirSync(path.dirname(archiveDest), { recursive: true });
-      fs.renameSync(imgPath, archiveDest);
-      archived++;
-
-      const oldWebPath = 'media/' + relFromMedia.replace(/\\/g, '/');
-      const newWebPath = 'media/' + path.relative(MEDIA_DIR, webpDest).replace(/\\/g, '/');
-      pathMap[oldWebPath] = newWebPath;
-    } catch (err) {
-      console.error(`Failed to convert ${imgPath}:`, err.message);
-    }
-  }
-
-  if (Object.keys(pathMap).length > 0) {
-    updateDataReferences(pathMap);
-  }
-
-  const optimizedDir = path.join(MEDIA_DIR, '.optimized');
-  if (fs.existsSync(optimizedDir)) {
-    fs.rmSync(optimizedDir, { recursive: true, force: true });
-  }
-
-  return { converted, archived, refixed };
-}
-
-function updateDataReferences(pathMap) {
-  const projectsPath = path.join(DATA_DIR, 'projects.json');
-  const settingsPath = path.join(DATA_DIR, 'settings.json');
-
-  if (fs.existsSync(projectsPath)) {
-    let text = fs.readFileSync(projectsPath, 'utf-8');
-    for (const [oldPath, newPath] of Object.entries(pathMap)) {
-      text = text.split(oldPath).join(newPath);
-    }
-    fs.writeFileSync(projectsPath, text, 'utf-8');
-  }
-
-  if (fs.existsSync(settingsPath)) {
-    let text = fs.readFileSync(settingsPath, 'utf-8');
-    for (const [oldPath, newPath] of Object.entries(pathMap)) {
-      text = text.split(oldPath).join(newPath);
-    }
-    fs.writeFileSync(settingsPath, text, 'utf-8');
-  }
-}
-
 async function processFileUpload(file, category, projectName) {
   const originalName = sanitize(file.originalname);
   const folder = CATEGORY_FOLDER_MAP[category] || category;
@@ -178,4 +72,152 @@ async function processFileUpload(file, category, projectName) {
   return webPath;
 }
 
-module.exports = { processUpload, processFileUpload, convertAllMedia, CATEGORY_FOLDER_MAP };
+// --- Fix File Structure ---
+//
+// Media on disk is originally filed under media/<categoryFolder>/<projectTitle>/...
+// but renaming a project's title or moving it to a different category never moves
+// the files that were already uploaded — it just changes the JSON, leaving the old
+// path working but stale. fixFileStructure() walks every project, moves/copies its
+// media onto the canonical path for its *current* title/category, rewrites every
+// reference in projects.json, and removes whatever empty folders are left behind.
+
+function targetWebDirForProject(project) {
+  const folder = CATEGORY_FOLDER_MAP[project.category] || project.category || 'Misc';
+  const safeProject = sanitize(project.title || 'Untitled');
+  return `media/${folder}/${safeProject}`;
+}
+
+function toWebPath(absPath) {
+  return path.relative(PORTFOLIO_ROOT, absPath).split(path.sep).join('/');
+}
+
+function webPathToAbs(webPath) {
+  return path.join(PORTFOLIO_ROOT, ...webPath.split('/'));
+}
+
+function uniquePath(destAbs) {
+  if (!fs.existsSync(destAbs)) return destAbs;
+  const dir = path.dirname(destAbs);
+  const ext = path.extname(destAbs);
+  const base = path.basename(destAbs, ext);
+  let i = 2;
+  let candidate;
+  do {
+    candidate = path.join(dir, `${base}-${i}${ext}`);
+    i++;
+  } while (fs.existsSync(candidate));
+  return candidate;
+}
+
+// Moves (or, for assets shared between projects, copies) a single media
+// reference onto the project's canonical folder. Returns the possibly-updated
+// web path to store back in the JSON.
+function relocateAsset(oldWebPath, targetWebDir, ctx) {
+  if (typeof oldWebPath !== 'string' || !oldWebPath.startsWith('media/')) return oldWebPath;
+
+  const parts = oldWebPath.split('/');
+  if (parts.length < 4) return oldWebPath; // not scoped to a project folder, leave alone
+
+  const suffix = parts.slice(3).join('/');
+  const newWebPath = `${targetWebDir}/${suffix}`;
+
+  if (newWebPath === oldWebPath) return oldWebPath;
+
+  const oldAbs = webPathToAbs(oldWebPath);
+  const desiredNewAbs = webPathToAbs(newWebPath);
+
+  if (fs.existsSync(oldAbs)) {
+    const newAbs = uniquePath(desiredNewAbs);
+    fs.mkdirSync(path.dirname(newAbs), { recursive: true });
+    fs.renameSync(oldAbs, newAbs);
+    ctx.movedFrom.set(oldAbs, newAbs);
+    ctx.moved++;
+    return toWebPath(newAbs);
+  }
+
+  if (ctx.movedFrom.has(oldAbs)) {
+    const relocated = ctx.movedFrom.get(oldAbs);
+    if (relocated === desiredNewAbs) {
+      return toWebPath(relocated);
+    }
+    // Same source file already relocated for a different project reference
+    // (a shared asset) — give this project its own copy at its target path.
+    const newAbs = uniquePath(desiredNewAbs);
+    fs.mkdirSync(path.dirname(newAbs), { recursive: true });
+    fs.copyFileSync(relocated, newAbs);
+    ctx.copied++;
+    return toWebPath(newAbs);
+  }
+
+  ctx.missing++;
+  ctx.warnings.push(oldWebPath);
+  return oldWebPath;
+}
+
+function removeEmptyDirs(dir, isRoot = false) {
+  if (!fs.existsSync(dir)) return 0;
+  let removedCount = 0;
+
+  for (const entry of fs.readdirSync(dir)) {
+    const full = path.join(dir, entry);
+    if (fs.statSync(full).isDirectory()) {
+      removedCount += removeEmptyDirs(full, false);
+    }
+  }
+
+  if (!isRoot && fs.readdirSync(dir).length === 0) {
+    fs.rmdirSync(dir);
+    removedCount++;
+  }
+
+  return removedCount;
+}
+
+function fixFileStructure() {
+  const projects = getProjects();
+  const ctx = { moved: 0, copied: 0, missing: 0, warnings: [], movedFrom: new Map() };
+
+  for (const project of projects) {
+    const targetWebDir = targetWebDirForProject(project);
+
+    if (typeof project.image === 'string' && project.image) {
+      project.image = relocateAsset(project.image, targetWebDir, ctx);
+    }
+
+    if (Array.isArray(project.gallery)) {
+      project.gallery = project.gallery.map(item => {
+        if (typeof item === 'string') {
+          return relocateAsset(item, targetWebDir, ctx);
+        }
+        if (item && typeof item === 'object' && typeof item.url === 'string') {
+          return { ...item, url: relocateAsset(item.url, targetWebDir, ctx) };
+        }
+        return item;
+      });
+    }
+
+    if (Array.isArray(project.files)) {
+      project.files = project.files.map(file => {
+        if (file && typeof file.url === 'string') {
+          return { ...file, url: relocateAsset(file.url, targetWebDir, ctx) };
+        }
+        return file;
+      });
+    }
+  }
+
+  const projectsPath = path.join(DATA_DIR, 'projects.json');
+  fs.writeFileSync(projectsPath, JSON.stringify(projects, null, 2), 'utf-8');
+
+  const removedDirs = removeEmptyDirs(MEDIA_DIR, true);
+
+  return {
+    moved: ctx.moved,
+    copied: ctx.copied,
+    missing: ctx.missing,
+    removedDirs,
+    warnings: ctx.warnings
+  };
+}
+
+module.exports = { processUpload, processFileUpload, fixFileStructure, CATEGORY_FOLDER_MAP };

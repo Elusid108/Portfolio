@@ -52,13 +52,13 @@
       "Hand tools",
       "Power tools"
     ],
-    "image": "media/Lighting/Temple San Francisco/20210516_134200.webp",
+    "image": "media/Lighting/Immersive Dance Lighting Rig/20210516_134200.webp",
     "description": "<p><strong>Temple Nightclub | San Francisco </strong>- The main room remodel at Temple San Francisco wraps a 208V curved video ceiling and 10 custom pixel pillars into a flat-black, switched-relay infrastructure built across a two-year pandemic shutdown.</p>",
     "longDescription": "<p>The main room at Temple Nightclub in San Francisco required a dense hybrid lighting, pixel and video rig that could vanish entirely into the dark when unlit. I designed the system around a curved video ceiling wrapping behind the DJ, 10 custom LED pixel pillars, beams, wash's, profiles, all built in flat black. Before aesthetic integration could even start, the physical ceiling forced a massive life-safety detour. Because the curved video wall blocked standard fire suppression coverage, I brought in a fire crew to reroute the sprinklers both above and below the solid ceiling plane using side sprayers with a 15 ft reach. When we found the main sewer drain blocked, we had to run the drainage above grade through an alley test valve and cut in a new low-point basement drain just to clear the system.</p><p>Powering that density without burning equipment lifespan meant overhauling the venue's electrical capacity with new 400A and 200A services. I split the load across two new panels: 24 circuits of 208V on twist-lock connectors dedicated exclusively to the video ceiling, and 60 circuits of standard 120V Edison for the lighting. Rather than relying on independent wall switches, I wired the entire rig onto switched relays grouped in clusters of 4. That setup gave us centralized shutdown so fixtures would not sit sucking dust and burning hours during dark days, while hardwired house lights let staff handle maintenance without booting the show systems.</p><p>What was supposed to be a three-month build turned into a two-year pandemic ordeal where I cycled through three separate crews and stepped up to manage electricians, plumbers, and carpenters directly. The hardest recurring fight was not mechanical, but restraint. The owner and creative director wanted every fixture and screen blasted at 100% all the time. I argued that crowding that many lights into a small room is about having angles and combinations, like a single-color sweep or white eggbeater prisms, not raw brightness. When we finally opened and they tested that full-blast look on the crowd, the patrons rejected it within 10 minutes. When we ran the rig my way, linking the Resolume and Madrix engines across the ceiling, pillars, and scrap-built VIP tape walls, the entire room lit up on the first try without a single glitch.</p>",
     "video": "",
     "gallery": [
       {
-        "url": "media/Lighting/Temple San Francisco/20210516_134200.webp",
+        "url": "media/Lighting/Immersive Dance Lighting Rig/20210516_134200.webp",
         "fit": {
           "scale": 1.15,
           "x": 32,
@@ -72,7 +72,7 @@
       "https://youtu.be/8V60HmyFubU",
       "https://youtu.be/GrSkUee2oF0",
       {
-        "url": "media/Lighting/Main Room - Temple Nightclub _ San Francisco/Screenshot 2025-03-12 151156.webp",
+        "url": "media/Lighting/Immersive Dance Lighting Rig/Screenshot 2025-03-12 151156.webp",
         "fit": {
           "scale": 1,
           "x": 50.5,
@@ -80,7 +80,7 @@
         }
       },
       {
-        "url": "media/Lighting/Main Room - Temple Nightclub _ San Francisco/Screenshot 2025-03-17 193550.webp",
+        "url": "media/Lighting/Immersive Dance Lighting Rig/Screenshot 2025-03-17 193550.webp",
         "fit": {
           "scale": 1,
           "x": 33.6,
@@ -88,7 +88,7 @@
         }
       },
       {
-        "url": "media/Lighting/Main Room - Temple Nightclub _ San Francisco/Screenshot 2025-03-12 151235.webp",
+        "url": "media/Lighting/Immersive Dance Lighting Rig/Screenshot 2025-03-12 151235.webp",
         "fit": {
           "scale": 1,
           "x": 47.7,
@@ -96,7 +96,7 @@
         }
       },
       "https://www.youtube.com/watch?v=yeFIdQywa5U",
-      "media/Lighting/Main Room - Temple Nightclub _ San Francisco/Screenshot 2025-03-14 124321.webp",
+      "media/Lighting/Immersive Dance Lighting Rig/Screenshot 2025-03-14 124321.webp",
       {
         "url": "media/Lighting/Immersive Dance Lighting Rig/IMG_20200205_234101.webp",
         "fit": {
@@ -112,7 +112,7 @@
     "files": [
       {
         "name": "Instrument schedule",
-        "url": "media/Lighting/Main Room - Temple Nightclub _ San Francisco/files/Temple SF instrument schedule.pdf",
+        "url": "media/Lighting/Immersive Dance Lighting Rig/files/Temple SF instrument schedule.pdf",
         "description": "Instrument schedule for the 2020 remodel of the main room lighting rig at Temple Nightclub in San Francisco"
       }
     ],
@@ -223,7 +223,9 @@
     "id": "2944",
     "title": "LithoLab",
     "category": "Apps",
-    "tags": [],
+    "tags": [
+      "LLM Integration"
+    ],
     "image": "media/Apps/LithoLab/image2.webp",
     "description": "<p>A client-side web application that generates multi-color lithophanes in custom shapes with an exportable border for 3D printing.</p>",
     "longDescription": "<p>Four-color generators output rectangular prints and turn skin tones into magenta splotches. I wanted multi-color prints in custom shapes with an independent border, so I ported the PIXEStl engine to run client-side in a browser. Hosting the application on GitHub Pages kept it lightweight without server overhead.</p><p>Running mesh processing locally hit strict cache limits in the browser immediately. Early prints on a Bambu Lab X1C also exposed a persistent micro-gap along the right edge between the lithophane and its border, which took several of failed attempts to eliminate. I stripped the calibration tools out of the main application and built LithoPalletGen as a standalone utility to keep the primary interface clean. This companion app handles color mapping for any filament palette, extending past 4 colors to fix the banding on faces.</p><p>My own printer runs an 8 color setup across 2 AMS2 units, but the software supports any palette size. Once calibrated and backlit, the physical prints match the source photos.</p>",
@@ -456,7 +458,7 @@
     "timestamp": "2026-01-13T00:14:02.780Z",
     "title": "Main Room - Temple SF",
     "category": "Integration",
-    "image": "media/Integration/Temple - San Francisco/banner.webp",
+    "image": "media/Integration/Main Room - Temple SF/banner.webp",
     "description": "<p><strong>Temple Nightclub | San Francisco</strong> - Routing a three layer club rig through an inherited lighting console to survive single operator control.</p>",
     "longDescription": "<p>The owners at Temple San Francisco wanted 1 person to operate the lighting, video, and pixels in the main room simultaneously. That was never going to work with 2 hands, especially since we were stuck with the Road Hog 4 that came from the last rig. It lacked the routing capability to act as a central hub. Releasing a DMX overwrite on that console took a macro requiring dozens of screen presses. That cost several seconds, which meant missing the drop on any heavy track.</p><p>I bypassed the console entirely by routing Art-Net out of Resolume and the Hog into Madrix. I merged them using highest takes priority (HTP) on the RGB channels across 8 universes of sACN. That gave instant control back and forth just by blacking out 1 system. I also routed the video so a clip on the ceiling sliced across the main screens, overrode console colors, and drove the pillar pixels. Mask patterns kept the intensity in check. Behind the booth, I built a dedicated Resolume server with RAID6 SSDs to push simultaneous 4K layers, and we installed 400 A and 200 A electrical services to power the room. My crew built wireless receivers using ESP32s for the acrylic VIP tables and I installed a pixel wall on the mezzanine for matching ambiance.</p><p>I tore the pixel mapping down to the ground 6 times before I got all 3 systems talking to each other clean. The first night they fired together without tearing, I got goosebumps. But my control scheme was too ambitious. I installed a 65 in touchscreen running OSC Pilot to handle signal routing and live previews. It technically worked, but live operation under pressure is a different beast. The operators ripped the screen out after a few months and went back to MIDI controllers.</p><p>The demand for 1 operator survived for slow nights. Using a global fader for blackouts and the video routing from the ceiling, 1 person could run the whole room from a couple of controllers. But for busy nights and headlining DJs, the reality of the rig won out. They put 2 operators in the booth.</p>",
     "websiteLink": "",
@@ -479,8 +481,8 @@
       "TCP/IP"
     ],
     "gallery": [
-      "media/Integration/Temple - San Francisco/20210514_2025472.webp",
-      "media/Integration/Temple Nightclub - San Francisco/IMG_20200504_185605.webp",
+      "media/Integration/Main Room - Temple SF/20210514_2025472.webp",
+      "media/Integration/Main Room - Temple SF/IMG_20200504_185605.webp",
       "media/Integration/Main Room - Temple SF/20210515_184126.webp",
       "media/Integration/Main Room - Temple SF/20210429_122346.webp",
       "media/Integration/Main Room - Temple SF/IMG_20200707_150706.webp"
@@ -564,16 +566,16 @@
       "Hand tools",
       "SPI"
     ],
-    "image": "media/Electronics/Pixel Panel PCB/20200910_134441.webp",
+    "image": "media/Electronics/LED Pixel Panel/20200910_134441.webp",
     "description": "<p><strong>Temple Nightclub | San Francisco</strong> - With eight feet from tile to joists and a basement ceiling gutted to the wood, we bolted custom LED dancefloor boards directly to aluminum T-track to build an array under an inch thick.</p>",
     "longDescription": "<p>We ripped out and rerouted the fire suppression system and two layers of ceiling drywall just to buy a little breathing room. From the tile floor to the bottom of the wooden joists was exactly 8 feet, and every 1/4\" mattered. Half the joists up there were broken anyway, so I had those fixed and the others restructured to push electrical, data, and HVAC down the runs of the room in line with the pillars, leaving the center in between clear.</p><p>We needed a rigid, identical grid that could hold a diffuser at an even distance without sagging. Strips droop, and wiring them is a mess. Large, cheap rigid PCBs are a good solution, so we took LED dancefloor boards and had the manufacturer alter the pixel spacing, enlarge the mounting holes, and swap in 90-degree headers. We bolted them straight into aluminum T-track mounted to the ceiling infrastructure, compressing a 24-volt WS2818 pixel matrix into a vertical profile under an inch.</p><p>I never actually saw it powered on overhead. By the time the basement was ready for the hang, I had hit my breaking point with the remodel and walked away. I had completed the upstairs main room immersive dance lighting rig during the COVID-19 pandemic and had designed and procured the parts for the basement. I pixel-mapped the array flat across a sea of road cases in the unfinished basement, proved it worked, and handed the plans off to my crew to finish the hang.</p>",
     "video": "",
     "gallery": [
-      "media/Electronics/Pixel Panel PCB/20200910_134441.webp",
+      "media/Electronics/LED Pixel Panel/20200910_134441.webp",
       "media/Electronics/LED Pixel Panel/20200910_13437.webp",
       "media/Electronics/LED Pixel Panel/20200910_134533.webp",
       {
-        "url": "media/Electronics/Pixel Panel PCB/20211118_155135.webp",
+        "url": "media/Electronics/LED Pixel Panel/20211118_155135.webp",
         "fit": {
           "scale": 1,
           "x": 50.9,
@@ -581,7 +583,7 @@
         }
       },
       {
-        "url": "media/Electronics/Pixel Panel PCB/20211118_154350.webp",
+        "url": "media/Electronics/LED Pixel Panel/20211118_154350.webp",
         "fit": {
           "scale": 1.3,
           "x": 41.6,
@@ -589,7 +591,7 @@
         }
       },
       {
-        "url": "media/Electronics/Pixel Panel PCB/20211202_171343.webp",
+        "url": "media/Electronics/LED Pixel Panel/20211202_171343.webp",
         "fit": {
           "scale": 1.5,
           "x": 62.1,
@@ -629,13 +631,13 @@
       "TCP/IP",
       "SPI"
     ],
-    "image": "media/Lighting/LVL - Denver/IMG_20191009_231844.webp",
+    "image": "media/Electronics/LVL/IMG_20191009_231844.webp",
     "description": "<p><strong>Temple Nightclub | Denver</strong> - I salvaged 8 dead pixel runs from ruined floor channels and rewired them for 3D voxel mapping.</p>",
     "longDescription": "<p>When I walked into LVL, the side room at Temple Denver, the lighting rig was dead or stuck on solid blue. Someone had installed unsealed channels in the floor, and the wood support strips had absorbed months of spilled drinks, mop water, and sewage backups until the diffusion caved in and shattered. Even the foam tape holding the strips smelled like club funk. The EnvironmentalLighting pixel tape itself was expensive and salvageable, so I cut out the shorted sections, scrubbed the tracks, and built new structural support out of acrylic.</p><p>Wiring 16 strip runs across a room requires heavy power injection to stop voltage drop. My first attempt was immediately unstable. I ran DC wire in parallel and tied the negative leads together back in the supply room, which wasn't sufficient and triggered ground loop flicker across part of the system. The fix was coupling the negative leads close to the pixels above the dancefloor in addition to at the power supplies. The 12V pillar modules also fought me because of undersized wire, so I added more injection points and ground jumpers between sections until the signal stabilized. The ceiling and floor ran on 24V tape and behaved once the grounds were tied overhead.</p><p>With the power and data lines stable, I mapped all 16 floor and ceiling runs plus the pillars into a 3D voxel setup. The room runs almost entirely on those pixels, so getting the hardware clean mattered. Now the control system drives spatial sweeps through the floor, pillars, and ceiling without a single drop.</p>",
     "video": "",
     "gallery": [
       {
-        "url": "media/Lighting/LVL - Denver/IMG_20191009_231844.webp",
+        "url": "media/Electronics/LVL/IMG_20191009_231844.webp",
         "fit": {
           "scale": 1,
           "x": 47.3,
@@ -643,7 +645,7 @@
         }
       },
       {
-        "url": "media/Lighting/LVL - Temple _ Denver/IMG_20191009_231900.webp",
+        "url": "media/Electronics/LVL/IMG_20191009_231900.webp",
         "fit": {
           "scale": 1,
           "x": 46.1,
@@ -651,7 +653,7 @@
         }
       },
       {
-        "url": "media/Lighting/LVL - Temple _ Denver/IMG_20180926_042731.webp",
+        "url": "media/Electronics/LVL/IMG_20180926_042731.webp",
         "fit": {
           "scale": 1,
           "x": 49.1,
@@ -659,7 +661,7 @@
         }
       },
       {
-        "url": "media/Lighting/LVL - Temple _ Denver/IMG_20181107_194215.webp",
+        "url": "media/Electronics/LVL/IMG_20181107_194215.webp",
         "fit": {
           "scale": 1,
           "x": 48.2,
@@ -702,13 +704,13 @@
       "Power tools",
       "DMX"
     ],
-    "image": "media/Lighting/MIrus Art Gallery - Denver/IMG_20180614_235653.webp",
+    "image": "media/Lighting/MIRUS/IMG_20180614_235653.webp",
     "description": "<p><strong>Mirus Art Gallery | Denver </strong>- I wired an RGBW wash lighting system into hanging wooden baffles 12 ft above MIRUS Art Gallery.</p>",
     "longDescription": "<p>On my first install for the company, someone else handed me a parts list and told me to build a ceiling rig at MIRUS Art Gallery in Denver. Another contracting team had already hung the wooden louvers 12 ft in the air. That meant I spent the project on a scissor lift, adhering RGBW strips into routed channels overhead. If I had chosen the materials, I would have spec'd addressable pixels for full mapping across the room. Instead, I worked with wash strips driven by Madrix Basic, keeping the entire room on 1 DMX universe.</p><p>The routed channels in the baffles ended in 90 degree corners. Forcing the LED tape around those sharp turns snapped the copper backing on my first attempt. Because they were wash strips instead of pixels, the repair was simple. I cut out the broken module at each corner and soldered jumper wires across the gap to the next copper pads.</p><p>Up in the 6 ft plenum above the ceiling, I stashed the high current supplies and DMX decoders. Each supply group controlled 16 baffles. The spec'd power units were thin and ran with loud fans, which usually spells trouble in an art space. Luckily, the gallery connected to a club room with a Funktion-One sound system, so ambient noise swallowed the fan hum.</p><p>Because the gallery walls are painted white, the saturated colors transform the space. Flip the rig from white illumination to psychedelic chases, and the whole room changes. The client loved it.</p>",
     "video": "",
     "gallery": [
       {
-        "url": "media/Lighting/MIrus Art Gallery - Denver/IMG_20180614_235653.webp",
+        "url": "media/Lighting/MIRUS/IMG_20180614_235653.webp",
         "fit": {
           "scale": 1,
           "x": 46.8,
@@ -717,7 +719,7 @@
       },
       "https://www.youtube.com/watch?v=vcewTT5rh_Y",
       {
-        "url": "media/Lighting/Mirus Art Gallery _ Denver/IMG_20180417_174333.webp",
+        "url": "media/Lighting/MIRUS/IMG_20180417_174333.webp",
         "fit": {
           "scale": 1,
           "x": 6.6,
@@ -725,7 +727,7 @@
         }
       },
       {
-        "url": "media/Lighting/Mirus Art Gallery _ Denver/IMG_20180408_233818~2.webp",
+        "url": "media/Lighting/MIRUS/IMG_20180408_233818~2.webp",
         "fit": {
           "scale": 1,
           "x": 49.6,
@@ -760,7 +762,7 @@
     "timestamp": "2026-01-17T17:49:41.986Z",
     "title": "Inflatable Tubes",
     "category": "Lighting",
-    "image": "media/Lighting/Reelworks - Denver/20230621_172727.webp",
+    "image": "media/Lighting/Inflatable Tubes/20230621_172727.webp",
     "description": "<p><strong>Reelworks | Denver</strong> - To get eight inflatable tubes to cut through a club lighting rig, you cannot use off-the-shelf LED tape.</p>",
     "longDescription": "<p>The centerpiece for Track's Denver Pride 2023 was a forest of eight custom inflatable tubes rigged to the ceiling beams with wire cable. To get the brightness I needed, I had custom 24V redundant-data pixel module strands made with double-sided clear lenses, then ran two 30m or 23m strands in parallel inside each tube, securing them directly to the internal fabric ties. Because running that much LED load over a single line would cause massive voltage drop, I put a power supply at both ends of every tube and severed the positive wire at the midpoint to prevent the units from back-feeding into each other. I fed and tested the guts on the floor, hoisted the tubes empty, and powered the fans and decoders once they were in the air.</p><p>During load-in and testing, the Resolume Arena control system and wireless decoders worked without a hitch. The problem started when 2,000 people walked into the room with cellphones in their pockets. The saturated RF environment completely choked the wireless signal. Data rates dropped to roughly 5fps, and the tubes repeatedly lost connection and defaulted. Luckily, I had programmed their default state to a static Pride palette, so when the signal dropped, the centerpiece stayed on theme.</p><p>The inflatables ran warm, but the double-stranded clear-lens build pushed out enough light and resolution that another local fabricator called me after the show to ask what hardware I was using. I got them through the weekend on the fallback palette, and told the venue to replace the wireless units with hardwired decoders before the next run.</p>",
     "websiteLink": "",
@@ -779,7 +781,7 @@
     ],
     "gallery": [
       {
-        "url": "media/Lighting/Reelworks - Denver/20230621_172739.webp",
+        "url": "media/Lighting/Inflatable Tubes/20230621_172739.webp",
         "fit": {
           "scale": 1,
           "x": 54.1,
@@ -787,7 +789,7 @@
         }
       },
       {
-        "url": "media/Lighting/Reelworks - Denver/20230621_172749.webp",
+        "url": "media/Lighting/Inflatable Tubes/20230621_172749.webp",
         "fit": {
           "scale": 1,
           "x": 49.8,
@@ -795,10 +797,10 @@
         }
       },
       "https://www.youtube.com/watch?v=wvrrT8pFGQk",
-      "media/Lighting/Pixel Inflatable Tubes - Reelworks _ Denver/20230615_205214.webp",
-      "media/Lighting/Pixel Inflatable Tubes - Reelworks _ Denver/20230616_091904.webp",
+      "media/Lighting/Inflatable Tubes/20230615_205214.webp",
+      "media/Lighting/Inflatable Tubes/20230616_091904.webp",
       {
-        "url": "media/Lighting/Pixel Inflatable Tubes - Reelworks _ Denver/20230615_204414.webp",
+        "url": "media/Lighting/Inflatable Tubes/20230615_204414.webp",
         "fit": {
           "scale": 1,
           "x": 58.2,
@@ -806,7 +808,7 @@
         }
       },
       {
-        "url": "media/Lighting/Pixel Inflatable Tubes - Reelworks _ Denver/20230615_194557.webp",
+        "url": "media/Lighting/Inflatable Tubes/20230615_194557.webp",
         "fit": {
           "scale": 1,
           "x": 44.6,
@@ -814,7 +816,7 @@
         }
       },
       {
-        "url": "media/Lighting/Pixel Inflatable Tubes - Reelworks _ Denver/20230615_193318.webp",
+        "url": "media/Lighting/Inflatable Tubes/20230615_193318.webp",
         "fit": {
           "scale": 1,
           "x": 50,
@@ -822,7 +824,7 @@
         }
       },
       {
-        "url": "media/Lighting/Pixel Inflatable Tubes - Reelworks _ Denver/20230615_223123.webp",
+        "url": "media/Lighting/Inflatable Tubes/20230615_223123.webp",
         "fit": {
           "scale": 1,
           "x": 47.9,
@@ -851,19 +853,19 @@
     "title": "GeoLens Pro",
     "category": "Apps",
     "tags": [],
-    "image": "media/Apps/GeoLens/Screenshot_20260118_082950_Chrome.webp",
+    "image": "media/Apps/GeoLens Pro/Screenshot_20260118_082950_Chrome.webp",
     "description": "<p><strong>GeoLens Pro</strong> is a local-first PWA that automatically sorts and annotates field photos using GPS geofencing.</p>",
     "longDescription": "<p><strong>GeoLens Pro</strong> is a mobile-first Progressive Web Application designed to help field professionals capture, organize, and annotate site photos without manual filing. The primary goal is to eliminate the tedious, error-prone process of sorting hundreds of images after site visits. Unlike standard photo galleries or cloud-dependent CRMs, this application leverages a localized GPS auto-sort engine. By establishing geofenced boundaries around specific job sites, the app automatically routes incoming photos into the correct project folder the exact moment they are captured.</p><p>The workflow centers around a localized architecture that requires no account creation or backend synchronization. Users define job locations on an interactive map and set a custom geofence radius. When a photo is captured via the live camera integration or imported from the device, the system extracts the GPS coordinates and calculates the distance to all active job origins. If the photo falls within a defined radius, it is instantly assigned to that job. Users can then open the integrated canvas editor to apply non-destructive annotations, modify layers, and export professional PDF reports directly from the browser.</p><p>The standout technical achievement is the real-time client-side sorting engine powered by the Haversine formula and Dexie for IndexedDB storage. Built with React and TypeScript, the application handles complex geographical calculations and persistent data management entirely within the browser environment. Leaflet manages the interactive map boundaries, while exifr handles metadata extraction for imported files. The custom canvas editor supports granular per-layer transformations and interfaces directly with jsPDF to generate structured inspection reports without relying on a remote server.</p>",
     "video": "",
     "gallery": [
-      "media/Apps/GeoLens/Screenshot_20260118_082611_Chrome.webp",
-      "media/Apps/GeoLens/Screenshot_20260118_082803_Chrome.webp",
-      "media/Apps/GeoLens/Screenshot_20260118_082823_Chrome.webp",
-      "media/Apps/GeoLens/Screenshot_20260118_082832_Chrome.webp",
-      "media/Apps/GeoLens/Screenshot_20260118_082925_Chrome.webp",
-      "media/Apps/GeoLens/Screenshot_20260118_082950_Chrome.webp",
-      "media/Apps/GeoLens/Screenshot_20260118_083031_Chrome.webp",
-      "media/Apps/GeoLens/Screenshot_20260118_083102_Chrome.webp"
+      "media/Apps/GeoLens Pro/Screenshot_20260118_082611_Chrome.webp",
+      "media/Apps/GeoLens Pro/Screenshot_20260118_082803_Chrome.webp",
+      "media/Apps/GeoLens Pro/Screenshot_20260118_082823_Chrome.webp",
+      "media/Apps/GeoLens Pro/Screenshot_20260118_082832_Chrome.webp",
+      "media/Apps/GeoLens Pro/Screenshot_20260118_082925_Chrome.webp",
+      "media/Apps/GeoLens Pro/Screenshot_20260118_082950_Chrome.webp",
+      "media/Apps/GeoLens Pro/Screenshot_20260118_083031_Chrome.webp",
+      "media/Apps/GeoLens Pro/Screenshot_20260118_083102_Chrome.webp"
     ],
     "launchLink": "https://geo-field-snap.lovable.app",
     "githubLink": "https://github.com/Elusid108/geo-field-snap",
@@ -880,7 +882,9 @@
     "id": "3991",
     "title": "PixelForge AI",
     "category": "Apps",
-    "tags": [],
+    "tags": [
+      "LLM Integration"
+    ],
     "image": "media/Apps/PixelForge AI/Screenshot 2026-07-25 173231.webp",
     "description": "<p>An interactive generative artwork studio that uses controlled text hallucinations to kickstart creative visual exploration.</p>",
     "longDescription": "<p><strong>PixelForge </strong>is an interactive web application designed to kickstart creative exploration by bridging abstract text generation with high-fidelity image synthesis. Unlike conventional generation interfaces that rely strictly on literal user inputs, PixelForge utilizes controlled AI hallucinations to construct poetic, open-ended prompt foundations. This approach pushes image models past predictable outputs and gives creators a sandbox to discover nuanced visual concepts through either category-focused or open-ended random generation.</p><p>The system workflow coordinates a multi-stage creative pipeline. Activating the randomizer triggers targeted prompt frameworks that generate abstract, poem-like descriptions. Users maintain full creative control with the ability to inspect, refine, or manually edit these text outputs prior to rendering the final image. As generations occur, the platform automatically maintains a comprehensive session history on the left sidebar. This allows users to compare iterative variations, review parameter metadata, and package assets into bulk ZIP downloads directly within the workspace.</p><p>Built on React, TypeScript, Vite, and Tailwind CSS, the application integrates the Gemini API for prompt generation and the Imagen API for visual rendering. A primary technical hurdle involved overcoming model output convergence, where similar prompts yielded overly repetitive visual styles. To solve this, the application features a manual model selector within the settings menu. This allows users to route identical prompts across different model versions to leverage their distinct stylistic interpretations. Local data persistence relies on IndexedDB and LocalStorage to manage client-side image storage and history tracking without external database dependencies.</p>",
@@ -912,27 +916,29 @@
     "id": "7085",
     "title": "Chronicle: Iterative Fiction Engine",
     "category": "Apps",
-    "tags": [],
-    "image": "media/Apps/Chronicle AI/Screenshot 2026-01-26 182215.webp",
+    "tags": [
+      "LLM Integration"
+    ],
+    "image": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 182215.webp",
     "description": "<p><strong>Chronicle </strong>is a zero-build, browser-based interactive fiction engine that generates multimodal, AI-driven storytelling in real time.</p>",
     "longDescription": "<p><strong>Chronicle </strong>is a browser-based interactive fiction engine designed to dynamically generate text, images, and audio for a cohesive choose-your-own-adventure experience. It shifts away from standard conversational AI interfaces by enforcing a rigid narrative structure through strict schema validation. This approach ensures every generated turn consistently delivers prose, four distinct choices, scene illustration prompts, and backend lore updates, creating a predictable game loop without relying on a traditional server.</p><p>The application operates entirely client-side using a zero-build React architecture with ES modules and Tailwind CSS. During a session, a user selects a genre and visual style, initiating a turn loop that builds a layered system prompt based on player decisions. The system manages state by maintaining a persistent memory stack, compressing older narrative beats into long-term summaries while preserving recent verbatim prose and relevant character lore. When a player makes a choice, the engine merges the updated codex, appends the new beat, and processes parallel requests for image and audio generation to construct a complete multimodal page.</p><p>The standout technical achievement is the memory engine and structured data parsing powered by the Google Gemini API. By utilizing a strict JSON response schema, the application guarantees that the large language model outputs precisely formatted game data for immediate UI rendering and state management. The engine also tackles the challenge of long-context drift in AI storytelling by filtering and injecting only the most relevant codex entries per turn. Additionally, the system supports real-time text streaming by parsing partial JSON outputs and includes resilient fallback integrations for both text-to-speech and image generation.</p>",
     "video": "",
     "gallery": [
-      "media/Apps/Chronicle AI/Screenshot 2026-01-18 184721.webp",
-      "media/Apps/Chronicle AI/Screenshot 2026-01-18 185736.webp",
-      "media/Apps/Chronicle AI/Screenshot 2026-01-18 190202.webp",
-      "media/Apps/Chronicle AI/Screenshot 2026-01-18 190218.webp",
-      "media/Apps/Chronicle AI/Screenshot 2026-01-18 190442.webp",
-      "media/Apps/Chronicle AI/Screenshot 2026-01-18 190505.webp",
-      "media/Apps/Chronicle AI/Screenshot 2026-01-18 190524.webp",
-      "media/Apps/Chronicle AI/Screenshot 2026-01-26 173338.webp",
-      "media/Apps/Chronicle AI/Screenshot 2026-01-26 181638.webp",
-      "media/Apps/Chronicle AI/Screenshot 2026-01-26 181802.webp",
-      "media/Apps/Chronicle AI/Screenshot 2026-01-26 181836.webp",
-      "media/Apps/Chronicle AI/Screenshot 2026-01-26 182215.webp",
-      "media/Apps/Chronicle AI/Screenshot 2026-01-26 182452.webp",
-      "media/Apps/Chronicle AI/Screenshot 2026-01-26 182528.webp",
-      "media/Apps/Chronicle AI/Screenshot 2026-01-26 182606.webp"
+      "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-18 184721.webp",
+      "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-18 185736.webp",
+      "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-18 190202.webp",
+      "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-18 190218.webp",
+      "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-18 190442.webp",
+      "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-18 190505.webp",
+      "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-18 190524.webp",
+      "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 173338.webp",
+      "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 181638.webp",
+      "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 181802.webp",
+      "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 181836.webp",
+      "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 182215.webp",
+      "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 182452.webp",
+      "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 182528.webp",
+      "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 182606.webp"
     ],
     "launchLink": "https://elusid108.github.io/Chronicle-AIIF/",
     "githubLink": "https://github.com/Elusid108/Chronicle-AIIF",
@@ -943,20 +949,21 @@
     "timestamp": "2026-01-19T00:26:00.827Z",
     "wip": true,
     "order": 7,
-    "specs": "<p><strong>Framework:</strong> React 18 (CDN, zero-build)</p><p><strong>Language:</strong> JavaScript (ES Modules)</p><p><strong>Styling:</strong> Tailwind CSS (CDN)</p><p><strong>AI:</strong> Google Gemini (text/image/TTS)</p><p><strong>Audio:</strong> Web Speech API (fallback)</p><p><strong>Storage:</strong> localStorage</p><p><strong>Deploy:</strong> GitHub Pages</p>"
+    "specs": "<p><strong>Framework:</strong> React 18 (CDN, zero-build)</p><p><strong>Language:</strong> JavaScript (ES Modules)</p><p><strong>Styling:</strong> Tailwind CSS (CDN)</p><p><strong>AI:</strong> Google Gemini (text/image/TTS)</p><p><strong>Audio:</strong> Web Speech API (fallback)</p><p><strong>Storage:</strong> localStorage</p><p><strong>Deploy:</strong> GitHub Pages</p>",
+    "related": []
   },
   {
     "id": "6638",
     "title": "Strata - Digital Notebook",
     "category": "Apps",
     "tags": [],
-    "image": "media/Apps/Strata/Screenshot 2026-01-23 200024.webp",
+    "image": "media/Apps/Strata - Digital Notebook/Screenshot 2026-01-23 200024.webp",
     "description": "<p>A serverless, browser-based note-taking application combining block-level editing with infinite canvas workspaces and Google Drive synchronization.</p>",
     "longDescription": "<p><strong>Strata </strong>is a client-side note-taking application designed to provide hierarchical organization alongside flexible visual workspaces. The primary goal is to deliver a robust productivity tool that runs entirely in the browser without relying on a dedicated backend server. The project differentiates itself by seamlessly blending structured, block-based text editing with an infinite drawing canvas, utilizing the user's existing Google Drive as the primary cloud storage and database mechanism.</p><p>The engineering workflow focuses on delivering a resilient user experience that bridges offline availability and cloud connectivity. The application caches data locally using localStorage for immediate access and pushes updates to Google Drive via automatic debounced saves. The project is currently an active work in progress, with current development focused on resolving known sync issues and refining conflict resolution logic. The development journey included prototyping a standalone desktop variant to enable direct webpage embedding, but active development has pivoted back to the web application to maximize accessibility and maintain a streamlined user workflow.</p><p>The core application is built with React and styled with Tailwind CSS, maintaining a strict zero-dependency architecture outside of the necessary Google APIs. A major technical component of the build is the in-browser Babel transpilation, which allows the application to function entirely on the client side. The infinite canvas relies on custom coordinate system handling with viewport culling and real-time SVG path rendering to ensure smooth panning, zooming, and drawing performance. By directly integrating with the Google Drive API, the system can bypass traditional server storage limitations while natively embedding Google Docs, Sheets, and Slides directly into the workspace.</p>",
     "video": "",
     "gallery": [
-      "media/Apps/Strata/Screenshot 2026-01-23 195925.webp",
-      "media/Apps/Strata/Screenshot 2026-01-24 223430.webp"
+      "media/Apps/Strata - Digital Notebook/Screenshot 2026-01-23 195925.webp",
+      "media/Apps/Strata - Digital Notebook/Screenshot 2026-01-24 223430.webp"
     ],
     "launchLink": "https://elusid108.github.io/Strata-vite/",
     "githubLink": "https://github.com/Elusid108/Strata-vite",
@@ -973,15 +980,17 @@
     "id": "6962",
     "title": "IdeaForge.AI",
     "category": "Apps",
-    "tags": [],
-    "image": "media/Apps/Brainstormer/Screenshot 2026-02-14 232928.webp",
+    "tags": [
+      "LLM Integration"
+    ],
+    "image": "media/Apps/IdeaForge.AI/Screenshot 2026-02-14 232928.webp",
     "description": "<p>I built a multi-stage idea sifter that runs its entire backend on the Google Sheets and Drive APIs.</p>",
-    "longDescription": "<p>People like to treat early concepts like target practice. They shoot holes in an idea before it has room to breathe. I wanted a sifter that takes raw dumps of thought and builds them up without initial critique. I first prototyped the workflow in Notion and rebuilt it with Supabase, but both meant recurring monthly subscriptions. I stripped out the cloud database entirely and wired the application directly into the Google Sheets and Google Drive APIs.</p><p>The frontend runs on React and TypeScript, with a local data layer handling offline edits and reconciliation against the spreadsheet. Users drop in raw thoughts, and a Gemini integration tags and summarizes them. When a concept shows promise, you promote it to a brainstorm. The model runs an interview to extract missing detail, then compiles an execution strategy, an expense tracker, and a structured task list.</p><p>Every user already has a Google account, so the backend infrastructure costs nothing to run. I put my custom lithophane generator, LithoLab, through the campaign pipeline to test the playbook generation. Instead of killing half-formed ideas early, the workflow pushes them into actionable phases until you can see whether they actually work.</p>",
+    "longDescription": "<p>People like to treat early concepts like target practice. They shoot holes in an idea before it has room to breathe. I wanted a sifter that takes raw dumps of thought and builds them up without initial critique. I first prototyped the workflow in Notion and rebuilt it with Lovable and Supabase, but both meant recurring monthly subscriptions. I stripped out the cloud database entirely and wired the application directly into the Google Sheets and Google Drive APIs.</p><p>The frontend runs on React and TypeScript, with a local data layer handling offline edits and reconciliation against the spreadsheet. Users drop in raw thoughts, and a Gemini integration tags and summarizes them. When a concept shows promise, you promote it to a brainstorm. The model runs an interview to extract missing detail, then compiles an execution strategy, an expense tracker, and a structured task list.</p><p>Every user already has a Google account, so the backend infrastructure costs nothing to run. I put my custom lithophane generator, LithoLab, through the campaign pipeline to test the playbook generation. Instead of killing half-formed ideas early, the workflow pushes them into actionable phases until you can see whether they actually work.</p>",
     "video": "",
     "gallery": [
-      "media/Apps/Brainstormer/Screenshot 2026-02-14 232928.webp",
-      "media/Apps/Brainstormer/Screenshot 2026-02-14 233034.webp",
-      "media/Apps/Brainstormer/Screenshot 2026-02-14 233053.webp"
+      "media/Apps/IdeaForge.AI/Screenshot 2026-02-14 232928.webp",
+      "media/Apps/IdeaForge.AI/Screenshot 2026-02-14 233034.webp",
+      "media/Apps/IdeaForge.AI/Screenshot 2026-02-14 233053.webp"
     ],
     "launchLink": "https://elusid108.github.io/IdeaForge-AI/",
     "githubLink": "https://github.com/Elusid108/IdeaForge-AI",
@@ -999,7 +1008,9 @@
     "id": "648",
     "title": "CharGen.AI",
     "category": "Apps",
-    "tags": [],
+    "tags": [
+      "LLM Integration"
+    ],
     "image": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174417.webp",
     "description": "<p>CharGen.AI is a comprehensive, client-side character development engine utilizing Google AI for text and image generation.</p>",
     "longDescription": "<p><strong>CharGen.AI</strong> is a universal character development engine designed to build highly detailed profiles for any archetype, ranging from humans to complex sci-fi and fantasy subjects. The primary goal is to provide a unified workspace for character creation that seamlessly bridges the gap between statistical attributes and visual representation. Unlike standard text-based character generators, this platform features a unique bidirectional workflow. Users can define over 100 conditional attributes to synthesize distinct reference images, or they can reverse the process by using vision models to extract structured physical and psychological data directly from an uploaded piece of reference art.</p><p>The application operates entirely on the client side to prioritize user privacy and eliminate traditional backend infrastructure. Users navigate through an eight-section attribute builder that dynamically adapts its input fields based on the selected species type. As users modify attributes, generate custom outfits, or draft backstories, all data is saved persistently in the browser using IndexedDB. When a user initiates a generation request, the application bundles the current character state and interfaces directly with Google API endpoints. The state management system coordinates these external responses, updating the local character library in real time and allowing users to organize, bulk export, or iterate on their designs without a central server.</p><p>The platform is engineered using React 18 and Vite, relying on Zustand for efficient state management across the complex, deeply nested attribute trees. The standout technical achievement is the synchronized integration of Google Gemini 2.5 Flash for nuanced text generation and image analysis, alongside Imagen 4.0 for high-fidelity visual synthesis. By committing to a strictly serverless architecture, the system requires users to supply their own API keys, guaranteeing zero telemetry and eliminating hosting costs for heavy AI workloads. This constraint necessitated the heavy optimization of IndexedDB to reliably store and manage large payloads of image data and complex JSON character objects locally within the browser.</p>",
@@ -1028,7 +1039,8 @@
     "timestamp": "2026-03-22T16:37:25.240Z",
     "wip": true,
     "order": 6,
-    "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite</p><p><strong>Styling:</strong> Tailwind CSS</p><p><strong>State:</strong> Zustand</p><p><strong>AI:</strong> Google Gemini 2.5 Flash, Imagen 4.0</p><p><strong>Storage:</strong> IndexedDB</p><p><strong>Export:</strong> JSZip</p><p><strong>Deploy:</strong> GitHub Pages</p>"
+    "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite</p><p><strong>Styling:</strong> Tailwind CSS</p><p><strong>State:</strong> Zustand</p><p><strong>AI:</strong> Google Gemini 2.5 Flash, Imagen 4.0</p><p><strong>Storage:</strong> IndexedDB</p><p><strong>Export:</strong> JSZip</p><p><strong>Deploy:</strong> GitHub Pages</p>",
+    "related": []
   },
   {
     "id": "968",
@@ -1196,7 +1208,7 @@
     "timestamp": "2026-06-21T22:54:46.396Z",
     "title": "The Orb",
     "category": "Circuits",
-    "image": "media/Lighting/The Orb - Temple _ Denver/ORB2.webp",
+    "image": "media/Electronics/The Orb/ORB2.webp",
     "description": "<p><strong>Temple Nightclub | Denver</strong> - I finished an 8 ft aluminum LED sphere and ran high-current DC power over 35 ft.</p>",
     "longDescription": "<p>The original installer walked away mid-job, leaving an 8 ft aluminum sphere sitting in 2 halves on the top-floor. 1 dome was partly covered in LED pixel modules zip-tied to the metal, with tape over the lenses and black spray paint over the rest. Masked strands lay scattered across the floor. I stripped the mess and started over.</p><p>Keeping the power supplies in the ceiling left empty space inside the frame for the 3D effect, but it meant pushing DC power across a 35 ft run. To beat the voltage drop, I installed MEAN WELL supplies with load sharing and remote sense that adjusted output voltage in real time. Every circuit stayed under 80% capacity at 100% white load. Inside the sphere, decoders handled the signal for a 3D voxel map in Madrix.</p><p>The whole rig hung from a hoist that dropped it over the crowd. Moving heavy copper without snagging required a PVC pipe with a flange mounted through the center of the orb. I spiral-wrapped 2/0 welding cables around each other and fed them down through the pipe. That guide kept the cables clean during motion and stopped the sphere from spinning as it traveled.</p><p>We finished the build for New Year's Eve 2018. People on the dance floor mostly miss it, but the surrounding VIP tiers get a clear view of the full voxel map. Every night around midnight, the hoist dropped the sphere with the headliner.</p>",
     "websiteLink": "",
@@ -1218,7 +1230,7 @@
     ],
     "gallery": [
       {
-        "url": "media/Lighting/The Orb - Temple _ Denver/IMG_20190105_011459.webp",
+        "url": "media/Electronics/The Orb/IMG_20190105_011459.webp",
         "fit": {
           "scale": 1.35,
           "x": 0,
@@ -1226,7 +1238,7 @@
         }
       },
       {
-        "url": "media/Lighting/The Orb - Temple _ Denver/MVIMG_20190309_005437.webp",
+        "url": "media/Electronics/The Orb/MVIMG_20190309_005437.webp",
         "fit": {
           "scale": 1.25,
           "x": 35.9,
@@ -1234,7 +1246,7 @@
         }
       },
       {
-        "url": "media/Lighting/The Orb - Temple _ Denver/MVIMG_20190203_004035.webp",
+        "url": "media/Electronics/The Orb/MVIMG_20190203_004035.webp",
         "fit": {
           "scale": 1.3,
           "x": 0,
@@ -1243,7 +1255,7 @@
       },
       "https://www.youtube.com/watch?v=VYTQBapCFX8",
       {
-        "url": "media/Lighting/The Orb - Temple _ Denver/IMG_20181229_194431.webp",
+        "url": "media/Electronics/The Orb/IMG_20181229_194431.webp",
         "fit": {
           "scale": 1,
           "x": 48.4,
@@ -1251,7 +1263,7 @@
         }
       },
       {
-        "url": "media/Lighting/The Orb - Temple _ Denver/IMG_20181228_174028.webp",
+        "url": "media/Electronics/The Orb/IMG_20181228_174028.webp",
         "fit": {
           "scale": 1,
           "x": 41.2,
@@ -1259,7 +1271,7 @@
         }
       },
       {
-        "url": "media/Lighting/The Orb - Temple Denver/IMG_20181230_145358.webp",
+        "url": "media/Electronics/The Orb/IMG_20181230_145358.webp",
         "fit": {
           "scale": 1,
           "x": 93,
@@ -1267,7 +1279,7 @@
         }
       },
       {
-        "url": "media/Lighting/The Orb - Temple _ Denver/MVIMG_20190912_124434.webp",
+        "url": "media/Electronics/The Orb/MVIMG_20190912_124434.webp",
         "fit": {
           "scale": 1.05,
           "x": 27.5,
@@ -1275,7 +1287,7 @@
         }
       },
       {
-        "url": "media/Lighting/The Orb - Temple Denver/IMG_20181228_171913.webp",
+        "url": "media/Electronics/The Orb/IMG_20181228_171913.webp",
         "fit": {
           "scale": 1,
           "x": 45.9,
@@ -1284,7 +1296,7 @@
       },
       "https://www.youtube.com/watch?v=iUyuO0OBPTg",
       {
-        "url": "media/Lighting/The Orb - Temple _ Denver/ORB2.webp",
+        "url": "media/Electronics/The Orb/ORB2.webp",
         "fit": {
           "scale": 1.1,
           "x": 47.4,
@@ -1300,7 +1312,7 @@
         }
       },
       {
-        "url": "media/Lighting/The Orb - Temple Denver/IMG-20181222-WA0000.webp",
+        "url": "media/Electronics/The Orb/IMG-20181222-WA0000.webp",
         "fit": {
           "scale": 1.45,
           "x": 49.8,
@@ -1332,7 +1344,7 @@
   {
     "title": "The Basement",
     "category": "Lighting",
-    "image": "media/Lighting/The Triangle/IMG_20180614_174327.webp",
+    "image": "media/Lighting/The Basement/IMG_20180614_174327.webp",
     "description": "<p><strong>Triangle Bar | Denver</strong> - I bounced upward pixels off ceiling slats to light a 10 ft basement club in Denver.</p>",
     "longDescription": "<p>The basement at Triangle in Denver had a concrete ceiling under 10 ft high. I handled the entire build solo as an independent contractor, covering design, procurement, installation, programming, and training. Hanging moving lights overhead meant rotary-hammering 8 pieces of strut channel directly into the ceiling with 2 to 3 anchor points per piece. Working alone on a ladder, the hardest part was simply holding a fixture in place with one hand while threading a bolt or seating a cable with the other.</p><p>I despise looking directly at bare sources. Instead of covering the overhead array in standard diffusion, I pointed the pixel modules upward to bounce light off the ceiling slats. The reflected light bled through the gaps, creating a smooth gradient overhead without blinding the crowd. I also isolated the power supplies in an adjacent room to keep fan noise out of the club. I did not know fanless supplies existed at the time, but the quiet room made programming and maintenance much easier.</p><p>To bridge the gap from the remote racks to the ceiling array, I used long-range decoders. The run distance was short enough for standard decoders, but I wanted to test the hardware on a live build. During testing, loose connections at 2 points caused the ground to drop and the pixels to flicker. Because pixel runs work cleanly up to a break, finding the fault points was straightforward.</p><p>The indirect wash turned a hidden basement into an intimate club. Venue owners and patrons loved the clean look, and hiding the rig in the ceiling structure kept the low room from feeling crowded.</p>",
     "websiteLink": "",
@@ -1353,7 +1365,7 @@
     ],
     "gallery": [
       {
-        "url": "media/Lighting/The Triangle/IMG_20180614_174327.webp",
+        "url": "media/Lighting/The Basement/IMG_20180614_174327.webp",
         "fit": {
           "scale": 1,
           "x": 50,
@@ -1361,7 +1373,7 @@
         }
       },
       {
-        "url": "media/Lighting/Basement - Triangle _ Denver/IMG_20180605_151314.webp",
+        "url": "media/Lighting/The Basement/IMG_20180605_151314.webp",
         "fit": {
           "scale": 1,
           "x": 57.2,
@@ -1369,7 +1381,7 @@
         }
       },
       {
-        "url": "media/Lighting/Basement - Triangle _ Denver/IMG_20180610_214856.webp",
+        "url": "media/Lighting/The Basement/IMG_20180610_214856.webp",
         "fit": {
           "scale": 1.3,
           "x": 35.7,
@@ -1399,7 +1411,7 @@
   {
     "title": "Que Bueno Suerte!",
     "category": "Integration",
-    "image": "media/Integration/Que Bueno Suerte! - Denver/20240606_211259.webp",
+    "image": "media/Integration/Que Bueno Suerte!/20240606_211259.webp",
     "description": "<p><strong>Que Bueno Suerte! | Denver</strong> - Over 2 years, I wired 11 custom lighting installations into a single restaurant server rack.</p>",
     "longDescription": "<p>My friend let me perpetually add lighting inside Que Bueno Suerte! over 2 years, eventually totaling 11 distinct installations. With so many LEDs, the system risked overpowering the dining room. Finesse was key. Deep reds, oranges, and yellows looked phenomenal against the gold walls and red accents, but only if the hardware stayed invisible in broad daylight. I ran long-range decoders back to a server rack in the upstairs office. Wires snaked under bars, behind walls, above the kitchen ceiling, and inside rafters upstairs. Retrofitting the acrylic etchings meant climbing over tables while brittle adhesive exploded into fine powder that turned sticky again the second I sweated.</p><p>I built an iPad remote early on using OSCpilot for touch control and Show Cockpit for signal distribution. Originally, I ran ELM on the server because it was cheaper and isolated the different rigs easily. The tradeoff was programming flexibility. I couldn't transition one element at a time without shifting the entire building. Switching to Madrix solved the visual output, creating room looks that shifted together across the mezzanine ceiling, alabaster bartop, bottle shelves, and roof liners.</p><p>A rig of this complexity in a packed restaurant breaks in predictable ways. The PixLite 16 controllers above the main bar occasionally drop data and require a breaker flip to reboot. The wireless etchings lose signal through dense crowds. Outdoor fixtures leak water, break their IP rating, and trip breakers. Even the iPad control drops out if staff connect to the wrong network or the WLAN hiccups.</p><p>To keep the system usable for bartenders during a rush, I locked the iPad interface down to basic parameters and playlists of preset looks. For everything else, I installed a slide-out KVM in the rack so I could fix server issues directly. The fine control over the building proved worth the routing headaches, and the warm palettes still sit right in the room.</p>",
     "websiteLink": "",
@@ -1419,8 +1431,8 @@
       "ArtNet"
     ],
     "gallery": [
-      "media/Integration/Que Bueno Suerte! - Denver/20240606_211259.webp",
-      "media/Integration/Que Bueno Suerte! - Denver/20230222_105213.webp"
+      "media/Integration/Que Bueno Suerte!/20240606_211259.webp",
+      "media/Integration/Que Bueno Suerte!/20230222_105213.webp"
     ],
     "files": [],
     "video": "",
@@ -1446,7 +1458,7 @@
   {
     "title": "Vertical Pixel Bar Tubes",
     "category": "Circuits",
-    "image": "media/Lighting/Vertical Pixel Tubes - Que Bueno Suerte!/20240619_122306.webp",
+    "image": "media/Electronics/Vertical Pixel Bar Tubes/20240619_122306.webp",
     "description": "<p><strong>Que Bueno Suerte! | Denver</strong> - Rebuilding an inherited array of 131 recycled fluorescent tube bundles over an operating bar required 70 universes of control and a 3D voxel map.</p>",
     "longDescription": "<p>The vertical tubes above the main bar at Que Bueno Suerte! came with the building, and by the time I got to them, they needed serious help. The array was made of 62 four-foot and 69 eight-foot recycled fluorescent tubes hung in clusters of 3, with 60/m density LED tape running down the center. After years above a bar, the materials were brittle, and because the restaurant was open every day, I could only take down a few clusters at a time. I stood on a telescoping ladder resting on the ceiling grid (which flexed enough to make every climb interesting), lowered the clusters onto the bar, broke the old wraps, and pulled the dead strip from the center.</p><p>I kept the original pixel spacing so I wouldn't have to redesign the physical bundle, but I swapped the strip for WS2813 LEDs. The backup data line meant a single failed pixel wouldn't force another sketchy ladder climb over an open bar. Up in the custom power boxes, I gutted the original decoders, which had zero documentation, and replaced them with Advatek PixLite 16s to tie the array into the venue-wide system I installed. When I first fired the rig up, it immediately tripped breakers and blew the inline fuses. I eventually bumped the fuse rating to 7A per tube to handle the inrush, and the rig stabilized.</p><p>Because I was locked into the original 60/m density, the display takes an astronomical 35,640 channels across 70 universes to run. Once the hardware was solid, I built a 3D voxel map of the entire layout. Because the tubes hang at uneven lengths and the display isn't a straight line, clean 3D effects can get lost if you push them too hard. But isolating different zones and mapping through the depth of the room turned a partially dead, inherited fixture into the centerpiece of the bar.</p>",
     "websiteLink": "",
@@ -1465,7 +1477,7 @@
       "SPI"
     ],
     "gallery": [
-      "media/Lighting/Vertical Pixel Tubes - Que Bueno Suerte!/20240619_122306.webp",
+      "media/Electronics/Vertical Pixel Bar Tubes/20240619_122306.webp",
       "https://www.youtube.com/watch?v=9nZFYvWzUfE"
     ],
     "files": [],
@@ -1644,7 +1656,7 @@
   {
     "title": "Lobby Wall",
     "category": "Lighting",
-    "image": "media/Lighting/Lobby Wall - Tracks _ Denver/0321151647.webp",
+    "image": "media/Lighting/Lobby Wall/0321151647.webp",
     "description": "<p><strong>Tracks | Denver </strong>- I built a double-sided wall of LEDs for Tracks in 5 days after soldering 5000 joints by hand.</p>",
     "longDescription": "<p>Tracks could not close for a remodel, so we had 5 days between open weekends to install a double-sided wall of LEDs and as part of a full remodel. It sits right at the entrance where people walk in. To hit that window, another tech and I spent weeks in the club basement and my home shop building modular panels off site. Each 2x4 pegboard panel held 520 raw LED pucks contact-cemented in 8 pixel configurations. Instead of buying pre-made strands, we manually soldered custom wire lengths using lamp cord for power injection, leaving us with over 5000 solder points before we ever hung a panel.</p><p>We mounted the rows of pegboard modules to the wall and wired each row to a dedicated output on a 16 output SanDevices E682 decoder running WS2801 protocol. Frosted plexiglass sheets on standoffs covered both sides to diffuse the light. I mapped the array using Madrix 3.6 software.</p><p>This was my first LED pixel build, and the initial test run was rough. The pixels flickered badly across the wall. I had not linked grounds across multiple power supplies, and I did not know about power injection yet. Adding inline resistors at the inputs smoothed out the data signal, and I later retrofitted power injection at the midpoint. The E682 is a Christmas light decoder and not very rugged, but it worked.</p><p>When we opened the doors that Thursday, regulars gasped walking into the room. Teaching myself pixel mapping on that build launched an entire lighting design focus in my career, even if I should have just bought pre-made LED strands.</p>",
     "websiteLink": "",
@@ -1665,7 +1677,7 @@
       "https://www.youtube.com/watch?v=V7PaQ3CBYY0",
       "https://www.youtube.com/watch?v=bK93I4jco1U",
       {
-        "url": "media/Lighting/Lobby Wall - Tracks _ Denver/0317152322.webp",
+        "url": "media/Lighting/Lobby Wall/0317152322.webp",
         "fit": {
           "scale": 1.25,
           "x": 100,
@@ -1673,7 +1685,7 @@
         }
       },
       {
-        "url": "media/Lighting/Lobby Wall - Tracks _ Denver/0317152321.webp",
+        "url": "media/Lighting/Lobby Wall/0317152321.webp",
         "fit": {
           "scale": 1.35,
           "x": 0,
@@ -1682,7 +1694,7 @@
       },
       "https://www.youtube.com/watch?v=-yTSHYxmWhg",
       {
-        "url": "media/Lighting/Lobby Wall - Tracks _ Denver/0317152050.webp",
+        "url": "media/Lighting/Lobby Wall/0317152050.webp",
         "fit": {
           "scale": 1.5,
           "x": 25.9,
@@ -1690,7 +1702,7 @@
         }
       },
       {
-        "url": "media/Lighting/Lobby Wall - Tracks _ Denver/0315151546.webp",
+        "url": "media/Lighting/Lobby Wall/0315151546.webp",
         "fit": {
           "scale": 1.3,
           "x": 23.8,
@@ -1698,7 +1710,7 @@
         }
       },
       {
-        "url": "media/Lighting/Lobby Wall - Tracks _ Denver/0313151634.webp",
+        "url": "media/Lighting/Lobby Wall/0313151634.webp",
         "fit": {
           "scale": 1.15,
           "x": 100,
@@ -1706,7 +1718,7 @@
         }
       },
       {
-        "url": "media/Lighting/Lobby Wall - Tracks _ Denver/0312151534.webp",
+        "url": "media/Lighting/Lobby Wall/0312151534.webp",
         "fit": {
           "scale": 2.45,
           "x": 46.9,
@@ -1714,7 +1726,7 @@
         }
       },
       {
-        "url": "media/Lighting/Lobby Wall - Tracks _ Denver/0221152259b.webp",
+        "url": "media/Lighting/Lobby Wall/0221152259b.webp",
         "fit": {
           "scale": 1.3,
           "x": 17.6,
@@ -1767,7 +1779,7 @@
         }
       },
       {
-        "url": "media/Lighting/Curved Bottle Shelf - Que Bueno Suerte! _ Denver/20240419_101740.webp",
+        "url": "media/Lighting/Curved Liquor Bottle Display/20240419_101740.webp",
         "fit": {
           "scale": 1.15,
           "x": 0,
@@ -1778,7 +1790,7 @@
       "https://www.youtube.com/watch?v=vC1bRR_PYYY",
       "https://www.youtube.com/watch?v=6CrwcCQdFDI",
       {
-        "url": "media/Lighting/Curved Bottle Shelf - Que Bueno Suerte! _ Denver/20240409_124553.webp",
+        "url": "media/Lighting/Curved Liquor Bottle Display/20240409_124553.webp",
         "fit": {
           "scale": 1.55,
           "x": 65.3,
@@ -1786,7 +1798,7 @@
         }
       },
       {
-        "url": "media/Lighting/Curved Bottle Shelf - Que Bueno Suerte! _ Denver/20240403_095909.webp",
+        "url": "media/Lighting/Curved Liquor Bottle Display/20240403_095909.webp",
         "fit": {
           "scale": 1,
           "x": 57.9,
@@ -1794,7 +1806,7 @@
         }
       },
       {
-        "url": "media/Lighting/Curved Bottle Shelf - Que Bueno Suerte! _ Denver/20240224_083551.webp",
+        "url": "media/Lighting/Curved Liquor Bottle Display/20240224_083551.webp",
         "fit": {
           "scale": 1,
           "x": 100,
@@ -1827,7 +1839,7 @@
   {
     "title": "Main Room - Temple Denver",
     "category": "Integration",
-    "image": "media/Integration/Temple Nightclub - Denver/MVIMG_20190817_211751.webp",
+    "image": "media/Integration/Main Room - Temple Denver/MVIMG_20190817_211751.webp",
     "description": "<p><strong>Temple - Main Room | Denver</strong> - Bridging Resolume and Madrix over NDI to stretch a 196 pixel canvas across an entire nightclub room.</p>",
     "longDescription": "<p>Touring DJs kept coming through with custom VJ content and nowhere to realistically play it. The venue had 3 screens with a 48x48 resolution, giving the main room an accumulative resolution smaller than a phone icon. To give those artists a usable canvas, I needed to span the room without tearing out the existing hardware.</p><p>This was my first time integrating systems past DMX and MIDI cross triggers alone. Resolume Arena pushed slices of video to converter boxes that output SPI pixel signals, while Madrix ran the floor-to-ceiling custom pixel pillars with about 12 modules per row. Bridging the two over NDI let the content cross between machines. From there, I added DMX triggers from our Roadhog 4 console to the main pixel and video rigs, plus the orb and hallway computers, so we could grab master intensity and speed live.</p><p>Getting the low resolution pixel mesh to map onto the frosted pillars was the hardest problem to solve. The pixel spacing was not an even grid, which made scaling irregular shapes across the room a constant headache. If I were building the rig from the ground up, I would have chosen Madrix for the entire system.</p><p>Combining the setups got us an uninterrupted canvas just under 200 pixels wide. A couple of friends were working with me at the time, and we all geeked out when it finally came together. We could display logos and short messages across the whole wall.</p>",
     "websiteLink": "",
@@ -1849,7 +1861,7 @@
       "Pixel Mapping"
     ],
     "gallery": [
-      "media/Integration/Temple Nightclub - Denver/MVIMG_20190817_211751.webp",
+      "media/Integration/Main Room - Temple Denver/MVIMG_20190817_211751.webp",
       "https://www.youtube.com/watch?v=soiWr2U0qEs"
     ],
     "files": [],
@@ -1914,7 +1926,7 @@
   {
     "title": "Dance Floor Pillars",
     "category": "Circuits",
-    "image": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/Screenshot_20210306-180716_Photos~2.webp",
+    "image": "media/Electronics/Dance Floor Pillars/Screenshot_20210306-180716_Photos~2.webp",
     "description": "<p><strong>Temple Nightclub | San Francisco</strong> - I built 320 meters of custom recessed pixel tape into 10 floor-to-ceiling structural pillars on a skeleton budget.</p>",
     "longDescription": "<p>We remodeled the main room at Temple Nightclub in San Francisco during the pandemic lockdowns with a skeleton crew and no budget. I was putting 320 meters of SM16704 RGBW (6000k) pixel tape seemingly built directly into 10 structural pillars on the dance floor. To build recessed tracks without expensive hardware, I wrapped the columns in OSB and mounted mud-in aluminum extrusions with a pneumatic nailer. I filled the remaining gaps with more board, plastered everything with drywall mud, and spent weeks on a scissor lift with an orbital sander hooked to a shop vac. Then I primed the columns, painted them flat black, and sealed the bottoms with silicone caulk.</p><p>The wiring had to survive crowd contact below and attic heat above. At the bottom of each column, thin metal tubing protected 3-conductor 18 AWG wiring from kick damage. Power injection runs went up inside the corner moldings to fight voltage drop across the 4 m strips. At the top, the lines met at a 24-pin ATX power coupler that connected to custom distribution boards above the video ceiling. Working up there meant crawling across strut channel and the backs of video panels in a 16 in gap, fighting condensation and heat while carpet blower fans pushed air toward the rear wall.</p><p>Just 2 weeks before we opened, the owner decided to flip the building entrance 180 degrees, but the main room layout held. Firing all 10 pillars from the dance floor looked like light jumping out of the concrete and vanishing into the ceiling above. Building custom distribution boards for morning hardware swaps took extra time that I would handle differently today, but the rig survived the crowds exactly as built.</p>",
     "websiteLink": "",
@@ -1938,7 +1950,7 @@
     ],
     "gallery": [
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210423_185515.webp",
+        "url": "media/Electronics/Dance Floor Pillars/20210423_185515.webp",
         "fit": {
           "scale": 1.25,
           "x": 58.3,
@@ -1946,7 +1958,7 @@
         }
       },
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210403_195111.webp",
+        "url": "media/Electronics/Dance Floor Pillars/20210403_195111.webp",
         "fit": {
           "scale": 1.85,
           "x": 70.6,
@@ -1955,7 +1967,7 @@
       },
       "https://www.youtube.com/watch?v=3iogvH6i8V0",
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210403_125209.webp",
+        "url": "media/Electronics/Dance Floor Pillars/20210403_125209.webp",
         "fit": {
           "scale": 1,
           "x": 50.4,
@@ -1963,7 +1975,7 @@
         }
       },
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210403_152329.webp",
+        "url": "media/Electronics/Dance Floor Pillars/20210403_152329.webp",
         "fit": {
           "scale": 1.2,
           "x": 41,
@@ -1971,7 +1983,7 @@
         }
       },
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210407_133839.webp",
+        "url": "media/Electronics/Dance Floor Pillars/20210407_133839.webp",
         "fit": {
           "scale": 1.4,
           "x": 19.6,
@@ -1980,7 +1992,7 @@
       },
       "https://www.youtube.com/watch?v=atiKDcx4ldA",
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210403_103112.webp",
+        "url": "media/Electronics/Dance Floor Pillars/20210403_103112.webp",
         "fit": {
           "scale": 1.65,
           "x": 51.4,
@@ -1988,7 +2000,7 @@
         }
       },
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210402_131904.webp",
+        "url": "media/Electronics/Dance Floor Pillars/20210402_131904.webp",
         "fit": {
           "scale": 1.25,
           "x": 84.1,
@@ -1996,7 +2008,7 @@
         }
       },
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210401_160248.webp",
+        "url": "media/Electronics/Dance Floor Pillars/20210401_160248.webp",
         "fit": {
           "scale": 1,
           "x": 51.1,
@@ -2004,7 +2016,7 @@
         }
       },
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210327_151713.webp",
+        "url": "media/Electronics/Dance Floor Pillars/20210327_151713.webp",
         "fit": {
           "scale": 1.15,
           "x": 15.7,
@@ -2012,7 +2024,7 @@
         }
       },
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210303_163104.webp",
+        "url": "media/Electronics/Dance Floor Pillars/20210303_163104.webp",
         "fit": {
           "scale": 1,
           "x": 0,
@@ -2020,7 +2032,7 @@
         }
       },
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210325_170232.webp",
+        "url": "media/Electronics/Dance Floor Pillars/20210325_170232.webp",
         "fit": {
           "scale": 1.1,
           "x": 74.4,
@@ -2028,7 +2040,7 @@
         }
       },
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20210304_181820.webp",
+        "url": "media/Electronics/Dance Floor Pillars/20210304_181820.webp",
         "fit": {
           "scale": 1,
           "x": 49.8,
@@ -2036,7 +2048,7 @@
         }
       },
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20201103_011401.webp",
+        "url": "media/Electronics/Dance Floor Pillars/20201103_011401.webp",
         "fit": {
           "scale": 1.5,
           "x": 0,
@@ -2044,7 +2056,7 @@
         }
       },
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20201210_211419.webp",
+        "url": "media/Electronics/Dance Floor Pillars/20201210_211419.webp",
         "fit": {
           "scale": 1.25,
           "x": 76.3,
@@ -2052,7 +2064,7 @@
         }
       },
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20201108_183241.webp",
+        "url": "media/Electronics/Dance Floor Pillars/20201108_183241.webp",
         "fit": {
           "scale": 1.1,
           "x": 26.3,
@@ -2060,7 +2072,7 @@
         }
       },
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200905_191652.webp",
+        "url": "media/Electronics/Dance Floor Pillars/20200905_191652.webp",
         "fit": {
           "scale": 1.15,
           "x": 6.5,
@@ -2068,7 +2080,7 @@
         }
       },
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/Screenshot_20210306-180716_Photos~2.webp",
+        "url": "media/Electronics/Dance Floor Pillars/Screenshot_20210306-180716_Photos~2.webp",
         "fit": {
           "scale": 1.1,
           "x": 44.5,
@@ -2076,7 +2088,7 @@
         }
       },
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20201025_233007.webp",
+        "url": "media/Electronics/Dance Floor Pillars/20201025_233007.webp",
         "fit": {
           "scale": 1.2,
           "x": 0,
@@ -2084,7 +2096,7 @@
         }
       },
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20201107_150146.webp",
+        "url": "media/Electronics/Dance Floor Pillars/20201107_150146.webp",
         "fit": {
           "scale": 1,
           "x": 37.5,
@@ -2092,7 +2104,7 @@
         }
       },
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200921_152509.webp",
+        "url": "media/Electronics/Dance Floor Pillars/20200921_152509.webp",
         "fit": {
           "scale": 1.15,
           "x": 89.6,
@@ -2100,7 +2112,7 @@
         }
       },
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200926_205346.webp",
+        "url": "media/Electronics/Dance Floor Pillars/20200926_205346.webp",
         "fit": {
           "scale": 1.25,
           "x": 0,
@@ -2108,7 +2120,7 @@
         }
       },
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200908_155818.webp",
+        "url": "media/Electronics/Dance Floor Pillars/20200908_155818.webp",
         "fit": {
           "scale": 1.35,
           "x": 42.6,
@@ -2116,7 +2128,7 @@
         }
       },
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200905_223735.webp",
+        "url": "media/Electronics/Dance Floor Pillars/20200905_223735.webp",
         "fit": {
           "scale": 1.4,
           "x": 30.7,
@@ -2124,7 +2136,7 @@
         }
       },
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200925_105443.webp",
+        "url": "media/Electronics/Dance Floor Pillars/20200925_105443.webp",
         "fit": {
           "scale": 1.65,
           "x": 41.4,
@@ -2132,7 +2144,7 @@
         }
       },
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200826_201228.webp",
+        "url": "media/Electronics/Dance Floor Pillars/20200826_201228.webp",
         "fit": {
           "scale": 1.25,
           "x": 36.4,
@@ -2140,7 +2152,7 @@
         }
       },
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200826_201238.webp",
+        "url": "media/Electronics/Dance Floor Pillars/20200826_201238.webp",
         "fit": {
           "scale": 1.3,
           "x": 100,
@@ -2148,7 +2160,7 @@
         }
       },
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200901_173408.webp",
+        "url": "media/Electronics/Dance Floor Pillars/20200901_173408.webp",
         "fit": {
           "scale": 1.4,
           "x": 41.1,
@@ -2156,7 +2168,7 @@
         }
       },
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200921_135156.webp",
+        "url": "media/Electronics/Dance Floor Pillars/20200921_135156.webp",
         "fit": {
           "scale": 1.1,
           "x": 59.4,
@@ -2164,7 +2176,7 @@
         }
       },
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200905_171937.webp",
+        "url": "media/Electronics/Dance Floor Pillars/20200905_171937.webp",
         "fit": {
           "scale": 1.1,
           "x": 39.1,
@@ -2172,7 +2184,7 @@
         }
       },
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200828_155006.webp",
+        "url": "media/Electronics/Dance Floor Pillars/20200828_155006.webp",
         "fit": {
           "scale": 1.35,
           "x": 22.8,
@@ -2180,7 +2192,7 @@
         }
       },
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/20200830_215210.webp",
+        "url": "media/Electronics/Dance Floor Pillars/20200830_215210.webp",
         "fit": {
           "scale": 1.5,
           "x": 45.1,
@@ -2188,7 +2200,7 @@
         }
       },
       {
-        "url": "media/Electronics/Pillars - Temple Nightclub _ San Francisco/IMG_20200706_140158.webp",
+        "url": "media/Electronics/Dance Floor Pillars/IMG_20200706_140158.webp",
         "fit": {
           "scale": 1.3,
           "x": 71.4,
@@ -2320,7 +2332,7 @@
   {
     "title": "Blackout Ceiling Tubes",
     "category": "Lighting",
-    "image": "media/Lighting/Mezzanine Ceiling Tubes/20240619_123414.webp",
+    "image": "media/Lighting/Blackout Ceiling Tubes/20240619_123414.webp",
     "thumbnailFit": {
       "scale": 1.25,
       "x": 58.5,
@@ -2352,8 +2364,8 @@
       "Custom Fabrication"
     ],
     "gallery": [
-      "media/Lighting/Mezzanine Ceiling Tubes/20240619_123414.webp",
-      "media/Lighting/Mezzanine Ceiling Tubes/20240619_123416.webp",
+      "media/Lighting/Blackout Ceiling Tubes/20240619_123414.webp",
+      "media/Lighting/Blackout Ceiling Tubes/20240619_123416.webp",
       "https://www.youtube.com/watch?v=VvVYAEQJYy4",
       "https://www.youtube.com/watch?v=obL6uEZXaNs",
       "https://www.youtube.com/watch?v=OqBuz3VsJoo",

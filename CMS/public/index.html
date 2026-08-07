@@ -42,8 +42,8 @@
         <button onclick="tryRefresh()" class="px-4 py-2 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-600 flex items-center gap-2">
           <i class="ph ph-arrow-clockwise"></i> Refresh
         </button>
-        <button onclick="convertAllMedia()" id="convertBtn" class="px-4 py-2 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-600 flex items-center gap-2">
-          <i class="ph ph-images-square"></i> Convert Media
+        <button onclick="fixFileStructure()" id="fixStructureBtn" class="px-4 py-2 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-600 flex items-center gap-2">
+          <i class="ph ph-wrench"></i> Fix File Structure
         </button>
         <a href="/preview" target="_blank" class="px-4 py-2 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-600 flex items-center gap-2">
           <i class="ph ph-desktop"></i> Preview
@@ -1386,22 +1386,33 @@
       }
     }
 
-    async function convertAllMedia() {
-      if (!confirm("This will convert all non-WebP images to WebP and move originals to an archive folder. Continue?")) return;
-      const btn = document.getElementById('convertBtn');
+    async function fixFileStructure() {
+      if (!confirm("This will move project media on disk to match each project's current title/category, update all links, delete any empty folders left behind, and republish the site. Continue?")) return;
+      const btn = document.getElementById('fixStructureBtn');
       const originalText = btn.innerHTML;
-      btn.innerHTML = '<i class="ph ph-spinner animate-spin"></i> Converting...';
+      btn.innerHTML = '<i class="ph ph-spinner animate-spin"></i> Fixing...';
       btn.disabled = true;
       document.getElementById('loadingOverlay').classList.remove('hidden');
-      document.getElementById('loadingText').innerText = "Converting media to WebP...";
+      document.getElementById('loadingText').innerText = "Fixing file structure...";
 
       try {
-        const result = await api.post('/media/convert-all');
+        const result = await api.post('/media/fix-structure');
         btn.innerHTML = originalText;
         btn.disabled = false;
         document.getElementById('loadingOverlay').classList.add('hidden');
         document.getElementById('loadingText').innerText = "Saving Changes...";
-        Toastify({ text: `Converted ${result.converted}, re-fixed ${result.refixed || 0}, archived ${result.archived} originals`, duration: 5000, backgroundColor: "#10b981" }).showToast();
+
+        const parts = [`moved ${result.moved}`];
+        if (result.copied) parts.push(`copied ${result.copied}`);
+        parts.push(`removed ${result.removedDirs} empty folder${result.removedDirs === 1 ? '' : 's'}`);
+        const summary = `Fixed file structure: ${parts.join(', ')}${result.published ? ' — site republished' : ''}`;
+        Toastify({ text: summary, duration: 5000, backgroundColor: "#10b981" }).showToast();
+
+        if (result.missing > 0) {
+          console.warn('Fix File Structure: could not locate these referenced files on disk:', result.warnings);
+          Toastify({ text: `Warning: ${result.missing} referenced file(s) could not be found on disk — left unchanged (see console for details)`, duration: 7000, backgroundColor: "#f59e0b" }).showToast();
+        }
+
         refreshData();
       } catch (err) {
         btn.innerHTML = originalText;
