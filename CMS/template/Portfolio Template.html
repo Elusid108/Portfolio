@@ -195,6 +195,7 @@
         const Pause = (p) => <Icon {...p}><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></Icon>;
         const Maximize = (p) => <Icon {...p}><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></Icon>;
         const Minimize = (p) => <Icon {...p}><path d="M8 3v3a2 2 0 0 1-2 2H3"/><path d="M21 8h-3a2 2 0 0 1-2-2V3"/><path d="M3 16h3a2 2 0 0 1 2 2v3"/><path d="M16 21v-3a2 2 0 0 1 2-2h3"/></Icon>;
+        const Repeat = (p) => <Icon {...p}><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></Icon>;
         const Copy = (p) => <Icon {...p}><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></Icon>;
         const Send = (p) => <Icon {...p}><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></Icon>;
         const Share2 = (p) => <Icon {...p}><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></Icon>;
@@ -565,6 +566,7 @@
             const [duration, setDuration] = useState(0);
             const [isFullscreen, setIsFullscreen] = useState(false);
             const [seeking, setSeeking] = useState(false);
+            const [looping, setLooping] = useState(false);
 
             useEffect(() => {
                 if (!autoPlay) return;
@@ -604,6 +606,11 @@
                 else containerRef.current?.requestFullscreen?.();
             };
 
+            const toggleLoop = (e) => {
+                e.stopPropagation();
+                setLooping((l) => !l);
+            };
+
             const formatTime = (s) => {
                 if (!isFinite(s) || s < 0) s = 0;
                 const m = Math.floor(s / 60);
@@ -620,6 +627,7 @@
                         src={src}
                         poster={poster || undefined}
                         playsInline
+                        loop={looping}
                         onClick={togglePlay}
                         onPlay={() => setPlaying(true)}
                         onPause={() => setPlaying(false)}
@@ -657,6 +665,9 @@
                             onClick={(e) => e.stopPropagation()}
                             aria-label="Seek"
                         />
+                        <button type="button" onClick={toggleLoop} aria-label={looping ? 'Disable loop' : 'Loop video'} aria-pressed={looping} title={looping ? 'Looping on' : 'Loop video'} className={`transition-colors flex-shrink-0 ${looping ? 'text-cyan-400' : 'text-white hover:text-cyan-400'}`}>
+                            <Repeat size={18} />
+                        </button>
                         <button type="button" onClick={toggleFullscreen} aria-label={isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'} className="text-white hover:text-cyan-400 transition-colors flex-shrink-0">
                             {isFullscreen ? <Minimize size={18} /> : <Maximize size={18} />}
                         </button>
