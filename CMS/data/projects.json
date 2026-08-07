@@ -575,15 +575,20 @@
     "longDescription": "<p>We ripped out and rerouted the fire suppression system and two layers of ceiling drywall just to buy a little breathing room. From the tile floor to the bottom of the wooden joists was exactly 8 feet, and every 1/4\" mattered. Half the joists up there were broken anyway, so I had those fixed and the others restructured to push electrical, data, and HVAC down the runs of the room in line with the pillars, leaving the center in between clear.</p><p>We needed a rigid, identical grid that could hold a diffuser at an even distance without sagging. Strips droop, and wiring them is a mess. Large, cheap rigid PCBs are a good solution, so we took LED dancefloor boards and had the manufacturer alter the pixel spacing, enlarge the mounting holes, and swap in 90-degree headers. We bolted them straight into aluminum T-track mounted to the ceiling infrastructure, compressing a 24-volt WS2818 pixel matrix into a vertical profile under an inch.</p><p>I never actually saw it powered on overhead. By the time the basement was ready for the hang, I had hit my breaking point with the remodel and walked away. I had completed the upstairs main room immersive dance lighting rig during the COVID-19 pandemic and had designed and procured the parts for the basement. I pixel-mapped the array flat across a sea of road cases in the unfinished basement, proved it worked, and handed the plans off to my crew to finish the hang.</p>",
     "video": "",
     "gallery": [
-      "media/Electronics/LED Pixel Panel/20200910_134441.webp",
-      "media/Electronics/LED Pixel Panel/20200910_13437.webp",
-      "media/Electronics/LED Pixel Panel/20200910_134533.webp",
       {
-        "url": "media/Electronics/LED Pixel Panel/20211118_155135.webp",
+        "url": "media/Electronics/LED Pixel Panel/20211202_171311.mp4",
+        "poster": "media/Electronics/LED Pixel Panel/20211202_171311-poster.webp"
+      },
+      {
+        "url": "media/Electronics/LED Pixel Panel/20211202_171527.mp4",
+        "poster": "media/Electronics/LED Pixel Panel/20211202_171527-poster.webp"
+      },
+      {
+        "url": "media/Electronics/LED Pixel Panel/20211202_171343.webp",
         "fit": {
-          "scale": 1,
-          "x": 50.9,
-          "y": 77.8
+          "scale": 1.5,
+          "x": 62.1,
+          "y": 68.4
         }
       },
       {
@@ -595,14 +600,16 @@
         }
       },
       {
-        "url": "media/Electronics/LED Pixel Panel/20211202_171343.webp",
+        "url": "media/Electronics/LED Pixel Panel/20211118_155135.webp",
         "fit": {
-          "scale": 1.5,
-          "x": 62.1,
-          "y": 68.4
+          "scale": 1,
+          "x": 50.9,
+          "y": 77.8
         }
       },
-      "https://www.youtube.com/watch?v=bxIpeqLU4mc"
+      "media/Electronics/LED Pixel Panel/20200910_13437.webp",
+      "media/Electronics/LED Pixel Panel/20200910_134533.webp",
+      "media/Electronics/LED Pixel Panel/20200910_134441.webp"
     ],
     "launchLink": "",
     "githubLink": "",
@@ -641,6 +648,14 @@
     "video": "",
     "gallery": [
       {
+        "url": "media/Electronics/LVL/VID_20181107_194547.mp4",
+        "poster": "media/Electronics/LVL/VID_20181107_194547-poster.webp"
+      },
+      {
+        "url": "media/Electronics/LVL/Video Project 10 (3).mp4",
+        "poster": "media/Electronics/LVL/Video Project 10 (3)-poster.webp"
+      },
+      {
         "url": "media/Electronics/LVL/IMG_20191009_231844.webp",
         "fit": {
           "scale": 1,
@@ -657,14 +672,6 @@
         }
       },
       {
-        "url": "media/Electronics/LVL/IMG_20180926_042731.webp",
-        "fit": {
-          "scale": 1,
-          "x": 49.1,
-          "y": 1
-        }
-      },
-      {
         "url": "media/Electronics/LVL/IMG_20181107_194215.webp",
         "fit": {
           "scale": 1,
@@ -672,7 +679,14 @@
           "y": 42.9
         }
       },
-      "https://www.youtube.com/watch?v=U_t3yydvrPY"
+      {
+        "url": "media/Electronics/LVL/IMG_20180926_042731.webp",
+        "fit": {
+          "scale": 1,
+          "x": 49.1,
+          "y": 1
+        }
+      }
     ],
     "launchLink": "",
     "githubLink": "",
@@ -858,8 +872,8 @@
     "category": "Apps",
     "tags": [],
     "image": "media/Apps/GeoLens Pro/Screenshot_20260118_082950_Chrome.webp",
-    "description": "<p><strong>GeoLens Pro</strong> is a local-first PWA that automatically sorts and annotates field photos using GPS geofencing.</p>",
-    "longDescription": "<p><strong>GeoLens Pro</strong> is a mobile-first Progressive Web Application designed to help field professionals capture, organize, and annotate site photos without manual filing. The primary goal is to eliminate the tedious, error-prone process of sorting hundreds of images after site visits. Unlike standard photo galleries or cloud-dependent CRMs, this application leverages a localized GPS auto-sort engine. By establishing geofenced boundaries around specific job sites, the app automatically routes incoming photos into the correct project folder the exact moment they are captured.</p><p>The workflow centers around a localized architecture that requires no account creation or backend synchronization. Users define job locations on an interactive map and set a custom geofence radius. When a photo is captured via the live camera integration or imported from the device, the system extracts the GPS coordinates and calculates the distance to all active job origins. If the photo falls within a defined radius, it is instantly assigned to that job. Users can then open the integrated canvas editor to apply non-destructive annotations, modify layers, and export professional PDF reports directly from the browser.</p><p>The standout technical achievement is the real-time client-side sorting engine powered by the Haversine formula and Dexie for IndexedDB storage. Built with React and TypeScript, the application handles complex geographical calculations and persistent data management entirely within the browser environment. Leaflet manages the interactive map boundaries, while exifr handles metadata extraction for imported files. The custom canvas editor supports granular per-layer transformations and interfaces directly with jsPDF to generate structured inspection reports without relying on a remote server.</p>",
+    "description": "<p>I built a localized browser app that automatically sorts field photos by GPS coordinate into project folders.</p>",
+    "longDescription": "<p>Doing custom lighting work around Denver meant taking quick reference photos on my phone all day. Every picture dumped into a single camera roll, and I never spent the time to sort them later. I also had loose wiring notes, drawings, and measurements that needed to stay with the right job.</p><p>To fix that, I built a browser app in React 18 and TypeScript that sorts incoming photos by GPS coordinate automatically. Using Leaflet for map boundaries and exifr to read file metadata, the app runs Haversine math against active project geofences. Photos taken inside a boundary drop straight into that project folder. Anything it misses lands in a bin for manual sorting.</p><p>For notes, I built a canvas editor to layer virtual transparencies over the photos. I could circle a part or scribble a measurement, then export a PDF report using jsPDF. Dexie handles the IndexedDB storage locally, while Supabase and Lovable manage the backend and deployment. I left contract work before running it through a full season, but the core engine did what I needed.</p>",
     "video": "",
     "gallery": [
       "media/Apps/GeoLens Pro/Screenshot_20260118_082611_Chrome.webp",
@@ -880,7 +894,8 @@
     "timestamp": "2026-01-18T13:45:57.049Z",
     "wip": true,
     "order": 11,
-    "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite (SWC)</p><p><strong>Styling:</strong> Tailwind CSS, Radix UI</p><p><strong>Maps:</strong> Leaflet, React-Leaflet</p><p><strong>Geo:</strong> exifr (EXIF extraction)</p><p><strong>Storage:</strong> Dexie (IndexedDB)</p><p><strong>Export:</strong> jsPDF</p><p><strong>Backend:</strong> Supabase</p><p><strong>Deploy:</strong> Lovable</p>"
+    "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite (SWC)</p><p><strong>Styling:</strong> Tailwind CSS, Radix UI</p><p><strong>Maps:</strong> Leaflet, React-Leaflet</p><p><strong>Geo:</strong> exifr (EXIF extraction)</p><p><strong>Storage:</strong> Dexie (IndexedDB)</p><p><strong>Export:</strong> jsPDF</p><p><strong>Backend:</strong> Supabase</p><p><strong>Deploy:</strong> Lovable</p>",
+    "related": []
   },
   {
     "id": "3991",
@@ -1258,7 +1273,10 @@
           "y": 62.7
         }
       },
-      "https://www.youtube.com/watch?v=VYTQBapCFX8",
+      {
+        "url": "media/Electronics/The Orb/Video Project 10 (1).mp4",
+        "poster": "media/Electronics/The Orb/Video Project 10 (1)-poster.webp"
+      },
       {
         "url": "media/Electronics/The Orb/IMG_20181229_194431.webp",
         "fit": {
@@ -1299,7 +1317,14 @@
           "y": 38.6
         }
       },
-      "https://www.youtube.com/watch?v=iUyuO0OBPTg",
+      {
+        "url": "media/Electronics/The Orb/Video Project 10 (2).mp4",
+        "poster": "media/Electronics/The Orb/Video Project 10 (2)-poster.webp"
+      },
+      {
+        "url": "media/Electronics/The Orb/VID_20181223_161426.mp4",
+        "poster": "media/Electronics/The Orb/VID_20181223_161426-poster.webp"
+      },
       {
         "url": "media/Electronics/The Orb/ORB2.webp",
         "fit": {
@@ -1483,7 +1508,10 @@
     ],
     "gallery": [
       "media/Electronics/Vertical Pixel Bar Tubes/20240619_122306.webp",
-      "https://www.youtube.com/watch?v=9nZFYvWzUfE"
+      {
+        "url": "media/Electronics/Vertical Pixel Bar Tubes/Video Project 18 (1).mp4",
+        "poster": "media/Electronics/Vertical Pixel Bar Tubes/Video Project 18 (1)-poster.webp"
+      }
     ],
     "files": [],
     "video": "",
