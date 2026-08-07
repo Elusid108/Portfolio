@@ -584,8 +584,8 @@
             "title": "Main Room - Temple SF",
             "category": "Integration",
             "image": "media/Integration/Temple - San Francisco/banner.webp",
-            "description": "<p>Temple - Main Room | San Francisco</p>",
-            "longDescription": "<p>Break down all the systems used in the main room, the rack, all the backend stuff goes in here. All the software and control systems we used to run the rig. Anything control related</p>",
+            "description": "<p><strong>Temple Nightclub | San Francisco</strong> - Routing a three layer club rig through an inherited lighting console to survive single operator control.</p>",
+            "longDescription": "<p>The owners at Temple San Francisco wanted 1 person to operate the lighting, video, and pixels in the main room simultaneously. That was never going to work with 2 hands, especially since we were stuck with the Road Hog 4 that came from the last rig. It lacked the routing capability to act as a central hub. Releasing a DMX overwrite on that console took a macro requiring dozens of screen presses. That cost several seconds, which meant missing the drop on any heavy track.</p><p>I bypassed the console entirely by routing Art-Net out of Resolume and the Hog into Madrix. I merged them using highest takes priority (HTP) on the RGB channels across 8 universes of sACN. That gave instant control back and forth just by blacking out 1 system. I also routed the video so a clip on the ceiling sliced across the main screens, overrode console colors, and drove the pillar pixels. Mask patterns kept the intensity in check. Behind the booth, I built a dedicated Resolume server with RAID6 SSDs to push simultaneous 4K layers, and we installed 400 A and 200 A electrical services to power the room. My crew built wireless receivers using ESP32s for the acrylic VIP tables and I installed a pixel wall on the mezzanine for matching ambiance.</p><p>I tore the pixel mapping down to the ground 6 times before I got all 3 systems talking to each other clean. The first night they fired together without tearing, I got goosebumps. But my control scheme was too ambitious. I installed a 65 in touchscreen running OSC Pilot to handle signal routing and live previews. It technically worked, but live operation under pressure is a different beast. The operators ripped the screen out after a few months and went back to MIDI controllers.</p><p>The demand for 1 operator survived for slow nights. Using a global fader for blackouts and the video routing from the ceiling, 1 person could run the whole room from a couple of controllers. But for busy nights and headlining DJs, the reality of the rig won out. They put 2 operators in the booth.</p>",
             "websiteLink": "",
             "launchLink": "",
             "githubLink": "",
@@ -607,12 +607,15 @@
             ],
             "gallery": [
                 "media/Integration/Temple - San Francisco/20210514_2025472.webp",
-                "media/Integration/Temple Nightclub - San Francisco/IMG_20200504_185605.webp"
+                "media/Integration/Temple Nightclub - San Francisco/IMG_20200504_185605.webp",
+                "media/Integration/Main Room - Temple SF/20210515_184126.webp",
+                "media/Integration/Main Room - Temple SF/20210429_122346.webp",
+                "media/Integration/Main Room - Temple SF/IMG_20200707_150706.webp"
             ],
             "files": [],
             "video": "",
             "order": 1,
-            "specs": "",
+            "specs": "<p>Lighting Console: Roadhog 4</p><p>Video: Resolume Arena</p><p>Pixels: Madrix</p><p>DJ link: ShowKontrol</p><p>Signal Manipulation: Show Cockpit</p><p>Touch Software: OSCPilot</p><p><br></p>",
             "related": [
                 {
                     "name": "Lighting design",
