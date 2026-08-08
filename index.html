@@ -265,9 +265,9 @@
                 {
                     "url": "media/Lighting/Immersive Dance Lighting Rig/Screenshot 2025-03-17 193550.webp",
                     "fit": {
-                        "scale": 1,
-                        "x": 33.6,
-                        "y": 54.6
+                        "scale": 1.15,
+                        "x": 0,
+                        "y": 39.4
                     }
                 },
                 {
@@ -623,7 +623,7 @@
             "websiteLink": "",
             "timestamp": "2026-01-13T00:01:33.897Z",
             "wip": false,
-            "order": 5,
+            "order": 3,
             "specs": "<p><strong>Medium:</strong> PLA+ (3 material)</p><p><strong>Color:</strong> Black, White, Transparent</p><p><strong>LEDs: </strong>64 (8x8)</p><p><strong>Driver: </strong>WS2813 (RGB)</p><p><strong>Decoder:</strong> ESP32-s3</p><p><strong>Firmware: </strong>WLED</p>",
             "related": [],
             "thumbnailFit": {
@@ -685,7 +685,7 @@
             ],
             "files": [],
             "video": "",
-            "order": 3,
+            "order": 4,
             "specs": "<p><strong>Medium:</strong> PLA+ (3 material)</p><p><strong>Color:</strong> Black, White, Transparent</p><p><strong>LEDs: </strong>256 (16x16)</p><p><strong>Driver: </strong>WS2815 (RGB)</p><p><strong>Decoder:</strong> ATHOM (ESP8266)</p><p><strong>Firmware: </strong>WLED</p>",
             "related": [],
             "thumbnailFit": {
@@ -2075,7 +2075,7 @@
             "video": "",
             "timestamp": "2026-07-02T23:00:41.951Z",
             "id": "8609",
-            "order": 4,
+            "order": 5,
             "specs": "<p><strong>Medium:</strong> PLA+ (2 material)</p><p><strong>Color:</strong> Black, White</p><p><strong>LEDs: </strong>256 (16x16)</p><p><strong>Driver: </strong>WS2815 (RGB)</p><p><strong>Decoder:</strong> ATHOM (ESP8266)</p><p><strong>Firmware: </strong>WLED</p>",
             "related": [],
             "thumbnailFit": {
@@ -3423,7 +3423,7 @@
             "category": "Art",
             "image": "media/Art/Pixel Rocks/frame-thumb-1786203175616.webp",
             "description": "<p>10 wirelessly controlled, 3D printed LED rocks built from topographical scans for a contemporary ballet piece.</p>",
-            "longDescription": "<p>The lighting designer for LINES ballet needed internally lit rocks controlled wirelessly from the console. The artistic director rejected my initial hand sculpted models. He wanted them sharp and jagged. They needed to look like they were meant to stone someone to death, but remain small enough to hold in one hand. I hiked outside Denver and collected 30 small stones that fit the aesthetic and my 3D scanner turntable. Working in a digital format let me scale the scans up to the size of about a pineapple. I printed 10 final shells in clear PLA+ at 5% infill. The hollow space kept the LED brightness high. The ballet company handled the faux painting on site.</p><p>The internal hardware needed to be completely modular. I modeled a universal sled that inserted into the base of any rock, locked in by a threaded cap. A custom pixel puck slid into that sled. Each puck held a lithium ion battery, a charge port, a rocker switch, a disassembled ESP8266 based Athom LED decoder running WLED, and two strips of pixel tape. The completed assemblies weighed about 5 lbs.</p><p>We drove them from the light console using ELM over a wireless router. This was the last project where I relied on 2.4GHz WiFi for live show control. The network environment choked the decoders, causing some units to drop control and freeze on stage. I specify 5GHz hardware for wireless pixel control now.</p>",
+            "longDescription": "<p>My good friend, mentor, and lighting designer for LINES ballet needed internally lit rocks controlled wirelessly from the console. The artistic director rejected my initial hand sculpted models. He wanted them sharp and jagged. They needed to look like they were meant to stone someone to death, but remain small enough to hold in one hand. I hiked outside Denver and collected 30 small stones that fit the aesthetic and my 3D scanner turntable. Working in a digital format let me scale the scans up to the size of about a pineapple. I printed 10 final shells in clear PLA+ at 5% infill. The hollow space kept the LED brightness high. The ballet company handled the faux painting on site.</p><p>The internal hardware needed to be completely modular. I modeled a universal sled that inserted into the base of any rock, locked in by a threaded cap. A custom pixel puck slid into that sled. Each puck held a lithium ion battery, a charge port, a rocker switch, a disassembled ESP8266 based Athom LED decoder running WLED, and two strips of pixel tape. The completed assemblies weighed about 5 lbs.</p><p>We drove them from the light console using ELM over a wireless router. This was the last project where I relied on 2.4GHz WiFi for live show control. The network environment choked the decoders, causing some units to drop control and freeze on stage. I specify 5GHz hardware for wireless pixel control now.</p>",
             "websiteLink": "",
             "launchLink": "",
             "githubLink": "",
@@ -3441,7 +3441,8 @@
                 "SPI",
                 "WLED",
                 "TCP/IP",
-                "ELM"
+                "ELM",
+                "3D Scanning"
             ],
             "gallery": [
                 {
@@ -3531,7 +3532,7 @@
                 "media/Art/Pixel Rocks/20240212_120443.webp"
             ],
             "files": [],
-            "specs": "<p><strong>Firmware:</strong> WLED</p>",
+            "specs": "<p><strong>Firmware:</strong> WLED</p><p><strong>Voltage:</strong> 12vdc</p>",
             "related": [],
             "video": "",
             "timestamp": "2026-08-08T15:03:36.390Z",
@@ -3562,7 +3563,7 @@
         "skills_hardware": "Power Distribution, AC/DC Load Calc, Through-Hole Soldering, SMD Soldering, ESP32, ESP8266, Embedded Systems",
         "skills_lighting": "Resolume Arena, Madrix, ELM, MA, HOG, ETC, ChamSys, Capture, Lighting Design, Pixel Mapping, Video Mapping, WLED",
         "skills_software": "React, JavaScript, Node.js, REST APIs, LLM Integration, Google Drive API",
-        "skills_fabrication": "FDM 3D Printing, SolidWorks, Custom Fabrication, Rapid Prototyping, Hand tools, Power tools, Blender",
+        "skills_fabrication": "FDM 3D Printing, 3D Scanning, SolidWorks, Custom Fabrication, Rapid Prototyping, Hand tools, Power tools, Blender",
         "skills_systems": "DMX, ArtNet, sACN, OSC, MIDI, TCP/IP, SPI, I2C, CAN, Show Cockpit, OSCpilot"
     }
 }
@@ -3800,15 +3801,19 @@
                         {/* PERFORMANCE: Lazy Loading */}
                         {/* Empty alt: the title link directly below names this card, so
                             describing the thumbnail too would double-announce it. */}
+                        {/* Wrapper carries the hover-scale so inline crop transform on img
+                            doesn't override it (inline styles beat CSS classes). */}
+                        <div className="w-full h-full group-hover:scale-105 transition-transform duration-700">
                         <img 
                             src={project.image} 
                             alt="" 
                             loading="lazy"
                             decoding="async"
-                            className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-105 group-hover:opacity-100 ${imgLoaded ? 'opacity-80' : 'opacity-0'}`}
+                            className={`w-full h-full object-cover transition-opacity duration-700 group-hover:opacity-100 ${imgLoaded ? 'opacity-80' : 'opacity-0'}`}
                             style={fitStyle(project.thumbnailFit)}
                             onLoad={() => setImgLoaded(true)}
                         />
+                        </div>
                         <div aria-hidden="true" className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
                             <div className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 bg-black/60 backdrop-blur px-4 py-2 rounded-full border border-white/20 flex items-center gap-2 text-white font-bold text-sm">
                                 <Maximize2 size={16} /> View Project
@@ -4529,7 +4534,9 @@
                                                             ) : isVid ? (
                                                                 <>
                                                                     {mediaPoster(item) ? (
-                                                                        <img src={mediaPoster(item)} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90" alt="" style={fitStyle(mediaFit(item))} />
+                                                                        <div className="w-full h-full group-hover:scale-110 transition-transform duration-700">
+                                                                            <img src={mediaPoster(item)} className="w-full h-full object-cover opacity-90" alt="" style={fitStyle(mediaFit(item))} />
+                                                                        </div>
                                                                     ) : (
                                                                         <div className="w-full h-full bg-zinc-800" />
                                                                     )}
@@ -4541,7 +4548,9 @@
                                                                 </>
                                                             ) : (
                                                                 <>
-                                                                    <img src={mediaUrl} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="" style={fitStyle(mediaFit(item))} />
+                                                                    <div className="w-full h-full group-hover:scale-110 transition-transform duration-700">
+                                                                        <img src={mediaUrl} className="w-full h-full object-cover" alt="" style={fitStyle(mediaFit(item))} />
+                                                                    </div>
                                                                     <div aria-hidden="true" className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
                                                                         <Maximize2 className="text-white opacity-0 group-hover:opacity-100 transition-opacity" size={24}/>
                                                                     </div>

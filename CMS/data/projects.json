@@ -103,9 +103,9 @@
       {
         "url": "media/Lighting/Immersive Dance Lighting Rig/Screenshot 2025-03-17 193550.webp",
         "fit": {
-          "scale": 1,
-          "x": 33.6,
-          "y": 54.6
+          "scale": 1.15,
+          "x": 0,
+          "y": 39.4
         }
       },
       {
@@ -461,7 +461,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-13T00:01:33.897Z",
     "wip": false,
-    "order": 5,
+    "order": 3,
     "specs": "<p><strong>Medium:</strong> PLA+ (3 material)</p><p><strong>Color:</strong> Black, White, Transparent</p><p><strong>LEDs: </strong>64 (8x8)</p><p><strong>Driver: </strong>WS2813 (RGB)</p><p><strong>Decoder:</strong> ESP32-s3</p><p><strong>Firmware: </strong>WLED</p>",
     "related": [],
     "thumbnailFit": {
@@ -523,7 +523,7 @@
     ],
     "files": [],
     "video": "",
-    "order": 3,
+    "order": 4,
     "specs": "<p><strong>Medium:</strong> PLA+ (3 material)</p><p><strong>Color:</strong> Black, White, Transparent</p><p><strong>LEDs: </strong>256 (16x16)</p><p><strong>Driver: </strong>WS2815 (RGB)</p><p><strong>Decoder:</strong> ATHOM (ESP8266)</p><p><strong>Firmware: </strong>WLED</p>",
     "related": [],
     "thumbnailFit": {
@@ -1913,7 +1913,7 @@
     "video": "",
     "timestamp": "2026-07-02T23:00:41.951Z",
     "id": "8609",
-    "order": 4,
+    "order": 5,
     "specs": "<p><strong>Medium:</strong> PLA+ (2 material)</p><p><strong>Color:</strong> Black, White</p><p><strong>LEDs: </strong>256 (16x16)</p><p><strong>Driver: </strong>WS2815 (RGB)</p><p><strong>Decoder:</strong> ATHOM (ESP8266)</p><p><strong>Firmware: </strong>WLED</p>",
     "related": [],
     "thumbnailFit": {
@@ -3279,7 +3279,8 @@
       "SPI",
       "WLED",
       "TCP/IP",
-      "ELM"
+      "ELM",
+      "3D Scanning"
     ],
     "gallery": [
       {
@@ -3369,7 +3370,7 @@
       "media/Art/Pixel Rocks/20240212_120443.webp"
     ],
     "files": [],
-    "specs": "<p><strong>Firmware:</strong> WLED</p>",
+    "specs": "<p><strong>Firmware:</strong> WLED</p><p><strong>Voltage:</strong> 12vdc</p>",
     "related": [],
     "video": "",
     "timestamp": "2026-08-08T15:03:36.390Z",

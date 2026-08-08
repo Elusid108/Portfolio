@@ -394,15 +394,19 @@
                         {/* PERFORMANCE: Lazy Loading */}
                         {/* Empty alt: the title link directly below names this card, so
                             describing the thumbnail too would double-announce it. */}
+                        {/* Wrapper carries the hover-scale so inline crop transform on img
+                            doesn't override it (inline styles beat CSS classes). */}
+                        <div className="w-full h-full group-hover:scale-105 transition-transform duration-700">
                         <img 
                             src={project.image} 
                             alt="" 
                             loading="lazy"
                             decoding="async"
-                            className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-105 group-hover:opacity-100 ${imgLoaded ? 'opacity-80' : 'opacity-0'}`}
+                            className={`w-full h-full object-cover transition-opacity duration-700 group-hover:opacity-100 ${imgLoaded ? 'opacity-80' : 'opacity-0'}`}
                             style={fitStyle(project.thumbnailFit)}
                             onLoad={() => setImgLoaded(true)}
                         />
+                        </div>
                         <div aria-hidden="true" className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
                             <div className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 bg-black/60 backdrop-blur px-4 py-2 rounded-full border border-white/20 flex items-center gap-2 text-white font-bold text-sm">
                                 <Maximize2 size={16} /> View Project
@@ -1123,7 +1127,9 @@
                                                             ) : isVid ? (
                                                                 <>
                                                                     {mediaPoster(item) ? (
-                                                                        <img src={mediaPoster(item)} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90" alt="" style={fitStyle(mediaFit(item))} />
+                                                                        <div className="w-full h-full group-hover:scale-110 transition-transform duration-700">
+                                                                            <img src={mediaPoster(item)} className="w-full h-full object-cover opacity-90" alt="" style={fitStyle(mediaFit(item))} />
+                                                                        </div>
                                                                     ) : (
                                                                         <div className="w-full h-full bg-zinc-800" />
                                                                     )}
@@ -1135,7 +1141,9 @@
                                                                 </>
                                                             ) : (
                                                                 <>
-                                                                    <img src={mediaUrl} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="" style={fitStyle(mediaFit(item))} />
+                                                                    <div className="w-full h-full group-hover:scale-110 transition-transform duration-700">
+                                                                        <img src={mediaUrl} className="w-full h-full object-cover" alt="" style={fitStyle(mediaFit(item))} />
+                                                                    </div>
                                                                     <div aria-hidden="true" className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
                                                                         <Maximize2 className="text-white opacity-0 group-hover:opacity-100 transition-opacity" size={24}/>
                                                                     </div>

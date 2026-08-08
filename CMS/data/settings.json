@@ -11,6 +11,6 @@
   "skills_hardware": "Power Distribution, AC/DC Load Calc, Through-Hole Soldering, SMD Soldering, ESP32, ESP8266, Embedded Systems",
   "skills_lighting": "Resolume Arena, Madrix, ELM, MA, HOG, ETC, ChamSys, Capture, Lighting Design, Pixel Mapping, Video Mapping, WLED",
   "skills_software": "React, JavaScript, Node.js, REST APIs, LLM Integration, Google Drive API",
-  "skills_fabrication": "FDM 3D Printing, SolidWorks, Custom Fabrication, Rapid Prototyping, Hand tools, Power tools, Blender",
+  "skills_fabrication": "FDM 3D Printing, 3D Scanning, SolidWorks, Custom Fabrication, Rapid Prototyping, Hand tools, Power tools, Blender",
   "skills_systems": "DMX, ArtNet, sACN, OSC, MIDI, TCP/IP, SPI, I2C, CAN, Show Cockpit, OSCpilot"
 }
