@@ -438,7 +438,13 @@
             "launchLink": "https://elusid108.github.io/LithoLab/",
             "githubLink": "https://github.com/Elusid108/LithoLab",
             "shopLink": "",
-            "files": [],
+            "files": [
+                {
+                    "name": "0.05mm Calibrated pallet file",
+                    "url": "media/Apps/LithoLab/files/0.05mm_10layer_9 colors.json",
+                    "description": "9 color calibrated .json file for LithoLab to 0.05mm layer height increments for use with a 0.2mm nozzle"
+                }
+            ],
             "featured": true,
             "websiteLink": "",
             "timestamp": "2026-01-12T01:03:01.269Z",
@@ -1507,7 +1513,10 @@
             "id": "968",
             "title": "LithoPalletGen",
             "category": "Apps",
-            "tags": [],
+            "tags": [
+                "Node.js",
+                "JavaScript"
+            ],
             "image": "media/Apps/LithoPalletGen/lithopalletgen1.webp",
             "description": "<p>A zero-dependency calibration tool that averages pixel data from physical filament swatches for multi-material lithophane printing.</p>",
             "longDescription": "<p>A sunflower field photo of my partner and me printed in CMYW left our faces covered in maroon splotches. Layer thickness kills light transmission before CMYW can produce realistic skin tones. I bought a 2nd AMS2 for extra filaments, but I still needed accurate calibration data.</p><p>My calibration template is a 4x5 grid of 25 mm squares scaling in 0.05 mm steps over a 0.15 mm white backing. I print the swatches at 100% infill, photograph them on a light panel, and upload the image. Even off an X1C, surface texture breaks a single-pixel eyedropper reading. I wrote an area-averaging sampler in vanilla JavaScript that aggregates up to 256 pixels to grab the true color of each thickness. Collapsible palette sets keep the interface readable across multiple materials.</p><p>Having zero dependencies lets me host the app free on GitHub Pages. The engine exports a HSL or hex JSON to import into LithoLab, my PIXEStl-based generator. Skin tones on the next print came out clean, and I dropped to a 0.2 mm nozzle to push the detail.</p>",
@@ -1519,7 +1528,18 @@
             "launchLink": "https://elusid108.github.io/LithoPalletGen/",
             "githubLink": "https://github.com/Elusid108/LithoPalletGen",
             "shopLink": "",
-            "files": [],
+            "files": [
+                {
+                    "name": "0.05mm Calibrated pallet file",
+                    "url": "media/Apps/LithoPalletGen/files/0.05mm_10layer_9 colors.json",
+                    "description": "9 color calibrated .json file for LithoLab to 0.05mm layer height increments for use with a 0.2mm nozzle"
+                },
+                {
+                    "name": "(0.2mm) 0.05mm swatch",
+                    "url": "media/Apps/LithoPalletGen/files/(0.2mm) 0.05mm swatch.zip",
+                    "description": "A 2 material color swatch model to be printed with 0.2mm nozzle and 0.05mm layer height at 100% infill."
+                }
+            ],
             "featured": false,
             "websiteLink": "",
             "timestamp": "2026-06-11T17:19:00.407Z",
