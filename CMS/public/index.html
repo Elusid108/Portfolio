@@ -678,7 +678,29 @@
 
         quillSpecs = new Quill('#specs-editor', {
             theme: 'snow',
-            modules: { toolbar: toolbarFull, clipboard: { matchers: [stripColors] } },
+            modules: {
+                toolbar: toolbarFull,
+                clipboard: { matchers: [stripColors] },
+                keyboard: {
+                    bindings: {
+                        enter: {
+                            key: 13,
+                            handler: function(range) {
+                                // If the previous character is already \n the current line is
+                                // blank — let Quill's default handler create a paragraph break.
+                                if (range.index > 0 &&
+                                    this.quill.getText(range.index - 1, 1) === '\n') {
+                                    return true;
+                                }
+                                // Otherwise insert a soft line break (<br>) and move cursor.
+                                this.quill.insertText(range.index, '\n', Quill.sources.USER);
+                                this.quill.setSelection(range.index + 1, 0, Quill.sources.SILENT);
+                                return false;
+                            }
+                        }
+                    }
+                }
+            },
             placeholder: 'Specifications, technical details...'
         });
 

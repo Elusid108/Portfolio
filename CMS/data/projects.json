@@ -132,7 +132,7 @@
     "timestamp": "2026-01-12T01:03:01.269Z",
     "wip": false,
     "order": 0,
-    "specs": "<h2><strong>Lighting</strong></h2><ul><li><strong>144x</strong> PixelDots RGBW</li><li><strong>12x</strong> Hybrid Zoom 150W</li><li><strong>40x</strong> LED Wash RGBWA+UV</li></ul><h2><strong>Pixels</strong></h2><ul><li><strong>10x</strong> Custom Pixel Pillars</li><li class=\"ql-indent-1\"><strong>640x</strong> SM16703 RGBW</li><li class=\"ql-indent-1\"><strong>8x</strong> 4m @ 60/m (3x1) 12vdc</li></ul><h2><strong>Video</strong></h2><ul><li><strong>234x</strong> 1m x 0.5m (4.81p)</li><li><strong>60x</strong> 0.5m x 0.5m (4.81p)</li></ul><h2><strong>SFX</strong></h2><ul><li><strong>2x</strong> Radiance Hazers</li></ul><h2><strong>Control</strong></h2><ul><li>Resolume Arena 7.x</li><li>Madrix 5.x</li><li>Roadhog 4</li></ul>",
+    "specs": "<p><strong>Pixel Spot:</strong> 144x PixelDots RGBW</p><p><strong>Profile:</strong> 12x Hybrid Zoom 150W</p><p><strong>Wash:</strong> 40x LED Wash RGBWA+UV</p><p><strong>SFX:</strong> 2x Radiance Hazers</p><p>&nbsp;</p><p><strong>Strip:</strong> 640x SM16703 RGBW · 8x 4m @ 60/m (3x1) · 12V DC</p><p><strong>Video:</strong> 234x 1m×0.5m (4.81p) · 60x 0.5m×0.5m (4.81p)</p><p>&nbsp;</p><p><strong>Power:</strong> 400A service · 200A service · 24x 208V twist-lock circuits · 60x 120V Edison circuits</p><p><strong>Control:</strong> Roadhog 4 · Resolume Arena 7.x · Madrix 5.x</p>",
     "related": [
       {
         "name": "Temple SF",
@@ -167,7 +167,7 @@
     "timestamp": "2026-01-12T01:03:01.269Z",
     "title": "Emmy Stand",
     "category": "Art",
-    "image": "media/Art/Emmy Stand/20250415_215715.webp",
+    "image": "media/Art/Emmy Stand/Gemini_Generated_Image_4xox7h4xox7h4xox.webp",
     "description": "<p>I built a desktop display stand to house and illuminate a friend’s Emmy without melting the PLA+ enclosure.</p>",
     "longDescription": "<p>An old coworker from my Tracks days won an Emmy and asked for a custom display. We used to work together when he was a bartender, so he knew my lighting background. I built him a desktop rig that scaled ballet lighting principles into a PLA+ enclosure.</p><p>The stand runs 512 addressable WS2815 LEDs across 7 data lines, driven by a Wasatch Pixels Basic Eight controller hidden inside the base. There are 3 boom towers per side with frosted lenses that arch back from downstage to upstage, while 45 deg wall washers sit recessed along the outer edges. A black and white film strip lines the bottom, printed in dual materials for diffusion and masking. The curved backdrop was too large for a single Bambu Lab print, so I built it in modular sections and turned the seams into an exaggerated surface texture.</p><p>Packing 144/m density LEDs into closed plastic is basically building a slow toaster. To keep heat from destroying the display from the inside out, I locked the current limit to 3A at 12V in WLED before I powered it on for the first time. I programmed the fixture in my dark apartment. When I set the Emmy on the pedestal, the reflective gold finish mirrored the light sources more than it absorbed the illumination, creating a warped mirror effect across the metal.</p>",
     "websiteLink": "",
@@ -246,13 +246,13 @@
     "related": [],
     "thumbnailFit": {
       "scale": 1.1,
-      "x": 1.1,
+      "x": 39.1,
       "y": 37.1
     },
     "bannerFit": {
-      "scale": 1.1,
-      "x": 1.5,
-      "y": 22.2
+      "scale": 1,
+      "x": 27.5,
+      "y": 22.6
     }
   },
   {
@@ -324,7 +324,7 @@
     "timestamp": "2026-01-12T23:50:49.052Z",
     "title": "Pixel Pyramid",
     "category": "Art",
-    "image": "media/Art/Pixel Pyramid/20230717_154820.webp",
+    "image": "media/Art/Pixel Pyramid/Gemini_Generated_Image_rmmssrmmssrmmssr.webp",
     "description": "<p>Trapped LED heat inside a sealed, 3 material PLA+ pyramid print required software current limiting to prevent structural melting.</p>",
     "longDescription": "<p>Getting crisp pixel isolation without light bleed across an internally divided pyramid required printing the entire sculpture as a single piece. Each cell needed a black core to block light from adjacent shafts, white walls to bounce illumination upward, and a frosted PLA+ shell for diffusion. Building that geometry without manual post-processing meant committing to a 1 to 3 day continuous print cycle on a Bambu Lab X1C, with 3 filament swaps on every single layer and a mountain of purge waste.</p><p>Trapped LED heat nearly killed the design during burn-in testing. I lifted the sculpture after a long run and accidentally mushed the softened grid with my thumb. Venting the back enclosure helped, but drilling holes into the frosted top shell would have ruined the display.</p><p>To keep the structure solid without sacrificing visual punch, I swapped the hardware to 12V WS2815 matrices and set a 1A current limit in WLED. Keeping the diodes over 1 cm from the surface eliminated visible hotspots while letting the grid show through the frost. The finished piece hung at Glow Lounge in Denver and ran for days at a time without warping, becoming the foundation for a fabrication process I still use.</p>",
     "websiteLink": "",
@@ -387,14 +387,14 @@
     "specs": "<p><strong>Medium:</strong> PLA+ (3 material)</p><p><strong>Color:</strong> Black, White, Transparent</p><p><strong>LEDs: </strong>256 (16x16)</p><p><strong>Driver: </strong>WS2815 (RGB)</p><p><strong>Decoder:</strong> ATHOM (ESP8266)</p><p><strong>Firmware: </strong>WLED</p>",
     "related": [],
     "thumbnailFit": {
-      "scale": 1,
-      "x": 100,
-      "y": 37.1
+      "scale": 1.05,
+      "x": 44.2,
+      "y": 91.9
     },
     "bannerFit": {
       "scale": 1,
-      "x": 76.8,
-      "y": 29.6
+      "x": 77,
+      "y": 38.2
     }
   },
   {
@@ -668,7 +668,7 @@
     "timestamp": "2026-01-13T00:23:48.073Z",
     "wip": false,
     "order": 3,
-    "specs": "<h2><strong>Designed In</strong></h2><ul><li>SolidWorks 2022</li></ul><h2><strong>Printed On</strong></h2><ul><li>Bambulabs X1C</li></ul><h2><strong>Made With</strong></h2><ul><li>Black PLA+</li></ul>",
+    "specs": "<p><strong>Designed In:</strong> SolidWorks 2022</p><p><strong>Printed On:</strong> Bambu Lab X1C</p><p><strong>Material:</strong> Black PLA+</p><p><strong>Iron:</strong> TS100 (friction-fit mount)</p>",
     "related": [],
     "thumbnailFit": {
       "scale": 1,
@@ -745,7 +745,7 @@
     "timestamp": "2026-01-13T00:48:58.329Z",
     "wip": false,
     "order": 5,
-    "specs": "",
+    "specs": "<p><strong>Pixels:</strong> WS2818 RGB</p><p><strong>Voltage:</strong> 24V DC</p><p><strong>Mount:</strong> Aluminum T-track · custom 90-degree headers · under 1 in profile</p><p><strong>Clearance:</strong> 8 ft tile to joist</p><p><strong>Distribution:</strong> 24-pin ATX power couplers</p>",
     "related": [],
     "bannerFit": {
       "scale": 1,
@@ -822,7 +822,7 @@
     "timestamp": "2026-01-17T17:46:42.266Z",
     "wip": false,
     "order": 2,
-    "specs": "",
+    "specs": "<p><strong>Strip:</strong> EnvironmentalLighting pixel tape (salvaged)</p><p><strong>Voltage:</strong> 12V DC (pillars) · 24V DC (floor / ceiling)</p><p><strong>Runs:</strong> 16 strip runs</p><p><strong>Protocol:</strong> sACN</p><p><strong>Control:</strong> Madrix 5.x</p>",
     "related": [],
     "thumbnailFit": {
       "scale": 1,
@@ -905,7 +905,7 @@
       "x": 50.4,
       "y": 27.4
     },
-    "specs": "",
+    "specs": "<p><strong>Strip:</strong> RGBW LED wash (non-addressable)</p><p><strong>Universes:</strong> 1 DMX</p><p><strong>Decoder:</strong> DMX decoders (plenum-mounted)</p><p><strong>Power:</strong> 16 baffles per supply group</p><p><strong>Control:</strong> Madrix Basic</p>",
     "related": []
   },
   {
@@ -1024,7 +1024,7 @@
     "files": [],
     "video": "",
     "order": 2,
-    "specs": "<h2><strong>Pixels</strong></h2><ul><li><strong>2100x</strong> SK6812 RGBW (3 x 2)</li><li class=\"ql-indent-1\"><strong>8x</strong> 30m @ 5/m 24vdc</li><li class=\"ql-indent-1\"><strong>8x </strong>23m @ 5/m 24vdc</li></ul><h2><strong>Control</strong></h2><ul><li>Resolume Arena 7.x</li></ul>",
+    "specs": "<p><strong>Pixels:</strong> 2100x SK6812 RGBW</p><p><strong>Strip:</strong> 8x 30m @ 5/m · 8x 23m @ 5/m · 24V DC</p><p><strong>Voltage:</strong> 24V DC</p><p><strong>Control:</strong> Resolume Arena 7.x</p>",
     "related": [],
     "thumbnailFit": {
       "scale": 1.4,
@@ -1315,7 +1315,7 @@
     "timestamp": "2026-06-21T22:41:13.337Z",
     "id": "707",
     "order": 4,
-    "specs": "<h2><strong>Designed In</strong></h2><ul><li>SolidWorks 2022</li></ul><h2><strong>Printed On</strong></h2><ul><li>Tenlog TL-D3</li></ul><h2><strong>Made With</strong></h2><ul><li>Black PLA+</li></ul>",
+    "specs": "<p><strong>Designed In:</strong> SolidWorks 2022</p><p><strong>Printed On:</strong> Tenlog TL-D3</p><p><strong>Material:</strong> Black PLA+</p><p><strong>Converter:</strong> Buck-boost · 19V laptop brick input</p><p><strong>Output:</strong> 5V / 12V / 24V DC · max 5A</p><p><strong>Connectors:</strong> Banana plugs · 5521-DC barrel</p>",
     "related": [],
     "thumbnailFit": {
       "scale": 1.15,
@@ -1411,7 +1411,7 @@
     "timestamp": "2026-06-21T22:45:09.610Z",
     "id": "6350",
     "order": 5,
-    "specs": "<h2><strong>Lighting</strong></h2><ul><li><strong>34x</strong> PixelDots RGBW</li><li><strong>12x</strong> Profile Zoom 150W</li><li><strong>18x </strong>6x40w Beye RGBW</li></ul><h2><strong>SFX</strong></h2><ul><li>1x Radiance Hazer</li></ul><h2><strong>Control</strong></h2><ul><li>Wolfmix WMX1</li></ul>",
+    "specs": "<p><strong>Pixel Spot:</strong> 34x PixelDots RGBW</p><p><strong>Profile:</strong> 12x Profile Zoom 150W</p><p><strong>Beye:</strong> 18x 6×40W RGBW</p><p><strong>SFX:</strong> 1x Radiance Hazer</p><p><strong>Universes:</strong> 4 sACN</p><p><strong>Control:</strong> Wolfmix WMX1</p>",
     "related": [],
     "thumbnailFit": {
       "scale": 1,
@@ -1554,7 +1554,7 @@
     "files": [],
     "video": "",
     "order": 1,
-    "specs": "<p><strong>Control:</strong> Madrix 5.x</p><p><strong>Voltage: </strong>12vdc</p>",
+    "specs": "<p><strong>Form:</strong> 8 ft aluminum sphere</p><p><strong>Voltage:</strong> 12V DC</p><p><strong>Power:</strong> MEAN WELL (remote sense · load sharing) · 35 ft DC run</p><p><strong>Wiring:</strong> 2/0 welding cable · spiral-wrapped · PVC center pipe</p><p><strong>Decoder:</strong> Pixel decoders (internal)</p><p><strong>Control:</strong> Madrix 5.x (3D voxel)</p>",
     "related": [
       {
         "name": "Control system",
@@ -1644,7 +1644,7 @@
     "timestamp": "2026-06-21T22:55:23.650Z",
     "id": "5045",
     "order": 6,
-    "specs": "",
+    "specs": "<p><strong>Strip:</strong> RGBW pixel modules (upward-facing)</p><p><strong>Mount:</strong> 8x strut channel · rotary-hammered into concrete</p><p><strong>Decoder:</strong> Long-range receivers</p><p><strong>Power:</strong> Isolated PSU room (fan noise mitigation)</p><p><strong>Control:</strong> Madrix 5.x</p>",
     "related": [],
     "thumbnailFit": {
       "scale": 1,
@@ -1692,7 +1692,7 @@
     "timestamp": "2026-06-21T23:26:29.795Z",
     "id": "4113",
     "order": 0,
-    "specs": "<p>Software: Madrix 5.x | Show Control | OSCpilot</p><p>GPU: RTX 2080TI</p>",
+    "specs": "<p><strong>Pixel:</strong> Madrix 5.x · ELM (deprecated)</p><p><strong>Decoder:</strong> Advatek PixLite 16 (wired) · wireless decoders (acrylic etchings)</p><p><strong>Protocol:</strong> sACN · ArtNet</p><p><strong>GPU:</strong> RTX 2080 Ti</p><p><strong>Server:</strong> Slide-out KVM rack</p><p><strong>Control Surface:</strong> iPad · OSCPilot · Show Cockpit</p><p><strong>Installations:</strong> 11 (see related entries)</p>",
     "related": [
       {
         "name": "Curved bottle shelf",
@@ -1741,7 +1741,7 @@
     "timestamp": "2026-06-21T23:30:44.785Z",
     "id": "4411",
     "order": 3,
-    "specs": "<p>Pixels: 11880</p><p>Channels: 35,640 (70 universes)</p><p>Short(4ft): 62x 60px</p><p>Long(8ft): 69x 120px</p>",
+    "specs": "<p><strong>Pixels:</strong> 11,880x WS2813 RGBW</p><p><strong>Strip:</strong> 62x 60px (4ft) · 69x 120px (8ft) · 60/m density</p><p><strong>Channels:</strong> 35,640 (70 universes sACN)</p><p><strong>Voltage:</strong> 12V DC</p><p><strong>Decoder:</strong> Advatek PixLite 16</p><p><strong>Power:</strong> 7A fused per tube · custom power boxes</p><p><strong>Control:</strong> Madrix 5.x</p>",
     "related": [
       {
         "name": "Control system",
@@ -2037,7 +2037,7 @@
     "timestamp": "2026-07-20T20:00:01.882Z",
     "id": "7590",
     "order": 8,
-    "specs": "<h2><strong>Pixels</strong></h2><ul><li><strong>520x</strong> WS2801 RGB (6 x 1), 12vdc</li></ul><h2><strong>Control</strong></h2><ul><li>Madrix 3.6</li></ul>",
+    "specs": "<p><strong>Pixels:</strong> 520x WS2801 RGB</p><p><strong>Strip:</strong> 1x panel · 6×1 · 12V DC</p><p><strong>Decoder:</strong> SanDevices E682</p><p><strong>Protocol:</strong> WS2801</p><p><strong>Control:</strong> Madrix 3.6</p>",
     "related": [],
     "bannerFit": {
       "scale": 1.2,
@@ -2141,7 +2141,7 @@
     "timestamp": "2026-07-20T21:09:12.884Z",
     "id": "6808",
     "order": 3,
-    "specs": "<h2><strong>Pixels</strong></h2><ul><li><strong>1152x</strong> WS2815 RGB</li><li class=\"ql-indent-1\"><strong>96x</strong> 0.2m @ 60/m 12vdc</li></ul><h2><strong>Control</strong></h2><ul><li>Madrix 5.x</li></ul>",
+    "specs": "<p><strong>Pixels:</strong> 1152x WS2815 RGB</p><p><strong>Strip:</strong> 96x 0.2m @ 60/m · 12V DC</p><p><strong>Fixtures:</strong> 96x 3D-printed PLA+ louver corners</p><p><strong>Mounting:</strong> Double-sided tape · black cable wrap</p><p><strong>Control:</strong> Madrix 5.x</p>",
     "related": [
       {
         "name": "Control system",
@@ -2194,7 +2194,7 @@
     "timestamp": "2026-07-25T16:47:23.504Z",
     "id": "4382",
     "order": 2,
-    "specs": "<p><strong>Lighting: </strong>Roadhog 4</p><p><strong>Pixel:</strong> Madrix 5.x (Main, Orb, Hall)</p><p><strong>Video:</strong> Resolume Arena</p>",
+    "specs": "<p><strong>Console:</strong> Roadhog 4</p><p><strong>Pixel:</strong> Madrix 5.x (main room · Orb · hallway)</p><p><strong>Video:</strong> Resolume Arena</p><p><strong>Bridge:</strong> NDI (Resolume → Madrix)</p><p><strong>Protocol:</strong> DMX · sACN · SPI</p><p><strong>Canvas:</strong> ~200px wide across full room</p>",
     "related": [
       {
         "name": "The Orb",
@@ -2263,7 +2263,7 @@
       }
     ],
     "files": [],
-    "specs": "<h2><strong>Designed In</strong></h2><ul><li>SolidWorks 2022</li></ul><h2><strong>Printed On</strong></h2><ul><li>Tenlog TL-D3</li></ul><h2><strong>Made With</strong></h2><ul><li>Black PLA+</li></ul>",
+    "specs": "<p><strong>Designed In:</strong> SolidWorks 2022</p><p><strong>Printed On:</strong> Tenlog TL-D3</p><p><strong>Material:</strong> Black PLA+</p><p><strong>Track Size:</strong> 12mm aluminum extrusion</p>",
     "related": [
       {
         "name": "Pixel Pillars",
@@ -2680,7 +2680,7 @@
         "description": "ZIP containing STL files for the pixel louver lights I designed and installed at Que Bueno Suerte! specifically for the curved liquor display install."
       }
     ],
-    "specs": "<h2><strong>Designed In</strong></h2><ul><li>SolidWorks 2022</li></ul><h2><strong>Printed On</strong></h2><ul><li>Bambulabs X1C</li></ul><h2><strong>Made With</strong></h2><ul><li>Black PLA+</li></ul>",
+    "specs": "<p><strong>Designed In:</strong> SolidWorks 2022</p><p><strong>Printed On:</strong> Bambu Lab X1C · P1P</p><p><strong>Material:</strong> Black PLA+</p><p><strong>Pixels:</strong> 1152x WS2815 RGB · 96x 0.2m @ 60/m · 12V DC</p><p><strong>Mounting:</strong> Double-sided tape · zip-tie strain relief</p>",
     "related": [
       {
         "name": "Bottle shelf",
@@ -2830,7 +2830,7 @@
       }
     ],
     "files": [],
-    "specs": "<h2><strong>Pixels</strong></h2><ul><li><strong>3088x</strong> SK6812 RGBW</li><li class=\"ql-indent-1\"><strong>15x</strong> 3.9m @ 60/m (3x1)12vdc</li><li class=\"ql-indent-1\"><strong>14x</strong> 4.4m @ 60/m (3x1)12vdc</li><li class=\"ql-indent-1\"><strong>7x</strong> 4.9m @ 60/m (3x1)12vdc</li></ul><h2><strong>Decoder</strong></h2><ul><li>1x Advatek PixLite T8S MK3</li><li>3x Advatek PixLite R4D-S</li></ul><h2><strong>Power</strong></h2><ul><li><strong>3x</strong> 20a 120vac switched circuits</li><li><strong>18x </strong>MEAN WELL HLG-320H-12</li></ul><h2><strong>Control</strong></h2><ul><li>Madrix 5.x</li><li>ELM (Depreciated)</li></ul>",
+    "specs": "<p><strong>Pixels:</strong> 3088x SK6812 RGBW</p><p><strong>Strip:</strong> 15x 3.9m @ 60/m · 14x 4.4m @ 60/m · 7x 4.9m @ 60/m · 12V DC</p><p><strong>Decoder:</strong> 1x Advatek PixLite T8S MK3 · 3x Advatek PixLite R4D-S</p><p><strong>Power:</strong> 18x MEAN WELL HLG-320H-12 · 3x 20A circuits</p><p><strong>Control:</strong> Madrix 5.x · ELM (deprecated)</p>",
     "related": [
       {
         "name": "Que Bueno Suerte!",
@@ -2920,7 +2920,7 @@
       }
     ],
     "files": [],
-    "specs": "<p>Placeholder</p>",
+    "specs": "<p><strong>Designed In:</strong> SolidWorks 2022</p><p><strong>Printed On:</strong> Bambu Lab X1C</p><p><strong>Material:</strong> Black PLA+</p><p><strong>Units:</strong> 3 sequencer boxes · 6 outputs each</p><p><strong>PSU:</strong> 18x MEAN WELL HLG-320H-12</p><p><strong>Relay Board:</strong> 6-channel · MEAN WELL 5V control rail</p><p><strong>Circuits:</strong> 3x 20A · stagger delay: 5–10 s per stage</p><p><strong>Connectors:</strong> Locking connectors · WAGO junction blocks</p><p><strong>Indicators:</strong> Front output LEDs · rear AC status lights</p>",
     "related": [
       {
         "name": "Blackout ceiling",
