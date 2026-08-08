@@ -27,7 +27,7 @@ function transcodeToH264(srcPath, destPath) {
       .noAudio()
       .videoCodec('libx264')
       .outputOptions(['-crf 23', '-preset medium', '-movflags +faststart', '-pix_fmt yuv420p'])
-      .videoFilters("scale='min(1920,iw)':-2")
+      .videoFilters("fps=30,scale='min(1920,iw)':-2")
       .on('end', resolve)
       .on('error', reject)
       .save(destPath);

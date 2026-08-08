@@ -442,6 +442,7 @@
         setupDirtyTracking();
         setupGalleryDragDrop();
         setupGalleryHoverPreview();
+        setupRelatedDragDrop();
         setupTagsAutocomplete();
         document.getElementById('tag-pills').addEventListener('click', (e) => {
             const pill = e.target.closest('.tag-pill');
@@ -1019,15 +1020,28 @@
         const container = document.getElementById('related-container');
         const div = document.createElement('div');
         div.className = "flex gap-2 related-row items-center";
+        div.draggable = true;
         div.innerHTML = `
-            <span class="index-badge text-[10px] font-bold text-slate-400 w-6"></span>
+            <span class="drag-handle cursor-grab text-slate-300 hover:text-slate-500 px-1 flex-shrink-0"><i class="ph ph-dots-six-vertical"></i></span>
+            <span class="index-badge text-[10px] font-bold text-slate-400 w-6 flex-shrink-0"></span>
             <input type="text" placeholder="Link Name" value="${escAttr(name)}" class="related-name flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="isDirty=true">
-            <input type="text" placeholder="URL" value="${escAttr(url)}" class="related-url flex-[2] bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="isDirty=true">
-            <button type="button" onclick="this.parentElement.remove(); updateListIndices('related-container'); isDirty=true;" class="text-red-400 hover:text-red-600 px-2 transition-colors"><i class="ph ph-trash"></i></button>
+            <input type="text" placeholder="URL" value="${escAttr(url)}" class="related-url flex-[2] bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="onRelatedUrlChange(this)">
+            <button type="button" onclick="this.parentElement.remove(); updateListIndices('related-container'); isDirty=true;" class="text-red-400 hover:text-red-600 px-2 transition-colors flex-shrink-0"><i class="ph ph-trash"></i></button>
         `;
         container.appendChild(div);
         updateListIndices('related-container');
         if (!isBulk) isDirty = true;
+    }
+
+    function onRelatedUrlChange(input) {
+        isDirty = true;
+        const match = input.value.trim().match(/^#project\/(.+)$/);
+        if (!match) return;
+        const id = decodeURIComponent(match[1]);
+        const proj = projects.find(p => p.id === id);
+        if (!proj) return;
+        const nameInput = input.closest('.related-row').querySelector('.related-name');
+        if (nameInput && !nameInput.value.trim()) nameInput.value = proj.title;
     }
 
     function addGalleryRow(url = "", caption = "", fit = null, isBulk = false, poster = "") {
@@ -1043,13 +1057,13 @@
             <div class="flex gap-2 items-center">
                 <span class="drag-handle cursor-grab text-slate-300 hover:text-slate-500 px-1"><i class="ph ph-dots-six-vertical"></i></span>
                 <span class="index-badge text-[10px] font-bold text-slate-400 w-6"></span>
-                <div class="gallery-thumb-wrap relative w-10 h-10 flex-shrink-0 ${url ? '' : 'hidden'}">
-                    <img class="gallery-thumb w-10 h-10 object-cover rounded bg-slate-100 cursor-zoom-in" src="${escAttr(thumbSrc)}" ${isVideo ? `data-video-url="${escAttr(url)}"` : ''} onerror="this.closest('.gallery-thumb-wrap').classList.add('hidden')">
+                <div class="gallery-thumb-wrap relative w-10 h-10 flex-shrink-0 ${url ? '' : 'hidden'}" ${isVideo ? 'onclick="openVideoPreview(this.closest(\'.gallery-row\'))" title="Click to preview video" style="cursor:pointer"' : ''}>
+                    <img class="gallery-thumb w-10 h-10 object-cover rounded bg-slate-100 ${isVideo ? '' : 'cursor-zoom-in'}" src="${escAttr(thumbSrc)}" ${isVideo ? `data-video-url="${escAttr(url)}"` : ''} onerror="this.closest('.gallery-thumb-wrap').classList.add('hidden')">
                     ${isVideo ? '<i class="ph ph-play-circle absolute inset-0 flex items-center justify-center text-white text-lg drop-shadow pointer-events-none"></i>' : ''}
                 </div>
                 <input type="text" placeholder="Image path, video path, URL, or YouTube link" value="${escAttr(url)}" class="gallery-url flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="onGalleryUrlChange(this)">
                 <button type="button" onclick="openGalleryCrop(this.closest('.gallery-row'))" title="Set crop"
-                        class="gallery-crop-btn flex-shrink-0 px-2 transition-colors ${isVideo ? 'hidden' : ''} ${hasFit ? 'text-indigo-500' : 'text-slate-300 hover:text-indigo-500'}">
+                        class="gallery-crop-btn flex-shrink-0 px-2 transition-colors ${isVideo && !poster ? 'hidden' : ''} ${hasFit ? 'text-indigo-500' : 'text-slate-300 hover:text-indigo-500'}">
                     <i class="ph ph-crop"></i>
                 </button>
                 <button type="button" onclick="this.closest('.gallery-row').remove(); updateListIndices('gallery-container'); isDirty=true;" class="text-red-400 hover:text-red-600 px-2 transition-colors"><i class="ph ph-trash"></i></button>
@@ -1072,7 +1086,7 @@
         const posterInput = row.querySelector('.gallery-poster');
         // The URL changed by hand, so any previously-generated poster no longer applies.
         if (posterInput) posterInput.value = '';
-        if (cropBtn) cropBtn.classList.toggle('hidden', isVideoPath(input.value));
+        if (cropBtn) cropBtn.classList.toggle('hidden', isVideoPath(input.value) && !posterInput?.value?.trim());
         if (isVideoPath(input.value)) thumb.dataset.videoUrl = input.value;
         else delete thumb.dataset.videoUrl;
         const src = getThumbnailSrc(input.value);
@@ -1122,6 +1136,37 @@
             if (offset < 0 && offset > closest.offset) return { offset, element: child };
             return closest;
         }, { offset: -Infinity }).element;
+    }
+
+    function setupRelatedDragDrop() {
+        const container = document.getElementById('related-container');
+        let dragEl = null;
+
+        container.addEventListener('dragstart', (e) => {
+            const row = e.target.closest('.related-row');
+            if (!row) return;
+            dragEl = row;
+            row.classList.add('opacity-50');
+        });
+        container.addEventListener('dragend', () => {
+            if (dragEl) dragEl.classList.remove('opacity-50');
+            dragEl = null;
+            updateListIndices('related-container');
+            isDirty = true;
+        });
+        container.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            if (!dragEl) return;
+            const rows = [...container.querySelectorAll('.related-row:not(.opacity-50)')];
+            const after = rows.reduce((closest, child) => {
+                const box = child.getBoundingClientRect();
+                const offset = e.clientY - box.top - box.height / 2;
+                if (offset < 0 && offset > closest.offset) return { offset, element: child };
+                return closest;
+            }, { offset: -Infinity }).element;
+            if (after == null) container.appendChild(dragEl);
+            else container.insertBefore(dragEl, after);
+        });
     }
 
     let listDragInitialized = false;
@@ -1261,6 +1306,11 @@
       const project = document.getElementById('title').value;
       if (!project) { alert('Please enter a project title first.'); input.value = ''; return; }
 
+      // Remove the lone blank placeholder row if present
+      const container = document.getElementById('gallery-container');
+      const rows = container.querySelectorAll('.gallery-row');
+      if (rows.length === 1 && rows[0].querySelector('.gallery-url').value.trim() === '') rows[0].remove();
+
       showStatus(`Uploading ${files.length} image(s)...`);
       for (const file of files) {
         try {
@@ -1282,6 +1332,11 @@
       const category = document.getElementById('category').value;
       const project = document.getElementById('title').value;
       if (!project) { alert('Please enter a project title first.'); input.value = ''; return; }
+
+      // Remove the lone blank placeholder row if present
+      const videoUploadContainer = document.getElementById('gallery-container');
+      const videoUploadRows = videoUploadContainer.querySelectorAll('.gallery-row');
+      if (videoUploadRows.length === 1 && videoUploadRows[0].querySelector('.gallery-url').value.trim() === '') videoUploadRows[0].remove();
 
       let succeeded = 0;
       for (let i = 0; i < files.length; i++) {
@@ -1729,7 +1784,9 @@
     }
 
     function openGalleryCrop(row) {
-      const imgSrc = row.querySelector('.gallery-url').value.trim();
+      const posterInput = row.querySelector('.gallery-poster');
+      const hasPoster = posterInput && posterInput.value.trim();
+      const imgSrc = hasPoster ? posterInput.value.trim() : row.querySelector('.gallery-url').value.trim();
       if (!imgSrc) {
         Toastify({ text: "Add an image URL to this row first", duration: 2000, backgroundColor: "#ef4444" }).showToast();
         return;
@@ -1748,6 +1805,77 @@
         const cropBtn = row.querySelector('.gallery-crop-btn');
         if (cropBtn) cropBtn.className = cropBtn.className.replace('text-slate-300', 'text-indigo-500');
       });
+    }
+
+    // --- VIDEO PREVIEW MODAL ---
+    let videoPreviewRow = null;
+
+    function openVideoPreview(row) {
+      videoPreviewRow = row;
+      const videoUrl = row.querySelector('.gallery-url').value.trim();
+      const videoEl = document.getElementById('video-preview-el');
+      videoEl.src = '/' + videoUrl;
+      videoEl.load();
+      document.getElementById('video-preview-modal').classList.remove('hidden');
+    }
+
+    function closeVideoPreview() {
+      const videoEl = document.getElementById('video-preview-el');
+      videoEl.pause();
+      videoEl.src = '';
+      videoPreviewRow = null;
+      document.getElementById('video-preview-modal').classList.add('hidden');
+    }
+
+    async function captureVideoFrame() {
+      const videoEl = document.getElementById('video-preview-el');
+      const row = videoPreviewRow;
+      if (!videoEl || !row) return;
+
+      const category = document.getElementById('category').value;
+      const project = document.getElementById('title').value;
+      if (!project) {
+        Toastify({ text: "Please enter a project title first", duration: 2000, backgroundColor: "#ef4444" }).showToast();
+        return;
+      }
+
+      const canvas = document.createElement('canvas');
+      canvas.width = videoEl.videoWidth || 1280;
+      canvas.height = videoEl.videoHeight || 720;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(videoEl, 0, 0, canvas.width, canvas.height);
+
+      canvas.toBlob(async (blob) => {
+        if (!blob) {
+          Toastify({ text: "Failed to capture frame", duration: 2000, backgroundColor: "#ef4444" }).showToast();
+          return;
+        }
+        const file = new File([blob], `frame-thumb-${Date.now()}.jpg`, { type: 'image/jpeg' });
+        try {
+          showStatus("Uploading thumbnail...");
+          const result = await api.upload(file, category, project);
+          hideStatus();
+
+          const posterInput = row.querySelector('.gallery-poster');
+          const thumbImg = row.querySelector('.gallery-thumb');
+          const thumbWrap = row.querySelector('.gallery-thumb-wrap');
+          if (posterInput) posterInput.value = result.path;
+          if (thumbImg) thumbImg.src = getThumbnailSrc(result.path);
+          if (thumbWrap) thumbWrap.classList.remove('hidden');
+          isDirty = true;
+
+          const cropBtn = row.querySelector('.gallery-crop-btn');
+          if (cropBtn) {
+            cropBtn.classList.remove('hidden', 'text-slate-300', 'hover:text-indigo-500');
+            cropBtn.classList.add('text-indigo-500');
+          }
+
+          closeVideoPreview();
+        } catch (err) {
+          hideStatus();
+          onError(err);
+        }
+      }, 'image/jpeg', 0.92);
     }
 
     // Drag + scroll events for the crop preview
@@ -1850,6 +1978,24 @@
             Save Crop
           </button>
         </div>
+      </div>
+    </div>
+  </div>
+  <!-- VIDEO PREVIEW MODAL -->
+  <div id="video-preview-modal" class="hidden fixed inset-0 bg-black/80 z-[70] flex items-center justify-center backdrop-blur-sm p-4" onclick="if(event.target===this)closeVideoPreview()">
+    <div class="bg-zinc-900 rounded-xl shadow-2xl flex flex-col overflow-hidden" style="max-width:900px;width:100%;max-height:90vh;">
+      <div class="flex justify-between items-center px-4 py-3 border-b border-zinc-700 flex-shrink-0">
+        <h2 class="text-sm font-bold text-white">Video Preview</h2>
+        <button type="button" onclick="closeVideoPreview()" class="text-zinc-400 hover:text-white transition-colors"><i class="ph ph-x text-xl"></i></button>
+      </div>
+      <div class="flex-1 bg-black flex items-center justify-center overflow-hidden">
+        <video id="video-preview-el" class="max-w-full max-h-[65vh] w-full" controls playsinline></video>
+      </div>
+      <div class="flex justify-center gap-3 p-4 border-t border-zinc-700 flex-shrink-0">
+        <p class="text-xs text-zinc-500 self-center mr-auto">Play or pause — then capture the current frame as the thumbnail.</p>
+        <button type="button" onclick="captureVideoFrame()" class="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-bold text-sm transition-colors">
+          <i class="ph ph-camera"></i> Use As Thumbnail
+        </button>
       </div>
     </div>
   </div>
