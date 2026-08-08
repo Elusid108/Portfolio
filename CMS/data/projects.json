@@ -1616,7 +1616,8 @@
       "ArtNet",
       "WLED",
       "Pixel Mapping",
-      "ESP32"
+      "ESP8266",
+      "Show Cockpit"
     ],
     "gallery": [
       "media/Integration/Que Bueno Suerte!/20240606_211259.webp",
