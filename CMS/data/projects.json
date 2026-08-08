@@ -131,6 +131,10 @@
       {
         "name": "Pixel Pillars",
         "url": "#project/6371"
+      },
+      {
+        "name": "WiFi VIP Tables",
+        "url": "#project/496"
       }
     ],
     "bannerFit": {
@@ -486,7 +490,7 @@
   {
     "id": "8252",
     "timestamp": "2026-01-13T00:14:02.780Z",
-    "title": "Main Room - Temple SF",
+    "title": "Temple SF",
     "category": "Integration",
     "image": "media/Integration/Main Room - Temple SF/banner.webp",
     "description": "<p><strong>Temple Nightclub | San Francisco</strong> - Routing a three layer club rig through an inherited lighting console to survive single operator control.</p>",
@@ -512,6 +516,10 @@
     ],
     "gallery": [
       {
+        "url": "media/Integration/Main Room - Temple SF/20210621_215648.mp4",
+        "poster": "media/Integration/Main Room - Temple SF/20210621_215648-poster.webp"
+      },
+      {
         "url": "media/Integration/Main Room - Temple SF/20210516_190216.mp4",
         "poster": "media/Integration/Main Room - Temple SF/20210516_190216-poster.webp"
       },
@@ -527,6 +535,7 @@
         "url": "media/Integration/Main Room - Temple SF/20210517_111653.mp4",
         "poster": "media/Integration/Main Room - Temple SF/20210517_111653-poster.webp"
       },
+      "media/Integration/Main Room - Temple SF/20210611_131029.webp",
       "media/Integration/Main Room - Temple SF/20210514_2025472.webp",
       {
         "url": "media/Integration/Main Room - Temple SF/20210510_141521.mp4",
@@ -537,6 +546,7 @@
         "poster": "media/Integration/Main Room - Temple SF/VID_20200427_140434-poster.webp"
       },
       "media/Integration/Main Room - Temple SF/IMG_20200504_185605.webp",
+      "media/Integration/Main Room - Temple SF/20210625_125151.webp",
       "media/Integration/Main Room - Temple SF/20210515_184126.webp",
       "media/Integration/Main Room - Temple SF/20210429_122346.webp",
       "media/Integration/Main Room - Temple SF/IMG_20200707_150706.webp"
@@ -553,6 +563,10 @@
       {
         "name": "Dancefloor pillars",
         "url": "#project/6371"
+      },
+      {
+        "name": "WiFi VIP Tables",
+        "url": "#project/496"
       }
     ]
   },
@@ -579,7 +593,11 @@
           "x": 48.8,
           "y": 71.6
         }
-      }
+      },
+      "media/Fabrication/Field Solder Station/20210202_182541.webp",
+      "media/Fabrication/Field Solder Station/20201025_014922.webp",
+      "media/Fabrication/Field Solder Station/20201015_000651.webp",
+      "media/Fabrication/Field Solder Station/20201012_144931.webp"
     ],
     "launchLink": "",
     "githubLink": "",
@@ -672,7 +690,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-13T00:48:58.329Z",
     "wip": false,
-    "order": 4,
+    "order": 5,
     "specs": "",
     "related": [],
     "bannerFit": {
@@ -1193,7 +1211,19 @@
           "x": 55.2,
           "y": 40.8
         }
-      }
+      },
+      "media/Fabrication/Field Bench PSU/20210309_094910.webp",
+      {
+        "url": "media/Fabrication/Field Bench PSU/20210308_074801.webp",
+        "fit": {
+          "scale": 1.2,
+          "x": 93,
+          "y": 51.9
+        }
+      },
+      "media/Fabrication/Field Bench PSU/20210114_091708.webp",
+      "media/Fabrication/Field Bench PSU/20201214_013734.webp",
+      "media/Fabrication/Field Bench PSU/20201214_012422.webp"
     ],
     "files": [
       {
@@ -1553,7 +1583,10 @@
       "OSCpilot",
       "MIDI",
       "sACN",
-      "ArtNet"
+      "ArtNet",
+      "WLED",
+      "Pixel Mapping",
+      "ESP32"
     ],
     "gallery": [
       "media/Integration/Que Bueno Suerte!/20240606_211259.webp",
@@ -1986,7 +2019,7 @@
     }
   },
   {
-    "title": "Main Room - Temple Denver",
+    "title": "Temple Denver",
     "category": "Integration",
     "image": "media/Integration/Main Room - Temple Denver/MVIMG_20190817_211751.webp",
     "description": "<p><strong>Temple - Main Room | Denver</strong> - Bridging Resolume and Madrix over NDI to stretch a 196 pixel canvas across an entire nightclub room.</p>",
@@ -2159,6 +2192,7 @@
           "y": 84.8
         }
       },
+      "media/Electronics/Dance Floor Pillars/20210403_202058.webp",
       {
         "url": "media/Electronics/Dance Floor Pillars/20210402_131904.webp",
         "fit": {
@@ -2255,6 +2289,7 @@
           "y": 51.6
         }
       },
+      "media/Electronics/Dance Floor Pillars/20200930_201222.webp",
       {
         "url": "media/Electronics/Dance Floor Pillars/20201107_150146.webp",
         "fit": {
@@ -2666,5 +2701,151 @@
     "timestamp": "2026-08-01T21:44:42.857Z",
     "id": "1430",
     "order": 0
+  },
+  {
+    "title": "WiFi VIP Tables",
+    "category": "Circuits",
+    "image": "media/Electronics/WiFi VIP Tables/Screenshot 2026-08-07 201527.webp",
+    "description": "<p>I salvaged 32 waterlogged acrylic VIP tables into wireless ArtNet pixel fixtures using routers and kitchen soup containers.</p>",
+    "longDescription": "<p>Temple SF had 32 old VIP tables with heavy laminated MDF bases and black acrylic tops. The MDF had soaked up spilled drinks for years, expanding and separating, while the acrylic had sharp, chipped corners that were a hazard in a drunk crowd. Most of the hardwired RGB wash strips underneath were already dead. Buying new plastic during the pandemic was too expensive and too slow, but the acrylic sheets were still good. I decided to strip them down and rebuild them from scratch.</p><p>My carpenter and I used a router with a shop vac attached to carve the existing acrylic channels deeper for new LED strips and cut a center path for the wiring. We rounded the top and bottom edges across all 32 sheets, which eliminated the sharp corners and gave the acrylic a smooth, clean line from every angle. To replace the ruined MDF bases, I cut plywood sheets, painted them black, and secured them to the underside so we could attach modern metal legs.</p><p>Time got tight toward the end, and my 3D printer could not produce clean enclosures fast enough. I walked into the kitchen, grabbed a stack of plastic soup containers, and siliconed them to the center underside of each table to house an ESP32 decoder and a Li-ion battery. The electronics sat safely out of reach of nightly spills. For power management, I built a charging station on the side of the control rack. The lighting operator gathered the batteries at the end of the night to charge them, then swapped them back in before doors opened.</p><p>I mapped all 32 tables into Madrix 5.x over wireless ArtNet so they matched the colors of the main room lighting rig. Running Wi-Fi control through a crowded club floor is always a fight against RF noise, but high-gain antennas on the receivers kept the signal alive. The tables fit the room, survived the crowd, and salvaged the most expensive material we had.</p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "tags": [
+      "ArtNet",
+      "Custom Fabrication",
+      "ESP32",
+      "Hand tools",
+      "Madrix",
+      "Power tools",
+      "SPI",
+      "TCP/IP",
+      "Through-Hole Soldering",
+      "Pixel Mapping",
+      "Power Distribution"
+    ],
+    "gallery": [
+      {
+        "url": "media/Electronics/WiFi VIP Tables/20210625_144028.mp4",
+        "poster": "media/Electronics/WiFi VIP Tables/20210625_144028-poster.webp"
+      },
+      {
+        "url": "media/Electronics/WiFi VIP Tables/20210519_113326.mp4",
+        "poster": "media/Electronics/WiFi VIP Tables/20210519_113326-poster.webp"
+      },
+      {
+        "url": "media/Electronics/WiFi VIP Tables/20210623_212915.webp",
+        "fit": {
+          "scale": 1.35,
+          "x": 10.3,
+          "y": 30.5
+        }
+      },
+      {
+        "url": "media/Electronics/WiFi VIP Tables/20210623_212433.webp",
+        "fit": {
+          "scale": 1.15,
+          "x": 53.6,
+          "y": 28.3
+        }
+      },
+      {
+        "url": "media/Electronics/WiFi VIP Tables/20210511_184836.webp",
+        "fit": {
+          "scale": 1.55,
+          "x": 60.5,
+          "y": 16.1
+        }
+      },
+      {
+        "url": "media/Electronics/WiFi VIP Tables/20210713_100708.webp",
+        "fit": {
+          "scale": 1.7,
+          "x": 64.6,
+          "y": 40.4
+        }
+      },
+      {
+        "url": "media/Electronics/WiFi VIP Tables/20210423_122623.webp",
+        "fit": {
+          "scale": 1.45,
+          "x": 19.7,
+          "y": 43.6
+        }
+      },
+      {
+        "url": "media/Electronics/WiFi VIP Tables/20210420_124426.mp4",
+        "poster": "media/Electronics/WiFi VIP Tables/20210420_124426-poster.webp"
+      },
+      {
+        "url": "media/Electronics/WiFi VIP Tables/20210429_192055.webp",
+        "fit": {
+          "scale": 1.2,
+          "x": 71.1,
+          "y": 54.7
+        }
+      },
+      {
+        "url": "media/Electronics/WiFi VIP Tables/20201025_135746.webp",
+        "fit": {
+          "scale": 1.4,
+          "x": 5.1,
+          "y": 52.8
+        }
+      },
+      {
+        "url": "media/Electronics/WiFi VIP Tables/20210428_145442.webp",
+        "fit": {
+          "scale": 1.1,
+          "x": 52.4,
+          "y": 45
+        }
+      },
+      {
+        "url": "media/Electronics/WiFi VIP Tables/20201024_020009.webp",
+        "fit": {
+          "scale": 1,
+          "x": 49.3,
+          "y": 39.8
+        }
+      },
+      {
+        "url": "media/Electronics/WiFi VIP Tables/20201026_122846.webp",
+        "fit": {
+          "scale": 1.1,
+          "x": 48,
+          "y": 26.8
+        }
+      }
+    ],
+    "files": [],
+    "specs": "<p><strong>Control:</strong> Madrix 5.x</p><p><strong>Fixtures:</strong> (32) 2.1m</p><p><strong>LED: </strong>5050 RGBW (6000k)</p><p><strong>Pixel Driver:</strong> SM16704</p><p><strong>Pixel Size: </strong>3 LEDs</p><p><strong>LED Spacing: </strong>60/m</p><p><strong>Pixel Voltage: </strong>12vdc</p><p><strong>Decoder: ESP32</strong></p><p><strong>Power: </strong>12vdc Li-ion</p>",
+    "related": [
+      {
+        "name": "Immersive lighting",
+        "url": "#project/1"
+      },
+      {
+        "name": "Temple SF control",
+        "url": "#project/8252"
+      }
+    ],
+    "video": "",
+    "timestamp": "2026-08-07T23:07:28.368Z",
+    "id": "496",
+    "order": 4,
+    "thumbnailFit": {
+      "scale": 1.3,
+      "x": 0,
+      "y": 30.9
+    },
+    "bannerFit": {
+      "scale": 1.25,
+      "x": 46.1,
+      "y": 49
+    }
   }
 ]
