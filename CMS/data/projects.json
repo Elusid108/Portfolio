@@ -406,12 +406,26 @@
     "longDescription": "<p>Stepping down from my 16x16 matrix to an 8x8 desk piece meant solving a packaging problem. I modeled the Pixel Mini Pyramid in SolidWorks and Blender around an ESP32 running WLED on 5V USB-C power. The base doubles as a scannable QR code that links to my site.</p><p>Squeezing 64 LEDs into the small footprint left very little room for hardware. The USB-C port wanted to push back into the case whenever I plugged a cable in, and closing the shell kept crushing the internal wiring. It took several 3D printed iterations and test fits to anchor the controller securely and route the leads cleanly.</p><p>A short throw distance usually creates hotspots. I used a frosted diffusion layer over white cell walls to break up the light, and printed the case in 3 materials on an X1C. A few friends and family have them on their desks now, and the QR code base still scans on the first try.</p>",
     "video": "",
     "gallery": [
-      "media/Art/Pixel Mini Pyramid/20230726_201532.webp",
+      {
+        "url": "media/Art/Pixel Mini Pyramid/20230726_201532.webp",
+        "fit": {
+          "scale": 1,
+          "x": 48.9,
+          "y": 19.2
+        }
+      },
       {
         "url": "media/Art/Pixel Mini Pyramid/20240316_141546~2.mp4",
         "poster": "media/Art/Pixel Mini Pyramid/20240316_141546~2-poster.webp"
       },
-      "media/Art/Pixel Mini Pyramid/20240316_135358.webp",
+      {
+        "url": "media/Art/Pixel Mini Pyramid/20240316_135358.webp",
+        "fit": {
+          "scale": 1,
+          "x": 66.6,
+          "y": 64.7
+        }
+      },
       {
         "url": "media/Art/Pixel Mini Pyramid/20240316_134702.webp",
         "fit": {
@@ -2127,11 +2141,46 @@
       "Rapid Prototyping"
     ],
     "gallery": [
-      "media/Fabrication/Extrusion Centering Sled/20200909_213244.webp",
-      "media/Fabrication/Extrusion Centering Sled/20200907_234532.webp",
-      "media/Fabrication/Extrusion Centering Sled/20200909_013406.webp",
-      "media/Fabrication/Extrusion Centering Sled/20200908_090628.webp",
-      "media/Fabrication/Extrusion Centering Sled/20200907_231655.webp"
+      {
+        "url": "media/Fabrication/Extrusion Centering Sled/20200909_213244.webp",
+        "fit": {
+          "scale": 1,
+          "x": 52.9,
+          "y": 98.7
+        }
+      },
+      {
+        "url": "media/Fabrication/Extrusion Centering Sled/20200907_234532.webp",
+        "fit": {
+          "scale": 1,
+          "x": 54.8,
+          "y": 49.5
+        }
+      },
+      {
+        "url": "media/Fabrication/Extrusion Centering Sled/20200909_013406.webp",
+        "fit": {
+          "scale": 1.05,
+          "x": 53.3,
+          "y": 100
+        }
+      },
+      {
+        "url": "media/Fabrication/Extrusion Centering Sled/20200908_090628.webp",
+        "fit": {
+          "scale": 1,
+          "x": 50,
+          "y": 72.9
+        }
+      },
+      {
+        "url": "media/Fabrication/Extrusion Centering Sled/20200907_231655.webp",
+        "fit": {
+          "scale": 1,
+          "x": 48.4,
+          "y": 81.6
+        }
+      }
     ],
     "files": [],
     "specs": "<h2><strong>Designed In</strong></h2><ul><li>SolidWorks 2022</li></ul><h2><strong>Printed On</strong></h2><ul><li>Tenlog TL-D3</li></ul><h2><strong>Made With</strong></h2><ul><li>Black PLA+</li></ul>",
