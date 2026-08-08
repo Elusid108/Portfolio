@@ -21,13 +21,16 @@ function probeDuration(filePath) {
   });
 }
 
-function transcodeToH264(srcPath, destPath) {
+function transcodeToH264(srcPath, destPath, onProgress) {
   return new Promise((resolve, reject) => {
     ffmpeg(srcPath)
       .noAudio()
       .videoCodec('libx264')
       .outputOptions(['-crf 23', '-preset medium', '-movflags +faststart', '-pix_fmt yuv420p'])
       .videoFilters("fps=30,scale='min(1920,iw)':-2")
+      .on('progress', (p) => {
+        if (onProgress) onProgress(Math.min(99, Math.round(p.percent || 0)), p.timemark || '');
+      })
       .on('end', resolve)
       .on('error', reject)
       .save(destPath);
@@ -43,7 +46,7 @@ function extractFrame(srcPath, atSeconds, destDir, filename) {
   });
 }
 
-async function processVideoUpload(file, category, projectName) {
+async function processVideoUpload(file, category, projectName, onProgress) {
   const originalName = sanitize(file.originalname);
   const stem = path.parse(originalName).name;
   const mp4Name = `${stem}.mp4`;
@@ -61,7 +64,8 @@ async function processVideoUpload(file, category, projectName) {
   const destPath = path.join(destDir, mp4Name);
 
   try {
-    await transcodeToH264(srcPath, destPath);
+    await transcodeToH264(srcPath, destPath, onProgress);
+    if (onProgress) onProgress(99, '');
   } catch (err) {
     console.error('ffmpeg transcode error:', err.message);
   }

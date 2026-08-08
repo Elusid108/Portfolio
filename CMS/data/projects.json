@@ -2077,7 +2077,7 @@
     "category": "Lighting",
     "image": "media/Lighting/Lobby Wall/0321151647.webp",
     "description": "<p><strong>Tracks | Denver </strong>- I built a double-sided wall of LEDs for Tracks in 5 days after soldering 5000 joints by hand.</p>",
-    "longDescription": "<p>Tracks could not close for a remodel, so we had 5 days between open weekends to install a double-sided wall of LEDs and as part of a full remodel. It sits right at the entrance where people walk in. To hit that window, another tech and I spent weeks in the club basement and my home shop building modular panels off site. Each 2x4 pegboard panel held 520 raw LED pucks contact-cemented in 8 pixel configurations. Instead of buying pre-made strands, we manually soldered custom wire lengths using lamp cord for power injection, leaving us with over 5000 solder points before we ever hung a panel.</p><p>We mounted the rows of pegboard modules to the wall and wired each row to a dedicated output on a 16 output SanDevices E682 decoder running WS2801 protocol. Frosted plexiglass sheets on standoffs covered both sides to diffuse the light. I mapped the array using Madrix 3.6 software.</p><p>This was my first LED pixel build, and the initial test run was rough. The pixels flickered badly across the wall. I had not linked grounds across multiple power supplies, and I did not know about power injection yet. Adding inline resistors at the inputs smoothed out the data signal, and I later retrofitted power injection at the midpoint. The E682 is a Christmas light decoder and not very rugged, but it worked.</p><p>When we opened the doors that Thursday, regulars gasped walking into the room. Teaching myself pixel mapping on that build launched an entire lighting design focus in my career, even if I should have just bought pre-made LED strands.</p>",
+    "longDescription": "<p>Tracks could not close for a remodel, so we had 5 days between open weekends to install a double-sided wall of LEDs and as part of a full remodel. It sits right at the entrance where people walk in. To hit that window, another tech and I spent weeks in the club basement and my home shop building modular panels off site. Each 2x4 pegboard panel held 520 raw LED pucks contact-cemented in 8 pixel configurations. Instead of buying pre-made strands, we manually soldered custom wire lengths using lamp cord for power injection, leaving us with over 5000 solder points before we ever hung a panel.</p><p>We mounted the rows of pegboard modules to the wall and wired each row to a dedicated output on a 16 output SanDevices E682 decoder running WS2801 protocol. Frosted plexiglass sheets on standoffs covered both sides to diffuse the light. I mapped the array using Madrix 3.6 software.</p><p>This was one of my first LED pixel builds, and the initial test run was rough. The pixels flickered badly across the wall. I had not linked grounds across multiple power supplies, and I did not know about power injection yet. Adding inline resistors at the inputs smoothed out the data signal, and I later retrofitted power injection at the midpoint. The E682 is a Christmas light decoder and not very rugged, but it worked.</p><p>When we opened the doors that Thursday, regulars gasped walking into the room. Teaching myself pixel mapping on that build launched an entire lighting design focus in my career, even if I should have just bought pre-made LED strands.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -2329,6 +2329,10 @@
     ],
     "gallery": [
       "media/Integration/Temple Denver/MVIMG_20190817_211751.webp",
+      {
+        "url": "media/Integration/Temple Denver/VID_20190705_212851.mp4",
+        "poster": "media/Integration/Temple Denver/VID_20190705_212851-poster.webp"
+      },
       {
         "url": "media/Integration/Temple Denver/Video Project 10 (4).mp4",
         "poster": "media/Integration/Temple Denver/Video Project 10 (4)-poster.webp"
@@ -3705,8 +3709,8 @@
     "title": "Entrance Hall",
     "category": "Circuits",
     "image": "media/Electronics/Entrance Hall/VID_20190706_212708-poster.webp",
-    "description": "<p><strong>Temple Nightclub | Denver</strong> - Placeholder</p>",
-    "longDescription": "<p>Placeholder</p>",
+    "description": "<p><strong>Temple Nightclub | Denver</strong> - I gutted and rebuilt a failing 30 ft LED entrance tunnel down to raw pixel strips to fix a rushed installation.</p>",
+    "longDescription": "<p>The entrance tunnel at Temple Denver was a rush job that slowly died. It was 30 ft long and never meant to be serviced. The walls were framed with 3/4 in MDF panels, which are incredibly heavy, and wires were woven haphazardly through sheet metal cutouts. Patching a failing custom LED installation is a waste of time. I decided to gut the entire run down to the pixel strips.</p><p>Mid-week gave me a 2 day window while the club was closed. Getting the tunnel open was a giant pain. I found hidden shims and adhesives in unexpected places. Pulling the aluminum extrusions was my first plan, but construction adhesive held them fast. I left the tracks in place. Removing the old soldering left me with clean copper to wire fresh. Rebuilding the power distribution from the ground up, I balanced the load across a couple 24V power supplies above the ceiling. I tied the DC- lines together to keep the data stable. Reassembling the heavy MDF meant driving screws into panels that were originally held together by double-sided tape.</p><p>My eye instantly snaps to any pixel that drops a color or gets stuck. I can spot a dead point in a data chain by instinct. Powering up the rebuilt rig lit the entire 30 ft run perfectly. Seeing a complex pixel setup firing at 100 percent is always deeply satisfying.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -3721,7 +3725,10 @@
       "Pixel Mapping",
       "Power Distribution",
       "SPI",
-      "TCP/IP"
+      "TCP/IP",
+      "Through-Hole Soldering",
+      "Repair",
+      "Power tools"
     ],
     "gallery": [
       {
@@ -3735,18 +3742,49 @@
       },
       {
         "url": "media/Electronics/Entrance Hall/VID_20191113_153132~2.mp4",
-        "poster": "media/Electronics/Entrance Hall/VID_20191113_153132~2-poster.webp"
+        "fit": {
+          "scale": 1,
+          "x": 58.4,
+          "y": 37.5
+        },
+        "poster": "media/Electronics/Entrance Hall/frame-thumb-1786228072983.webp"
       },
-      "media/Electronics/Entrance Hall/IMG_20190701_235151.webp",
-      "media/Electronics/Entrance Hall/IMG_20190701_213937.webp",
-      "media/Electronics/Entrance Hall/IMG_20190701_182349.webp",
+      {
+        "url": "media/Electronics/Entrance Hall/IMG_20190701_235151.webp",
+        "fit": {
+          "scale": 1.15,
+          "x": 50.6,
+          "y": 38.6
+        }
+      },
+      {
+        "url": "media/Electronics/Entrance Hall/IMG_20190701_213937.webp",
+        "fit": {
+          "scale": 1.65,
+          "x": 46.1,
+          "y": 3.7
+        }
+      },
+      {
+        "url": "media/Electronics/Entrance Hall/IMG_20190701_182349.webp",
+        "fit": {
+          "scale": 1.2,
+          "x": 99.7,
+          "y": 21
+        }
+      },
       {
         "url": "media/Electronics/Entrance Hall/VID_20180515_142329.mp4",
-        "poster": "media/Electronics/Entrance Hall/VID_20180515_142329-poster.webp"
+        "fit": {
+          "scale": 1,
+          "x": 47.5,
+          "y": 100
+        },
+        "poster": "media/Electronics/Entrance Hall/frame-thumb-1786228003573.webp"
       }
     ],
     "files": [],
-    "specs": "<p>Placeholder</p>",
+    "specs": "<p><strong>Strip:</strong> EnvironmentalLighting pixel tape (salvaged)</p><p><strong>Voltage:</strong> 24vdc</p><p><strong>Runs:</strong> 13 strip runs</p><p><strong>Protocol:</strong> ArtNet</p><p><strong>Control:</strong> Madrix 5.x</p>",
     "related": [
       {
         "name": "Temple Denver",

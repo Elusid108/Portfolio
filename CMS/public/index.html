@@ -56,6 +56,17 @@
       <span id="statusMsg" class="text-sm font-medium leading-snug">Loading...</span>
     </div>
 
+  <div id="upload-queue" class="hidden fixed bottom-4 right-4 z-50 w-96 bg-white rounded-xl shadow-2xl border border-slate-200 overflow-hidden transition-all duration-300">
+    <div class="px-4 py-3 bg-slate-800 flex justify-between items-center">
+      <span class="font-semibold text-sm text-white flex items-center gap-2">
+        <i id="queue-header-icon" class="ph ph-spinner animate-spin text-indigo-400"></i>
+        <span id="queue-header-label">Processing uploads…</span>
+      </span>
+      <span id="queue-eta" class="text-xs text-slate-400 font-mono"></span>
+    </div>
+    <div id="queue-items" class="divide-y divide-slate-100 max-h-72 overflow-y-auto"></div>
+  </div>
+
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <div class="md:col-span-1 space-y-4">
         <button onclick="tryShowSettings()" class="w-full py-3 bg-slate-800 text-white rounded-xl font-bold hover:bg-slate-700 transition-colors flex items-center justify-center gap-2 shadow-sm">
@@ -390,11 +401,12 @@
         if (!res.ok) throw new Error(await res.text());
         return res.json();
       },
-      async uploadVideo(file, category, project) {
+      async uploadVideo(file, category, project, jobId) {
         const form = new FormData();
         form.append('file', file);
         form.append('category', category);
         form.append('project', project);
+        if (jobId) form.append('jobId', jobId);
         const res = await fetch('/api/media/upload-video', { method: 'POST', body: form });
         if (!res.ok) throw new Error(await res.text());
         return res.json();
@@ -443,6 +455,7 @@
         setupGalleryDragDrop();
         setupGalleryHoverPreview();
         setupRelatedDragDrop();
+        setupFileDragDrop();
         setupTagsAutocomplete();
         document.getElementById('tag-pills').addEventListener('click', (e) => {
             const pill = e.target.closest('.tag-pill');
@@ -1024,9 +1037,11 @@
         const container = document.getElementById('files-container');
         const div = document.createElement('div');
         div.className = "file-row space-y-1";
+        div.draggable = true;
         div.innerHTML = `
             <div class="flex gap-2 items-center">
-                <span class="index-badge text-[10px] font-bold text-slate-400 w-6"></span>
+                <span class="drag-handle cursor-grab text-slate-300 hover:text-slate-500 px-1 flex-shrink-0"><i class="ph ph-dots-six-vertical"></i></span>
+                <span class="index-badge text-[10px] font-bold text-slate-400 w-6 flex-shrink-0"></span>
                 <input type="text" placeholder="File Name" value="${escAttr(name)}" class="file-name flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="isDirty=true">
                 <input type="text" placeholder="Download URL" value="${escAttr(url)}" class="file-url flex-[2] bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="isDirty=true">
                 <button type="button" onclick="this.closest('.file-row').remove(); updateListIndices('files-container'); isDirty=true;" class="text-red-400 hover:text-red-600 px-2 transition-colors"><i class="ph ph-trash"></i></button>
@@ -1036,6 +1051,37 @@
         container.appendChild(div);
         updateListIndices('files-container');
         if (!isBulk) isDirty = true;
+    }
+
+    function setupFileDragDrop() {
+        const container = document.getElementById('files-container');
+        let dragEl = null;
+
+        container.addEventListener('dragstart', (e) => {
+            const row = e.target.closest('.file-row');
+            if (!row) return;
+            dragEl = row;
+            row.classList.add('opacity-50');
+        });
+        container.addEventListener('dragend', () => {
+            if (dragEl) dragEl.classList.remove('opacity-50');
+            dragEl = null;
+            updateListIndices('files-container');
+            isDirty = true;
+        });
+        container.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            if (!dragEl) return;
+            const rows = [...container.querySelectorAll('.file-row:not(.opacity-50)')];
+            const after = rows.reduce((closest, child) => {
+                const box = child.getBoundingClientRect();
+                const offset = e.clientY - box.top - box.height / 2;
+                if (offset < 0 && offset > closest.offset) return { offset, element: child };
+                return closest;
+            }, { offset: -Infinity }).element;
+            if (after == null) container.appendChild(dragEl);
+            else container.insertBefore(dragEl, after);
+        });
     }
 
     function addRelatedRow(name = "", url = "", isBulk = false) {
@@ -1299,6 +1345,147 @@
         });
     }
 
+    // XHR upload helper that reports upload-phase progress (0–100)
+    function uploadXhr(url, formData, onProgress) {
+      return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', url);
+        if (onProgress) {
+          xhr.upload.onprogress = (e) => {
+            if (e.lengthComputable) onProgress(Math.round(e.loaded / e.total * 100));
+          };
+        }
+        xhr.onload = () => {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            try { resolve(JSON.parse(xhr.responseText)); }
+            catch (e) { reject(new Error('Invalid JSON response')); }
+          } else {
+            reject(new Error(xhr.responseText || `HTTP ${xhr.status}`));
+          }
+        };
+        xhr.onerror = () => reject(new Error('Network error'));
+        xhr.send(formData);
+      });
+    }
+
+    // --- UPLOAD QUEUE ---
+    const uploadQueue = {
+      _tasks: [],
+      _running: false,
+      _hideTimer: null,
+
+      // Add a task to the queue.
+      // label     — display name shown in the panel
+      // type      — 'image' | 'video' | 'file'
+      // taskFn    — async (task) => { ... }  task has .setProgress(pct, label) and .markDone()
+      // estimatedMs — rough estimate for ETA calculation
+      add(label, type, taskFn, estimatedMs = 4000) {
+        clearTimeout(this._hideTimer);
+        const panel = document.getElementById('upload-queue');
+        panel.classList.remove('hidden');
+
+        const el = document.createElement('div');
+        el.className = 'px-4 py-2.5 transition-opacity duration-500';
+        el.innerHTML = `
+          <div class="flex justify-between items-center mb-1.5">
+            <span class="text-xs font-medium text-slate-700 truncate flex-1 mr-2">${label}</span>
+            <span class="queue-status text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-400 flex-shrink-0">Queued</span>
+          </div>
+          <div class="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+            <div class="queue-bar h-full rounded-full transition-[width] duration-300 ease-out" style="width:0%;background:${type==='video'?'#f59e0b':type==='file'?'#10b981':'#6366f1'}"></div>
+          </div>`;
+        document.getElementById('queue-items').appendChild(el);
+
+        const bar = el.querySelector('.queue-bar');
+        const statusBadge = el.querySelector('.queue-status');
+
+        const task = {
+          el, estimatedMs, startTime: null, _timerInt: null,
+          setProgress(pct, text) {
+            bar.style.width = pct + '%';
+            statusBadge.textContent = text || Math.round(pct) + '%';
+            statusBadge.className = 'queue-status text-[10px] font-semibold px-1.5 py-0.5 rounded-full flex-shrink-0 bg-indigo-50 text-indigo-600';
+            uploadQueue._updateEta();
+          },
+          startTimer() {
+            this.startTime = Date.now();
+            this._timerInt = setInterval(() => {
+              if (!this.startTime) return;
+              const elapsed = Date.now() - this.startTime;
+              const pct = Math.min(95, (elapsed / this.estimatedMs) * 100);
+              bar.style.width = pct + '%';
+              statusBadge.textContent = Math.round(pct) + '%';
+              statusBadge.className = 'queue-status text-[10px] font-semibold px-1.5 py-0.5 rounded-full flex-shrink-0 bg-indigo-50 text-indigo-600';
+              uploadQueue._updateEta();
+            }, 200);
+          },
+          stopTimer() { clearInterval(this._timerInt); },
+          markDone() {
+            this.stopTimer();
+            bar.style.width = '100%';
+            statusBadge.textContent = 'Done';
+            statusBadge.className = 'queue-status text-[10px] font-semibold px-1.5 py-0.5 rounded-full flex-shrink-0 bg-green-50 text-green-600';
+            setTimeout(() => el.classList.add('opacity-40'), 400);
+          },
+          taskFn,
+        };
+
+        this._tasks.push(task);
+        this._updateEta();
+        this._run();
+        return task;
+      },
+
+      async _run() {
+        if (this._running) return;
+        this._running = true;
+        const headerIcon = document.getElementById('queue-header-icon');
+        const headerLabel = document.getElementById('queue-header-label');
+        if (headerIcon) { headerIcon.className = 'ph ph-spinner animate-spin text-indigo-400'; }
+        if (headerLabel) headerLabel.textContent = 'Processing uploads…';
+
+        while (this._tasks.length) {
+          const task = this._tasks[0];
+          task.startTime = Date.now();
+          try {
+            await task.taskFn(task);
+          } catch (err) {
+            console.error('Queue task error:', err);
+          }
+          task.markDone();
+          this._tasks.shift();
+          this._updateEta();
+        }
+
+        this._running = false;
+        if (headerIcon) { headerIcon.className = 'ph ph-check-circle text-green-400'; }
+        if (headerLabel) headerLabel.textContent = 'All uploads complete';
+        this._hideTimer = setTimeout(() => {
+          const panel = document.getElementById('upload-queue');
+          panel.classList.add('hidden');
+          // Clear completed entries for next batch
+          document.getElementById('queue-items').innerHTML = '';
+        }, 2500);
+      },
+
+      _updateEta() {
+        const etaEl = document.getElementById('queue-eta');
+        if (!etaEl) return;
+        let totalMs = 0;
+        this._tasks.forEach((t, i) => {
+          if (i === 0 && t.startTime) {
+            const elapsed = Date.now() - t.startTime;
+            totalMs += Math.max(0, t.estimatedMs - elapsed);
+          } else {
+            totalMs += t.estimatedMs;
+          }
+        });
+        if (totalMs <= 0) { etaEl.textContent = ''; return; }
+        const secs = Math.round(totalMs / 1000);
+        etaEl.textContent = secs < 60 ? `~${secs}s left` : `~${Math.round(secs/60)}m left`;
+      },
+    };
+
     // --- UPLOAD HANDLERS ---
     async function handleImageUpload(input, targetFieldId) {
       const file = input.files[0];
@@ -1333,18 +1520,24 @@
       const rows = container.querySelectorAll('.gallery-row');
       if (rows.length === 1 && rows[0].querySelector('.gallery-url').value.trim() === '') rows[0].remove();
 
-      showStatus(`Uploading ${files.length} image(s)...`);
-      for (const file of files) {
-        try {
-          const result = await api.upload(file, category, project);
+      let succeeded = 0;
+      const total = files.length;
+      files.forEach((file, idx) => {
+        uploadQueue.add(file.name, 'image', async (task) => {
+          const form = new FormData();
+          form.append('file', file);
+          form.append('category', category);
+          form.append('project', project);
+          const result = await uploadXhr('/api/media/upload', form, (pct) => task.setProgress(pct, pct + '%'));
           addGalleryRow(result.path, '');
-        } catch (err) {
-          console.error('Upload failed for', file.name, err);
-        }
-      }
-      isDirty = true;
-      hideStatus();
-      Toastify({ text: `${files.length} image(s) uploaded!`, duration: 2000, backgroundColor: "#10b981" }).showToast();
+          isDirty = true;
+          succeeded++;
+          if (idx === total - 1) {
+            Toastify({ text: `${succeeded} image(s) uploaded!`, duration: 2000, backgroundColor: '#10b981' }).showToast();
+          }
+        }, 4000);
+      });
+
       input.value = '';
     }
 
@@ -1361,23 +1554,51 @@
       if (videoUploadRows.length === 1 && videoUploadRows[0].querySelector('.gallery-url').value.trim() === '') videoUploadRows[0].remove();
 
       let succeeded = 0;
-      for (let i = 0; i < files.length; i++) {
-        const file = files[i];
-        showStatus(`Converting video ${i + 1} of ${files.length}: ${file.name}\nThis may take a minute…`);
-        try {
-          const result = await api.uploadVideo(file, category, project);
-          addGalleryRow(result.path, '', null, false, result.poster || '');
-          succeeded++;
-        } catch (err) {
-          console.error('Video upload failed for', file.name, err);
-          onError(err);
-        }
-      }
-      isDirty = true;
-      hideStatus();
-      if (succeeded > 0) {
-        Toastify({ text: `${succeeded} video(s) converted and uploaded!`, duration: 3000, backgroundColor: "#10b981" }).showToast();
-      }
+      const total = files.length;
+      files.forEach((file, idx) => {
+        uploadQueue.add(file.name, 'video', async (task) => {
+          const jobId = Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+
+          // Open SSE channel and wait for the server's ready signal before POSTing
+          const evtSource = new EventSource(`/api/media/video-progress/${jobId}`);
+          await new Promise((resolve) => {
+            const timeout = setTimeout(resolve, 3000); // fallback if SSE is slow
+            evtSource.onmessage = (e) => {
+              try {
+                const data = JSON.parse(e.data);
+                if (data.ready) { clearTimeout(timeout); resolve(); }
+              } catch {}
+            };
+            evtSource.onerror = () => { clearTimeout(timeout); resolve(); };
+          });
+
+          // Reassign handler to track conversion progress
+          evtSource.onmessage = (e) => {
+            try {
+              const data = JSON.parse(e.data);
+              if (!data.done && typeof data.percent === 'number') {
+                task.setProgress(data.percent, data.percent + '%');
+              }
+            } catch {}
+          };
+
+          try {
+            const result = await api.uploadVideo(file, category, project, jobId);
+            evtSource.close();
+            addGalleryRow(result.path, '', null, false, result.poster || '');
+            isDirty = true;
+            succeeded++;
+            if (idx === total - 1 && succeeded > 0) {
+              Toastify({ text: `${succeeded} video(s) converted and uploaded!`, duration: 3000, backgroundColor: '#10b981' }).showToast();
+            }
+          } catch (err) {
+            evtSource.close();
+            console.error('Video upload failed for', file.name, err);
+            onError(err);
+          }
+        }, 90000);
+      });
+
       input.value = '';
     }
 
@@ -1388,24 +1609,33 @@
       const project = document.getElementById('title').value;
       if (!project) { alert('Please enter a project title first.'); input.value = ''; return; }
 
-      showStatus(`Uploading ${files.length} file(s)...`);
-      for (const file of files) {
-        try {
+      // Remove the lone blank placeholder row if present
+      const fileContainer = document.getElementById('files-container');
+      const fileRows = fileContainer.querySelectorAll('.file-row');
+      if (fileRows.length === 1 &&
+          fileRows[0].querySelector('.file-name').value.trim() === '' &&
+          fileRows[0].querySelector('.file-url').value.trim() === '') {
+        fileRows[0].remove();
+      }
+
+      let succeeded = 0;
+      const total = files.length;
+      files.forEach((file, idx) => {
+        uploadQueue.add(file.name, 'file', async (task) => {
           const form = new FormData();
           form.append('file', file);
           form.append('category', category);
           form.append('project', project);
-          const res = await fetch('/api/media/upload-file', { method: 'POST', body: form });
-          if (!res.ok) throw new Error(await res.text());
-          const result = await res.json();
+          const result = await uploadXhr('/api/media/upload-file', form, (pct) => task.setProgress(pct, pct + '%'));
           addFileRow(file.name, result.path, '');
-        } catch (err) {
-          console.error('Upload failed for', file.name, err);
-        }
-      }
-      isDirty = true;
-      hideStatus();
-      Toastify({ text: `${files.length} file(s) uploaded!`, duration: 2000, backgroundColor: '#10b981' }).showToast();
+          isDirty = true;
+          succeeded++;
+          if (idx === total - 1) {
+            Toastify({ text: `${succeeded} file(s) uploaded!`, duration: 2000, backgroundColor: '#10b981' }).showToast();
+          }
+        }, 3000);
+      });
+
       input.value = '';
     }
 

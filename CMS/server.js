@@ -7,6 +7,9 @@ const media = require('./lib/media');
 const video = require('./lib/video');
 const { publish } = require('./lib/publish');
 
+// SSE connections for video progress: jobId -> res
+const sseClients = new Map();
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 const PORTFOLIO_ROOT = path.join(__dirname, '..');
@@ -124,12 +127,39 @@ app.post('/api/media/upload-file', upload.single('file'), async (req, res) => {
   }
 });
 
+// SSE endpoint — client subscribes before starting a video upload
+app.get('/api/media/video-progress/:jobId', (req, res) => {
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
+  res.flushHeaders();
+  // Tell the client the channel is open so it can safely start the POST
+  res.write(`data: ${JSON.stringify({ ready: true })}\n\n`);
+  sseClients.set(req.params.jobId, res);
+  req.on('close', () => sseClients.delete(req.params.jobId));
+});
+
 app.post('/api/media/upload-video', uploadVideo.single('file'), async (req, res) => {
   try {
-    const { category, project } = req.body;
+    const { category, project, jobId } = req.body;
     if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
     if (!category || !project) return res.status(400).json({ error: 'Category and project name required' });
-    const result = await video.processVideoUpload(req.file, category, project);
+
+    const sseRes = jobId ? sseClients.get(jobId) : null;
+    const sendProgress = (percent, timemark) => {
+      if (sseRes && !sseRes.writableEnded) {
+        sseRes.write(`data: ${JSON.stringify({ percent, timemark })}\n\n`);
+      }
+    };
+
+    const result = await video.processVideoUpload(req.file, category, project, sseRes ? sendProgress : null);
+
+    if (sseRes && !sseRes.writableEnded) {
+      sseRes.write(`data: ${JSON.stringify({ percent: 100, done: true })}\n\n`);
+      sseRes.end();
+      sseClients.delete(jobId);
+    }
+
     res.json({ success: true, ...result });
   } catch (err) {
     res.status(500).json({ error: err.message });
