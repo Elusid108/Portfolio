@@ -252,4 +252,46 @@ function fixFileStructure() {
   };
 }
 
-module.exports = { processUpload, processFileUpload, fixFileStructure, CATEGORY_FOLDER_MAP, sanitize, scheduleUnlink };
+// Relocates all media for a single project to its canonical path based on the
+// project's current category and title. Returns the updated project object with
+// corrected paths plus relocation stats. Call this when category or title changes
+// before writing the project to projects.json.
+function relocateProject(project) {
+  const ctx = { moved: 0, copied: 0, missing: 0, warnings: [], movedFrom: new Map() };
+  const targetWebDir = targetWebDirForProject(project);
+  const updated = { ...project };
+
+  if (typeof updated.image === 'string' && updated.image) {
+    updated.image = relocateAsset(updated.image, targetWebDir, ctx);
+  }
+
+  // project-level video — local paths only (not YouTube URLs)
+  if (typeof updated.video === 'string' && updated.video.startsWith('media/')) {
+    updated.video = relocateAsset(updated.video, targetWebDir, ctx);
+  }
+
+  if (Array.isArray(updated.gallery)) {
+    updated.gallery = updated.gallery.map(item => {
+      if (typeof item === 'string') return relocateAsset(item, targetWebDir, ctx);
+      if (item && typeof item === 'object' && typeof item.url === 'string') {
+        const result = { ...item, url: relocateAsset(item.url, targetWebDir, ctx) };
+        if (typeof item.poster === 'string') result.poster = relocateAsset(item.poster, targetWebDir, ctx);
+        return result;
+      }
+      return item;
+    });
+  }
+
+  if (Array.isArray(updated.files)) {
+    updated.files = updated.files.map(file => {
+      if (file && typeof file.url === 'string') return { ...file, url: relocateAsset(file.url, targetWebDir, ctx) };
+      return file;
+    });
+  }
+
+  if (ctx.moved > 0) removeEmptyDirs(MEDIA_DIR, true);
+
+  return { project: updated, moved: ctx.moved, copied: ctx.copied, missing: ctx.missing, warnings: ctx.warnings };
+}
+
+module.exports = { processUpload, processFileUpload, fixFileStructure, relocateProject, CATEGORY_FOLDER_MAP, sanitize, scheduleUnlink };

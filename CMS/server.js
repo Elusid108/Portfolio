@@ -47,7 +47,17 @@ app.get('/api/projects', (req, res) => {
 
 app.post('/api/projects', (req, res) => {
   try {
-    res.json(data.saveProject(req.body));
+    let incoming = req.body;
+    // Always relocate media for existing projects. relocateAsset is a no-op
+    // when a file is already in the canonical path, so this is safe to run
+    // on every save — it fixes stale paths from prior category/title changes.
+    if (incoming.id) {
+      const { project: relocated, moved, warnings } = media.relocateProject(incoming);
+      incoming = relocated;
+      if (warnings.length) console.warn('[relocate] missing files:', warnings);
+      if (moved > 0) console.log(`[relocate] moved ${moved} file(s) for project "${incoming.title}"`);
+    }
+    res.json(data.saveProject(incoming));
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
