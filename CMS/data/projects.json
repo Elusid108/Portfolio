@@ -145,7 +145,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-12T01:03:01.269Z",
     "wip": false,
-    "order": 1,
+    "order": 0,
     "specs": "<p><strong>Pixel Spot:</strong> 144x PixelDots RGBW</p><p><strong>Profile:</strong> 12x Hybrid Zoom 150W</p><p><strong>Wash:</strong> 40x LED Wash RGBWA+UV</p><p><strong>SFX:</strong> 2x Radiance Hazers</p><p>&nbsp;</p><p><strong>Pixels:</strong> 10x Pillars . 640x SM16703 RGBW · 8x 4m @ 60/m (3x1) · 12V DC</p><p><strong>Video:</strong> 234x 1m×0.5m (4.81p) · 60x 0.5m×0.5m (4.81p)</p><p>&nbsp;</p><p><strong>Power:</strong> 400A service · 200A service · 24x 208V twist-lock circuits · 60x 120V Edison circuits</p><p><strong>Control:</strong> Roadhog 4 · Resolume Arena 7.x · Madrix 5.x</p>",
     "related": [
       {
@@ -1185,7 +1185,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-17T17:47:45.485Z",
     "wip": false,
-    "order": 9,
+    "order": 8,
     "thumbnailFit": {
       "scale": 1.2,
       "x": 0,
@@ -1341,7 +1341,7 @@
     ],
     "files": [],
     "video": "",
-    "order": 3,
+    "order": 2,
     "specs": "<p><strong>Pixels:</strong> 2100x SK6812 RGBW</p><p><strong>Strip:</strong> 8x 30m @ 5/m · 8x 23m @ 5/m · 24V DC</p><p><strong>Voltage:</strong> 24V DC</p><p><strong>Control:</strong> Resolume Arena 7.x</p>",
     "related": [],
     "thumbnailFit": {
@@ -1945,7 +1945,7 @@
     "video": "",
     "timestamp": "2026-06-21T22:45:09.610Z",
     "id": "6350",
-    "order": 6,
+    "order": 5,
     "specs": "<p><strong>Pixel Spot:</strong> 34x PixelDots RGBW</p><p><strong>Profile:</strong> 12x Profile Zoom 150W</p><p><strong>Beye:</strong> 18x 6×40W RGBW</p><p><strong>SFX:</strong> 1x Radiance Hazer</p><p><strong>Universes:</strong> 4 sACN</p><p><strong>Control:</strong> Wolfmix WMX1</p>",
     "related": [],
     "thumbnailFit": {
@@ -2227,7 +2227,7 @@
     "video": "",
     "timestamp": "2026-06-21T22:55:23.650Z",
     "id": "5045",
-    "order": 8,
+    "order": 7,
     "specs": "<p><strong>Strip:</strong> RGBW pixel modules (upward-facing)</p><p><strong>Mount:</strong> 8x strut channel · rotary-hammered into concrete</p><p><strong>Decoder:</strong> Long-range receivers</p><p><strong>Power:</strong> Isolated PSU room (fan noise mitigation)</p><p><strong>Control:</strong> Madrix 5.x</p>",
     "related": [],
     "thumbnailFit": {
@@ -2705,7 +2705,12 @@
     "id": "7590",
     "order": 10,
     "specs": "<p><strong>Pixels:</strong> 520x WS2801 RGB</p><p><strong>Strip:</strong> 1x panel · 6×1 · 12V DC</p><p><strong>Decoder:</strong> SanDevices E682</p><p><strong>Protocol:</strong> WS2801</p><p><strong>Control:</strong> Madrix 3.6</p>",
-    "related": [],
+    "related": [
+      {
+        "name": "Tracks Discotheque ",
+        "url": "#project/3671"
+      }
+    ],
     "bannerFit": {
       "scale": 1.2,
       "x": 66.7,
@@ -2818,7 +2823,7 @@
     "video": "",
     "timestamp": "2026-07-20T21:09:12.884Z",
     "id": "6808",
-    "order": 5,
+    "order": 4,
     "specs": "<p><strong>Pixels:</strong> 1152x WS2815 RGB</p><p><strong>Strip:</strong> 96x 0.2m @ 60/m · 12V DC</p><p><strong>Fixtures:</strong> 96x 3D-printed PLA+ louver corners</p><p><strong>Mounting:</strong> Double-sided tape · black cable wrap</p><p><strong>Control:</strong> Madrix 5.x</p>",
     "related": [
       {
@@ -3640,7 +3645,7 @@
     "video": "",
     "timestamp": "2026-08-01T17:08:27.719Z",
     "id": "1612",
-    "order": 2,
+    "order": 1,
     "thumbnail": "media/Lighting/Blackout Ceiling Tubes/20240619_123414-thumb.webp"
   },
   {
@@ -4099,7 +4104,7 @@
     "video": "",
     "timestamp": "2026-08-08T00:49:03.114Z",
     "id": "8983",
-    "order": 7,
+    "order": 6,
     "thumbnail": "media/Lighting/Glass VIP Wall/Screenshot 2026-08-07 204525-thumb.webp"
   },
   {
@@ -4671,7 +4676,12 @@
     ],
     "files": [],
     "specs": "<p><strong>Control: </strong>Madrix 3.6</p>",
-    "related": [],
+    "related": [
+      {
+        "name": "Tracks Danceclub",
+        "url": "#project/3671"
+      }
+    ],
     "video": "",
     "timestamp": "2026-08-08T20:42:07.206Z",
     "id": "4903",
@@ -4906,204 +4916,231 @@
     "video": "",
     "timestamp": "2026-08-09T12:31:15.774Z",
     "id": "1088",
-    "order": 4,
+    "order": 3,
     "thumbnail": "media/Lighting/Pyramid Steps/20240713_100537-thumb.webp"
   },
   {
-    "title": "Tracks Danceclub",
+    "title": "Tracks Discotheque ",
     "category": "Lighting",
-    "image": "media/Lighting/Tracks Danceclub/20150922_115556-EDIT.webp",
-    "description": "<p>Placeholder</p>",
-    "longDescription": "<p>Placeholder</p>",
+    "image": "media/Lighting/Tracks Discotheque /20150922_115556-EDIT.webp",
+    "description": "<p>I layered modern LED fixtures with retro 90s scanners to build an immersive discotheque lighting rig.</p>",
+    "longDescription": "<p>Tracks was a time capsule and one of the few classic discotheques left in the country. The focus belonged on the music and the crowd, not the DJ. To put the audience directly inside the performance, I stacked multiple lighting layers in the ceiling. We ran TrackSpot 1 and 2 fixtures, Martin MX10 , pinspots, mirror balls, and DataFlash Strobes alongside modern LED lights and a video wall. I controlled the entire mix of legacy and modern gear using a GrandMA Ligte Gen 1. It was old, but its motorized faders and BPM detection audio input were a perfect fit for the room.</p><p>The contrast between the hardware defined the look. The moving heads provided the brightness, but the vintage scanners were incredibly fast and reacted perfectly to the beat. I expect a programmed sequence to look exactly the same every time I recall it. With vintage mechanics, that was a constant fight. Stepper motor brakes failed and ruined smooth movements. The handmade circuit boards were decades obsolete. We kept the rig alive by cannibalizing parts from dead units in the basement shop and scouring the internet to buy old fixtures to strip down.</p><p>For an unconventional layer, I built a dynamic truss warmer. We had leftover raw pixel PCBs from a lobby installation. I attached adhesive zip-tie mounts to the back of the boards. Because we used triangular truss, I zip-tied the strands to the single bottom center pipe and aimed them straight up at the ceiling. When the room was packed and the console locked onto the beat, the sheer speed of the scanners and the raw pixels firing overhead created an environment where the crowd came to life.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "tags": [],
+    "tags": [
+      "ArtNet",
+      "Custom Fabrication",
+      "DMX",
+      "Hand tools",
+      "Lighting Design",
+      "Madrix",
+      "MA",
+      "MIDI",
+      "Power Distribution",
+      "Resolume Arena",
+      "TCP/IP",
+      "SPI",
+      "Through-Hole Soldering"
+    ],
     "gallery": [
       {
-        "url": "media/Lighting/Tracks Danceclub/20150922_115556-EDIT.webp",
+        "url": "media/Lighting/Tracks Discotheque /20150922_115556-EDIT.webp",
         "fit": {
           "scale": 1.3,
           "x": 36.1,
           "y": 34.4
         },
-        "thumbnail": "media/Lighting/Tracks Danceclub/20150922_115556-EDIT-thumb.webp"
+        "thumbnail": "media/Lighting/Tracks Discotheque /20150922_115556-EDIT-thumb.webp"
       },
       {
-        "url": "media/Lighting/Tracks Danceclub/20150918_124128.webp",
+        "url": "media/Lighting/Tracks Discotheque /20150918_124128.webp",
         "fit": {
           "scale": 1.25,
           "x": 78.3,
           "y": 45.4
         },
-        "thumbnail": "media/Lighting/Tracks Danceclub/20150918_124128-thumb.webp"
+        "thumbnail": "media/Lighting/Tracks Discotheque /20150918_124128-thumb.webp"
       },
       {
-        "url": "media/Lighting/Tracks Danceclub/20150922_115652.webp",
+        "url": "media/Lighting/Tracks Discotheque /20150922_115652.webp",
         "fit": {
           "scale": 1.45,
           "x": 23.3,
           "y": 57
         },
-        "thumbnail": "media/Lighting/Tracks Danceclub/20150922_115652-thumb.webp"
+        "thumbnail": "media/Lighting/Tracks Discotheque /20150922_115652-thumb.webp"
       },
       {
-        "url": "media/Lighting/Tracks Danceclub/20150922_115804.webp",
+        "url": "media/Lighting/Tracks Discotheque /20150922_115804.webp",
         "fit": {
           "scale": 1.35,
           "x": 54.5,
           "y": 16.8
         },
-        "thumbnail": "media/Lighting/Tracks Danceclub/20150922_115804-thumb.webp"
+        "thumbnail": "media/Lighting/Tracks Discotheque /20150922_115804-thumb.webp"
       },
       {
-        "url": "media/Lighting/Tracks Danceclub/20150922_143314.webp",
+        "url": "media/Lighting/Tracks Discotheque /20150922_143314.webp",
         "fit": {
           "scale": 1.15,
           "x": 66.1,
           "y": 46.1
         },
-        "thumbnail": "media/Lighting/Tracks Danceclub/20150922_143314-thumb.webp"
+        "thumbnail": "media/Lighting/Tracks Discotheque /20150922_143314-thumb.webp"
       },
       {
-        "url": "media/Lighting/Tracks Danceclub/20150922_120016.webp",
+        "url": "media/Lighting/Tracks Discotheque /20150922_120016.webp",
         "fit": {
           "scale": 1.65,
           "x": 56.6,
           "y": 5
         },
-        "thumbnail": "media/Lighting/Tracks Danceclub/20150922_120016-thumb.webp"
+        "thumbnail": "media/Lighting/Tracks Discotheque /20150922_120016-thumb.webp"
       },
       {
-        "url": "media/Lighting/Tracks Danceclub/20150922_120129.webp",
+        "url": "media/Lighting/Tracks Discotheque /20150922_120129.webp",
         "fit": {
           "scale": 1.2,
           "x": 72.7,
           "y": 2.6
         },
-        "thumbnail": "media/Lighting/Tracks Danceclub/20150922_120129-thumb.webp"
+        "thumbnail": "media/Lighting/Tracks Discotheque /20150922_120129-thumb.webp"
       },
       {
-        "url": "media/Lighting/Tracks Danceclub/20150922_143402.webp",
+        "url": "media/Lighting/Tracks Discotheque /20150922_143402.webp",
         "fit": {
           "scale": 1.25,
           "x": 0,
           "y": 0
         },
-        "thumbnail": "media/Lighting/Tracks Danceclub/20150922_143402-thumb.webp"
+        "thumbnail": "media/Lighting/Tracks Discotheque /20150922_143402-thumb.webp"
       },
       {
-        "url": "media/Lighting/Tracks Danceclub/1123151448a.mp4",
-        "poster": "media/Lighting/Tracks Danceclub/1123151448a-poster.webp",
-        "thumbnail": "media/Lighting/Tracks Danceclub/1123151448a-poster-thumb.webp"
+        "url": "media/Lighting/Tracks Discotheque /1123151448a.mp4",
+        "poster": "media/Lighting/Tracks Discotheque /1123151448a-poster.webp",
+        "thumbnail": "media/Lighting/Tracks Discotheque /1123151448a-poster-thumb.webp"
       },
       {
-        "url": "media/Lighting/Tracks Danceclub/20160203_144747.webp",
-        "thumbnail": "media/Lighting/Tracks Danceclub/20160203_144747-thumb.webp"
+        "url": "media/Lighting/Tracks Discotheque /20160203_144747.webp",
+        "thumbnail": "media/Lighting/Tracks Discotheque /20160203_144747-thumb.webp"
       },
       {
-        "url": "media/Lighting/Tracks Danceclub/1119151208.webp",
+        "url": "media/Lighting/Tracks Discotheque /1119151208.webp",
         "fit": {
           "scale": 1.1,
           "x": 32.1,
           "y": 100
         },
-        "thumbnail": "media/Lighting/Tracks Danceclub/1119151208-thumb.webp"
+        "thumbnail": "media/Lighting/Tracks Discotheque /1119151208-thumb.webp"
       },
       {
-        "url": "media/Lighting/Tracks Danceclub/0321152226.mp4",
-        "poster": "media/Lighting/Tracks Danceclub/0321152226-poster.webp",
-        "thumbnail": "media/Lighting/Tracks Danceclub/0321152226-poster-thumb.webp"
+        "url": "media/Lighting/Tracks Discotheque /0321152226.mp4",
+        "poster": "media/Lighting/Tracks Discotheque /0321152226-poster.webp",
+        "thumbnail": "media/Lighting/Tracks Discotheque /0321152226-poster-thumb.webp"
       },
       {
-        "url": "media/Lighting/Tracks Danceclub/150907_4533677534676_274913011_n.webp",
-        "fit": {
-          "scale": 1.1,
-          "x": 37.4,
-          "y": 98.6
-        },
-        "thumbnail": "media/Lighting/Tracks Danceclub/150907_4533677534676_274913011_n-thumb.webp"
+        "url": "media/Lighting/Tracks Discotheque /0321152229.mp4",
+        "poster": "media/Lighting/Tracks Discotheque /0321152229-poster.webp",
+        "thumbnail": "media/Lighting/Tracks Discotheque /0321152229-poster-thumb.webp"
       },
       {
-        "url": "media/Lighting/Tracks Danceclub/0321152229.mp4",
-        "poster": "media/Lighting/Tracks Danceclub/0321152229-poster.webp",
-        "thumbnail": "media/Lighting/Tracks Danceclub/0321152229-poster-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Tracks Danceclub/FB_IMG_1561801234515.webp",
+        "url": "media/Lighting/Tracks Discotheque /FB_IMG_1561801234515.webp",
         "fit": {
           "scale": 1,
           "x": 100,
           "y": 14.1
         },
-        "thumbnail": "media/Lighting/Tracks Danceclub/FB_IMG_1561801234515-thumb.webp"
+        "thumbnail": "media/Lighting/Tracks Discotheque /FB_IMG_1561801234515-thumb.webp"
       },
       {
-        "url": "media/Lighting/Tracks Danceclub/0321151930b.webp",
-        "thumbnail": "media/Lighting/Tracks Danceclub/0321151930b-thumb.webp"
+        "url": "media/Lighting/Tracks Discotheque /0321151930b.webp",
+        "thumbnail": "media/Lighting/Tracks Discotheque /0321151930b-thumb.webp"
       },
       {
-        "url": "media/Lighting/Tracks Danceclub/0226150011.webp",
-        "thumbnail": "media/Lighting/Tracks Danceclub/0226150011-thumb.webp"
+        "url": "media/Lighting/Tracks Discotheque /0226150011.webp",
+        "thumbnail": "media/Lighting/Tracks Discotheque /0226150011-thumb.webp"
       },
       {
-        "url": "media/Lighting/Tracks Danceclub/0220151603.webp",
-        "thumbnail": "media/Lighting/Tracks Danceclub/0220151603-thumb.webp"
+        "url": "media/Lighting/Tracks Discotheque /0220151603.webp",
+        "thumbnail": "media/Lighting/Tracks Discotheque /0220151603-thumb.webp"
       },
       {
-        "url": "media/Lighting/Tracks Danceclub/0213152006.webp",
-        "thumbnail": "media/Lighting/Tracks Danceclub/0213152006-thumb.webp"
+        "url": "media/Lighting/Tracks Discotheque /0213152006.webp",
+        "thumbnail": "media/Lighting/Tracks Discotheque /0213152006-thumb.webp"
       },
       {
-        "url": "media/Lighting/Tracks Danceclub/0212152029a.webp",
-        "thumbnail": "media/Lighting/Tracks Danceclub/0212152029a-thumb.webp"
+        "url": "media/Lighting/Tracks Discotheque /0212152029a.webp",
+        "thumbnail": "media/Lighting/Tracks Discotheque /0212152029a-thumb.webp"
       },
       {
-        "url": "media/Lighting/Tracks Danceclub/0212152029.webp",
-        "thumbnail": "media/Lighting/Tracks Danceclub/0212152029-thumb.webp"
+        "url": "media/Lighting/Tracks Discotheque /0212152029.webp",
+        "thumbnail": "media/Lighting/Tracks Discotheque /0212152029-thumb.webp"
       },
       {
-        "url": "media/Lighting/Tracks Danceclub/0223151340.webp",
+        "url": "media/Lighting/Tracks Discotheque /150907_4533677534676_274913011_n.webp",
+        "fit": {
+          "scale": 1.1,
+          "x": 37.4,
+          "y": 98.6
+        },
+        "thumbnail": "media/Lighting/Tracks Discotheque /150907_4533677534676_274913011_n-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Tracks Discotheque /20160315_134734.webp",
+        "thumbnail": "media/Lighting/Tracks Discotheque /20160315_134734-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Tracks Discotheque /150605_4530409812985_696799897_n.webp",
+        "thumbnail": "media/Lighting/Tracks Discotheque /150605_4530409812985_696799897_n-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Tracks Discotheque /0223151340.webp",
         "fit": {
           "scale": 1.1,
           "x": 23.2,
           "y": 15.9
         },
-        "thumbnail": "media/Lighting/Tracks Danceclub/0223151340-thumb.webp"
+        "thumbnail": "media/Lighting/Tracks Discotheque /0223151340-thumb.webp"
       },
       {
-        "url": "media/Lighting/Tracks Danceclub/0221151313.webp",
+        "url": "media/Lighting/Tracks Discotheque /0221151313.webp",
         "fit": {
           "scale": 1.15,
           "x": 10.4,
           "y": 43.4
         },
-        "thumbnail": "media/Lighting/Tracks Danceclub/0221151313-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Tracks Danceclub/20160315_134734.webp",
-        "thumbnail": "media/Lighting/Tracks Danceclub/20160315_134734-thumb.webp"
+        "thumbnail": "media/Lighting/Tracks Discotheque /0221151313-thumb.webp"
       }
     ],
     "files": [],
     "specs": "<p>Placeholder</p>",
-    "related": [],
+    "related": [
+      {
+        "name": "Discobasket",
+        "url": "#project/4903"
+      },
+      {
+        "name": "Lobby Wall",
+        "url": "#project/7590"
+      }
+    ],
     "video": "",
     "timestamp": "2026-08-09T16:56:13.594Z",
     "id": "3671",
-    "order": 0,
+    "order": 9,
     "thumbnailFit": {
       "scale": 1.2,
-      "x": 84.4,
-      "y": 57.2
+      "x": 46.2,
+      "y": 12
     },
     "bannerFit": {
       "scale": 1.05,
       "x": 98.8,
-      "y": 43.7
+      "y": 43.2
     }
   }
 ]
