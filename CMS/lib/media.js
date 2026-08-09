@@ -75,7 +75,7 @@ async function processUpload(file, category, projectName) {
   const thumbPath = path.join(destDir, thumbName);
 
   try {
-    const input = srcPath ? sharp(srcPath) : sharp(srcBuffer);
+    const input = srcPath ? sharp(srcPath, { failOn: 'none' }) : sharp(srcBuffer, { failOn: 'none' });
     await input
       .rotate()
       .webp({ quality: 85 })
@@ -85,7 +85,7 @@ async function processUpload(file, category, projectName) {
   }
 
   try {
-    const thumbInput = srcPath ? sharp(srcPath) : sharp(srcBuffer);
+    const thumbInput = srcPath ? sharp(srcPath, { failOn: 'none' }) : sharp(srcBuffer, { failOn: 'none' });
     await thumbInput
       .rotate()
       .resize(800, null, { withoutEnlargement: true })
@@ -93,6 +93,10 @@ async function processUpload(file, category, projectName) {
       .toFile(thumbPath);
   } catch (err) {
     console.error('Sharp thumbnail error:', err.message);
+  }
+
+  if (!fs.existsSync(destPath)) {
+    throw new Error(`Image processing failed — output file was not created for "${file.originalname}"`);
   }
 
   if (srcPath) {

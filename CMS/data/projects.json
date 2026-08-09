@@ -145,7 +145,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-12T01:03:01.269Z",
     "wip": false,
-    "order": 0,
+    "order": 1,
     "specs": "<p><strong>Pixel Spot:</strong> 144x PixelDots RGBW</p><p><strong>Profile:</strong> 12x Hybrid Zoom 150W</p><p><strong>Wash:</strong> 40x LED Wash RGBWA+UV</p><p><strong>SFX:</strong> 2x Radiance Hazers</p><p>&nbsp;</p><p><strong>Pixels:</strong> 10x Pillars . 640x SM16703 RGBW · 8x 4m @ 60/m (3x1) · 12V DC</p><p><strong>Video:</strong> 234x 1m×0.5m (4.81p) · 60x 0.5m×0.5m (4.81p)</p><p>&nbsp;</p><p><strong>Power:</strong> 400A service · 200A service · 24x 208V twist-lock circuits · 60x 120V Edison circuits</p><p><strong>Control:</strong> Roadhog 4 · Resolume Arena 7.x · Madrix 5.x</p>",
     "related": [
       {
@@ -261,6 +261,15 @@
         "url": "media/Art/Emmy Stand/20250415_215506.mp4",
         "poster": "media/Art/Emmy Stand/20250415_215506-poster.webp",
         "thumbnail": "media/Art/Emmy Stand/20250415_215506-poster-thumb.webp"
+      },
+      {
+        "url": "media/Art/Emmy Stand/16a32949-8804-4094-9421-f709f77425ed.webp",
+        "fit": {
+          "scale": 1,
+          "x": 49.6,
+          "y": 59.2
+        },
+        "thumbnail": "media/Art/Emmy Stand/16a32949-8804-4094-9421-f709f77425ed-thumb.webp"
       }
     ],
     "files": [],
@@ -1176,7 +1185,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-17T17:47:45.485Z",
     "wip": false,
-    "order": 8,
+    "order": 9,
     "thumbnailFit": {
       "scale": 1.2,
       "x": 0,
@@ -1332,7 +1341,7 @@
     ],
     "files": [],
     "video": "",
-    "order": 2,
+    "order": 3,
     "specs": "<p><strong>Pixels:</strong> 2100x SK6812 RGBW</p><p><strong>Strip:</strong> 8x 30m @ 5/m · 8x 23m @ 5/m · 24V DC</p><p><strong>Voltage:</strong> 24V DC</p><p><strong>Control:</strong> Resolume Arena 7.x</p>",
     "related": [],
     "thumbnailFit": {
@@ -1936,7 +1945,7 @@
     "video": "",
     "timestamp": "2026-06-21T22:45:09.610Z",
     "id": "6350",
-    "order": 5,
+    "order": 6,
     "specs": "<p><strong>Pixel Spot:</strong> 34x PixelDots RGBW</p><p><strong>Profile:</strong> 12x Profile Zoom 150W</p><p><strong>Beye:</strong> 18x 6×40W RGBW</p><p><strong>SFX:</strong> 1x Radiance Hazer</p><p><strong>Universes:</strong> 4 sACN</p><p><strong>Control:</strong> Wolfmix WMX1</p>",
     "related": [],
     "thumbnailFit": {
@@ -2218,7 +2227,7 @@
     "video": "",
     "timestamp": "2026-06-21T22:55:23.650Z",
     "id": "5045",
-    "order": 7,
+    "order": 8,
     "specs": "<p><strong>Strip:</strong> RGBW pixel modules (upward-facing)</p><p><strong>Mount:</strong> 8x strut channel · rotary-hammered into concrete</p><p><strong>Decoder:</strong> Long-range receivers</p><p><strong>Power:</strong> Isolated PSU room (fan noise mitigation)</p><p><strong>Control:</strong> Madrix 5.x</p>",
     "related": [],
     "thumbnailFit": {
@@ -2694,7 +2703,7 @@
     "video": "",
     "timestamp": "2026-07-20T20:00:01.882Z",
     "id": "7590",
-    "order": 9,
+    "order": 10,
     "specs": "<p><strong>Pixels:</strong> 520x WS2801 RGB</p><p><strong>Strip:</strong> 1x panel · 6×1 · 12V DC</p><p><strong>Decoder:</strong> SanDevices E682</p><p><strong>Protocol:</strong> WS2801</p><p><strong>Control:</strong> Madrix 3.6</p>",
     "related": [],
     "bannerFit": {
@@ -2780,9 +2789,9 @@
       {
         "url": "media/Lighting/Curved Liquor Bottle Display/20240224_083551.webp",
         "fit": {
-          "scale": 1,
-          "x": 100,
-          "y": 34
+          "scale": 1.2,
+          "x": 99.1,
+          "y": 14.3
         },
         "thumbnail": "media/Lighting/Curved Liquor Bottle Display/20240224_083551-thumb.webp"
       },
@@ -2809,7 +2818,7 @@
     "video": "",
     "timestamp": "2026-07-20T21:09:12.884Z",
     "id": "6808",
-    "order": 4,
+    "order": 5,
     "specs": "<p><strong>Pixels:</strong> 1152x WS2815 RGB</p><p><strong>Strip:</strong> 96x 0.2m @ 60/m · 12V DC</p><p><strong>Fixtures:</strong> 96x 3D-printed PLA+ louver corners</p><p><strong>Mounting:</strong> Double-sided tape · black cable wrap</p><p><strong>Control:</strong> Madrix 5.x</p>",
     "related": [
       {
@@ -3631,7 +3640,7 @@
     "video": "",
     "timestamp": "2026-08-01T17:08:27.719Z",
     "id": "1612",
-    "order": 1,
+    "order": 2,
     "thumbnail": "media/Lighting/Blackout Ceiling Tubes/20240619_123414-thumb.webp"
   },
   {
@@ -4090,7 +4099,7 @@
     "video": "",
     "timestamp": "2026-08-08T00:49:03.114Z",
     "id": "8983",
-    "order": 6,
+    "order": 7,
     "thumbnail": "media/Lighting/Glass VIP Wall/Screenshot 2026-08-07 204525-thumb.webp"
   },
   {
@@ -4897,7 +4906,195 @@
     "video": "",
     "timestamp": "2026-08-09T12:31:15.774Z",
     "id": "1088",
-    "order": 3,
+    "order": 4,
     "thumbnail": "media/Lighting/Pyramid Steps/20240713_100537-thumb.webp"
+  },
+  {
+    "title": "Tracks Danceclub",
+    "category": "Lighting",
+    "image": "media/Lighting/Tracks Danceclub/20150922_115556-EDIT.webp",
+    "description": "<p>Placeholder</p>",
+    "longDescription": "<p>Placeholder</p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "tags": [],
+    "gallery": [
+      {
+        "url": "media/Lighting/Tracks Danceclub/20150922_115556-EDIT.webp",
+        "fit": {
+          "scale": 1.3,
+          "x": 36.1,
+          "y": 34.4
+        },
+        "thumbnail": "media/Lighting/Tracks Danceclub/20150922_115556-EDIT-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Tracks Danceclub/20150918_124128.webp",
+        "fit": {
+          "scale": 1.25,
+          "x": 78.3,
+          "y": 45.4
+        },
+        "thumbnail": "media/Lighting/Tracks Danceclub/20150918_124128-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Tracks Danceclub/20150922_115652.webp",
+        "fit": {
+          "scale": 1.45,
+          "x": 23.3,
+          "y": 57
+        },
+        "thumbnail": "media/Lighting/Tracks Danceclub/20150922_115652-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Tracks Danceclub/20150922_115804.webp",
+        "fit": {
+          "scale": 1.35,
+          "x": 54.5,
+          "y": 16.8
+        },
+        "thumbnail": "media/Lighting/Tracks Danceclub/20150922_115804-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Tracks Danceclub/20150922_143314.webp",
+        "fit": {
+          "scale": 1.15,
+          "x": 66.1,
+          "y": 46.1
+        },
+        "thumbnail": "media/Lighting/Tracks Danceclub/20150922_143314-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Tracks Danceclub/20150922_120016.webp",
+        "fit": {
+          "scale": 1.65,
+          "x": 56.6,
+          "y": 5
+        },
+        "thumbnail": "media/Lighting/Tracks Danceclub/20150922_120016-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Tracks Danceclub/20150922_120129.webp",
+        "fit": {
+          "scale": 1.2,
+          "x": 72.7,
+          "y": 2.6
+        },
+        "thumbnail": "media/Lighting/Tracks Danceclub/20150922_120129-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Tracks Danceclub/20150922_143402.webp",
+        "fit": {
+          "scale": 1.25,
+          "x": 0,
+          "y": 0
+        },
+        "thumbnail": "media/Lighting/Tracks Danceclub/20150922_143402-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Tracks Danceclub/1123151448a.mp4",
+        "poster": "media/Lighting/Tracks Danceclub/1123151448a-poster.webp",
+        "thumbnail": "media/Lighting/Tracks Danceclub/1123151448a-poster-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Tracks Danceclub/20160203_144747.webp",
+        "thumbnail": "media/Lighting/Tracks Danceclub/20160203_144747-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Tracks Danceclub/1119151208.webp",
+        "fit": {
+          "scale": 1.1,
+          "x": 32.1,
+          "y": 100
+        },
+        "thumbnail": "media/Lighting/Tracks Danceclub/1119151208-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Tracks Danceclub/150907_4533677534676_274913011_n.webp",
+        "fit": {
+          "scale": 1.1,
+          "x": 37.4,
+          "y": 98.6
+        },
+        "thumbnail": "media/Lighting/Tracks Danceclub/150907_4533677534676_274913011_n-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Tracks Danceclub/0321152229.mp4",
+        "poster": "media/Lighting/Tracks Danceclub/0321152229-poster.webp",
+        "thumbnail": "media/Lighting/Tracks Danceclub/0321152229-poster-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Tracks Danceclub/FB_IMG_1561801234515.webp",
+        "fit": {
+          "scale": 1,
+          "x": 100,
+          "y": 14.1
+        },
+        "thumbnail": "media/Lighting/Tracks Danceclub/FB_IMG_1561801234515-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Tracks Danceclub/0321151930b.webp",
+        "thumbnail": "media/Lighting/Tracks Danceclub/0321151930b-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Tracks Danceclub/0226150011.webp",
+        "thumbnail": "media/Lighting/Tracks Danceclub/0226150011-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Tracks Danceclub/0220151603.webp",
+        "thumbnail": "media/Lighting/Tracks Danceclub/0220151603-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Tracks Danceclub/0213152006.webp",
+        "thumbnail": "media/Lighting/Tracks Danceclub/0213152006-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Tracks Danceclub/0212152029a.webp",
+        "thumbnail": "media/Lighting/Tracks Danceclub/0212152029a-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Tracks Danceclub/0212152029.webp",
+        "thumbnail": "media/Lighting/Tracks Danceclub/0212152029-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Tracks Danceclub/0223151340.webp",
+        "fit": {
+          "scale": 1.1,
+          "x": 23.2,
+          "y": 15.9
+        },
+        "thumbnail": "media/Lighting/Tracks Danceclub/0223151340-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Tracks Danceclub/0221151313.webp",
+        "fit": {
+          "scale": 1.15,
+          "x": 10.4,
+          "y": 43.4
+        },
+        "thumbnail": "media/Lighting/Tracks Danceclub/0221151313-thumb.webp"
+      }
+    ],
+    "files": [],
+    "specs": "<p>Placeholder</p>",
+    "related": [],
+    "video": "",
+    "timestamp": "2026-08-09T16:56:13.594Z",
+    "id": "3671",
+    "order": 0,
+    "thumbnailFit": {
+      "scale": 1.2,
+      "x": 84.4,
+      "y": 57.2
+    },
+    "bannerFit": {
+      "scale": 1.05,
+      "x": 98.8,
+      "y": 43.7
+    }
   }
 ]
