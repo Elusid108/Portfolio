@@ -5014,6 +5014,11 @@
         "thumbnail": "media/Lighting/Tracks Danceclub/1119151208-thumb.webp"
       },
       {
+        "url": "media/Lighting/Tracks Danceclub/0321152226.mp4",
+        "poster": "media/Lighting/Tracks Danceclub/0321152226-poster.webp",
+        "thumbnail": "media/Lighting/Tracks Danceclub/0321152226-poster-thumb.webp"
+      },
+      {
         "url": "media/Lighting/Tracks Danceclub/150907_4533677534676_274913011_n.webp",
         "fit": {
           "scale": 1.1,
@@ -5077,6 +5082,10 @@
           "y": 43.4
         },
         "thumbnail": "media/Lighting/Tracks Danceclub/0221151313-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Tracks Danceclub/20160315_134734.webp",
+        "thumbnail": "media/Lighting/Tracks Danceclub/20160315_134734-thumb.webp"
       }
     ],
     "files": [],
