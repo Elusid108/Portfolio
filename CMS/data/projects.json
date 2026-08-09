@@ -4683,8 +4683,13 @@
       },
       {
         "url": "media/Electronics/Discobasket/Disco Basket Programming~2.mp4",
-        "poster": "media/Electronics/Discobasket/Disco Basket Programming~2-poster.webp",
-        "thumbnail": "media/Electronics/Discobasket/Disco Basket Programming~2-poster-thumb.webp"
+        "fit": {
+          "scale": 1.5,
+          "x": 48.5,
+          "y": 100
+        },
+        "poster": "media/Electronics/Discobasket/frame-thumb-1786319490474.webp",
+        "thumbnail": "media/Electronics/Discobasket/frame-thumb-1786319490474-thumb.webp"
       },
       {
         "url": "media/Electronics/Discobasket/0119161413.mp4",
@@ -5199,7 +5204,8 @@
       "Custom Fabrication",
       "DMX",
       "Hand tools",
-      "Power Distribution"
+      "Power Distribution",
+      "ChamSys"
     ],
     "gallery": [
       {
