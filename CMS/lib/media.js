@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const sharp = require('sharp');
+const convertHeic = require('heic-convert');
 const { getProjects } = require('./data');
 
 const PORTFOLIO_ROOT = path.join(__dirname, '..', '..');
@@ -18,6 +19,23 @@ const CATEGORY_FOLDER_MAP = {
 
 function sanitize(name) {
   return name.replace(/[<>:"/\\|?*]/g, '_');
+}
+
+function looksLikeHeic(buf) {
+  if (!buf || buf.length < 12) return false;
+  const brand = buf.slice(8, 12).toString('ascii');
+  return buf.slice(4, 8).toString('ascii') === 'ftyp' &&
+    ['heic', 'heix', 'hevc', 'hevx', 'mif1', 'msf1', 'heim', 'heis'].includes(brand);
+}
+
+async function toDecodableBuffer(srcPath, srcBuffer) {
+  const buf = srcBuffer || fs.readFileSync(srcPath);
+  if (!looksLikeHeic(buf)) return buf;
+
+  // Sharp's Windows libvips build often lacks HEVC decoding for HEIC files
+  // (even when renamed .jpg). Convert via WASM first, then hand off to Sharp.
+  const jpeg = await convertHeic({ buffer: buf, format: 'JPEG', quality: 0.92 });
+  return Buffer.from(jpeg);
 }
 
 // This repo lives inside a synced OneDrive folder, which briefly locks
@@ -74,9 +92,16 @@ async function processUpload(file, category, projectName) {
   const destPath = path.join(destDir, webpName);
   const thumbPath = path.join(destDir, thumbName);
 
+  let workingBuffer;
   try {
-    const input = srcPath ? sharp(srcPath, { failOn: 'none' }) : sharp(srcBuffer, { failOn: 'none' });
-    await input
+    workingBuffer = await toDecodableBuffer(srcPath, srcBuffer);
+  } catch (err) {
+    if (srcPath) scheduleUnlink(srcPath);
+    throw new Error(`Image processing failed for "${file.originalname}" — HEIC/HEIF conversion failed (${err.message})`);
+  }
+
+  try {
+    await sharp(workingBuffer, { failOn: 'none' })
       .rotate()
       .webp({ quality: 85 })
       .toFile(destPath);
@@ -85,8 +110,7 @@ async function processUpload(file, category, projectName) {
   }
 
   try {
-    const thumbInput = srcPath ? sharp(srcPath, { failOn: 'none' }) : sharp(srcBuffer, { failOn: 'none' });
-    await thumbInput
+    await sharp(workingBuffer, { failOn: 'none' })
       .rotate()
       .resize(800, null, { withoutEnlargement: true })
       .webp({ quality: 75 })
@@ -95,15 +119,21 @@ async function processUpload(file, category, projectName) {
     console.error('Sharp thumbnail error:', err.message);
   }
 
-  if (!fs.existsSync(destPath)) {
-    throw new Error(`Image processing failed — output file was not created for "${file.originalname}"`);
+  const destOk = fs.existsSync(destPath) && fs.statSync(destPath).size > 0;
+  const thumbOk = fs.existsSync(thumbPath) && fs.statSync(thumbPath).size > 0;
+
+  if (!destOk) {
+    try { fs.unlinkSync(destPath); } catch (_) {}
+    try { fs.unlinkSync(thumbPath); } catch (_) {}
+    if (srcPath) scheduleUnlink(srcPath);
+    throw new Error(`Image processing failed for "${file.originalname}" — format may not be supported`);
   }
 
   if (srcPath) {
     scheduleUnlink(srcPath);
   }
 
-  return { path: webPath, thumbnail: thumbWebPath };
+  return { path: webPath, thumbnail: thumbOk ? thumbWebPath : webPath };
 }
 
 async function processFileUpload(file, category, projectName) {

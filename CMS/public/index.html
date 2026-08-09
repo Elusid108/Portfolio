@@ -1531,16 +1531,21 @@
       const total = files.length;
       files.forEach((file, idx) => {
         uploadQueue.add(file.name, 'image', async (task) => {
-          const form = new FormData();
-          form.append('file', file);
-          form.append('category', category);
-          form.append('project', project);
-          const result = await uploadXhr('/api/media/upload', form, (pct) => task.setProgress(pct, pct + '%'));
-          addGalleryRow(result.path, '', null, false, '', result.thumbnail || '');
-          isDirty = true;
-          succeeded++;
-          if (idx === total - 1) {
-            Toastify({ text: `${succeeded} image(s) uploaded!`, duration: 2000, backgroundColor: '#10b981' }).showToast();
+          try {
+            const form = new FormData();
+            form.append('file', file);
+            form.append('category', category);
+            form.append('project', project);
+            const result = await uploadXhr('/api/media/upload', form, (pct) => task.setProgress(pct, pct + '%'));
+            addGalleryRow(result.path, '', null, false, '', result.thumbnail || '');
+            isDirty = true;
+            succeeded++;
+            if (idx === total - 1) {
+              Toastify({ text: `${succeeded} image(s) uploaded!`, duration: 2000, backgroundColor: '#10b981' }).showToast();
+            }
+          } catch (err) {
+            Toastify({ text: `Upload failed: ${file.name} — ${err.message || err}`, duration: 5000, backgroundColor: '#ef4444' }).showToast();
+            throw err;
           }
         }, 4000);
       });
