@@ -6,7 +6,8 @@
     "tags": [
       "JavaScript",
       "React",
-      "Node.js"
+      "Node.js",
+      "REST APIs"
     ],
     "image": "media/Apps/Portfolio CMS/Screenshot 2026-07-25 181136.webp",
     "description": "<p>I built a local Express content management system that compiles this entire site into a single 300KB file, not including the media.</p>",
@@ -40,21 +41,14 @@
     "category": "Lighting",
     "tags": [
       "Lighting Design",
-      "DMX",
-      "ArtNet",
-      "sACN",
       "Capture",
       "Madrix",
       "Resolume Arena",
-      "HOG",
       "OSCpilot",
-      "Through-Hole Soldering",
-      "TCP/IP",
-      "Pixel Mapping",
       "Video Mapping",
+      "Pixel Mapping",
       "Custom Fabrication",
-      "Hand tools",
-      "Power tools"
+      "Roadhog 4"
     ],
     "image": "media/Lighting/Immersive Dance Lighting Rig/20210516_134200.webp",
     "description": "<p><strong>Temple Nightclub | San Francisco </strong>- The main room remodel at Temple San Francisco wraps a 208V curved video ceiling and 10 custom pixel pillars into a flat-black, switched-relay infrastructure built across a two-year pandemic shutdown.</p>",
@@ -180,14 +174,15 @@
       "FDM 3D Printing",
       "SolidWorks",
       "WLED",
-      "Through-Hole Soldering",
       "Power Distribution",
       "Lighting Design",
       "SPI",
       "Rapid Prototyping",
       "ESP32",
       "Custom Fabrication",
-      "AC/DC Load Calc"
+      "AC/DC Load Calc",
+      "Wire-to-Board Soldering",
+      "Embedded Systems"
     ],
     "gallery": [
       {
@@ -260,7 +255,8 @@
     "title": "LithoLab",
     "category": "Apps",
     "tags": [
-      "LLM Integration"
+      "LLM Integration",
+      "TypeScript"
     ],
     "image": "media/Apps/LithoLab/image2.webp",
     "description": "<p>A client-side web application that generates multi-color lithophanes in custom shapes with an exportable border for 3D printing.</p>",
@@ -300,7 +296,10 @@
     "id": "3670",
     "title": "Unfold",
     "category": "Apps",
-    "tags": [],
+    "tags": [
+      "React",
+      "TypeScript"
+    ],
     "image": "media/Apps/Unfold/Screenshot 2026-07-25 154856.webp",
     "description": "<p>A browser-based card game with 4 prompt decks, built with local save states for video calls.</p>",
     "longDescription": "<p>Unfold started as a quick prototype on Lovable to generate conversation cards for video calls. The game runs 4 prompt decks across 3 play modes to move discussions past routine small talk. Since the app needed no user registration or backend databases, paying for a subscription platform made no sense. I pulled the codebase into a dedicated GitHub repository and hosted it statically on GitHub Pages.</p><p>To avoid server costs, I used Cursor to build a local save-state layer using React Hooks and browser storage. That setup tracks previously seen cards and stores custom decks directly on the client. Built with Tailwind CSS and Radix UI primitives, the interface handles deck combining and card draws without dropping state.</p>",
@@ -347,7 +346,9 @@
       "Rapid Prototyping",
       "Lighting Design",
       "ESP8266",
-      "Custom Fabrication"
+      "Custom Fabrication",
+      "Wire-to-Board Soldering",
+      "Pixel Mapping"
     ],
     "gallery": [
       {
@@ -415,7 +416,9 @@
       "Lighting Design",
       "Rapid Prototyping",
       "SPI",
-      "WLED"
+      "WLED",
+      "Pixel Mapping",
+      "Wire-to-Board Soldering"
     ],
     "image": "media/Art/Pixel Mini Pyramid/20230726_201532.webp",
     "description": "<p>An 8x8 pixel matrix desk lamp powered over 5V USB-C with a scannable QR code base.</p>",
@@ -503,7 +506,9 @@
       "SPI",
       "Rapid Prototyping",
       "Lighting Design",
-      "ESP8266"
+      "ESP8266",
+      "Pixel Mapping",
+      "Wire-to-Board Soldering"
     ],
     "gallery": [
       {
@@ -565,10 +570,16 @@
       "ArtNet",
       "sACN",
       "Show Cockpit",
-      "HOG",
       "Madrix",
       "Resolume Arena",
-      "TCP/IP"
+      "TCP/IP",
+      "Custom Fabrication",
+      "Roadhog 4",
+      "Pixel Mapping",
+      "Video Mapping",
+      "ESP32",
+      "Power Distribution",
+      "NDI"
     ],
     "gallery": [
       {
@@ -639,7 +650,7 @@
       "SolidWorks",
       "Custom Fabrication",
       "Rapid Prototyping",
-      "Through-Hole Soldering"
+      "Hand tools"
     ],
     "image": "media/Fabrication/Field Solder Station/20250317_180657.webp",
     "description": "<p>A compact solder station built to survive ladder work and crawl spaces during a nightclub remodel.</p>",
@@ -692,14 +703,12 @@
     "title": "LED Pixel Panel",
     "category": "Circuits",
     "tags": [
-      "Power Distribution",
-      "AC/DC Load Calc",
       "Resolume Arena",
       "Pixel Mapping",
       "Video Mapping",
       "Custom Fabrication",
-      "Hand tools",
-      "SPI"
+      "SPI",
+      "Lighting Design"
     ],
     "image": "media/Electronics/LED Pixel Panel/20200910_134441.webp",
     "description": "<p><strong>Temple Nightclub | San Francisco</strong> - With eight feet from tile to joists and a basement ceiling gutted to the wood, we bolted custom LED dancefloor boards directly to aluminum T-track to build an array under an inch thick.</p>",
@@ -774,7 +783,9 @@
       "SPI",
       "Repair",
       "AC/DC Load Calc",
-      "Power Distribution"
+      "Power Distribution",
+      "Lighting Design",
+      "Wire-to-Board Soldering"
     ],
     "image": "media/Electronics/LVL/IMG_20191009_231844.webp",
     "description": "<p><strong>Temple Nightclub | Denver</strong> - I salvaged 8 dead pixel runs from ruined floor channels and rewired them for 3D voxel mapping.</p>",
@@ -938,12 +949,15 @@
     "title": "MIRUS",
     "category": "Lighting",
     "tags": [
-      "Madrix",
-      "Through-Hole Soldering",
       "AC/DC Load Calc",
+      "DMX",
+      "Custom Fabrication",
+      "Hand tools",
+      "Lighting Design",
+      "Madrix",
       "Power Distribution",
       "Power tools",
-      "DMX"
+      "Wire-to-Board Soldering"
     ],
     "image": "media/Lighting/MIRUS/IMG_20180614_235653.webp",
     "description": "<p><strong>Mirus Art Gallery | Denver </strong>- I wired an RGBW wash lighting system into hanging wooden baffles 12 ft above MIRUS Art Gallery.</p>",
@@ -1042,7 +1056,8 @@
       "Pixel Mapping",
       "Lighting Design",
       "AC/DC Load Calc",
-      "WLED"
+      "WLED",
+      "Custom Fabrication"
     ],
     "gallery": [
       {
@@ -1155,7 +1170,11 @@
     "id": "9925",
     "title": "GeoLens Pro",
     "category": "Apps",
-    "tags": [],
+    "tags": [
+      "React",
+      "TypeScript",
+      "REST APIs"
+    ],
     "image": "media/Apps/GeoLens Pro/Screenshot_20260118_082950_Chrome.webp",
     "description": "<p>I built a localized browser app that automatically sorts field photos by GPS coordinate into project folders.</p>",
     "longDescription": "<p>Doing custom lighting work around Denver meant taking quick reference photos on my phone all day. Every picture dumped into a single camera roll, and I never spent the time to sort them later. I also had loose wiring notes, drawings, and measurements that needed to stay with the right job.</p><p>To fix that, I built a browser app in React 18 and TypeScript that sorts incoming photos by GPS coordinate automatically. Using Leaflet for map boundaries and exifr to read file metadata, the app runs Haversine math against active project geofences. Photos taken inside a boundary drop straight into that project folder. Anything it misses lands in a bin for manual sorting.</p><p>For notes, I built a canvas editor to layer virtual transparencies over the photos. I could circle a part or scribble a measurement, then export a PDF report using jsPDF. Dexie handles the IndexedDB storage locally, while Supabase and Lovable manage the backend and deployment. I left contract work before running it through a full season, but the core engine did what I needed.</p>",
@@ -1187,22 +1206,24 @@
     "title": "PixelForge",
     "category": "Apps",
     "tags": [
+      "React",
+      "TypeScript",
       "LLM Integration"
     ],
-    "image": "media/Apps/PixelForge AI/Screenshot 2026-07-25 173231.webp",
+    "image": "media/Apps/PixelForge/Screenshot 2026-07-25 173231.webp",
     "description": "<p>A web workspace that uses hallucinated text prompts to break repetitive visual loops in image generation.</p>",
     "longDescription": "<p>Standard image generators get boring fast. I built PixelForge to see what happens when a language model hallucinates an abstract, poetic foundation before any rendering starts. The frontend runs on React, TypeScript, Vite, and Tailwind CSS. It connects the Gemini API for prompt generation to the Imagen or NanoBanana API for the final render, and stores the whole session history locally in IndexedDB and LocalStorage.</p><p>Early iterations got stuck in a visual loop. The app kept generating characters in the same poses or returning to identical themes. It was accidentally feeding pieces of previous prompts into the new input context. I spent hours going back and forth with Gemini and later Cursor to isolate the client-side state and force the app to forget old generations between runs.</p><p>Even with a clean state, individual models drift toward repetitive styles over time. I added a manual model selector in the settings menu to route prompts across different versions. That switch breaks the visual convergence by letting different models interpret the same parameters, and it keeps the app functional as older models retire.</p>",
     "video": "",
     "gallery": [
-      "media/Apps/PixelForge AI/Screenshot 2026-07-25 173332.webp",
-      "media/Apps/PixelForge AI/Screenshot 2026-07-25 173246.webp",
-      "media/Apps/PixelForge AI/Screenshot 2026-07-25 173231.webp",
-      "media/Apps/PixelForge AI/Screenshot 2026-07-25 173207.webp",
-      "media/Apps/PixelForge AI/Screenshot 2026-07-25 173147.webp",
-      "media/Apps/PixelForge AI/Screenshot 2026-07-25 173126.webp",
-      "media/Apps/PixelForge AI/Screenshot 2026-07-25 173111.webp",
-      "media/Apps/PixelForge AI/Screenshot 2026-07-25 173100.webp",
-      "media/Apps/PixelForge AI/Screenshot 2026-07-25 173040.webp"
+      "media/Apps/PixelForge/Screenshot 2026-07-25 173332.webp",
+      "media/Apps/PixelForge/Screenshot 2026-07-25 173246.webp",
+      "media/Apps/PixelForge/Screenshot 2026-07-25 173231.webp",
+      "media/Apps/PixelForge/Screenshot 2026-07-25 173207.webp",
+      "media/Apps/PixelForge/Screenshot 2026-07-25 173147.webp",
+      "media/Apps/PixelForge/Screenshot 2026-07-25 173126.webp",
+      "media/Apps/PixelForge/Screenshot 2026-07-25 173111.webp",
+      "media/Apps/PixelForge/Screenshot 2026-07-25 173100.webp",
+      "media/Apps/PixelForge/Screenshot 2026-07-25 173040.webp"
     ],
     "launchLink": "https://elusid108.github.io/PixelForge-AI/",
     "githubLink": "https://github.com/Elusid108/PixelForge-AI",
@@ -1221,6 +1242,8 @@
     "title": "Chronicle: Iterative Fiction Engine",
     "category": "Apps",
     "tags": [
+      "React",
+      "JavaScript",
       "LLM Integration"
     ],
     "image": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 182215.webp",
@@ -1260,7 +1283,10 @@
     "id": "6638",
     "title": "Strata - Digital Notebook",
     "category": "Apps",
-    "tags": [],
+    "tags": [
+      "React",
+      "Google Drive API"
+    ],
     "image": "media/Apps/Strata - Digital Notebook/Screenshot 2026-01-23 200024.webp",
     "description": "<p>I built a serverless digital notebook that embeds Google Drive files inside a custom client-side canvas.</p>",
     "longDescription": "<p>Flipping through dozens of Google Docs, Sheets, and Slides every day at Boston Dynamics got exhausting without a clear hierarchy to organize them. I wanted a OneNote layout with notebooks, tabs, and pages, but I refused to pay for a server. Piping everything straight through the Google Drive API and browser storage solved the hosting cost, but it meant building the engine from scratch.</p><p>To embed webpages directly into notebook pages, I built a desktop prototype to dodge iframe security blocks. The desktop build worked, but needing an installed app killed the convenience of opening a workspace on any browser. I abandoned the desktop build, accepted the iframe limitations, and pivoted back to the web application.</p><p>The browser fought back on performance. Canvas zooming stuttered, and touchscreen inputs refused to line up with SVG drawings. While I sorted out the coordinate math, sync remains a headache. Edits sometimes drop, and deleted pages occasionally resurrect themselves on reload. Strata is still an active work in progress, but the client-side layout is set.</p>",
@@ -1286,7 +1312,10 @@
     "title": "IdeaForge.AI",
     "category": "Apps",
     "tags": [
-      "LLM Integration"
+      "React",
+      "TypeScript",
+      "LLM Integration",
+      "Google Drive API"
     ],
     "image": "media/Apps/IdeaForge.AI/Screenshot 2026-02-14 232928.webp",
     "description": "<p>I built a multi-stage idea sifter that runs its entire backend on the Google Sheets and Drive APIs.</p>",
@@ -1314,6 +1343,8 @@
     "title": "CharGen.AI",
     "category": "Apps",
     "tags": [
+      "React",
+      "TypeScript",
       "LLM Integration"
     ],
     "image": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174417.webp",
@@ -1352,7 +1383,6 @@
     "title": "LithoPalletGen",
     "category": "Apps",
     "tags": [
-      "Node.js",
       "JavaScript"
     ],
     "image": "media/Apps/LithoPalletGen/lithopalletgen1.webp",
@@ -1470,10 +1500,12 @@
     "wip": false,
     "tags": [
       "Capture",
-      "DMX",
+      "Custom Fabrication",
+      "Hand tools",
       "Lighting Design",
       "Power tools",
-      "Hand tools"
+      "DMX",
+      "Power Distribution"
     ],
     "gallery": [
       {
@@ -1573,9 +1605,10 @@
       "Pixel Mapping",
       "SPI",
       "Madrix",
-      "MIDI",
       "Hand tools",
-      "TCP/IP"
+      "TCP/IP",
+      "Custom Fabrication",
+      "Lighting Design"
     ],
     "gallery": [
       {
@@ -1729,14 +1762,20 @@
     "featured": false,
     "wip": false,
     "tags": [
-      "Resolume Arena",
+      "AC/DC Load Calc",
+      "ArtNet",
+      "Custom Fabrication",
+      "DMX",
+      "Hand tools",
       "Lighting Design",
       "Pixel Mapping",
-      "AC/DC Load Calc",
-      "Power Distribution",
+      "MIDI",
       "Power tools",
-      "sACN",
-      "MIDI"
+      "Power Distribution",
+      "Resolume Arena",
+      "SPI",
+      "TCP/IP",
+      "Video Mapping"
     ],
     "gallery": [
       {
@@ -1825,7 +1864,9 @@
       "WLED",
       "Pixel Mapping",
       "ESP8266",
-      "Show Cockpit"
+      "Show Cockpit",
+      "Custom Fabrication",
+      "Power Distribution"
     ],
     "gallery": [
       "media/Integration/Que Bueno Suerte!/20240606_211259.webp",
@@ -1868,11 +1909,15 @@
       "ArtNet",
       "Madrix",
       "ELM",
-      "Through-Hole Soldering",
       "TCP/IP",
       "Pixel Mapping",
       "SPI",
-      "Repair"
+      "Repair",
+      "Wire-to-Board Soldering",
+      "AC/DC Load Calc",
+      "Lighting Design",
+      "Power Distribution",
+      "Hand tools"
     ],
     "gallery": [
       "media/Electronics/Bar Tubes/20240619_122306.webp",
@@ -1924,7 +1969,9 @@
       "Rapid Prototyping",
       "Custom Fabrication",
       "ESP8266",
-      "Lighting Design"
+      "Lighting Design",
+      "Pixel Mapping",
+      "Wire-to-Board Soldering"
     ],
     "gallery": [
       "media/Art/Pixel Negative _X_/20230717_155724.webp",
@@ -1971,13 +2018,14 @@
     "tags": [
       "FDM 3D Printing",
       "SolidWorks",
-      "Through-Hole Soldering",
       "ESP8266",
       "WLED",
       "SPI",
       "Lighting Design",
       "Rapid Prototyping",
-      "Custom Fabrication"
+      "Custom Fabrication",
+      "Wire-to-Board Soldering",
+      "Pixel Mapping"
     ],
     "gallery": [
       {
@@ -2044,7 +2092,9 @@
       "Lighting Design",
       "ESP8266",
       "Custom Fabrication",
-      "Blender"
+      "Blender",
+      "Pixel Mapping",
+      "Wire-to-Board Soldering"
     ],
     "gallery": [
       {
@@ -2085,12 +2135,19 @@
     "featured": false,
     "wip": false,
     "tags": [
-      "Pixel Mapping",
-      "Madrix",
       "AC/DC Load Calc",
-      "sACN",
-      "Through-Hole Soldering",
-      "Power tools"
+      "ArtNet",
+      "Custom Fabrication",
+      "Embedded Systems",
+      "Hand tools",
+      "Lighting Design",
+      "Madrix",
+      "Pixel Mapping",
+      "Power Distribution",
+      "Power tools",
+      "SPI",
+      "TCP/IP",
+      "Through-Hole Soldering"
     ],
     "gallery": [
       {
@@ -2203,14 +2260,16 @@
     "featured": false,
     "wip": false,
     "tags": [
-      "Madrix",
-      "FDM 3D Printing",
-      "Lighting Design",
-      "Power Distribution",
-      "AC/DC Load Calc",
-      "Pixel Mapping",
       "Custom Fabrication",
-      "sACN"
+      "Pixel Mapping",
+      "Lighting Design",
+      "Madrix",
+      "SPI",
+      "sACN",
+      "Hand tools",
+      "FDM 3D Printing",
+      "ELM",
+      "AC/DC Load Calc"
     ],
     "gallery": [
       {
@@ -2322,10 +2381,12 @@
       "MIDI",
       "Madrix",
       "Resolume Arena",
-      "HOG",
       "TCP/IP",
       "Video Mapping",
-      "Pixel Mapping"
+      "Pixel Mapping",
+      "NDI",
+      "SPI",
+      "Roadhog 4"
     ],
     "gallery": [
       "media/Integration/Temple Denver/MVIMG_20190817_211751.webp",
@@ -2375,7 +2436,8 @@
       "FDM 3D Printing",
       "SolidWorks",
       "Custom Fabrication",
-      "Rapid Prototyping"
+      "Rapid Prototyping",
+      "Hand tools"
     ],
     "gallery": [
       {
@@ -2455,17 +2517,19 @@
     "featured": true,
     "wip": false,
     "tags": [
-      "Power Distribution",
-      "Power tools",
-      "Through-Hole Soldering",
       "AC/DC Load Calc",
+      "Custom Fabrication",
+      "Hand tools",
+      "Lighting Design",
       "Madrix",
       "Pixel Mapping",
-      "Lighting Design",
-      "Custom Fabrication",
-      "sACN",
+      "Power Distribution",
+      "Power tools",
+      "SPI",
       "TCP/IP",
-      "SPI"
+      "Wire-to-Board Soldering",
+      "Video Mapping",
+      "Resolume Arena"
     ],
     "gallery": [
       {
@@ -2787,13 +2851,14 @@
     "featured": true,
     "wip": false,
     "tags": [
-      "FDM 3D Printing",
-      "SolidWorks",
-      "Through-Hole Soldering",
-      "Hand tools",
       "Custom Fabrication",
+      "FDM 3D Printing",
+      "Hand tools",
+      "Lighting Design",
+      "Rapid Prototyping",
+      "SolidWorks",
       "SPI",
-      "Rapid Prototyping"
+      "Wire-to-Board Soldering"
     ],
     "gallery": [
       {
@@ -2884,13 +2949,10 @@
     "tags": [
       "Madrix",
       "Lighting Design",
-      "Power Distribution",
-      "AC/DC Load Calc",
-      "Pixel Mapping",
-      "Power tools",
-      "Hand tools",
-      "sACN",
-      "Custom Fabrication"
+      "Capture",
+      "Custom Fabrication",
+      "ELM",
+      "Pixel Mapping"
     ],
     "gallery": [
       {
@@ -2985,7 +3047,9 @@
           "x": 46.6,
           "y": 86.3
         }
-      }
+      },
+      "media/Lighting/Blackout Ceiling Tubes/Mez ceiling 1.webp",
+      "media/Lighting/Blackout Ceiling Tubes/grey view 3.webp"
     ],
     "files": [],
     "specs": "<p><strong>Pixels:</strong> 3088x SK6812 RGBW</p><p><strong>Strip:</strong> 15x 3.9m @ 60/m · 14x 4.4m @ 60/m · 7x 4.9m @ 60/m · 12V DC</p><p><strong>Decoder:</strong> 1x Advatek PixLite T8S MK3 · 3x Advatek PixLite R4D-S</p><p><strong>Power:</strong> 18x MEAN WELL HLG-320H-12 · 3x 20A circuits</p><p><strong>Control:</strong> Madrix 5.x · ELM (deprecated)</p>",
@@ -3114,7 +3178,11 @@
       "TCP/IP",
       "Through-Hole Soldering",
       "Pixel Mapping",
-      "Power Distribution"
+      "Power Distribution",
+      "Wire-to-Board Soldering",
+      "Embedded Systems",
+      "Lighting Design",
+      "Repair"
     ],
     "gallery": [
       {
@@ -3261,15 +3329,17 @@
     "wip": false,
     "tags": [
       "AC/DC Load Calc",
-      "Madrix",
-      "Lighting Design",
+      "Custom Fabrication",
+      "ArtNet",
       "Hand tools",
+      "Madrix",
       "Pixel Mapping",
-      "Power tools",
       "Power Distribution",
-      "sACN",
+      "Power tools",
+      "TCP/IP",
       "SPI",
-      "TCP/IP"
+      "Wire-to-Board Soldering",
+      "Lighting Design"
     ],
     "gallery": [
       {
@@ -3439,7 +3509,10 @@
       "WLED",
       "TCP/IP",
       "ELM",
-      "3D Scanning"
+      "3D Scanning",
+      "Lighting Design",
+      "Wire-to-Board Soldering",
+      "Power Distribution"
     ],
     "gallery": [
       {
@@ -3726,9 +3799,9 @@
       "Power Distribution",
       "SPI",
       "TCP/IP",
-      "Through-Hole Soldering",
       "Repair",
-      "Power tools"
+      "Power tools",
+      "Wire-to-Board Soldering"
     ],
     "gallery": [
       {
@@ -3820,15 +3893,27 @@
       "x": 25.3,
       "y": 40.3
     },
-    "description": "<p>Placeholder</p>",
-    "longDescription": "<p>Placeholder</p>",
+    "description": "<p>I armored LED strips for a repurposed dance platform with aluminum, heat shrink, and hot glue to survive a rowdy nightclub crowd.</p>",
+    "longDescription": "<p>The Tracks remodel required lighting an old dance platform that sat right in the middle of a rowdy crowd. I had to armor the rig so people could grab the cage without destroying pixels or slicing their hands. I heatshrunk LED strips to 10 mm aluminum sticks, securing them to the spokes with hose clamps buried in hot glue.</p><p>I built the 4 ft tall metal basket in half to fit it through the warehouse garage doors across the alley. I programmed the pixel map while it sat in pieces. The armored sticks survived the floor, but the sharp square channel base eventually chewed through wire insulation. Pull force ripped the solder pads, taking out 1 or 2 strips at a time until I spliced new ones in.</p><p>Data hit a decoder under the deck via a cheap AP bridge or a hardline cable. When it ran, about 6 people packed inside the cage dancing surrounded by light.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "tags": [],
+    "tags": [
+      "ArtNet",
+      "Custom Fabrication",
+      "Madrix",
+      "Pixel Mapping",
+      "Power Distribution",
+      "Power tools",
+      "SPI",
+      "Wire-to-Board Soldering",
+      "AC/DC Load Calc",
+      "Hand tools",
+      "Lighting Design"
+    ],
     "gallery": [
       "media/Electronics/Discobasket/IMG_20171108_200749.webp",
       "media/Electronics/Discobasket/IMG_20171108_194451.webp",
@@ -3848,7 +3933,7 @@
       "media/Electronics/Discobasket/0114161357.webp"
     ],
     "files": [],
-    "specs": "<p>Placeholder</p>",
+    "specs": "<p><strong>Control: </strong>Madrix 3.6</p>",
     "related": [],
     "video": "",
     "timestamp": "2026-08-08T20:42:07.206Z",
