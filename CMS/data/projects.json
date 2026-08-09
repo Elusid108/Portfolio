@@ -4824,30 +4824,65 @@
       },
       {
         "url": "media/Lighting/Pyramid Steps/20240528_154142.webp",
+        "fit": {
+          "scale": 1,
+          "x": 50,
+          "y": 49.4
+        },
         "thumbnail": "media/Lighting/Pyramid Steps/20240528_154142-thumb.webp"
       },
       {
         "url": "media/Lighting/Pyramid Steps/20240625_114303.webp",
+        "fit": {
+          "scale": 1,
+          "x": 49.6,
+          "y": 3.8
+        },
         "thumbnail": "media/Lighting/Pyramid Steps/20240625_114303-thumb.webp"
       },
       {
         "url": "media/Lighting/Pyramid Steps/20240624_100556.webp",
+        "fit": {
+          "scale": 1,
+          "x": 49.3,
+          "y": 48.7
+        },
         "thumbnail": "media/Lighting/Pyramid Steps/20240624_100556-thumb.webp"
       },
       {
         "url": "media/Lighting/Pyramid Steps/20240621_121138.webp",
+        "fit": {
+          "scale": 1,
+          "x": 46.1,
+          "y": 31.9
+        },
         "thumbnail": "media/Lighting/Pyramid Steps/20240621_121138-thumb.webp"
       },
       {
         "url": "media/Lighting/Pyramid Steps/20240621_181128.webp",
+        "fit": {
+          "scale": 1.15,
+          "x": 25.5,
+          "y": 39.9
+        },
         "thumbnail": "media/Lighting/Pyramid Steps/20240621_181128-thumb.webp"
       },
       {
         "url": "media/Lighting/Pyramid Steps/20240610_140359.webp",
+        "fit": {
+          "scale": 1.1,
+          "x": 0,
+          "y": 100
+        },
         "thumbnail": "media/Lighting/Pyramid Steps/20240610_140359-thumb.webp"
       },
       {
         "url": "media/Lighting/Pyramid Steps/20240528_155832.webp",
+        "fit": {
+          "scale": 2.4,
+          "x": 41.4,
+          "y": 54.8
+        },
         "thumbnail": "media/Lighting/Pyramid Steps/20240528_155832-thumb.webp"
       }
     ],
