@@ -582,7 +582,7 @@
                 "Pixel Mapping",
                 "Wire-to-Board Soldering"
             ],
-            "image": "media/Art/Pixel Mini Pyramid/20230726_201532.webp",
+            "image": "media/Art/Pixel Mini Pyramid/minipyramidfix.webp",
             "description": "<p>An 8x8 pixel matrix desk lamp powered over 5V USB-C with a scannable QR code base.</p>",
             "longDescription": "<p>Stepping down from my 16x16 matrix to an 8x8 desk piece meant solving a packaging problem. I modeled the Pixel Mini Pyramid in SolidWorks and Blender around an ESP32 running WLED on 5V USB-C power. The base doubles as a scannable QR code that links to my site.</p><p>Squeezing 64 LEDs into the small footprint left very little room for hardware. The USB-C port wanted to push back into the case whenever I plugged a cable in, and closing the shell kept crushing the internal wiring. It took several 3D printed iterations and test fits to anchor the controller securely and route the leads cleanly.</p><p>A short throw distance usually creates hotspots. I used a frosted diffusion layer over white cell walls to break up the light, and printed the case in 3 materials on an X1C. A few friends and family have them on their desks now, and the QR code base still scans on the first try.</p>",
             "video": "",
@@ -636,14 +636,14 @@
             "specs": "<p><strong>Medium:</strong> PLA+ (3 material)</p><p><strong>Color:</strong> Black, White, Transparent</p><p><strong>LEDs: </strong>64 (8x8)</p><p><strong>Driver: </strong>WS2813 (RGB)</p><p><strong>Decoder:</strong> ESP32-s3</p><p><strong>Firmware: </strong>WLED</p>",
             "related": [],
             "thumbnailFit": {
-                "scale": 1.3,
-                "x": 97.6,
-                "y": 19.2
+                "scale": 1,
+                "x": 52.5,
+                "y": 99
             },
             "bannerFit": {
                 "scale": 1,
-                "x": 9.5,
-                "y": 49.4
+                "x": 19.3,
+                "y": 27.7
             }
         },
         {
@@ -651,7 +651,7 @@
             "timestamp": "2026-01-13T00:04:25.482Z",
             "title": "Pixel Plane Warp",
             "category": "Art",
-            "image": "media/Art/Pixel Plane Warp/20230719_221111.webp",
+            "image": "media/Art/Pixel Plane Warp/pixelplanewarp_fix.webp",
             "description": "<p>By combining black light-isolation walls with reflective white cell linings and frosted diffusion, this sweeping surface installation achieves sharp, vibrant patterns at low operating temperatures and current limits.</p>",
             "longDescription": "<p>I destroyed an early print trying to push enough light into the high corner of the wave. The piece is a subdivided grid with a sweeping surface distortion that terminates in sharp points. Because the peak sits far above the LEDs, lighting the far corners required running the strips at full brightness. The trapped heat ruined the print. Plastic and hot LEDs do not get along.</p><p>I modeled the unit in SolidWorks for dimensional accuracy. A Bambu Lab X1C printed the unified model with black walls to isolate each light channel. For the final version, I lined the cells in white and added a frosted layer. That combination let me cap the WLED output on the ATHOM ESP8266 controller to a 1a limit at 12vdc without losing clarity.</p><p>It ended up on the ceiling at Glow Lounge for a while. In a dark room, the black walls disappear and leave only the distorted pattern floating overhead. The simple geometry did the work without needing to fight for brightness.</p>",
             "websiteLink": "",
@@ -674,9 +674,9 @@
             ],
             "gallery": [
                 {
-                    "url": "media/Art/Pixel Plane Warp/20230719_221111.webp",
+                    "url": "media/Art/Pixel Plane Warp/pixelplanewarp_fix.webp",
                     "fit": {
-                        "scale": 1.65,
+                        "scale": 1,
                         "x": 45.6,
                         "y": 41.8
                     }
@@ -700,14 +700,14 @@
             "specs": "<p><strong>Medium:</strong> PLA+ (3 material)</p><p><strong>Color:</strong> Black, White, Transparent</p><p><strong>LEDs: </strong>256 (16x16)</p><p><strong>Driver: </strong>WS2815 (RGB)</p><p><strong>Decoder:</strong> ATHOM (ESP8266)</p><p><strong>Firmware: </strong>WLED</p>",
             "related": [],
             "thumbnailFit": {
-                "scale": 1.1,
-                "x": 19,
-                "y": 48.6
+                "scale": 1,
+                "x": 49.4,
+                "y": 33.1
             },
             "bannerFit": {
-                "scale": 1.65,
-                "x": 34.7,
-                "y": 35.1
+                "scale": 1,
+                "x": 45.2,
+                "y": 3.4
             }
         },
         {
@@ -866,7 +866,6 @@
             "category": "Circuits",
             "tags": [
                 "Resolume Arena",
-                "Pixel Mapping",
                 "Video Mapping",
                 "Custom Fabrication",
                 "SPI",
@@ -2114,7 +2113,7 @@
         {
             "title": "Pixel Negative \"X\"",
             "category": "Art",
-            "image": "media/Art/Pixel Negative _X_/20230717_155724.webp",
+            "image": "media/Art/Pixel Negative _X_/negative x fix.webp",
             "description": "<p>An internal X obstruction inside each cell turns a white square into an array of 1024 converging arrows.</p>",
             "longDescription": "<p>I wanted to build the pixel diffusion equivalent of a stage gobo. I designed an X obstruction through the center of 256 isolated cells in SolidWorks. Powered off, the piece sat like a plain square. Powered on, the solid X blocked the center of each WS2815 LED and created 4 arrows pointing toward each other.</p><p>My first attempt on a Tenlog TL-D3 failed when the nozzle dragged across the X pattern and caused layer shifts. Printing directly against the buildplate kept the face flat. A 1 mm PLA+ face provided the right balance of diffusion and opacity without bleeding light between cells.</p><p>I capped the current in WLED on an ATHOM ESP8266 controller to stop the PLA+ from heating and warping. Running fluid patterns across the grid made the uniform obstructions look fuzzy and ripply.</p>",
             "websiteLink": "",
@@ -2155,20 +2154,20 @@
             "specs": "<p><strong>Medium:</strong> PLA+ (2 material)</p><p><strong>Color:</strong> Black, White</p><p><strong>LEDs: </strong>256 (16x16)</p><p><strong>Driver: </strong>WS2815 (RGB)</p><p><strong>Decoder:</strong> ATHOM (ESP8266)</p><p><strong>Firmware: </strong>WLED</p>",
             "related": [],
             "thumbnailFit": {
-                "scale": 1,
-                "x": 56.9,
-                "y": 33.4
+                "scale": 1.3,
+                "x": 50.2,
+                "y": 48.3
             },
             "bannerFit": {
                 "scale": 1,
-                "x": 56.2,
-                "y": 43.5
+                "x": 59,
+                "y": 36.6
             }
         },
         {
             "title": "Pixel Seed of Life",
             "category": "Art",
-            "image": "media/Art/Pixel Seed of Life/20230717_155617.webp",
+            "image": "media/Art/Pixel Seed of Life/seedoflifefix.webp",
             "description": "<p>A 1mm face printed over a subdivided matrix hides the seed of life until the pixels fire.</p>",
             "longDescription": "<p>I built this as a proof of concept to expand what I could do with subdivided matrices. Printed face down, the piece looks like a white square when turned off. Getting that surface required a 1mm face. That thickness balanced structural stability and light transmission without showing bleedthrough from the black walls behind it. With a 10mm throw, bouncing the light was unnecessary.</p><p>Heat became the immediate problem. Early tests ran at full brightness inside sealed enclosures. Over time, the corners curled and the grid walls softened enough to move by hand. Without vent holes on the back, the units bowed away from the wall as the PLA+ heated up. Adding vents and limiting current in the firmware stopped the deformation.</p><p>Now the symbol stays hidden until the matrix powers on. Lighting large clusters of pixels reveals parts of the pattern across the surface. The complete shape only appears when every pixel is active.</p>",
             "websiteLink": "",
@@ -2223,20 +2222,20 @@
             "specs": "<p><strong>Medium:</strong> PLA+ (2 material)</p><p><strong>Color:</strong> Black, White</p><p><strong>LEDs: </strong>256 (16x16)</p><p><strong>Driver: </strong>WS2815 (RGB)</p><p><strong>Decoder:</strong> ATHOM (ESP8266)</p><p><strong>Firmware: </strong>WLED</p>",
             "related": [],
             "thumbnailFit": {
-                "scale": 1.1,
-                "x": 22.9,
-                "y": 53.5
+                "scale": 1.4,
+                "x": 45.8,
+                "y": 57.9
             },
             "bannerFit": {
-                "scale": 1.2,
-                "x": 30.4,
-                "y": 56.9
+                "scale": 1.55,
+                "x": 100,
+                "y": 52.3
             }
         },
         {
             "title": "Pixel Celtic Owl",
             "category": "Art",
-            "image": "media/Art/Pixel Celtic Owl/20220315_175342.webp",
+            "image": "media/Art/Pixel Celtic Owl/frame-thumb-1786238531082.webp",
             "description": "<p>An internally subdivided 16x16 LED matrix housed inside a dual-material relief sculpture of an organic Celtic owl.</p>",
             "longDescription": "<p>My workstation laptop crashes if I calculate an internal grid larger than 16x16. This piece was a test to see if I could map that geometric matrix inside an organic shape. I bought an owl model online and split the workflow between SolidWorks and Blender for the first time. The processing load of subtracting those 256 cells from Celtic knotwork pushed my hardware to its limit.</p><p>Early attempts on a Tenlog TL-D3 IDEX printer leaked light everywhere. Stopping the bleed between cells took 0.8 mm walls of black PLA+, which meant 2 passes with a 0.4 mm nozzle. Moving the job to a Bambu Lab X1C with an AMS unit solved the bleed immediately. A 0.4 mm wall of black PLA+ now isolates every cell cleanly.</p><p>The front relief is thin enough to act like a lithophane. When powered off, it reads as a white carving in a black frame. Turn on the ATHOM ESP8266 controller, and the 16x16 grid cuts straight through the surface lines.</p>",
             "websiteLink": "",
@@ -2261,8 +2260,10 @@
             "gallery": [
                 {
                     "url": "media/Art/Pixel Celtic Owl/20240203_174318~2.mp4",
-                    "poster": "media/Art/Pixel Celtic Owl/20240203_174318~2-poster.webp"
+                    "poster": "media/Art/Pixel Celtic Owl/frame-thumb-1786238531082.webp"
                 },
+                "media/Art/Pixel Celtic Owl/20220315_175407.webp",
+                "media/Art/Pixel Celtic Owl/20220315_175356.webp",
                 "media/Art/Pixel Celtic Owl/20220315_175342.webp",
                 "media/Art/Pixel Celtic Owl/Screenshot 2026-07-02 185618.webp"
             ],
@@ -2274,14 +2275,14 @@
             "specs": "<p><strong>Medium:</strong> PLA+ (2 material)</p><p><strong>Color:</strong> Black, White</p><p><strong>LEDs: </strong>256 (16x16)</p><p><strong>Driver: </strong>WS2815 (RGB)</p><p><strong>Decoder:</strong> ATHOM (ESP8266)</p><p><strong>Firmware: </strong>WLED</p>",
             "related": [],
             "thumbnailFit": {
-                "scale": 1,
-                "x": 49.1,
-                "y": 48.4
+                "scale": 1.25,
+                "x": 50.3,
+                "y": 33.5
             },
             "bannerFit": {
-                "scale": 1.25,
-                "x": 48.2,
-                "y": 38.1
+                "scale": 1,
+                "x": 47.7,
+                "y": 31.8
             }
         },
         {
@@ -2478,6 +2479,14 @@
                     "poster": "media/Lighting/Curved Liquor Bottle Display/frame-thumb-1786198714641.webp"
                 },
                 {
+                    "url": "media/Lighting/Curved Liquor Bottle Display/20240224_083551.webp",
+                    "fit": {
+                        "scale": 1,
+                        "x": 100,
+                        "y": 34
+                    }
+                },
+                {
                     "url": "media/Lighting/Curved Liquor Bottle Display/20240409_124553.webp",
                     "fit": {
                         "scale": 1.55,
@@ -2491,14 +2500,6 @@
                         "scale": 1,
                         "x": 57.9,
                         "y": 55.7
-                    }
-                },
-                {
-                    "url": "media/Lighting/Curved Liquor Bottle Display/20240224_083551.webp",
-                    "fit": {
-                        "scale": 1,
-                        "x": 100,
-                        "y": 34
                     }
                 }
             ],
