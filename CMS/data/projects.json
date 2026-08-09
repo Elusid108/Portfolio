@@ -4922,7 +4922,7 @@
   {
     "title": "Tracks Discotheque ",
     "category": "Lighting",
-    "image": "media/Lighting/Tracks Discotheque /20150922_115556-EDIT.webp",
+    "image": "media/Lighting/Tracks Discotheque /FB_IMG_1561801234515.webp",
     "description": "<p>I layered modern LED fixtures with retro 90s scanners to build an immersive discotheque lighting rig.</p>",
     "longDescription": "<p>Tracks was a time capsule and one of the few classic discotheques left in the country. The focus belonged on the music and the crowd, not the DJ. To put the audience directly inside the performance, I stacked multiple lighting layers in the ceiling. We ran TrackSpot 1 and 2 fixtures, Martin MX10 , pinspots, mirror balls, and DataFlash Strobes alongside modern LED lights and a video wall. I controlled the entire mix of legacy and modern gear using a GrandMA Ligte Gen 1. It was old, but its motorized faders and BPM detection audio input were a perfect fit for the room.</p><p>The contrast between the hardware defined the look. The moving heads provided the brightness, but the vintage scanners were incredibly fast and reacted perfectly to the beat. I expect a programmed sequence to look exactly the same every time I recall it. With vintage mechanics, that was a constant fight. Stepper motor brakes failed and ruined smooth movements. The handmade circuit boards were decades obsolete. We kept the rig alive by cannibalizing parts from dead units in the basement shop and scouring the internet to buy old fixtures to strip down.</p><p>For an unconventional layer, I built a dynamic truss warmer. We had leftover raw pixel PCBs from a lobby installation. I attached adhesive zip-tie mounts to the back of the boards. Because we used triangular truss, I zip-tied the strands to the single bottom center pipe and aimed them straight up at the ceiling. When the room was packed and the console locked onto the beat, the sheer speed of the scanners and the raw pixels firing overhead created an environment where the crowd came to life.</p>",
     "websiteLink": "",
@@ -5117,7 +5117,7 @@
       }
     ],
     "files": [],
-    "specs": "<p>Placeholder</p>",
+    "specs": "<p>GraandMA Light</p><p>(12) TrackSpot 1</p><p>(8) TrackSpot 2</p><p>(6) MX10</p><p>(4) Mac250</p><p>(8) Beam 200</p><p>(6) DataFlash Strobe</p><p>(12) Intimidator 250</p><p>(8) FlurryQ</p><p>(48) Classic Pinspot</p><p>(48) RGBW Pinspot</p><p>(2) Lasers</p><p>(4) Cryo Jets</p>",
     "related": [
       {
         "name": "Discobasket",
@@ -5133,14 +5133,14 @@
     "id": "3671",
     "order": 9,
     "thumbnailFit": {
-      "scale": 1.2,
-      "x": 46.2,
-      "y": 12
+      "scale": 1,
+      "x": 69.8,
+      "y": 0
     },
     "bannerFit": {
       "scale": 1.05,
-      "x": 98.8,
-      "y": 43.2
+      "x": 99.8,
+      "y": 38.6
     }
   }
 ]
