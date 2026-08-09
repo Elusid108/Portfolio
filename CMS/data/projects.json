@@ -613,6 +613,15 @@
           "y": 37.5
         },
         "thumbnail": "media/Art/Pixel Plane Warp/20230808_152350-thumb.webp"
+      },
+      {
+        "url": "media/Art/Pixel Plane Warp/20230712_072919.webp",
+        "fit": {
+          "scale": 1,
+          "x": 44.3,
+          "y": 40.5
+        },
+        "thumbnail": "media/Art/Pixel Plane Warp/20230712_072919-thumb.webp"
       }
     ],
     "files": [],
@@ -810,7 +819,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-13T00:23:48.073Z",
     "wip": false,
-    "order": 3,
+    "order": 4,
     "specs": "<p><strong>Designed In:</strong> SolidWorks 2022</p><p><strong>Printed On:</strong> Bambu Lab X1C</p><p><strong>Material:</strong> Black PLA+</p><p><strong>Iron:</strong> TS100 (friction-fit mount)</p>",
     "related": [],
     "thumbnailFit": {
@@ -1843,7 +1852,7 @@
     "video": "",
     "timestamp": "2026-06-21T22:41:13.337Z",
     "id": "707",
-    "order": 4,
+    "order": 5,
     "specs": "<p><strong>Designed In:</strong> SolidWorks 2022</p><p><strong>Printed On:</strong> Tenlog TL-D3</p><p><strong>Material:</strong> Black PLA+</p><p><strong>Converter:</strong> Buck-boost · 19V laptop brick input</p><p><strong>Output:</strong> 5V-32V DC · max 5A</p><p><strong>Connectors:</strong> Banana plugs · 5521-DC barrel</p>",
     "related": [],
     "thumbnailFit": {
@@ -1936,6 +1945,14 @@
         "thumbnail": "media/Lighting/Club Lexi/20230509_100642-thumb.webp"
       },
       {
+        "url": "media/Lighting/Club Lexi/20230502_170747.webp",
+        "thumbnail": "media/Lighting/Club Lexi/20230502_170747-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Club Lexi/IMG_20230502_160224_412.webp",
+        "thumbnail": "media/Lighting/Club Lexi/IMG_20230502_160224_412-thumb.webp"
+      },
+      {
         "url": "media/Lighting/Club Lexi/20230413_155003.webp",
         "fit": {
           "scale": 1,
@@ -1943,6 +1960,15 @@
           "y": 31.3
         },
         "thumbnail": "media/Lighting/Club Lexi/20230413_155003-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Club Lexi/20230502_134524.webp",
+        "thumbnail": "media/Lighting/Club Lexi/20230502_134524-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Club Lexi/20230502_224801.mp4",
+        "poster": "media/Lighting/Club Lexi/20230502_224801-poster.webp",
+        "thumbnail": "media/Lighting/Club Lexi/20230502_224801-poster-thumb.webp"
       }
     ],
     "files": [],
@@ -2987,7 +3013,7 @@
     "video": "",
     "timestamp": "2026-07-26T23:20:01.923Z",
     "id": "5376",
-    "order": 2,
+    "order": 3,
     "thumbnailFit": {
       "scale": 1.05,
       "x": 5.3,
@@ -3748,7 +3774,7 @@
     "video": "",
     "timestamp": "2026-08-01T21:44:42.857Z",
     "id": "1430",
-    "order": 0,
+    "order": 2,
     "thumbnail": "media/Fabrication/LED PSU Boot Sequencer/20221201_184622-thumb.webp"
   },
   {
@@ -5146,5 +5172,117 @@
       "x": 99.8,
       "y": 38.6
     }
+  },
+  {
+    "title": "Remote Fill Fog Jets",
+    "category": "Solutions",
+    "image": "media/Fabrication/Remote Fill Fog Jets/frame-thumb-1786316596476.webp",
+    "thumbnailFit": {
+      "scale": 1.1,
+      "x": 96.2,
+      "y": 37.7
+    },
+    "bannerFit": {
+      "scale": 1,
+      "x": 48.2,
+      "y": 26
+    },
+    "description": "<p>A 55 gal fluid distribution system feeding 6 inverted fog jets to bypass strict city CO2 permits.</p>",
+    "longDescription": "<p>Denver had become strict with CO2 permits following the local increase in grow houses. Securing clearance for a cryo system inside a venue was legally impossible. The client still wanted a massive atmospheric effect for the stage. I adapted 6 Antari fog jets using quick dissipating fluid to simulate the cold blast.</p><p>The venue had 16 ft ceilings, so staff couldn't reach them for manual fluid fills. I installed an Antari fluid distribution system using a 55 gal drum in the dressing room. 2 ground pumps pushed fluid up to 2 header tanks in the ceiling, which then fed 3 jets each. The 1500W jets required new dedicated circuits and remote booth switches. The units lacked a built in way to hang upside down. I built adjustable mounts using strut channel L-brackets and bolted them directly to the existing ceiling grid.</p><p>During the initial power up, 1 header tank immediately started pouring fluid from the ceiling. A factory float valve was wired backward, signaling the pump to continue filling an overflowing tank. I caught the leak quick and pulled the tank down to wait for a replacement part.</p><p>I patched the rig into their Chamsys console. The RGBA wash LEDs built into the jets colored the blast and successfully sold the cryo illusion. It worked exactly as intended mechanically, but the vapor condensed on the metal stage poles. The steel became incredibly slick, and the only remaining option was for the staff to wipe the poles down between sets.</p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "tags": [
+      "AC/DC Load Calc",
+      "Custom Fabrication",
+      "DMX",
+      "Hand tools",
+      "Power Distribution"
+    ],
+    "gallery": [
+      {
+        "url": "media/Fabrication/Remote Fill Fog Jets/20230617_140953.mp4",
+        "fit": {
+          "scale": 1,
+          "x": 49.5,
+          "y": 30.3
+        },
+        "poster": "media/Fabrication/Remote Fill Fog Jets/frame-thumb-1786316596476.webp",
+        "thumbnail": "media/Fabrication/Remote Fill Fog Jets/frame-thumb-1786316596476-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Remote Fill Fog Jets/20230617_131656.webp",
+        "fit": {
+          "scale": 1.2,
+          "x": 12,
+          "y": 29.1
+        },
+        "thumbnail": "media/Fabrication/Remote Fill Fog Jets/20230617_131656-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Remote Fill Fog Jets/20230616_143807.webp",
+        "thumbnail": "media/Fabrication/Remote Fill Fog Jets/20230616_143807-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Remote Fill Fog Jets/20230614_140510.webp",
+        "thumbnail": "media/Fabrication/Remote Fill Fog Jets/20230614_140510-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Remote Fill Fog Jets/20230616_135939.webp",
+        "thumbnail": "media/Fabrication/Remote Fill Fog Jets/20230616_135939-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Remote Fill Fog Jets/20230616_135910.webp",
+        "thumbnail": "media/Fabrication/Remote Fill Fog Jets/20230616_135910-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Remote Fill Fog Jets/20230614_134730.webp",
+        "thumbnail": "media/Fabrication/Remote Fill Fog Jets/20230614_134730-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Remote Fill Fog Jets/20230616_140923.mp4",
+        "fit": {
+          "scale": 1,
+          "x": 46.8,
+          "y": 14.8
+        },
+        "poster": "media/Fabrication/Remote Fill Fog Jets/frame-thumb-1786316799010.webp",
+        "thumbnail": "media/Fabrication/Remote Fill Fog Jets/frame-thumb-1786316799010-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Remote Fill Fog Jets/20230614_154437.webp",
+        "thumbnail": "media/Fabrication/Remote Fill Fog Jets/20230614_154437-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Remote Fill Fog Jets/20230614_154426.webp",
+        "thumbnail": "media/Fabrication/Remote Fill Fog Jets/20230614_154426-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Remote Fill Fog Jets/20230614_163257.webp",
+        "thumbnail": "media/Fabrication/Remote Fill Fog Jets/20230614_163257-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Remote Fill Fog Jets/20230612_152343.webp",
+        "thumbnail": "media/Fabrication/Remote Fill Fog Jets/20230612_152343-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Remote Fill Fog Jets/20230614_135405.webp",
+        "thumbnail": "media/Fabrication/Remote Fill Fog Jets/20230614_135405-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Remote Fill Fog Jets/20230527_151705.webp",
+        "thumbnail": "media/Fabrication/Remote Fill Fog Jets/20230527_151705-thumb.webp"
+      }
+    ],
+    "files": [],
+    "specs": "<p>(6) Antari M7-X RGBA</p><p>(2) LCU-2S Liquid Supply System</p><p>(1) 55GAL FLC-200</p>",
+    "related": [],
+    "video": "",
+    "timestamp": "2026-08-09T23:05:35.692Z",
+    "id": "6654",
+    "order": 0
   }
 ]
