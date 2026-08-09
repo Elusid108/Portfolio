@@ -106,6 +106,7 @@
 
           <input type="hidden" id="id">
           <input type="hidden" id="timestamp">
+          <input type="hidden" id="thumbnail">
           <input type="hidden" id="thumbnailFit">
           <input type="hidden" id="bannerFit">
 
@@ -917,6 +918,7 @@
       ['id', 'title', 'category', 'image', 'websiteLink', 'launchLink', 'githubLink', 'shopLink', 'timestamp'].forEach(id => {
          document.getElementById(id).value = p[id] || '';
       });
+      document.getElementById('thumbnail').value = p.thumbnail || '';
       document.getElementById('featured').checked = !!p.featured;
       document.getElementById('wip').checked = !!p.wip;
       document.getElementById('tags').value = Array.isArray(p.tags) ? p.tags.join(', ') : '';
@@ -950,7 +952,7 @@
       if (Array.isArray(p.gallery) && p.gallery.length > 0) {
          p.gallery.forEach(item => {
             if (typeof item === 'string') addGalleryRow(item, '', null, true);
-            else addGalleryRow(item?.url || '', item?.caption || '', item?.fit || null, true, item?.poster || '');
+            else addGalleryRow(item?.url || '', item?.caption || '', item?.fit || null, true, item?.poster || '', item?.thumbnail || '');
          });
       } else {
         addGalleryRow("", "", null, true);
@@ -979,6 +981,7 @@
       document.getElementById('files-container').innerHTML = '';
       document.getElementById('gallery-container').innerHTML = '';
       document.getElementById('related-container').innerHTML = '';
+      document.getElementById('thumbnail').value = '';
       document.getElementById('thumbnailFit').value = '';
       document.getElementById('bannerFit').value = '';
       updateBannerFitStatus();
@@ -1112,7 +1115,7 @@
         if (nameInput && !nameInput.value.trim()) nameInput.value = proj.title;
     }
 
-    function addGalleryRow(url = "", caption = "", fit = null, isBulk = false, poster = "") {
+    function addGalleryRow(url = "", caption = "", fit = null, isBulk = false, poster = "", thumbnail = "") {
         const container = document.getElementById('gallery-container');
         const div = document.createElement('div');
         div.className = "gallery-row space-y-1 bg-white border border-slate-200 rounded p-1";
@@ -1139,6 +1142,7 @@
             <input type="text" placeholder="Caption (optional — shown in the media viewer)" value="${escAttr(caption)}" class="gallery-caption w-full bg-white border border-slate-200 rounded px-2 py-1 text-xs text-slate-500 focus:border-indigo-500 outline-none" oninput="isDirty=true">
             <input type="hidden" class="gallery-fit" value="${escAttr(fitJson)}">
             <input type="hidden" class="gallery-poster" value="${escAttr(poster)}">
+            <input type="hidden" class="gallery-thumbnail" value="${escAttr(thumbnail)}">
         `;
         container.appendChild(div);
         updateListIndices('gallery-container');
@@ -1498,6 +1502,9 @@
         showStatus("Uploading image...");
         const result = await api.upload(file, category, project);
         document.getElementById(targetFieldId).value = result.path;
+        if (targetFieldId === 'image' && result.thumbnail) {
+          document.getElementById('thumbnail').value = result.thumbnail;
+        }
         isDirty = true;
         hideStatus();
         Toastify({ text: "Image uploaded!", duration: 2000, backgroundColor: "#10b981" }).showToast();
@@ -1529,7 +1536,7 @@
           form.append('category', category);
           form.append('project', project);
           const result = await uploadXhr('/api/media/upload', form, (pct) => task.setProgress(pct, pct + '%'));
-          addGalleryRow(result.path, '');
+          addGalleryRow(result.path, '', null, false, '', result.thumbnail || '');
           isDirty = true;
           succeeded++;
           if (idx === total - 1) {
@@ -1585,7 +1592,7 @@
           try {
             const result = await api.uploadVideo(file, category, project, jobId);
             evtSource.close();
-            addGalleryRow(result.path, '', null, false, result.poster || '');
+            addGalleryRow(result.path, '', null, false, result.poster || '', result.posterThumbnail || '');
             isDirty = true;
             succeeded++;
             if (idx === total - 1 && succeeded > 0) {
@@ -1681,14 +1688,16 @@
           const caption = row.querySelector('.gallery-caption').value.trim();
           const fitRaw = row.querySelector('.gallery-fit')?.value?.trim() || '';
           const poster = row.querySelector('.gallery-poster')?.value?.trim() || '';
+          const thumbnail = row.querySelector('.gallery-thumbnail')?.value?.trim() || '';
           let fit = null;
           try { fit = fitRaw ? JSON.parse(fitRaw) : null; } catch {}
-          const hasExtra = caption || fit || poster;
+          const hasExtra = caption || fit || poster || thumbnail;
           if (hasExtra) {
               const obj = { url };
               if (caption) obj.caption = caption;
               if (fit) obj.fit = fit;
               if (poster) obj.poster = poster;
+              if (thumbnail) obj.thumbnail = thumbnail;
               return obj;
           }
           return url;
@@ -1705,6 +1714,7 @@
         title: document.getElementById('title').value,
         category: document.getElementById('category').value,
         image: document.getElementById('image').value,
+        thumbnail: document.getElementById('thumbnail').value || undefined,
         thumbnailFit: parseFit('thumbnailFit'),
         bannerFit: parseFit('bannerFit'),
         description: quillShort.root.innerHTML,
@@ -2111,7 +2121,9 @@
           const posterInput = row.querySelector('.gallery-poster');
           const thumbImg = row.querySelector('.gallery-thumb');
           const thumbWrap = row.querySelector('.gallery-thumb-wrap');
+          const thumbnailInput = row.querySelector('.gallery-thumbnail');
           if (posterInput) posterInput.value = result.path;
+          if (thumbnailInput) thumbnailInput.value = result.thumbnail || '';
           if (thumbImg) thumbImg.src = getThumbnailSrc(result.path);
           if (thumbWrap) thumbWrap.classList.remove('hidden');
           isDirty = true;

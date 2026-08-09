@@ -52,16 +52,19 @@ async function processUpload(file, category, projectName) {
   const originalName = sanitize(file.originalname);
   const stem = path.parse(originalName).name;
   const webpName = `${stem}.webp`;
-  let destDir, webPath;
+  const thumbName = `${stem}-thumb.webp`;
+  let destDir, webPath, thumbWebPath;
 
   if (category === '_root' || !projectName) {
     destDir = MEDIA_DIR;
     webPath = `media/${webpName}`;
+    thumbWebPath = `media/${thumbName}`;
   } else {
     const folder = CATEGORY_FOLDER_MAP[category] || category;
     const safeProject = sanitize(projectName);
     destDir = path.join(MEDIA_DIR, folder, safeProject);
     webPath = `media/${folder}/${safeProject}/${webpName}`;
+    thumbWebPath = `media/${folder}/${safeProject}/${thumbName}`;
   }
 
   fs.mkdirSync(destDir, { recursive: true });
@@ -69,9 +72,11 @@ async function processUpload(file, category, projectName) {
   const srcPath = file.path || null;
   const srcBuffer = file.buffer || null;
   const destPath = path.join(destDir, webpName);
+  const thumbPath = path.join(destDir, thumbName);
 
   try {
-    await (srcPath ? sharp(srcPath) : sharp(srcBuffer))
+    const input = srcPath ? sharp(srcPath) : sharp(srcBuffer);
+    await input
       .rotate()
       .webp({ quality: 85 })
       .toFile(destPath);
@@ -79,11 +84,22 @@ async function processUpload(file, category, projectName) {
     console.error('Sharp processing error:', err.message);
   }
 
+  try {
+    const thumbInput = srcPath ? sharp(srcPath) : sharp(srcBuffer);
+    await thumbInput
+      .rotate()
+      .resize(800, null, { withoutEnlargement: true })
+      .webp({ quality: 75 })
+      .toFile(thumbPath);
+  } catch (err) {
+    console.error('Sharp thumbnail error:', err.message);
+  }
+
   if (srcPath) {
     scheduleUnlink(srcPath);
   }
 
-  return webPath;
+  return { path: webPath, thumbnail: thumbWebPath };
 }
 
 async function processFileUpload(file, category, projectName) {
@@ -212,6 +228,10 @@ function fixFileStructure() {
       project.image = relocateAsset(project.image, targetWebDir, ctx);
     }
 
+    if (typeof project.thumbnail === 'string' && project.thumbnail) {
+      project.thumbnail = relocateAsset(project.thumbnail, targetWebDir, ctx);
+    }
+
     if (Array.isArray(project.gallery)) {
       project.gallery = project.gallery.map(item => {
         if (typeof item === 'string') {
@@ -221,6 +241,9 @@ function fixFileStructure() {
           const updated = { ...item, url: relocateAsset(item.url, targetWebDir, ctx) };
           if (typeof item.poster === 'string') {
             updated.poster = relocateAsset(item.poster, targetWebDir, ctx);
+          }
+          if (typeof item.thumbnail === 'string') {
+            updated.thumbnail = relocateAsset(item.thumbnail, targetWebDir, ctx);
           }
           return updated;
         }
@@ -265,6 +288,10 @@ function relocateProject(project) {
     updated.image = relocateAsset(updated.image, targetWebDir, ctx);
   }
 
+  if (typeof updated.thumbnail === 'string' && updated.thumbnail) {
+    updated.thumbnail = relocateAsset(updated.thumbnail, targetWebDir, ctx);
+  }
+
   // project-level video — local paths only (not YouTube URLs)
   if (typeof updated.video === 'string' && updated.video.startsWith('media/')) {
     updated.video = relocateAsset(updated.video, targetWebDir, ctx);
@@ -276,6 +303,7 @@ function relocateProject(project) {
       if (item && typeof item === 'object' && typeof item.url === 'string') {
         const result = { ...item, url: relocateAsset(item.url, targetWebDir, ctx) };
         if (typeof item.poster === 'string') result.poster = relocateAsset(item.poster, targetWebDir, ctx);
+        if (typeof item.thumbnail === 'string') result.thumbnail = relocateAsset(item.thumbnail, targetWebDir, ctx);
         return result;
       }
       return item;

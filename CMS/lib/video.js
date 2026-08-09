@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const os = require('os');
 const sharp = require('sharp');
 const ffmpeg = require('fluent-ffmpeg');
 const ffmpegPath = require('ffmpeg-static');
@@ -11,6 +12,7 @@ ffmpeg.setFfprobePath(ffprobePath);
 
 const PORTFOLIO_ROOT = path.join(__dirname, '..', '..');
 const MEDIA_DIR = path.join(PORTFOLIO_ROOT, 'media');
+const TEMP_DIR = path.join(os.tmpdir(), 'portfolio-cms-uploads');
 
 function probeDuration(filePath) {
   return new Promise((resolve) => {
@@ -51,12 +53,14 @@ async function processVideoUpload(file, category, projectName, onProgress) {
   const stem = path.parse(originalName).name;
   const mp4Name = `${stem}.mp4`;
   const posterName = `${stem}-poster.webp`;
+  const posterThumbName = `${stem}-poster-thumb.webp`;
 
   const folder = CATEGORY_FOLDER_MAP[category] || category;
   const safeProject = sanitize(projectName);
   const destDir = path.join(MEDIA_DIR, folder, safeProject);
   const videoWebPath = `media/${folder}/${safeProject}/${mp4Name}`;
   const posterWebPath = `media/${folder}/${safeProject}/${posterName}`;
+  const posterThumbWebPath = `media/${folder}/${safeProject}/${posterThumbName}`;
 
   fs.mkdirSync(destDir, { recursive: true });
 
@@ -70,15 +74,22 @@ async function processVideoUpload(file, category, projectName, onProgress) {
     console.error('ffmpeg transcode error:', err.message);
   }
 
+  let posterGenerated = false;
   try {
     const duration = await probeDuration(srcPath);
     const posterAt = duration > 1 ? Math.min(duration * 0.1, 3) : 0;
     const tempJpgName = `${stem}-poster-tmp.jpg`;
-    await extractFrame(srcPath, posterAt, destDir, tempJpgName);
+    fs.mkdirSync(TEMP_DIR, { recursive: true });
+    await extractFrame(srcPath, posterAt, TEMP_DIR, tempJpgName);
 
-    const tempJpgPath = path.join(destDir, tempJpgName);
+    const tempJpgPath = path.join(TEMP_DIR, tempJpgName);
     if (fs.existsSync(tempJpgPath)) {
       await sharp(tempJpgPath).webp({ quality: 85 }).toFile(path.join(destDir, posterName));
+      await sharp(tempJpgPath)
+        .resize(800, null, { withoutEnlargement: true })
+        .webp({ quality: 75 })
+        .toFile(path.join(destDir, posterThumbName));
+      posterGenerated = true;
       scheduleUnlink(tempJpgPath);
     }
   } catch (err) {
@@ -87,7 +98,7 @@ async function processVideoUpload(file, category, projectName, onProgress) {
 
   scheduleUnlink(srcPath);
 
-  return { path: videoWebPath, poster: posterWebPath };
+  return { path: videoWebPath, poster: posterWebPath, posterThumbnail: posterGenerated ? posterThumbWebPath : '' };
 }
 
 module.exports = { processVideoUpload };

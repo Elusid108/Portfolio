@@ -14,9 +14,18 @@
     "longDescription": "<p>Existing website builders always lock away some layout tweak or charge monthly fees to host a basic portfolio. My old workflow meant cutting videos in ClipAmp and hosting them on YouTube, which left content fragmented across external platforms and slow to load. I wanted everything in 1 place, running locally, with 0 recurring costs.</p><p>I built an administrative panel using vanilla JavaScript and an Express server that runs on my laptop. Dropping a video or photo into the editor triggers an automated pipeline that strips video audio, encodes to 1080p H.264, converts images to WebP, and sorts them into project folders. The front end runs React 18 from a CDN and reads from a JSON block. Updating a project now feels as fast as moving desktop files around, though I am still fixing an offset bug that leaves a black gap on mobile screens.</p><p>When I hit publish, the server merges the media and JSON data into index.html in under 10 seconds. That build process keeps the final footprint under 300KB. Pushing the project directory to GitHub Pages updates the live site immediately.</p>",
     "video": "",
     "gallery": [
-      "media/Apps/Portfolio CMS/Screenshot 2026-07-25 181136.webp",
-      "media/Apps/Portfolio CMS/Screenshot 2026-07-25 181154.webp",
-      "media/Apps/Portfolio CMS/Screenshot 2026-07-25 181201.webp"
+      {
+        "url": "media/Apps/Portfolio CMS/Screenshot 2026-07-25 181136.webp",
+        "thumbnail": "media/Apps/Portfolio CMS/Screenshot 2026-07-25 181136-thumb.webp"
+      },
+      {
+        "url": "media/Apps/Portfolio CMS/Screenshot 2026-07-25 181154.webp",
+        "thumbnail": "media/Apps/Portfolio CMS/Screenshot 2026-07-25 181154-thumb.webp"
+      },
+      {
+        "url": "media/Apps/Portfolio CMS/Screenshot 2026-07-25 181201.webp",
+        "thumbnail": "media/Apps/Portfolio CMS/Screenshot 2026-07-25 181201-thumb.webp"
+      }
     ],
     "launchLink": "",
     "githubLink": "https://github.com/Elusid108/Portfolio",
@@ -33,7 +42,8 @@
         "name": "chrismoore.me",
         "url": "http://chrismoore.me"
       }
-    ]
+    ],
+    "thumbnail": "media/Apps/Portfolio CMS/Screenshot 2026-07-25 181136-thumb.webp"
   },
   {
     "id": "1",
@@ -62,20 +72,26 @@
           "x": 58.2,
           "y": 51
         },
-        "poster": "media/Lighting/Immersive Dance Lighting Rig/frame-thumb-1786196916589.webp"
+        "poster": "media/Lighting/Immersive Dance Lighting Rig/frame-thumb-1786196916589.webp",
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/frame-thumb-1786196916589-thumb.webp"
       },
-      "media/Lighting/Immersive Dance Lighting Rig/Screenshot 2025-03-14 124321.webp",
+      {
+        "url": "media/Lighting/Immersive Dance Lighting Rig/Screenshot 2025-03-14 124321.webp",
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Screenshot 2025-03-14 124321-thumb.webp"
+      },
       {
         "url": "media/Lighting/Immersive Dance Lighting Rig/20210516_134200.webp",
         "fit": {
           "scale": 1.15,
           "x": 32,
           "y": 69.3
-        }
+        },
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/20210516_134200-thumb.webp"
       },
       {
         "url": "media/Lighting/Immersive Dance Lighting Rig/VID_20200416_142554.mp4",
-        "poster": "media/Lighting/Immersive Dance Lighting Rig/VID_20200416_142554-poster.webp"
+        "poster": "media/Lighting/Immersive Dance Lighting Rig/VID_20200416_142554-poster.webp",
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/VID_20200416_142554-poster-thumb.webp"
       },
       {
         "url": "media/Lighting/Immersive Dance Lighting Rig/20210517_112418~2.mp4",
@@ -84,7 +100,8 @@
           "x": 12.7,
           "y": 97.3
         },
-        "poster": "media/Lighting/Immersive Dance Lighting Rig/frame-thumb-1786196823000.webp"
+        "poster": "media/Lighting/Immersive Dance Lighting Rig/frame-thumb-1786196823000.webp",
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/frame-thumb-1786196823000-thumb.webp"
       },
       {
         "url": "media/Lighting/Immersive Dance Lighting Rig/Screenshot 2025-03-12 151156.webp",
@@ -92,7 +109,8 @@
           "scale": 1,
           "x": 50.5,
           "y": 1.6
-        }
+        },
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Screenshot 2025-03-12 151156-thumb.webp"
       },
       {
         "url": "media/Lighting/Immersive Dance Lighting Rig/Screenshot 2025-03-17 193550.webp",
@@ -100,7 +118,8 @@
           "scale": 1.15,
           "x": 0,
           "y": 39.4
-        }
+        },
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Screenshot 2025-03-17 193550-thumb.webp"
       },
       {
         "url": "media/Lighting/Immersive Dance Lighting Rig/Screenshot 2025-03-12 151235.webp",
@@ -108,7 +127,8 @@
           "scale": 1,
           "x": 47.7,
           "y": 49
-        }
+        },
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Screenshot 2025-03-12 151235-thumb.webp"
       }
     ],
     "launchLink": "",
@@ -154,7 +174,8 @@
       "scale": 1.3,
       "x": 44.1,
       "y": 72
-    }
+    },
+    "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/20210516_134200-thumb.webp"
   },
   {
     "id": "8147",
@@ -191,7 +212,8 @@
           "scale": 1.15,
           "x": 36.2,
           "y": 44.2
-        }
+        },
+        "thumbnail": "media/Art/Emmy Stand/20250415_215715-thumb.webp"
       },
       {
         "url": "media/Art/Emmy Stand/20250415_215552.webp",
@@ -199,7 +221,8 @@
           "scale": 1.1,
           "x": 100,
           "y": 30.4
-        }
+        },
+        "thumbnail": "media/Art/Emmy Stand/20250415_215552-thumb.webp"
       },
       {
         "url": "media/Art/Emmy Stand/20250415_215613.webp",
@@ -207,7 +230,8 @@
           "scale": 1.2,
           "x": 0.6,
           "y": 22.5
-        }
+        },
+        "thumbnail": "media/Art/Emmy Stand/20250415_215613-thumb.webp"
       },
       {
         "url": "media/Art/Emmy Stand/20250415_215637.webp",
@@ -215,23 +239,28 @@
           "scale": 1,
           "x": 46.4,
           "y": 20.5
-        }
+        },
+        "thumbnail": "media/Art/Emmy Stand/20250415_215637-thumb.webp"
       },
       {
         "url": "media/Art/Emmy Stand/20250415_214902.mp4",
-        "poster": "media/Art/Emmy Stand/20250415_214902-poster.webp"
+        "poster": "media/Art/Emmy Stand/20250415_214902-poster.webp",
+        "thumbnail": "media/Art/Emmy Stand/20250415_214902-poster-thumb.webp"
       },
       {
         "url": "media/Art/Emmy Stand/20250415_215408.mp4",
-        "poster": "media/Art/Emmy Stand/20250415_215408-poster.webp"
+        "poster": "media/Art/Emmy Stand/20250415_215408-poster.webp",
+        "thumbnail": "media/Art/Emmy Stand/20250415_215408-poster-thumb.webp"
       },
       {
         "url": "media/Art/Emmy Stand/20250415_215438.mp4",
-        "poster": "media/Art/Emmy Stand/20250415_215438-poster.webp"
+        "poster": "media/Art/Emmy Stand/20250415_215438-poster.webp",
+        "thumbnail": "media/Art/Emmy Stand/20250415_215438-poster-thumb.webp"
       },
       {
         "url": "media/Art/Emmy Stand/20250415_215506.mp4",
-        "poster": "media/Art/Emmy Stand/20250415_215506-poster.webp"
+        "poster": "media/Art/Emmy Stand/20250415_215506-poster.webp",
+        "thumbnail": "media/Art/Emmy Stand/20250415_215506-poster-thumb.webp"
       }
     ],
     "files": [],
@@ -248,7 +277,8 @@
       "scale": 1,
       "x": 27.5,
       "y": 22.6
-    }
+    },
+    "thumbnail": "media/Art/Emmy Stand/Gemini_Generated_Image_4xox7h4xox7h4xox-thumb.webp"
   },
   {
     "id": "2944",
@@ -265,9 +295,13 @@
     "gallery": [
       {
         "url": "media/Apps/LithoLab/image2.webp",
-        "caption": "The LithoLab workspace links source image manipulation directly to physical 3D print parameters. In the main canvas, users apply custom geometric masks and adjust spatial orientation, while the sidebar controls physical dimensions, border scaling, and filament palette selection. The dual-preview engine at the bottom provides immediate feedback, displaying both a palette-accurate color rendering and a surface-texture depth map to verify print accuracy before exporting."
+        "caption": "The LithoLab workspace links source image manipulation directly to physical 3D print parameters. In the main canvas, users apply custom geometric masks and adjust spatial orientation, while the sidebar controls physical dimensions, border scaling, and filament palette selection. The dual-preview engine at the bottom provides immediate feedback, displaying both a palette-accurate color rendering and a surface-texture depth map to verify print accuracy before exporting.",
+        "thumbnail": "media/Apps/LithoLab/image2-thumb.webp"
       },
-      "media/Apps/LithoLab/20260717_135329.webp"
+      {
+        "url": "media/Apps/LithoLab/20260717_135329.webp",
+        "thumbnail": "media/Apps/LithoLab/20260717_135329-thumb.webp"
+      }
     ],
     "launchLink": "https://elusid108.github.io/LithoLab/",
     "githubLink": "https://github.com/Elusid108/LithoLab",
@@ -290,7 +324,8 @@
         "name": "Pallet generator",
         "url": "#project/968"
       }
-    ]
+    ],
+    "thumbnail": "media/Apps/LithoLab/image2-thumb.webp"
   },
   {
     "id": "3670",
@@ -305,12 +340,30 @@
     "longDescription": "<p>Unfold started as a quick prototype on Lovable to generate conversation cards for video calls. The game runs 4 prompt decks across 3 play modes to move discussions past routine small talk. Since the app needed no user registration or backend databases, paying for a subscription platform made no sense. I pulled the codebase into a dedicated GitHub repository and hosted it statically on GitHub Pages.</p><p>To avoid server costs, I used Cursor to build a local save-state layer using React Hooks and browser storage. That setup tracks previously seen cards and stores custom decks directly on the client. Built with Tailwind CSS and Radix UI primitives, the interface handles deck combining and card draws without dropping state.</p>",
     "video": "",
     "gallery": [
-      "media/Apps/Unfold/Screenshot 2026-07-25 154856.webp",
-      "media/Apps/Unfold/Screenshot 2026-01-11 183035.webp",
-      "media/Apps/Unfold/Screenshot 2026-01-11 183054.webp",
-      "media/Apps/Unfold/Screenshot 2026-01-11 183115.webp",
-      "media/Apps/Unfold/Screenshot 2026-01-11 183122.webp",
-      "media/Apps/Unfold/Screenshot 2026-01-11 183144.webp"
+      {
+        "url": "media/Apps/Unfold/Screenshot 2026-07-25 154856.webp",
+        "thumbnail": "media/Apps/Unfold/Screenshot 2026-07-25 154856-thumb.webp"
+      },
+      {
+        "url": "media/Apps/Unfold/Screenshot 2026-01-11 183035.webp",
+        "thumbnail": "media/Apps/Unfold/Screenshot 2026-01-11 183035-thumb.webp"
+      },
+      {
+        "url": "media/Apps/Unfold/Screenshot 2026-01-11 183054.webp",
+        "thumbnail": "media/Apps/Unfold/Screenshot 2026-01-11 183054-thumb.webp"
+      },
+      {
+        "url": "media/Apps/Unfold/Screenshot 2026-01-11 183115.webp",
+        "thumbnail": "media/Apps/Unfold/Screenshot 2026-01-11 183115-thumb.webp"
+      },
+      {
+        "url": "media/Apps/Unfold/Screenshot 2026-01-11 183122.webp",
+        "thumbnail": "media/Apps/Unfold/Screenshot 2026-01-11 183122-thumb.webp"
+      },
+      {
+        "url": "media/Apps/Unfold/Screenshot 2026-01-11 183144.webp",
+        "thumbnail": "media/Apps/Unfold/Screenshot 2026-01-11 183144-thumb.webp"
+      }
     ],
     "launchLink": "https://elusid108.github.io/Unfold/",
     "githubLink": "https://github.com/Elusid108/Unfold",
@@ -322,7 +375,8 @@
     "wip": false,
     "order": 1,
     "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite (SWC)</p><p><strong>Styling:</strong> Tailwind CSS, Radix UI</p><p><strong>Storage:</strong> localStorage</p><p><strong>Deploy:</strong> GitHub Pages</p>",
-    "related": []
+    "related": [],
+    "thumbnail": "media/Apps/Unfold/Screenshot 2026-07-25 154856-thumb.webp"
   },
   {
     "id": "670",
@@ -357,7 +411,8 @@
           "scale": 1.25,
           "x": 0,
           "y": 50
-        }
+        },
+        "thumbnail": "media/Art/Pixel Pyramid/20230717_154810-thumb.webp"
       },
       {
         "url": "media/Art/Pixel Pyramid/20230717_154820.webp",
@@ -365,7 +420,8 @@
           "scale": 1.2,
           "x": 10.1,
           "y": 85.1
-        }
+        },
+        "thumbnail": "media/Art/Pixel Pyramid/20230717_154820-thumb.webp"
       },
       {
         "url": "media/Art/Pixel Pyramid/20230808_152320.webp",
@@ -373,19 +429,23 @@
           "scale": 1.8,
           "x": 32.8,
           "y": 16
-        }
+        },
+        "thumbnail": "media/Art/Pixel Pyramid/20230808_152320-thumb.webp"
       },
       {
         "url": "media/Art/Pixel Pyramid/20230707_072443~2.mp4",
-        "poster": "media/Art/Pixel Pyramid/20230707_072443~2-poster.webp"
+        "poster": "media/Art/Pixel Pyramid/20230707_072443~2-poster.webp",
+        "thumbnail": "media/Art/Pixel Pyramid/20230707_072443~2-poster-thumb.webp"
       },
       {
         "url": "media/Art/Pixel Pyramid/20230612_131709~2.mp4",
-        "poster": "media/Art/Pixel Pyramid/20230612_131709~2-poster.webp"
+        "poster": "media/Art/Pixel Pyramid/20230612_131709~2-poster.webp",
+        "thumbnail": "media/Art/Pixel Pyramid/20230612_131709~2-poster-thumb.webp"
       },
       {
         "url": "media/Art/Pixel Pyramid/20230707_082949~2.mp4",
-        "poster": "media/Art/Pixel Pyramid/20230707_082949~2-poster.webp"
+        "poster": "media/Art/Pixel Pyramid/20230707_082949~2-poster.webp",
+        "thumbnail": "media/Art/Pixel Pyramid/20230707_082949~2-poster-thumb.webp"
       }
     ],
     "files": [],
@@ -402,7 +462,8 @@
       "scale": 1,
       "x": 77,
       "y": 38.2
-    }
+    },
+    "thumbnail": "media/Art/Pixel Pyramid/Gemini_Generated_Image_rmmssrmmssrmmssr-thumb.webp"
   },
   {
     "id": "5632",
@@ -431,11 +492,13 @@
           "scale": 1,
           "x": 48.9,
           "y": 19.2
-        }
+        },
+        "thumbnail": "media/Art/Pixel Mini Pyramid/20230726_201532-thumb.webp"
       },
       {
         "url": "media/Art/Pixel Mini Pyramid/20240316_141546~2.mp4",
-        "poster": "media/Art/Pixel Mini Pyramid/20240316_141546~2-poster.webp"
+        "poster": "media/Art/Pixel Mini Pyramid/20240316_141546~2-poster.webp",
+        "thumbnail": "media/Art/Pixel Mini Pyramid/20240316_141546~2-poster-thumb.webp"
       },
       {
         "url": "media/Art/Pixel Mini Pyramid/20240316_135358.webp",
@@ -443,7 +506,8 @@
           "scale": 1,
           "x": 66.6,
           "y": 64.7
-        }
+        },
+        "thumbnail": "media/Art/Pixel Mini Pyramid/20240316_135358-thumb.webp"
       },
       {
         "url": "media/Art/Pixel Mini Pyramid/20240316_134702.webp",
@@ -451,7 +515,8 @@
           "scale": 1.1,
           "x": 26.9,
           "y": 46.5
-        }
+        },
+        "thumbnail": "media/Art/Pixel Mini Pyramid/20240316_134702-thumb.webp"
       },
       {
         "url": "media/Art/Pixel Mini Pyramid/20230808_152641.webp",
@@ -459,7 +524,8 @@
           "scale": 1,
           "x": 48.4,
           "y": 40.2
-        }
+        },
+        "thumbnail": "media/Art/Pixel Mini Pyramid/20230808_152641-thumb.webp"
       }
     ],
     "launchLink": "",
@@ -482,7 +548,8 @@
       "scale": 1,
       "x": 19.3,
       "y": 27.7
-    }
+    },
+    "thumbnail": "media/Art/Pixel Mini Pyramid/minipyramidfix-thumb.webp"
   },
   {
     "id": "8000",
@@ -517,11 +584,13 @@
           "scale": 1,
           "x": 45.6,
           "y": 41.8
-        }
+        },
+        "thumbnail": "media/Art/Pixel Plane Warp/pixelplanewarp_fix-thumb.webp"
       },
       {
         "url": "media/Art/Pixel Plane Warp/20230605_021706~3.mp4",
-        "poster": "media/Art/Pixel Plane Warp/20230605_021706~3-poster.webp"
+        "poster": "media/Art/Pixel Plane Warp/20230605_021706~3-poster.webp",
+        "thumbnail": "media/Art/Pixel Plane Warp/20230605_021706~3-poster-thumb.webp"
       },
       {
         "url": "media/Art/Pixel Plane Warp/20230808_152350.webp",
@@ -529,7 +598,8 @@
           "scale": 1,
           "x": 87.5,
           "y": 37.5
-        }
+        },
+        "thumbnail": "media/Art/Pixel Plane Warp/20230808_152350-thumb.webp"
       }
     ],
     "files": [],
@@ -546,7 +616,8 @@
       "scale": 1,
       "x": 45.2,
       "y": 3.4
-    }
+    },
+    "thumbnail": "media/Art/Pixel Plane Warp/pixelplanewarp_fix-thumb.webp"
   },
   {
     "id": "8252",
@@ -584,39 +655,67 @@
     "gallery": [
       {
         "url": "media/Integration/Temple SF/20210621_215648.mp4",
-        "poster": "media/Integration/Temple SF/20210621_215648-poster.webp"
+        "poster": "media/Integration/Temple SF/20210621_215648-poster.webp",
+        "thumbnail": "media/Integration/Temple SF/20210621_215648-poster-thumb.webp"
       },
       {
         "url": "media/Integration/Temple SF/20210516_190216-2.mp4",
-        "poster": "media/Integration/Temple SF/20210516_190216-poster-2.webp"
+        "poster": "media/Integration/Temple SF/20210516_190216-poster-2.webp",
+        "thumbnail": "media/Integration/Temple SF/20210516_190216-poster-2-thumb.webp"
       },
       {
         "url": "media/Integration/Temple SF/20210516_195648_1.mp4",
-        "poster": "media/Integration/Temple SF/20210516_195648_1-poster.webp"
+        "poster": "media/Integration/Temple SF/20210516_195648_1-poster.webp",
+        "thumbnail": "media/Integration/Temple SF/20210516_195648_1-poster-thumb.webp"
       },
       {
         "url": "media/Integration/Temple SF/20210517_114547.mp4",
-        "poster": "media/Integration/Temple SF/20210517_114547-poster.webp"
+        "poster": "media/Integration/Temple SF/20210517_114547-poster.webp",
+        "thumbnail": "media/Integration/Temple SF/20210517_114547-poster-thumb.webp"
       },
       {
         "url": "media/Integration/Temple SF/20210517_111653.mp4",
-        "poster": "media/Integration/Temple SF/20210517_111653-poster.webp"
+        "poster": "media/Integration/Temple SF/20210517_111653-poster.webp",
+        "thumbnail": "media/Integration/Temple SF/20210517_111653-poster-thumb.webp"
       },
-      "media/Integration/Temple SF/20210611_131029.webp",
-      "media/Integration/Temple SF/20210514_2025472.webp",
+      {
+        "url": "media/Integration/Temple SF/20210611_131029.webp",
+        "thumbnail": "media/Integration/Temple SF/20210611_131029-thumb.webp"
+      },
+      {
+        "url": "media/Integration/Temple SF/20210514_2025472.webp",
+        "thumbnail": "media/Integration/Temple SF/20210514_2025472-thumb.webp"
+      },
       {
         "url": "media/Integration/Temple SF/20210510_141521.mp4",
-        "poster": "media/Integration/Temple SF/20210510_141521-poster.webp"
+        "poster": "media/Integration/Temple SF/20210510_141521-poster.webp",
+        "thumbnail": "media/Integration/Temple SF/20210510_141521-poster-thumb.webp"
       },
       {
         "url": "media/Integration/Temple SF/VID_20200427_140434.mp4",
-        "poster": "media/Integration/Temple SF/VID_20200427_140434-poster.webp"
+        "poster": "media/Integration/Temple SF/VID_20200427_140434-poster.webp",
+        "thumbnail": "media/Integration/Temple SF/VID_20200427_140434-poster-thumb.webp"
       },
-      "media/Integration/Temple SF/IMG_20200504_185605.webp",
-      "media/Integration/Temple SF/20210625_125151.webp",
-      "media/Integration/Temple SF/20210515_184126.webp",
-      "media/Integration/Temple SF/20210429_122346.webp",
-      "media/Integration/Temple SF/IMG_20200707_150706.webp"
+      {
+        "url": "media/Integration/Temple SF/IMG_20200504_185605.webp",
+        "thumbnail": "media/Integration/Temple SF/IMG_20200504_185605-thumb.webp"
+      },
+      {
+        "url": "media/Integration/Temple SF/20210625_125151.webp",
+        "thumbnail": "media/Integration/Temple SF/20210625_125151-thumb.webp"
+      },
+      {
+        "url": "media/Integration/Temple SF/20210515_184126.webp",
+        "thumbnail": "media/Integration/Temple SF/20210515_184126-thumb.webp"
+      },
+      {
+        "url": "media/Integration/Temple SF/20210429_122346.webp",
+        "thumbnail": "media/Integration/Temple SF/20210429_122346-thumb.webp"
+      },
+      {
+        "url": "media/Integration/Temple SF/IMG_20200707_150706.webp",
+        "thumbnail": "media/Integration/Temple SF/IMG_20200707_150706-thumb.webp"
+      }
     ],
     "files": [],
     "video": "",
@@ -639,7 +738,8 @@
         "name": "VIP glass wall",
         "url": "#project/8983"
       }
-    ]
+    ],
+    "thumbnail": "media/Integration/Temple SF/banner-thumb.webp"
   },
   {
     "id": "9517",
@@ -663,12 +763,25 @@
           "scale": 1,
           "x": 48.8,
           "y": 71.6
-        }
+        },
+        "thumbnail": "media/Fabrication/Field Solder Station/20250317_180657-thumb.webp"
       },
-      "media/Fabrication/Field Solder Station/20210202_182541.webp",
-      "media/Fabrication/Field Solder Station/20201025_014922.webp",
-      "media/Fabrication/Field Solder Station/20201015_000651.webp",
-      "media/Fabrication/Field Solder Station/20201012_144931.webp"
+      {
+        "url": "media/Fabrication/Field Solder Station/20210202_182541.webp",
+        "thumbnail": "media/Fabrication/Field Solder Station/20210202_182541-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Field Solder Station/20201025_014922.webp",
+        "thumbnail": "media/Fabrication/Field Solder Station/20201025_014922-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Field Solder Station/20201015_000651.webp",
+        "thumbnail": "media/Fabrication/Field Solder Station/20201015_000651-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Field Solder Station/20201012_144931.webp",
+        "thumbnail": "media/Fabrication/Field Solder Station/20201012_144931-thumb.webp"
+      }
     ],
     "launchLink": "",
     "githubLink": "",
@@ -696,7 +809,8 @@
       "scale": 1,
       "x": 49.5,
       "y": 58
-    }
+    },
+    "thumbnail": "media/Fabrication/Field Solder Station/20250317_180657-thumb.webp"
   },
   {
     "id": "9469",
@@ -716,11 +830,13 @@
     "gallery": [
       {
         "url": "media/Electronics/LED Pixel Panel/20211202_171311.mp4",
-        "poster": "media/Electronics/LED Pixel Panel/20211202_171311-poster.webp"
+        "poster": "media/Electronics/LED Pixel Panel/20211202_171311-poster.webp",
+        "thumbnail": "media/Electronics/LED Pixel Panel/20211202_171311-poster-thumb.webp"
       },
       {
         "url": "media/Electronics/LED Pixel Panel/20211202_171527.mp4",
-        "poster": "media/Electronics/LED Pixel Panel/20211202_171527-poster.webp"
+        "poster": "media/Electronics/LED Pixel Panel/20211202_171527-poster.webp",
+        "thumbnail": "media/Electronics/LED Pixel Panel/20211202_171527-poster-thumb.webp"
       },
       {
         "url": "media/Electronics/LED Pixel Panel/20211202_171343.webp",
@@ -728,7 +844,8 @@
           "scale": 1.5,
           "x": 62.1,
           "y": 68.4
-        }
+        },
+        "thumbnail": "media/Electronics/LED Pixel Panel/20211202_171343-thumb.webp"
       },
       {
         "url": "media/Electronics/LED Pixel Panel/20211118_154350.webp",
@@ -736,7 +853,8 @@
           "scale": 1.3,
           "x": 41.6,
           "y": 80.7
-        }
+        },
+        "thumbnail": "media/Electronics/LED Pixel Panel/20211118_154350-thumb.webp"
       },
       {
         "url": "media/Electronics/LED Pixel Panel/20211118_155135.webp",
@@ -744,11 +862,21 @@
           "scale": 1,
           "x": 50.9,
           "y": 77.8
-        }
+        },
+        "thumbnail": "media/Electronics/LED Pixel Panel/20211118_155135-thumb.webp"
       },
-      "media/Electronics/LED Pixel Panel/20200910_13437.webp",
-      "media/Electronics/LED Pixel Panel/20200910_134533.webp",
-      "media/Electronics/LED Pixel Panel/20200910_134441.webp"
+      {
+        "url": "media/Electronics/LED Pixel Panel/20200910_13437.webp",
+        "thumbnail": "media/Electronics/LED Pixel Panel/20200910_13437-thumb.webp"
+      },
+      {
+        "url": "media/Electronics/LED Pixel Panel/20200910_134533.webp",
+        "thumbnail": "media/Electronics/LED Pixel Panel/20200910_134533-thumb.webp"
+      },
+      {
+        "url": "media/Electronics/LED Pixel Panel/20200910_134441.webp",
+        "thumbnail": "media/Electronics/LED Pixel Panel/20200910_134441-thumb.webp"
+      }
     ],
     "launchLink": "",
     "githubLink": "",
@@ -765,7 +893,8 @@
       "scale": 1,
       "x": 47.9,
       "y": 27.7
-    }
+    },
+    "thumbnail": "media/Electronics/LED Pixel Panel/20200910_134441-thumb.webp"
   },
   {
     "id": "5416",
@@ -798,7 +927,8 @@
           "x": 6.6,
           "y": 25
         },
-        "poster": "media/Electronics/LVL/frame-thumb-1786219096452.webp"
+        "poster": "media/Electronics/LVL/frame-thumb-1786219096452.webp",
+        "thumbnail": "media/Electronics/LVL/frame-thumb-1786219096452-thumb.webp"
       },
       {
         "url": "media/Electronics/LVL/Video Project 10 (3).mp4",
@@ -807,7 +937,8 @@
           "x": 79.2,
           "y": 96.8
         },
-        "poster": "media/Electronics/LVL/frame-thumb-1786219127360.webp"
+        "poster": "media/Electronics/LVL/frame-thumb-1786219127360.webp",
+        "thumbnail": "media/Electronics/LVL/frame-thumb-1786219127360-thumb.webp"
       },
       {
         "url": "media/Electronics/LVL/IMG_20191009_231844.webp",
@@ -815,7 +946,8 @@
           "scale": 1,
           "x": 48,
           "y": 28.1
-        }
+        },
+        "thumbnail": "media/Electronics/LVL/IMG_20191009_231844-thumb.webp"
       },
       {
         "url": "media/Electronics/LVL/IMG_20191009_231900.webp",
@@ -823,7 +955,8 @@
           "scale": 1.1,
           "x": 73.3,
           "y": 32.1
-        }
+        },
+        "thumbnail": "media/Electronics/LVL/IMG_20191009_231900-thumb.webp"
       },
       {
         "url": "media/Electronics/LVL/IMG_20181107_194215.webp",
@@ -831,7 +964,8 @@
           "scale": 1.15,
           "x": 100,
           "y": 30.7
-        }
+        },
+        "thumbnail": "media/Electronics/LVL/IMG_20181107_194215-thumb.webp"
       },
       {
         "url": "media/Electronics/LVL/IMG_20180926_042731.webp",
@@ -839,7 +973,8 @@
           "scale": 1,
           "x": 49.1,
           "y": 1
-        }
+        },
+        "thumbnail": "media/Electronics/LVL/IMG_20180926_042731-thumb.webp"
       },
       {
         "url": "media/Electronics/LVL/IMG_20190723_101926.webp",
@@ -847,11 +982,13 @@
           "scale": 1,
           "x": 50.9,
           "y": 78.9
-        }
+        },
+        "thumbnail": "media/Electronics/LVL/IMG_20190723_101926-thumb.webp"
       },
       {
         "url": "media/Electronics/LVL/VID_20180516_143529.mp4",
-        "poster": "media/Electronics/LVL/frame-thumb-1786219215596.webp"
+        "poster": "media/Electronics/LVL/frame-thumb-1786219215596.webp",
+        "thumbnail": "media/Electronics/LVL/frame-thumb-1786219215596-thumb.webp"
       },
       {
         "url": "media/Electronics/LVL/VID_20180627_171922.mp4",
@@ -860,7 +997,8 @@
           "x": 1.4,
           "y": 0
         },
-        "poster": "media/Electronics/LVL/VID_20180627_171922-poster.webp"
+        "poster": "media/Electronics/LVL/VID_20180627_171922-poster.webp",
+        "thumbnail": "media/Electronics/LVL/VID_20180627_171922-poster-thumb.webp"
       },
       {
         "url": "media/Electronics/LVL/VID_20180925_154339.mp4",
@@ -869,7 +1007,8 @@
           "x": 52.2,
           "y": 66.3
         },
-        "poster": "media/Electronics/LVL/frame-thumb-1786219264064.webp"
+        "poster": "media/Electronics/LVL/frame-thumb-1786219264064.webp",
+        "thumbnail": "media/Electronics/LVL/frame-thumb-1786219264064-thumb.webp"
       },
       {
         "url": "media/Electronics/LVL/IMG_20180926_042750.webp",
@@ -877,7 +1016,8 @@
           "scale": 1.35,
           "x": 99.5,
           "y": 41.6
-        }
+        },
+        "thumbnail": "media/Electronics/LVL/IMG_20180926_042750-thumb.webp"
       },
       {
         "url": "media/Electronics/LVL/IMG_20180627_171913.webp",
@@ -885,7 +1025,8 @@
           "scale": 1,
           "x": 55.4,
           "y": 34.1
-        }
+        },
+        "thumbnail": "media/Electronics/LVL/IMG_20180627_171913-thumb.webp"
       },
       {
         "url": "media/Electronics/LVL/IMG_20180913_155906.webp",
@@ -893,7 +1034,8 @@
           "scale": 1,
           "x": 60.7,
           "y": 100
-        }
+        },
+        "thumbnail": "media/Electronics/LVL/IMG_20180913_155906-thumb.webp"
       },
       {
         "url": "media/Electronics/LVL/IMG_20180912_153940.webp",
@@ -901,7 +1043,8 @@
           "scale": 1,
           "x": 55.2,
           "y": 99.8
-        }
+        },
+        "thumbnail": "media/Electronics/LVL/IMG_20180912_153940-thumb.webp"
       },
       {
         "url": "media/Electronics/LVL/IMG_20180913_193013.webp",
@@ -909,16 +1052,21 @@
           "scale": 1.15,
           "x": 0,
           "y": 57
-        }
+        },
+        "thumbnail": "media/Electronics/LVL/IMG_20180913_193013-thumb.webp"
       },
-      "media/Electronics/LVL/IMG_20180912_113756.webp",
+      {
+        "url": "media/Electronics/LVL/IMG_20180912_113756.webp",
+        "thumbnail": "media/Electronics/LVL/IMG_20180912_113756-thumb.webp"
+      },
       {
         "url": "media/Electronics/LVL/IMG_20180628_121319.webp",
         "fit": {
           "scale": 1.2,
           "x": 83.4,
           "y": 23.7
-        }
+        },
+        "thumbnail": "media/Electronics/LVL/IMG_20180628_121319-thumb.webp"
       }
     ],
     "launchLink": "",
@@ -941,7 +1089,8 @@
       "scale": 1,
       "x": 42.1,
       "y": 24.6
-    }
+    },
+    "thumbnail": "media/Electronics/LVL/IMG_20191009_231844-thumb.webp"
   },
   {
     "id": "4939",
@@ -969,7 +1118,8 @@
           "scale": 1,
           "x": 46.8,
           "y": 0
-        }
+        },
+        "thumbnail": "media/Lighting/MIRUS/IMG_20180614_235653-thumb.webp"
       },
       {
         "url": "media/Lighting/MIRUS/Video Project 10 (5).mp4",
@@ -978,7 +1128,8 @@
           "x": 0.3,
           "y": 100
         },
-        "poster": "media/Lighting/MIRUS/frame-thumb-1786199438087.webp"
+        "poster": "media/Lighting/MIRUS/frame-thumb-1786199438087.webp",
+        "thumbnail": "media/Lighting/MIRUS/frame-thumb-1786199438087-thumb.webp"
       },
       {
         "url": "media/Lighting/MIRUS/IMG_20180417_174333.webp",
@@ -986,7 +1137,8 @@
           "scale": 1,
           "x": 6.6,
           "y": 77.1
-        }
+        },
+        "thumbnail": "media/Lighting/MIRUS/IMG_20180417_174333-thumb.webp"
       },
       {
         "url": "media/Lighting/MIRUS/IMG_20180408_233818~2.webp",
@@ -994,7 +1146,8 @@
           "scale": 1,
           "x": 49.6,
           "y": 81.7
-        }
+        },
+        "thumbnail": "media/Lighting/MIRUS/IMG_20180408_233818~2-thumb.webp"
       },
       {
         "url": "media/Lighting/MIRUS/IMG_20180311_221410.webp",
@@ -1002,7 +1155,8 @@
           "scale": 1,
           "x": 51.6,
           "y": 81.4
-        }
+        },
+        "thumbnail": "media/Lighting/MIRUS/IMG_20180311_221410-thumb.webp"
       },
       {
         "url": "media/Lighting/MIRUS/IMG_20180311_221426.webp",
@@ -1010,7 +1164,8 @@
           "scale": 1.25,
           "x": 15.9,
           "y": 28.2
-        }
+        },
+        "thumbnail": "media/Lighting/MIRUS/IMG_20180311_221426-thumb.webp"
       }
     ],
     "launchLink": "",
@@ -1033,7 +1188,8 @@
       "y": 27.4
     },
     "specs": "<p><strong>Strip:</strong> RGBW LED wash (non-addressable)</p><p><strong>Universes:</strong> 1 DMX</p><p><strong>Decoder:</strong> DMX decoders (plenum-mounted)</p><p><strong>Power:</strong> 16 baffles per supply group</p><p><strong>Control:</strong> Madrix Basic</p>",
-    "related": []
+    "related": [],
+    "thumbnail": "media/Lighting/MIRUS/IMG_20180614_235653-thumb.webp"
   },
   {
     "id": "8787",
@@ -1065,7 +1221,8 @@
           "scale": 1,
           "x": 54.1,
           "y": 81.1
-        }
+        },
+        "thumbnail": "media/Lighting/Inflatable Tubes/20230621_172739-thumb.webp"
       },
       {
         "url": "media/Lighting/Inflatable Tubes/20230621_172749.webp",
@@ -1073,7 +1230,8 @@
           "scale": 1,
           "x": 49.8,
           "y": 76.7
-        }
+        },
+        "thumbnail": "media/Lighting/Inflatable Tubes/20230621_172749-thumb.webp"
       },
       {
         "url": "media/Lighting/Inflatable Tubes/Video Project 22 (4).mp4",
@@ -1082,7 +1240,8 @@
           "x": 78.4,
           "y": 79.7
         },
-        "poster": "media/Lighting/Inflatable Tubes/frame-thumb-1786197874300.webp"
+        "poster": "media/Lighting/Inflatable Tubes/frame-thumb-1786197874300.webp",
+        "thumbnail": "media/Lighting/Inflatable Tubes/frame-thumb-1786197874300-thumb.webp"
       },
       {
         "url": "media/Lighting/Inflatable Tubes/20230621_172427.mp4",
@@ -1091,7 +1250,8 @@
           "x": 59.8,
           "y": 49.7
         },
-        "poster": "media/Lighting/Inflatable Tubes/frame-thumb-1786197988499.webp"
+        "poster": "media/Lighting/Inflatable Tubes/frame-thumb-1786197988499.webp",
+        "thumbnail": "media/Lighting/Inflatable Tubes/frame-thumb-1786197988499-thumb.webp"
       },
       {
         "url": "media/Lighting/Inflatable Tubes/20230621_172541.mp4",
@@ -1100,7 +1260,8 @@
           "x": 95.9,
           "y": 32.7
         },
-        "poster": "media/Lighting/Inflatable Tubes/frame-thumb-1786198246558.webp"
+        "poster": "media/Lighting/Inflatable Tubes/frame-thumb-1786198246558.webp",
+        "thumbnail": "media/Lighting/Inflatable Tubes/frame-thumb-1786198246558-thumb.webp"
       },
       {
         "url": "media/Lighting/Inflatable Tubes/20230621_172621.mp4",
@@ -1109,17 +1270,25 @@
           "x": 49.5,
           "y": 22.4
         },
-        "poster": "media/Lighting/Inflatable Tubes/frame-thumb-1786198333307.webp"
+        "poster": "media/Lighting/Inflatable Tubes/frame-thumb-1786198333307.webp",
+        "thumbnail": "media/Lighting/Inflatable Tubes/frame-thumb-1786198333307-thumb.webp"
       },
-      "media/Lighting/Inflatable Tubes/20230615_205214.webp",
-      "media/Lighting/Inflatable Tubes/20230616_091904.webp",
+      {
+        "url": "media/Lighting/Inflatable Tubes/20230615_205214.webp",
+        "thumbnail": "media/Lighting/Inflatable Tubes/20230615_205214-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Inflatable Tubes/20230616_091904.webp",
+        "thumbnail": "media/Lighting/Inflatable Tubes/20230616_091904-thumb.webp"
+      },
       {
         "url": "media/Lighting/Inflatable Tubes/20230615_204414.webp",
         "fit": {
           "scale": 1,
           "x": 58.2,
           "y": 61.9
-        }
+        },
+        "thumbnail": "media/Lighting/Inflatable Tubes/20230615_204414-thumb.webp"
       },
       {
         "url": "media/Lighting/Inflatable Tubes/20230615_194557.webp",
@@ -1127,7 +1296,8 @@
           "scale": 1,
           "x": 44.6,
           "y": 31.6
-        }
+        },
+        "thumbnail": "media/Lighting/Inflatable Tubes/20230615_194557-thumb.webp"
       },
       {
         "url": "media/Lighting/Inflatable Tubes/20230615_193318.webp",
@@ -1135,7 +1305,8 @@
           "scale": 1,
           "x": 50,
           "y": 59.8
-        }
+        },
+        "thumbnail": "media/Lighting/Inflatable Tubes/20230615_193318-thumb.webp"
       },
       {
         "url": "media/Lighting/Inflatable Tubes/20230615_223123.webp",
@@ -1143,11 +1314,21 @@
           "scale": 1,
           "x": 47.9,
           "y": 28.1
-        }
+        },
+        "thumbnail": "media/Lighting/Inflatable Tubes/20230615_223123-thumb.webp"
       },
-      "media/Lighting/Inflatable Tubes/20230616_095821.webp",
-      "media/Lighting/Inflatable Tubes/20230605_162502.webp",
-      "media/Lighting/Inflatable Tubes/20230615_172756.webp"
+      {
+        "url": "media/Lighting/Inflatable Tubes/20230616_095821.webp",
+        "thumbnail": "media/Lighting/Inflatable Tubes/20230616_095821-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Inflatable Tubes/20230605_162502.webp",
+        "thumbnail": "media/Lighting/Inflatable Tubes/20230605_162502-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Inflatable Tubes/20230615_172756.webp",
+        "thumbnail": "media/Lighting/Inflatable Tubes/20230615_172756-thumb.webp"
+      }
     ],
     "files": [],
     "video": "",
@@ -1163,7 +1344,8 @@
       "scale": 1.4,
       "x": 56.5,
       "y": 69.3
-    }
+    },
+    "thumbnail": "media/Lighting/Inflatable Tubes/20230621_172727-thumb.webp"
   },
   {
     "id": "9925",
@@ -1179,14 +1361,38 @@
     "longDescription": "<p>Doing custom lighting work around Denver meant taking quick reference photos on my phone all day. Every picture dumped into a single camera roll, and I never spent the time to sort them later. I also had loose wiring notes, drawings, and measurements that needed to stay with the right job.</p><p>To fix that, I built a browser app in React 18 and TypeScript that sorts incoming photos by GPS coordinate automatically. Using Leaflet for map boundaries and exifr to read file metadata, the app runs Haversine math against active project geofences. Photos taken inside a boundary drop straight into that project folder. Anything it misses lands in a bin for manual sorting.</p><p>For notes, I built a canvas editor to layer virtual transparencies over the photos. I could circle a part or scribble a measurement, then export a PDF report using jsPDF. Dexie handles the IndexedDB storage locally, while Supabase and Lovable manage the backend and deployment. I left contract work before running it through a full season, but the core engine did what I needed.</p>",
     "video": "",
     "gallery": [
-      "media/Apps/GeoLens Pro/Screenshot_20260118_082611_Chrome.webp",
-      "media/Apps/GeoLens Pro/Screenshot_20260118_082803_Chrome.webp",
-      "media/Apps/GeoLens Pro/Screenshot_20260118_082823_Chrome.webp",
-      "media/Apps/GeoLens Pro/Screenshot_20260118_082832_Chrome.webp",
-      "media/Apps/GeoLens Pro/Screenshot_20260118_082925_Chrome.webp",
-      "media/Apps/GeoLens Pro/Screenshot_20260118_082950_Chrome.webp",
-      "media/Apps/GeoLens Pro/Screenshot_20260118_083031_Chrome.webp",
-      "media/Apps/GeoLens Pro/Screenshot_20260118_083102_Chrome.webp"
+      {
+        "url": "media/Apps/GeoLens Pro/Screenshot_20260118_082611_Chrome.webp",
+        "thumbnail": "media/Apps/GeoLens Pro/Screenshot_20260118_082611_Chrome-thumb.webp"
+      },
+      {
+        "url": "media/Apps/GeoLens Pro/Screenshot_20260118_082803_Chrome.webp",
+        "thumbnail": "media/Apps/GeoLens Pro/Screenshot_20260118_082803_Chrome-thumb.webp"
+      },
+      {
+        "url": "media/Apps/GeoLens Pro/Screenshot_20260118_082823_Chrome.webp",
+        "thumbnail": "media/Apps/GeoLens Pro/Screenshot_20260118_082823_Chrome-thumb.webp"
+      },
+      {
+        "url": "media/Apps/GeoLens Pro/Screenshot_20260118_082832_Chrome.webp",
+        "thumbnail": "media/Apps/GeoLens Pro/Screenshot_20260118_082832_Chrome-thumb.webp"
+      },
+      {
+        "url": "media/Apps/GeoLens Pro/Screenshot_20260118_082925_Chrome.webp",
+        "thumbnail": "media/Apps/GeoLens Pro/Screenshot_20260118_082925_Chrome-thumb.webp"
+      },
+      {
+        "url": "media/Apps/GeoLens Pro/Screenshot_20260118_082950_Chrome.webp",
+        "thumbnail": "media/Apps/GeoLens Pro/Screenshot_20260118_082950_Chrome-thumb.webp"
+      },
+      {
+        "url": "media/Apps/GeoLens Pro/Screenshot_20260118_083031_Chrome.webp",
+        "thumbnail": "media/Apps/GeoLens Pro/Screenshot_20260118_083031_Chrome-thumb.webp"
+      },
+      {
+        "url": "media/Apps/GeoLens Pro/Screenshot_20260118_083102_Chrome.webp",
+        "thumbnail": "media/Apps/GeoLens Pro/Screenshot_20260118_083102_Chrome-thumb.webp"
+      }
     ],
     "launchLink": "https://geo-field-snap.lovable.app",
     "githubLink": "https://github.com/Elusid108/geo-field-snap",
@@ -1198,7 +1404,8 @@
     "wip": true,
     "order": 8,
     "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite (SWC)</p><p><strong>Styling:</strong> Tailwind CSS, Radix UI</p><p><strong>Maps:</strong> Leaflet, React-Leaflet</p><p><strong>Geo:</strong> exifr (EXIF extraction)</p><p><strong>Storage:</strong> Dexie (IndexedDB)</p><p><strong>Export:</strong> jsPDF</p><p><strong>Backend:</strong> Supabase</p><p><strong>Deploy:</strong> Lovable</p>",
-    "related": []
+    "related": [],
+    "thumbnail": "media/Apps/GeoLens Pro/Screenshot_20260118_082950_Chrome-thumb.webp"
   },
   {
     "id": "3991",
@@ -1214,15 +1421,42 @@
     "longDescription": "<p>Standard image generators get boring fast. I built PixelForge to see what happens when a language model hallucinates an abstract, poetic foundation before any rendering starts. The frontend runs on React, TypeScript, Vite, and Tailwind CSS. It connects the Gemini API for prompt generation to the Imagen or NanoBanana API for the final render, and stores the whole session history locally in IndexedDB and LocalStorage.</p><p>Early iterations got stuck in a visual loop. The app kept generating characters in the same poses or returning to identical themes. It was accidentally feeding pieces of previous prompts into the new input context. I spent hours going back and forth with Gemini and later Cursor to isolate the client-side state and force the app to forget old generations between runs.</p><p>Even with a clean state, individual models drift toward repetitive styles over time. I added a manual model selector in the settings menu to route prompts across different versions. That switch breaks the visual convergence by letting different models interpret the same parameters, and it keeps the app functional as older models retire.</p>",
     "video": "",
     "gallery": [
-      "media/Apps/PixelForge/Screenshot 2026-07-25 173332.webp",
-      "media/Apps/PixelForge/Screenshot 2026-07-25 173246.webp",
-      "media/Apps/PixelForge/Screenshot 2026-07-25 173231.webp",
-      "media/Apps/PixelForge/Screenshot 2026-07-25 173207.webp",
-      "media/Apps/PixelForge/Screenshot 2026-07-25 173147.webp",
-      "media/Apps/PixelForge/Screenshot 2026-07-25 173126.webp",
-      "media/Apps/PixelForge/Screenshot 2026-07-25 173111.webp",
-      "media/Apps/PixelForge/Screenshot 2026-07-25 173100.webp",
-      "media/Apps/PixelForge/Screenshot 2026-07-25 173040.webp"
+      {
+        "url": "media/Apps/PixelForge/Screenshot 2026-07-25 173332.webp",
+        "thumbnail": "media/Apps/PixelForge/Screenshot 2026-07-25 173332-thumb.webp"
+      },
+      {
+        "url": "media/Apps/PixelForge/Screenshot 2026-07-25 173246.webp",
+        "thumbnail": "media/Apps/PixelForge/Screenshot 2026-07-25 173246-thumb.webp"
+      },
+      {
+        "url": "media/Apps/PixelForge/Screenshot 2026-07-25 173231.webp",
+        "thumbnail": "media/Apps/PixelForge/Screenshot 2026-07-25 173231-thumb.webp"
+      },
+      {
+        "url": "media/Apps/PixelForge/Screenshot 2026-07-25 173207.webp",
+        "thumbnail": "media/Apps/PixelForge/Screenshot 2026-07-25 173207-thumb.webp"
+      },
+      {
+        "url": "media/Apps/PixelForge/Screenshot 2026-07-25 173147.webp",
+        "thumbnail": "media/Apps/PixelForge/Screenshot 2026-07-25 173147-thumb.webp"
+      },
+      {
+        "url": "media/Apps/PixelForge/Screenshot 2026-07-25 173126.webp",
+        "thumbnail": "media/Apps/PixelForge/Screenshot 2026-07-25 173126-thumb.webp"
+      },
+      {
+        "url": "media/Apps/PixelForge/Screenshot 2026-07-25 173111.webp",
+        "thumbnail": "media/Apps/PixelForge/Screenshot 2026-07-25 173111-thumb.webp"
+      },
+      {
+        "url": "media/Apps/PixelForge/Screenshot 2026-07-25 173100.webp",
+        "thumbnail": "media/Apps/PixelForge/Screenshot 2026-07-25 173100-thumb.webp"
+      },
+      {
+        "url": "media/Apps/PixelForge/Screenshot 2026-07-25 173040.webp",
+        "thumbnail": "media/Apps/PixelForge/Screenshot 2026-07-25 173040-thumb.webp"
+      }
     ],
     "launchLink": "https://elusid108.github.io/PixelForge-AI/",
     "githubLink": "https://github.com/Elusid108/PixelForge-AI",
@@ -1234,7 +1468,8 @@
     "wip": true,
     "order": 2,
     "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite</p><p><strong>Styling:</strong> Tailwind CSS</p><p><strong>State:</strong> Zustand</p><p><strong>AI:</strong> Google Gemini (text), Google Imagen (image)</p><p><strong>Storage:</strong> IndexedDB, localStorage</p><p><strong>Export:</strong> JSZip</p><p><strong>Deploy:</strong> GitHub Pages</p>",
-    "related": []
+    "related": [],
+    "thumbnail": "media/Apps/PixelForge/Screenshot 2026-07-25 173231-thumb.webp"
   },
   {
     "id": "7085",
@@ -1250,21 +1485,66 @@
     "longDescription": "<p>I wanted an interactive storytelling game inspired by the retro aesthetic in Mr. Robot, and I wanted to host it for free on GitHub Pages. That meant zero backend and no bundlers. I started the prototype in a Gemini Canvas and kept the zero-build architecture when I moved the codebase over to GitHub, wiring React 18, ES modules, and Tailwind CSS directly through the browser. Every turn runs client-side and hits the Google Gemini API to build the narrative, 4 player choices, an illustration, and spoken audio.</p><p>The first attempts fell apart fast. Without a strict memory structure, image styles drifted after a few turns, the story got stuck in loops, and the narrative would ramble with no clear end. Keeping track of earlier events inside a growing prompt was the hardest part. I had to build a memory stack that compresses older beats into shorthand summaries while passing along the recent prose and visual reference tags.</p><p>Each turn triggers several API calls at once to generate the prose, questions, image, audio, and log updates. With heavier models, a single turn took upwards of 2 minutes to load. I switched to default models to drop the wait down to 15 to 20 seconds. It works well enough for my own playthroughs, but managing that much client-side state without a build step is painful enough that I plan to rebuild the entire engine from scratch.</p>",
     "video": "",
     "gallery": [
-      "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-18 184721.webp",
-      "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-18 185736.webp",
-      "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-18 190202.webp",
-      "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-18 190218.webp",
-      "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-18 190442.webp",
-      "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-18 190505.webp",
-      "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-18 190524.webp",
-      "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 173338.webp",
-      "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 181638.webp",
-      "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 181802.webp",
-      "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 181836.webp",
-      "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 182215.webp",
-      "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 182452.webp",
-      "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 182528.webp",
-      "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 182606.webp"
+      {
+        "url": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-18 184721.webp",
+        "thumbnail": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-18 184721-thumb.webp"
+      },
+      {
+        "url": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-18 185736.webp",
+        "thumbnail": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-18 185736-thumb.webp"
+      },
+      {
+        "url": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-18 190202.webp",
+        "thumbnail": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-18 190202-thumb.webp"
+      },
+      {
+        "url": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-18 190218.webp",
+        "thumbnail": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-18 190218-thumb.webp"
+      },
+      {
+        "url": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-18 190442.webp",
+        "thumbnail": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-18 190442-thumb.webp"
+      },
+      {
+        "url": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-18 190505.webp",
+        "thumbnail": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-18 190505-thumb.webp"
+      },
+      {
+        "url": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-18 190524.webp",
+        "thumbnail": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-18 190524-thumb.webp"
+      },
+      {
+        "url": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 173338.webp",
+        "thumbnail": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 173338-thumb.webp"
+      },
+      {
+        "url": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 181638.webp",
+        "thumbnail": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 181638-thumb.webp"
+      },
+      {
+        "url": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 181802.webp",
+        "thumbnail": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 181802-thumb.webp"
+      },
+      {
+        "url": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 181836.webp",
+        "thumbnail": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 181836-thumb.webp"
+      },
+      {
+        "url": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 182215.webp",
+        "thumbnail": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 182215-thumb.webp"
+      },
+      {
+        "url": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 182452.webp",
+        "thumbnail": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 182452-thumb.webp"
+      },
+      {
+        "url": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 182528.webp",
+        "thumbnail": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 182528-thumb.webp"
+      },
+      {
+        "url": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 182606.webp",
+        "thumbnail": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 182606-thumb.webp"
+      }
     ],
     "launchLink": "https://elusid108.github.io/Chronicle-AIIF/",
     "githubLink": "https://github.com/Elusid108/Chronicle-AIIF",
@@ -1276,7 +1556,8 @@
     "wip": true,
     "order": 5,
     "specs": "<p><strong>Framework:</strong> React 18 (CDN, zero-build)</p><p><strong>Language:</strong> JavaScript (ES Modules)</p><p><strong>Styling:</strong> Tailwind CSS (CDN)</p><p><strong>AI:</strong> Google Gemini (text/image/TTS)</p><p><strong>Audio:</strong> Web Speech API (fallback)</p><p><strong>Storage:</strong> localStorage</p><p><strong>Deploy:</strong> GitHub Pages</p>",
-    "related": []
+    "related": [],
+    "thumbnail": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 182215-thumb.webp"
   },
   {
     "id": "6638",
@@ -1291,8 +1572,14 @@
     "longDescription": "<p>Flipping through dozens of Google Docs, Sheets, and Slides every day at Boston Dynamics got exhausting without a clear hierarchy to organize them. I wanted a OneNote layout with notebooks, tabs, and pages, but I refused to pay for a server. Piping everything straight through the Google Drive API and browser storage solved the hosting cost, but it meant building the engine from scratch.</p><p>To embed webpages directly into notebook pages, I built a desktop prototype to dodge iframe security blocks. The desktop build worked, but needing an installed app killed the convenience of opening a workspace on any browser. I abandoned the desktop build, accepted the iframe limitations, and pivoted back to the web application.</p><p>The browser fought back on performance. Canvas zooming stuttered, and touchscreen inputs refused to line up with SVG drawings. While I sorted out the coordinate math, sync remains a headache. Edits sometimes drop, and deleted pages occasionally resurrect themselves on reload. Strata is still an active work in progress, but the client-side layout is set.</p>",
     "video": "",
     "gallery": [
-      "media/Apps/Strata - Digital Notebook/Screenshot 2026-01-23 195925.webp",
-      "media/Apps/Strata - Digital Notebook/Screenshot 2026-01-24 223430.webp"
+      {
+        "url": "media/Apps/Strata - Digital Notebook/Screenshot 2026-01-23 195925.webp",
+        "thumbnail": "media/Apps/Strata - Digital Notebook/Screenshot 2026-01-23 195925-thumb.webp"
+      },
+      {
+        "url": "media/Apps/Strata - Digital Notebook/Screenshot 2026-01-24 223430.webp",
+        "thumbnail": "media/Apps/Strata - Digital Notebook/Screenshot 2026-01-24 223430-thumb.webp"
+      }
     ],
     "launchLink": "https://elusid108.github.io/Strata-vite/",
     "githubLink": "https://github.com/Elusid108/Strata-vite",
@@ -1304,7 +1591,8 @@
     "wip": true,
     "order": 7,
     "specs": "<p><strong>Framework:</strong> React 19</p><p><strong>Build:</strong> Vite 7</p><p><strong>Styling:</strong> Tailwind CSS 4</p><p><strong>Editor:</strong> CodeMirror (JS/HTML/Python)</p><p><strong>Diagrams:</strong> Mermaid</p><p><strong>Maps:</strong> Leaflet</p><p><strong>Cloud:</strong> Google Drive API</p><p><strong>Storage:</strong> localStorage</p><p><strong>Deploy:</strong> GitHub Pages</p>",
-    "related": []
+    "related": [],
+    "thumbnail": "media/Apps/Strata - Digital Notebook/Screenshot 2026-01-23 200024-thumb.webp"
   },
   {
     "id": "6962",
@@ -1321,9 +1609,18 @@
     "longDescription": "<p>People like to treat early concepts like target practice. They shoot holes in an idea before it has room to breathe. I wanted a sifter that takes raw dumps of thought and builds them up without initial critique. I first prototyped the workflow in Notion and rebuilt it with Lovable and Supabase, but both meant recurring monthly subscriptions. I stripped out the cloud database entirely and wired the application directly into the Google Sheets and Google Drive APIs.</p><p>The frontend runs on React and TypeScript, with a local data layer handling offline edits and reconciliation against the spreadsheet. Users drop in raw thoughts, and a Gemini integration tags and summarizes them. When a concept shows promise, you promote it to a brainstorm. The model runs an interview to extract missing detail, then compiles an execution strategy, an expense tracker, and a structured task list.</p><p>Every user already has a Google account, so the backend infrastructure costs nothing to run. I put my custom lithophane generator, LithoLab, through the campaign pipeline to test the playbook generation. Instead of killing half-formed ideas early, the workflow pushes them into actionable phases until you can see whether they actually work.</p>",
     "video": "",
     "gallery": [
-      "media/Apps/IdeaForge.AI/Screenshot 2026-02-14 232928.webp",
-      "media/Apps/IdeaForge.AI/Screenshot 2026-02-14 233034.webp",
-      "media/Apps/IdeaForge.AI/Screenshot 2026-02-14 233053.webp"
+      {
+        "url": "media/Apps/IdeaForge.AI/Screenshot 2026-02-14 232928.webp",
+        "thumbnail": "media/Apps/IdeaForge.AI/Screenshot 2026-02-14 232928-thumb.webp"
+      },
+      {
+        "url": "media/Apps/IdeaForge.AI/Screenshot 2026-02-14 233034.webp",
+        "thumbnail": "media/Apps/IdeaForge.AI/Screenshot 2026-02-14 233034-thumb.webp"
+      },
+      {
+        "url": "media/Apps/IdeaForge.AI/Screenshot 2026-02-14 233053.webp",
+        "thumbnail": "media/Apps/IdeaForge.AI/Screenshot 2026-02-14 233053-thumb.webp"
+      }
     ],
     "launchLink": "https://elusid108.github.io/IdeaForge-AI/",
     "githubLink": "https://github.com/Elusid108/IdeaForge-AI",
@@ -1335,7 +1632,8 @@
     "wip": true,
     "order": 4,
     "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite (SWC)</p><p><strong>Styling:</strong> Tailwind CSS, Radix UI</p><p><strong>State:</strong> Zustand</p><p><strong>AI:</strong> Google Gemini</p><p><strong>Cloud:</strong> Google Drive API, Google Sheets API</p><p><strong>Testing:</strong> Vitest</p><p><strong>Deploy:</strong> GitHub Pages</p>",
-    "related": []
+    "related": [],
+    "thumbnail": "media/Apps/IdeaForge.AI/Screenshot 2026-02-14 232928-thumb.webp"
   },
   {
     "id": "648",
@@ -1351,19 +1649,58 @@
     "longDescription": "<p>I wanted to generate varied, realistic characters across human and fantasy archetypes without paying for server infrastructure or storing user data. I built the entire engine to run locally in the browser using React 18, Vite, and Zustand. The interface uses an 8 section builder with over 100 conditional attributes that adapt dynamically to species selection. Users plug in their own Google API keys, and the application coordinates Gemini 2.5 Flash for text generation and Imagen 4.0 for visual synthesis, saving complex JSON objects and image payloads directly to IndexedDB.</p><p>I started the build in Gemini Canvas, but the app rotted once the single file hit 1000 lines of code. Options disappeared, previous settings reverted, and the interface broke completely. I moved the project to Cursor and GitHub to break the architecture into modular files. Once the app compiled reliably, the AI models struggled with basic logic. Without context, the randomizer picked identical stats repeatedly. The vision pipeline also fought clothing layers. When a prompt described muscle definition, the model rendered bare skin right through the shirt. I reduced that visual bleed by looping reference images back through NanoBanana to enforce outfit consistency.</p><p>The engine now operates in 2 directions. I can generate a character from scratch and lock specific parameters like species or clothing, or I can feed reference art into the vision model to extract structured physical and psychological data. It serves as a working proof of concept, and I plan to use the underlying system to drive an AI tabletop RPG generator and a random persona chat tool.</p>",
     "video": "",
     "gallery": [
-      "media/Apps/CharGen.AI/Screenshot 2026-07-25 174417.webp",
-      "media/Apps/CharGen.AI/Screenshot 2026-07-25 174050.webp",
-      "media/Apps/CharGen.AI/Screenshot 2026-07-25 174702.webp",
-      "media/Apps/CharGen.AI/Screenshot 2026-07-25 174709.webp",
-      "media/Apps/CharGen.AI/Screenshot 2026-07-25 174717.webp",
-      "media/Apps/CharGen.AI/Screenshot 2026-07-25 174725.webp",
-      "media/Apps/CharGen.AI/Screenshot 2026-07-25 174647.webp",
-      "media/Apps/CharGen.AI/Screenshot 2026-07-25 174641.webp",
-      "media/Apps/CharGen.AI/Screenshot 2026-07-25 174635.webp",
-      "media/Apps/CharGen.AI/Screenshot 2026-07-25 174607.webp",
-      "media/Apps/CharGen.AI/Screenshot 2026-07-25 174504.webp",
-      "media/Apps/CharGen.AI/Screenshot 2026-07-25 174752.webp",
-      "media/Apps/CharGen.AI/Screenshot 2026-07-25 174744.webp"
+      {
+        "url": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174417.webp",
+        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174417-thumb.webp"
+      },
+      {
+        "url": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174050.webp",
+        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174050-thumb.webp"
+      },
+      {
+        "url": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174702.webp",
+        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174702-thumb.webp"
+      },
+      {
+        "url": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174709.webp",
+        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174709-thumb.webp"
+      },
+      {
+        "url": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174717.webp",
+        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174717-thumb.webp"
+      },
+      {
+        "url": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174725.webp",
+        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174725-thumb.webp"
+      },
+      {
+        "url": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174647.webp",
+        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174647-thumb.webp"
+      },
+      {
+        "url": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174641.webp",
+        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174641-thumb.webp"
+      },
+      {
+        "url": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174635.webp",
+        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174635-thumb.webp"
+      },
+      {
+        "url": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174607.webp",
+        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174607-thumb.webp"
+      },
+      {
+        "url": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174504.webp",
+        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174504-thumb.webp"
+      },
+      {
+        "url": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174752.webp",
+        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174752-thumb.webp"
+      },
+      {
+        "url": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174744.webp",
+        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174744-thumb.webp"
+      }
     ],
     "launchLink": "https://elusid108.github.io/CharGen.AI/",
     "githubLink": "https://github.com/Elusid108/CharGen.AI",
@@ -1375,7 +1712,8 @@
     "wip": true,
     "order": 6,
     "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite</p><p><strong>Styling:</strong> Tailwind CSS</p><p><strong>State:</strong> Zustand</p><p><strong>AI:</strong> Google Gemini 2.5 Flash, Imagen 4.0</p><p><strong>Storage:</strong> IndexedDB</p><p><strong>Export:</strong> JSZip</p><p><strong>Deploy:</strong> GitHub Pages</p>",
-    "related": []
+    "related": [],
+    "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174417-thumb.webp"
   },
   {
     "id": "968",
@@ -1389,8 +1727,14 @@
     "longDescription": "<p>A sunflower field photo of my partner and me printed in CMYW left our faces covered in maroon splotches. Layer thickness kills light transmission before CMYW can produce realistic skin tones. I bought a 2nd AMS2 for extra filaments, but I still needed accurate calibration data.</p><p>My calibration template is a 4x5 grid of 25 mm squares scaling in 0.05 mm steps over a 0.15 mm white backing. I print the swatches at 100% infill, photograph them on a light panel, and upload the image. Even off an X1C, surface texture breaks a single-pixel eyedropper reading. I wrote an area-averaging sampler in vanilla JavaScript that aggregates up to 256 pixels to grab the true color of each thickness. Collapsible palette sets keep the interface readable across multiple materials.</p><p>Having zero dependencies lets me host the app free on GitHub Pages. The engine exports a HSL or hex JSON to import into LithoLab, my PIXEStl-based generator. Skin tones on the next print came out clean, and I dropped to a 0.2 mm nozzle to push the detail.</p>",
     "video": "",
     "gallery": [
-      "media/Apps/LithoPalletGen/lithopalletgen2.webp",
-      "media/Apps/LithoPalletGen/lithopalletgen1.webp"
+      {
+        "url": "media/Apps/LithoPalletGen/lithopalletgen2.webp",
+        "thumbnail": "media/Apps/LithoPalletGen/lithopalletgen2-thumb.webp"
+      },
+      {
+        "url": "media/Apps/LithoPalletGen/lithopalletgen1.webp",
+        "thumbnail": "media/Apps/LithoPalletGen/lithopalletgen1-thumb.webp"
+      }
     ],
     "launchLink": "https://elusid108.github.io/LithoPalletGen/",
     "githubLink": "https://github.com/Elusid108/LithoPalletGen",
@@ -1418,7 +1762,8 @@
         "name": "Color lithophane generator",
         "url": "#project/2944"
       }
-    ]
+    ],
+    "thumbnail": "media/Apps/LithoPalletGen/lithopalletgen1-thumb.webp"
   },
   {
     "title": "Field Bench PSU",
@@ -1446,20 +1791,34 @@
           "scale": 1,
           "x": 55.2,
           "y": 40.8
-        }
+        },
+        "thumbnail": "media/Fabrication/Field Bench PSU/20250317_180727-thumb.webp"
       },
-      "media/Fabrication/Field Bench PSU/20210309_094910.webp",
+      {
+        "url": "media/Fabrication/Field Bench PSU/20210309_094910.webp",
+        "thumbnail": "media/Fabrication/Field Bench PSU/20210309_094910-thumb.webp"
+      },
       {
         "url": "media/Fabrication/Field Bench PSU/20210308_074801.webp",
         "fit": {
           "scale": 1.2,
           "x": 93,
           "y": 51.9
-        }
+        },
+        "thumbnail": "media/Fabrication/Field Bench PSU/20210308_074801-thumb.webp"
       },
-      "media/Fabrication/Field Bench PSU/20210114_091708.webp",
-      "media/Fabrication/Field Bench PSU/20201214_013734.webp",
-      "media/Fabrication/Field Bench PSU/20201214_012422.webp"
+      {
+        "url": "media/Fabrication/Field Bench PSU/20210114_091708.webp",
+        "thumbnail": "media/Fabrication/Field Bench PSU/20210114_091708-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Field Bench PSU/20201214_013734.webp",
+        "thumbnail": "media/Fabrication/Field Bench PSU/20201214_013734-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Field Bench PSU/20201214_012422.webp",
+        "thumbnail": "media/Fabrication/Field Bench PSU/20201214_012422-thumb.webp"
+      }
     ],
     "files": [
       {
@@ -1483,7 +1842,8 @@
       "scale": 1.4,
       "x": 28.2,
       "y": 41.4
-    }
+    },
+    "thumbnail": "media/Fabrication/Field Bench PSU/20250317_180727-thumb.webp"
   },
   {
     "title": "Club Lexi",
@@ -1514,7 +1874,8 @@
           "x": 0,
           "y": 0
         },
-        "poster": "media/Lighting/Club Lexi/frame-thumb-1786199105703.webp"
+        "poster": "media/Lighting/Club Lexi/frame-thumb-1786199105703.webp",
+        "thumbnail": "media/Lighting/Club Lexi/frame-thumb-1786199105703-thumb.webp"
       },
       {
         "url": "media/Lighting/Club Lexi/20230508_171150.webp",
@@ -1522,7 +1883,8 @@
           "scale": 1.1,
           "x": 70.6,
           "y": 35.8
-        }
+        },
+        "thumbnail": "media/Lighting/Club Lexi/20230508_171150-thumb.webp"
       },
       {
         "url": "media/Lighting/Club Lexi/20230508_163509~2.webp",
@@ -1530,7 +1892,8 @@
           "scale": 1,
           "x": 51.4,
           "y": 59.7
-        }
+        },
+        "thumbnail": "media/Lighting/Club Lexi/20230508_163509~2-thumb.webp"
       },
       {
         "url": "media/Lighting/Club Lexi/20230508_144750.webp",
@@ -1538,7 +1901,8 @@
           "scale": 1,
           "x": 50,
           "y": 81.1
-        }
+        },
+        "thumbnail": "media/Lighting/Club Lexi/20230508_144750-thumb.webp"
       },
       {
         "url": "media/Lighting/Club Lexi/20230509_182124.webp",
@@ -1546,7 +1910,8 @@
           "scale": 1.65,
           "x": 53.6,
           "y": 89.4
-        }
+        },
+        "thumbnail": "media/Lighting/Club Lexi/20230509_182124-thumb.webp"
       },
       {
         "url": "media/Lighting/Club Lexi/20230509_100642.webp",
@@ -1554,7 +1919,8 @@
           "scale": 1.1,
           "x": 49.6,
           "y": 44.8
-        }
+        },
+        "thumbnail": "media/Lighting/Club Lexi/20230509_100642-thumb.webp"
       },
       {
         "url": "media/Lighting/Club Lexi/20230413_155003.webp",
@@ -1562,7 +1928,8 @@
           "scale": 1,
           "x": 50.2,
           "y": 31.3
-        }
+        },
+        "thumbnail": "media/Lighting/Club Lexi/20230413_155003-thumb.webp"
       }
     ],
     "files": [],
@@ -1581,7 +1948,8 @@
       "scale": 1,
       "x": 63.4,
       "y": 48
-    }
+    },
+    "thumbnail": "media/Lighting/Club Lexi/20230508_171150-thumb.webp"
   },
   {
     "id": "6841",
@@ -1616,7 +1984,8 @@
           "scale": 1.35,
           "x": 0,
           "y": 52.3
-        }
+        },
+        "thumbnail": "media/Electronics/The Orb/IMG_20190105_011459-thumb.webp"
       },
       {
         "url": "media/Electronics/The Orb/MVIMG_20190309_005437.webp",
@@ -1624,7 +1993,8 @@
           "scale": 1.25,
           "x": 35.9,
           "y": 51.8
-        }
+        },
+        "thumbnail": "media/Electronics/The Orb/MVIMG_20190309_005437-thumb.webp"
       },
       {
         "url": "media/Electronics/The Orb/MVIMG_20190203_004035.webp",
@@ -1632,11 +2002,13 @@
           "scale": 1.3,
           "x": 0,
           "y": 62.7
-        }
+        },
+        "thumbnail": "media/Electronics/The Orb/MVIMG_20190203_004035-thumb.webp"
       },
       {
         "url": "media/Electronics/The Orb/Video Project 10 (1).mp4",
-        "poster": "media/Electronics/The Orb/Video Project 10 (1)-poster.webp"
+        "poster": "media/Electronics/The Orb/Video Project 10 (1)-poster.webp",
+        "thumbnail": "media/Electronics/The Orb/Video Project 10 (1)-poster-thumb.webp"
       },
       {
         "url": "media/Electronics/The Orb/IMG_20181229_194431.webp",
@@ -1644,7 +2016,8 @@
           "scale": 1,
           "x": 48.4,
           "y": 20.2
-        }
+        },
+        "thumbnail": "media/Electronics/The Orb/IMG_20181229_194431-thumb.webp"
       },
       {
         "url": "media/Electronics/The Orb/IMG_20181228_174028.webp",
@@ -1652,7 +2025,8 @@
           "scale": 1,
           "x": 41.2,
           "y": 40.8
-        }
+        },
+        "thumbnail": "media/Electronics/The Orb/IMG_20181228_174028-thumb.webp"
       },
       {
         "url": "media/Electronics/The Orb/IMG_20181230_145358.webp",
@@ -1660,7 +2034,8 @@
           "scale": 1,
           "x": 93,
           "y": 32.3
-        }
+        },
+        "thumbnail": "media/Electronics/The Orb/IMG_20181230_145358-thumb.webp"
       },
       {
         "url": "media/Electronics/The Orb/MVIMG_20190912_124434.webp",
@@ -1668,7 +2043,8 @@
           "scale": 1.05,
           "x": 27.5,
           "y": 74.2
-        }
+        },
+        "thumbnail": "media/Electronics/The Orb/MVIMG_20190912_124434-thumb.webp"
       },
       {
         "url": "media/Electronics/The Orb/IMG_20181228_171913.webp",
@@ -1676,15 +2052,18 @@
           "scale": 1,
           "x": 45.9,
           "y": 38.6
-        }
+        },
+        "thumbnail": "media/Electronics/The Orb/IMG_20181228_171913-thumb.webp"
       },
       {
         "url": "media/Electronics/The Orb/Video Project 10 (2).mp4",
-        "poster": "media/Electronics/The Orb/Video Project 10 (2)-poster.webp"
+        "poster": "media/Electronics/The Orb/Video Project 10 (2)-poster.webp",
+        "thumbnail": "media/Electronics/The Orb/Video Project 10 (2)-poster-thumb.webp"
       },
       {
         "url": "media/Electronics/The Orb/VID_20181223_161426.mp4",
-        "poster": "media/Electronics/The Orb/VID_20181223_161426-poster.webp"
+        "poster": "media/Electronics/The Orb/VID_20181223_161426-poster.webp",
+        "thumbnail": "media/Electronics/The Orb/VID_20181223_161426-poster-thumb.webp"
       },
       {
         "url": "media/Electronics/The Orb/ORB2.webp",
@@ -1692,7 +2071,8 @@
           "scale": 1.1,
           "x": 47.4,
           "y": 58.5
-        }
+        },
+        "thumbnail": "media/Electronics/The Orb/ORB2-thumb.webp"
       },
       {
         "url": "media/Electronics/The Orb/IMG_20181211_233714.webp",
@@ -1700,7 +2080,8 @@
           "scale": 1.25,
           "x": 76,
           "y": 45.9
-        }
+        },
+        "thumbnail": "media/Electronics/The Orb/IMG_20181211_233714-thumb.webp"
       },
       {
         "url": "media/Electronics/The Orb/IMG_20181211_203336.webp",
@@ -1708,7 +2089,8 @@
           "scale": 1.25,
           "x": 68.1,
           "y": 42.9
-        }
+        },
+        "thumbnail": "media/Electronics/The Orb/IMG_20181211_203336-thumb.webp"
       },
       {
         "url": "media/Electronics/The Orb/IMG_20181218_194230.webp",
@@ -1716,7 +2098,8 @@
           "scale": 1,
           "x": 52,
           "y": 58.9
-        }
+        },
+        "thumbnail": "media/Electronics/The Orb/IMG_20181218_194230-thumb.webp"
       },
       {
         "url": "media/Electronics/The Orb/IMG-20181222-WA0000.webp",
@@ -1724,7 +2107,8 @@
           "scale": 1.45,
           "x": 49.8,
           "y": 38.8
-        }
+        },
+        "thumbnail": "media/Electronics/The Orb/IMG-20181222-WA0000-thumb.webp"
       }
     ],
     "files": [],
@@ -1746,7 +2130,8 @@
       "scale": 1.2,
       "x": 49.8,
       "y": 29.8
-    }
+    },
+    "thumbnail": "media/Electronics/The Orb/MVIMG_20190303_010156_1 (1)-thumb.webp"
   },
   {
     "title": "The Basement",
@@ -1783,7 +2168,8 @@
           "scale": 1,
           "x": 50,
           "y": 70
-        }
+        },
+        "thumbnail": "media/Lighting/The Basement/IMG_20180614_174327-thumb.webp"
       },
       {
         "url": "media/Lighting/The Basement/VID_20180708_050000.mp4",
@@ -1792,7 +2178,8 @@
           "x": 99.7,
           "y": 46.6
         },
-        "poster": "media/Lighting/The Basement/frame-thumb-1786199318423.webp"
+        "poster": "media/Lighting/The Basement/frame-thumb-1786199318423.webp",
+        "thumbnail": "media/Lighting/The Basement/frame-thumb-1786199318423-thumb.webp"
       },
       {
         "url": "media/Lighting/The Basement/VID_20180612_163951 (1).mp4",
@@ -1801,7 +2188,8 @@
           "x": 15.4,
           "y": 100
         },
-        "poster": "media/Lighting/The Basement/frame-thumb-1786199373574.webp"
+        "poster": "media/Lighting/The Basement/frame-thumb-1786199373574.webp",
+        "thumbnail": "media/Lighting/The Basement/frame-thumb-1786199373574-thumb.webp"
       },
       {
         "url": "media/Lighting/The Basement/IMG_20180605_151314.webp",
@@ -1809,7 +2197,8 @@
           "scale": 1,
           "x": 57.2,
           "y": 46.7
-        }
+        },
+        "thumbnail": "media/Lighting/The Basement/IMG_20180605_151314-thumb.webp"
       },
       {
         "url": "media/Lighting/The Basement/IMG_20180610_214856.webp",
@@ -1817,9 +2206,13 @@
           "scale": 1.3,
           "x": 35.7,
           "y": 39.1
-        }
+        },
+        "thumbnail": "media/Lighting/The Basement/IMG_20180610_214856-thumb.webp"
       },
-      "media/Lighting/The Basement/IMG_20180611_005701.webp"
+      {
+        "url": "media/Lighting/The Basement/IMG_20180611_005701.webp",
+        "thumbnail": "media/Lighting/The Basement/IMG_20180611_005701-thumb.webp"
+      }
     ],
     "files": [],
     "video": "",
@@ -1837,7 +2230,8 @@
       "scale": 1,
       "x": 50,
       "y": 66.9
-    }
+    },
+    "thumbnail": "media/Lighting/The Basement/IMG_20180614_174327-thumb.webp"
   },
   {
     "title": "Que Bueno Suerte!",
@@ -1868,13 +2262,23 @@
       "Power Distribution"
     ],
     "gallery": [
-      "media/Integration/Que Bueno Suerte!/20240606_211259.webp",
-      "media/Integration/Que Bueno Suerte!/OSCPilot interface.webp",
+      {
+        "url": "media/Integration/Que Bueno Suerte!/20240606_211259.webp",
+        "thumbnail": "media/Integration/Que Bueno Suerte!/20240606_211259-thumb.webp"
+      },
+      {
+        "url": "media/Integration/Que Bueno Suerte!/OSCPilot interface.webp",
+        "thumbnail": "media/Integration/Que Bueno Suerte!/OSCPilot interface-thumb.webp"
+      },
       {
         "url": "media/Integration/Que Bueno Suerte!/20241104_121739~2.mp4",
-        "poster": "media/Integration/Que Bueno Suerte!/20241104_121739~2-poster.webp"
+        "poster": "media/Integration/Que Bueno Suerte!/20241104_121739~2-poster.webp",
+        "thumbnail": "media/Integration/Que Bueno Suerte!/20241104_121739~2-poster-thumb.webp"
       },
-      "media/Integration/Que Bueno Suerte!/20230222_105213.webp"
+      {
+        "url": "media/Integration/Que Bueno Suerte!/20230222_105213.webp",
+        "thumbnail": "media/Integration/Que Bueno Suerte!/20230222_105213-thumb.webp"
+      }
     ],
     "files": [],
     "video": "",
@@ -1899,7 +2303,8 @@
         "name": "Vertical bar tubes",
         "url": "#project/4411"
       }
-    ]
+    ],
+    "thumbnail": "media/Integration/Que Bueno Suerte!/20240606_211259-thumb.webp"
   },
   {
     "title": "Bar Tubes",
@@ -1928,10 +2333,14 @@
       "Hand tools"
     ],
     "gallery": [
-      "media/Electronics/Bar Tubes/20240619_122306.webp",
+      {
+        "url": "media/Electronics/Bar Tubes/20240619_122306.webp",
+        "thumbnail": "media/Electronics/Bar Tubes/20240619_122306-thumb.webp"
+      },
       {
         "url": "media/Electronics/Bar Tubes/Video Project 18 (1).mp4",
-        "poster": "media/Electronics/Bar Tubes/Video Project 18 (1)-poster.webp"
+        "poster": "media/Electronics/Bar Tubes/Video Project 18 (1)-poster.webp",
+        "thumbnail": "media/Electronics/Bar Tubes/Video Project 18 (1)-poster-thumb.webp"
       }
     ],
     "files": [],
@@ -1955,7 +2364,8 @@
       "scale": 1.2,
       "x": 30.8,
       "y": 41
-    }
+    },
+    "thumbnail": "media/Electronics/Bar Tubes/20240619_122306-thumb.webp"
   },
   {
     "title": "Pixel Negative \"X\"",
@@ -1982,15 +2392,22 @@
       "Wire-to-Board Soldering"
     ],
     "gallery": [
-      "media/Art/Pixel Negative _X_/20230717_155724.webp",
-      "media/Art/Pixel Negative _X_/20230717_155731.webp",
+      {
+        "url": "media/Art/Pixel Negative _X_/20230717_155724.webp",
+        "thumbnail": "media/Art/Pixel Negative _X_/20230717_155724-thumb.webp"
+      },
+      {
+        "url": "media/Art/Pixel Negative _X_/20230717_155731.webp",
+        "thumbnail": "media/Art/Pixel Negative _X_/20230717_155731-thumb.webp"
+      },
       {
         "url": "media/Art/Pixel Negative _X_/20230808_152442.webp",
         "fit": {
           "scale": 1.4,
           "x": 34.4,
           "y": 24.5
-        }
+        },
+        "thumbnail": "media/Art/Pixel Negative _X_/20230808_152442-thumb.webp"
       }
     ],
     "files": [],
@@ -2009,7 +2426,8 @@
       "scale": 1,
       "x": 59,
       "y": 36.6
-    }
+    },
+    "thumbnail": "media/Art/Pixel Negative _X_/negative x fix-thumb.webp"
   },
   {
     "title": "Pixel Seed of Life",
@@ -2042,7 +2460,8 @@
           "scale": 1.15,
           "x": 97,
           "y": 31.8
-        }
+        },
+        "thumbnail": "media/Art/Pixel Seed of Life/20230717_155617-thumb.webp"
       },
       {
         "url": "media/Art/Pixel Seed of Life/20230717_155640.webp",
@@ -2050,7 +2469,8 @@
           "scale": 1.1,
           "x": 64.1,
           "y": 45.5
-        }
+        },
+        "thumbnail": "media/Art/Pixel Seed of Life/20230717_155640-thumb.webp"
       },
       {
         "url": "media/Art/Pixel Seed of Life/20230808_152626.webp",
@@ -2058,7 +2478,8 @@
           "scale": 1,
           "x": 47.7,
           "y": 30.6
-        }
+        },
+        "thumbnail": "media/Art/Pixel Seed of Life/20230808_152626-thumb.webp"
       }
     ],
     "files": [],
@@ -2077,7 +2498,8 @@
       "scale": 1.55,
       "x": 100,
       "y": 52.3
-    }
+    },
+    "thumbnail": "media/Art/Pixel Seed of Life/seedoflifefix-thumb.webp"
   },
   {
     "title": "Pixel Celtic Owl",
@@ -2107,12 +2529,25 @@
     "gallery": [
       {
         "url": "media/Art/Pixel Celtic Owl/20240203_174318~2.mp4",
-        "poster": "media/Art/Pixel Celtic Owl/frame-thumb-1786238531082.webp"
+        "poster": "media/Art/Pixel Celtic Owl/frame-thumb-1786238531082.webp",
+        "thumbnail": "media/Art/Pixel Celtic Owl/frame-thumb-1786238531082-thumb.webp"
       },
-      "media/Art/Pixel Celtic Owl/20220315_175407.webp",
-      "media/Art/Pixel Celtic Owl/20220315_175356.webp",
-      "media/Art/Pixel Celtic Owl/20220315_175342.webp",
-      "media/Art/Pixel Celtic Owl/Screenshot 2026-07-02 185618.webp"
+      {
+        "url": "media/Art/Pixel Celtic Owl/20220315_175407.webp",
+        "thumbnail": "media/Art/Pixel Celtic Owl/20220315_175407-thumb.webp"
+      },
+      {
+        "url": "media/Art/Pixel Celtic Owl/20220315_175356.webp",
+        "thumbnail": "media/Art/Pixel Celtic Owl/20220315_175356-thumb.webp"
+      },
+      {
+        "url": "media/Art/Pixel Celtic Owl/20220315_175342.webp",
+        "thumbnail": "media/Art/Pixel Celtic Owl/20220315_175342-thumb.webp"
+      },
+      {
+        "url": "media/Art/Pixel Celtic Owl/Screenshot 2026-07-02 185618.webp",
+        "thumbnail": "media/Art/Pixel Celtic Owl/Screenshot 2026-07-02 185618-thumb.webp"
+      }
     ],
     "files": [],
     "video": "",
@@ -2130,7 +2565,8 @@
       "scale": 1,
       "x": 47.7,
       "y": 31.8
-    }
+    },
+    "thumbnail": "media/Art/Pixel Celtic Owl/frame-thumb-1786238531082-thumb.webp"
   },
   {
     "title": "Lobby Wall",
@@ -2167,7 +2603,8 @@
           "x": 79.6,
           "y": 54.6
         },
-        "poster": "media/Lighting/Lobby Wall/frame-thumb-1786199470802.webp"
+        "poster": "media/Lighting/Lobby Wall/frame-thumb-1786199470802.webp",
+        "thumbnail": "media/Lighting/Lobby Wall/frame-thumb-1786199470802-thumb.webp"
       },
       {
         "url": "media/Lighting/Lobby Wall/Trackswall2.mp4",
@@ -2176,7 +2613,8 @@
           "x": 30.3,
           "y": 100
         },
-        "poster": "media/Lighting/Lobby Wall/frame-thumb-1786199551651.webp"
+        "poster": "media/Lighting/Lobby Wall/frame-thumb-1786199551651.webp",
+        "thumbnail": "media/Lighting/Lobby Wall/frame-thumb-1786199551651-thumb.webp"
       },
       {
         "url": "media/Lighting/Lobby Wall/0317152322.webp",
@@ -2184,7 +2622,8 @@
           "scale": 1.25,
           "x": 100,
           "y": 45.8
-        }
+        },
+        "thumbnail": "media/Lighting/Lobby Wall/0317152322-thumb.webp"
       },
       {
         "url": "media/Lighting/Lobby Wall/0317152321.webp",
@@ -2192,7 +2631,8 @@
           "scale": 1.35,
           "x": 0,
           "y": 25.4
-        }
+        },
+        "thumbnail": "media/Lighting/Lobby Wall/0317152321-thumb.webp"
       },
       {
         "url": "media/Lighting/Lobby Wall/Trackswall1.mp4",
@@ -2201,7 +2641,8 @@
           "x": 76.9,
           "y": 100
         },
-        "poster": "media/Lighting/Lobby Wall/frame-thumb-1786199579728.webp"
+        "poster": "media/Lighting/Lobby Wall/frame-thumb-1786199579728.webp",
+        "thumbnail": "media/Lighting/Lobby Wall/frame-thumb-1786199579728-thumb.webp"
       },
       {
         "url": "media/Lighting/Lobby Wall/0317152050.webp",
@@ -2209,7 +2650,8 @@
           "scale": 1.5,
           "x": 25.9,
           "y": 100
-        }
+        },
+        "thumbnail": "media/Lighting/Lobby Wall/0317152050-thumb.webp"
       },
       {
         "url": "media/Lighting/Lobby Wall/0315151546.webp",
@@ -2217,7 +2659,8 @@
           "scale": 1.3,
           "x": 23.8,
           "y": 100
-        }
+        },
+        "thumbnail": "media/Lighting/Lobby Wall/0315151546-thumb.webp"
       },
       {
         "url": "media/Lighting/Lobby Wall/0313151634.webp",
@@ -2225,7 +2668,8 @@
           "scale": 1.15,
           "x": 100,
           "y": 55
-        }
+        },
+        "thumbnail": "media/Lighting/Lobby Wall/0313151634-thumb.webp"
       },
       {
         "url": "media/Lighting/Lobby Wall/0312151534.webp",
@@ -2233,7 +2677,8 @@
           "scale": 2.45,
           "x": 46.9,
           "y": 53.3
-        }
+        },
+        "thumbnail": "media/Lighting/Lobby Wall/0312151534-thumb.webp"
       },
       {
         "url": "media/Lighting/Lobby Wall/0221152259b.webp",
@@ -2241,7 +2686,8 @@
           "scale": 1.3,
           "x": 17.6,
           "y": 11.8
-        }
+        },
+        "thumbnail": "media/Lighting/Lobby Wall/0221152259b-thumb.webp"
       }
     ],
     "files": [],
@@ -2255,7 +2701,8 @@
       "scale": 1.2,
       "x": 66.7,
       "y": 47.6
-    }
+    },
+    "thumbnail": "media/Lighting/Lobby Wall/0321151647-thumb.webp"
   },
   {
     "title": "Curved Liquor Bottle Display",
@@ -2288,7 +2735,8 @@
           "scale": 1.1,
           "x": 0,
           "y": 100
-        }
+        },
+        "thumbnail": "media/Lighting/Curved Liquor Bottle Display/Screenshot 2026-08-01 112340-thumb.webp"
       },
       {
         "url": "media/Lighting/Curved Liquor Bottle Display/20240419_101740.webp",
@@ -2296,7 +2744,8 @@
           "scale": 1.15,
           "x": 0,
           "y": 97.2
-        }
+        },
+        "thumbnail": "media/Lighting/Curved Liquor Bottle Display/20240419_101740-thumb.webp"
       },
       {
         "url": "media/Lighting/Curved Liquor Bottle Display/QBS Bottle shelf 2.mp4",
@@ -2305,7 +2754,8 @@
           "x": 9.3,
           "y": 100
         },
-        "poster": "media/Lighting/Curved Liquor Bottle Display/frame-thumb-1786198542432.webp"
+        "poster": "media/Lighting/Curved Liquor Bottle Display/frame-thumb-1786198542432.webp",
+        "thumbnail": "media/Lighting/Curved Liquor Bottle Display/frame-thumb-1786198542432-thumb.webp"
       },
       {
         "url": "media/Lighting/Curved Liquor Bottle Display/QBS Bottle shelf 3.mp4",
@@ -2314,7 +2764,8 @@
           "x": 77.8,
           "y": 40.9
         },
-        "poster": "media/Lighting/Curved Liquor Bottle Display/frame-thumb-1786198604784.webp"
+        "poster": "media/Lighting/Curved Liquor Bottle Display/frame-thumb-1786198604784.webp",
+        "thumbnail": "media/Lighting/Curved Liquor Bottle Display/frame-thumb-1786198604784-thumb.webp"
       },
       {
         "url": "media/Lighting/Curved Liquor Bottle Display/QBS Bottle shelf 1.mp4",
@@ -2323,7 +2774,8 @@
           "x": 6.7,
           "y": 68.7
         },
-        "poster": "media/Lighting/Curved Liquor Bottle Display/frame-thumb-1786198714641.webp"
+        "poster": "media/Lighting/Curved Liquor Bottle Display/frame-thumb-1786198714641.webp",
+        "thumbnail": "media/Lighting/Curved Liquor Bottle Display/frame-thumb-1786198714641-thumb.webp"
       },
       {
         "url": "media/Lighting/Curved Liquor Bottle Display/20240224_083551.webp",
@@ -2331,7 +2783,8 @@
           "scale": 1,
           "x": 100,
           "y": 34
-        }
+        },
+        "thumbnail": "media/Lighting/Curved Liquor Bottle Display/20240224_083551-thumb.webp"
       },
       {
         "url": "media/Lighting/Curved Liquor Bottle Display/20240409_124553.webp",
@@ -2339,7 +2792,8 @@
           "scale": 1.55,
           "x": 65.3,
           "y": 49.9
-        }
+        },
+        "thumbnail": "media/Lighting/Curved Liquor Bottle Display/20240409_124553-thumb.webp"
       },
       {
         "url": "media/Lighting/Curved Liquor Bottle Display/20240403_095909.webp",
@@ -2347,7 +2801,8 @@
           "scale": 1,
           "x": 57.9,
           "y": 55.7
-        }
+        },
+        "thumbnail": "media/Lighting/Curved Liquor Bottle Display/20240403_095909-thumb.webp"
       }
     ],
     "files": [],
@@ -2370,7 +2825,8 @@
       "scale": 1,
       "x": 47.5,
       "y": 100
-    }
+    },
+    "thumbnail": "media/Lighting/Curved Liquor Bottle Display/Screenshot 2026-08-01 112340-thumb.webp"
   },
   {
     "title": "Temple Denver",
@@ -2399,14 +2855,19 @@
       "Roadhog 4"
     ],
     "gallery": [
-      "media/Integration/Temple Denver/MVIMG_20190817_211751.webp",
+      {
+        "url": "media/Integration/Temple Denver/MVIMG_20190817_211751.webp",
+        "thumbnail": "media/Integration/Temple Denver/MVIMG_20190817_211751-thumb.webp"
+      },
       {
         "url": "media/Integration/Temple Denver/VID_20190705_212851.mp4",
-        "poster": "media/Integration/Temple Denver/VID_20190705_212851-poster.webp"
+        "poster": "media/Integration/Temple Denver/VID_20190705_212851-poster.webp",
+        "thumbnail": "media/Integration/Temple Denver/VID_20190705_212851-poster-thumb.webp"
       },
       {
         "url": "media/Integration/Temple Denver/Video Project 10 (4).mp4",
-        "poster": "media/Integration/Temple Denver/Video Project 10 (4)-poster.webp"
+        "poster": "media/Integration/Temple Denver/Video Project 10 (4)-poster.webp",
+        "thumbnail": "media/Integration/Temple Denver/Video Project 10 (4)-poster-thumb.webp"
       }
     ],
     "files": [],
@@ -2428,7 +2889,8 @@
         "name": "Entrance Hall",
         "url": "#project/5650"
       }
-    ]
+    ],
+    "thumbnail": "media/Integration/Temple Denver/MVIMG_20190817_211751-thumb.webp"
   },
   {
     "title": "Extrusion Centering Sled",
@@ -2456,7 +2918,8 @@
           "scale": 1,
           "x": 52.9,
           "y": 98.7
-        }
+        },
+        "thumbnail": "media/Fabrication/Extrusion Centering Sled/20200909_213244-thumb.webp"
       },
       {
         "url": "media/Fabrication/Extrusion Centering Sled/20200907_234532.webp",
@@ -2464,7 +2927,8 @@
           "scale": 1,
           "x": 54.8,
           "y": 49.5
-        }
+        },
+        "thumbnail": "media/Fabrication/Extrusion Centering Sled/20200907_234532-thumb.webp"
       },
       {
         "url": "media/Fabrication/Extrusion Centering Sled/20200909_013406.webp",
@@ -2472,7 +2936,8 @@
           "scale": 1.05,
           "x": 53.3,
           "y": 100
-        }
+        },
+        "thumbnail": "media/Fabrication/Extrusion Centering Sled/20200909_013406-thumb.webp"
       },
       {
         "url": "media/Fabrication/Extrusion Centering Sled/20200908_090628.webp",
@@ -2480,7 +2945,8 @@
           "scale": 1,
           "x": 50,
           "y": 72.9
-        }
+        },
+        "thumbnail": "media/Fabrication/Extrusion Centering Sled/20200908_090628-thumb.webp"
       },
       {
         "url": "media/Fabrication/Extrusion Centering Sled/20200907_231655.webp",
@@ -2488,7 +2954,8 @@
           "scale": 1,
           "x": 48.4,
           "y": 81.6
-        }
+        },
+        "thumbnail": "media/Fabrication/Extrusion Centering Sled/20200907_231655-thumb.webp"
       }
     ],
     "files": [],
@@ -2512,7 +2979,8 @@
       "scale": 1,
       "x": 48.8,
       "y": 41.4
-    }
+    },
+    "thumbnail": "media/Fabrication/Extrusion Centering Sled/20200909_213244-thumb.webp"
   },
   {
     "title": "Dance Floor Pillars",
@@ -2548,7 +3016,8 @@
           "scale": 1.25,
           "x": 58.3,
           "y": 44.9
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20210423_185515-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/20210403_195111.webp",
@@ -2556,11 +3025,13 @@
           "scale": 1.85,
           "x": 70.6,
           "y": 76.4
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20210403_195111-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/Video Project 18.mp4",
-        "poster": "media/Electronics/Dance Floor Pillars/Video Project 18-poster.webp"
+        "poster": "media/Electronics/Dance Floor Pillars/Video Project 18-poster.webp",
+        "thumbnail": "media/Electronics/Dance Floor Pillars/Video Project 18-poster-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/20210403_125209.webp",
@@ -2568,7 +3039,8 @@
           "scale": 1,
           "x": 50.4,
           "y": 65.9
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20210403_125209-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/20210403_152329.webp",
@@ -2576,7 +3048,8 @@
           "scale": 1.2,
           "x": 41,
           "y": 0
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20210403_152329-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/20210407_133839.webp",
@@ -2584,11 +3057,13 @@
           "scale": 1.4,
           "x": 19.6,
           "y": 24.8
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20210407_133839-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/Video Project 17 (2).mp4",
-        "poster": "media/Electronics/Dance Floor Pillars/Video Project 17 (2)-poster.webp"
+        "poster": "media/Electronics/Dance Floor Pillars/Video Project 17 (2)-poster.webp",
+        "thumbnail": "media/Electronics/Dance Floor Pillars/Video Project 17 (2)-poster-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/20210403_103112.webp",
@@ -2596,16 +3071,21 @@
           "scale": 1.65,
           "x": 51.4,
           "y": 84.8
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20210403_103112-thumb.webp"
       },
-      "media/Electronics/Dance Floor Pillars/20210403_202058.webp",
+      {
+        "url": "media/Electronics/Dance Floor Pillars/20210403_202058.webp",
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20210403_202058-thumb.webp"
+      },
       {
         "url": "media/Electronics/Dance Floor Pillars/20210402_131904.webp",
         "fit": {
           "scale": 1.25,
           "x": 84.1,
           "y": 59.1
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20210402_131904-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/20210401_160248.webp",
@@ -2613,7 +3093,8 @@
           "scale": 1,
           "x": 51.1,
           "y": 58.7
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20210401_160248-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/20210327_151713.webp",
@@ -2621,7 +3102,8 @@
           "scale": 1.15,
           "x": 15.7,
           "y": 75.2
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20210327_151713-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/20210303_163104.webp",
@@ -2629,7 +3111,8 @@
           "scale": 1,
           "x": 0,
           "y": 74.9
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20210303_163104-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/20210325_170232.webp",
@@ -2637,7 +3120,8 @@
           "scale": 1.1,
           "x": 74.4,
           "y": 75.4
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20210325_170232-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/20210304_181820.webp",
@@ -2645,7 +3129,8 @@
           "scale": 1,
           "x": 49.8,
           "y": 66.8
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20210304_181820-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/20201103_011401.webp",
@@ -2653,7 +3138,8 @@
           "scale": 1.5,
           "x": 0,
           "y": 53.4
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20201103_011401-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/20201210_211419.webp",
@@ -2661,7 +3147,8 @@
           "scale": 1.25,
           "x": 76.3,
           "y": 73.8
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20201210_211419-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/20201108_183241.webp",
@@ -2669,7 +3156,8 @@
           "scale": 1.1,
           "x": 26.3,
           "y": 48.8
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20201108_183241-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/20200905_191652.webp",
@@ -2677,7 +3165,8 @@
           "scale": 1.15,
           "x": 6.5,
           "y": 65.4
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20200905_191652-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/Screenshot_20210306-180716_Photos~2.webp",
@@ -2685,7 +3174,8 @@
           "scale": 1.1,
           "x": 44.5,
           "y": 32.7
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/Screenshot_20210306-180716_Photos~2-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/20201025_233007.webp",
@@ -2693,16 +3183,21 @@
           "scale": 1.2,
           "x": 0,
           "y": 51.6
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20201025_233007-thumb.webp"
       },
-      "media/Electronics/Dance Floor Pillars/20200930_201222.webp",
+      {
+        "url": "media/Electronics/Dance Floor Pillars/20200930_201222.webp",
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20200930_201222-thumb.webp"
+      },
       {
         "url": "media/Electronics/Dance Floor Pillars/20201107_150146.webp",
         "fit": {
           "scale": 1,
           "x": 37.5,
           "y": 59.4
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20201107_150146-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/20200921_152509.webp",
@@ -2710,7 +3205,8 @@
           "scale": 1.15,
           "x": 89.6,
           "y": 14.5
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20200921_152509-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/20200926_205346.webp",
@@ -2718,7 +3214,8 @@
           "scale": 1.25,
           "x": 0,
           "y": 56.7
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20200926_205346-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/20200908_155818.webp",
@@ -2726,7 +3223,8 @@
           "scale": 1.35,
           "x": 42.6,
           "y": 55.4
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20200908_155818-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/20200905_223735.webp",
@@ -2734,7 +3232,8 @@
           "scale": 1.4,
           "x": 30.7,
           "y": 47.5
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20200905_223735-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/20200925_105443.webp",
@@ -2742,7 +3241,8 @@
           "scale": 1.65,
           "x": 41.4,
           "y": 54.6
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20200925_105443-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/20200826_201228.webp",
@@ -2750,7 +3250,8 @@
           "scale": 1.25,
           "x": 36.4,
           "y": 45.6
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20200826_201228-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/20200826_201238.webp",
@@ -2758,7 +3259,8 @@
           "scale": 1.3,
           "x": 100,
           "y": 53.7
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20200826_201238-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/20200901_173408.webp",
@@ -2766,7 +3268,8 @@
           "scale": 1.4,
           "x": 41.1,
           "y": 65.2
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20200901_173408-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/20200921_135156.webp",
@@ -2774,7 +3277,8 @@
           "scale": 1.1,
           "x": 59.4,
           "y": 94.5
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20200921_135156-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/20200905_171937.webp",
@@ -2782,7 +3286,8 @@
           "scale": 1.1,
           "x": 39.1,
           "y": 41.9
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20200905_171937-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/20200828_155006.webp",
@@ -2790,7 +3295,8 @@
           "scale": 1.35,
           "x": 22.8,
           "y": 53.1
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20200828_155006-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/20200830_215210.webp",
@@ -2798,7 +3304,8 @@
           "scale": 1.5,
           "x": 45.1,
           "y": 29.3
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/20200830_215210-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/IMG_20200706_140158.webp",
@@ -2806,7 +3313,8 @@
           "scale": 1.3,
           "x": 71.4,
           "y": 67.1
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/IMG_20200706_140158-thumb.webp"
       },
       {
         "url": "media/Electronics/Dance Floor Pillars/IMG_20200325_202122.webp",
@@ -2814,7 +3322,8 @@
           "scale": 1.1,
           "x": 22.2,
           "y": 48.6
-        }
+        },
+        "thumbnail": "media/Electronics/Dance Floor Pillars/IMG_20200325_202122-thumb.webp"
       }
     ],
     "files": [],
@@ -2846,7 +3355,8 @@
       "scale": 1,
       "x": 50.4,
       "y": 55.7
-    }
+    },
+    "thumbnail": "media/Electronics/Dance Floor Pillars/Screenshot_20210306-180716_Photos~2-thumb.webp"
   },
   {
     "title": "Pixel Louver Lights",
@@ -2876,7 +3386,8 @@
           "scale": 1,
           "x": 50,
           "y": 63.7
-        }
+        },
+        "thumbnail": "media/Fabrication/Pixel Louver Lights/20240401_103859-thumb.webp"
       },
       {
         "url": "media/Fabrication/Pixel Louver Lights/20240329_170517.webp",
@@ -2884,7 +3395,8 @@
           "scale": 1.4,
           "x": 49.1,
           "y": 43.2
-        }
+        },
+        "thumbnail": "media/Fabrication/Pixel Louver Lights/20240329_170517-thumb.webp"
       },
       {
         "url": "media/Fabrication/Pixel Louver Lights/20240322_115100.webp",
@@ -2892,7 +3404,8 @@
           "scale": 1.3,
           "x": 0,
           "y": 46.7
-        }
+        },
+        "thumbnail": "media/Fabrication/Pixel Louver Lights/20240322_115100-thumb.webp"
       },
       {
         "url": "media/Fabrication/Pixel Louver Lights/20240324_152125.webp",
@@ -2900,9 +3413,13 @@
           "scale": 1.25,
           "x": 74.5,
           "y": 27.6
-        }
+        },
+        "thumbnail": "media/Fabrication/Pixel Louver Lights/20240324_152125-thumb.webp"
       },
-      "media/Fabrication/Pixel Louver Lights/Screenshot 2026-08-01 140532.webp"
+      {
+        "url": "media/Fabrication/Pixel Louver Lights/Screenshot 2026-08-01 140532.webp",
+        "thumbnail": "media/Fabrication/Pixel Louver Lights/Screenshot 2026-08-01 140532-thumb.webp"
+      }
     ],
     "files": [
       {
@@ -2931,7 +3448,8 @@
       "scale": 1.15,
       "x": 0.2,
       "y": 40.8
-    }
+    },
+    "thumbnail": "media/Fabrication/Pixel Louver Lights/20240322_115100-thumb.webp"
   },
   {
     "title": "Blackout Ceiling Tubes",
@@ -2970,7 +3488,8 @@
           "scale": 1,
           "x": 50,
           "y": 68.7
-        }
+        },
+        "thumbnail": "media/Lighting/Blackout Ceiling Tubes/20240619_123414-thumb.webp"
       },
       {
         "url": "media/Lighting/Blackout Ceiling Tubes/20240619_123416.webp",
@@ -2978,7 +3497,8 @@
           "scale": 1,
           "x": 48.6,
           "y": 69.4
-        }
+        },
+        "thumbnail": "media/Lighting/Blackout Ceiling Tubes/20240619_123416-thumb.webp"
       },
       {
         "url": "media/Lighting/Blackout Ceiling Tubes/20241031_142443.mp4",
@@ -2987,7 +3507,8 @@
           "x": 100,
           "y": 56
         },
-        "poster": "media/Lighting/Blackout Ceiling Tubes/frame-thumb-1786286915626.webp"
+        "poster": "media/Lighting/Blackout Ceiling Tubes/frame-thumb-1786286915626.webp",
+        "thumbnail": "media/Lighting/Blackout Ceiling Tubes/frame-thumb-1786286915626-thumb.webp"
       },
       {
         "url": "media/Lighting/Blackout Ceiling Tubes/20250128_112650.mp4",
@@ -2996,7 +3517,8 @@
           "x": 0.2,
           "y": 73.8
         },
-        "poster": "media/Lighting/Blackout Ceiling Tubes/frame-thumb-1786278454156.webp"
+        "poster": "media/Lighting/Blackout Ceiling Tubes/frame-thumb-1786278454156.webp",
+        "thumbnail": "media/Lighting/Blackout Ceiling Tubes/frame-thumb-1786278454156-thumb.webp"
       },
       {
         "url": "media/Lighting/Blackout Ceiling Tubes/20240912_132858.mp4",
@@ -3005,7 +3527,8 @@
           "x": 99.7,
           "y": 60.6
         },
-        "poster": "media/Lighting/Blackout Ceiling Tubes/frame-thumb-1786286980389.webp"
+        "poster": "media/Lighting/Blackout Ceiling Tubes/frame-thumb-1786286980389.webp",
+        "thumbnail": "media/Lighting/Blackout Ceiling Tubes/frame-thumb-1786286980389-thumb.webp"
       },
       {
         "url": "media/Lighting/Blackout Ceiling Tubes/20230106_152451.mp4",
@@ -3014,34 +3537,47 @@
           "x": 47.9,
           "y": 72.7
         },
-        "poster": "media/Lighting/Blackout Ceiling Tubes/20230106_152451-poster.webp"
+        "poster": "media/Lighting/Blackout Ceiling Tubes/20230106_152451-poster.webp",
+        "thumbnail": "media/Lighting/Blackout Ceiling Tubes/20230106_152451-poster-thumb.webp"
       },
-      "media/Lighting/Blackout Ceiling Tubes/20230213_090650.webp",
+      {
+        "url": "media/Lighting/Blackout Ceiling Tubes/20230213_090650.webp",
+        "thumbnail": "media/Lighting/Blackout Ceiling Tubes/20230213_090650-thumb.webp"
+      },
       {
         "url": "media/Lighting/Blackout Ceiling Tubes/IMG_20230103_125326_123.webp",
         "fit": {
           "scale": 1.35,
           "x": 0,
           "y": 70.8
-        }
+        },
+        "thumbnail": "media/Lighting/Blackout Ceiling Tubes/IMG_20230103_125326_123-thumb.webp"
       },
-      "media/Lighting/Blackout Ceiling Tubes/20240103_162353.webp",
+      {
+        "url": "media/Lighting/Blackout Ceiling Tubes/20240103_162353.webp",
+        "thumbnail": "media/Lighting/Blackout Ceiling Tubes/20240103_162353-thumb.webp"
+      },
       {
         "url": "media/Lighting/Blackout Ceiling Tubes/20221231_112756.webp",
         "fit": {
           "scale": 1.2,
           "x": 100,
           "y": 27.6
-        }
+        },
+        "thumbnail": "media/Lighting/Blackout Ceiling Tubes/20221231_112756-thumb.webp"
       },
-      "media/Lighting/Blackout Ceiling Tubes/20230102_131900.webp",
+      {
+        "url": "media/Lighting/Blackout Ceiling Tubes/20230102_131900.webp",
+        "thumbnail": "media/Lighting/Blackout Ceiling Tubes/20230102_131900-thumb.webp"
+      },
       {
         "url": "media/Lighting/Blackout Ceiling Tubes/IMG_20221221_111336_620.webp",
         "fit": {
           "scale": 1.35,
           "x": 95.4,
           "y": 41.5
-        }
+        },
+        "thumbnail": "media/Lighting/Blackout Ceiling Tubes/IMG_20221221_111336_620-thumb.webp"
       },
       {
         "url": "media/Lighting/Blackout Ceiling Tubes/20221215_153203.mp4",
@@ -3050,7 +3586,8 @@
           "x": 69.9,
           "y": 71
         },
-        "poster": "media/Lighting/Blackout Ceiling Tubes/20221215_153203-poster.webp"
+        "poster": "media/Lighting/Blackout Ceiling Tubes/20221215_153203-poster.webp",
+        "thumbnail": "media/Lighting/Blackout Ceiling Tubes/20221215_153203-poster-thumb.webp"
       },
       {
         "url": "media/Lighting/Blackout Ceiling Tubes/20221219_140531.webp",
@@ -3058,7 +3595,8 @@
           "scale": 1,
           "x": 50.9,
           "y": 7.6
-        }
+        },
+        "thumbnail": "media/Lighting/Blackout Ceiling Tubes/20221219_140531-thumb.webp"
       },
       {
         "url": "media/Lighting/Blackout Ceiling Tubes/20221206_172954.webp",
@@ -3066,10 +3604,17 @@
           "scale": 1,
           "x": 46.6,
           "y": 86.3
-        }
+        },
+        "thumbnail": "media/Lighting/Blackout Ceiling Tubes/20221206_172954-thumb.webp"
       },
-      "media/Lighting/Blackout Ceiling Tubes/Mez ceiling 1.webp",
-      "media/Lighting/Blackout Ceiling Tubes/grey view 3.webp"
+      {
+        "url": "media/Lighting/Blackout Ceiling Tubes/Mez ceiling 1.webp",
+        "thumbnail": "media/Lighting/Blackout Ceiling Tubes/Mez ceiling 1-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Blackout Ceiling Tubes/grey view 3.webp",
+        "thumbnail": "media/Lighting/Blackout Ceiling Tubes/grey view 3-thumb.webp"
+      }
     ],
     "files": [],
     "specs": "<p><strong>Pixels:</strong> 3088x SK6812 RGBW</p><p><strong>Strip:</strong> 15x 3.9m @ 60/m · 14x 4.4m @ 60/m · 7x 4.9m @ 60/m · 12V DC</p><p><strong>Decoder:</strong> 1x Advatek PixLite T8S MK3 · 3x Advatek PixLite R4D-S</p><p><strong>Power:</strong> 18x MEAN WELL HLG-320H-12 · 3x 20A circuits</p><p><strong>Control:</strong> Madrix 5.x · ELM (deprecated)</p>",
@@ -3086,7 +3631,8 @@
     "video": "",
     "timestamp": "2026-08-01T17:08:27.719Z",
     "id": "1612",
-    "order": 1
+    "order": 1,
+    "thumbnail": "media/Lighting/Blackout Ceiling Tubes/20240619_123414-thumb.webp"
   },
   {
     "title": "LED PSU Boot Sequencer",
@@ -3119,14 +3665,18 @@
       "SolidWorks"
     ],
     "gallery": [
-      "media/Fabrication/LED PSU Boot Sequencer/20221201_184622.webp",
+      {
+        "url": "media/Fabrication/LED PSU Boot Sequencer/20221201_184622.webp",
+        "thumbnail": "media/Fabrication/LED PSU Boot Sequencer/20221201_184622-thumb.webp"
+      },
       {
         "url": "media/Fabrication/LED PSU Boot Sequencer/20221121_105826.webp",
         "fit": {
           "scale": 1.3,
           "x": 72.1,
           "y": 79.8
-        }
+        },
+        "thumbnail": "media/Fabrication/LED PSU Boot Sequencer/20221121_105826-thumb.webp"
       },
       {
         "url": "media/Fabrication/LED PSU Boot Sequencer/20221121_105841.webp",
@@ -3134,7 +3684,8 @@
           "scale": 1.2,
           "x": 20.8,
           "y": 94.4
-        }
+        },
+        "thumbnail": "media/Fabrication/LED PSU Boot Sequencer/20221121_105841-thumb.webp"
       },
       {
         "url": "media/Fabrication/LED PSU Boot Sequencer/20221121_105849.webp",
@@ -3142,7 +3693,8 @@
           "scale": 1.2,
           "x": 14.9,
           "y": 34.1
-        }
+        },
+        "thumbnail": "media/Fabrication/LED PSU Boot Sequencer/20221121_105849-thumb.webp"
       },
       {
         "url": "media/Fabrication/LED PSU Boot Sequencer/20221121_190624.webp",
@@ -3150,7 +3702,8 @@
           "scale": 1,
           "x": 43,
           "y": 36.2
-        }
+        },
+        "thumbnail": "media/Fabrication/LED PSU Boot Sequencer/20221121_190624-thumb.webp"
       },
       {
         "url": "media/Fabrication/LED PSU Boot Sequencer/20221130_082043.webp",
@@ -3158,9 +3711,13 @@
           "scale": 1,
           "x": 52.7,
           "y": 41.3
-        }
+        },
+        "thumbnail": "media/Fabrication/LED PSU Boot Sequencer/20221130_082043-thumb.webp"
       },
-      "media/Fabrication/LED PSU Boot Sequencer/20221020_204730.webp"
+      {
+        "url": "media/Fabrication/LED PSU Boot Sequencer/20221020_204730.webp",
+        "thumbnail": "media/Fabrication/LED PSU Boot Sequencer/20221020_204730-thumb.webp"
+      }
     ],
     "files": [],
     "specs": "<p><strong>Designed In:</strong> SolidWorks 2022</p><p><strong>Printed On:</strong> Bambu Lab X1C</p><p><strong>Material:</strong> Black PLA+</p><p><strong>Connectors:</strong> Locking connectors · WAGO junction blocks</p><p><strong>Indicators:</strong> Front output LEDs · rear AC status lights</p>",
@@ -3173,7 +3730,8 @@
     "video": "",
     "timestamp": "2026-08-01T21:44:42.857Z",
     "id": "1430",
-    "order": 0
+    "order": 0,
+    "thumbnail": "media/Fabrication/LED PSU Boot Sequencer/20221201_184622-thumb.webp"
   },
   {
     "title": "WiFi VIP Tables",
@@ -3207,11 +3765,13 @@
     "gallery": [
       {
         "url": "media/Electronics/WiFi VIP Tables/20210625_144028.mp4",
-        "poster": "media/Electronics/WiFi VIP Tables/20210625_144028-poster.webp"
+        "poster": "media/Electronics/WiFi VIP Tables/20210625_144028-poster.webp",
+        "thumbnail": "media/Electronics/WiFi VIP Tables/20210625_144028-poster-thumb.webp"
       },
       {
         "url": "media/Electronics/WiFi VIP Tables/20210519_113326.mp4",
-        "poster": "media/Electronics/WiFi VIP Tables/20210519_113326-poster.webp"
+        "poster": "media/Electronics/WiFi VIP Tables/20210519_113326-poster.webp",
+        "thumbnail": "media/Electronics/WiFi VIP Tables/20210519_113326-poster-thumb.webp"
       },
       {
         "url": "media/Electronics/WiFi VIP Tables/20210623_212915.webp",
@@ -3219,7 +3779,8 @@
           "scale": 1.35,
           "x": 10.3,
           "y": 30.5
-        }
+        },
+        "thumbnail": "media/Electronics/WiFi VIP Tables/20210623_212915-thumb.webp"
       },
       {
         "url": "media/Electronics/WiFi VIP Tables/20210623_212433.webp",
@@ -3227,7 +3788,8 @@
           "scale": 1.15,
           "x": 53.6,
           "y": 28.3
-        }
+        },
+        "thumbnail": "media/Electronics/WiFi VIP Tables/20210623_212433-thumb.webp"
       },
       {
         "url": "media/Electronics/WiFi VIP Tables/20210511_184836.webp",
@@ -3235,7 +3797,8 @@
           "scale": 1.55,
           "x": 60.5,
           "y": 16.1
-        }
+        },
+        "thumbnail": "media/Electronics/WiFi VIP Tables/20210511_184836-thumb.webp"
       },
       {
         "url": "media/Electronics/WiFi VIP Tables/20210713_100708.webp",
@@ -3243,7 +3806,8 @@
           "scale": 1.7,
           "x": 64.6,
           "y": 40.4
-        }
+        },
+        "thumbnail": "media/Electronics/WiFi VIP Tables/20210713_100708-thumb.webp"
       },
       {
         "url": "media/Electronics/WiFi VIP Tables/20210423_122623.webp",
@@ -3251,11 +3815,13 @@
           "scale": 1.45,
           "x": 19.7,
           "y": 43.6
-        }
+        },
+        "thumbnail": "media/Electronics/WiFi VIP Tables/20210423_122623-thumb.webp"
       },
       {
         "url": "media/Electronics/WiFi VIP Tables/20210420_124426.mp4",
-        "poster": "media/Electronics/WiFi VIP Tables/20210420_124426-poster.webp"
+        "poster": "media/Electronics/WiFi VIP Tables/20210420_124426-poster.webp",
+        "thumbnail": "media/Electronics/WiFi VIP Tables/20210420_124426-poster-thumb.webp"
       },
       {
         "url": "media/Electronics/WiFi VIP Tables/20210429_192055.webp",
@@ -3263,7 +3829,8 @@
           "scale": 1.2,
           "x": 71.1,
           "y": 54.7
-        }
+        },
+        "thumbnail": "media/Electronics/WiFi VIP Tables/20210429_192055-thumb.webp"
       },
       {
         "url": "media/Electronics/WiFi VIP Tables/20201025_135746.webp",
@@ -3271,7 +3838,8 @@
           "scale": 1.4,
           "x": 5.1,
           "y": 52.8
-        }
+        },
+        "thumbnail": "media/Electronics/WiFi VIP Tables/20201025_135746-thumb.webp"
       },
       {
         "url": "media/Electronics/WiFi VIP Tables/20210428_145442.webp",
@@ -3279,7 +3847,8 @@
           "scale": 1.1,
           "x": 52.4,
           "y": 45
-        }
+        },
+        "thumbnail": "media/Electronics/WiFi VIP Tables/20210428_145442-thumb.webp"
       },
       {
         "url": "media/Electronics/WiFi VIP Tables/20201024_020009.webp",
@@ -3287,7 +3856,8 @@
           "scale": 1,
           "x": 49.3,
           "y": 39.8
-        }
+        },
+        "thumbnail": "media/Electronics/WiFi VIP Tables/20201024_020009-thumb.webp"
       },
       {
         "url": "media/Electronics/WiFi VIP Tables/20201026_122846.webp",
@@ -3295,7 +3865,8 @@
           "scale": 1.1,
           "x": 48,
           "y": 26.8
-        }
+        },
+        "thumbnail": "media/Electronics/WiFi VIP Tables/20201026_122846-thumb.webp"
       }
     ],
     "files": [],
@@ -3323,7 +3894,8 @@
       "scale": 1.25,
       "x": 46.1,
       "y": 49
-    }
+    },
+    "thumbnail": "media/Electronics/WiFi VIP Tables/Screenshot 2026-08-07 201527-thumb.webp"
   },
   {
     "title": "Glass VIP Wall",
@@ -3369,7 +3941,8 @@
           "x": 18.8,
           "y": 100
         },
-        "poster": "media/Lighting/Glass VIP Wall/frame-thumb-1786198770286.webp"
+        "poster": "media/Lighting/Glass VIP Wall/frame-thumb-1786198770286.webp",
+        "thumbnail": "media/Lighting/Glass VIP Wall/frame-thumb-1786198770286-thumb.webp"
       },
       {
         "url": "media/Lighting/Glass VIP Wall/VID-20210127-WA0000.mp4",
@@ -3378,7 +3951,8 @@
           "x": 92.2,
           "y": 95.6
         },
-        "poster": "media/Lighting/Glass VIP Wall/frame-thumb-1786198800149.webp"
+        "poster": "media/Lighting/Glass VIP Wall/frame-thumb-1786198800149.webp",
+        "thumbnail": "media/Lighting/Glass VIP Wall/frame-thumb-1786198800149-thumb.webp"
       },
       {
         "url": "media/Lighting/Glass VIP Wall/VID-20210126-WA0002.mp4",
@@ -3387,7 +3961,8 @@
           "x": 0.1,
           "y": 84.5
         },
-        "poster": "media/Lighting/Glass VIP Wall/frame-thumb-1786198834899.webp"
+        "poster": "media/Lighting/Glass VIP Wall/frame-thumb-1786198834899.webp",
+        "thumbnail": "media/Lighting/Glass VIP Wall/frame-thumb-1786198834899-thumb.webp"
       },
       {
         "url": "media/Lighting/Glass VIP Wall/VID-20210125-WA0000.mp4",
@@ -3396,7 +3971,8 @@
           "x": 34.3,
           "y": 58.6
         },
-        "poster": "media/Lighting/Glass VIP Wall/frame-thumb-1786198875139.webp"
+        "poster": "media/Lighting/Glass VIP Wall/frame-thumb-1786198875139.webp",
+        "thumbnail": "media/Lighting/Glass VIP Wall/frame-thumb-1786198875139-thumb.webp"
       },
       {
         "url": "media/Lighting/Glass VIP Wall/20210126_125127.webp",
@@ -3404,7 +3980,8 @@
           "scale": 1.2,
           "x": 0,
           "y": 6
-        }
+        },
+        "thumbnail": "media/Lighting/Glass VIP Wall/20210126_125127-thumb.webp"
       },
       {
         "url": "media/Lighting/Glass VIP Wall/20210126_101127.webp",
@@ -3412,7 +3989,8 @@
           "scale": 1,
           "x": 32,
           "y": 52.1
-        }
+        },
+        "thumbnail": "media/Lighting/Glass VIP Wall/20210126_101127-thumb.webp"
       },
       {
         "url": "media/Lighting/Glass VIP Wall/20210126_101137.webp",
@@ -3420,7 +3998,8 @@
           "scale": 1.4,
           "x": 0,
           "y": 46.1
-        }
+        },
+        "thumbnail": "media/Lighting/Glass VIP Wall/20210126_101137-thumb.webp"
       },
       {
         "url": "media/Lighting/Glass VIP Wall/IMG-20210125-WA0005.webp",
@@ -3428,7 +4007,8 @@
           "scale": 1.35,
           "x": 81.2,
           "y": 30.2
-        }
+        },
+        "thumbnail": "media/Lighting/Glass VIP Wall/IMG-20210125-WA0005-thumb.webp"
       },
       {
         "url": "media/Lighting/Glass VIP Wall/20210126_105545.webp",
@@ -3436,7 +4016,8 @@
           "scale": 1.4,
           "x": 2.2,
           "y": 35.7
-        }
+        },
+        "thumbnail": "media/Lighting/Glass VIP Wall/20210126_105545-thumb.webp"
       },
       {
         "url": "media/Lighting/Glass VIP Wall/VID-20210124-WA0000.mp4",
@@ -3445,7 +4026,8 @@
           "x": 99.9,
           "y": 57
         },
-        "poster": "media/Lighting/Glass VIP Wall/frame-thumb-1786198917895.webp"
+        "poster": "media/Lighting/Glass VIP Wall/frame-thumb-1786198917895.webp",
+        "thumbnail": "media/Lighting/Glass VIP Wall/frame-thumb-1786198917895-thumb.webp"
       },
       {
         "url": "media/Lighting/Glass VIP Wall/20210123_121514.webp",
@@ -3453,7 +4035,8 @@
           "scale": 1.1,
           "x": 95,
           "y": 55.8
-        }
+        },
+        "thumbnail": "media/Lighting/Glass VIP Wall/20210123_121514-thumb.webp"
       },
       {
         "url": "media/Lighting/Glass VIP Wall/20210120_160957.webp",
@@ -3461,7 +4044,8 @@
           "scale": 1.3,
           "x": 0,
           "y": 45.1
-        }
+        },
+        "thumbnail": "media/Lighting/Glass VIP Wall/20210120_160957-thumb.webp"
       },
       {
         "url": "media/Lighting/Glass VIP Wall/20210120_161033.webp",
@@ -3469,7 +4053,8 @@
           "scale": 1.1,
           "x": 0,
           "y": 48.8
-        }
+        },
+        "thumbnail": "media/Lighting/Glass VIP Wall/20210120_161033-thumb.webp"
       },
       {
         "url": "media/Lighting/Glass VIP Wall/20210120_133758.webp",
@@ -3477,7 +4062,8 @@
           "scale": 1.2,
           "x": 0,
           "y": 68.8
-        }
+        },
+        "thumbnail": "media/Lighting/Glass VIP Wall/20210120_133758-thumb.webp"
       },
       {
         "url": "media/Lighting/Glass VIP Wall/20200918_194722.webp",
@@ -3485,7 +4071,8 @@
           "scale": 1.15,
           "x": 1.9,
           "y": 59.7
-        }
+        },
+        "thumbnail": "media/Lighting/Glass VIP Wall/20200918_194722-thumb.webp"
       }
     ],
     "files": [],
@@ -3503,7 +4090,8 @@
     "video": "",
     "timestamp": "2026-08-08T00:49:03.114Z",
     "id": "8983",
-    "order": 6
+    "order": 6,
+    "thumbnail": "media/Lighting/Glass VIP Wall/Screenshot 2026-08-07 204525-thumb.webp"
   },
   {
     "title": "Pixel Rocks",
@@ -3542,7 +4130,8 @@
           "x": 7.2,
           "y": 46.4
         },
-        "poster": "media/Art/Pixel Rocks/frame-thumb-1786204679695.webp"
+        "poster": "media/Art/Pixel Rocks/frame-thumb-1786204679695.webp",
+        "thumbnail": "media/Art/Pixel Rocks/frame-thumb-1786204679695-thumb.webp"
       },
       {
         "url": "media/Art/Pixel Rocks/20240316_160039.mp4",
@@ -3551,7 +4140,8 @@
           "x": 3.5,
           "y": 48.9
         },
-        "poster": "media/Art/Pixel Rocks/frame-thumb-1786204756843.webp"
+        "poster": "media/Art/Pixel Rocks/frame-thumb-1786204756843.webp",
+        "thumbnail": "media/Art/Pixel Rocks/frame-thumb-1786204756843-thumb.webp"
       },
       {
         "url": "media/Art/Pixel Rocks/20240320_214804.mp4",
@@ -3560,7 +4150,8 @@
           "x": 0,
           "y": 51.6
         },
-        "poster": "media/Art/Pixel Rocks/frame-thumb-1786204782132.webp"
+        "poster": "media/Art/Pixel Rocks/frame-thumb-1786204782132.webp",
+        "thumbnail": "media/Art/Pixel Rocks/frame-thumb-1786204782132-thumb.webp"
       },
       {
         "url": "media/Art/Pixel Rocks/20240320_214516.mp4",
@@ -3569,23 +4160,58 @@
           "x": 48.6,
           "y": 59.8
         },
-        "poster": "media/Art/Pixel Rocks/frame-thumb-1786204822452.webp"
+        "poster": "media/Art/Pixel Rocks/frame-thumb-1786204822452.webp",
+        "thumbnail": "media/Art/Pixel Rocks/frame-thumb-1786204822452-thumb.webp"
       },
-      "media/Art/Pixel Rocks/20240320_214611.webp",
-      "media/Art/Pixel Rocks/20240320_214607.webp",
-      "media/Art/Pixel Rocks/20240320_214603.webp",
-      "media/Art/Pixel Rocks/20240305_203625.webp",
-      "media/Art/Pixel Rocks/Screenshot 2026-08-08 110901.webp",
-      "media/Art/Pixel Rocks/Screenshot 2026-08-08 110642.webp",
-      "media/Art/Pixel Rocks/Screenshot 2026-08-08 110612.webp",
-      "media/Art/Pixel Rocks/20240216_154213.webp",
+      {
+        "url": "media/Art/Pixel Rocks/20240320_214611.webp",
+        "thumbnail": "media/Art/Pixel Rocks/20240320_214611-thumb.webp"
+      },
+      {
+        "url": "media/Art/Pixel Rocks/20240320_214607.webp",
+        "thumbnail": "media/Art/Pixel Rocks/20240320_214607-thumb.webp"
+      },
+      {
+        "url": "media/Art/Pixel Rocks/20240320_214603.webp",
+        "thumbnail": "media/Art/Pixel Rocks/20240320_214603-thumb.webp"
+      },
+      {
+        "url": "media/Art/Pixel Rocks/20240305_203625.webp",
+        "thumbnail": "media/Art/Pixel Rocks/20240305_203625-thumb.webp"
+      },
+      {
+        "url": "media/Art/Pixel Rocks/Screenshot 2026-08-08 110901.webp",
+        "thumbnail": "media/Art/Pixel Rocks/Screenshot 2026-08-08 110901-thumb.webp"
+      },
+      {
+        "url": "media/Art/Pixel Rocks/Screenshot 2026-08-08 110642.webp",
+        "thumbnail": "media/Art/Pixel Rocks/Screenshot 2026-08-08 110642-thumb.webp"
+      },
+      {
+        "url": "media/Art/Pixel Rocks/Screenshot 2026-08-08 110612.webp",
+        "thumbnail": "media/Art/Pixel Rocks/Screenshot 2026-08-08 110612-thumb.webp"
+      },
+      {
+        "url": "media/Art/Pixel Rocks/20240216_154213.webp",
+        "thumbnail": "media/Art/Pixel Rocks/20240216_154213-thumb.webp"
+      },
       {
         "url": "media/Art/Pixel Rocks/20240216_101336.mp4",
-        "poster": "media/Art/Pixel Rocks/20240216_101336-poster.webp"
+        "poster": "media/Art/Pixel Rocks/20240216_101336-poster.webp",
+        "thumbnail": "media/Art/Pixel Rocks/20240216_101336-poster-thumb.webp"
       },
-      "media/Art/Pixel Rocks/Screenshot 2026-08-08 110851.webp",
-      "media/Art/Pixel Rocks/20240308_143659.webp",
-      "media/Art/Pixel Rocks/20240308_143221.webp",
+      {
+        "url": "media/Art/Pixel Rocks/Screenshot 2026-08-08 110851.webp",
+        "thumbnail": "media/Art/Pixel Rocks/Screenshot 2026-08-08 110851-thumb.webp"
+      },
+      {
+        "url": "media/Art/Pixel Rocks/20240308_143659.webp",
+        "thumbnail": "media/Art/Pixel Rocks/20240308_143659-thumb.webp"
+      },
+      {
+        "url": "media/Art/Pixel Rocks/20240308_143221.webp",
+        "thumbnail": "media/Art/Pixel Rocks/20240308_143221-thumb.webp"
+      },
       {
         "url": "media/Art/Pixel Rocks/20240216_134433.mp4",
         "fit": {
@@ -3593,22 +4219,54 @@
           "x": 36.9,
           "y": 57
         },
-        "poster": "media/Art/Pixel Rocks/frame-thumb-1786205231291.webp"
+        "poster": "media/Art/Pixel Rocks/frame-thumb-1786205231291.webp",
+        "thumbnail": "media/Art/Pixel Rocks/frame-thumb-1786205231291-thumb.webp"
       },
-      "media/Art/Pixel Rocks/20240308_134505.webp",
-      "media/Art/Pixel Rocks/20240308_134510.webp",
-      "media/Art/Pixel Rocks/20240308_134502.webp",
-      "media/Art/Pixel Rocks/20240308_134448.webp",
-      "media/Art/Pixel Rocks/20240308_134445.webp",
-      "media/Art/Pixel Rocks/20240308_134455.webp",
-      "media/Art/Pixel Rocks/20240308_134453.webp",
-      "media/Art/Pixel Rocks/20240216_095435.webp",
+      {
+        "url": "media/Art/Pixel Rocks/20240308_134505.webp",
+        "thumbnail": "media/Art/Pixel Rocks/20240308_134505-thumb.webp"
+      },
+      {
+        "url": "media/Art/Pixel Rocks/20240308_134510.webp",
+        "thumbnail": "media/Art/Pixel Rocks/20240308_134510-thumb.webp"
+      },
+      {
+        "url": "media/Art/Pixel Rocks/20240308_134502.webp",
+        "thumbnail": "media/Art/Pixel Rocks/20240308_134502-thumb.webp"
+      },
+      {
+        "url": "media/Art/Pixel Rocks/20240308_134448.webp",
+        "thumbnail": "media/Art/Pixel Rocks/20240308_134448-thumb.webp"
+      },
+      {
+        "url": "media/Art/Pixel Rocks/20240308_134445.webp",
+        "thumbnail": "media/Art/Pixel Rocks/20240308_134445-thumb.webp"
+      },
+      {
+        "url": "media/Art/Pixel Rocks/20240308_134455.webp",
+        "thumbnail": "media/Art/Pixel Rocks/20240308_134455-thumb.webp"
+      },
+      {
+        "url": "media/Art/Pixel Rocks/20240308_134453.webp",
+        "thumbnail": "media/Art/Pixel Rocks/20240308_134453-thumb.webp"
+      },
+      {
+        "url": "media/Art/Pixel Rocks/20240216_095435.webp",
+        "thumbnail": "media/Art/Pixel Rocks/20240216_095435-thumb.webp"
+      },
       {
         "url": "media/Art/Pixel Rocks/20240212_202342.mp4",
-        "poster": "media/Art/Pixel Rocks/20240212_202342-poster.webp"
+        "poster": "media/Art/Pixel Rocks/20240212_202342-poster.webp",
+        "thumbnail": "media/Art/Pixel Rocks/20240212_202342-poster-thumb.webp"
       },
-      "media/Art/Pixel Rocks/20240212_163804.webp",
-      "media/Art/Pixel Rocks/20240212_120443.webp"
+      {
+        "url": "media/Art/Pixel Rocks/20240212_163804.webp",
+        "thumbnail": "media/Art/Pixel Rocks/20240212_163804-thumb.webp"
+      },
+      {
+        "url": "media/Art/Pixel Rocks/20240212_120443.webp",
+        "thumbnail": "media/Art/Pixel Rocks/20240212_120443-thumb.webp"
+      }
     ],
     "files": [],
     "specs": "<p><strong>Medium:</strong> PLA+</p><p><strong>Color:</strong> Transparent</p><p><strong>LEDs: </strong>65 (144/m)</p><p><strong>Driver: </strong>WS2815 (RGB)</p><p><strong>Decoder:</strong> Athom ESP8266</p><p><strong>Firmware: </strong>WLED</p>",
@@ -3626,7 +4284,8 @@
       "scale": 1.1,
       "x": 100,
       "y": 51.1
-    }
+    },
+    "thumbnail": "media/Art/Pixel Rocks/Screenshot 2026-08-08 133451-thumb.webp"
   },
   {
     "title": "Backboard",
@@ -3670,7 +4329,8 @@
           "x": 18.4,
           "y": 40.5
         },
-        "poster": "media/Electronics/Backboard/frame-thumb-1786217258502.webp"
+        "poster": "media/Electronics/Backboard/frame-thumb-1786217258502.webp",
+        "thumbnail": "media/Electronics/Backboard/frame-thumb-1786217258502-thumb.webp"
       },
       {
         "url": "media/Electronics/Backboard/Gemini_Generated_Image_5l003m5l003m5l00.webp",
@@ -3678,7 +4338,8 @@
           "scale": 1,
           "x": 47.7,
           "y": 80.5
-        }
+        },
+        "thumbnail": "media/Electronics/Backboard/Gemini_Generated_Image_5l003m5l003m5l00-thumb.webp"
       },
       {
         "url": "media/Electronics/Backboard/20230209_185750.webp",
@@ -3686,7 +4347,8 @@
           "scale": 1.4,
           "x": 68.6,
           "y": 92.4
-        }
+        },
+        "thumbnail": "media/Electronics/Backboard/20230209_185750-thumb.webp"
       },
       {
         "url": "media/Electronics/Backboard/20230209_135454.webp",
@@ -3694,7 +4356,8 @@
           "scale": 1.05,
           "x": 89.8,
           "y": 78.7
-        }
+        },
+        "thumbnail": "media/Electronics/Backboard/20230209_135454-thumb.webp"
       },
       {
         "url": "media/Electronics/Backboard/20230209_135445.webp",
@@ -3702,7 +4365,8 @@
           "scale": 1.15,
           "x": 100,
           "y": 33.2
-        }
+        },
+        "thumbnail": "media/Electronics/Backboard/20230209_135445-thumb.webp"
       },
       {
         "url": "media/Electronics/Backboard/20230208_132228.webp",
@@ -3710,7 +4374,8 @@
           "scale": 1.2,
           "x": 38.8,
           "y": 48.1
-        }
+        },
+        "thumbnail": "media/Electronics/Backboard/20230208_132228-thumb.webp"
       },
       {
         "url": "media/Electronics/Backboard/20230208_132233.webp",
@@ -3718,7 +4383,8 @@
           "scale": 1.25,
           "x": 61.4,
           "y": 70.8
-        }
+        },
+        "thumbnail": "media/Electronics/Backboard/20230208_132233-thumb.webp"
       },
       {
         "url": "media/Electronics/Backboard/20230206_135253.webp",
@@ -3726,7 +4392,8 @@
           "scale": 1.15,
           "x": 8.5,
           "y": 56.9
-        }
+        },
+        "thumbnail": "media/Electronics/Backboard/20230206_135253-thumb.webp"
       },
       {
         "url": "media/Electronics/Backboard/20230206_074645.webp",
@@ -3734,7 +4401,8 @@
           "scale": 1,
           "x": 50,
           "y": 57
-        }
+        },
+        "thumbnail": "media/Electronics/Backboard/20230206_074645-thumb.webp"
       },
       {
         "url": "media/Electronics/Backboard/20230208_132247.webp",
@@ -3742,7 +4410,8 @@
           "scale": 1.45,
           "x": 54.7,
           "y": 72.4
-        }
+        },
+        "thumbnail": "media/Electronics/Backboard/20230208_132247-thumb.webp"
       },
       {
         "url": "media/Electronics/Backboard/20230206_141002.webp",
@@ -3750,7 +4419,8 @@
           "scale": 1.25,
           "x": 69.6,
           "y": 13.4
-        }
+        },
+        "thumbnail": "media/Electronics/Backboard/20230206_141002-thumb.webp"
       },
       {
         "url": "media/Electronics/Backboard/20230206_183150.webp",
@@ -3758,7 +4428,8 @@
           "scale": 1.5,
           "x": 89.9,
           "y": 52.8
-        }
+        },
+        "thumbnail": "media/Electronics/Backboard/20230206_183150-thumb.webp"
       },
       {
         "url": "media/Electronics/Backboard/20230206_170058.webp",
@@ -3766,7 +4437,8 @@
           "scale": 1.4,
           "x": 99.7,
           "y": 41.3
-        }
+        },
+        "thumbnail": "media/Electronics/Backboard/20230206_170058-thumb.webp"
       },
       {
         "url": "media/Electronics/Backboard/received_1746845682384426.webp",
@@ -3774,7 +4446,8 @@
           "scale": 1.2,
           "x": 0,
           "y": 58.1
-        }
+        },
+        "thumbnail": "media/Electronics/Backboard/received_1746845682384426-thumb.webp"
       },
       {
         "url": "media/Electronics/Backboard/received_500877822236168.webp",
@@ -3782,7 +4455,8 @@
           "scale": 1.1,
           "x": 47.5,
           "y": 62.3
-        }
+        },
+        "thumbnail": "media/Electronics/Backboard/received_500877822236168-thumb.webp"
       }
     ],
     "files": [],
@@ -3796,7 +4470,8 @@
     "video": "",
     "timestamp": "2026-08-08T18:29:33.775Z",
     "id": "3965",
-    "order": 4
+    "order": 4,
+    "thumbnail": "media/Electronics/Backboard/Gemini_Generated_Image_5l003m5l003m5l00-thumb.webp"
   },
   {
     "title": "Entrance Hall",
@@ -3831,7 +4506,8 @@
           "x": 51.8,
           "y": 43
         },
-        "poster": "media/Electronics/Entrance Hall/frame-thumb-1786220301706.webp"
+        "poster": "media/Electronics/Entrance Hall/frame-thumb-1786220301706.webp",
+        "thumbnail": "media/Electronics/Entrance Hall/frame-thumb-1786220301706-thumb.webp"
       },
       {
         "url": "media/Electronics/Entrance Hall/VID_20191113_153132~2.mp4",
@@ -3840,7 +4516,8 @@
           "x": 58.4,
           "y": 37.5
         },
-        "poster": "media/Electronics/Entrance Hall/frame-thumb-1786228072983.webp"
+        "poster": "media/Electronics/Entrance Hall/frame-thumb-1786228072983.webp",
+        "thumbnail": "media/Electronics/Entrance Hall/frame-thumb-1786228072983-thumb.webp"
       },
       {
         "url": "media/Electronics/Entrance Hall/IMG_20190701_235151.webp",
@@ -3848,7 +4525,8 @@
           "scale": 1.15,
           "x": 50.6,
           "y": 38.6
-        }
+        },
+        "thumbnail": "media/Electronics/Entrance Hall/IMG_20190701_235151-thumb.webp"
       },
       {
         "url": "media/Electronics/Entrance Hall/IMG_20190701_213937.webp",
@@ -3856,7 +4534,8 @@
           "scale": 1.65,
           "x": 46.1,
           "y": 3.7
-        }
+        },
+        "thumbnail": "media/Electronics/Entrance Hall/IMG_20190701_213937-thumb.webp"
       },
       {
         "url": "media/Electronics/Entrance Hall/IMG_20190701_182349.webp",
@@ -3864,7 +4543,8 @@
           "scale": 1.2,
           "x": 99.7,
           "y": 21
-        }
+        },
+        "thumbnail": "media/Electronics/Entrance Hall/IMG_20190701_182349-thumb.webp"
       },
       {
         "url": "media/Electronics/Entrance Hall/VID_20180515_142329.mp4",
@@ -3873,7 +4553,8 @@
           "x": 47.5,
           "y": 100
         },
-        "poster": "media/Electronics/Entrance Hall/frame-thumb-1786228003573.webp"
+        "poster": "media/Electronics/Entrance Hall/frame-thumb-1786228003573.webp",
+        "thumbnail": "media/Electronics/Entrance Hall/frame-thumb-1786228003573-thumb.webp"
       }
     ],
     "files": [],
@@ -3897,7 +4578,8 @@
       "scale": 1,
       "x": 49.1,
       "y": 48.6
-    }
+    },
+    "thumbnail": "media/Electronics/Entrance Hall/VID_20190706_212708-poster-thumb.webp"
   },
   {
     "title": "Discobasket",
@@ -3935,22 +4617,48 @@
       "Lighting Design"
     ],
     "gallery": [
-      "media/Electronics/Discobasket/IMG_20171108_200749.webp",
-      "media/Electronics/Discobasket/IMG_20171108_194451.webp",
-      "media/Electronics/Discobasket/20160129_091032.webp",
-      "media/Electronics/Discobasket/20160129_091056.webp",
-      "media/Electronics/Discobasket/0125161647.webp",
+      {
+        "url": "media/Electronics/Discobasket/IMG_20171108_200749.webp",
+        "thumbnail": "media/Electronics/Discobasket/IMG_20171108_200749-thumb.webp"
+      },
+      {
+        "url": "media/Electronics/Discobasket/IMG_20171108_194451.webp",
+        "thumbnail": "media/Electronics/Discobasket/IMG_20171108_194451-thumb.webp"
+      },
+      {
+        "url": "media/Electronics/Discobasket/20160129_091032.webp",
+        "thumbnail": "media/Electronics/Discobasket/20160129_091032-thumb.webp"
+      },
+      {
+        "url": "media/Electronics/Discobasket/20160129_091056.webp",
+        "thumbnail": "media/Electronics/Discobasket/20160129_091056-thumb.webp"
+      },
+      {
+        "url": "media/Electronics/Discobasket/0125161647.webp",
+        "thumbnail": "media/Electronics/Discobasket/0125161647-thumb.webp"
+      },
       {
         "url": "media/Electronics/Discobasket/Disco Basket Programming~2.mp4",
-        "poster": "media/Electronics/Discobasket/Disco Basket Programming~2-poster.webp"
+        "poster": "media/Electronics/Discobasket/Disco Basket Programming~2-poster.webp",
+        "thumbnail": "media/Electronics/Discobasket/Disco Basket Programming~2-poster-thumb.webp"
       },
       {
         "url": "media/Electronics/Discobasket/0119161413.mp4",
-        "poster": "media/Electronics/Discobasket/0119161413-poster.webp"
+        "poster": "media/Electronics/Discobasket/0119161413-poster.webp",
+        "thumbnail": "media/Electronics/Discobasket/0119161413-poster-thumb.webp"
       },
-      "media/Electronics/Discobasket/0115161627.webp",
-      "media/Electronics/Discobasket/20160114_162456.webp",
-      "media/Electronics/Discobasket/0114161357.webp"
+      {
+        "url": "media/Electronics/Discobasket/0115161627.webp",
+        "thumbnail": "media/Electronics/Discobasket/0115161627-thumb.webp"
+      },
+      {
+        "url": "media/Electronics/Discobasket/20160114_162456.webp",
+        "thumbnail": "media/Electronics/Discobasket/20160114_162456-thumb.webp"
+      },
+      {
+        "url": "media/Electronics/Discobasket/0114161357.webp",
+        "thumbnail": "media/Electronics/Discobasket/0114161357-thumb.webp"
+      }
     ],
     "files": [],
     "specs": "<p><strong>Control: </strong>Madrix 3.6</p>",
@@ -3958,7 +4666,8 @@
     "video": "",
     "timestamp": "2026-08-08T20:42:07.206Z",
     "id": "4903",
-    "order": 8
+    "order": 8,
+    "thumbnail": "media/Electronics/Discobasket/IMG_20171108_200749-thumb.webp"
   },
   {
     "title": "Pyramid Steps",
@@ -4003,18 +4712,27 @@
           "x": 16.2,
           "y": 35
         },
-        "poster": "media/Lighting/Pyramid Steps/frame-thumb-1786279546039.webp"
+        "poster": "media/Lighting/Pyramid Steps/frame-thumb-1786279546039.webp",
+        "thumbnail": "media/Lighting/Pyramid Steps/frame-thumb-1786279546039-thumb.webp"
       },
       {
         "url": "media/Lighting/Pyramid Steps/20250128_112618.mp4",
-        "poster": "media/Lighting/Pyramid Steps/20250128_112618-poster.webp"
+        "poster": "media/Lighting/Pyramid Steps/20250128_112618-poster.webp",
+        "thumbnail": "media/Lighting/Pyramid Steps/20250128_112618-poster-thumb.webp"
       },
       {
         "url": "media/Lighting/Pyramid Steps/20250128_112910.mp4",
-        "poster": "media/Lighting/Pyramid Steps/20250128_112910-poster.webp"
+        "poster": "media/Lighting/Pyramid Steps/20250128_112910-poster.webp",
+        "thumbnail": "media/Lighting/Pyramid Steps/20250128_112910-poster-thumb.webp"
       },
-      "media/Lighting/Pyramid Steps/20240713_100537.webp",
-      "media/Lighting/Pyramid Steps/20240713_100611.webp",
+      {
+        "url": "media/Lighting/Pyramid Steps/20240713_100537.webp",
+        "thumbnail": "media/Lighting/Pyramid Steps/20240713_100537-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Pyramid Steps/20240713_100611.webp",
+        "thumbnail": "media/Lighting/Pyramid Steps/20240713_100611-thumb.webp"
+      },
       {
         "url": "media/Lighting/Pyramid Steps/20240708_122719.mp4",
         "fit": {
@@ -4022,19 +4740,33 @@
           "x": 100,
           "y": 42
         },
-        "poster": "media/Lighting/Pyramid Steps/frame-thumb-1786279634658.webp"
+        "poster": "media/Lighting/Pyramid Steps/frame-thumb-1786279634658.webp",
+        "thumbnail": "media/Lighting/Pyramid Steps/frame-thumb-1786279634658-thumb.webp"
       },
-      "media/Lighting/Pyramid Steps/20240708_112007.webp",
-      "media/Lighting/Pyramid Steps/20240711_092959.webp",
-      "media/Lighting/Pyramid Steps/20240710_095323.webp",
-      "media/Lighting/Pyramid Steps/20240708_111514.webp",
+      {
+        "url": "media/Lighting/Pyramid Steps/20240708_112007.webp",
+        "thumbnail": "media/Lighting/Pyramid Steps/20240708_112007-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Pyramid Steps/20240711_092959.webp",
+        "thumbnail": "media/Lighting/Pyramid Steps/20240711_092959-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Pyramid Steps/20240710_095323.webp",
+        "thumbnail": "media/Lighting/Pyramid Steps/20240710_095323-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Pyramid Steps/20240708_111514.webp",
+        "thumbnail": "media/Lighting/Pyramid Steps/20240708_111514-thumb.webp"
+      },
       {
         "url": "media/Lighting/Pyramid Steps/20240627_115814.webp",
         "fit": {
           "scale": 1,
           "x": 50,
           "y": 55.1
-        }
+        },
+        "thumbnail": "media/Lighting/Pyramid Steps/20240627_115814-thumb.webp"
       },
       {
         "url": "media/Lighting/Pyramid Steps/20240627_115145.webp",
@@ -4042,7 +4774,8 @@
           "scale": 1,
           "x": 50,
           "y": 50
-        }
+        },
+        "thumbnail": "media/Lighting/Pyramid Steps/20240627_115145-thumb.webp"
       },
       {
         "url": "media/Lighting/Pyramid Steps/20240627_113406.webp",
@@ -4050,7 +4783,8 @@
           "scale": 1,
           "x": 57.3,
           "y": 41.6
-        }
+        },
+        "thumbnail": "media/Lighting/Pyramid Steps/20240627_113406-thumb.webp"
       },
       {
         "url": "media/Lighting/Pyramid Steps/20240626_103832.webp",
@@ -4058,7 +4792,8 @@
           "scale": 1,
           "x": 51.7,
           "y": 45.6
-        }
+        },
+        "thumbnail": "media/Lighting/Pyramid Steps/20240626_103832-thumb.webp"
       },
       {
         "url": "media/Lighting/Pyramid Steps/20240713_100819.webp",
@@ -4066,7 +4801,8 @@
           "scale": 1,
           "x": 47.1,
           "y": 25.2
-        }
+        },
+        "thumbnail": "media/Lighting/Pyramid Steps/20240713_100819-thumb.webp"
       },
       {
         "url": "media/Lighting/Pyramid Steps/20240708_104620.webp",
@@ -4074,7 +4810,8 @@
           "scale": 1,
           "x": 100,
           "y": 31.9
-        }
+        },
+        "thumbnail": "media/Lighting/Pyramid Steps/20240708_104620-thumb.webp"
       },
       {
         "url": "media/Lighting/Pyramid Steps/20240619_135022.webp",
@@ -4082,15 +4819,37 @@
           "scale": 1.25,
           "x": 30.4,
           "y": 52.7
-        }
+        },
+        "thumbnail": "media/Lighting/Pyramid Steps/20240619_135022-thumb.webp"
       },
-      "media/Lighting/Pyramid Steps/20240528_154142.webp",
-      "media/Lighting/Pyramid Steps/20240625_114303.webp",
-      "media/Lighting/Pyramid Steps/20240624_100556.webp",
-      "media/Lighting/Pyramid Steps/20240621_121138.webp",
-      "media/Lighting/Pyramid Steps/20240621_181128.webp",
-      "media/Lighting/Pyramid Steps/20240610_140359.webp",
-      "media/Lighting/Pyramid Steps/20240528_155832.webp"
+      {
+        "url": "media/Lighting/Pyramid Steps/20240528_154142.webp",
+        "thumbnail": "media/Lighting/Pyramid Steps/20240528_154142-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Pyramid Steps/20240625_114303.webp",
+        "thumbnail": "media/Lighting/Pyramid Steps/20240625_114303-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Pyramid Steps/20240624_100556.webp",
+        "thumbnail": "media/Lighting/Pyramid Steps/20240624_100556-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Pyramid Steps/20240621_121138.webp",
+        "thumbnail": "media/Lighting/Pyramid Steps/20240621_121138-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Pyramid Steps/20240621_181128.webp",
+        "thumbnail": "media/Lighting/Pyramid Steps/20240621_181128-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Pyramid Steps/20240610_140359.webp",
+        "thumbnail": "media/Lighting/Pyramid Steps/20240610_140359-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Pyramid Steps/20240528_155832.webp",
+        "thumbnail": "media/Lighting/Pyramid Steps/20240528_155832-thumb.webp"
+      }
     ],
     "files": [],
     "specs": "<p><strong>IC:</strong> WS2814</p><p><strong>LED:</strong> RGBW (3000k)</p><p><strong>Pixels: </strong>60/m (3 x 1) 20px</p><p><strong>Power:</strong> 8 MEAN WELL HLH-320H-12</p><p><strong>Control:</strong> Madrix 5.x</p>",
@@ -4103,6 +4862,7 @@
     "video": "",
     "timestamp": "2026-08-09T12:31:15.774Z",
     "id": "1088",
-    "order": 3
+    "order": 3,
+    "thumbnail": "media/Lighting/Pyramid Steps/20240713_100537-thumb.webp"
   }
 ]

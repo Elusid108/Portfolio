@@ -1,6 +1,7 @@
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
+const os = require('os');
 const fs = require('fs');
 const data = require('./lib/data');
 const media = require('./lib/media');
@@ -13,6 +14,26 @@ const sseClients = new Map();
 const app = express();
 const PORT = process.env.PORT || 3000;
 const PORTFOLIO_ROOT = path.join(__dirname, '..');
+
+// Use OS temp directory for multer uploads so OneDrive never locks them.
+const UPLOAD_TEMP_DIR = path.join(os.tmpdir(), 'portfolio-cms-uploads');
+fs.mkdirSync(UPLOAD_TEMP_DIR, { recursive: true });
+
+// Sweep orphan temp files older than 1 hour on startup
+(function cleanupOrphanTemps() {
+  try {
+    const cutoff = Date.now() - 60 * 60 * 1000;
+    for (const entry of fs.readdirSync(UPLOAD_TEMP_DIR)) {
+      const fullPath = path.join(UPLOAD_TEMP_DIR, entry);
+      try {
+        const stat = fs.statSync(fullPath);
+        if (stat.isFile() && stat.mtimeMs < cutoff) {
+          fs.unlinkSync(fullPath);
+        }
+      } catch (_) { /* ignore individual file errors */ }
+    }
+  } catch (_) { /* directory may not exist yet on first run */ }
+})();
 
 app.use(express.json({ limit: '50mb' }));
 
@@ -29,12 +50,12 @@ app.get('/preview', (req, res) => {
 });
 
 const upload = multer({
-  dest: path.join(__dirname, '.uploads'),
+  dest: UPLOAD_TEMP_DIR,
   limits: { fileSize: 50 * 1024 * 1024 }
 });
 
 const uploadVideo = multer({
-  dest: path.join(__dirname, '.uploads'),
+  dest: UPLOAD_TEMP_DIR,
   limits: { fileSize: 500 * 1024 * 1024 }
 });
 
@@ -108,8 +129,8 @@ app.post('/api/media/upload', upload.single('file'), async (req, res) => {
     if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
     if (!category || !project) return res.status(400).json({ error: 'Category and project name required' });
 
-    const relativePath = await media.processUpload(req.file, category, project);
-    res.json({ success: true, path: relativePath });
+    const result = await media.processUpload(req.file, category, project);
+    res.json({ success: true, path: result.path, thumbnail: result.thumbnail });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -182,6 +203,125 @@ app.post('/api/publish', (req, res) => {
   try {
     const result = publish();
     res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Generate thumbnails for existing projects that lack them
+app.post('/api/media/generate-thumbnails', async (req, res) => {
+  try {
+    const sharp = require('sharp');
+    const projects = data.getProjects();
+    let generated = 0;
+    let skipped = 0;
+
+    for (const project of projects) {
+      // Project hero image thumbnail
+      if (project.image && project.image.startsWith('media/')) {
+        const imagePath = path.join(PORTFOLIO_ROOT, ...project.image.split('/'));
+        if (fs.existsSync(imagePath)) {
+          const parsed = path.parse(imagePath);
+          const thumbPath = path.join(parsed.dir, `${parsed.name}-thumb.webp`);
+          const thumbWebPath = project.image.replace(parsed.base, `${parsed.name}-thumb.webp`);
+
+          if (!project.thumbnail || !fs.existsSync(path.join(PORTFOLIO_ROOT, ...project.thumbnail.split('/')))) {
+            try {
+              await sharp(imagePath)
+                .rotate()
+                .resize(800, null, { withoutEnlargement: true })
+                .webp({ quality: 75 })
+                .toFile(thumbPath);
+              project.thumbnail = thumbWebPath;
+              generated++;
+            } catch (err) {
+              console.error(`Thumbnail failed for ${project.title} hero:`, err.message);
+              skipped++;
+            }
+          } else { skipped++; }
+        } else { skipped++; }
+      } else { skipped++; }
+
+      // Gallery items
+      if (Array.isArray(project.gallery)) {
+        for (let i = 0; i < project.gallery.length; i++) {
+          const item = project.gallery[i];
+          const url = typeof item === 'string' ? item : (item?.url || '');
+          const isVideo = /\.(mp4|webm|mov|avi)$/i.test(url);
+          const existingThumb = typeof item === 'object' ? (item?.thumbnail || '') : '';
+
+          if (existingThumb && fs.existsSync(path.join(PORTFOLIO_ROOT, ...existingThumb.split('/')))) {
+            skipped++;
+            continue;
+          }
+
+          // For videos: generate thumbnail from poster
+          if (isVideo) {
+            const poster = typeof item === 'object' ? (item?.poster || '') : '';
+            if (!poster || !poster.startsWith('media/')) { skipped++; continue; }
+            const posterPath = path.join(PORTFOLIO_ROOT, ...poster.split('/'));
+            if (!fs.existsSync(posterPath)) { skipped++; continue; }
+
+            const parsed = path.parse(posterPath);
+            const thumbName = `${parsed.name}-thumb.webp`;
+            const thumbPath = path.join(parsed.dir, thumbName);
+            const thumbWebPath = poster.replace(parsed.base, thumbName);
+
+            try {
+              await sharp(posterPath)
+                .rotate()
+                .resize(800, null, { withoutEnlargement: true })
+                .webp({ quality: 75 })
+                .toFile(thumbPath);
+              if (typeof item === 'string') {
+                project.gallery[i] = { url: item, thumbnail: thumbWebPath };
+              } else {
+                item.thumbnail = thumbWebPath;
+              }
+              generated++;
+            } catch (err) {
+              console.error(`Gallery thumb failed for ${project.title}[${i}]:`, err.message);
+              skipped++;
+            }
+            continue;
+          }
+
+          // For images: generate thumbnail from the image itself
+          if (!url.startsWith('media/')) { skipped++; continue; }
+          if (/youtube\.com|youtu\.be/i.test(url)) { skipped++; continue; }
+          const imgPath = path.join(PORTFOLIO_ROOT, ...url.split('/'));
+          if (!fs.existsSync(imgPath)) { skipped++; continue; }
+
+          const parsed = path.parse(imgPath);
+          if (parsed.name.endsWith('-thumb')) { skipped++; continue; }
+          const thumbName = `${parsed.name}-thumb.webp`;
+          const thumbPath = path.join(parsed.dir, thumbName);
+          const thumbWebPath = url.replace(parsed.base, thumbName);
+
+          try {
+            await sharp(imgPath)
+              .rotate()
+              .resize(800, null, { withoutEnlargement: true })
+              .webp({ quality: 75 })
+              .toFile(thumbPath);
+            if (typeof item === 'string') {
+              project.gallery[i] = { url: item, thumbnail: thumbWebPath };
+            } else {
+              item.thumbnail = thumbWebPath;
+            }
+            generated++;
+          } catch (err) {
+            console.error(`Gallery thumb failed for ${project.title}[${i}]:`, err.message);
+            skipped++;
+          }
+        }
+      }
+    }
+
+    const projectsPath = path.join(__dirname, 'data', 'projects.json');
+    fs.writeFileSync(projectsPath, JSON.stringify(projects, null, 2), 'utf-8');
+
+    res.json({ success: true, generated, skipped });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

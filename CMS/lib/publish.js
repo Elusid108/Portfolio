@@ -16,7 +16,7 @@ function publish() {
   }
 
   let html = fs.readFileSync(TEMPLATE_PATH, 'utf-8');
-  const jsonString = JSON.stringify(exportData, null, 4);
+  const jsonString = JSON.stringify(exportData);
 
   if (html.includes('{{PORTFOLIO_DATA}}')) {
     html = html.replace('{{PORTFOLIO_DATA}}', jsonString);
