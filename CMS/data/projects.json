@@ -1021,7 +1021,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-17T17:47:45.485Z",
     "wip": false,
-    "order": 7,
+    "order": 8,
     "thumbnailFit": {
       "scale": 1.2,
       "x": 0,
@@ -1825,7 +1825,7 @@
     "video": "",
     "timestamp": "2026-06-21T22:55:23.650Z",
     "id": "5045",
-    "order": 6,
+    "order": 7,
     "specs": "<p><strong>Strip:</strong> RGBW pixel modules (upward-facing)</p><p><strong>Mount:</strong> 8x strut channel · rotary-hammered into concrete</p><p><strong>Decoder:</strong> Long-range receivers</p><p><strong>Power:</strong> Isolated PSU room (fan noise mitigation)</p><p><strong>Control:</strong> Madrix 5.x</p>",
     "related": [],
     "thumbnailFit": {
@@ -1869,6 +1869,11 @@
     ],
     "gallery": [
       "media/Integration/Que Bueno Suerte!/20240606_211259.webp",
+      "media/Integration/Que Bueno Suerte!/OSCPilot interface.webp",
+      {
+        "url": "media/Integration/Que Bueno Suerte!/20241104_121739~2.mp4",
+        "poster": "media/Integration/Que Bueno Suerte!/20241104_121739~2-poster.webp"
+      },
       "media/Integration/Que Bueno Suerte!/20230222_105213.webp"
     ],
     "files": [],
@@ -1879,16 +1884,20 @@
     "specs": "<p><strong>Pixel:</strong> Madrix 5.x · ELM (deprecated)</p><p><strong>Decoder:</strong> Advatek PixLite 16 (wired) · wireless decoders (acrylic etchings)</p><p><strong>Protocol:</strong> sACN · ArtNet</p><p><strong>GPU:</strong> RTX 2080 Ti</p><p><strong>Server:</strong> Slide-out KVM rack</p><p><strong>Control Surface:</strong> iPad · OSCPilot · Show Cockpit</p><p><strong>Installations:</strong> 11 (see related entries)</p>",
     "related": [
       {
+        "name": "Mezz tubes",
+        "url": "#project/1612"
+      },
+      {
+        "name": "Pyramid Steps",
+        "url": "#project/1088"
+      },
+      {
         "name": "Curved bottle shelf",
         "url": "#project/6808"
       },
       {
         "name": "Vertical bar tubes",
         "url": "#project/4411"
-      },
-      {
-        "name": "Mezz tubes",
-        "url": "#project/1612"
       }
     ]
   },
@@ -2239,7 +2248,7 @@
     "video": "",
     "timestamp": "2026-07-20T20:00:01.882Z",
     "id": "7590",
-    "order": 8,
+    "order": 9,
     "specs": "<p><strong>Pixels:</strong> 520x WS2801 RGB</p><p><strong>Strip:</strong> 1x panel · 6×1 · 12V DC</p><p><strong>Decoder:</strong> SanDevices E682</p><p><strong>Protocol:</strong> WS2801</p><p><strong>Control:</strong> Madrix 3.6</p>",
     "related": [],
     "bannerFit": {
@@ -2345,7 +2354,7 @@
     "video": "",
     "timestamp": "2026-07-20T21:09:12.884Z",
     "id": "6808",
-    "order": 3,
+    "order": 4,
     "specs": "<p><strong>Pixels:</strong> 1152x WS2815 RGB</p><p><strong>Strip:</strong> 96x 0.2m @ 60/m · 12V DC</p><p><strong>Fixtures:</strong> 96x 3D-printed PLA+ louver corners</p><p><strong>Mounting:</strong> Double-sided tape · black cable wrap</p><p><strong>Control:</strong> Madrix 5.x</p>",
     "related": [
       {
@@ -2972,6 +2981,33 @@
         }
       },
       {
+        "url": "media/Lighting/Blackout Ceiling Tubes/20241031_142443.mp4",
+        "fit": {
+          "scale": 1.35,
+          "x": 100,
+          "y": 56
+        },
+        "poster": "media/Lighting/Blackout Ceiling Tubes/frame-thumb-1786286915626.webp"
+      },
+      {
+        "url": "media/Lighting/Blackout Ceiling Tubes/20250128_112650.mp4",
+        "fit": {
+          "scale": 1.15,
+          "x": 0.2,
+          "y": 73.8
+        },
+        "poster": "media/Lighting/Blackout Ceiling Tubes/frame-thumb-1786278454156.webp"
+      },
+      {
+        "url": "media/Lighting/Blackout Ceiling Tubes/20240912_132858.mp4",
+        "fit": {
+          "scale": 1.15,
+          "x": 99.7,
+          "y": 60.6
+        },
+        "poster": "media/Lighting/Blackout Ceiling Tubes/frame-thumb-1786286980389.webp"
+      },
+      {
         "url": "media/Lighting/Blackout Ceiling Tubes/20230106_152451.mp4",
         "fit": {
           "scale": 1,
@@ -2979,24 +3015,6 @@
           "y": 72.7
         },
         "poster": "media/Lighting/Blackout Ceiling Tubes/20230106_152451-poster.webp"
-      },
-      {
-        "url": "media/Lighting/Blackout Ceiling Tubes/20230810_113739.mp4",
-        "fit": {
-          "scale": 1.25,
-          "x": 51.7,
-          "y": 41
-        },
-        "poster": "media/Lighting/Blackout Ceiling Tubes/20230810_113739-poster.webp"
-      },
-      {
-        "url": "media/Lighting/Blackout Ceiling Tubes/20230810_113542.mp4",
-        "fit": {
-          "scale": 1,
-          "x": 50.9,
-          "y": 17.6
-        },
-        "poster": "media/Lighting/Blackout Ceiling Tubes/20230810_113542-poster.webp"
       },
       "media/Lighting/Blackout Ceiling Tubes/20230213_090650.webp",
       {
@@ -3007,6 +3025,7 @@
           "y": 70.8
         }
       },
+      "media/Lighting/Blackout Ceiling Tubes/20240103_162353.webp",
       {
         "url": "media/Lighting/Blackout Ceiling Tubes/20221231_112756.webp",
         "fit": {
@@ -3015,6 +3034,7 @@
           "y": 27.6
         }
       },
+      "media/Lighting/Blackout Ceiling Tubes/20230102_131900.webp",
       {
         "url": "media/Lighting/Blackout Ceiling Tubes/IMG_20221221_111336_620.webp",
         "fit": {
@@ -3483,7 +3503,7 @@
     "video": "",
     "timestamp": "2026-08-08T00:49:03.114Z",
     "id": "8983",
-    "order": 4
+    "order": 6
   },
   {
     "title": "Pixel Rocks",
@@ -3939,5 +3959,150 @@
     "timestamp": "2026-08-08T20:42:07.206Z",
     "id": "4903",
     "order": 8
+  },
+  {
+    "title": "Pyramid Steps",
+    "category": "Lighting",
+    "image": "media/Lighting/Pyramid Steps/20240713_100537.webp",
+    "thumbnailFit": {
+      "scale": 1.25,
+      "x": 33.4,
+      "y": 25.9
+    },
+    "bannerFit": {
+      "scale": 1.3,
+      "x": 54.2,
+      "y": 21.5
+    },
+    "description": "<p>Hiding a 12V pixel wash on a wrap-around dining room pyramid required painted extrusion and balancing to solder.</p>",
+    "longDescription": "<p>The decorative pyramid above the kitchen at Que Bueno Suerte! sat 12 ft over the dining room tile and bar. I wanted to wash the steps with LED pixel tape. The catch was the sightlines. Guests taking the stairs to the second floor got a straight shot down the side of the structure. The track had to vanish during the day from the ground floor, but look pristine from above.</p><p>I mounted 45 deg aluminum extrusions with frosted lenses. Finding the correct offset required checking sightlines from the main floor to push the track back enough to hide it, while keeping enough forward throw for a clean wash. Hiding the hardware required pulling the exact paint match with a NIX digital sensor. I modeled and 3D printed custom jigs to hold the cut extrusions off the ground, then sprayed them with an airless gun in batches.</p><p>The layout covered 6 steps and 2 partial steps wrapping two sides of the pyramid. I tucked fanless MEAN WELL power supplies in the corner, controlled by wired Advatek receivers tied to the main server rack. Firing it up revealed a problem. The 12V pixel strips suffered voltage drop, causing color shift on the bottom steps. Fixing it required adding power injection points at the far ends and hardwiring the 90 deg corner joints. I sat on the 12 ft edge with my field solder station, splicing the injection points over the tile floor. I wrapped the bundles in wire wrap to create a black arc at every corner.</p><p>Painting the track made it inconsequential under daytime lighting. At night, the clean wiring and steady voltage turned the top of the kitchen into a massive accent for the room.</p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "tags": [
+      "AC/DC Load Calc",
+      "Custom Fabrication",
+      "Hand tools",
+      "Lighting Design",
+      "Madrix",
+      "Pixel Mapping",
+      "Power Distribution",
+      "Power tools",
+      "SPI",
+      "TCP/IP",
+      "Wire-to-Board Soldering"
+    ],
+    "gallery": [
+      {
+        "url": "media/Lighting/Pyramid Steps/20240708_123442~2.mp4",
+        "fit": {
+          "scale": 1.5,
+          "x": 16.2,
+          "y": 35
+        },
+        "poster": "media/Lighting/Pyramid Steps/frame-thumb-1786279546039.webp"
+      },
+      {
+        "url": "media/Lighting/Pyramid Steps/20250128_112618.mp4",
+        "poster": "media/Lighting/Pyramid Steps/20250128_112618-poster.webp"
+      },
+      {
+        "url": "media/Lighting/Pyramid Steps/20250128_112910.mp4",
+        "poster": "media/Lighting/Pyramid Steps/20250128_112910-poster.webp"
+      },
+      "media/Lighting/Pyramid Steps/20240713_100537.webp",
+      "media/Lighting/Pyramid Steps/20240713_100611.webp",
+      {
+        "url": "media/Lighting/Pyramid Steps/20240708_122719.mp4",
+        "fit": {
+          "scale": 1.2,
+          "x": 100,
+          "y": 42
+        },
+        "poster": "media/Lighting/Pyramid Steps/frame-thumb-1786279634658.webp"
+      },
+      "media/Lighting/Pyramid Steps/20240708_112007.webp",
+      "media/Lighting/Pyramid Steps/20240711_092959.webp",
+      "media/Lighting/Pyramid Steps/20240710_095323.webp",
+      "media/Lighting/Pyramid Steps/20240708_111514.webp",
+      {
+        "url": "media/Lighting/Pyramid Steps/20240627_115814.webp",
+        "fit": {
+          "scale": 1,
+          "x": 50,
+          "y": 55.1
+        }
+      },
+      {
+        "url": "media/Lighting/Pyramid Steps/20240627_115145.webp",
+        "fit": {
+          "scale": 1,
+          "x": 50,
+          "y": 50
+        }
+      },
+      {
+        "url": "media/Lighting/Pyramid Steps/20240627_113406.webp",
+        "fit": {
+          "scale": 1,
+          "x": 57.3,
+          "y": 41.6
+        }
+      },
+      {
+        "url": "media/Lighting/Pyramid Steps/20240626_103832.webp",
+        "fit": {
+          "scale": 1,
+          "x": 51.7,
+          "y": 45.6
+        }
+      },
+      {
+        "url": "media/Lighting/Pyramid Steps/20240713_100819.webp",
+        "fit": {
+          "scale": 1,
+          "x": 47.1,
+          "y": 25.2
+        }
+      },
+      {
+        "url": "media/Lighting/Pyramid Steps/20240708_104620.webp",
+        "fit": {
+          "scale": 1,
+          "x": 100,
+          "y": 31.9
+        }
+      },
+      {
+        "url": "media/Lighting/Pyramid Steps/20240619_135022.webp",
+        "fit": {
+          "scale": 1.25,
+          "x": 30.4,
+          "y": 52.7
+        }
+      },
+      "media/Lighting/Pyramid Steps/20240528_154142.webp",
+      "media/Lighting/Pyramid Steps/20240625_114303.webp",
+      "media/Lighting/Pyramid Steps/20240624_100556.webp",
+      "media/Lighting/Pyramid Steps/20240621_121138.webp",
+      "media/Lighting/Pyramid Steps/20240621_181128.webp",
+      "media/Lighting/Pyramid Steps/20240610_140359.webp",
+      "media/Lighting/Pyramid Steps/20240528_155832.webp"
+    ],
+    "files": [],
+    "specs": "<p><strong>IC:</strong> WS2814</p><p><strong>LED:</strong> RGBW (3000k)</p><p><strong>Pixels: </strong>60/m (3 x 1) 20px</p><p><strong>Power:</strong> 8 MEAN WELL HLH-320H-12</p><p><strong>Control:</strong> Madrix 5.x</p>",
+    "related": [
+      {
+        "name": "Que Bueno Suerte!",
+        "url": "#project/4113"
+      }
+    ],
+    "video": "",
+    "timestamp": "2026-08-09T12:31:15.774Z",
+    "id": "1088",
+    "order": 3
   }
 ]
