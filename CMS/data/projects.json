@@ -1198,7 +1198,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-17T17:47:45.485Z",
     "wip": false,
-    "order": 11,
+    "order": 12,
     "thumbnailFit": {
       "scale": 1.2,
       "x": 0,
@@ -1975,7 +1975,7 @@
     "video": "",
     "timestamp": "2026-06-21T22:45:09.610Z",
     "id": "6350",
-    "order": 7,
+    "order": 4,
     "specs": "<p><strong>Pixel Spot:</strong> 34x PixelDots RGBW</p><p><strong>Profile:</strong> 12x Profile Zoom 150W</p><p><strong>Beye:</strong> 18x 6×40W RGBW</p><p><strong>SFX:</strong> 1x Radiance Hazer</p><p><strong>Universes:</strong> 4 sACN</p><p><strong>Control:</strong> Wolfmix WMX1</p>",
     "related": [],
     "thumbnailFit": {
@@ -2257,7 +2257,7 @@
     "video": "",
     "timestamp": "2026-06-21T22:55:23.650Z",
     "id": "5045",
-    "order": 10,
+    "order": 11,
     "specs": "<p><strong>Strip:</strong> RGBW pixel modules (upward-facing)</p><p><strong>Mount:</strong> 8x strut channel · rotary-hammered into concrete</p><p><strong>Decoder:</strong> Long-range receivers</p><p><strong>Power:</strong> Isolated PSU room (fan noise mitigation)</p><p><strong>Control:</strong> Madrix 5.x</p>",
     "related": [],
     "thumbnailFit": {
@@ -2363,6 +2363,10 @@
         "url": "#project/4411"
       },
       {
+        "name": "Bar Backsplash",
+        "url": "#project/7026"
+      },
+      {
         "name": "Alabaster Bar Top",
         "url": "#project/9525"
       },
@@ -2438,8 +2442,20 @@
     "specs": "<p><strong>Pixels:</strong> 11,880x WS2813 RGBW</p><p><strong>Strip:</strong> 62x 60px (4ft) · 69x 120px (8ft) · 60/m density</p><p><strong>Channels:</strong> 35,640 (70 universes sACN)</p><p><strong>Voltage:</strong> 12V DC</p><p><strong>Decoder:</strong> Advatek PixLite 16</p><p><strong>Power:</strong> 7A fused per tube · custom power boxes</p><p><strong>Control:</strong> Madrix 5.x</p>",
     "related": [
       {
-        "name": "Control system",
+        "name": "Que Bueno Suerte!",
         "url": "#project/4113"
+      },
+      {
+        "name": "Bar Backsplash",
+        "url": "#project/7026"
+      },
+      {
+        "name": "Alabaster Bar Top",
+        "url": "#project/9525"
+      },
+      {
+        "name": "Bar Kicker",
+        "url": "#project/468"
       }
     ],
     "thumbnailFit": {
@@ -2781,7 +2797,7 @@
     "video": "",
     "timestamp": "2026-07-20T20:00:01.882Z",
     "id": "7590",
-    "order": 13,
+    "order": 14,
     "specs": "<p><strong>Pixels:</strong> 520x WS2801 RGB</p><p><strong>Strip:</strong> 1x panel · 6×1 · 12V DC</p><p><strong>Decoder:</strong> SanDevices E682</p><p><strong>Protocol:</strong> WS2801</p><p><strong>Control:</strong> Madrix 3.6</p>",
     "related": [
       {
@@ -2901,7 +2917,7 @@
     "video": "",
     "timestamp": "2026-07-20T21:09:12.884Z",
     "id": "6808",
-    "order": 4,
+    "order": 5,
     "specs": "<p><strong>Pixels:</strong> 1152x WS2815 RGB</p><p><strong>Strip:</strong> 96x 0.2m @ 60/m · 12V DC</p><p><strong>Fixtures:</strong> 96x 3D-printed PLA+ louver corners</p><p><strong>Mounting:</strong> Double-sided tape · black cable wrap</p><p><strong>Control:</strong> Madrix 5.x</p>",
     "related": [
       {
@@ -4191,7 +4207,7 @@
     "video": "",
     "timestamp": "2026-08-08T00:49:03.114Z",
     "id": "8983",
-    "order": 9,
+    "order": 10,
     "thumbnail": "media/Lighting/Glass VIP Wall/Screenshot 2026-08-07 204525-thumb.webp"
   },
   {
@@ -5222,7 +5238,7 @@
     "video": "",
     "timestamp": "2026-08-09T16:56:13.594Z",
     "id": "3671",
-    "order": 12,
+    "order": 13,
     "thumbnailFit": {
       "scale": 1,
       "x": 69.8,
@@ -5237,16 +5253,16 @@
   {
     "title": "Remote Fill Fog Jets",
     "category": "Lighting",
-    "image": "media/Lighting/Remote Fill Fog Jets/frame-thumb-1786316596476.webp",
+    "image": "media/Lighting/Remote Fill Fog Jets/frame-thumb-1786744075304.webp",
     "thumbnailFit": {
-      "scale": 1.1,
-      "x": 96.2,
-      "y": 37.7
+      "scale": 1,
+      "x": 95,
+      "y": 34.7
     },
     "bannerFit": {
       "scale": 1,
       "x": 48.2,
-      "y": 26
+      "y": 34.6
     },
     "description": "<p>A 55 gal fluid distribution system feeding 6 inverted fog jets to bypass strict city CO2 permits.</p>",
     "longDescription": "<p>Denver had become strict with CO2 permits following the local increase in grow houses. Securing clearance for a cryo system inside a venue was legally impossible. The client still wanted a massive atmospheric effect for the stage. I adapted 6 Antari fog jets using quick dissipating fluid to simulate the cold blast.</p><p>The venue had 16 ft ceilings, so staff couldn't reach them for manual fluid fills. I installed an Antari fluid distribution system using a 55 gal drum in the dressing room. 2 ground pumps pushed fluid up to 2 header tanks in the ceiling, which then fed 3 jets each. The 1500W jets required new dedicated circuits and remote booth switches. The units lacked a built in way to hang upside down. I built adjustable mounts using strut channel L-brackets and bolted them directly to the existing ceiling grid.</p><p>During the initial power up, 1 header tank immediately started pouring fluid from the ceiling. A factory float valve was wired backward, signaling the pump to continue filling an overflowing tank. I caught the leak quick and pulled the tank down to wait for a replacement part.</p><p>I patched the rig into their Chamsys console. The RGBA wash LEDs built into the jets colored the blast and successfully sold the cryo illusion. It worked exactly as intended mechanically, but the vapor condensed on the metal stage poles. The steel became incredibly slick, and the only remaining option was for the staff to wipe the poles down between sets.</p>",
@@ -5265,6 +5281,16 @@
       "ChamSys"
     ],
     "gallery": [
+      {
+        "url": "media/Lighting/Remote Fill Fog Jets/20230623_134325.mp4",
+        "fit": {
+          "scale": 1,
+          "x": 50,
+          "y": 40.2
+        },
+        "poster": "media/Lighting/Remote Fill Fog Jets/frame-thumb-1786744075304.webp",
+        "thumbnail": "media/Lighting/Remote Fill Fog Jets/frame-thumb-1786744075304-thumb.webp"
+      },
       {
         "url": "media/Lighting/Remote Fill Fog Jets/20230617_140953.mp4",
         "fit": {
@@ -5345,7 +5371,8 @@
     "video": "",
     "timestamp": "2026-08-09T23:05:35.692Z",
     "id": "6654",
-    "order": 8
+    "order": 9,
+    "thumbnail": "media/Lighting/Remote Fill Fog Jets/frame-thumb-1786744075304-thumb.webp"
   },
   {
     "title": "Alabaster Bar Top",
@@ -5512,12 +5539,20 @@
       {
         "name": "Bar Kicker",
         "url": "#project/468"
+      },
+      {
+        "name": "Bar Backsplash",
+        "url": "#project/7026"
+      },
+      {
+        "name": "Bar Tubes",
+        "url": "#project/4411"
       }
     ],
     "video": "",
     "timestamp": "2026-08-14T18:26:35.295Z",
     "id": "9525",
-    "order": 5,
+    "order": 7,
     "thumbnail": "media/Lighting/Alabaster Bar Top/Gemini_Generated_Image_jevrnrjevrnrjevr-thumb.webp",
     "thumbnailFit": {
       "scale": 1.35,
@@ -5688,7 +5723,7 @@
       }
     ],
     "files": [],
-    "specs": "<p><strong>Panels:</strong> 9</p><p><strong>Pixels:</strong> 405</p><p><strong>LEDs:</strong> 5050 RGBW (3000k)</p><p><strong>Density:</strong> 60/m @ 20/px</p><p><strong>IC: </strong>WS2814</p><p><strong>Voltage:</strong> 12vdc</p><p><br></p>",
+    "specs": "<p><strong>Panels:</strong> 9</p><p><strong>Pixels:</strong> 405</p><p><strong>LEDs:</strong> 5050 RGBW (3000k)</p><p><strong>Density:</strong> 60/m @ 20/px</p><p><strong>IC: </strong>WS2814</p><p><strong>Voltage:</strong> 12vdc</p>",
     "related": [
       {
         "name": "Que Bueno Suerte!",
@@ -5697,12 +5732,20 @@
       {
         "name": "Alabaster Bar Top",
         "url": "#project/9525"
+      },
+      {
+        "name": "Bar Backsplash",
+        "url": "#project/7026"
+      },
+      {
+        "name": "Bar Tubes",
+        "url": "#project/4411"
       }
     ],
     "video": "",
     "timestamp": "2026-08-14T19:25:35.032Z",
     "id": "468",
-    "order": 6,
+    "order": 8,
     "thumbnail": "media/Lighting/Bar Kicker/frame-thumb-1786735695778-thumb.webp",
     "thumbnailFit": {
       "scale": 1,
@@ -5714,5 +5757,235 @@
       "x": 50,
       "y": 47.7
     }
+  },
+  {
+    "title": "Bar Backsplash",
+    "category": "Lighting",
+    "image": "media/Lighting/Bar Backsplash/20241009_111435.webp",
+    "thumbnail": "media/Lighting/Bar Backsplash/20241009_111435-thumb.webp",
+    "thumbnailFit": {
+      "scale": 1,
+      "x": 57.1,
+      "y": 50.7
+    },
+    "bannerFit": {
+      "scale": 1,
+      "x": 0,
+      "y": 59
+    },
+    "description": "<p>Extracting a secured LED track from behind a permanent acrylic wall using a ratchet strap and a deadblow.</p>",
+    "longDescription": "<p>The bar backsplash at Que Bueno Suerte! is a giant acrylic wall extending up to a vaulted ceiling. The original LEDs were burnt out, and the wiring was shot. I needed to relight the edges of the acrylic and underlight the 3 glass bottle shelves. The wall was never meant to come apart, and the shelves were mounted directly through the acrylic after initial assembly. This trapped the bottom LED track under the panels. It was also locked in with double-sided gummy tape.</p><p>I got the top and side strips out quickly. The bottom track was an 8 ft problem. My only option was pulling it out sideways, fighting the friction of the adhesives and the weight of the wall. I drilled a hole through the end of the aluminum track and hooked a ratchet strap to it. I ran the strap across the room, out the door, and anchored it to the welded metal patio fence. Sliding a 2 ft piece of strut channel through the strap gave me a strike plate. I stood next to the bar and hit the strut channel with a deadblow. The track inched out fraction by fraction. It took me about 4 hours in total to get it out. I ran out of time before the venue opened for service, so I packed up and came back the next day to finish the LED installation.</p><p>Assembly was much easier. I skipped the adhesive on the new bottom track. For the glass shelves, I mounted pixel tape into thin black channels and siliconed them face up. They sit mid-shelf, firing light directly up through the bottles. I loomed the wiring and ran it back to an Advatek decoder and a couple of Mean Well power supplies, tying the installation into the main server upstairs. The bright acrylic acts as a prominent backdrop for the bartenders, tying the main bar in with the alabaster top and kicker.</p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "tags": [
+      "AC/DC Load Calc",
+      "Custom Fabrication",
+      "Hand tools",
+      "Lighting Design",
+      "Madrix",
+      "Pixel Mapping",
+      "Power Distribution",
+      "Power tools",
+      "SPI",
+      "Wire-to-Board Soldering",
+      "Repair"
+    ],
+    "gallery": [
+      {
+        "url": "media/Lighting/Bar Backsplash/20241009_113728.mp4",
+        "fit": {
+          "scale": 1.1,
+          "x": 67.2,
+          "y": 61.3
+        },
+        "poster": "media/Lighting/Bar Backsplash/frame-thumb-1786742341805.webp",
+        "thumbnail": "media/Lighting/Bar Backsplash/frame-thumb-1786742341805-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Bar Backsplash/20241009_113753.mp4",
+        "fit": {
+          "scale": 1,
+          "x": 52.1,
+          "y": 60.6
+        },
+        "poster": "media/Lighting/Bar Backsplash/frame-thumb-1786742368716.webp",
+        "thumbnail": "media/Lighting/Bar Backsplash/frame-thumb-1786742368716-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Bar Backsplash/20250128_113203.mp4",
+        "fit": {
+          "scale": 1,
+          "x": 50,
+          "y": 80.5
+        },
+        "poster": "media/Lighting/Bar Backsplash/20250128_113203-poster.webp",
+        "thumbnail": "media/Lighting/Bar Backsplash/20250128_113203-poster-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Bar Backsplash/20241028_100715.mp4",
+        "fit": {
+          "scale": 1,
+          "x": 57.3,
+          "y": 19.8
+        },
+        "poster": "media/Lighting/Bar Backsplash/20241028_100715-poster.webp",
+        "thumbnail": "media/Lighting/Bar Backsplash/20241028_100715-poster-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Bar Backsplash/20241028_101223.mp4",
+        "fit": {
+          "scale": 1,
+          "x": 50.4,
+          "y": 31.3
+        },
+        "poster": "media/Lighting/Bar Backsplash/20241028_101223-poster.webp",
+        "thumbnail": "media/Lighting/Bar Backsplash/20241028_101223-poster-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Bar Backsplash/20240619_123134.webp",
+        "fit": {
+          "scale": 1,
+          "x": 50,
+          "y": 54.1
+        },
+        "thumbnail": "media/Lighting/Bar Backsplash/20240619_123134-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Bar Backsplash/20241009_111435-2.webp",
+        "fit": {
+          "scale": 1,
+          "x": 50,
+          "y": 50
+        },
+        "thumbnail": "media/Lighting/Bar Backsplash/20241009_111435-thumb-2.webp"
+      },
+      {
+        "url": "media/Lighting/Bar Backsplash/20240205_124008.webp",
+        "fit": {
+          "scale": 1,
+          "x": 50,
+          "y": 54.4
+        },
+        "thumbnail": "media/Lighting/Bar Backsplash/20240205_124008-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Bar Backsplash/20240205_112043.webp",
+        "fit": {
+          "scale": 1,
+          "x": 46.8,
+          "y": 51.1
+        },
+        "thumbnail": "media/Lighting/Bar Backsplash/20240205_112043-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Bar Backsplash/20240205_123530.webp",
+        "fit": {
+          "scale": 1,
+          "x": 46.3,
+          "y": 11.7
+        },
+        "thumbnail": "media/Lighting/Bar Backsplash/20240205_123530-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Bar Backsplash/20240201_132628.webp",
+        "fit": {
+          "scale": 1,
+          "x": 48,
+          "y": 24.6
+        },
+        "thumbnail": "media/Lighting/Bar Backsplash/20240201_132628-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Bar Backsplash/20240201_132511.webp",
+        "fit": {
+          "scale": 1,
+          "x": 50,
+          "y": 29
+        },
+        "thumbnail": "media/Lighting/Bar Backsplash/20240201_132511-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Bar Backsplash/20240201_132255.webp",
+        "fit": {
+          "scale": 1,
+          "x": 50.2,
+          "y": 28.7
+        },
+        "thumbnail": "media/Lighting/Bar Backsplash/20240201_132255-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Bar Backsplash/20240201_131026.webp",
+        "fit": {
+          "scale": 1,
+          "x": 0,
+          "y": 60.7
+        },
+        "thumbnail": "media/Lighting/Bar Backsplash/20240201_131026-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Bar Backsplash/20240201_131015.webp",
+        "fit": {
+          "scale": 1.15,
+          "x": 76.9,
+          "y": 100
+        },
+        "thumbnail": "media/Lighting/Bar Backsplash/20240201_131015-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Bar Backsplash/20240201_131202.webp",
+        "fit": {
+          "scale": 1,
+          "x": 49.1,
+          "y": 31.6
+        },
+        "thumbnail": "media/Lighting/Bar Backsplash/20240201_131202-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Bar Backsplash/20240201_132300.webp",
+        "fit": {
+          "scale": 1,
+          "x": 50.2,
+          "y": 57.6
+        },
+        "thumbnail": "media/Lighting/Bar Backsplash/20240201_132300-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Bar Backsplash/20240201_131004.webp",
+        "fit": {
+          "scale": 1,
+          "x": 50.9,
+          "y": 63.3
+        },
+        "thumbnail": "media/Lighting/Bar Backsplash/20240201_131004-thumb.webp"
+      }
+    ],
+    "files": [],
+    "specs": "<p><strong>Pixels: </strong>418</p><p><strong>LED: </strong>5050 RGBW (3000k)</p><p><strong>IC:</strong> WS2814</p><p><strong>Density: </strong>60/m @ 20px/m</p><p><strong>Voltage: </strong>12vdc</p><p><br></p>",
+    "related": [
+      {
+        "name": "Que Bueno Suerte!",
+        "url": "#project/4113"
+      },
+      {
+        "name": "Alabaster Bar Top",
+        "url": "#project/9525"
+      },
+      {
+        "name": "Bar Kicker",
+        "url": "#project/468"
+      },
+      {
+        "name": "Bar Tubes",
+        "url": "#project/4411"
+      }
+    ],
+    "video": "",
+    "timestamp": "2026-08-14T21:28:07.028Z",
+    "id": "7026",
+    "order": 6
   }
 ]
