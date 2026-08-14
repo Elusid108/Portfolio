@@ -1198,7 +1198,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-17T17:47:45.485Z",
     "wip": false,
-    "order": 12,
+    "order": 13,
     "thumbnailFit": {
       "scale": 1.2,
       "x": 0,
@@ -1975,7 +1975,7 @@
     "video": "",
     "timestamp": "2026-06-21T22:45:09.610Z",
     "id": "6350",
-    "order": 4,
+    "order": 8,
     "specs": "<p><strong>Pixel Spot:</strong> 34x PixelDots RGBW</p><p><strong>Profile:</strong> 12x Profile Zoom 150W</p><p><strong>Beye:</strong> 18x 6×40W RGBW</p><p><strong>SFX:</strong> 1x Radiance Hazer</p><p><strong>Universes:</strong> 4 sACN</p><p><strong>Control:</strong> Wolfmix WMX1</p>",
     "related": [],
     "thumbnailFit": {
@@ -2257,7 +2257,7 @@
     "video": "",
     "timestamp": "2026-06-21T22:55:23.650Z",
     "id": "5045",
-    "order": 11,
+    "order": 12,
     "specs": "<p><strong>Strip:</strong> RGBW pixel modules (upward-facing)</p><p><strong>Mount:</strong> 8x strut channel · rotary-hammered into concrete</p><p><strong>Decoder:</strong> Long-range receivers</p><p><strong>Power:</strong> Isolated PSU room (fan noise mitigation)</p><p><strong>Control:</strong> Madrix 5.x</p>",
     "related": [],
     "thumbnailFit": {
@@ -2797,7 +2797,7 @@
     "video": "",
     "timestamp": "2026-07-20T20:00:01.882Z",
     "id": "7590",
-    "order": 14,
+    "order": 15,
     "specs": "<p><strong>Pixels:</strong> 520x WS2801 RGB</p><p><strong>Strip:</strong> 1x panel · 6×1 · 12V DC</p><p><strong>Decoder:</strong> SanDevices E682</p><p><strong>Protocol:</strong> WS2801</p><p><strong>Control:</strong> Madrix 3.6</p>",
     "related": [
       {
@@ -2917,7 +2917,7 @@
     "video": "",
     "timestamp": "2026-07-20T21:09:12.884Z",
     "id": "6808",
-    "order": 5,
+    "order": 4,
     "specs": "<p><strong>Pixels:</strong> 1152x WS2815 RGB</p><p><strong>Strip:</strong> 96x 0.2m @ 60/m · 12V DC</p><p><strong>Fixtures:</strong> 96x 3D-printed PLA+ louver corners</p><p><strong>Mounting:</strong> Double-sided tape · black cable wrap</p><p><strong>Control:</strong> Madrix 5.x</p>",
     "related": [
       {
@@ -4207,7 +4207,7 @@
     "video": "",
     "timestamp": "2026-08-08T00:49:03.114Z",
     "id": "8983",
-    "order": 10,
+    "order": 11,
     "thumbnail": "media/Lighting/Glass VIP Wall/Screenshot 2026-08-07 204525-thumb.webp"
   },
   {
@@ -5238,7 +5238,7 @@
     "video": "",
     "timestamp": "2026-08-09T16:56:13.594Z",
     "id": "3671",
-    "order": 13,
+    "order": 14,
     "thumbnailFit": {
       "scale": 1,
       "x": 69.8,
@@ -5371,7 +5371,7 @@
     "video": "",
     "timestamp": "2026-08-09T23:05:35.692Z",
     "id": "6654",
-    "order": 9,
+    "order": 10,
     "thumbnail": "media/Lighting/Remote Fill Fog Jets/frame-thumb-1786744075304-thumb.webp"
   },
   {
@@ -5552,7 +5552,7 @@
     "video": "",
     "timestamp": "2026-08-14T18:26:35.295Z",
     "id": "9525",
-    "order": 7,
+    "order": 6,
     "thumbnail": "media/Lighting/Alabaster Bar Top/Gemini_Generated_Image_jevrnrjevrnrjevr-thumb.webp",
     "thumbnailFit": {
       "scale": 1.35,
@@ -5745,7 +5745,7 @@
     "video": "",
     "timestamp": "2026-08-14T19:25:35.032Z",
     "id": "468",
-    "order": 8,
+    "order": 7,
     "thumbnail": "media/Lighting/Bar Kicker/frame-thumb-1786735695778-thumb.webp",
     "thumbnailFit": {
       "scale": 1,
@@ -5986,6 +5986,137 @@
     "video": "",
     "timestamp": "2026-08-14T21:28:07.028Z",
     "id": "7026",
-    "order": 6
+    "order": 5
+  },
+  {
+    "title": "Glow Lounge",
+    "category": "Lighting",
+    "image": "media/Lighting/Glow Lounge/frame-thumb-1786745346701.webp",
+    "thumbnail": "media/Lighting/Glow Lounge/frame-thumb-1786745346701-thumb.webp",
+    "thumbnailFit": {
+      "scale": 1.2,
+      "x": 33.6,
+      "y": 0
+    },
+    "bannerFit": {
+      "scale": 1,
+      "x": 45.4,
+      "y": 25.4
+    },
+    "description": "<p>I upgraded the dance floor lighting at Glow Lounge on an 8ft ceiling around a fixed art installation.</p>",
+    "longDescription": "<p>Glow Lounge wanted more energy on their dance floor. Budget was the primary constraint. The room had an 8 ft ceiling, and 3 art panels hung angled over the floor. A community member painted them with UV paint before he passed away, so they could not be moved. I scrapped my initial pixel designs to keep costs down. After pulling down the existing rig, I cleaned the usable units and mapped a new layout around the art.</p><p>I found a few open spots and mounted 5 ft strut channels to the ceiling. Four RGBW pixel dot beams went onto each bar, finished with a reused hybrid fixture on the end. I added 2 new B6 FX wash lights flanking the DJ and 2 at the back of the room. I relocated the existing mirror balls into a symmetrical pattern. The centerpiece was a rotating mannequin torso covered entirely in small mirrors.</p><p>The fixtures did not cooperate immediately. The new B6 washes sometimes got stuck while panning. I had to repair a couple of them multiple times to keep them operating correctly.</p><p>The system ran off a Wolfmix WMX1 controller. I narrowed the B6 washes into beams and aimed them at the mirror balls and the spinning torso. The reflection scattered light across the low room and the dance floor.</p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "tags": [
+      "Custom Fabrication",
+      "Lighting Design",
+      "DMX",
+      "Power Distribution",
+      "Power tools",
+      "Repair"
+    ],
+    "gallery": [
+      {
+        "url": "media/Lighting/Glow Lounge/Video Project 29.mp4",
+        "fit": {
+          "scale": 1.3,
+          "x": 48.3,
+          "y": 0.2
+        },
+        "poster": "media/Lighting/Glow Lounge/frame-thumb-1786747929189.webp",
+        "thumbnail": "media/Lighting/Glow Lounge/frame-thumb-1786747929189-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Glow Lounge/Video Project 30.mp4",
+        "fit": {
+          "scale": 1.4,
+          "x": 40.8,
+          "y": 12.4
+        },
+        "poster": "media/Lighting/Glow Lounge/frame-thumb-1786747967418.webp",
+        "thumbnail": "media/Lighting/Glow Lounge/frame-thumb-1786747967418-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Glow Lounge/20231203_134428.mp4",
+        "fit": {
+          "scale": 1.3,
+          "x": 22.2,
+          "y": 30.7
+        },
+        "poster": "media/Lighting/Glow Lounge/frame-thumb-1786745268005.webp",
+        "thumbnail": "media/Lighting/Glow Lounge/frame-thumb-1786745268005-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Glow Lounge/20230706_145524.mp4",
+        "fit": {
+          "scale": 2,
+          "x": 45.2,
+          "y": 28.7
+        },
+        "poster": "media/Lighting/Glow Lounge/frame-thumb-1786745153988.webp",
+        "thumbnail": "media/Lighting/Glow Lounge/frame-thumb-1786745153988-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Glow Lounge/20230706_140756.mp4",
+        "poster": "media/Lighting/Glow Lounge/20230706_140756-poster.webp",
+        "thumbnail": "media/Lighting/Glow Lounge/20230706_140756-poster-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Glow Lounge/20231203_134407.webp",
+        "fit": {
+          "scale": 1.25,
+          "x": 33.6,
+          "y": 64.8
+        },
+        "thumbnail": "media/Lighting/Glow Lounge/20231203_134407-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Glow Lounge/20231203_134419.webp",
+        "fit": {
+          "scale": 1.3,
+          "x": 21.4,
+          "y": 81.2
+        },
+        "thumbnail": "media/Lighting/Glow Lounge/20231203_134419-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Glow Lounge/20230706_145020.webp",
+        "fit": {
+          "scale": 1,
+          "x": 19.8,
+          "y": 27.1
+        },
+        "thumbnail": "media/Lighting/Glow Lounge/20230706_145020-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Glow Lounge/20240209_122228.webp",
+        "fit": {
+          "scale": 1.35,
+          "x": 37.2,
+          "y": 24.7
+        },
+        "thumbnail": "media/Lighting/Glow Lounge/20240209_122228-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Glow Lounge/20230705_122239.webp",
+        "fit": {
+          "scale": 1.1,
+          "x": 77.5,
+          "y": 31.7
+        },
+        "thumbnail": "media/Lighting/Glow Lounge/20230705_122239-thumb.webp"
+      }
+    ],
+    "files": [],
+    "specs": "<p><strong>Controller: </strong>WolfMix WMX1</p><p><strong>Lighting:</strong> (8) PixelDot . (4) B6 FX . (2) Intimidator Hybrid</p>",
+    "related": [],
+    "video": "",
+    "timestamp": "2026-08-14T22:12:34.696Z",
+    "id": "3309",
+    "order": 9
   }
 ]
