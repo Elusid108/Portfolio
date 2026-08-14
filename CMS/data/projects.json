@@ -1198,7 +1198,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-17T17:47:45.485Z",
     "wip": false,
-    "order": 13,
+    "order": 14,
     "thumbnailFit": {
       "scale": 1.2,
       "x": 0,
@@ -1975,7 +1975,7 @@
     "video": "",
     "timestamp": "2026-06-21T22:45:09.610Z",
     "id": "6350",
-    "order": 8,
+    "order": 9,
     "specs": "<p><strong>Pixel Spot:</strong> 34x PixelDots RGBW</p><p><strong>Profile:</strong> 12x Profile Zoom 150W</p><p><strong>Beye:</strong> 18x 6×40W RGBW</p><p><strong>SFX:</strong> 1x Radiance Hazer</p><p><strong>Universes:</strong> 4 sACN</p><p><strong>Control:</strong> Wolfmix WMX1</p>",
     "related": [],
     "thumbnailFit": {
@@ -2257,7 +2257,7 @@
     "video": "",
     "timestamp": "2026-06-21T22:55:23.650Z",
     "id": "5045",
-    "order": 12,
+    "order": 13,
     "specs": "<p><strong>Strip:</strong> RGBW pixel modules (upward-facing)</p><p><strong>Mount:</strong> 8x strut channel · rotary-hammered into concrete</p><p><strong>Decoder:</strong> Long-range receivers</p><p><strong>Power:</strong> Isolated PSU room (fan noise mitigation)</p><p><strong>Control:</strong> Madrix 5.x</p>",
     "related": [],
     "thumbnailFit": {
@@ -2349,6 +2349,10 @@
       {
         "name": "Mezz tubes",
         "url": "#project/1612"
+      },
+      {
+        "name": "Mezzanine Bar",
+        "url": "#project/9280"
       },
       {
         "name": "Pyramid Steps",
@@ -2797,7 +2801,7 @@
     "video": "",
     "timestamp": "2026-07-20T20:00:01.882Z",
     "id": "7590",
-    "order": 15,
+    "order": 16,
     "specs": "<p><strong>Pixels:</strong> 520x WS2801 RGB</p><p><strong>Strip:</strong> 1x panel · 6×1 · 12V DC</p><p><strong>Decoder:</strong> SanDevices E682</p><p><strong>Protocol:</strong> WS2801</p><p><strong>Control:</strong> Madrix 3.6</p>",
     "related": [
       {
@@ -2917,7 +2921,7 @@
     "video": "",
     "timestamp": "2026-07-20T21:09:12.884Z",
     "id": "6808",
-    "order": 4,
+    "order": 5,
     "specs": "<p><strong>Pixels:</strong> 1152x WS2815 RGB</p><p><strong>Strip:</strong> 96x 0.2m @ 60/m · 12V DC</p><p><strong>Fixtures:</strong> 96x 3D-printed PLA+ louver corners</p><p><strong>Mounting:</strong> Double-sided tape · black cable wrap</p><p><strong>Control:</strong> Madrix 5.x</p>",
     "related": [
       {
@@ -4207,7 +4211,7 @@
     "video": "",
     "timestamp": "2026-08-08T00:49:03.114Z",
     "id": "8983",
-    "order": 11,
+    "order": 12,
     "thumbnail": "media/Lighting/Glass VIP Wall/Screenshot 2026-08-07 204525-thumb.webp"
   },
   {
@@ -5238,7 +5242,7 @@
     "video": "",
     "timestamp": "2026-08-09T16:56:13.594Z",
     "id": "3671",
-    "order": 14,
+    "order": 15,
     "thumbnailFit": {
       "scale": 1,
       "x": 69.8,
@@ -5371,7 +5375,7 @@
     "video": "",
     "timestamp": "2026-08-09T23:05:35.692Z",
     "id": "6654",
-    "order": 10,
+    "order": 11,
     "thumbnail": "media/Lighting/Remote Fill Fog Jets/frame-thumb-1786744075304-thumb.webp"
   },
   {
@@ -5552,7 +5556,7 @@
     "video": "",
     "timestamp": "2026-08-14T18:26:35.295Z",
     "id": "9525",
-    "order": 6,
+    "order": 7,
     "thumbnail": "media/Lighting/Alabaster Bar Top/Gemini_Generated_Image_jevrnrjevrnrjevr-thumb.webp",
     "thumbnailFit": {
       "scale": 1.35,
@@ -5745,7 +5749,7 @@
     "video": "",
     "timestamp": "2026-08-14T19:25:35.032Z",
     "id": "468",
-    "order": 7,
+    "order": 8,
     "thumbnail": "media/Lighting/Bar Kicker/frame-thumb-1786735695778-thumb.webp",
     "thumbnailFit": {
       "scale": 1,
@@ -5986,7 +5990,7 @@
     "video": "",
     "timestamp": "2026-08-14T21:28:07.028Z",
     "id": "7026",
-    "order": 5
+    "order": 6
   },
   {
     "title": "Glow Lounge",
@@ -6117,6 +6121,152 @@
     "video": "",
     "timestamp": "2026-08-14T22:12:34.696Z",
     "id": "3309",
-    "order": 9
+    "order": 10
+  },
+  {
+    "title": "Mezzanine Bar",
+    "category": "Lighting",
+    "image": "media/Lighting/Mezzanine Bar/frame-thumb-1786750929356.webp",
+    "thumbnail": "media/Lighting/Mezzanine Bar/frame-thumb-1786750929356-thumb.webp",
+    "thumbnailFit": {
+      "scale": 1,
+      "x": 48.6,
+      "y": 40.8
+    },
+    "bannerFit": {
+      "scale": 1,
+      "x": 48.6,
+      "y": 37.4
+    },
+    "description": "<p>Pixel mapping 23 irregular sheet metal shelves and working around dining room furniture at Que Bueno Suerte!</p>",
+    "longDescription": "<p>The bottle shelves on the mezzanine at Que Bueno Suerte! were just sheet metal plates stacked on wood blocks. I needed to wash the liquor bottles from the front without exposing the wiring. I custom cut, soldered, and heat-shrunk 23 strips of 3000K RGBW tape. I mounted them inside 45-degree aluminum extrusions and stuck them to the top of each shelf with double-sided foam tape. To hide the wiring, I ran the cables between the wood blocks and sleeved the visible gaps in wire wrap.</p><p>The space under the bar had a different physical constraint. At night, the staff turned the mezzanine into a dance floor and shoved the heavy tables and chairs underneath. I loaded more LED tape into extrusion and siliconed it directly to the underside of the bar. Keeping the profile low and mounting the track far enough back meant the sliding furniture never caught it.</p><p>Every line ran to a single Advatek decoder and a MEAN WELL power supply hidden behind the bar. I mapped the entire rig in Madrix. The 23 irregular shelves created a fun canvas. When the rig fired up, it made a nice addition to the mezzanine, especially fire presets.</p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "tags": [
+      "AC/DC Load Calc",
+      "Custom Fabrication",
+      "Hand tools",
+      "Lighting Design",
+      "Madrix",
+      "Pixel Mapping",
+      "Power Distribution",
+      "SPI",
+      "Wire-to-Board Soldering"
+    ],
+    "gallery": [
+      {
+        "url": "media/Lighting/Mezzanine Bar/20241003_113337.mp4",
+        "fit": {
+          "scale": 1,
+          "x": 47.5,
+          "y": 37.3
+        },
+        "poster": "media/Lighting/Mezzanine Bar/frame-thumb-1786749159559.webp",
+        "thumbnail": "media/Lighting/Mezzanine Bar/frame-thumb-1786749159559-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Mezzanine Bar/20250128_113555.mp4",
+        "fit": {
+          "scale": 1.1,
+          "x": 100,
+          "y": 31.4
+        },
+        "poster": "media/Lighting/Mezzanine Bar/frame-thumb-1786750929356.webp",
+        "thumbnail": "media/Lighting/Mezzanine Bar/frame-thumb-1786750929356-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Mezzanine Bar/20241003_113152.webp",
+        "fit": {
+          "scale": 1,
+          "x": 50.2,
+          "y": 22.4
+        },
+        "thumbnail": "media/Lighting/Mezzanine Bar/20241003_113152-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Mezzanine Bar/20241003_113226.mp4",
+        "fit": {
+          "scale": 1,
+          "x": 43.4,
+          "y": 8.1
+        },
+        "poster": "media/Lighting/Mezzanine Bar/frame-thumb-1786749136908.webp",
+        "thumbnail": "media/Lighting/Mezzanine Bar/frame-thumb-1786749136908-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Mezzanine Bar/20241001_110047.mp4",
+        "fit": {
+          "scale": 1,
+          "x": 52.1,
+          "y": 29
+        },
+        "poster": "media/Lighting/Mezzanine Bar/frame-thumb-1786749024242.webp",
+        "thumbnail": "media/Lighting/Mezzanine Bar/frame-thumb-1786749024242-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Mezzanine Bar/20240924_130323.mp4",
+        "fit": {
+          "scale": 1,
+          "x": 50,
+          "y": 50
+        },
+        "poster": "media/Lighting/Mezzanine Bar/frame-thumb-1786748964762.webp",
+        "thumbnail": "media/Lighting/Mezzanine Bar/frame-thumb-1786748964762-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Mezzanine Bar/20240924_125641.mp4",
+        "fit": {
+          "scale": 1,
+          "x": 50,
+          "y": 43.7
+        },
+        "poster": "media/Lighting/Mezzanine Bar/frame-thumb-1786748937445.webp",
+        "thumbnail": "media/Lighting/Mezzanine Bar/frame-thumb-1786748937445-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Mezzanine Bar/20241003_105404.mp4",
+        "fit": {
+          "scale": 1,
+          "x": 50.5,
+          "y": 43
+        },
+        "poster": "media/Lighting/Mezzanine Bar/frame-thumb-1786749049434.webp",
+        "thumbnail": "media/Lighting/Mezzanine Bar/frame-thumb-1786749049434-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Mezzanine Bar/20240924_113225.webp",
+        "fit": {
+          "scale": 1,
+          "x": 19.9,
+          "y": 27
+        },
+        "thumbnail": "media/Lighting/Mezzanine Bar/20240924_113225-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Mezzanine Bar/20240924_125453.webp",
+        "fit": {
+          "scale": 1,
+          "x": 50,
+          "y": 59.8
+        },
+        "thumbnail": "media/Lighting/Mezzanine Bar/20240924_125453-thumb.webp"
+      }
+    ],
+    "files": [],
+    "specs": "<p><strong>Pixels:</strong> 526</p><p><strong>LED: </strong>RGBW (3000k)</p><p><strong>IC:</strong> WS2814</p><p><strong>Voltage:</strong> 12vdc</p>",
+    "related": [
+      {
+        "name": "Que Bueno Suerte!",
+        "url": "#project/4113"
+      }
+    ],
+    "video": "",
+    "timestamp": "2026-08-14T23:16:48.264Z",
+    "id": "9280",
+    "order": 4
   }
 ]
