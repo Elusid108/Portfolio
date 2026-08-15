@@ -146,7 +146,7 @@
     "timestamp": "2026-01-12T01:03:01.269Z",
     "wip": false,
     "order": 0,
-    "specs": "<p><strong>Pixel Spot:</strong> 144x PixelDots RGBW</p><p><strong>Profile:</strong> 12x Hybrid Zoom 150W</p><p><strong>Wash:</strong> 40x LED Wash RGBWA+UV</p><p><strong>SFX:</strong> 2x Radiance Hazers</p><p>&nbsp;</p><p><strong>Pixels:</strong> 10x Pillars . 640x SM16703 RGBW · 8x 4m @ 60/m (3x1) · 12V DC</p><p><strong>Video:</strong> 234x 1m×0.5m (4.81p) · 60x 0.5m×0.5m (4.81p)</p><p>&nbsp;</p><p><strong>Power:</strong> 400A service · 200A service · 24x 208V twist-lock circuits · 60x 120V Edison circuits</p><p><strong>Control:</strong> Roadhog 4 · Resolume Arena 7.x · Madrix 5.x</p>",
+    "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>PD60 (x144)</strong><br><em>LED • beam 4° • 60W • RGBW • infinite pan &amp; tilt</em></p><p><strong>LSM150 (x12)</strong><br><em>LED • spot 15° • 150W • pan 520° • tilt 270° • 7 colors + white • 6 static gobos • 6 rotating gobos • 3 facet prism</em></p><p><strong>WFP12 (x40)</strong><br><em>LED • wash 35° • 280W • RGBWA+UV</em></p><p><strong>Radiance Hazer (x2)</strong><br><em>DMX • 120Vac • 500W</em></p><h2>PIXELS &amp; DISPLAY</h2><p><strong>Dancefloor Pillars (x10)</strong><br><em>x8 + 4m • RGBW (6000k) • 60/m • 20px/m</em></p><p><strong>VIP Tables (x32)</strong><br><em>2.1m • RGBW (6000k) • 60/m • 20px/m</em></p><p><strong>Ceiling (x1)</strong><br><em>P4.81 • 3.5m x 23m • 728 x 4784</em></p><p><strong>DJ Booth (x1)</strong><br><em>P4.81 • 7m x 1.5m • 1456 x 312</em></p><p><strong>Marquee Left (x1)</strong><br><em>P4.81 • 14m x 1m • 2912 x 208</em></p><p><strong>Marquee Right (x1)</strong><br><em>P4.81 • 18m x 1m • 3744 x 208</em></p><p><strong>Double-Sided Monolith (x1)</strong><br><em>P4.81 • 1.5m x 3m (x2) • 312 x 624 (x2)</em></p>",
     "related": [
       {
         "name": "Temple SF",
@@ -175,7 +175,87 @@
       "x": 44.1,
       "y": 72
     },
-    "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/20210516_134200-thumb.webp"
+    "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/20210516_134200-thumb.webp",
+    "specsData": [
+      {
+        "id": "940346ea-6274-4a47-b4fd-f0b240af9680",
+        "title": "FIXTURES & FX",
+        "items": [
+          {
+            "id": "1cf89442-7060-4640-8bf6-3abd67934dab",
+            "name": "PD60",
+            "qty": "144",
+            "specs": "LED, beam 4°, 60W, RGBW, infinite pan & tilt "
+          },
+          {
+            "id": "6a8eac7f-ac32-4287-99d2-058f056372a7",
+            "name": "LSM150",
+            "qty": "12",
+            "specs": "LED, spot 15°, 150W, pan 520°, tilt 270°, 7 colors + white, 6 static gobos, 6 rotating gobos, 3 facet prism"
+          },
+          {
+            "id": "b5db22a3-0fe8-491c-b125-67b63a8b6302",
+            "name": "WFP12",
+            "qty": "40",
+            "specs": "LED, wash 35°, 280W, RGBWA+UV"
+          },
+          {
+            "id": "cc57064d-00ad-4329-baa4-04600df0bba5",
+            "name": "Radiance Hazer",
+            "qty": "2",
+            "specs": "DMX, 120Vac, 500W"
+          }
+        ]
+      },
+      {
+        "id": "ac6ae498-f20c-45f5-9231-becea0b7b820",
+        "title": "PIXELS & DISPLAY",
+        "items": [
+          {
+            "id": "647d35f5-746c-45fa-b5c6-537b9f543364",
+            "name": "Dancefloor Pillars",
+            "qty": "10",
+            "specs": "x8 + 4m, RGBW (6000k), 60/m, 20px/m, "
+          },
+          {
+            "id": "408be04b-a2d0-4326-9406-263044a8457f",
+            "name": "VIP Tables",
+            "qty": "32",
+            "specs": "2.1m, RGBW (6000k), 60/m, 20px/m, "
+          },
+          {
+            "id": "148a40e2-bcb0-430b-8bd2-a798c77028e4",
+            "name": "Ceiling",
+            "qty": "1",
+            "specs": "P4.81, 3.5m x 23m, 728 x 4784, "
+          },
+          {
+            "id": "409a907d-1120-4918-97f5-aa89b2c0ed7b",
+            "name": "DJ Booth",
+            "qty": "1",
+            "specs": "P4.81, 7m x 1.5m, 1456 x 312, "
+          },
+          {
+            "id": "414aa3fd-6c43-45a6-8f83-0cfee36acafe",
+            "name": "Marquee Left",
+            "qty": "1",
+            "specs": "P4.81, 14m x 1m, 2912 x 208, "
+          },
+          {
+            "id": "9ad37540-a9a0-4ac1-ba51-492d42f2b942",
+            "name": "Marquee Right",
+            "qty": "1",
+            "specs": "P4.81, 18m x 1m, 3744 x 208, "
+          },
+          {
+            "id": "0dea8e17-9c96-41c5-afaf-5480898a284c",
+            "name": "Double-Sided Monolith",
+            "qty": "1",
+            "specs": "P4.81, 1.5m x 3m (x2), 312 x 624 (x2), "
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "8147",
@@ -6257,7 +6337,7 @@
       }
     ],
     "files": [],
-    "specs": "<p><strong>Pixels:</strong> 526</p><p><strong>LED: </strong>RGBW (3000k)</p><p><strong>IC:</strong> WS2814</p><p><strong>Voltage:</strong> 12vdc</p>",
+    "specs": "<h2><strong>PIXELS &amp; DISPLAY</strong></h2><p><strong>LED Pixel Tape (x26.3m)</strong></p><p><em>QTY: 526px • WS2814 • RGBW (3000k) • 12Vdc • 60/m • 20px/m</em></p><h2><strong>POWER &amp; DISTRIBUTION</strong></h2><p><strong>Power Supplies (x2)</strong></p><p><em>MEAN WELL • HLG-320H-12 • 12Vdc • 22A</em></p><p><strong>Pixel Decoder (x1)</strong></p><p><em>Advatek • R4D-S</em></p>",
     "related": [
       {
         "name": "Que Bueno Suerte!",

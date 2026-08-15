@@ -101,6 +101,22 @@
         .rich-text h2, .rich-text .rt-h2 { font-size: 1.25em; font-weight: bold; margin-top: 1em; margin-bottom: 0.5em; color: #e4e4e7; }
         .rich-text p { margin-bottom: 1em; line-height: 1.6; }
         .rich-text p:last-child { margin-bottom: 0; }
+        .rich-text em { color: #9ca3af; font-style: italic; }
+        .rich-text strong { color: white; font-weight: bold; }
+        /* Spec List Builder export — category headings match the CMS live preview */
+        .rich-text.specs-rich-text h2,
+        .rich-text.specs-rich-text .rt-h2 {
+            font-size: 1.125em;
+            font-weight: bold;
+            margin-top: 1.5em;
+            margin-bottom: 0.75em;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.025em;
+        }
+        .rich-text.specs-rich-text h2:first-child,
+        .rich-text.specs-rich-text .rt-h2:first-child { margin-top: 0; }
+        .rich-text.specs-rich-text p { margin-bottom: 1rem; }
         /* Paragraph margins are counted in the clamped box height, which lets a
            partial extra line bleed past the clamp on card previews. */
         .rich-text.line-clamp-3 p { margin-bottom: 0; }
@@ -1162,7 +1178,7 @@
                                     {project.specs && (
                                         <div className="order-3 bg-zinc-900/50 border border-zinc-800 p-6 rounded-xl">
                                             <h4 className="text-sm font-bold text-zinc-500 uppercase tracking-widest mb-4">Specifications</h4>
-                                            <div className="rich-text text-zinc-300 text-sm leading-relaxed"
+                                            <div className="rich-text specs-rich-text text-zinc-300 text-sm leading-relaxed"
                                                  dangerouslySetInnerHTML={{ __html: demoteHeadings(project.specs, 5) }} />
                                         </div>
                                     )}

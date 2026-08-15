@@ -21,6 +21,8 @@
     .upload-zone.dragover { border-color: #6366f1; background-color: #eef2ff; }
     .crop-grabbing { cursor: grabbing !important; }
     #crop-zoom-slider { height: 4px; }
+    .spec-item-card:hover .spec-item-controls { opacity: 1; }
+    .spec-item-controls { opacity: 0; transition: opacity 0.15s; }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen relative">
@@ -163,7 +165,18 @@
           <!-- Specifications -->
           <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
              <h3 class="text-xs font-bold text-slate-500 uppercase mb-3 border-b border-slate-200 pb-2">Specifications</h3>
-             <div id="specs-editor" class="bg-white" style="min-height:120px;"></div>
+             <p class="text-xs text-slate-500 mb-4">Enter comma-separated values in the specs field, and they will auto-format with bullets.</p>
+             <div id="specs-builder" class="space-y-4 mb-6"></div>
+             <button type="button" onclick="addSpecCategory()" class="w-full py-3 bg-slate-800 text-white rounded-lg text-sm font-bold hover:bg-slate-700 transition-colors flex items-center justify-center gap-2 mb-6">
+               <i class="ph ph-plus"></i> Add Category
+             </button>
+             <div>
+               <h4 class="text-xs font-bold text-slate-500 uppercase mb-3">Live Preview</h4>
+               <div id="specs-preview" class="bg-black rounded-xl p-6 border border-slate-800 min-h-[120px]">
+                 <h5 class="text-zinc-500 text-[10px] font-bold tracking-[0.2em] mb-4 uppercase">Specifications</h5>
+                 <div id="specs-preview-body" class="text-zinc-200 text-sm"></div>
+               </div>
+             </div>
           </div>
 
           <!-- Gallery -->
@@ -426,9 +439,247 @@
     let pendingNavigation = null;
     let currentEditIndex = -1;
     let quillShort, quillLong, quillAbout;
+    let specsCategories = [];
 
     const CATEGORY_ORDER = ['Lighting','Art','Circuits','Apps','Solutions','Integration'];
     const CATEGORY_LABELS = { Lighting:'Lighting', Art:'Art', Circuits:'Electronics', Apps:'Apps', Solutions:'Fabrication', Integration:'Integration' };
+
+    // --- SPEC LIST BUILDER ---
+    function newSpecId() {
+        return (crypto.randomUUID && crypto.randomUUID()) ||
+            ('id-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 9));
+    }
+
+    function formatSpecs(specsString) {
+        if (!specsString) return '';
+        return specsString.split(',').map(s => s.trim()).filter(Boolean).join(' • ');
+    }
+
+    function escapeHtml(value) {
+        return String(value ?? '')
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+    }
+
+    function getSpecsData() {
+        return specsCategories.map(cat => ({
+            id: cat.id,
+            title: cat.title,
+            items: cat.items.map(item => ({
+                id: item.id,
+                name: item.name,
+                qty: item.qty,
+                specs: item.specs
+            }))
+        }));
+    }
+
+    function specsDataToHtml(categories) {
+        const parts = [];
+        (categories || []).forEach(cat => {
+            if (!cat.title && (!cat.items || cat.items.length === 0)) return;
+            if (cat.title) {
+                parts.push(`<h2>${escapeHtml(cat.title.toUpperCase())}</h2>`);
+            }
+            (cat.items || []).forEach(item => {
+                if (!item.name) return;
+                const qtyStr = item.qty ? ` (x${escapeHtml(item.qty)})` : '';
+                const formatted = formatSpecs(item.specs);
+                let html = `<p><strong>${escapeHtml(item.name)}${qtyStr}</strong>`;
+                if (formatted) {
+                    html += `<br><em>${escapeHtml(formatted)}</em>`;
+                }
+                html += `</p>`;
+                parts.push(html);
+            });
+        });
+        return parts.join('');
+    }
+
+    function loadSpecsData(data) {
+        if (Array.isArray(data) && data.length > 0) {
+            specsCategories = data.map(cat => ({
+                id: cat.id || newSpecId(),
+                title: cat.title || '',
+                items: Array.isArray(cat.items) ? cat.items.map(item => ({
+                    id: item.id || newSpecId(),
+                    name: item.name || '',
+                    qty: item.qty || '',
+                    specs: item.specs || ''
+                })) : []
+            }));
+        } else {
+            specsCategories = [];
+        }
+        renderSpecsBuilder();
+    }
+
+    function markSpecsDirty() {
+        isDirty = true;
+        renderSpecsPreview();
+    }
+
+    function addSpecCategory() {
+        specsCategories.push({ id: newSpecId(), title: '', items: [] });
+        markSpecsDirty();
+        renderSpecsBuilder();
+    }
+
+    function updateSpecCategory(id, title) {
+        const cat = specsCategories.find(c => c.id === id);
+        if (!cat) return;
+        cat.title = title;
+        markSpecsDirty();
+    }
+
+    function deleteSpecCategory(id) {
+        specsCategories = specsCategories.filter(c => c.id !== id);
+        markSpecsDirty();
+        renderSpecsBuilder();
+    }
+
+    function moveSpecCategory(index, dir) {
+        const next = index + dir;
+        if (next < 0 || next >= specsCategories.length) return;
+        const tmp = specsCategories[index];
+        specsCategories[index] = specsCategories[next];
+        specsCategories[next] = tmp;
+        markSpecsDirty();
+        renderSpecsBuilder();
+    }
+
+    function addSpecItem(categoryId) {
+        const cat = specsCategories.find(c => c.id === categoryId);
+        if (!cat) return;
+        cat.items.push({ id: newSpecId(), name: '', qty: '', specs: '' });
+        markSpecsDirty();
+        renderSpecsBuilder();
+    }
+
+    function updateSpecItem(categoryId, itemId, field, value) {
+        const cat = specsCategories.find(c => c.id === categoryId);
+        if (!cat) return;
+        const item = cat.items.find(i => i.id === itemId);
+        if (!item) return;
+        item[field] = value;
+        markSpecsDirty();
+    }
+
+    function deleteSpecItem(categoryId, itemId) {
+        const cat = specsCategories.find(c => c.id === categoryId);
+        if (!cat) return;
+        cat.items = cat.items.filter(i => i.id !== itemId);
+        markSpecsDirty();
+        renderSpecsBuilder();
+    }
+
+    function moveSpecItem(categoryId, itemIndex, dir) {
+        const cat = specsCategories.find(c => c.id === categoryId);
+        if (!cat) return;
+        const next = itemIndex + dir;
+        if (next < 0 || next >= cat.items.length) return;
+        const tmp = cat.items[itemIndex];
+        cat.items[itemIndex] = cat.items[next];
+        cat.items[next] = tmp;
+        markSpecsDirty();
+        renderSpecsBuilder();
+    }
+
+    function renderSpecsBuilder() {
+        const container = document.getElementById('specs-builder');
+        if (!container) return;
+
+        if (specsCategories.length === 0) {
+            container.innerHTML = '<p class="text-xs text-slate-400 italic">No categories yet. Click &ldquo;Add Category&rdquo; to start.</p>';
+            renderSpecsPreview();
+            return;
+        }
+
+        container.innerHTML = specsCategories.map((cat, catIndex) => `
+            <div class="bg-white rounded-xl border border-slate-200 overflow-hidden" data-cat-id="${escAttr(cat.id)}">
+              <div class="bg-slate-100 p-3 border-b border-slate-200 flex items-center justify-between gap-2">
+                <input type="text" placeholder="CATEGORY NAME (e.g., FIXTURES)"
+                  class="bg-transparent font-bold text-sm uppercase tracking-wide w-full outline-none placeholder-slate-400"
+                  value="${escAttr(cat.title)}"
+                  oninput="updateSpecCategory('${cat.id}', this.value)">
+                <div class="flex items-center gap-0.5 text-slate-500 flex-shrink-0">
+                  <button type="button" onclick="moveSpecCategory(${catIndex}, -1)" class="p-1 hover:bg-slate-200 rounded" title="Move Up"><i class="ph ph-caret-up"></i></button>
+                  <button type="button" onclick="moveSpecCategory(${catIndex}, 1)" class="p-1 hover:bg-slate-200 rounded" title="Move Down"><i class="ph ph-caret-down"></i></button>
+                  <button type="button" onclick="deleteSpecCategory('${cat.id}')" class="p-1 hover:bg-red-100 hover:text-red-600 rounded" title="Delete Category"><i class="ph ph-trash"></i></button>
+                </div>
+              </div>
+              <div class="p-3 space-y-3">
+                ${cat.items.map((item, itemIndex) => `
+                  <div class="spec-item-card relative bg-slate-50 rounded-lg p-3 border border-slate-100 hover:border-indigo-200 transition-all">
+                    <div class="flex gap-3 mb-2 pr-16">
+                      <div class="flex-1">
+                        <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Item Name</label>
+                        <input type="text" placeholder="e.g., SolaSpot 1000"
+                          class="w-full border border-slate-200 rounded px-2 py-1.5 text-sm focus:border-indigo-500 outline-none"
+                          value="${escAttr(item.name)}"
+                          oninput="updateSpecItem('${cat.id}', '${item.id}', 'name', this.value)">
+                      </div>
+                      <div class="w-24">
+                        <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Qty</label>
+                        <input type="text" placeholder="e.g., 12"
+                          class="w-full border border-slate-200 rounded px-2 py-1.5 text-sm focus:border-indigo-500 outline-none"
+                          value="${escAttr(item.qty)}"
+                          oninput="updateSpecItem('${cat.id}', '${item.id}', 'qty', this.value)">
+                      </div>
+                    </div>
+                    <div>
+                      <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Specifications (comma separated)</label>
+                      <input type="text" placeholder="e.g., Spot, LED, CMY, Framing"
+                        class="w-full border border-slate-200 rounded px-2 py-1.5 text-sm focus:border-indigo-500 outline-none"
+                        value="${escAttr(item.specs)}"
+                        oninput="updateSpecItem('${cat.id}', '${item.id}', 'specs', this.value)">
+                    </div>
+                    <div class="spec-item-controls absolute top-2 right-2 flex bg-white shadow-sm rounded-md border border-slate-200">
+                      <button type="button" onclick="moveSpecItem('${cat.id}', ${itemIndex}, -1)" class="p-1.5 hover:bg-slate-100 text-slate-500" title="Move Up"><i class="ph ph-caret-up"></i></button>
+                      <button type="button" onclick="moveSpecItem('${cat.id}', ${itemIndex}, 1)" class="p-1.5 hover:bg-slate-100 text-slate-500 border-l border-r border-slate-200" title="Move Down"><i class="ph ph-caret-down"></i></button>
+                      <button type="button" onclick="deleteSpecItem('${cat.id}', '${item.id}')" class="p-1.5 hover:bg-red-50 text-red-500" title="Delete Item"><i class="ph ph-trash"></i></button>
+                    </div>
+                  </div>
+                `).join('')}
+                <button type="button" onclick="addSpecItem('${cat.id}')"
+                  class="w-full py-2 border-2 border-dashed border-slate-300 text-slate-500 rounded-lg text-sm font-medium hover:border-indigo-400 hover:text-indigo-600 transition-colors flex items-center justify-center gap-2">
+                  <i class="ph ph-plus"></i> Add Item
+                </button>
+              </div>
+            </div>
+        `).join('');
+
+        renderSpecsPreview();
+    }
+
+    function renderSpecsPreview() {
+        const body = document.getElementById('specs-preview-body');
+        if (!body) return;
+
+        let html = '';
+        specsCategories.forEach((cat, i) => {
+            if (!cat.title && cat.items.length === 0) return;
+            html += `<div class="${i === 0 ? '' : 'mt-6'} mb-2">`;
+            if (cat.title) {
+                html += `<h2 class="text-base font-bold uppercase tracking-wide text-white mb-3">${escapeHtml(cat.title)}</h2>`;
+            }
+            cat.items.forEach(item => {
+                if (!item.name) return;
+                const formatted = formatSpecs(item.specs);
+                html += `<div class="mb-4">`;
+                html += `<p class="m-0"><strong class="font-bold text-white">${escapeHtml(item.name)}${item.qty ? ` (x${escapeHtml(item.qty)})` : ''}</strong>`;
+                if (formatted) {
+                    html += `<br><em class="text-zinc-400" style="font-style:italic">${escapeHtml(formatted)}</em>`;
+                }
+                html += `</p></div>`;
+            });
+            html += `</div>`;
+        });
+
+        body.innerHTML = html || '<p class="text-zinc-600 text-xs italic">Nothing to preview yet.</p>';
+    }
 
     function getCollapsedSet() {
         try { return new Set(JSON.parse(localStorage.getItem('cms_collapsed') || '[]')); }
@@ -690,34 +941,6 @@
             placeholder: 'Detailed project breakdown...'
         });
 
-        quillSpecs = new Quill('#specs-editor', {
-            theme: 'snow',
-            modules: {
-                toolbar: toolbarFull,
-                clipboard: { matchers: [stripColors] },
-                keyboard: {
-                    bindings: {
-                        enter: {
-                            key: 13,
-                            handler: function(range) {
-                                // If the previous character is already \n the current line is
-                                // blank — let Quill's default handler create a paragraph break.
-                                if (range.index > 0 &&
-                                    this.quill.getText(range.index - 1, 1) === '\n') {
-                                    return true;
-                                }
-                                // Otherwise insert a soft line break (<br>) and move cursor.
-                                this.quill.insertText(range.index, '\n', Quill.sources.USER);
-                                this.quill.setSelection(range.index + 1, 0, Quill.sources.SILENT);
-                                return false;
-                            }
-                        }
-                    }
-                }
-            },
-            placeholder: 'Specifications, technical details...'
-        });
-
         quillAbout = new Quill('#about-editor', {
             theme: 'snow',
             modules: { toolbar: toolbarFull, clipboard: { matchers: [stripColors] } },
@@ -726,7 +949,6 @@
 
         quillShort.on('text-change', () => isDirty = true);
         quillLong.on('text-change', () => isDirty = true);
-        quillSpecs.on('text-change', () => isDirty = true);
         quillAbout.on('text-change', () => isDirty = true);
     }
 
@@ -933,8 +1155,7 @@
       if (p.longDescription) quillLong.clipboard.dangerouslyPasteHTML(p.longDescription);
       else quillLong.setText('');
 
-      if (p.specs) quillSpecs.clipboard.dangerouslyPasteHTML(p.specs);
-      else quillSpecs.setText('');
+      loadSpecsData(Array.isArray(p.specsData) && p.specsData.length > 0 ? p.specsData : []);
 
       const fileContainer = document.getElementById('files-container');
       fileContainer.innerHTML = '';
@@ -977,7 +1198,7 @@
       document.getElementById('editor').reset();
       quillShort.setText('');
       quillLong.setText('');
-      quillSpecs.setText('');
+      loadSpecsData([]);
       document.getElementById('files-container').innerHTML = '';
       document.getElementById('gallery-container').innerHTML = '';
       document.getElementById('related-container').innerHTML = '';
@@ -1733,7 +1954,8 @@
         tags: csvToArray(document.getElementById('tags').value),
         gallery: galleryList,
         files: filesList,
-        specs: quillSpecs.root.innerHTML.trim() === '<p><br></p>' ? '' : quillSpecs.root.innerHTML,
+        specsData: getSpecsData(),
+        specs: specsDataToHtml(specsCategories),
         related: Array.from(document.querySelectorAll('.related-row')).map(row => ({
             name: row.querySelector('.related-name').value,
             url: row.querySelector('.related-url').value
