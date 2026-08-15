@@ -146,7 +146,7 @@
     "timestamp": "2026-01-12T01:03:01.269Z",
     "wip": false,
     "order": 0,
-    "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>PD60 (x144)</strong><br><em>LED • beam 4° • 60W • RGBW • infinite pan &amp; tilt</em></p><p><strong>LSM150 (x12)</strong><br><em>LED • spot 15° • 150W • pan 520° • tilt 270° • 7 colors + white • 6 static gobos • 6 rotating gobos • 3 facet prism</em></p><p><strong>WFP12 (x40)</strong><br><em>LED • wash 35° • 280W • RGBWA+UV</em></p><p><strong>Radiance Hazer (x2)</strong><br><em>DMX • 120Vac • 500W</em></p><h2>PIXELS &amp; DISPLAY</h2><p><strong>Dancefloor Pillars (x10)</strong><br><em>x8 + 4m • RGBW (6000k) • 60/m • 20px/m</em></p><p><strong>VIP Tables (x32)</strong><br><em>2.1m • RGBW (6000k) • 60/m • 20px/m</em></p><p><strong>Ceiling (x1)</strong><br><em>P4.81 • 3.5m x 23m • 728 x 4784</em></p><p><strong>DJ Booth (x1)</strong><br><em>P4.81 • 7m x 1.5m • 1456 x 312</em></p><p><strong>Marquee Left (x1)</strong><br><em>P4.81 • 14m x 1m • 2912 x 208</em></p><p><strong>Marquee Right (x1)</strong><br><em>P4.81 • 18m x 1m • 3744 x 208</em></p><p><strong>Double-Sided Monolith (x1)</strong><br><em>P4.81 • 1.5m x 3m (x2) • 312 x 624 (x2)</em></p>",
+    "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>Beam (x144)</strong><br><em>PD60 • LED • beam 4° • 60W • RGBW • infinite pan &amp; tilt</em></p><p><strong>Spot (x12)</strong><br><em>LSM150 • LED • spot 15° • 150W • pan 520° • tilt 270° • 7 colors + white • 6 static gobos • 6 rotating gobos • 3 facet prism</em></p><p><strong>Wash (x40)</strong><br><em>WFP12 • LED • wash 35° • 280W • RGBWA+UV</em></p><p><strong>Hazer (x2)</strong><br><em>Radiance Hazer • DMX • 120Vac • 500W</em></p><h2>PIXELS &amp; DISPLAY</h2><p><strong>Dancefloor Pixel Pillars (x10)</strong><br><em>x8 + 4m • RGBW (6000k) • 60/m • 20px/m</em></p><p><strong>WiFi VIP Pixel Tables (x32)</strong><br><em>2.1m • RGBW (6000k) • 60/m • 20px/m</em></p><p><strong>Ceiling Screen (x1)</strong><br><em>3.5m x 23m • P4.81 • 728 x 4784</em></p><p><strong>DJ Booth Screen (x1)</strong><br><em>7m x 1.5m • P4.81 • 1456 x 312</em></p><p><strong>Marquee Left Screen (x1)</strong><br><em>14m x 1m • P4.81 • 2912 x 208</em></p><p><strong>Marquee Right Screen (x1)</strong><br><em>18m x 1m • P4.81 • 3744 x 208</em></p><p><strong>Monolith Screens (x1)</strong><br><em>1.5m x 3m (x2) • P4.81 • 312 x 624 (x2)</em></p>",
     "related": [
       {
         "name": "Temple SF",
@@ -183,27 +183,27 @@
         "items": [
           {
             "id": "1cf89442-7060-4640-8bf6-3abd67934dab",
-            "name": "PD60",
+            "name": "Beam",
             "qty": "144",
-            "specs": "LED, beam 4°, 60W, RGBW, infinite pan & tilt "
+            "specs": "PD60, LED, beam 4°, 60W, RGBW, infinite pan & tilt "
           },
           {
             "id": "6a8eac7f-ac32-4287-99d2-058f056372a7",
-            "name": "LSM150",
+            "name": "Spot",
             "qty": "12",
-            "specs": "LED, spot 15°, 150W, pan 520°, tilt 270°, 7 colors + white, 6 static gobos, 6 rotating gobos, 3 facet prism"
+            "specs": "LSM150, LED, spot 15°, 150W, pan 520°, tilt 270°, 7 colors + white, 6 static gobos, 6 rotating gobos, 3 facet prism"
           },
           {
             "id": "b5db22a3-0fe8-491c-b125-67b63a8b6302",
-            "name": "WFP12",
+            "name": "Wash",
             "qty": "40",
-            "specs": "LED, wash 35°, 280W, RGBWA+UV"
+            "specs": "WFP12, LED, wash 35°, 280W, RGBWA+UV"
           },
           {
             "id": "cc57064d-00ad-4329-baa4-04600df0bba5",
-            "name": "Radiance Hazer",
+            "name": "Hazer",
             "qty": "2",
-            "specs": "DMX, 120Vac, 500W"
+            "specs": "Radiance Hazer, DMX, 120Vac, 500W"
           }
         ]
       },
@@ -213,45 +213,45 @@
         "items": [
           {
             "id": "647d35f5-746c-45fa-b5c6-537b9f543364",
-            "name": "Dancefloor Pillars",
+            "name": "Dancefloor Pixel Pillars",
             "qty": "10",
             "specs": "x8 + 4m, RGBW (6000k), 60/m, 20px/m, "
           },
           {
             "id": "408be04b-a2d0-4326-9406-263044a8457f",
-            "name": "VIP Tables",
+            "name": "WiFi VIP Pixel Tables",
             "qty": "32",
             "specs": "2.1m, RGBW (6000k), 60/m, 20px/m, "
           },
           {
             "id": "148a40e2-bcb0-430b-8bd2-a798c77028e4",
-            "name": "Ceiling",
+            "name": "Ceiling Screen",
             "qty": "1",
-            "specs": "P4.81, 3.5m x 23m, 728 x 4784, "
+            "specs": "3.5m x 23m, P4.81, 728 x 4784, "
           },
           {
             "id": "409a907d-1120-4918-97f5-aa89b2c0ed7b",
-            "name": "DJ Booth",
+            "name": "DJ Booth Screen",
             "qty": "1",
-            "specs": "P4.81, 7m x 1.5m, 1456 x 312, "
+            "specs": "7m x 1.5m, P4.81, 1456 x 312, "
           },
           {
             "id": "414aa3fd-6c43-45a6-8f83-0cfee36acafe",
-            "name": "Marquee Left",
+            "name": "Marquee Left Screen",
             "qty": "1",
-            "specs": "P4.81, 14m x 1m, 2912 x 208, "
+            "specs": "14m x 1m, P4.81, 2912 x 208, "
           },
           {
             "id": "9ad37540-a9a0-4ac1-ba51-492d42f2b942",
-            "name": "Marquee Right",
+            "name": "Marquee Right Screen",
             "qty": "1",
-            "specs": "P4.81, 18m x 1m, 3744 x 208, "
+            "specs": "18m x 1m, P4.81, 3744 x 208, "
           },
           {
             "id": "0dea8e17-9c96-41c5-afaf-5480898a284c",
-            "name": "Double-Sided Monolith",
+            "name": "Monolith Screens",
             "qty": "1",
-            "specs": "P4.81, 1.5m x 3m (x2), 312 x 624 (x2), "
+            "specs": "1.5m x 3m (x2), P4.81, 312 x 624 (x2), "
           }
         ]
       }
@@ -3818,7 +3818,7 @@
       }
     ],
     "files": [],
-    "specs": "<p><strong>Pixels:</strong> 3088x SK6812 RGBW</p><p><strong>Strip:</strong> 15x 3.9m @ 60/m · 14x 4.4m @ 60/m · 7x 4.9m @ 60/m · 12V DC</p><p><strong>Decoder:</strong> 1x Advatek PixLite T8S MK3 · 3x Advatek PixLite R4D-S</p><p><strong>Power:</strong> 18x MEAN WELL HLG-320H-12 · 3x 20A circuits</p><p><strong>Control:</strong> Madrix 5.x · ELM (deprecated)</p>",
+    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>Short Tubes (x15)</strong><br><em>3.9m • blackout diffusion • RGBW (3000k) • 60/m • 20px/m • 78px</em></p><p><strong>Mid-length Tubes (x14)</strong><br><em>4.4m • blackout diffusion • RGBW (3000k) • 60/m • 20px/m • 88px</em></p><p><strong>Long Tubes (x7)</strong><br><em>4.9m • blackout diffusion • RGBW (3000k) • 60/m • 20px/m • 98px</em></p><h2>POWER &amp; DISTRIBUTION</h2><p><strong>Power Supply (x18)</strong><br><em>MEAN WELL • HLG-320H-12</em></p><p><strong>Pixel Decoder (x3)</strong><br><em>Advatek • R4D-S • 12 Universe</em></p>",
     "related": [
       {
         "name": "Que Bueno Suerte!",
@@ -3833,7 +3833,51 @@
     "timestamp": "2026-08-01T17:08:27.719Z",
     "id": "1612",
     "order": 1,
-    "thumbnail": "media/Lighting/Blackout Ceiling Tubes/20240619_123414-thumb.webp"
+    "thumbnail": "media/Lighting/Blackout Ceiling Tubes/20240619_123414-thumb.webp",
+    "specsData": [
+      {
+        "id": "a1dea7dd-2bb9-4392-9aec-d54d4b2369a9",
+        "title": "PIXELS & DISPLAY",
+        "items": [
+          {
+            "id": "df916682-c3ef-47d1-a062-f5083ea67525",
+            "name": "Short Tubes",
+            "qty": "15",
+            "specs": "3.9m, blackout diffusion, RGBW (3000k), 60/m • 20px/m, 78px"
+          },
+          {
+            "id": "a44354e5-c45d-4c49-8571-c8a5afa27be3",
+            "name": "Mid-length Tubes",
+            "qty": "14",
+            "specs": "4.4m, blackout diffusion, RGBW (3000k) • 60/m • 20px/m, 88px"
+          },
+          {
+            "id": "e7543a7e-621a-45d4-9002-7e72909abc1f",
+            "name": "Long Tubes",
+            "qty": "7",
+            "specs": "4.9m, blackout diffusion, RGBW (3000k) • 60/m • 20px/m, 98px"
+          }
+        ]
+      },
+      {
+        "id": "89301d93-762c-4ebb-866e-5c5534a658db",
+        "title": "Power & Distribution",
+        "items": [
+          {
+            "id": "5427178b-70bc-4c60-91d3-9a017f246326",
+            "name": "Power Supply",
+            "qty": "18",
+            "specs": "MEAN WELL, HLG-320H-12, "
+          },
+          {
+            "id": "a9bb2638-da4d-45e1-ac97-7a261ee4e1c4",
+            "name": "Pixel Decoder",
+            "qty": "3",
+            "specs": "Advatek, R4D-S, 12 Universe"
+          }
+        ]
+      }
+    ]
   },
   {
     "title": "LED PSU Boot Sequencer",
