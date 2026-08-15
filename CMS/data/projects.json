@@ -2,7 +2,7 @@
   {
     "id": "1842",
     "title": "Portfolio CMS",
-    "category": "Apps",
+    "category": "Software",
     "tags": [
       "JavaScript",
       "React",
@@ -261,7 +261,7 @@
     "id": "8147",
     "timestamp": "2026-01-12T01:03:01.269Z",
     "title": "Emmy Stand",
-    "category": "Art",
+    "category": "Sculpture",
     "image": "media/Art/Emmy Stand/Gemini_Generated_Image_4xox7h4xox7h4xox.webp",
     "description": "<p>I built a desktop display stand to house and illuminate a friend’s Emmy without melting the PLA+ enclosure.</p>",
     "longDescription": "<p>An old coworker from my Tracks days won an Emmy and asked for a custom display. We used to work together when he was a bartender, so he knew my lighting background. I built him a desktop rig that scaled ballet lighting principles into a PLA+ enclosure.</p><p>The stand runs 512 addressable WS2815 LEDs across 7 data lines, driven by a Wasatch Pixels Basic Eight controller hidden inside the base. There are 3 boom towers per side with frosted lenses that arch back from downstage to upstage, while 45 deg wall washers sit recessed along the outer edges. A black and white film strip lines the bottom, printed in dual materials for diffusion and masking. The curved backdrop was too large for a single Bambu Lab print, so I built it in modular sections and turned the seams into an exaggerated surface texture.</p><p>Packing 144/m density LEDs into closed plastic is basically building a slow toaster. To keep heat from destroying the display from the inside out, I locked the current limit to 3A at 12V in WLED before I powered it on for the first time. I programmed the fixture in my dark apartment. When I set the Emmy on the pedestal, the reflective gold finish mirrored the light sources more than it absorbed the illumination, creating a warped mirror effect across the metal.</p>",
@@ -372,7 +372,7 @@
   {
     "id": "2944",
     "title": "LithoLab",
-    "category": "Apps",
+    "category": "Software",
     "tags": [
       "LLM Integration",
       "TypeScript"
@@ -419,7 +419,7 @@
   {
     "id": "3670",
     "title": "Unfold",
-    "category": "Apps",
+    "category": "Software",
     "tags": [
       "React",
       "TypeScript"
@@ -471,7 +471,7 @@
     "id": "670",
     "timestamp": "2026-01-12T23:50:49.052Z",
     "title": "Pixel Pyramid",
-    "category": "Art",
+    "category": "Sculpture",
     "image": "media/Art/Pixel Pyramid/Gemini_Generated_Image_rmmssrmmssrmmssr.webp",
     "description": "<p>Trapped LED heat inside a sealed, 3 material PLA+ pyramid print required software current limiting to prevent structural melting.</p>",
     "longDescription": "<p>Getting crisp pixel isolation without light bleed across an internally divided pyramid required printing the entire sculpture as a single piece. Each cell needed a black core to block light from adjacent shafts, white walls to bounce illumination upward, and a frosted PLA+ shell for diffusion. Building that geometry without manual post-processing meant committing to a 1 to 3 day continuous print cycle on a Bambu Lab X1C, with 3 filament swaps on every single layer and a mountain of purge waste.</p><p>Trapped LED heat nearly killed the design during burn-in testing. I lifted the sculpture after a long run and accidentally mushed the softened grid with my thumb. Venting the back enclosure helped, but drilling holes into the frosted top shell would have ruined the display.</p><p>To keep the structure solid without sacrificing visual punch, I swapped the hardware to 12V WS2815 matrices and set a 1A current limit in WLED. Keeping the diodes over 1 cm from the surface eliminated visible hotspots while letting the grid show through the frost. The finished piece hung at Glow Lounge in Denver and ran for days at a time without warping, becoming the foundation for a fabrication process I still use.</p>",
@@ -557,7 +557,7 @@
   {
     "id": "5632",
     "title": "Pixel Mini Pyramid",
-    "category": "Art",
+    "category": "Sculpture",
     "tags": [
       "FDM 3D Printing",
       "SolidWorks",
@@ -644,7 +644,7 @@
     "id": "8000",
     "timestamp": "2026-01-13T00:04:25.482Z",
     "title": "Pixel Plane Warp",
-    "category": "Art",
+    "category": "Sculpture",
     "image": "media/Art/Pixel Plane Warp/pixelplanewarp_fix.webp",
     "description": "<p>By combining black light-isolation walls with reflective white cell linings and frosted diffusion, this sweeping surface installation achieves sharp, vibrant patterns at low operating temperatures and current limits.</p>",
     "longDescription": "<p>I destroyed an early print trying to push enough light into the high corner of the wave. The piece is a subdivided grid with a sweeping surface distortion that terminates in sharp points. Because the peak sits far above the LEDs, lighting the far corners required running the strips at full brightness. The trapped heat ruined the print. Plastic and hot LEDs do not get along.</p><p>I modeled the unit in SolidWorks for dimensional accuracy. A Bambu Lab X1C printed the unified model with black walls to isolate each light channel. For the final version, I lined the cells in white and added a frosted layer. That combination let me cap the WLED output on the ATHOM ESP8266 controller to a 1a limit at 12vdc without losing clarity.</p><p>It ended up on the ceiling at Glow Lounge for a while. In a dark room, the black walls disappear and leave only the distorted pattern floating overhead. The simple geometry did the work without needing to fight for brightness.</p>",
@@ -725,7 +725,7 @@
     "id": "8252",
     "timestamp": "2026-01-13T00:14:02.780Z",
     "title": "Temple SF",
-    "category": "Integration",
+    "category": "Systems",
     "image": "media/Integration/Temple SF/banner.webp",
     "description": "<p><strong>Temple Nightclub | San Francisco</strong> - Routing a three layer club rig through an inherited lighting console to survive single operator control.</p>",
     "longDescription": "<p>The owners at Temple San Francisco wanted 1 person to operate the lighting, video, and pixels in the main room simultaneously. That was never going to work with 2 hands, especially since we were stuck with the Road Hog 4 that came from the last rig. It lacked the routing capability to act as a central hub. Releasing a DMX overwrite on that console took a macro requiring dozens of screen presses. That cost several seconds, which meant missing the drop on any heavy track.</p><p>I bypassed the console entirely by routing Art-Net out of Resolume and the Hog into Madrix. I merged them using highest takes priority (HTP) on the RGB channels across 8 universes of sACN. That gave instant control back and forth just by blacking out 1 system. I also routed the video so a clip on the ceiling sliced across the main screens, overrode console colors, and drove the pillar pixels. Mask patterns kept the intensity in check. Behind the booth, I built a dedicated Resolume server with RAID6 SSDs to push simultaneous 4K layers, and we installed 400 A and 200 A electrical services to power the room. My crew built wireless receivers using ESP32s for the acrylic VIP tables and I installed a pixel wall on the mezzanine for matching ambiance.</p><p>I tore the pixel mapping down to the ground 6 times before I got all 3 systems talking to each other clean. The first night they fired together without tearing, I got goosebumps. But my control scheme was too ambitious. I installed a 65 in touchscreen running OSC Pilot to handle signal routing and live previews. It technically worked, but live operation under pressure is a different beast. The operators ripped the screen out after a few months and went back to MIDI controllers.</p><p>The demand for 1 operator survived for slow nights. Using a global fader for blackouts and the video routing from the ceiling, 1 person could run the whole room from a couple of controllers. But for busy nights and headlining DJs, the reality of the rig won out. They put 2 operators in the booth.</p>",
@@ -846,7 +846,7 @@
   {
     "id": "9517",
     "title": "Field Solder Station",
-    "category": "Solutions",
+    "category": "Tooling",
     "tags": [
       "FDM 3D Printing",
       "SolidWorks",
@@ -917,7 +917,7 @@
   {
     "id": "9469",
     "title": "LED Pixel Panel",
-    "category": "Circuits",
+    "category": "Fixtures",
     "tags": [
       "Resolume Arena",
       "Video Mapping",
@@ -1001,7 +1001,7 @@
   {
     "id": "5416",
     "title": "LVL",
-    "category": "Circuits",
+    "category": "Fixtures",
     "tags": [
       "Pixel Mapping",
       "Madrix",
@@ -1452,7 +1452,7 @@
   {
     "id": "9925",
     "title": "GeoLens Pro",
-    "category": "Apps",
+    "category": "Software",
     "tags": [
       "React",
       "TypeScript",
@@ -1512,7 +1512,7 @@
   {
     "id": "3991",
     "title": "PixelForge",
-    "category": "Apps",
+    "category": "Software",
     "tags": [
       "React",
       "TypeScript",
@@ -1576,7 +1576,7 @@
   {
     "id": "7085",
     "title": "Chronicle: Iterative Fiction Engine",
-    "category": "Apps",
+    "category": "Software",
     "tags": [
       "React",
       "JavaScript",
@@ -1664,7 +1664,7 @@
   {
     "id": "6638",
     "title": "Strata - Digital Notebook",
-    "category": "Apps",
+    "category": "Software",
     "tags": [
       "React",
       "Google Drive API"
@@ -1699,7 +1699,7 @@
   {
     "id": "6962",
     "title": "IdeaForge.AI",
-    "category": "Apps",
+    "category": "Software",
     "tags": [
       "React",
       "TypeScript",
@@ -1740,7 +1740,7 @@
   {
     "id": "648",
     "title": "CharGen.AI",
-    "category": "Apps",
+    "category": "Software",
     "tags": [
       "React",
       "TypeScript",
@@ -1820,7 +1820,7 @@
   {
     "id": "968",
     "title": "LithoPalletGen",
-    "category": "Apps",
+    "category": "Software",
     "tags": [
       "JavaScript"
     ],
@@ -1869,7 +1869,7 @@
   },
   {
     "title": "Field Bench PSU",
-    "category": "Solutions",
+    "category": "Tooling",
     "image": "media/Fabrication/Field Bench PSU/20250317_180727.webp",
     "description": "<p>A 3D printed, portable, DC power supply built from a buck-boost converter designed for testing LED lighting installations in the field.</p>",
     "longDescription": "<p>On-site LED pixel work always runs on 5V, 12V, or 24V DC at under 5A. I wanted to test new strips and isolate lighting sections without dragging a heavy bench supply up a ladder. A PLA+ enclosure housed a buck-boost converter, commonly fed 19V from a 100W laptop brick through a USB-C to 5521-DC adapter cable or a 24v 5a brick. I left a direct USB-C port off the chassis because my print tolerances could not hold one cleanly.</p><p>Assembling the wiring inside the box was a challenge. I had to build an awkward ring-crimp split to feed the banana plugs, and threading the retaining nuts on in that cramped footprint was frustrating. The screw terminals on the back of the converter module also fought me as I slid the unit into the shell.</p><p>I first brought it to Que Bueno Suerte to test 5m blackout pixel tubes on the mezzanine, verifying every strip before and after cutting. It survived a few years of site work until the built-in voltage meter drifted out of spec and I retired it.</p>",
@@ -2074,7 +2074,7 @@
     "id": "6841",
     "timestamp": "2026-06-21T22:54:46.396Z",
     "title": "The Orb",
-    "category": "Circuits",
+    "category": "Fixtures",
     "image": "media/Electronics/The Orb/MVIMG_20190303_010156_1 (1).webp",
     "description": "<p><strong>Temple Nightclub | Denver</strong> - I finished an 8 ft aluminum LED sphere and ran high-current DC power over 35 ft.</p>",
     "longDescription": "<p>The original installer walked away mid-job, leaving an 8 ft aluminum sphere sitting in 2 halves on the top-floor. 1 dome was partly covered in LED pixel modules zip-tied to the metal, with tape over the lenses and black spray paint over the rest. Masked strands lay scattered across the floor. I stripped the mess and started over.</p><p>Keeping the power supplies in the ceiling left empty space inside the frame for the 3D effect, but it meant pushing DC power across a 35 ft run. To beat the voltage drop, I installed MEAN WELL supplies with load sharing and remote sense that adjusted output voltage in real time. Every circuit stayed under 80% capacity at 100% white load. Inside the sphere, decoders handled the signal for a 3D voxel map in Madrix.</p><p>The whole rig hung from a hoist that dropped it over the crowd. Moving heavy copper without snagging required a PVC pipe with a flange mounted through the center of the orb. I spiral-wrapped 2/0 welding cables around each other and fed them down through the pipe. That guide kept the cables clean during motion and stopped the sphere from spinning as it traveled.</p><p>We finished the build for New Year's Eve 2018. People on the dance floor mostly miss it, but the surrounding VIP tiers get a clear view of the full voxel map. Every night around midnight, the hoist dropped the sphere with the headliner.</p>",
@@ -2354,7 +2354,7 @@
   },
   {
     "title": "Que Bueno Suerte!",
-    "category": "Integration",
+    "category": "Systems",
     "image": "media/Integration/Que Bueno Suerte!/20240606_211259.webp",
     "description": "<p><strong>Que Bueno Suerte! | Denver</strong> - Over 2 years, I wired 11 custom lighting installations into a single restaurant server rack.</p>",
     "longDescription": "<p>My friend let me perpetually add lighting inside Que Bueno Suerte! over 2 years, eventually totaling 11 distinct installations. With so many LEDs, the system risked overpowering the dining room. Finesse was key. Deep reds, oranges, and yellows looked phenomenal against the gold walls and red accents, but only if the hardware stayed invisible in broad daylight. I ran long-range decoders back to a server rack in the upstairs office. Wires snaked under bars, behind walls, above the kitchen ceiling, and inside rafters upstairs. Retrofitting the acrylic etchings meant climbing over tables while brittle adhesive exploded into fine powder that turned sticky again the second I sweated.</p><p>I built an iPad remote early on using OSCpilot for touch control and Show Cockpit for signal distribution. Originally, I ran ELM on the server because it was cheaper and isolated the different rigs easily. The tradeoff was programming flexibility. I couldn't transition one element at a time without shifting the entire building. Switching to Madrix solved the visual output, creating room looks that shifted together across the mezzanine ceiling, alabaster bartop, bottle shelves, and roof liners.</p><p>A rig of this complexity in a packed restaurant breaks in predictable ways. The PixLite 16 controllers above the main bar occasionally drop data and require a breaker flip to reboot. The wireless etchings lose signal through dense crowds. Outdoor fixtures leak water, break their IP rating, and trip breakers. Even the iPad control drops out if staff connect to the wrong network or the WLAN hiccups.</p><p>To keep the system usable for bartenders during a rush, I locked the iPad interface down to basic parameters and playlists of preset looks. For everything else, I installed a slide-out KVM in the rack so I could fix server issues directly. The fine control over the building proved worth the routing headaches, and the warm palettes still sit right in the room.</p>",
@@ -2463,7 +2463,7 @@
   },
   {
     "title": "Bar Tubes",
-    "category": "Circuits",
+    "category": "Fixtures",
     "image": "media/Electronics/Bar Tubes/20240619_122306.webp",
     "description": "<p><strong>Que Bueno Suerte! | Denver</strong> - Rebuilding an inherited array of 131 recycled fluorescent tube bundles over an operating bar required 70 universes of control and a 3D voxel map.</p>",
     "longDescription": "<p>The vertical tubes above the main bar at Que Bueno Suerte! came with the building, and by the time I got to them, they needed serious help. The array was made of 62 four-foot and 69 eight-foot recycled fluorescent tubes hung in clusters of 3, with 60/m density LED tape running down the center. After years above a bar, the materials were brittle, and because the restaurant was open every day, I could only take down a few clusters at a time. I stood on a telescoping ladder resting on the ceiling grid (which flexed enough to make every climb interesting), lowered the clusters onto the bar, broke the old wraps, and pulled the dead strip from the center.</p><p>I kept the original pixel spacing so I wouldn't have to redesign the physical bundle, but I swapped the strip for WS2813 LEDs. The backup data line meant a single failed pixel wouldn't force another sketchy ladder climb over an open bar. Up in the custom power boxes, I gutted the original decoders, which had zero documentation, and replaced them with Advatek PixLite 16s to tie the array into the venue-wide system I installed. When I first fired the rig up, it immediately tripped breakers and blew the inline fuses. I eventually bumped the fuse rating to 7A per tube to handle the inrush, and the rig stabilized.</p><p>Because I was locked into the original 60/m density, the display takes an astronomical 35,640 channels across 70 universes to run. Once the hardware was solid, I built a 3D voxel map of the entire layout. Because the tubes hang at uneven lengths and the display isn't a straight line, clean 3D effects can get lost if you push them too hard. But isolating different zones and mapping through the depth of the room turned a partially dead, inherited fixture into the centerpiece of the bar.</p>",
@@ -2556,7 +2556,7 @@
   },
   {
     "title": "Pixel Negative \"X\"",
-    "category": "Art",
+    "category": "Sculpture",
     "image": "media/Art/Pixel Negative _X_/negative x fix.webp",
     "description": "<p>An internal X obstruction inside each cell turns a white square into an array of 1024 converging arrows.</p>",
     "longDescription": "<p>I wanted to build the pixel diffusion equivalent of a stage gobo. I designed an X obstruction through the center of 256 isolated cells in SolidWorks. Powered off, the piece sat like a plain square. Powered on, the solid X blocked the center of each WS2815 LED and created 4 arrows pointing toward each other.</p><p>My first attempt on a Tenlog TL-D3 failed when the nozzle dragged across the X pattern and caused layer shifts. Printing directly against the buildplate kept the face flat. A 1 mm PLA+ face provided the right balance of diffusion and opacity without bleeding light between cells.</p><p>I capped the current in WLED on an ATHOM ESP8266 controller to stop the PLA+ from heating and warping. Running fluid patterns across the grid made the uniform obstructions look fuzzy and ripply.</p>",
@@ -2618,7 +2618,7 @@
   },
   {
     "title": "Pixel Seed of Life",
-    "category": "Art",
+    "category": "Sculpture",
     "image": "media/Art/Pixel Seed of Life/seedoflifefix.webp",
     "description": "<p>A 1mm face printed over a subdivided matrix hides the seed of life until the pixels fire.</p>",
     "longDescription": "<p>I built this as a proof of concept to expand what I could do with subdivided matrices. Printed face down, the piece looks like a white square when turned off. Getting that surface required a 1mm face. That thickness balanced structural stability and light transmission without showing bleedthrough from the black walls behind it. With a 10mm throw, bouncing the light was unnecessary.</p><p>Heat became the immediate problem. Early tests ran at full brightness inside sealed enclosures. Over time, the corners curled and the grid walls softened enough to move by hand. Without vent holes on the back, the units bowed away from the wall as the PLA+ heated up. Adding vents and limiting current in the firmware stopped the deformation.</p><p>Now the symbol stays hidden until the matrix powers on. Lighting large clusters of pixels reveals parts of the pattern across the surface. The complete shape only appears when every pixel is active.</p>",
@@ -2690,7 +2690,7 @@
   },
   {
     "title": "Pixel Celtic Owl",
-    "category": "Art",
+    "category": "Sculpture",
     "image": "media/Art/Pixel Celtic Owl/frame-thumb-1786238531082.webp",
     "description": "<p>An internally subdivided 16x16 LED matrix housed inside a dual-material relief sculpture of an organic Celtic owl.</p>",
     "longDescription": "<p>My workstation laptop crashes if I calculate an internal grid larger than 16x16. This piece was a test to see if I could map that geometric matrix inside an organic shape. I bought an owl model online and split the workflow between SolidWorks and Blender for the first time. The processing load of subtracting those 256 cells from Celtic knotwork pushed my hardware to its limit.</p><p>Early attempts on a Tenlog TL-D3 IDEX printer leaked light everywhere. Stopping the bleed between cells took 0.8 mm walls of black PLA+, which meant 2 passes with a 0.4 mm nozzle. Moving the job to a Bambu Lab X1C with an AMS unit solved the bleed immediately. A 0.4 mm wall of black PLA+ now isolates every cell cleanly.</p><p>The front relief is thin enough to act like a lithophane. When powered off, it reads as a white carving in a black frame. Turn on the ATHOM ESP8266 controller, and the 16x16 grid cuts straight through the surface lines.</p>",
@@ -3027,7 +3027,7 @@
   },
   {
     "title": "Temple Denver",
-    "category": "Integration",
+    "category": "Systems",
     "image": "media/Integration/Temple Denver/MVIMG_20190817_211751.webp",
     "description": "<p><strong>Temple - Main Room | Denver</strong> - Bridging Resolume and Madrix over NDI to stretch a 196 pixel canvas across an entire nightclub room.</p>",
     "longDescription": "<p>Touring DJs kept coming through with custom VJ content and nowhere to realistically play it. The venue had 3 screens with a 48x48 resolution, giving the main room an accumulative resolution smaller than a phone icon. To give those artists a usable canvas, I needed to span the room without tearing out the existing hardware.</p><p>This was my first time integrating systems past DMX and MIDI cross triggers alone. Resolume Arena pushed slices of video to converter boxes that output SPI pixel signals, while Madrix ran the floor-to-ceiling custom pixel pillars with about 12 modules per row. Bridging the two over NDI let the content cross between machines. From there, I added DMX triggers from our Roadhog 4 console to the main pixel and video rigs, plus the orb and hallway computers, so we could grab master intensity and speed live.</p><p>Getting the low resolution pixel mesh to map onto the frosted pillars was the hardest problem to solve. The pixel spacing was not an even grid, which made scaling irregular shapes across the room a constant headache. If I were building the rig from the ground up, I would have chosen Madrix for the entire system.</p><p>Combining the setups got us an uninterrupted canvas just under 200 pixels wide. A couple of friends were working with me at the time, and we all geeked out when it finally came together. We could display logos and short messages across the whole wall.</p>",
@@ -3091,7 +3091,7 @@
   },
   {
     "title": "Extrusion Centering Sled",
-    "category": "Solutions",
+    "category": "Tooling",
     "image": "media/Fabrication/Extrusion Centering Sled/20200909_213244.webp",
     "description": "<p>A 4 part 3D printed sled aligned 160m of vertical LED track across 10 wavy nightclub pillars.</p>",
     "longDescription": "<p>Temple nightclub in San Francisco had 10 foundational pillars going from floor to ceiling. Each 4m column was boxed in and wavy, but needed 12mm LED track centered vertically on all 4 sides. Because the thin lines mirrored across the room, any drift would be obvious.</p><p>Standard measuring was useless on the uneven casing. I built a 4 part sled that rode inside the center track, breaking the jig into pieces to beat my 3D printer build plate limit. Notched ends marked with yellow china marker referenced the outer corner extrusions at any height. My first prints did not fit inside the channel, taking a couple of tries to dial in the sled width. Once the sizing was right, the interlocking joints held rigid.</p><p>Using the tool on site was fast. As I slid the jig upward, it actively found true center while I tacked the extrusion progressively with a pneumatic nailer. I finished all 160m of track in a couple of hours. The installation hid the wavy casing and kept every line straight.</p>",
@@ -3181,7 +3181,7 @@
   },
   {
     "title": "Dance Floor Pillars",
-    "category": "Circuits",
+    "category": "Fixtures",
     "image": "media/Electronics/Dance Floor Pillars/Screenshot_20210306-180716_Photos~2.webp",
     "description": "<p><strong>Temple Nightclub | San Francisco</strong> - I built 320 meters of custom recessed pixel tape into 10 floor-to-ceiling structural pillars on a skeleton budget.</p>",
     "longDescription": "<p>We remodeled the main room at Temple Nightclub in San Francisco during the pandemic lockdowns with a skeleton crew and no budget. I was putting 320 meters of SM16704 RGBW (6000k) pixel tape seemingly built directly into 10 structural pillars on the dance floor. To build recessed tracks without expensive hardware, I wrapped the columns in OSB and mounted mud-in aluminum extrusions with a pneumatic nailer. I filled the remaining gaps with more board, plastered everything with drywall mud, and spent weeks on a scissor lift with an orbital sander hooked to a shop vac. Then I primed the columns, painted them flat black, and sealed the bottoms with silicone caulk.</p><p>The wiring had to survive crowd contact below and attic heat above. At the bottom of each column, thin metal tubing protected 3-conductor 18 AWG wiring from kick damage. Power injection runs went up inside the corner moldings to fight voltage drop across the 4 m strips. At the top, the lines met at a 24-pin ATX power coupler that connected to custom distribution boards above the video ceiling. Working up there meant crawling across strut channel and the backs of video panels in a 16 in gap, fighting condensation and heat while carpet blower fans pushed air toward the rear wall.</p><p>Just 2 weeks before we opened, the owner decided to flip the building entrance 180 degrees, but the main room layout held. Firing all 10 pillars from the dance floor looked like light jumping out of the concrete and vanishing into the ceiling above. Building custom distribution boards for morning hardware swaps took extra time that I would handle differently today, but the rig survived the crowds exactly as built.</p>",
@@ -3557,7 +3557,7 @@
   },
   {
     "title": "Pixel Louver Lights",
-    "category": "Solutions",
+    "category": "Tooling",
     "image": "media/Fabrication/Pixel Louver Lights/20240322_115100.webp",
     "description": "<p>96 3D-printed louver fixtures that illuminate 48 bar cubbies without shining raw RGB pixels at patrons.</p>",
     "longDescription": "<p>The bar display at Que Bueno Suerte! has 48 cubbies arranged in 4 sets of 3x4. I needed a way to light the bottles from the front corners without blinding patrons walking past the shelves. Using Solidworks, I modeled louver fixtures and printed 96 of them across a Bambu labs X1C and a P1P. Each unit houses 12 WS2815 RGB pixels and mounts to the metal shelf with double-sided tape for simple servicing.</p><p>Getting the slide-in backing to fit required several revisions. Solder splices along the LED tape cause height variations that block the backing from sliding into place, so I cut the tape to avoid the splices entirely. I also added zip ties to hold the wiring. They act as strain relief so hanging cables never rip the solder pads off the strips.</p><p>Because the bottles sit on dry shelves, I installed non-waterproof strips. That caused problems later on. During dancing nights, patrons set drinks on the cubbies, and spills corroded and shorted the pixel strips inside the fixtures. Even with a redundant data line, a fried strip stops working, so I had to pull the dead units and replace the tape.</p><p>Running the strips into the shelves creates a 3D voxel display that sweeps light across the glass from every angle. This was the first time I designed and manufactured a 3D-printed pixel fixture for a live rig.</p>",
@@ -3881,7 +3881,7 @@
   },
   {
     "title": "LED PSU Boot Sequencer",
-    "category": "Solutions",
+    "category": "Tooling",
     "image": "media/Fabrication/LED PSU Boot Sequencer/20221201_184622.webp",
     "thumbnailFit": {
       "scale": 1.4,
@@ -3980,7 +3980,7 @@
   },
   {
     "title": "WiFi VIP Tables",
-    "category": "Circuits",
+    "category": "Fixtures",
     "image": "media/Electronics/WiFi VIP Tables/Screenshot 2026-08-07 201527.webp",
     "description": "<p>I salvaged 32 waterlogged acrylic VIP tables into wireless ArtNet pixel fixtures using routers and kitchen soup containers.</p>",
     "longDescription": "<p>Temple SF had 32 old VIP tables with heavy laminated MDF bases and black acrylic tops. The MDF had soaked up spilled drinks for years, expanding and separating, while the acrylic had sharp, chipped corners that were a hazard in a drunk crowd. Most of the hardwired RGB wash strips underneath were already dead. Buying new plastic during the pandemic was too expensive and too slow, but the acrylic sheets were still good. I decided to strip them down and rebuild them from scratch.</p><p>My carpenter and I used a router with a shop vac attached to carve the existing acrylic channels deeper for new LED strips and cut a center path for the wiring. We rounded the top and bottom edges across all 32 sheets, which eliminated the sharp corners and gave the acrylic a smooth, clean line from every angle. To replace the ruined MDF bases, I cut plywood sheets, painted them black, and secured them to the underside so we could attach modern metal legs.</p><p>Time got tight toward the end, and my 3D printer could not produce clean enclosures fast enough. I walked into the kitchen, grabbed a stack of plastic soup containers, and siliconed them to the center underside of each table to house an ESP32 decoder and a Li-ion battery. The electronics sat safely out of reach of nightly spills. For power management, I built a charging station on the side of the control rack. The lighting operator gathered the batteries at the end of the night to charge them, then swapped them back in before doors opened.</p><p>I mapped all 32 tables into Madrix 5.x over wireless ArtNet so they matched the colors of the main room lighting rig. Running Wi-Fi control through a crowded club floor is always a fight against RF noise, but high-gain antennas on the receivers kept the signal alive. The tables fit the room, survived the crowd, and salvaged the most expensive material we had.</p>",
@@ -4340,7 +4340,7 @@
   },
   {
     "title": "Pixel Rocks",
-    "category": "Art",
+    "category": "Sculpture",
     "image": "media/Art/Pixel Rocks/Screenshot 2026-08-08 133451.webp",
     "description": "<p>10 wirelessly controlled, 3D printed LED rocks built from topographical scans for a contemporary ballet piece.</p>",
     "longDescription": "<p>My good friend, mentor, and lighting designer for LINES ballet needed internally lit rocks controlled wirelessly from the console. The artistic director rejected my initial hand sculpted models. He wanted them sharp and jagged. They needed to look like they were meant to stone someone to death, but remain small enough to hold in one hand. I hiked outside Denver and collected 30 small stones that fit the aesthetic and my 3D scanner turntable. Working in a digital format let me scale the scans up to the size of about a pineapple. I printed 10 final shells in clear PLA+ at 5% infill. The hollow space kept the LED brightness high. The ballet company handled the faux painting on site.</p><p>The internal hardware needed to be completely modular. I modeled a universal sled that inserted into the base of any rock, locked in by a threaded cap. A custom pixel puck slid into that sled. Each puck held a lithium ion battery, a charge port, a rocker switch, a disassembled ESP8266 based Athom LED decoder running WLED, and two strips of pixel tape. The completed assemblies weighed about 5 lbs.</p><p>We drove them from the light console using ELM over a wireless router. This was the last project where I relied on 2.4GHz WiFi for live show control. The network environment choked the decoders, causing some units to drop control and freeze on stage. I specify 5GHz hardware for wireless pixel control now.</p>",
@@ -4534,7 +4534,7 @@
   },
   {
     "title": "Backboard",
-    "category": "Circuits",
+    "category": "Fixtures",
     "image": "media/Electronics/Backboard/Gemini_Generated_Image_5l003m5l003m5l00.webp",
     "thumbnailFit": {
       "scale": 1,
@@ -4720,7 +4720,7 @@
   },
   {
     "title": "Entrance Hall",
-    "category": "Circuits",
+    "category": "Fixtures",
     "image": "media/Electronics/Entrance Hall/VID_20190706_212708-poster.webp",
     "description": "<p><strong>Temple Nightclub | Denver</strong> - I gutted and rebuilt a failing 30 ft LED entrance tunnel down to raw pixel strips to fix a rushed installation.</p>",
     "longDescription": "<p>The entrance tunnel at Temple Denver was a rush job that slowly died. It was 30 ft long and never meant to be serviced. The walls were framed with 3/4 in MDF panels, which are incredibly heavy, and wires were woven haphazardly through sheet metal cutouts. Patching a failing custom LED installation is a waste of time. I decided to gut the entire run down to the pixel strips.</p><p>Mid-week gave me a 2 day window while the club was closed. Getting the tunnel open was a giant pain. I found hidden shims and adhesives in unexpected places. Pulling the aluminum extrusions was my first plan, but construction adhesive held them fast. I left the tracks in place. Removing the old soldering left me with clean copper to wire fresh. Rebuilding the power distribution from the ground up, I balanced the load across a couple 24V power supplies above the ceiling. I tied the DC- lines together to keep the data stable. Reassembling the heavy MDF meant driving screws into panels that were originally held together by double-sided tape.</p><p>My eye instantly snaps to any pixel that drops a color or gets stuck. I can spot a dead point in a data chain by instinct. Powering up the rebuilt rig lit the entire 30 ft run perfectly. Seeing a complex pixel setup firing at 100 percent is always deeply satisfying.</p>",
@@ -4828,7 +4828,7 @@
   },
   {
     "title": "Discobasket",
-    "category": "Circuits",
+    "category": "Fixtures",
     "image": "media/Electronics/Discobasket/IMG_20171108_200749.webp",
     "thumbnailFit": {
       "scale": 1.15,

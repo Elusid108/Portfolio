@@ -1462,11 +1462,11 @@
 
             const links = [
                 { id: 'lighting', label: 'Lighting' },
-                { id: 'art', label: 'Art' },
-                { id: 'circuits', label: 'Electronics' },
-                { id: 'apps', label: 'Apps' },
-                { id: 'solutions', label: 'Fabrication' },
-                { id: 'integration', label: 'Integration' },
+                { id: 'sculpture', label: 'Sculpture' },
+                { id: 'fixtures', label: 'Fixtures' },
+                { id: 'software', label: 'Software' },
+                { id: 'tooling', label: 'Tooling' },
+                { id: 'systems', label: 'Systems' },
             ];
 
             return (
@@ -1539,11 +1539,11 @@
             const getHeroImage = (catId) => {
                 const catMap = {
                     'lighting': 'Lighting',
-                    'art': 'Art',
-                    'circuits': 'Circuits',
-                    'apps': 'Apps',
-                    'solutions': 'Solutions',
-                    'integration': 'Integration'
+                    'sculpture': 'Sculpture',
+                    'fixtures': 'Fixtures',
+                    'software': 'Software',
+                    'tooling': 'Tooling',
+                    'systems': 'Systems'
                 };
                 const categoryName = catMap[catId];
                 // Find project in this category that is featured
@@ -1634,11 +1634,11 @@
                         {/* Grid - 2 cols, 3 rows */}
                         <div className="grid grid-cols-2 gap-4 h-[600px] w-full">
                             <HeroBadge id="lighting" label="Lighting" icon={Lightbulb} color="text-yellow-400" />
-                            <HeroBadge id="art" label="Art" icon={Palette} color="text-pink-400" />
-                            <HeroBadge id="circuits" label="Electronics" icon={Cpu} color="text-green-400" />
-                            <HeroBadge id="apps" label="Apps" icon={Smartphone} color="text-purple-400" />
-                            <HeroBadge id="solutions" label="Fabrication" icon={Printer} color="text-orange-400" />
-                            <HeroBadge id="integration" label="Integration" icon={Layers} color="text-blue-400" />
+                            <HeroBadge id="sculpture" label="Sculpture" icon={Palette} color="text-pink-400" />
+                            <HeroBadge id="fixtures" label="Fixtures" icon={Cpu} color="text-green-400" />
+                            <HeroBadge id="software" label="Software" icon={Smartphone} color="text-purple-400" />
+                            <HeroBadge id="tooling" label="Tooling" icon={Printer} color="text-orange-400" />
+                            <HeroBadge id="systems" label="Systems" icon={Layers} color="text-blue-400" />
                         </div>
                     </div>
                 </section>
@@ -1870,7 +1870,7 @@
                         
                         <SimpleSection 
                             id="lighting" 
-                            title="Illumination" 
+                            title="Lighting" 
                             subtitle="Lighting Design" 
                             icon={Lightbulb} 
                             category="Lighting" 
@@ -1879,47 +1879,47 @@
                         />
                         
                         <SimpleSection 
-                            id="art" 
-                            title="Sculpture & Form" 
-                            subtitle="Art" 
+                            id="sculpture" 
+                            title="Sculpture" 
+                            subtitle="Sculpture & Form" 
                             icon={Palette} 
-                            category="Art" 
+                            category="Sculpture" 
                             onOpenProject={handleOpenProject} 
                             bgColor="bg-zinc-950"
                         />
                         <SimpleSection 
-                            id="circuits" 
-                            title="Hardware Design" 
-                            subtitle="Electronics & PCBs" 
+                            id="fixtures" 
+                            title="Fixtures" 
+                            subtitle="Custom Fixtures" 
                             icon={Cpu} 
-                            category="Circuits" 
+                            category="Fixtures" 
                             onOpenProject={handleOpenProject} 
                             bgColor="bg-black"
                         />
                         <SimpleSection 
-                            id="apps" 
-                            title="Interactive Software" 
-                            subtitle="Apps & Games" 
+                            id="software" 
+                            title="Software" 
+                            subtitle="Applications" 
                             icon={Smartphone} 
-                            category="Apps" 
+                            category="Software" 
                             onOpenProject={handleOpenProject} 
                             bgColor="bg-zinc-950"
                         />
                         <SimpleSection 
-                            id="solutions" 
-                            title="Custom Tooling" 
-                            subtitle="Fabrication & Solutions" 
+                            id="tooling" 
+                            title="Tooling" 
+                            subtitle="Custom Tooling" 
                             icon={Wrench} 
-                            category="Solutions" 
+                            category="Tooling" 
                             onOpenProject={handleOpenProject} 
                             bgColor="bg-black"
                         />
                         <SimpleSection 
-                            id="integration" 
-                            title="The Backbone" 
-                            subtitle="Systems Integration" 
+                            id="systems" 
+                            title="Systems" 
+                            subtitle="Show Control" 
                             icon={Layers} 
-                            category="Integration" 
+                            category="Systems" 
                             onOpenProject={handleOpenProject} 
                             bgColor="bg-zinc-950"
                         />
