@@ -902,7 +902,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-13T00:23:48.073Z",
     "wip": false,
-    "order": 3,
+    "order": 1,
     "specs": "<p><strong>Designed In:</strong> SolidWorks 2022</p><p><strong>Printed On:</strong> Bambu Lab X1C</p><p><strong>Material:</strong> Black PLA+</p><p><strong>Iron:</strong> TS100 (friction-fit mount)</p>",
     "related": [],
     "thumbnailFit": {
@@ -1281,7 +1281,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-17T17:47:45.485Z",
     "wip": false,
-    "order": 14,
+    "order": 13,
     "thumbnailFit": {
       "scale": 1.2,
       "x": 0,
@@ -1935,7 +1935,7 @@
     "video": "",
     "timestamp": "2026-06-21T22:41:13.337Z",
     "id": "707",
-    "order": 4,
+    "order": 2,
     "specs": "<p><strong>Designed In:</strong> SolidWorks 2022</p><p><strong>Printed On:</strong> Tenlog TL-D3</p><p><strong>Material:</strong> Black PLA+</p><p><strong>Converter:</strong> Buck-boost · 19V laptop brick input</p><p><strong>Output:</strong> 5V-32V DC · max 5A</p><p><strong>Connectors:</strong> Banana plugs · 5521-DC barrel</p>",
     "related": [],
     "thumbnailFit": {
@@ -2340,7 +2340,7 @@
     "video": "",
     "timestamp": "2026-06-21T22:55:23.650Z",
     "id": "5045",
-    "order": 13,
+    "order": 12,
     "specs": "<p><strong>Strip:</strong> RGBW pixel modules (upward-facing)</p><p><strong>Mount:</strong> 8x strut channel · rotary-hammered into concrete</p><p><strong>Decoder:</strong> Long-range receivers</p><p><strong>Power:</strong> Isolated PSU room (fan noise mitigation)</p><p><strong>Control:</strong> Madrix 5.x</p>",
     "related": [],
     "thumbnailFit": {
@@ -2525,7 +2525,7 @@
     "video": "",
     "timestamp": "2026-06-21T23:30:44.785Z",
     "id": "4411",
-    "order": 3,
+    "order": 5,
     "specs": "<p><strong>Pixels:</strong> 11,880x WS2813 RGBW</p><p><strong>Strip:</strong> 62x 60px (4ft) · 69x 120px (8ft) · 60/m density</p><p><strong>Channels:</strong> 35,640 (70 universes sACN)</p><p><strong>Voltage:</strong> 12V DC</p><p><strong>Decoder:</strong> Advatek PixLite 16</p><p><strong>Power:</strong> 7A fused per tube · custom power boxes</p><p><strong>Control:</strong> Madrix 5.x</p>",
     "related": [
       {
@@ -2763,8 +2763,8 @@
   },
   {
     "title": "Lobby Wall",
-    "category": "Lighting",
-    "image": "media/Lighting/Lobby Wall/0321151647.webp",
+    "category": "Fixtures",
+    "image": "media/Electronics/Lobby Wall/0321151647.webp",
     "description": "<p><strong>Tracks | Denver </strong>- I built a double-sided wall of LEDs for Tracks in 5 days after soldering 5000 joints by hand.</p>",
     "longDescription": "<p>Tracks could not close for a remodel, so we had 5 days between open weekends to install a double-sided wall of LEDs and as part of a full remodel. It sits right at the entrance where people walk in. To hit that window, another tech and I spent weeks in the club basement and my home shop building modular panels off site. Each 2x4 pegboard panel held 520 raw LED pucks contact-cemented in 8 pixel configurations. Instead of buying pre-made strands, we manually soldered custom wire lengths using lamp cord for power injection, leaving us with over 5000 solder points before we ever hung a panel.</p><p>We mounted the rows of pegboard modules to the wall and wired each row to a dedicated output on a 16 output SanDevices E682 decoder running WS2801 protocol. Frosted plexiglass sheets on standoffs covered both sides to diffuse the light. I mapped the array using Madrix 3.6 software.</p><p>This was one of my first LED pixel builds, and the initial test run was rough. The pixels flickered badly across the wall. I had not linked grounds across multiple power supplies, and I did not know about power injection yet. Adding inline resistors at the inputs smoothed out the data signal, and I later retrofitted power injection at the midpoint. The E682 is a Christmas light decoder and not very rugged, but it worked.</p><p>When we opened the doors that Thursday, regulars gasped walking into the room. Teaching myself pixel mapping on that build launched an entire lighting design focus in my career, even if I should have just bought pre-made LED strands.</p>",
     "websiteLink": "",
@@ -2790,105 +2790,105 @@
     ],
     "gallery": [
       {
-        "url": "media/Lighting/Lobby Wall/Trackswall3.mp4",
+        "url": "media/Electronics/Lobby Wall/Trackswall3.mp4",
         "fit": {
           "scale": 1.35,
           "x": 79.6,
           "y": 54.6
         },
-        "poster": "media/Lighting/Lobby Wall/frame-thumb-1786199470802.webp",
-        "thumbnail": "media/Lighting/Lobby Wall/frame-thumb-1786199470802-thumb.webp"
+        "poster": "media/Electronics/Lobby Wall/frame-thumb-1786199470802.webp",
+        "thumbnail": "media/Electronics/Lobby Wall/frame-thumb-1786199470802-thumb.webp"
       },
       {
-        "url": "media/Lighting/Lobby Wall/Trackswall2.mp4",
+        "url": "media/Electronics/Lobby Wall/Trackswall2.mp4",
         "fit": {
           "scale": 1.25,
           "x": 30.3,
           "y": 100
         },
-        "poster": "media/Lighting/Lobby Wall/frame-thumb-1786199551651.webp",
-        "thumbnail": "media/Lighting/Lobby Wall/frame-thumb-1786199551651-thumb.webp"
+        "poster": "media/Electronics/Lobby Wall/frame-thumb-1786199551651.webp",
+        "thumbnail": "media/Electronics/Lobby Wall/frame-thumb-1786199551651-thumb.webp"
       },
       {
-        "url": "media/Lighting/Lobby Wall/0317152322.webp",
+        "url": "media/Electronics/Lobby Wall/0317152322.webp",
         "fit": {
           "scale": 1.25,
           "x": 100,
           "y": 45.8
         },
-        "thumbnail": "media/Lighting/Lobby Wall/0317152322-thumb.webp"
+        "thumbnail": "media/Electronics/Lobby Wall/0317152322-thumb.webp"
       },
       {
-        "url": "media/Lighting/Lobby Wall/0317152321.webp",
+        "url": "media/Electronics/Lobby Wall/0317152321.webp",
         "fit": {
           "scale": 1.35,
           "x": 0,
           "y": 25.4
         },
-        "thumbnail": "media/Lighting/Lobby Wall/0317152321-thumb.webp"
+        "thumbnail": "media/Electronics/Lobby Wall/0317152321-thumb.webp"
       },
       {
-        "url": "media/Lighting/Lobby Wall/Trackswall1.mp4",
+        "url": "media/Electronics/Lobby Wall/Trackswall1.mp4",
         "fit": {
           "scale": 1.4,
           "x": 76.9,
           "y": 100
         },
-        "poster": "media/Lighting/Lobby Wall/frame-thumb-1786199579728.webp",
-        "thumbnail": "media/Lighting/Lobby Wall/frame-thumb-1786199579728-thumb.webp"
+        "poster": "media/Electronics/Lobby Wall/frame-thumb-1786199579728.webp",
+        "thumbnail": "media/Electronics/Lobby Wall/frame-thumb-1786199579728-thumb.webp"
       },
       {
-        "url": "media/Lighting/Lobby Wall/0317152050.webp",
+        "url": "media/Electronics/Lobby Wall/0317152050.webp",
         "fit": {
           "scale": 1.5,
           "x": 25.9,
           "y": 100
         },
-        "thumbnail": "media/Lighting/Lobby Wall/0317152050-thumb.webp"
+        "thumbnail": "media/Electronics/Lobby Wall/0317152050-thumb.webp"
       },
       {
-        "url": "media/Lighting/Lobby Wall/0315151546.webp",
+        "url": "media/Electronics/Lobby Wall/0315151546.webp",
         "fit": {
           "scale": 1.3,
           "x": 23.8,
           "y": 100
         },
-        "thumbnail": "media/Lighting/Lobby Wall/0315151546-thumb.webp"
+        "thumbnail": "media/Electronics/Lobby Wall/0315151546-thumb.webp"
       },
       {
-        "url": "media/Lighting/Lobby Wall/0313151634.webp",
+        "url": "media/Electronics/Lobby Wall/0313151634.webp",
         "fit": {
           "scale": 1.15,
           "x": 100,
           "y": 55
         },
-        "thumbnail": "media/Lighting/Lobby Wall/0313151634-thumb.webp"
+        "thumbnail": "media/Electronics/Lobby Wall/0313151634-thumb.webp"
       },
       {
-        "url": "media/Lighting/Lobby Wall/0312151534.webp",
+        "url": "media/Electronics/Lobby Wall/0312151534.webp",
         "fit": {
           "scale": 2.45,
           "x": 46.9,
           "y": 53.3
         },
-        "thumbnail": "media/Lighting/Lobby Wall/0312151534-thumb.webp"
+        "thumbnail": "media/Electronics/Lobby Wall/0312151534-thumb.webp"
       },
       {
-        "url": "media/Lighting/Lobby Wall/0221152259b.webp",
+        "url": "media/Electronics/Lobby Wall/0221152259b.webp",
         "fit": {
           "scale": 1.3,
           "x": 17.6,
           "y": 11.8
         },
-        "thumbnail": "media/Lighting/Lobby Wall/0221152259b-thumb.webp"
+        "thumbnail": "media/Electronics/Lobby Wall/0221152259b-thumb.webp"
       }
     ],
     "files": [],
     "video": "",
     "timestamp": "2026-07-20T20:00:01.882Z",
     "id": "7590",
-    "order": 16,
-    "specs": "<p><strong>Pixels:</strong> 520x WS2801 RGB</p><p><strong>Strip:</strong> 1x panel · 6×1 · 12V DC</p><p><strong>Decoder:</strong> SanDevices E682</p><p><strong>Protocol:</strong> WS2801</p><p><strong>Control:</strong> Madrix 3.6</p>",
+    "order": 11,
+    "specs": "",
     "related": [
       {
         "name": "Tracks Discotheque ",
@@ -2900,7 +2900,8 @@
       "x": 66.7,
       "y": 47.6
     },
-    "thumbnail": "media/Lighting/Lobby Wall/0321151647-thumb.webp"
+    "thumbnail": "media/Electronics/Lobby Wall/0321151647-thumb.webp",
+    "specsData": []
   },
   {
     "title": "Curved Liquor Bottle Display",
@@ -3172,7 +3173,7 @@
     "video": "",
     "timestamp": "2026-07-26T23:20:01.923Z",
     "id": "5376",
-    "order": 2,
+    "order": 3,
     "thumbnailFit": {
       "scale": 1.05,
       "x": 5.3,
@@ -3195,7 +3196,7 @@
     "launchLink": "",
     "githubLink": "",
     "shopLink": "",
-    "featured": true,
+    "featured": false,
     "wip": false,
     "tags": [
       "AC/DC Load Calc",
@@ -3563,8 +3564,8 @@
   },
   {
     "title": "Pixel Louver Lights",
-    "category": "Tooling",
-    "image": "media/Fabrication/Pixel Louver Lights/20240322_115100.webp",
+    "category": "Fixtures",
+    "image": "media/Electronics/Pixel Louver Lights/20240322_115100.webp",
     "description": "<p>96 3D-printed louver fixtures that illuminate 48 bar cubbies without shining raw RGB pixels at patrons.</p>",
     "longDescription": "<p>The bar display at Que Bueno Suerte! has 48 cubbies arranged in 4 sets of 3x4. I needed a way to light the bottles from the front corners without blinding patrons walking past the shelves. Using Solidworks, I modeled louver fixtures and printed 96 of them across a Bambu labs X1C and a P1P. Each unit houses 12 WS2815 RGB pixels and mounts to the metal shelf with double-sided tape for simple servicing.</p><p>Getting the slide-in backing to fit required several revisions. Solder splices along the LED tape cause height variations that block the backing from sliding into place, so I cut the tape to avoid the splices entirely. I also added zip ties to hold the wiring. They act as strain relief so hanging cables never rip the solder pads off the strips.</p><p>Because the bottles sit on dry shelves, I installed non-waterproof strips. That caused problems later on. During dancing nights, patrons set drinks on the cubbies, and spills corroded and shorted the pixel strips inside the fixtures. Even with a redundant data line, a fried strip stops working, so I had to pull the dead units and replace the tape.</p><p>Running the strips into the shelves creates a 3D voxel display that sweeps light across the glass from every angle. This was the first time I designed and manufactured a 3D-printed pixel fixture for a live rig.</p>",
     "websiteLink": "",
@@ -3584,54 +3585,54 @@
     ],
     "gallery": [
       {
-        "url": "media/Fabrication/Pixel Louver Lights/20240401_103859.webp",
+        "url": "media/Electronics/Pixel Louver Lights/20240401_103859.webp",
         "fit": {
           "scale": 1,
           "x": 50,
           "y": 63.7
         },
-        "thumbnail": "media/Fabrication/Pixel Louver Lights/20240401_103859-thumb.webp"
+        "thumbnail": "media/Electronics/Pixel Louver Lights/20240401_103859-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Pixel Louver Lights/20240329_170517.webp",
+        "url": "media/Electronics/Pixel Louver Lights/20240329_170517.webp",
         "fit": {
           "scale": 1.4,
           "x": 49.1,
           "y": 43.2
         },
-        "thumbnail": "media/Fabrication/Pixel Louver Lights/20240329_170517-thumb.webp"
+        "thumbnail": "media/Electronics/Pixel Louver Lights/20240329_170517-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Pixel Louver Lights/20240322_115100.webp",
+        "url": "media/Electronics/Pixel Louver Lights/20240322_115100.webp",
         "fit": {
           "scale": 1.3,
           "x": 0,
           "y": 46.7
         },
-        "thumbnail": "media/Fabrication/Pixel Louver Lights/20240322_115100-thumb.webp"
+        "thumbnail": "media/Electronics/Pixel Louver Lights/20240322_115100-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Pixel Louver Lights/20240324_152125.webp",
+        "url": "media/Electronics/Pixel Louver Lights/20240324_152125.webp",
         "fit": {
           "scale": 1.25,
           "x": 74.5,
           "y": 27.6
         },
-        "thumbnail": "media/Fabrication/Pixel Louver Lights/20240324_152125-thumb.webp"
+        "thumbnail": "media/Electronics/Pixel Louver Lights/20240324_152125-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Pixel Louver Lights/Screenshot 2026-08-01 140532.webp",
-        "thumbnail": "media/Fabrication/Pixel Louver Lights/Screenshot 2026-08-01 140532-thumb.webp"
+        "url": "media/Electronics/Pixel Louver Lights/Screenshot 2026-08-01 140532.webp",
+        "thumbnail": "media/Electronics/Pixel Louver Lights/Screenshot 2026-08-01 140532-thumb.webp"
       }
     ],
     "files": [
       {
         "name": "Louver Light Model",
-        "url": "media/Fabrication/Pixel Louver Lights/files/LouverLight.zip",
+        "url": "media/Electronics/Pixel Louver Lights/files/LouverLight.zip",
         "description": "ZIP containing STL files for the pixel louver lights I designed and installed at Que Bueno Suerte! specifically for the curved liquor display install."
       }
     ],
-    "specs": "<p><strong>Designed In:</strong> SolidWorks 2022</p><p><strong>Printed On:</strong> Bambu Lab X1C · P1P</p><p><strong>Material:</strong> Black PLA+</p><p><strong>Pixels:</strong> 1152x WS2815 RGB · 96x 0.2m @ 60/m · 12V DC</p><p><strong>Mounting:</strong> Double-sided tape · zip-tie strain relief</p>",
+    "specs": "",
     "related": [
       {
         "name": "Bottle shelf",
@@ -3641,7 +3642,7 @@
     "video": "",
     "timestamp": "2026-08-01T15:14:28.453Z",
     "id": "2052",
-    "order": 0,
+    "order": 4,
     "thumbnailFit": {
       "scale": 1.2,
       "x": 0.4,
@@ -3652,7 +3653,8 @@
       "x": 0.2,
       "y": 40.8
     },
-    "thumbnail": "media/Fabrication/Pixel Louver Lights/20240322_115100-thumb.webp"
+    "thumbnail": "media/Electronics/Pixel Louver Lights/20240322_115100-thumb.webp",
+    "specsData": []
   },
   {
     "title": "Blackout Ceiling Tubes",
@@ -3981,7 +3983,7 @@
     "video": "",
     "timestamp": "2026-08-01T21:44:42.857Z",
     "id": "1430",
-    "order": 1,
+    "order": 0,
     "thumbnail": "media/Fabrication/LED PSU Boot Sequencer/20221201_184622-thumb.webp"
   },
   {
@@ -4135,7 +4137,7 @@
     "video": "",
     "timestamp": "2026-08-07T23:07:28.368Z",
     "id": "496",
-    "order": 6,
+    "order": 8,
     "thumbnailFit": {
       "scale": 1.3,
       "x": 0,
@@ -4150,8 +4152,8 @@
   },
   {
     "title": "Glass VIP Wall",
-    "category": "Lighting",
-    "image": "media/Lighting/Glass VIP Wall/Screenshot 2026-08-07 204525.webp",
+    "category": "Fixtures",
+    "image": "media/Electronics/Glass VIP Wall/Screenshot 2026-08-07 204525.webp",
     "thumbnailFit": {
       "scale": 1.35,
       "x": 53,
@@ -4186,148 +4188,148 @@
     ],
     "gallery": [
       {
-        "url": "media/Lighting/Glass VIP Wall/VID-20210127-WA0002.mp4",
+        "url": "media/Electronics/Glass VIP Wall/VID-20210127-WA0002.mp4",
         "fit": {
           "scale": 1.3,
           "x": 18.8,
           "y": 100
         },
-        "poster": "media/Lighting/Glass VIP Wall/frame-thumb-1786198770286.webp",
-        "thumbnail": "media/Lighting/Glass VIP Wall/frame-thumb-1786198770286-thumb.webp"
+        "poster": "media/Electronics/Glass VIP Wall/frame-thumb-1786198770286.webp",
+        "thumbnail": "media/Electronics/Glass VIP Wall/frame-thumb-1786198770286-thumb.webp"
       },
       {
-        "url": "media/Lighting/Glass VIP Wall/VID-20210127-WA0000.mp4",
+        "url": "media/Electronics/Glass VIP Wall/VID-20210127-WA0000.mp4",
         "fit": {
           "scale": 1.15,
           "x": 92.2,
           "y": 95.6
         },
-        "poster": "media/Lighting/Glass VIP Wall/frame-thumb-1786198800149.webp",
-        "thumbnail": "media/Lighting/Glass VIP Wall/frame-thumb-1786198800149-thumb.webp"
+        "poster": "media/Electronics/Glass VIP Wall/frame-thumb-1786198800149.webp",
+        "thumbnail": "media/Electronics/Glass VIP Wall/frame-thumb-1786198800149-thumb.webp"
       },
       {
-        "url": "media/Lighting/Glass VIP Wall/VID-20210126-WA0002.mp4",
+        "url": "media/Electronics/Glass VIP Wall/VID-20210126-WA0002.mp4",
         "fit": {
           "scale": 1.35,
           "x": 0.1,
           "y": 84.5
         },
-        "poster": "media/Lighting/Glass VIP Wall/frame-thumb-1786198834899.webp",
-        "thumbnail": "media/Lighting/Glass VIP Wall/frame-thumb-1786198834899-thumb.webp"
+        "poster": "media/Electronics/Glass VIP Wall/frame-thumb-1786198834899.webp",
+        "thumbnail": "media/Electronics/Glass VIP Wall/frame-thumb-1786198834899-thumb.webp"
       },
       {
-        "url": "media/Lighting/Glass VIP Wall/VID-20210125-WA0000.mp4",
+        "url": "media/Electronics/Glass VIP Wall/VID-20210125-WA0000.mp4",
         "fit": {
           "scale": 1.6,
           "x": 34.3,
           "y": 58.6
         },
-        "poster": "media/Lighting/Glass VIP Wall/frame-thumb-1786198875139.webp",
-        "thumbnail": "media/Lighting/Glass VIP Wall/frame-thumb-1786198875139-thumb.webp"
+        "poster": "media/Electronics/Glass VIP Wall/frame-thumb-1786198875139.webp",
+        "thumbnail": "media/Electronics/Glass VIP Wall/frame-thumb-1786198875139-thumb.webp"
       },
       {
-        "url": "media/Lighting/Glass VIP Wall/20210126_125127.webp",
+        "url": "media/Electronics/Glass VIP Wall/20210126_125127.webp",
         "fit": {
           "scale": 1.2,
           "x": 0,
           "y": 6
         },
-        "thumbnail": "media/Lighting/Glass VIP Wall/20210126_125127-thumb.webp"
+        "thumbnail": "media/Electronics/Glass VIP Wall/20210126_125127-thumb.webp"
       },
       {
-        "url": "media/Lighting/Glass VIP Wall/20210126_101127.webp",
+        "url": "media/Electronics/Glass VIP Wall/20210126_101127.webp",
         "fit": {
           "scale": 1,
           "x": 32,
           "y": 52.1
         },
-        "thumbnail": "media/Lighting/Glass VIP Wall/20210126_101127-thumb.webp"
+        "thumbnail": "media/Electronics/Glass VIP Wall/20210126_101127-thumb.webp"
       },
       {
-        "url": "media/Lighting/Glass VIP Wall/20210126_101137.webp",
+        "url": "media/Electronics/Glass VIP Wall/20210126_101137.webp",
         "fit": {
           "scale": 1.4,
           "x": 0,
           "y": 46.1
         },
-        "thumbnail": "media/Lighting/Glass VIP Wall/20210126_101137-thumb.webp"
+        "thumbnail": "media/Electronics/Glass VIP Wall/20210126_101137-thumb.webp"
       },
       {
-        "url": "media/Lighting/Glass VIP Wall/IMG-20210125-WA0005.webp",
+        "url": "media/Electronics/Glass VIP Wall/IMG-20210125-WA0005.webp",
         "fit": {
           "scale": 1.35,
           "x": 81.2,
           "y": 30.2
         },
-        "thumbnail": "media/Lighting/Glass VIP Wall/IMG-20210125-WA0005-thumb.webp"
+        "thumbnail": "media/Electronics/Glass VIP Wall/IMG-20210125-WA0005-thumb.webp"
       },
       {
-        "url": "media/Lighting/Glass VIP Wall/20210126_105545.webp",
+        "url": "media/Electronics/Glass VIP Wall/20210126_105545.webp",
         "fit": {
           "scale": 1.4,
           "x": 2.2,
           "y": 35.7
         },
-        "thumbnail": "media/Lighting/Glass VIP Wall/20210126_105545-thumb.webp"
+        "thumbnail": "media/Electronics/Glass VIP Wall/20210126_105545-thumb.webp"
       },
       {
-        "url": "media/Lighting/Glass VIP Wall/VID-20210124-WA0000.mp4",
+        "url": "media/Electronics/Glass VIP Wall/VID-20210124-WA0000.mp4",
         "fit": {
           "scale": 1.45,
           "x": 99.9,
           "y": 57
         },
-        "poster": "media/Lighting/Glass VIP Wall/frame-thumb-1786198917895.webp",
-        "thumbnail": "media/Lighting/Glass VIP Wall/frame-thumb-1786198917895-thumb.webp"
+        "poster": "media/Electronics/Glass VIP Wall/frame-thumb-1786198917895.webp",
+        "thumbnail": "media/Electronics/Glass VIP Wall/frame-thumb-1786198917895-thumb.webp"
       },
       {
-        "url": "media/Lighting/Glass VIP Wall/20210123_121514.webp",
+        "url": "media/Electronics/Glass VIP Wall/20210123_121514.webp",
         "fit": {
           "scale": 1.1,
           "x": 95,
           "y": 55.8
         },
-        "thumbnail": "media/Lighting/Glass VIP Wall/20210123_121514-thumb.webp"
+        "thumbnail": "media/Electronics/Glass VIP Wall/20210123_121514-thumb.webp"
       },
       {
-        "url": "media/Lighting/Glass VIP Wall/20210120_160957.webp",
+        "url": "media/Electronics/Glass VIP Wall/20210120_160957.webp",
         "fit": {
           "scale": 1.3,
           "x": 0,
           "y": 45.1
         },
-        "thumbnail": "media/Lighting/Glass VIP Wall/20210120_160957-thumb.webp"
+        "thumbnail": "media/Electronics/Glass VIP Wall/20210120_160957-thumb.webp"
       },
       {
-        "url": "media/Lighting/Glass VIP Wall/20210120_161033.webp",
+        "url": "media/Electronics/Glass VIP Wall/20210120_161033.webp",
         "fit": {
           "scale": 1.1,
           "x": 0,
           "y": 48.8
         },
-        "thumbnail": "media/Lighting/Glass VIP Wall/20210120_161033-thumb.webp"
+        "thumbnail": "media/Electronics/Glass VIP Wall/20210120_161033-thumb.webp"
       },
       {
-        "url": "media/Lighting/Glass VIP Wall/20210120_133758.webp",
+        "url": "media/Electronics/Glass VIP Wall/20210120_133758.webp",
         "fit": {
           "scale": 1.2,
           "x": 0,
           "y": 68.8
         },
-        "thumbnail": "media/Lighting/Glass VIP Wall/20210120_133758-thumb.webp"
+        "thumbnail": "media/Electronics/Glass VIP Wall/20210120_133758-thumb.webp"
       },
       {
-        "url": "media/Lighting/Glass VIP Wall/20200918_194722.webp",
+        "url": "media/Electronics/Glass VIP Wall/20200918_194722.webp",
         "fit": {
           "scale": 1.15,
           "x": 1.9,
           "y": 59.7
         },
-        "thumbnail": "media/Lighting/Glass VIP Wall/20200918_194722-thumb.webp"
+        "thumbnail": "media/Electronics/Glass VIP Wall/20200918_194722-thumb.webp"
       }
     ],
     "files": [],
-    "specs": "<p><strong>Control:</strong> Madrix 5.x</p><p><strong>Fixtures:</strong> (12) 19m</p><p><strong>LED: </strong>5050 RGB</p><p><strong>Pixel Driver:</strong> WS2811</p><p><strong>Pixel Size: </strong>7 LEDs</p><p><strong>LED Spacing: </strong>70/m</p><p><strong>Pixel Voltage: </strong>24vdc</p><p><strong>Decoder: </strong>(2) Madrix Nebula</p><p><strong>Power:</strong> (12) MEAN WELL HLG-240H-24</p>",
+    "specs": "",
     "related": [
       {
         "name": "Temple SF",
@@ -4341,8 +4343,9 @@
     "video": "",
     "timestamp": "2026-08-08T00:49:03.114Z",
     "id": "8983",
-    "order": 12,
-    "thumbnail": "media/Lighting/Glass VIP Wall/Screenshot 2026-08-07 204525-thumb.webp"
+    "order": 3,
+    "thumbnail": "media/Electronics/Glass VIP Wall/Screenshot 2026-08-07 204525-thumb.webp",
+    "specsData": []
   },
   {
     "title": "Pixel Rocks",
@@ -4721,7 +4724,7 @@
     "video": "",
     "timestamp": "2026-08-08T18:29:33.775Z",
     "id": "3965",
-    "order": 4,
+    "order": 9,
     "thumbnail": "media/Electronics/Backboard/Gemini_Generated_Image_5l003m5l003m5l00-thumb.webp"
   },
   {
@@ -4819,7 +4822,7 @@
     "video": "",
     "timestamp": "2026-08-08T20:07:41.799Z",
     "id": "5650",
-    "order": 5,
+    "order": 6,
     "thumbnailFit": {
       "scale": 1,
       "x": 50,
@@ -4927,7 +4930,7 @@
     "video": "",
     "timestamp": "2026-08-08T20:42:07.206Z",
     "id": "4903",
-    "order": 8,
+    "order": 10,
     "thumbnail": "media/Electronics/Discobasket/IMG_20171108_200749-thumb.webp"
   },
   {
@@ -5358,7 +5361,7 @@
       }
     ],
     "files": [],
-    "specs": "<p>GrandMA Light</p><p>(12) TrackSpot 1</p><p>(8) TrackSpot 2</p><p>(6) MX10</p><p>(4) Mac250</p><p>(8) Beam 200</p><p>(6) DataFlash Strobe</p><p>(12) Intimidator 250</p><p>(8) FlurryQ</p><p>(48) Classic Pinspot</p><p>(48) RGBW Pinspot</p><p>(2) Lasers</p><p>(4) Cryo Jets</p>",
+    "specs": "",
     "related": [
       {
         "name": "Discobasket",
@@ -5372,7 +5375,7 @@
     "video": "",
     "timestamp": "2026-08-09T16:56:13.594Z",
     "id": "3671",
-    "order": 15,
+    "order": 14,
     "thumbnailFit": {
       "scale": 1,
       "x": 69.8,
@@ -5382,7 +5385,8 @@
       "scale": 1.05,
       "x": 99.8,
       "y": 38.6
-    }
+    },
+    "specsData": []
   },
   {
     "title": "Remote Fill Fog Jets",
