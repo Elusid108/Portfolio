@@ -57,12 +57,12 @@ const SKILL_KEYS = ['skills_hardware','skills_lighting','skills_software','skill
 
 const CATEGORY_TO_SKILL_KEY = {
   Lighting:    'skills_lighting',
-  Sculpture:   'skills_fabrication',
+  Art:         'skills_fabrication',
   Fixtures:    'skills_hardware',
   Software:    'skills_software',
   Tooling:     'skills_fabrication',
   Systems:     'skills_systems',
-  Art:         'skills_fabrication',
+  Sculpture:   'skills_fabrication',
   Circuits:    'skills_hardware',
   Apps:        'skills_software',
   Solutions:   'skills_fabrication',

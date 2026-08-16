@@ -1462,7 +1462,7 @@
 
             const links = [
                 { id: 'lighting', label: 'Lighting' },
-                { id: 'sculpture', label: 'Sculpture' },
+                { id: 'art', label: 'Art' },
                 { id: 'fixtures', label: 'Fixtures' },
                 { id: 'software', label: 'Software' },
                 { id: 'tooling', label: 'Tooling' },
@@ -1539,7 +1539,7 @@
             const getHeroImage = (catId) => {
                 const catMap = {
                     'lighting': 'Lighting',
-                    'sculpture': 'Sculpture',
+                    'art': 'Art',
                     'fixtures': 'Fixtures',
                     'software': 'Software',
                     'tooling': 'Tooling',
@@ -1634,7 +1634,7 @@
                         {/* Grid - 2 cols, 3 rows */}
                         <div className="grid grid-cols-2 gap-4 h-[600px] w-full">
                             <HeroBadge id="lighting" label="Lighting" icon={Lightbulb} color="text-yellow-400" />
-                            <HeroBadge id="sculpture" label="Sculpture" icon={Palette} color="text-pink-400" />
+                            <HeroBadge id="art" label="Art" icon={Palette} color="text-pink-400" />
                             <HeroBadge id="fixtures" label="Fixtures" icon={Cpu} color="text-green-400" />
                             <HeroBadge id="software" label="Software" icon={Smartphone} color="text-purple-400" />
                             <HeroBadge id="tooling" label="Tooling" icon={Printer} color="text-orange-400" />
@@ -1879,11 +1879,11 @@
                         />
                         
                         <SimpleSection 
-                            id="sculpture" 
-                            title="Sculpture" 
-                            subtitle="Sculpture & Form" 
+                            id="art" 
+                            title="Sculpture & Form" 
+                            subtitle="Art" 
                             icon={Palette} 
-                            category="Sculpture" 
+                            category="Art" 
                             onOpenProject={handleOpenProject} 
                             bgColor="bg-zinc-950"
                         />

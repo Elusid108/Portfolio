@@ -261,7 +261,7 @@
     "id": "8147",
     "timestamp": "2026-01-12T01:03:01.269Z",
     "title": "Emmy Stand",
-    "category": "Sculpture",
+    "category": "Art",
     "image": "media/Art/Emmy Stand/Gemini_Generated_Image_4xox7h4xox7h4xox.webp",
     "description": "<p>I built a desktop display stand to house and illuminate a friend’s Emmy without melting the PLA+ enclosure.</p>",
     "longDescription": "<p>An old coworker from my Tracks days won an Emmy and asked for a custom display. We used to work together when he was a bartender, so he knew my lighting background. I built him a desktop rig that scaled ballet lighting principles into a PLA+ enclosure.</p><p>The stand runs 512 addressable WS2815 LEDs across 7 data lines, driven by a Wasatch Pixels Basic Eight controller hidden inside the base. There are 3 boom towers per side with frosted lenses that arch back from downstage to upstage, while 45 deg wall washers sit recessed along the outer edges. A black and white film strip lines the bottom, printed in dual materials for diffusion and masking. The curved backdrop was too large for a single Bambu Lab print, so I built it in modular sections and turned the seams into an exaggerated surface texture.</p><p>Packing 144/m density LEDs into closed plastic is basically building a slow toaster. To keep heat from destroying the display from the inside out, I locked the current limit to 3A at 12V in WLED before I powered it on for the first time. I programmed the fixture in my dark apartment. When I set the Emmy on the pedestal, the reflective gold finish mirrored the light sources more than it absorbed the illumination, creating a warped mirror effect across the metal.</p>",
@@ -470,9 +470,9 @@
   {
     "id": "670",
     "timestamp": "2026-01-12T23:50:49.052Z",
-    "title": "Pixel Pyramid",
-    "category": "Sculpture",
-    "image": "media/Art/Pixel Pyramid/Gemini_Generated_Image_rmmssrmmssrmmssr.webp",
+    "title": "Pyramid",
+    "category": "Art",
+    "image": "media/Art/Pyramid/Gemini_Generated_Image_rmmssrmmssrmmssr.webp",
     "description": "<p>Trapped LED heat inside a sealed, 3 material PLA+ pyramid print required software current limiting to prevent structural melting.</p>",
     "longDescription": "<p>Getting crisp pixel isolation without light bleed across an internally divided pyramid required printing the entire sculpture as a single piece. Each cell needed a black core to block light from adjacent shafts, white walls to bounce illumination upward, and a frosted PLA+ shell for diffusion. Building that geometry without manual post-processing meant committing to a 1 to 3 day continuous print cycle on a Bambu Lab X1C, with 3 filament swaps on every single layer and a mountain of purge waste.</p><p>Trapped LED heat nearly killed the design during burn-in testing. I lifted the sculpture after a long run and accidentally mushed the softened grid with my thumb. Venting the back enclosure helped, but drilling holes into the frosted top shell would have ruined the display.</p><p>To keep the structure solid without sacrificing visual punch, I swapped the hardware to 12V WS2815 matrices and set a 1A current limit in WLED. Keeping the diodes over 1 cm from the surface eliminated visible hotspots while letting the grid show through the frost. The finished piece hung at Glow Lounge in Denver and ran for days at a time without warping, becoming the foundation for a fabrication process I still use.</p>",
     "websiteLink": "",
@@ -495,52 +495,52 @@
     ],
     "gallery": [
       {
-        "url": "media/Art/Pixel Pyramid/20230717_154810.webp",
+        "url": "media/Art/Pyramid/20230717_154810.webp",
         "fit": {
           "scale": 1.25,
           "x": 0,
           "y": 50
         },
-        "thumbnail": "media/Art/Pixel Pyramid/20230717_154810-thumb.webp"
+        "thumbnail": "media/Art/Pyramid/20230717_154810-thumb.webp"
       },
       {
-        "url": "media/Art/Pixel Pyramid/20230717_154820.webp",
+        "url": "media/Art/Pyramid/20230717_154820.webp",
         "fit": {
           "scale": 1.2,
           "x": 10.1,
           "y": 85.1
         },
-        "thumbnail": "media/Art/Pixel Pyramid/20230717_154820-thumb.webp"
+        "thumbnail": "media/Art/Pyramid/20230717_154820-thumb.webp"
       },
       {
-        "url": "media/Art/Pixel Pyramid/20230808_152320.webp",
+        "url": "media/Art/Pyramid/20230808_152320.webp",
         "fit": {
           "scale": 1.8,
           "x": 32.8,
           "y": 16
         },
-        "thumbnail": "media/Art/Pixel Pyramid/20230808_152320-thumb.webp"
+        "thumbnail": "media/Art/Pyramid/20230808_152320-thumb.webp"
       },
       {
-        "url": "media/Art/Pixel Pyramid/20230707_072443~2.mp4",
-        "poster": "media/Art/Pixel Pyramid/20230707_072443~2-poster.webp",
-        "thumbnail": "media/Art/Pixel Pyramid/20230707_072443~2-poster-thumb.webp"
+        "url": "media/Art/Pyramid/20230707_072443~2.mp4",
+        "poster": "media/Art/Pyramid/20230707_072443~2-poster.webp",
+        "thumbnail": "media/Art/Pyramid/20230707_072443~2-poster-thumb.webp"
       },
       {
-        "url": "media/Art/Pixel Pyramid/20230612_131709~2.mp4",
-        "poster": "media/Art/Pixel Pyramid/20230612_131709~2-poster.webp",
-        "thumbnail": "media/Art/Pixel Pyramid/20230612_131709~2-poster-thumb.webp"
+        "url": "media/Art/Pyramid/20230612_131709~2.mp4",
+        "poster": "media/Art/Pyramid/20230612_131709~2-poster.webp",
+        "thumbnail": "media/Art/Pyramid/20230612_131709~2-poster-thumb.webp"
       },
       {
-        "url": "media/Art/Pixel Pyramid/20230707_082949~2.mp4",
-        "poster": "media/Art/Pixel Pyramid/20230707_082949~2-poster.webp",
-        "thumbnail": "media/Art/Pixel Pyramid/20230707_082949~2-poster-thumb.webp"
+        "url": "media/Art/Pyramid/20230707_082949~2.mp4",
+        "poster": "media/Art/Pyramid/20230707_082949~2-poster.webp",
+        "thumbnail": "media/Art/Pyramid/20230707_082949~2-poster-thumb.webp"
       }
     ],
     "files": [],
     "video": "",
     "order": 2,
-    "specs": "<p><strong>Medium:</strong> PLA+ (3 material)</p><p><strong>Color:</strong> Black, White, Transparent</p><p><strong>LEDs: </strong>256 (16x16)</p><p><strong>Driver: </strong>WS2815 (RGB)</p><p><strong>Decoder:</strong> ATHOM (ESP8266)</p><p><strong>Firmware: </strong>WLED</p>",
+    "specs": "",
     "related": [],
     "thumbnailFit": {
       "scale": 1.05,
@@ -552,12 +552,13 @@
       "x": 77,
       "y": 38.2
     },
-    "thumbnail": "media/Art/Pixel Pyramid/Gemini_Generated_Image_rmmssrmmssrmmssr-thumb.webp"
+    "thumbnail": "media/Art/Pyramid/Gemini_Generated_Image_rmmssrmmssrmmssr-thumb.webp",
+    "specsData": []
   },
   {
     "id": "5632",
-    "title": "Pixel Mini Pyramid",
-    "category": "Sculpture",
+    "title": "Mini Pyramid",
+    "category": "Art",
     "tags": [
       "FDM 3D Printing",
       "SolidWorks",
@@ -570,51 +571,51 @@
       "Pixel Mapping",
       "Wire-to-Board Soldering"
     ],
-    "image": "media/Art/Pixel Mini Pyramid/minipyramidfix.webp",
+    "image": "media/Art/Mini Pyramid/minipyramidfix.webp",
     "description": "<p>An 8x8 pixel matrix desk lamp powered over 5V USB-C with a scannable QR code base.</p>",
     "longDescription": "<p>Stepping down from my 16x16 matrix to an 8x8 desk piece meant solving a packaging problem. I modeled the Pixel Mini Pyramid in SolidWorks and Blender around an ESP32 running WLED on 5V USB-C power. The base doubles as a scannable QR code that links to my site.</p><p>Squeezing 64 LEDs into the small footprint left very little room for hardware. The USB-C port wanted to push back into the case whenever I plugged a cable in, and closing the shell kept crushing the internal wiring. It took several 3D printed iterations and test fits to anchor the controller securely and route the leads cleanly.</p><p>A short throw distance usually creates hotspots. I used a frosted diffusion layer over white cell walls to break up the light, and printed the case in 3 materials on an X1C. A few friends and family have them on their desks now, and the QR code base still scans on the first try.</p>",
     "video": "",
     "gallery": [
       {
-        "url": "media/Art/Pixel Mini Pyramid/20230726_201532.webp",
+        "url": "media/Art/Mini Pyramid/20230726_201532.webp",
         "fit": {
           "scale": 1,
           "x": 48.9,
           "y": 19.2
         },
-        "thumbnail": "media/Art/Pixel Mini Pyramid/20230726_201532-thumb.webp"
+        "thumbnail": "media/Art/Mini Pyramid/20230726_201532-thumb.webp"
       },
       {
-        "url": "media/Art/Pixel Mini Pyramid/20240316_141546~2.mp4",
-        "poster": "media/Art/Pixel Mini Pyramid/20240316_141546~2-poster.webp",
-        "thumbnail": "media/Art/Pixel Mini Pyramid/20240316_141546~2-poster-thumb.webp"
+        "url": "media/Art/Mini Pyramid/20240316_141546~2.mp4",
+        "poster": "media/Art/Mini Pyramid/20240316_141546~2-poster.webp",
+        "thumbnail": "media/Art/Mini Pyramid/20240316_141546~2-poster-thumb.webp"
       },
       {
-        "url": "media/Art/Pixel Mini Pyramid/20240316_135358.webp",
+        "url": "media/Art/Mini Pyramid/20240316_135358.webp",
         "fit": {
           "scale": 1,
           "x": 66.6,
           "y": 64.7
         },
-        "thumbnail": "media/Art/Pixel Mini Pyramid/20240316_135358-thumb.webp"
+        "thumbnail": "media/Art/Mini Pyramid/20240316_135358-thumb.webp"
       },
       {
-        "url": "media/Art/Pixel Mini Pyramid/20240316_134702.webp",
+        "url": "media/Art/Mini Pyramid/20240316_134702.webp",
         "fit": {
           "scale": 1.1,
           "x": 26.9,
           "y": 46.5
         },
-        "thumbnail": "media/Art/Pixel Mini Pyramid/20240316_134702-thumb.webp"
+        "thumbnail": "media/Art/Mini Pyramid/20240316_134702-thumb.webp"
       },
       {
-        "url": "media/Art/Pixel Mini Pyramid/20230808_152641.webp",
+        "url": "media/Art/Mini Pyramid/20230808_152641.webp",
         "fit": {
           "scale": 1,
           "x": 48.4,
           "y": 40.2
         },
-        "thumbnail": "media/Art/Pixel Mini Pyramid/20230808_152641-thumb.webp"
+        "thumbnail": "media/Art/Mini Pyramid/20230808_152641-thumb.webp"
       }
     ],
     "launchLink": "",
@@ -625,8 +626,8 @@
     "websiteLink": "",
     "timestamp": "2026-01-13T00:01:33.897Z",
     "wip": false,
-    "order": 3,
-    "specs": "<p><strong>Medium:</strong> PLA+ (3 material)</p><p><strong>Color:</strong> Black, White, Transparent</p><p><strong>LEDs: </strong>64 (8x8)</p><p><strong>Driver: </strong>WS2813 (RGB)</p><p><strong>Decoder:</strong> ESP32-s3</p><p><strong>Firmware: </strong>WLED</p>",
+    "order": 10,
+    "specs": "",
     "related": [],
     "thumbnailFit": {
       "scale": 1,
@@ -638,14 +639,15 @@
       "x": 19.3,
       "y": 27.7
     },
-    "thumbnail": "media/Art/Pixel Mini Pyramid/minipyramidfix-thumb.webp"
+    "thumbnail": "media/Art/Mini Pyramid/minipyramidfix-thumb.webp",
+    "specsData": []
   },
   {
     "id": "8000",
     "timestamp": "2026-01-13T00:04:25.482Z",
-    "title": "Pixel Plane Warp",
-    "category": "Sculpture",
-    "image": "media/Art/Pixel Plane Warp/pixelplanewarp_fix.webp",
+    "title": "Plane Warp",
+    "category": "Art",
+    "image": "media/Art/Plane Warp/pixelplanewarp_fix.webp",
     "description": "<p>By combining black light-isolation walls with reflective white cell linings and frosted diffusion, this sweeping surface installation achieves sharp, vibrant patterns at low operating temperatures and current limits.</p>",
     "longDescription": "<p>I destroyed an early print trying to push enough light into the high corner of the wave. The piece is a subdivided grid with a sweeping surface distortion that terminates in sharp points. Because the peak sits far above the LEDs, lighting the far corners required running the strips at full brightness. The trapped heat ruined the print. Plastic and hot LEDs do not get along.</p><p>I modeled the unit in SolidWorks for dimensional accuracy. A Bambu Lab X1C printed the unified model with black walls to isolate each light channel. For the final version, I lined the cells in white and added a frosted layer. That combination let me cap the WLED output on the ATHOM ESP8266 controller to a 1a limit at 12vdc without losing clarity.</p><p>It ended up on the ceiling at Glow Lounge for a while. In a dark room, the black walls disappear and leave only the distorted pattern floating overhead. The simple geometry did the work without needing to fight for brightness.</p>",
     "websiteLink": "",
@@ -668,46 +670,46 @@
     ],
     "gallery": [
       {
-        "url": "media/Art/Pixel Plane Warp/pixelplanewarp_fix.webp",
+        "url": "media/Art/Plane Warp/pixelplanewarp_fix.webp",
         "fit": {
           "scale": 1,
           "x": 45.6,
           "y": 41.8
         },
-        "thumbnail": "media/Art/Pixel Plane Warp/pixelplanewarp_fix-thumb.webp"
+        "thumbnail": "media/Art/Plane Warp/pixelplanewarp_fix-thumb.webp"
       },
       {
-        "url": "media/Art/Pixel Plane Warp/IMG_20230720_092545_165.webp",
-        "thumbnail": "media/Art/Pixel Plane Warp/IMG_20230720_092545_165-thumb.webp"
+        "url": "media/Art/Plane Warp/IMG_20230720_092545_165.webp",
+        "thumbnail": "media/Art/Plane Warp/IMG_20230720_092545_165-thumb.webp"
       },
       {
-        "url": "media/Art/Pixel Plane Warp/20230605_021706~3.mp4",
-        "poster": "media/Art/Pixel Plane Warp/20230605_021706~3-poster.webp",
-        "thumbnail": "media/Art/Pixel Plane Warp/20230605_021706~3-poster-thumb.webp"
+        "url": "media/Art/Plane Warp/20230605_021706~3.mp4",
+        "poster": "media/Art/Plane Warp/20230605_021706~3-poster.webp",
+        "thumbnail": "media/Art/Plane Warp/20230605_021706~3-poster-thumb.webp"
       },
       {
-        "url": "media/Art/Pixel Plane Warp/20230808_152350.webp",
+        "url": "media/Art/Plane Warp/20230808_152350.webp",
         "fit": {
           "scale": 1,
           "x": 87.5,
           "y": 37.5
         },
-        "thumbnail": "media/Art/Pixel Plane Warp/20230808_152350-thumb.webp"
+        "thumbnail": "media/Art/Plane Warp/20230808_152350-thumb.webp"
       },
       {
-        "url": "media/Art/Pixel Plane Warp/20230712_072919.webp",
+        "url": "media/Art/Plane Warp/20230712_072919.webp",
         "fit": {
           "scale": 1,
           "x": 44.3,
           "y": 40.5
         },
-        "thumbnail": "media/Art/Pixel Plane Warp/20230712_072919-thumb.webp"
+        "thumbnail": "media/Art/Plane Warp/20230712_072919-thumb.webp"
       }
     ],
     "files": [],
     "video": "",
-    "order": 4,
-    "specs": "<p><strong>Medium:</strong> PLA+ (3 material)</p><p><strong>Color:</strong> Black, White, Transparent</p><p><strong>LEDs: </strong>256 (16x16)</p><p><strong>Driver: </strong>WS2815 (RGB)</p><p><strong>Decoder:</strong> ATHOM (ESP8266)</p><p><strong>Firmware: </strong>WLED</p>",
+    "order": 5,
+    "specs": "",
     "related": [],
     "thumbnailFit": {
       "scale": 1,
@@ -719,7 +721,8 @@
       "x": 45.2,
       "y": 3.4
     },
-    "thumbnail": "media/Art/Pixel Plane Warp/pixelplanewarp_fix-thumb.webp"
+    "thumbnail": "media/Art/Plane Warp/pixelplanewarp_fix-thumb.webp",
+    "specsData": []
   },
   {
     "id": "8252",
@@ -2555,9 +2558,9 @@
     "thumbnail": "media/Electronics/Bar Tubes/20240619_122306-thumb.webp"
   },
   {
-    "title": "Pixel Negative \"X\"",
-    "category": "Sculpture",
-    "image": "media/Art/Pixel Negative _X_/negative x fix.webp",
+    "title": "Negative \"X\"",
+    "category": "Art",
+    "image": "media/Art/Negative _X_/negative x fix.webp",
     "description": "<p>An internal X obstruction inside each cell turns a white square into an array of 1024 converging arrows.</p>",
     "longDescription": "<p>I wanted to build the pixel diffusion equivalent of a stage gobo. I designed an X obstruction through the center of 256 isolated cells in SolidWorks. Powered off, the piece sat like a plain square. Powered on, the solid X blocked the center of each WS2815 LED and created 4 arrows pointing toward each other.</p><p>My first attempt on a Tenlog TL-D3 failed when the nozzle dragged across the X pattern and caused layer shifts. Printing directly against the buildplate kept the face flat. A 1 mm PLA+ face provided the right balance of diffusion and opacity without bleeding light between cells.</p><p>I capped the current in WLED on an ATHOM ESP8266 controller to stop the PLA+ from heating and warping. Running fluid patterns across the grid made the uniform obstructions look fuzzy and ripply.</p>",
     "websiteLink": "",
@@ -2580,29 +2583,29 @@
     ],
     "gallery": [
       {
-        "url": "media/Art/Pixel Negative _X_/20230717_155724.webp",
-        "thumbnail": "media/Art/Pixel Negative _X_/20230717_155724-thumb.webp"
+        "url": "media/Art/Negative _X_/20230717_155724.webp",
+        "thumbnail": "media/Art/Negative _X_/20230717_155724-thumb.webp"
       },
       {
-        "url": "media/Art/Pixel Negative _X_/20230717_155731.webp",
-        "thumbnail": "media/Art/Pixel Negative _X_/20230717_155731-thumb.webp"
+        "url": "media/Art/Negative _X_/20230717_155731.webp",
+        "thumbnail": "media/Art/Negative _X_/20230717_155731-thumb.webp"
       },
       {
-        "url": "media/Art/Pixel Negative _X_/20230808_152442.webp",
+        "url": "media/Art/Negative _X_/20230808_152442.webp",
         "fit": {
           "scale": 1.4,
           "x": 34.4,
           "y": 24.5
         },
-        "thumbnail": "media/Art/Pixel Negative _X_/20230808_152442-thumb.webp"
+        "thumbnail": "media/Art/Negative _X_/20230808_152442-thumb.webp"
       }
     ],
     "files": [],
     "video": "",
     "timestamp": "2026-07-02T22:15:06.716Z",
     "id": "2285",
-    "order": 6,
-    "specs": "<p><strong>Medium:</strong> PLA+ (2 material)</p><p><strong>Color:</strong> Black, White</p><p><strong>LEDs: </strong>256 (16x16)</p><p><strong>Driver: </strong>WS2815 (RGB)</p><p><strong>Decoder:</strong> ATHOM (ESP8266)</p><p><strong>Firmware: </strong>WLED</p>",
+    "order": 12,
+    "specs": "",
     "related": [],
     "thumbnailFit": {
       "scale": 1.3,
@@ -2614,12 +2617,13 @@
       "x": 59,
       "y": 36.6
     },
-    "thumbnail": "media/Art/Pixel Negative _X_/negative x fix-thumb.webp"
+    "thumbnail": "media/Art/Negative _X_/negative x fix-thumb.webp",
+    "specsData": []
   },
   {
-    "title": "Pixel Seed of Life",
-    "category": "Sculpture",
-    "image": "media/Art/Pixel Seed of Life/seedoflifefix.webp",
+    "title": "Seed of Life",
+    "category": "Art",
+    "image": "media/Art/Seed of Life/seedoflifefix.webp",
     "description": "<p>A 1mm face printed over a subdivided matrix hides the seed of life until the pixels fire.</p>",
     "longDescription": "<p>I built this as a proof of concept to expand what I could do with subdivided matrices. Printed face down, the piece looks like a white square when turned off. Getting that surface required a 1mm face. That thickness balanced structural stability and light transmission without showing bleedthrough from the black walls behind it. With a 10mm throw, bouncing the light was unnecessary.</p><p>Heat became the immediate problem. Early tests ran at full brightness inside sealed enclosures. Over time, the corners curled and the grid walls softened enough to move by hand. Without vent holes on the back, the units bowed away from the wall as the PLA+ heated up. Adding vents and limiting current in the firmware stopped the deformation.</p><p>Now the symbol stays hidden until the matrix powers on. Lighting large clusters of pixels reveals parts of the pattern across the surface. The complete shape only appears when every pixel is active.</p>",
     "websiteLink": "",
@@ -2642,39 +2646,39 @@
     ],
     "gallery": [
       {
-        "url": "media/Art/Pixel Seed of Life/20230717_155617.webp",
+        "url": "media/Art/Seed of Life/20230717_155617.webp",
         "fit": {
           "scale": 1.15,
           "x": 97,
           "y": 31.8
         },
-        "thumbnail": "media/Art/Pixel Seed of Life/20230717_155617-thumb.webp"
+        "thumbnail": "media/Art/Seed of Life/20230717_155617-thumb.webp"
       },
       {
-        "url": "media/Art/Pixel Seed of Life/20230717_155640.webp",
+        "url": "media/Art/Seed of Life/20230717_155640.webp",
         "fit": {
           "scale": 1.1,
           "x": 64.1,
           "y": 45.5
         },
-        "thumbnail": "media/Art/Pixel Seed of Life/20230717_155640-thumb.webp"
+        "thumbnail": "media/Art/Seed of Life/20230717_155640-thumb.webp"
       },
       {
-        "url": "media/Art/Pixel Seed of Life/20230808_152626.webp",
+        "url": "media/Art/Seed of Life/20230808_152626.webp",
         "fit": {
           "scale": 1,
           "x": 47.7,
           "y": 30.6
         },
-        "thumbnail": "media/Art/Pixel Seed of Life/20230808_152626-thumb.webp"
+        "thumbnail": "media/Art/Seed of Life/20230808_152626-thumb.webp"
       }
     ],
     "files": [],
     "video": "",
     "timestamp": "2026-07-02T22:16:10.943Z",
     "id": "9896",
-    "order": 7,
-    "specs": "<p><strong>Medium:</strong> PLA+ (2 material)</p><p><strong>Color:</strong> Black, White</p><p><strong>LEDs: </strong>256 (16x16)</p><p><strong>Driver: </strong>WS2815 (RGB)</p><p><strong>Decoder:</strong> ATHOM (ESP8266)</p><p><strong>Firmware: </strong>WLED</p>",
+    "order": 13,
+    "specs": "",
     "related": [],
     "thumbnailFit": {
       "scale": 1.4,
@@ -2686,12 +2690,13 @@
       "x": 100,
       "y": 52.3
     },
-    "thumbnail": "media/Art/Pixel Seed of Life/seedoflifefix-thumb.webp"
+    "thumbnail": "media/Art/Seed of Life/seedoflifefix-thumb.webp",
+    "specsData": []
   },
   {
-    "title": "Pixel Celtic Owl",
-    "category": "Sculpture",
-    "image": "media/Art/Pixel Celtic Owl/frame-thumb-1786238531082.webp",
+    "title": "Celtic Owl",
+    "category": "Art",
+    "image": "media/Art/Celtic Owl/frame-thumb-1786238531082.webp",
     "description": "<p>An internally subdivided 16x16 LED matrix housed inside a dual-material relief sculpture of an organic Celtic owl.</p>",
     "longDescription": "<p>My workstation laptop crashes if I calculate an internal grid larger than 16x16. This piece was a test to see if I could map that geometric matrix inside an organic shape. I bought an owl model online and split the workflow between SolidWorks and Blender for the first time. The processing load of subtracting those 256 cells from Celtic knotwork pushed my hardware to its limit.</p><p>Early attempts on a Tenlog TL-D3 IDEX printer leaked light everywhere. Stopping the bleed between cells took 0.8 mm walls of black PLA+, which meant 2 passes with a 0.4 mm nozzle. Moving the job to a Bambu Lab X1C with an AMS unit solved the bleed immediately. A 0.4 mm wall of black PLA+ now isolates every cell cleanly.</p><p>The front relief is thin enough to act like a lithophane. When powered off, it reads as a white carving in a black frame. Turn on the ATHOM ESP8266 controller, and the 16x16 grid cuts straight through the surface lines.</p>",
     "websiteLink": "",
@@ -2715,33 +2720,33 @@
     ],
     "gallery": [
       {
-        "url": "media/Art/Pixel Celtic Owl/20240203_174318~2.mp4",
-        "poster": "media/Art/Pixel Celtic Owl/frame-thumb-1786238531082.webp",
-        "thumbnail": "media/Art/Pixel Celtic Owl/frame-thumb-1786238531082-thumb.webp"
+        "url": "media/Art/Celtic Owl/20240203_174318~2.mp4",
+        "poster": "media/Art/Celtic Owl/frame-thumb-1786238531082.webp",
+        "thumbnail": "media/Art/Celtic Owl/frame-thumb-1786238531082-thumb.webp"
       },
       {
-        "url": "media/Art/Pixel Celtic Owl/20220315_175407.webp",
-        "thumbnail": "media/Art/Pixel Celtic Owl/20220315_175407-thumb.webp"
+        "url": "media/Art/Celtic Owl/20220315_175407.webp",
+        "thumbnail": "media/Art/Celtic Owl/20220315_175407-thumb.webp"
       },
       {
-        "url": "media/Art/Pixel Celtic Owl/20220315_175356.webp",
-        "thumbnail": "media/Art/Pixel Celtic Owl/20220315_175356-thumb.webp"
+        "url": "media/Art/Celtic Owl/20220315_175356.webp",
+        "thumbnail": "media/Art/Celtic Owl/20220315_175356-thumb.webp"
       },
       {
-        "url": "media/Art/Pixel Celtic Owl/20220315_175342.webp",
-        "thumbnail": "media/Art/Pixel Celtic Owl/20220315_175342-thumb.webp"
+        "url": "media/Art/Celtic Owl/20220315_175342.webp",
+        "thumbnail": "media/Art/Celtic Owl/20220315_175342-thumb.webp"
       },
       {
-        "url": "media/Art/Pixel Celtic Owl/Screenshot 2026-07-02 185618.webp",
-        "thumbnail": "media/Art/Pixel Celtic Owl/Screenshot 2026-07-02 185618-thumb.webp"
+        "url": "media/Art/Celtic Owl/Screenshot 2026-07-02 185618.webp",
+        "thumbnail": "media/Art/Celtic Owl/Screenshot 2026-07-02 185618-thumb.webp"
       }
     ],
     "files": [],
     "video": "",
     "timestamp": "2026-07-02T23:00:41.951Z",
     "id": "8609",
-    "order": 5,
-    "specs": "<p><strong>Medium:</strong> PLA+ (2 material)</p><p><strong>Color:</strong> Black, White</p><p><strong>LEDs: </strong>256 (16x16)</p><p><strong>Driver: </strong>WS2815 (RGB)</p><p><strong>Decoder:</strong> ATHOM (ESP8266)</p><p><strong>Firmware: </strong>WLED</p>",
+    "order": 4,
+    "specs": "",
     "related": [],
     "thumbnailFit": {
       "scale": 1.25,
@@ -2753,7 +2758,8 @@
       "x": 47.7,
       "y": 31.8
     },
-    "thumbnail": "media/Art/Pixel Celtic Owl/frame-thumb-1786238531082-thumb.webp"
+    "thumbnail": "media/Art/Celtic Owl/frame-thumb-1786238531082-thumb.webp",
+    "specsData": []
   },
   {
     "title": "Lobby Wall",
@@ -4340,7 +4346,7 @@
   },
   {
     "title": "Pixel Rocks",
-    "category": "Sculpture",
+    "category": "Art",
     "image": "media/Art/Pixel Rocks/Screenshot 2026-08-08 133451.webp",
     "description": "<p>10 wirelessly controlled, 3D printed LED rocks built from topographical scans for a contemporary ballet piece.</p>",
     "longDescription": "<p>My good friend, mentor, and lighting designer for LINES ballet needed internally lit rocks controlled wirelessly from the console. The artistic director rejected my initial hand sculpted models. He wanted them sharp and jagged. They needed to look like they were meant to stone someone to death, but remain small enough to hold in one hand. I hiked outside Denver and collected 30 small stones that fit the aesthetic and my 3D scanner turntable. Working in a digital format let me scale the scans up to the size of about a pineapple. I printed 10 final shells in clear PLA+ at 5% infill. The hollow space kept the LED brightness high. The ballet company handled the faux painting on site.</p><p>The internal hardware needed to be completely modular. I modeled a universal sled that inserted into the base of any rock, locked in by a threaded cap. A custom pixel puck slid into that sled. Each puck held a lithium ion battery, a charge port, a rocker switch, a disassembled ESP8266 based Athom LED decoder running WLED, and two strips of pixel tape. The completed assemblies weighed about 5 lbs.</p><p>We drove them from the light console using ELM over a wireless router. This was the last project where I relied on 2.4GHz WiFi for live show control. The network environment choked the decoders, causing some units to drop control and freeze on stage. I specify 5GHz hardware for wireless pixel control now.</p>",
@@ -6392,5 +6398,719 @@
     "timestamp": "2026-08-14T23:16:48.264Z",
     "id": "9280",
     "order": 4
+  },
+  {
+    "title": "Bubblescape",
+    "category": "Sculpture",
+    "image": "media/Art/Bubblescape/frame-thumb-1786909172165.webp",
+    "thumbnail": "media/Art/Bubblescape/frame-thumb-1786909172165-thumb.webp",
+    "thumbnailFit": {
+      "scale": 1,
+      "x": 50,
+      "y": 27.8
+    },
+    "bannerFit": {
+      "scale": 1,
+      "x": 50,
+      "y": 24.3
+    },
+    "description": "<p>Placeholder</p>",
+    "longDescription": "<p>Placeholder</p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "tags": [
+      "Blender",
+      "Custom Fabrication",
+      "Embedded Systems",
+      "ESP8266",
+      "FDM 3D Printing",
+      "Lighting Design",
+      "Pixel Mapping",
+      "Rapid Prototyping",
+      "SPI",
+      "Wire-to-Board Soldering",
+      "WLED"
+    ],
+    "gallery": [
+      {
+        "url": "media/Art/Bubblescape/20230808_072127~3.mp4",
+        "fit": {
+          "scale": 1,
+          "x": 49.8,
+          "y": 30.3
+        },
+        "poster": "media/Art/Bubblescape/frame-thumb-1786909172165.webp",
+        "thumbnail": "media/Art/Bubblescape/frame-thumb-1786909172165-thumb.webp"
+      }
+    ],
+    "files": [],
+    "specsData": [
+      {
+        "id": "796e3c74-9989-41d9-80b0-672f73312765",
+        "title": "Placeholder",
+        "items": []
+      }
+    ],
+    "specs": "<h2>PLACEHOLDER</h2>",
+    "related": [],
+    "video": "",
+    "timestamp": "2026-08-16T19:42:16.340Z",
+    "id": 7131,
+    "order": 0
+  },
+  {
+    "title": "Bubblescape",
+    "category": "Art",
+    "image": "media/Art/Bubblescape/frame-thumb-1786909472631.webp",
+    "thumbnail": "media/Art/Bubblescape/frame-thumb-1786909472631-thumb.webp",
+    "thumbnailFit": {
+      "scale": 1,
+      "x": 52.1,
+      "y": 31.6
+    },
+    "bannerFit": {
+      "scale": 1,
+      "x": 50,
+      "y": 27.7
+    },
+    "description": "<p>Placeholder</p>",
+    "longDescription": "<p>Placeholder</p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "tags": [
+      "Blender",
+      "Custom Fabrication",
+      "Embedded Systems",
+      "ESP8266",
+      "FDM 3D Printing",
+      "Lighting Design",
+      "Pixel Mapping",
+      "Rapid Prototyping",
+      "SPI",
+      "Wire-to-Board Soldering",
+      "WLED"
+    ],
+    "gallery": [
+      {
+        "url": "media/Art/Bubblescape/20230808_072127~3.mp4",
+        "fit": {
+          "scale": 1,
+          "x": 48.8,
+          "y": 30
+        },
+        "poster": "media/Art/Bubblescape/frame-thumb-1786909472631.webp",
+        "thumbnail": "media/Art/Bubblescape/frame-thumb-1786909472631-thumb.webp"
+      }
+    ],
+    "files": [],
+    "specsData": [
+      {
+        "id": "024fdd4d-e49b-4776-af1f-7e221fb1b6f3",
+        "title": "Placeholder",
+        "items": []
+      }
+    ],
+    "specs": "<h2>PLACEHOLDER</h2>",
+    "related": [],
+    "video": "",
+    "timestamp": "2026-08-16T19:45:09.127Z",
+    "id": "9191",
+    "order": 6
+  },
+  {
+    "title": "Zig-Zag",
+    "category": "Art",
+    "image": "media/Art/Zig-Zag/20231127_070031~2-poster.webp",
+    "thumbnail": "media/Art/Zig-Zag/20231127_070031~2-poster-thumb.webp",
+    "thumbnailFit": {
+      "scale": 1,
+      "x": 50,
+      "y": 22.4
+    },
+    "bannerFit": {
+      "scale": 1,
+      "x": 50.2,
+      "y": 21.4
+    },
+    "description": "<p>Placeholder</p>",
+    "longDescription": "<p>Placeholder</p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "tags": [
+      "Blender",
+      "Custom Fabrication",
+      "Embedded Systems",
+      "ESP8266",
+      "FDM 3D Printing",
+      "Lighting Design",
+      "Pixel Mapping",
+      "Rapid Prototyping",
+      "SPI",
+      "Wire-to-Board Soldering",
+      "WLED"
+    ],
+    "gallery": [
+      {
+        "url": "media/Art/Zig-Zag/20231127_070031~2.mp4",
+        "fit": {
+          "scale": 1,
+          "x": 50,
+          "y": 20.2
+        },
+        "poster": "media/Art/Zig-Zag/frame-thumb-1786909779529.webp",
+        "thumbnail": "media/Art/Zig-Zag/frame-thumb-1786909779529-thumb.webp"
+      }
+    ],
+    "files": [],
+    "specsData": [
+      {
+        "id": "8c4a9a80-9997-41ca-ae19-629ce79f2e40",
+        "title": "Placeholder",
+        "items": []
+      }
+    ],
+    "specs": "<h2>PLACEHOLDER</h2>",
+    "related": [],
+    "video": "",
+    "timestamp": "2026-08-16T19:50:18.919Z",
+    "id": "7412",
+    "order": 15
+  },
+  {
+    "title": "Clay Face",
+    "category": "Art",
+    "image": "media/Art/Clay Face/frame-thumb-1786910058148.webp",
+    "thumbnail": "media/Art/Clay Face/frame-thumb-1786910058148-thumb.webp",
+    "thumbnailFit": {
+      "scale": 1.15,
+      "x": 14.2,
+      "y": 39.1
+    },
+    "bannerFit": {
+      "scale": 1,
+      "x": 50,
+      "y": 36.3
+    },
+    "description": "<p>Placeholder</p>",
+    "longDescription": "<p>Placeholder</p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "tags": [
+      "Blender",
+      "Custom Fabrication",
+      "Embedded Systems",
+      "ESP8266",
+      "Lighting Design",
+      "FDM 3D Printing",
+      "Pixel Mapping",
+      "Rapid Prototyping",
+      "SPI",
+      "Wire-to-Board Soldering",
+      "WLED"
+    ],
+    "gallery": [
+      {
+        "url": "media/Art/Clay Face/20231128_061915.mp4",
+        "fit": {
+          "scale": 1.1,
+          "x": 4.3,
+          "y": 41.1
+        },
+        "poster": "media/Art/Clay Face/frame-thumb-1786910058148.webp",
+        "thumbnail": "media/Art/Clay Face/frame-thumb-1786910058148-thumb.webp"
+      }
+    ],
+    "files": [],
+    "specsData": [
+      {
+        "id": "cfc944e7-2b91-430d-b436-e6ed3e116e6d",
+        "title": "Placeholder",
+        "items": []
+      }
+    ],
+    "specs": "<h2>PLACEHOLDER</h2>",
+    "related": [],
+    "video": "",
+    "timestamp": "2026-08-16T19:55:48.429Z",
+    "id": "8740",
+    "order": 8
+  },
+  {
+    "title": "Scream-Face",
+    "category": "Art",
+    "image": "media/Art/Scream-Face/frame-thumb-1786911394361.webp",
+    "thumbnail": "media/Art/Scream-Face/frame-thumb-1786911394361-thumb.webp",
+    "thumbnailFit": {
+      "scale": 1,
+      "x": 47.5,
+      "y": 30.9
+    },
+    "bannerFit": {
+      "scale": 1,
+      "x": 49.3,
+      "y": 34
+    },
+    "description": "<p>Placeholder</p>",
+    "longDescription": "<p>Placeholder</p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "tags": [
+      "Blender",
+      "Custom Fabrication",
+      "ESP8266",
+      "FDM 3D Printing",
+      "Lighting Design",
+      "Pixel Mapping",
+      "SPI",
+      "Wire-to-Board Soldering",
+      "WLED"
+    ],
+    "gallery": [
+      {
+        "url": "media/Art/Scream-Face/20220317_085054.mp4",
+        "fit": {
+          "scale": 1.15,
+          "x": 62.6,
+          "y": 34.1
+        },
+        "poster": "media/Art/Scream-Face/frame-thumb-1786911394361.webp",
+        "thumbnail": "media/Art/Scream-Face/frame-thumb-1786911394361-thumb.webp"
+      },
+      {
+        "url": "media/Art/Scream-Face/20231002_204000.mp4",
+        "fit": {
+          "scale": 1.15,
+          "x": 81.2,
+          "y": 52.9
+        },
+        "poster": "media/Art/Scream-Face/frame-thumb-1786910329347.webp",
+        "thumbnail": "media/Art/Scream-Face/frame-thumb-1786910329347-thumb.webp"
+      },
+      {
+        "url": "media/Art/Scream-Face/20231002_203931.mp4",
+        "fit": {
+          "scale": 1.15,
+          "x": 83.5,
+          "y": 42.7
+        },
+        "poster": "media/Art/Scream-Face/20231002_203931-poster.webp",
+        "thumbnail": "media/Art/Scream-Face/20231002_203931-poster-thumb.webp"
+      }
+    ],
+    "files": [],
+    "specsData": [
+      {
+        "id": "b56657dc-7a95-4515-ac18-38708db4f748",
+        "title": "Placeholder",
+        "items": []
+      }
+    ],
+    "specs": "<h2>PLACEHOLDER</h2>",
+    "related": [],
+    "video": "",
+    "timestamp": "2026-08-16T20:00:30.235Z",
+    "id": "1829",
+    "order": 3
+  },
+  {
+    "title": "Clay Tree",
+    "category": "Art",
+    "image": "media/Art/Clay Tree/20231129_193208~2-poster.webp",
+    "thumbnail": "media/Art/Clay Tree/20231129_193208~2-poster-thumb.webp",
+    "thumbnailFit": {
+      "scale": 1,
+      "x": 50,
+      "y": 53.8
+    },
+    "bannerFit": {
+      "scale": 1,
+      "x": 50.4,
+      "y": 45.4
+    },
+    "description": "<p>Placeholder</p>",
+    "longDescription": "<p>Placeholder</p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "tags": [
+      "Blender",
+      "Custom Fabrication",
+      "Embedded Systems",
+      "ESP8266",
+      "Lighting Design",
+      "FDM 3D Printing",
+      "Pixel Mapping",
+      "SPI",
+      "Wire-to-Board Soldering",
+      "WLED"
+    ],
+    "gallery": [
+      {
+        "url": "media/Art/Clay Tree/20231129_193208~2.mp4",
+        "fit": {
+          "scale": 1.1,
+          "x": 0,
+          "y": 40.1
+        },
+        "poster": "media/Art/Clay Tree/frame-thumb-1786910623035.webp",
+        "thumbnail": "media/Art/Clay Tree/frame-thumb-1786910623035-thumb.webp"
+      },
+      {
+        "url": "media/Art/Clay Tree/20220330_230338.mp4",
+        "fit": {
+          "scale": 1,
+          "x": 48.9,
+          "y": 35.4
+        },
+        "poster": "media/Art/Clay Tree/frame-thumb-1786910729386.webp",
+        "thumbnail": "media/Art/Clay Tree/frame-thumb-1786910729386-thumb.webp"
+      }
+    ],
+    "files": [],
+    "specsData": [
+      {
+        "id": "729aec16-733b-4bee-918c-596ba24b8dfa",
+        "title": "Placeholder",
+        "items": []
+      }
+    ],
+    "specs": "<h2>PLACEHOLDER</h2>",
+    "related": [],
+    "video": "",
+    "timestamp": "2026-08-16T20:06:37.433Z",
+    "id": "3139",
+    "order": 9
+  },
+  {
+    "title": "Face",
+    "category": "Art",
+    "image": "media/Art/Face/frame-thumb-1786911050766.webp",
+    "thumbnail": "media/Art/Face/frame-thumb-1786911050766-thumb.webp",
+    "thumbnailFit": {
+      "scale": 1,
+      "x": 44.5,
+      "y": 21.7
+    },
+    "bannerFit": {
+      "scale": 1,
+      "x": 50.2,
+      "y": 21.4
+    },
+    "description": "<p>Placeholder</p>",
+    "longDescription": "<p>Placeholder</p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "tags": [
+      "Blender",
+      "Custom Fabrication",
+      "Embedded Systems",
+      "ESP8266",
+      "FDM 3D Printing",
+      "Lighting Design",
+      "Pixel Mapping",
+      "SPI",
+      "Wire-to-Board Soldering",
+      "WLED"
+    ],
+    "gallery": [
+      {
+        "url": "media/Art/Face/20231126_192610~2.mp4",
+        "fit": {
+          "scale": 1,
+          "x": 46.1,
+          "y": 20.8
+        },
+        "poster": "media/Art/Face/frame-thumb-1786911050766.webp",
+        "thumbnail": "media/Art/Face/frame-thumb-1786911050766-thumb.webp"
+      }
+    ],
+    "files": [],
+    "specsData": [
+      {
+        "id": "5daa5fa7-7f7c-4110-8643-b1158dfc195e",
+        "title": "Placeholder",
+        "items": []
+      }
+    ],
+    "specs": "<h2>PLACEHOLDER</h2>",
+    "related": [],
+    "video": "",
+    "timestamp": "2026-08-16T20:11:26.500Z",
+    "id": "4827",
+    "order": 7
+  },
+  {
+    "title": "\"X\"",
+    "category": "Art",
+    "image": "media/Art/_X_/20231125_093617~2-poster-thumb.webp",
+    "thumbnail": "media/Art/_X_/20231125_093617~2-poster-thumb-thumb.webp",
+    "thumbnailFit": {
+      "scale": 1.15,
+      "x": 76.2,
+      "y": 37.3
+    },
+    "bannerFit": {
+      "scale": 1,
+      "x": 50,
+      "y": 27.1
+    },
+    "description": "<p>Placeholder</p>",
+    "longDescription": "<p>Placeholder</p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "tags": [
+      "Blender",
+      "Custom Fabrication",
+      "ESP8266",
+      "Embedded Systems",
+      "Lighting Design",
+      "FDM 3D Printing",
+      "Pixel Mapping",
+      "SPI",
+      "Wire-to-Board Soldering",
+      "WLED"
+    ],
+    "gallery": [
+      {
+        "url": "media/Art/_X_/20231125_093617~2.mp4",
+        "fit": {
+          "scale": 1.15,
+          "x": 23.1,
+          "y": 42.3
+        },
+        "poster": "media/Art/_X_/frame-thumb-1786911519833.webp",
+        "thumbnail": "media/Art/_X_/frame-thumb-1786911519833-thumb.webp"
+      }
+    ],
+    "files": [],
+    "specsData": [
+      {
+        "id": "c86a48eb-0a8b-4aec-a9c1-398362a9d8db",
+        "title": "Placeholder",
+        "items": []
+      }
+    ],
+    "specs": "<h2>PLACEHOLDER</h2>",
+    "related": [],
+    "video": "",
+    "timestamp": "2026-08-16T20:19:44.564Z",
+    "id": "7080",
+    "order": 16
+  },
+  {
+    "title": "Dot Matrix",
+    "category": "Art",
+    "image": "media/Art/Dot Matrix/20231125_093701~2-poster.webp",
+    "thumbnail": "media/Art/Dot Matrix/20231125_093701~2-poster-thumb.webp",
+    "thumbnailFit": {
+      "scale": 1,
+      "x": 48.4,
+      "y": 32.5
+    },
+    "bannerFit": {
+      "scale": 1,
+      "x": 48.6,
+      "y": 41.4
+    },
+    "description": "<p>Placeholder</p>",
+    "longDescription": "<p>Placeholder</p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "tags": [
+      "Blender",
+      "Custom Fabrication",
+      "Embedded Systems",
+      "ESP8266",
+      "Lighting Design",
+      "Pixel Mapping",
+      "FDM 3D Printing",
+      "SPI",
+      "Wire-to-Board Soldering",
+      "WLED"
+    ],
+    "gallery": [
+      {
+        "url": "media/Art/Dot Matrix/20231125_093701~2.mp4",
+        "fit": {
+          "scale": 1,
+          "x": 50,
+          "y": 35.1
+        },
+        "poster": "media/Art/Dot Matrix/20231125_093701~2-poster.webp",
+        "thumbnail": "media/Art/Dot Matrix/20231125_093701~2-poster-thumb.webp"
+      }
+    ],
+    "files": [],
+    "specsData": [
+      {
+        "id": "de847194-bab0-4e94-8284-00c5af82016b",
+        "title": "Placeholder",
+        "items": []
+      }
+    ],
+    "specs": "<h2>PLACEHOLDER</h2>",
+    "related": [],
+    "video": "",
+    "timestamp": "2026-08-16T20:23:22.050Z",
+    "id": 5202,
+    "order": 14
+  },
+  {
+    "title": "Inverted Triangles",
+    "category": "Art",
+    "image": "media/Art/Inverted Triangles/frame-thumb-1786911861387.webp",
+    "thumbnail": "media/Art/Inverted Triangles/frame-thumb-1786911861387-thumb.webp",
+    "thumbnailFit": {
+      "scale": 1,
+      "x": 50.2,
+      "y": 31.6
+    },
+    "bannerFit": {
+      "scale": 1,
+      "x": 50,
+      "y": 42.6
+    },
+    "description": "<p>Placeholder</p>",
+    "longDescription": "<p>Placeholder</p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "tags": [
+      "Blender",
+      "Custom Fabrication",
+      "ESP8266",
+      "Embedded Systems",
+      "Lighting Design",
+      "Pixel Mapping",
+      "FDM 3D Printing",
+      "SPI",
+      "Wire-to-Board Soldering",
+      "WLED"
+    ],
+    "gallery": [
+      {
+        "url": "media/Art/Inverted Triangles/20231125_093753~2.mp4",
+        "fit": {
+          "scale": 1.15,
+          "x": 63.2,
+          "y": 32.4
+        },
+        "poster": "media/Art/Inverted Triangles/frame-thumb-1786911861387.webp",
+        "thumbnail": "media/Art/Inverted Triangles/frame-thumb-1786911861387-thumb.webp"
+      }
+    ],
+    "files": [],
+    "specsData": [
+      {
+        "id": "a26ee645-ca81-4fbf-b97e-3c444fee0a77",
+        "title": "Placeholder",
+        "items": []
+      }
+    ],
+    "specs": "<h2>PLACEHOLDER</h2>",
+    "related": [],
+    "video": "",
+    "timestamp": "2026-08-16T20:25:20.687Z",
+    "id": "6865",
+    "order": 17
+  },
+  {
+    "title": "Circles Corner",
+    "category": "Art",
+    "image": "media/Art/Circles Corner/frame-thumb-1786912100385.webp",
+    "thumbnail": "media/Art/Circles Corner/frame-thumb-1786912100385-thumb.webp",
+    "thumbnailFit": {
+      "scale": 1.15,
+      "x": 22.1,
+      "y": 30
+    },
+    "bannerFit": {
+      "scale": 1.15,
+      "x": 27.2,
+      "y": 35.1
+    },
+    "description": "<p>Placeholder</p>",
+    "longDescription": "<p>Placeholder</p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "tags": [
+      "Blender",
+      "Custom Fabrication",
+      "ESP8266",
+      "FDM 3D Printing",
+      "Lighting Design",
+      "Pixel Mapping",
+      "SPI",
+      "Wire-to-Board Soldering",
+      "WLED"
+    ],
+    "gallery": [
+      {
+        "url": "media/Art/Circles Corner/20231125_093836~2.mp4",
+        "fit": {
+          "scale": 1.15,
+          "x": 19.4,
+          "y": 30.1
+        },
+        "poster": "media/Art/Circles Corner/frame-thumb-1786912100385.webp",
+        "thumbnail": "media/Art/Circles Corner/frame-thumb-1786912100385-thumb.webp"
+      }
+    ],
+    "files": [],
+    "specsData": [
+      {
+        "id": "49697cb7-2c58-4ca7-a34d-60e613e14a82",
+        "title": "Placeholder",
+        "items": []
+      }
+    ],
+    "specs": "<h2>PLACEHOLDER</h2>",
+    "related": [],
+    "video": "",
+    "timestamp": "2026-08-16T20:29:37.203Z",
+    "id": "2451",
+    "order": 11
   }
 ]

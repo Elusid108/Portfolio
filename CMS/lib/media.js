@@ -10,12 +10,12 @@ const DATA_DIR = path.join(__dirname, '..', 'data');
 
 const CATEGORY_FOLDER_MAP = {
   'Lighting': 'Lighting',
-  'Sculpture': 'Art',
+  'Art': 'Art',
   'Fixtures': 'Electronics',
   'Software': 'Apps',
   'Tooling': 'Fabrication',
   'Systems': 'Integration',
-  'Art': 'Art',
+  'Sculpture': 'Art',
   'Circuits': 'Electronics',
   'Apps': 'Apps',
   'Solutions': 'Fabrication',
