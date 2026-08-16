@@ -6871,10 +6871,10 @@
     "order": 7
   },
   {
-    "title": "\"X\"",
+    "title": "X",
     "category": "Art",
-    "image": "media/Art/_X_/20231125_093617~2-poster-thumb.webp",
-    "thumbnail": "media/Art/_X_/20231125_093617~2-poster-thumb-thumb.webp",
+    "image": "media/Art/X/20231125_093617~2-poster-thumb.webp",
+    "thumbnail": "media/Art/X/20231125_093617~2-poster-thumb-thumb.webp",
     "thumbnailFit": {
       "scale": 1.15,
       "x": 76.2,
@@ -6907,14 +6907,14 @@
     ],
     "gallery": [
       {
-        "url": "media/Art/_X_/20231125_093617~2.mp4",
+        "url": "media/Art/X/20231125_093617~2.mp4",
         "fit": {
           "scale": 1.15,
           "x": 23.1,
           "y": 42.3
         },
-        "poster": "media/Art/_X_/frame-thumb-1786911519833.webp",
-        "thumbnail": "media/Art/_X_/frame-thumb-1786911519833-thumb.webp"
+        "poster": "media/Art/X/frame-thumb-1786911519833.webp",
+        "thumbnail": "media/Art/X/frame-thumb-1786911519833-thumb.webp"
       }
     ],
     "files": [],
