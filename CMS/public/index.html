@@ -37,7 +37,7 @@
   <div id="app" class="max-w-5xl mx-auto p-6">
     <div class="flex justify-between items-center mb-8">
       <div>
-        <h1 class="text-3xl font-bold text-slate-800">Portfolio CMS <span class="text-sm font-medium text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full align-middle">v2.0 Local</span></h1>
+        <h1 class="text-3xl font-bold text-slate-800">Portfolio CMS <span class="text-sm font-medium text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full align-middle">v2.1 Local</span></h1>
         <p class="text-slate-500 text-sm mt-1">Local portfolio manager</p>
       </div>
       <div class="flex gap-3">
@@ -164,7 +164,12 @@
 
           <!-- Specifications -->
           <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
-             <h3 class="text-xs font-bold text-slate-500 uppercase mb-3 border-b border-slate-200 pb-2">Specifications</h3>
+             <div class="flex justify-between items-center mb-3 border-b border-slate-200 pb-2">
+                 <h3 class="text-xs font-bold text-slate-500 uppercase">Specifications</h3>
+                 <button type="button" onclick="openCopySpecsModal()" class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded hover:bg-indigo-200 font-bold flex items-center gap-1">
+                   <i class="ph ph-copy"></i> Copy from project
+                 </button>
+             </div>
              <p class="text-xs text-slate-500 mb-4">Enter comma-separated values in the specs field, and they will auto-format with bullets.</p>
              <div id="specs-builder" class="space-y-4 mb-6"></div>
              <button type="button" onclick="addSpecCategory()" class="w-full py-3 bg-slate-800 text-white rounded-lg text-sm font-bold hover:bg-slate-700 transition-colors flex items-center justify-center gap-2 mb-6">
@@ -663,7 +668,7 @@
             if (!cat.title && cat.items.length === 0) return;
             html += `<div class="${i === 0 ? '' : 'mt-6'} mb-2">`;
             if (cat.title) {
-                html += `<h2 class="text-base font-bold uppercase tracking-wide text-white mb-3">${escapeHtml(cat.title)}</h2>`;
+                html += `<h2 class="text-xl font-bold uppercase tracking-wide text-white mb-3">${escapeHtml(cat.title)}</h2>`;
             }
             cat.items.forEach(item => {
                 if (!item.name) return;
@@ -679,6 +684,212 @@
         });
 
         body.innerHTML = html || '<p class="text-zinc-600 text-xs italic">Nothing to preview yet.</p>';
+    }
+
+    // --- COPY SPECS FROM ANOTHER PROJECT ---
+    let copySpecsState = { sourceId: null, selectedCatIds: new Set(), filter: '' };
+
+    function specItemCount(p) {
+        return (p?.specsData || []).reduce((n, cat) => n + (Array.isArray(cat.items) ? cat.items.length : 0), 0);
+    }
+
+    function projectHasCopyableSpecs(p) {
+        return Array.isArray(p?.specsData) && p.specsData.length > 0;
+    }
+
+    function specCatId(cat, index) {
+        return String(cat?.id || `idx-${index}`);
+    }
+
+    function currentEditorProjectId() {
+        return String(document.getElementById('id')?.value || '');
+    }
+
+    function destinationHasSpecs() {
+        return specsCategories.length > 0;
+    }
+
+    function getCopyableProjects() {
+        const currentId = currentEditorProjectId();
+        const q = (copySpecsState.filter || '').trim().toLowerCase();
+        return projects.filter(p => {
+            if (!projectHasCopyableSpecs(p)) return false;
+            if (currentId && String(p.id) === currentId) return false;
+            if (!q) return true;
+            const title = (p.title || '').toLowerCase();
+            const cat = (p.category || '').toLowerCase();
+            return title.includes(q) || cat.includes(q);
+        });
+    }
+
+    function cloneSpecCategories(categories) {
+        return (categories || []).map(cat => ({
+            id: newSpecId(),
+            title: cat.title || '',
+            items: (Array.isArray(cat.items) ? cat.items : []).map(item => ({
+                id: newSpecId(),
+                name: item.name || '',
+                qty: item.qty || '',
+                specs: item.specs || ''
+            }))
+        }));
+    }
+
+    function openCopySpecsModal() {
+        const currentId = currentEditorProjectId();
+        const available = projects.filter(p =>
+            projectHasCopyableSpecs(p) && !(currentId && String(p.id) === currentId)
+        );
+        if (available.length === 0) {
+            Toastify({ text: 'No other projects have specs to copy.', duration: 3000, backgroundColor: '#64748b' }).showToast();
+            return;
+        }
+        copySpecsState = { sourceId: null, selectedCatIds: new Set(), filter: '' };
+        const search = document.getElementById('copy-specs-search');
+        if (search) search.value = '';
+        document.getElementById('copy-specs-modal').classList.remove('hidden');
+        renderCopySpecsModal();
+        if (search) search.focus();
+    }
+
+    function closeCopySpecsModal() {
+        document.getElementById('copy-specs-modal').classList.add('hidden');
+        copySpecsState = { sourceId: null, selectedCatIds: new Set(), filter: '' };
+    }
+
+    function onCopySpecsSearch(value) {
+        copySpecsState.filter = value;
+        renderCopySpecsProjectList();
+    }
+
+    function selectCopySpecsSource(id) {
+        const source = projects.find(p => String(p.id) === String(id));
+        if (!source || !projectHasCopyableSpecs(source)) return;
+        copySpecsState.sourceId = String(source.id);
+        copySpecsState.selectedCatIds = new Set(source.specsData.map((cat, i) => specCatId(cat, i)));
+        renderCopySpecsModal();
+    }
+
+    function toggleCopySpecsCategory(catId, checked) {
+        if (checked) copySpecsState.selectedCatIds.add(String(catId));
+        else copySpecsState.selectedCatIds.delete(String(catId));
+        renderCopySpecsActions();
+    }
+
+    function renderCopySpecsModal() {
+        renderCopySpecsProjectList();
+        renderCopySpecsCategories();
+        renderCopySpecsActions();
+    }
+
+    function renderCopySpecsProjectList() {
+        const list = document.getElementById('copy-specs-project-list');
+        if (!list) return;
+        const matches = getCopyableProjects();
+        if (matches.length === 0) {
+            list.innerHTML = '<p class="text-xs text-slate-400 italic py-3 text-center">No matching projects.</p>';
+            return;
+        }
+
+        const groups = [];
+        CATEGORY_ORDER.forEach(cat => {
+            const items = matches.filter(p => p.category === cat);
+            if (items.length) groups.push({ cat, items });
+        });
+        const other = matches.filter(p => !CATEGORY_ORDER.includes(p.category));
+        if (other.length) groups.push({ cat: 'Other', items: other });
+
+        list.innerHTML = groups.map(group => `
+            <div class="mb-2">
+              <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wide px-1 mb-1">${escapeHtml(CATEGORY_LABELS[group.cat] || group.cat)}</p>
+              ${group.items.map(p => {
+                  const selected = String(p.id) === String(copySpecsState.sourceId);
+                  const count = specItemCount(p);
+                  const nCats = p.specsData.length;
+                  return `
+                    <button type="button" onclick="selectCopySpecsSource('${escAttr(String(p.id))}')"
+                      class="w-full text-left px-3 py-2 rounded-lg border mb-1 transition-colors ${selected ? 'border-indigo-500 bg-indigo-50 ring-1 ring-indigo-500' : 'border-slate-200 hover:border-indigo-300 hover:bg-slate-50'}">
+                      <div class="font-bold text-sm text-slate-800 truncate">${escapeHtml(p.title || 'Untitled')}</div>
+                      <div class="text-xs text-slate-500">${nCats} ${nCats === 1 ? 'category' : 'categories'} · ${count} ${count === 1 ? 'item' : 'items'}</div>
+                    </button>`;
+              }).join('')}
+            </div>
+        `).join('');
+    }
+
+    function renderCopySpecsCategories() {
+        const wrap = document.getElementById('copy-specs-categories');
+        if (!wrap) return;
+        const source = projects.find(p => String(p.id) === String(copySpecsState.sourceId));
+        if (!source || !projectHasCopyableSpecs(source)) {
+            wrap.classList.add('hidden');
+            wrap.innerHTML = '';
+            return;
+        }
+        wrap.classList.remove('hidden');
+        wrap.innerHTML = `
+            <p class="text-xs font-bold text-slate-500 uppercase mb-2">Categories to copy</p>
+            <div class="space-y-1.5">
+              ${source.specsData.map((cat, i) => {
+                  const id = specCatId(cat, i);
+                  const checked = copySpecsState.selectedCatIds.has(id);
+                  const n = Array.isArray(cat.items) ? cat.items.length : 0;
+                  const title = cat.title || 'Untitled category';
+                  return `
+                    <label class="flex items-center gap-2 px-3 py-2 rounded-lg border border-slate-200 bg-slate-50 hover:border-indigo-200 cursor-pointer">
+                      <input type="checkbox" class="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+                        ${checked ? 'checked' : ''}
+                        onchange="toggleCopySpecsCategory('${escAttr(id)}', this.checked)">
+                      <span class="flex-1 text-sm font-medium text-slate-700 truncate">${escapeHtml(title)}</span>
+                      <span class="text-xs text-slate-400 flex-shrink-0">${n} ${n === 1 ? 'item' : 'items'}</span>
+                    </label>`;
+              }).join('')}
+            </div>`;
+    }
+
+    function renderCopySpecsActions() {
+        const el = document.getElementById('copy-specs-actions');
+        if (!el) return;
+        const canCopy = !!copySpecsState.sourceId && copySpecsState.selectedCatIds.size > 0;
+        const disabledCls = canCopy ? '' : 'opacity-50 cursor-not-allowed';
+        const disabledAttr = canCopy ? '' : 'disabled';
+        if (!destinationHasSpecs()) {
+            el.innerHTML = `
+                <button type="button" ${disabledAttr} onclick="applyCopiedSpecs('replace')"
+                  class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-bold text-sm transition-colors ${disabledCls}">
+                  Copy
+                </button>`;
+            return;
+        }
+        el.innerHTML = `
+            <button type="button" ${disabledAttr} onclick="applyCopiedSpecs('append')"
+              class="px-4 py-2 border border-slate-200 rounded-lg text-slate-700 hover:bg-slate-50 font-medium text-sm transition-colors ${disabledCls}">
+              Append
+            </button>
+            <button type="button" ${disabledAttr} onclick="applyCopiedSpecs('replace')"
+              class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-bold text-sm transition-colors ${disabledCls}">
+              Replace
+            </button>`;
+    }
+
+    function applyCopiedSpecs(mode) {
+        if (!copySpecsState.sourceId || copySpecsState.selectedCatIds.size === 0) return;
+        const source = projects.find(p => String(p.id) === String(copySpecsState.sourceId));
+        if (!source || !projectHasCopyableSpecs(source)) return;
+        const selected = source.specsData.filter((cat, i) => copySpecsState.selectedCatIds.has(specCatId(cat, i)));
+        if (selected.length === 0) return;
+        const cloned = cloneSpecCategories(selected);
+        if (mode === 'append') specsCategories = specsCategories.concat(cloned);
+        else specsCategories = cloned;
+        markSpecsDirty();
+        renderSpecsBuilder();
+        const verb = mode === 'append' ? 'appended' : 'copied';
+        Toastify({
+            text: `Specs ${verb} from ${source.title || 'project'}.`,
+            duration: 3000,
+            backgroundColor: '#4f46e5'
+        }).showToast();
+        closeCopySpecsModal();
     }
 
     function getCollapsedSet() {
@@ -2425,6 +2636,32 @@
       });
     })();
   </script>
+  <!-- COPY SPECS MODAL -->
+  <div id="copy-specs-modal" class="hidden fixed inset-0 bg-black/60 z-[60] flex items-center justify-center backdrop-blur-sm p-4" onclick="if(event.target===this)closeCopySpecsModal()">
+    <div class="bg-white rounded-xl shadow-2xl w-full flex flex-col overflow-hidden" style="max-width:520px;max-height:90vh;">
+      <div class="flex justify-between items-start p-6 pb-3 flex-shrink-0">
+        <div>
+          <h2 class="text-lg font-bold text-slate-800">Copy Specs from Project</h2>
+          <p class="text-sm text-slate-500 mt-0.5">Pick a project, then choose which categories to copy.</p>
+        </div>
+        <button type="button" onclick="closeCopySpecsModal()" class="text-slate-400 hover:text-slate-600 mt-0.5"><i class="ph ph-x text-xl"></i></button>
+      </div>
+      <div class="px-6 pb-3 flex-shrink-0">
+        <input type="search" id="copy-specs-search" placeholder="Search projects…"
+          class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none focus:border-indigo-500"
+          oninput="onCopySpecsSearch(this.value)">
+      </div>
+      <div id="copy-specs-project-list" class="px-6 overflow-y-auto flex-1 min-h-0" style="max-height:220px;"></div>
+      <div id="copy-specs-categories" class="px-6 py-3 border-t border-slate-100 overflow-y-auto hidden" style="max-height:200px;"></div>
+      <div class="flex justify-end items-center gap-3 p-6 pt-4 border-t border-slate-100 flex-shrink-0">
+        <button type="button" onclick="closeCopySpecsModal()"
+                class="px-4 py-2 border border-slate-200 rounded-lg text-slate-600 hover:bg-slate-50 text-sm transition-colors">
+          Cancel
+        </button>
+        <div id="copy-specs-actions" class="flex gap-3"></div>
+      </div>
+    </div>
+  </div>
   <!-- CROP MODAL -->
   <div id="crop-modal" class="hidden fixed inset-0 bg-black/60 z-[60] flex items-center justify-center backdrop-blur-sm p-4">
     <div class="bg-white rounded-xl shadow-2xl p-6 w-full flex flex-col gap-4" style="max-width:640px;">
