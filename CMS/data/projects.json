@@ -2816,6 +2816,16 @@
     ],
     "gallery": [
       {
+        "url": "media/Art/Negative _X_/20230613_172255~2.mp4",
+        "fit": {
+          "scale": 1.1,
+          "x": 57.6,
+          "y": 31.8
+        },
+        "poster": "media/Art/Negative _X_/frame-thumb-1787096994245.webp",
+        "thumbnail": "media/Art/Negative _X_/frame-thumb-1787096994245-thumb.webp"
+      },
+      {
         "url": "media/Art/Negative _X_/20230717_155724.webp",
         "thumbnail": "media/Art/Negative _X_/20230717_155724-thumb.webp"
       },
