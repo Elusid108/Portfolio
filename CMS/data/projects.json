@@ -7568,6 +7568,16 @@
         },
         "poster": "media/Art/Face/frame-thumb-1786911050766.webp",
         "thumbnail": "media/Art/Face/frame-thumb-1786911050766-thumb.webp"
+      },
+      {
+        "url": "media/Art/Face/20230613_172255~2.mp4",
+        "fit": {
+          "scale": 1,
+          "x": 50.9,
+          "y": 21.4
+        },
+        "poster": "media/Art/Face/20230613_172255~2-poster.webp",
+        "thumbnail": "media/Art/Face/20230613_172255~2-poster-thumb.webp"
       }
     ],
     "files": [],
