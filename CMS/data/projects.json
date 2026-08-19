@@ -355,7 +355,7 @@
     "files": [],
     "video": "",
     "order": 0,
-    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>WS2815 (RGB) (x512)</strong><br><em>144/m • white flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border • base</em></p><p><strong>PLA+ ( White )</strong><br><em>diffusion • bounce</em></p><p><strong>PLA+ ( &quot;Transparent&quot; )</strong><br><em>lens frost</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Wasatch Pixels Decoder (x1)</strong><br><em>Pixels Basic Eight • ESP32 • 12Vdc</em></p>",
+    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x512)</strong><br><em>WS2815 • RGB • white flex pcb • 144/m • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border • base</em></p><p><strong>PLA+ ( White )</strong><br><em>diffusion • bounce</em></p><p><strong>PLA+ ( &quot;Transparent&quot; )</strong><br><em>lens frost</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x1)</strong><br><em>Wasatch Pixels Basic Eight • ESP32 • 12Vdc</em></p>",
     "related": [],
     "thumbnailFit": {
       "scale": 1.1,
@@ -375,9 +375,9 @@
         "items": [
           {
             "id": "ba512384-b6b9-413f-a14f-ffbf5a34bca4",
-            "name": "WS2815 (RGB)",
+            "name": "LED Pixels",
             "qty": "512",
-            "specs": "144/m, white flex pcb, 12Vdc, "
+            "specs": "WS2815, RGB, white flex pcb, 144/m, 12Vdc, "
           }
         ]
       },
@@ -417,9 +417,9 @@
         "items": [
           {
             "id": "482e40c8-e315-4963-ac2a-9b81cf25bb7a",
-            "name": "Wasatch Pixels Decoder",
+            "name": "Pixel Decoder",
             "qty": "1",
-            "specs": "Pixels Basic Eight, ESP32, 12Vdc"
+            "specs": "Wasatch Pixels Basic Eight, ESP32, 12Vdc"
           }
         ]
       }
@@ -596,7 +596,7 @@
     "files": [],
     "video": "",
     "order": 1,
-    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>WS2815 (RGB) (x256)</strong><br><em>16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C with AMS</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>bounce</em></p><p><strong>PLA+ ( &quot;Transparent&quot; )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Athom WLED Decoder (x1)</strong><br><em>LS2812B-WLED • ESP8266</em></p>",
+    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x256)</strong><br><em>WS2815 • RGB • 16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C with AMS</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>bounce</em></p><p><strong>PLA+ ( &quot;Transparent&quot; )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x1)</strong><br><em>Athom • LS2812B-WLED • ESP8266 • WLED</em></p>",
     "related": [],
     "thumbnailFit": {
       "scale": 1.05,
@@ -616,9 +616,9 @@
         "items": [
           {
             "id": "fbd776dd-9fe5-4f13-83cc-ff0880771528",
-            "name": "WS2815 (RGB)",
+            "name": "LED Pixels",
             "qty": "256",
-            "specs": "16 x 16 matrix, black flex pcb, 12Vdc, "
+            "specs": "WS2815, RGB, 16 x 16 matrix, black flex pcb, 12Vdc, "
           }
         ]
       },
@@ -664,9 +664,9 @@
         "items": [
           {
             "id": "30c5907a-8896-4b63-89c5-a5a7a24bd302",
-            "name": "Athom WLED Decoder",
+            "name": "Pixel Decoder",
             "qty": "1",
-            "specs": "LS2812B-WLED, ESP8266"
+            "specs": "Athom, LS2812B-WLED, ESP8266, WLED"
           }
         ]
       }
@@ -744,7 +744,7 @@
     "timestamp": "2026-01-13T00:01:33.897Z",
     "wip": false,
     "order": 10,
-    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>WS2812B (RGB) (x64)</strong><br><em>8 x 8 matrix • black flex pcb • 5Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border • case</em></p><p><strong>PLA+ ( White )</strong><br><em>bounce • QR code</em></p><p><strong>PLA+ ( &quot;Transparent&quot; )</strong><br><em>diffusion</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>ESP32-S3 (x1)</strong><br><em>WLED • USB-C</em></p>",
+    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x64)</strong><br><em>WS2812b • RGB • 8 x 8 matrix • black flex pcb • 5Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border • case</em></p><p><strong>PLA+ ( White )</strong><br><em>bounce • QR code</em></p><p><strong>PLA+ ( &quot;Transparent&quot; )</strong><br><em>diffusion</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x1)</strong><br><em>ESP32-S3 • WLED • USB-C</em></p>",
     "related": [],
     "thumbnailFit": {
       "scale": 1,
@@ -764,9 +764,9 @@
         "items": [
           {
             "id": "fbaafac0-d75a-4212-8464-34979e1e8ebd",
-            "name": "WS2812B (RGB)",
+            "name": "LED Pixels",
             "qty": "64",
-            "specs": "8 x 8 matrix, black flex pcb, 5Vdc, "
+            "specs": "WS2812b, RGB, 8 x 8 matrix, black flex pcb, 5Vdc, "
           }
         ]
       },
@@ -806,9 +806,9 @@
         "items": [
           {
             "id": "a0ab684a-2244-4e15-947e-3f3d86977a52",
-            "name": "ESP32-S3",
+            "name": "Pixel Decoder",
             "qty": "1",
-            "specs": "WLED, USB-C"
+            "specs": "ESP32-S3, WLED, USB-C"
           }
         ]
       }
@@ -881,7 +881,7 @@
     "files": [],
     "video": "",
     "order": 5,
-    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>WS2815 (RGB) (x256)</strong><br><em>16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>bounce</em></p><p><strong>PLA+ ( &quot;Transparent&quot; )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Athom WLED Decoder (x1)</strong><br><em>LS2812B-WLED • ESP8266</em></p>",
+    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x256)</strong><br><em>WS2815 • RGB • 16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>bounce</em></p><p><strong>PLA+ ( &quot;Transparent&quot; )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x1)</strong><br><em>Athom • LS2812B-WLED • ESP8266 • WLED</em></p>",
     "related": [],
     "thumbnailFit": {
       "scale": 1,
@@ -901,9 +901,9 @@
         "items": [
           {
             "id": "4e110414-96ea-4662-b3cf-61180e18b23e",
-            "name": "WS2815 (RGB)",
+            "name": "LED Pixels",
             "qty": "256",
-            "specs": "16 x 16 matrix, black flex pcb, 12Vdc, "
+            "specs": "WS2815, RGB, 16 x 16 matrix, black flex pcb, 12Vdc, "
           }
         ]
       },
@@ -949,9 +949,9 @@
         "items": [
           {
             "id": "26105aad-1447-4fdb-90a4-4302ece5702e",
-            "name": "Athom WLED Decoder",
+            "name": "Pixel Decoder",
             "qty": "1",
-            "specs": "LS2812B-WLED, ESP8266"
+            "specs": "Athom, LS2812B-WLED, ESP8266, WLED"
           }
         ]
       }
@@ -1671,7 +1671,7 @@
     "files": [],
     "video": "",
     "order": 2,
-    "specs": "<p><strong>Pixels:</strong> 2100x SK6812 RGBW</p><p><strong>Strip:</strong> 8x 30m @ 5/m · 8x 23m @ 5/m · 24V DC</p><p><strong>Voltage:</strong> 24V DC</p><p><strong>Control:</strong> Resolume Arena 7.x</p>",
+    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>Short Tubes (x4)</strong><br><em>2x UCS1903 strand (23m) • clear lens • 6 LED • RGB • 5px/m • 24Vdc • 115px</em></p><p><strong>Long Tubes (x4)</strong><br><em>2x UCS1903 strand (30m) • clear lens • 6 LED • RGB • 5px/m • 24Vdc • 150px</em></p><h2>POWER &amp; DISTRIBUTION</h2><p><strong>Power Supply (x16)</strong><br><em>MEAN WELL • HLG-240H-24 • 24Vdc • 10A</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x16)</strong><br><em>Athom • LS4P-WLED-LA • WLED</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>Pixel Mapping</strong><br><em>Resolume Arena</em></p>",
     "related": [],
     "thumbnailFit": {
       "scale": 1.4,
@@ -1683,7 +1683,63 @@
       "x": 56.5,
       "y": 69.3
     },
-    "thumbnail": "media/Lighting/Inflatable Tubes/20230621_172727-thumb.webp"
+    "thumbnail": "media/Lighting/Inflatable Tubes/20230621_172727-thumb.webp",
+    "specsData": [
+      {
+        "id": "f7a7fc58-35da-4974-a99d-fbd4d05bc8ba",
+        "title": "PIXELS & DISPLAY",
+        "items": [
+          {
+            "id": "ad536884-ebd6-4f14-aabc-e32faeb755bc",
+            "name": "Short Tubes",
+            "qty": "4",
+            "specs": "2x UCS1903 strand (23m), clear lens, 6 LED, RGB, 5px/m, 24Vdc, 115px, "
+          },
+          {
+            "id": "b4fda374-2d65-4e0f-895d-ed807aeece58",
+            "name": "Long Tubes",
+            "qty": "4",
+            "specs": "2x UCS1903 strand (30m), clear lens, 6 LED, RGB, 5px/m, 24Vdc, 150px, "
+          }
+        ]
+      },
+      {
+        "id": "feab1f3b-f525-4bcd-b8c6-1ada43c4eed2",
+        "title": "POWER & DISTRIBUTION",
+        "items": [
+          {
+            "id": "e7c0943d-6f7f-4b67-b20f-c598df8cf1d6",
+            "name": "Power Supply",
+            "qty": "16",
+            "specs": "MEAN WELL, HLG-240H-24, 24Vdc, 10A"
+          }
+        ]
+      },
+      {
+        "id": "9206f0d8-b3da-497b-880e-4c899cbcf803",
+        "title": "Embedded electronics",
+        "items": [
+          {
+            "id": "50199a95-a4e1-43ef-874b-764cdfe96b8e",
+            "name": "Pixel Decoder",
+            "qty": "16",
+            "specs": "Athom, LS4P-WLED-LA, WLED"
+          }
+        ]
+      },
+      {
+        "id": "52f2876a-2088-47a9-a7d2-efeee81af6ed",
+        "title": "SOFTWARE & STACK",
+        "items": [
+          {
+            "id": "e115ab72-2a4a-4200-b21c-eba758b83234",
+            "name": "Pixel Mapping",
+            "qty": "",
+            "specs": "Resolume Arena"
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "9925",
@@ -2848,7 +2904,7 @@
     "timestamp": "2026-07-02T22:15:06.716Z",
     "id": "2285",
     "order": 12,
-    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>WS2815 (RGB) (x256)</strong><br><em>16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Athom WLED Decoder (x1)</strong><br><em>LS2812B-WLED • ESP8266</em></p>",
+    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x256)</strong><br><em>WS2815 • RGB • 16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x1)</strong><br><em>Athom • LS2812B-WLED • ESP8266 • WLED</em></p>",
     "related": [],
     "thumbnailFit": {
       "scale": 1.3,
@@ -2868,9 +2924,9 @@
         "items": [
           {
             "id": "38aaa760-83dd-4e21-ba5e-67529510c8fd",
-            "name": "WS2815 (RGB)",
+            "name": "LED Pixels",
             "qty": "256",
-            "specs": "16 x 16 matrix, black flex pcb, 12Vdc, "
+            "specs": "WS2815, RGB, 16 x 16 matrix, black flex pcb, 12Vdc, "
           }
         ]
       },
@@ -2910,9 +2966,9 @@
         "items": [
           {
             "id": "a3ac06c2-3790-44cf-9f62-123d912588c0",
-            "name": "Athom WLED Decoder",
+            "name": "Pixel Decoder",
             "qty": "1",
-            "specs": "LS2812B-WLED, ESP8266"
+            "specs": "Athom, LS2812B-WLED, ESP8266, WLED"
           }
         ]
       }
@@ -2976,7 +3032,7 @@
     "timestamp": "2026-07-02T22:16:10.943Z",
     "id": "9896",
     "order": 13,
-    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>WS2815 (RGB) (x256)</strong><br><em>16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Athom WLED Decoder (x1)</strong><br><em>LS2812B-WLED • ESP8266</em></p>",
+    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x256)</strong><br><em>WS2815 • RGB • 16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x1)</strong><br><em>Athom • LS2812B-WLED • ESP8266 • WLED</em></p>",
     "related": [],
     "thumbnailFit": {
       "scale": 1.4,
@@ -2996,9 +3052,9 @@
         "items": [
           {
             "id": "8169cff4-de32-4597-9fc7-7007f63f9d2e",
-            "name": "WS2815 (RGB)",
+            "name": "LED Pixels",
             "qty": "256",
-            "specs": "16 x 16 matrix, black flex pcb, 12Vdc, "
+            "specs": "WS2815, RGB, 16 x 16 matrix, black flex pcb, 12Vdc, "
           }
         ]
       },
@@ -3038,9 +3094,9 @@
         "items": [
           {
             "id": "6a966bfc-7f98-44f3-9b44-32d043b50126",
-            "name": "Athom WLED Decoder",
+            "name": "Pixel Decoder",
             "qty": "1",
-            "specs": "LS2812B-WLED, ESP8266"
+            "specs": "Athom, LS2812B-WLED, ESP8266, WLED"
           }
         ]
       }
@@ -3099,7 +3155,7 @@
     "timestamp": "2026-07-02T23:00:41.951Z",
     "id": "8609",
     "order": 2,
-    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>WS2815 (RGB) (x256)</strong><br><em>16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>bounce • diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Athom WLED Decoder (x1)</strong><br><em>LS2812B-WLED • ESP8266</em></p>",
+    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x256)</strong><br><em>WS2815 • RGB • 16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>bounce • diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x1)</strong><br><em>Athom • LS2812B-WLED • ESP8266 • WLED</em></p>",
     "related": [],
     "thumbnailFit": {
       "scale": 1.25,
@@ -3119,9 +3175,9 @@
         "items": [
           {
             "id": "f7293f35-ecff-49ec-bac0-093104795cb3",
-            "name": "WS2815 (RGB)",
+            "name": "LED Pixels",
             "qty": "256",
-            "specs": "16 x 16 matrix, black flex pcb, 12Vdc, "
+            "specs": "WS2815, RGB, 16 x 16 matrix, black flex pcb, 12Vdc, "
           }
         ]
       },
@@ -3161,9 +3217,9 @@
         "items": [
           {
             "id": "57fff659-759e-466e-836a-f9c6fc0a6bbc",
-            "name": "Athom WLED Decoder",
+            "name": "Pixel Decoder",
             "qty": "1",
-            "specs": "LS2812B-WLED, ESP8266"
+            "specs": "Athom, LS2812B-WLED, ESP8266, WLED"
           }
         ]
       }
@@ -4234,7 +4290,7 @@
       }
     ],
     "files": [],
-    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>Short Tubes (x15)</strong><br><em>3.9m • blackout diffusion • RGBW (3000k) • 60/m • 20px/m • 78px</em></p><p><strong>Mid-length Tubes (x14)</strong><br><em>4.4m • blackout diffusion • RGBW (3000k) • 60/m • 20px/m • 88px</em></p><p><strong>Long Tubes (x7)</strong><br><em>4.9m • blackout diffusion • RGBW (3000k) • 60/m • 20px/m • 98px</em></p><h2>POWER &amp; DISTRIBUTION</h2><p><strong>Power Supply (x18)</strong><br><em>MEAN WELL • HLG-320H-12</em></p><p><strong>Pixel Decoder (x3)</strong><br><em>Advatek • R4D-S • 12 Universe</em></p>",
+    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>Short Tubes (4m) (x15)</strong><br><em>WS2814 strip (3.9m) • blackout diffusion • RGBW (3000k) • 60/m • 20px/m • 12Vdc • 78px</em></p><p><strong>Mid-length Tubes (4.5m) (x14)</strong><br><em>WS2814 strip (4.4m) • RGBW (3000k) • blackout diffusion • 60/m • 20px/m • 12Vdc • 88px</em></p><p><strong>Long Tubes (5m) (x7)</strong><br><em>WS2814 strip (4.9m) • RGBW (3000k) • blackout diffusion • 60/m • 20px/m • 12Vdc • 98px</em></p><h2>POWER &amp; DISTRIBUTION</h2><p><strong>Power Supply (x18)</strong><br><em>MEAN WELL • HLG-320H-12 • 12Vdc • 22A</em></p><p><strong>Pixel Decoder (x3)</strong><br><em>Advatek • R4D-S • 12 Universe</em></p>",
     "related": [
       {
         "name": "Que Bueno Suerte!",
@@ -4252,26 +4308,26 @@
     "thumbnail": "media/Lighting/Blackout Ceiling Tubes/20240619_123414-thumb.webp",
     "specsData": [
       {
-        "id": "a1dea7dd-2bb9-4392-9aec-d54d4b2369a9",
+        "id": "67952058-5798-4307-af03-0253cab6f28d",
         "title": "PIXELS & DISPLAY",
         "items": [
           {
-            "id": "df916682-c3ef-47d1-a062-f5083ea67525",
-            "name": "Short Tubes",
+            "id": "2a0702a5-e7a9-4faa-ad42-960d524d0dbf",
+            "name": "Short Tubes (4m)",
             "qty": "15",
-            "specs": "3.9m, blackout diffusion, RGBW (3000k), 60/m • 20px/m, 78px"
+            "specs": "WS2814 strip (3.9m), blackout diffusion, RGBW (3000k), 60/m • 20px/m, 12Vdc, 78px, "
           },
           {
-            "id": "a44354e5-c45d-4c49-8571-c8a5afa27be3",
-            "name": "Mid-length Tubes",
+            "id": "957f614c-ad07-4890-a739-c71fd7771fb8",
+            "name": "Mid-length Tubes (4.5m)",
             "qty": "14",
-            "specs": "4.4m, blackout diffusion, RGBW (3000k) • 60/m • 20px/m, 88px"
+            "specs": "WS2814 strip (4.4m), RGBW (3000k),  blackout diffusion, 60/m • 20px/m, 12Vdc, 88px"
           },
           {
-            "id": "e7543a7e-621a-45d4-9002-7e72909abc1f",
-            "name": "Long Tubes",
+            "id": "e3913113-4e56-4e37-8030-332b51dcf2dc",
+            "name": "Long Tubes (5m)",
             "qty": "7",
-            "specs": "4.9m, blackout diffusion, RGBW (3000k) • 60/m • 20px/m, 98px"
+            "specs": "WS2814 strip (4.9m), RGBW (3000k) • blackout diffusion, 60/m • 20px/m, 12Vdc, 98px"
           }
         ]
       },
@@ -4283,7 +4339,7 @@
             "id": "5427178b-70bc-4c60-91d3-9a017f246326",
             "name": "Power Supply",
             "qty": "18",
-            "specs": "MEAN WELL, HLG-320H-12, "
+            "specs": "MEAN WELL, HLG-320H-12, 12Vdc, 22A"
           },
           {
             "id": "a9bb2638-da4d-45e1-ac97-7a261ee4e1c4",
@@ -6930,9 +6986,9 @@
         "items": [
           {
             "id": "57e396e6-ae22-4edb-a552-e2750c4ee23f",
-            "name": "WS2815 (RGB)",
+            "name": "LED Pixels",
             "qty": "256",
-            "specs": "16 x 16 matrix, black flex pcb, 12Vdc, "
+            "specs": "WS2815, RGB, 16 x 16 matrix, black flex pcb, 12Vdc, "
           }
         ]
       },
@@ -6978,14 +7034,14 @@
         "items": [
           {
             "id": "1b852a2a-a2d0-4696-9a76-367d5bcbdbf5",
-            "name": "Athom WLED Decoder",
+            "name": "Pixel Decoder",
             "qty": "1",
-            "specs": "LS2812B-WLED, ESP8266"
+            "specs": "Athom, LS2812B-WLED, ESP8266, WLED"
           }
         ]
       }
     ],
-    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>WS2815 (RGB) (x256)</strong><br><em>16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>bounce</em></p><p><strong>PLA+ ( &quot;Transparent&quot; )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Athom WLED Decoder (x1)</strong><br><em>LS2812B-WLED • ESP8266</em></p>",
+    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x256)</strong><br><em>WS2815 • RGB • 16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>bounce</em></p><p><strong>PLA+ ( &quot;Transparent&quot; )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x1)</strong><br><em>Athom • LS2812B-WLED • ESP8266 • WLED</em></p>",
     "related": [],
     "video": "",
     "timestamp": "2026-08-16T19:45:09.127Z",
@@ -7048,9 +7104,9 @@
         "items": [
           {
             "id": "aaa2ba87-1683-4ab1-8699-5eb3c8f53150",
-            "name": "WS2815 (RGB)",
+            "name": "LED Pixels",
             "qty": "256",
-            "specs": "16 x 16 matrix, black flex pcb, 12Vdc, "
+            "specs": "WS2815, RGB, 16 x 16 matrix, black flex pcb, 12Vdc, "
           }
         ]
       },
@@ -7090,14 +7146,14 @@
         "items": [
           {
             "id": "932ddc89-c1ad-4c3c-ad5e-8bebbdfd938b",
-            "name": "Athom WLED Decoder",
+            "name": "Pixel Decoder",
             "qty": "1",
-            "specs": "LS2812B-WLED, ESP8266"
+            "specs": "Athom, LS2812B-WLED, ESP8266, WLED"
           }
         ]
       }
     ],
-    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>WS2815 (RGB) (x256)</strong><br><em>16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Athom WLED Decoder (x1)</strong><br><em>LS2812B-WLED • ESP8266</em></p>",
+    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x256)</strong><br><em>WS2815 • RGB • 16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x1)</strong><br><em>Athom • LS2812B-WLED • ESP8266 • WLED</em></p>",
     "related": [],
     "video": "",
     "timestamp": "2026-08-16T19:50:18.919Z",
@@ -7160,9 +7216,9 @@
         "items": [
           {
             "id": "87f362fc-2050-4f89-8de3-e242bf1fd0a3",
-            "name": "WS2815 (RGB)",
+            "name": "LED Pixels",
             "qty": "256",
-            "specs": "16 x 16 matrix, black flex pcb, 12Vdc, "
+            "specs": "WS2815, RGB, 16 x 16 matrix, black flex pcb, 12Vdc, "
           }
         ]
       },
@@ -7202,14 +7258,14 @@
         "items": [
           {
             "id": "b2ef1d1c-e2d7-4878-aa3e-986059791d27",
-            "name": "Athom WLED Decoder",
+            "name": "Pixel Decoder",
             "qty": "1",
-            "specs": "LS2812B-WLED, ESP8266"
+            "specs": "Athom, LS2812B-WLED, ESP8266, WLED"
           }
         ]
       }
     ],
-    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>WS2815 (RGB) (x256)</strong><br><em>16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Athom WLED Decoder (x1)</strong><br><em>LS2812B-WLED • ESP8266</em></p>",
+    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x256)</strong><br><em>WS2815 • RGB • 16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x1)</strong><br><em>Athom • LS2812B-WLED • ESP8266 • WLED</em></p>",
     "related": [],
     "video": "",
     "timestamp": "2026-08-16T19:55:48.429Z",
@@ -7290,9 +7346,9 @@
         "items": [
           {
             "id": "e98ce34a-e14e-4404-96f0-b5997947a050",
-            "name": "WS2815 (RGB)",
+            "name": "LED Pixels",
             "qty": "256",
-            "specs": "16 x 16 matrix, black flex pcb, 12Vdc, "
+            "specs": "WS2815, RGB, 16 x 16 matrix, black flex pcb, 12Vdc, "
           }
         ]
       },
@@ -7332,14 +7388,14 @@
         "items": [
           {
             "id": "4694546a-cfbd-4ce5-a757-a352bbd87b5d",
-            "name": "Athom WLED Decoder",
+            "name": "Pixel Decoder",
             "qty": "1",
-            "specs": "LS2812B-WLED, ESP8266"
+            "specs": "Athom, LS2812B-WLED, ESP8266, WLED"
           }
         ]
       }
     ],
-    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>WS2815 (RGB) (x256)</strong><br><em>16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Athom WLED Decoder (x1)</strong><br><em>LS2812B-WLED • ESP8266</em></p>",
+    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x256)</strong><br><em>WS2815 • RGB • 16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x1)</strong><br><em>Athom • LS2812B-WLED • ESP8266 • WLED</em></p>",
     "related": [],
     "video": "",
     "timestamp": "2026-08-16T20:00:30.235Z",
@@ -7411,9 +7467,9 @@
         "items": [
           {
             "id": "07ddd195-63e0-49a3-9f09-451f30951f9b",
-            "name": "WS2815 (RGB)",
+            "name": "LED Pixels",
             "qty": "256",
-            "specs": "16 x 16 matrix, black flex pcb, 12Vdc, "
+            "specs": "WS2815, RGB, 16 x 16 matrix, black flex pcb, 12Vdc, "
           }
         ]
       },
@@ -7453,14 +7509,14 @@
         "items": [
           {
             "id": "7d60393c-3d9f-4572-aa59-ad8ca656b373",
-            "name": "Athom WLED Decoder",
+            "name": "Pixel Decoder",
             "qty": "1",
-            "specs": "LS2812B-WLED, ESP8266"
+            "specs": "Athom, LS2812B-WLED, ESP8266, WLED"
           }
         ]
       }
     ],
-    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>WS2815 (RGB) (x256)</strong><br><em>16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Athom WLED Decoder (x1)</strong><br><em>LS2812B-WLED • ESP8266</em></p>",
+    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x256)</strong><br><em>WS2815 • RGB • 16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x1)</strong><br><em>Athom • LS2812B-WLED • ESP8266 • WLED</em></p>",
     "related": [],
     "video": "",
     "timestamp": "2026-08-16T20:06:37.433Z",
@@ -7522,9 +7578,9 @@
         "items": [
           {
             "id": "b3925085-d9f5-4622-b366-cb7f3b934132",
-            "name": "WS2815 (RGB)",
+            "name": "LED Pixels",
             "qty": "256",
-            "specs": "16 x 16 matrix, black flex pcb, 12Vdc, "
+            "specs": "WS2815, RGB, 16 x 16 matrix, black flex pcb, 12Vdc, "
           }
         ]
       },
@@ -7564,14 +7620,14 @@
         "items": [
           {
             "id": "acf7306e-ccb9-4c39-a22c-caa43297ada3",
-            "name": "Athom WLED Decoder",
+            "name": "Pixel Decoder",
             "qty": "1",
-            "specs": "LS2812B-WLED, ESP8266"
+            "specs": "Athom, LS2812B-WLED, ESP8266, WLED"
           }
         ]
       }
     ],
-    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>WS2815 (RGB) (x256)</strong><br><em>16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Athom WLED Decoder (x1)</strong><br><em>LS2812B-WLED • ESP8266</em></p>",
+    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x256)</strong><br><em>WS2815 • RGB • 16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x1)</strong><br><em>Athom • LS2812B-WLED • ESP8266 • WLED</em></p>",
     "related": [],
     "video": "",
     "timestamp": "2026-08-16T20:11:26.500Z",
@@ -7633,9 +7689,9 @@
         "items": [
           {
             "id": "12e66f88-d55e-4658-a3a7-737d3a9f0599",
-            "name": "WS2815 (RGB)",
+            "name": "LED Pixels",
             "qty": "256",
-            "specs": "16 x 16 matrix, black flex pcb, 12Vdc, "
+            "specs": "WS2815, RGB, 16 x 16 matrix, black flex pcb, 12Vdc, "
           }
         ]
       },
@@ -7675,14 +7731,14 @@
         "items": [
           {
             "id": "7e2016a8-a441-438b-b24d-e12d4a47d0f4",
-            "name": "Athom WLED Decoder",
+            "name": "Pixel Decoder",
             "qty": "1",
-            "specs": "LS2812B-WLED, ESP8266"
+            "specs": "Athom, LS2812B-WLED, ESP8266, WLED"
           }
         ]
       }
     ],
-    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>WS2815 (RGB) (x256)</strong><br><em>16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Athom WLED Decoder (x1)</strong><br><em>LS2812B-WLED • ESP8266</em></p>",
+    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x256)</strong><br><em>WS2815 • RGB • 16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x1)</strong><br><em>Athom • LS2812B-WLED • ESP8266 • WLED</em></p>",
     "related": [],
     "video": "",
     "timestamp": "2026-08-16T20:19:44.564Z",
@@ -7744,9 +7800,9 @@
         "items": [
           {
             "id": "55418469-800c-4cd9-8d1a-9cbf65df6ca4",
-            "name": "WS2815 (RGB)",
+            "name": "LED Pixels",
             "qty": "256",
-            "specs": "16 x 16 matrix, black flex pcb, 12Vdc, "
+            "specs": "WS2815, RGB, 16 x 16 matrix, black flex pcb, 12Vdc, "
           }
         ]
       },
@@ -7786,14 +7842,14 @@
         "items": [
           {
             "id": "401cf762-050e-47b8-be75-87519027eb95",
-            "name": "Athom WLED Decoder",
+            "name": "Pixel Decoder",
             "qty": "1",
-            "specs": "LS2812B-WLED, ESP8266"
+            "specs": "Athom, LS2812B-WLED, ESP8266, WLED"
           }
         ]
       }
     ],
-    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>WS2815 (RGB) (x256)</strong><br><em>16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Athom WLED Decoder (x1)</strong><br><em>LS2812B-WLED • ESP8266</em></p>",
+    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x256)</strong><br><em>WS2815 • RGB • 16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x1)</strong><br><em>Athom • LS2812B-WLED • ESP8266 • WLED</em></p>",
     "related": [],
     "video": "",
     "timestamp": "2026-08-16T20:23:22.050Z",
@@ -7855,9 +7911,9 @@
         "items": [
           {
             "id": "9eb54260-5938-4918-bcb8-d5c491ebdd17",
-            "name": "WS2815 (RGB)",
+            "name": "LED Pixels",
             "qty": "256",
-            "specs": "16 x 16 matrix, black flex pcb, 12Vdc, "
+            "specs": "WS2815, RGB, 16 x 16 matrix, black flex pcb, 12Vdc, "
           }
         ]
       },
@@ -7897,14 +7953,14 @@
         "items": [
           {
             "id": "89cecf25-accc-4c1a-8ff3-0d048b94105c",
-            "name": "Athom WLED Decoder",
+            "name": "Pixel Decoder",
             "qty": "1",
-            "specs": "LS2812B-WLED, ESP8266"
+            "specs": "Athom, LS2812B-WLED, ESP8266, WLED"
           }
         ]
       }
     ],
-    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>WS2815 (RGB) (x256)</strong><br><em>16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Athom WLED Decoder (x1)</strong><br><em>LS2812B-WLED • ESP8266</em></p>",
+    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x256)</strong><br><em>WS2815 • RGB • 16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x1)</strong><br><em>Athom • LS2812B-WLED • ESP8266 • WLED</em></p>",
     "related": [],
     "video": "",
     "timestamp": "2026-08-16T20:25:20.687Z",
@@ -7965,9 +8021,9 @@
         "items": [
           {
             "id": "59258021-4e26-4a9d-be23-689f53aa881b",
-            "name": "WS2815 (RGB)",
+            "name": "LED Pixels",
             "qty": "256",
-            "specs": "16 x 16 matrix, black flex pcb, 12Vdc, "
+            "specs": "WS2815, RGB, 16 x 16 matrix, black flex pcb, 12Vdc, "
           }
         ]
       },
@@ -8007,14 +8063,14 @@
         "items": [
           {
             "id": "cbd09f8c-efa8-4940-afec-e0367736bd87",
-            "name": "Athom WLED Decoder",
+            "name": "Pixel Decoder",
             "qty": "1",
-            "specs": "LS2812B-WLED, ESP8266"
+            "specs": "Athom, LS2812B-WLED, ESP8266, WLED"
           }
         ]
       }
     ],
-    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>WS2815 (RGB) (x256)</strong><br><em>16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Athom WLED Decoder (x1)</strong><br><em>LS2812B-WLED • ESP8266</em></p>",
+    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x256)</strong><br><em>WS2815 • RGB • 16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x1)</strong><br><em>Athom • LS2812B-WLED • ESP8266 • WLED</em></p>",
     "related": [],
     "video": "",
     "timestamp": "2026-08-16T20:29:37.203Z",

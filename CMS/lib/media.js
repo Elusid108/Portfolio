@@ -54,13 +54,26 @@ function sleep(ms) {
 }
 
 function scheduleUnlink(filePath, delays = [300, 800, 1500, 3000, 6000, 10000]) {
+  const startedAt = Date.now();
+  const inOnedrive = /onedrive/i.test(filePath);
+  const isPosterTmp = /-poster-tmp\.jpg$/i.test(filePath);
+  // #region agent log
+  fetch('http://127.0.0.1:7539/ingest/47d65063-da39-4589-8187-0bb2721ced5a',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'3ea769'},body:JSON.stringify({sessionId:'3ea769',runId:'pre-fix',hypothesisId:'A,C,D',location:'CMS/lib/media.js:scheduleUnlink',message:'unlink scheduled',data:{filePath,inOnedrive,isPosterTmp,delayCount:delays.length},timestamp:Date.now()})}).catch(()=>{});
+  // #endregion
   (async () => {
     for (let i = 0; i < delays.length; i++) {
       try {
         fs.unlinkSync(filePath);
+        // #region agent log
+        fetch('http://127.0.0.1:7539/ingest/47d65063-da39-4589-8187-0bb2721ced5a',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'3ea769'},body:JSON.stringify({sessionId:'3ea769',runId:'pre-fix',hypothesisId:'A,D',location:'CMS/lib/media.js:scheduleUnlink',message:'unlink succeeded',data:{filePath,attempt:i,elapsedMs:Date.now()-startedAt},timestamp:Date.now()})}).catch(()=>{});
+        // #endregion
         return;
       } catch (err) {
-        if ((err.code === 'EPERM' || err.code === 'EBUSY') && i < delays.length - 1) {
+        const willRetry = (err.code === 'EPERM' || err.code === 'EBUSY') && i < delays.length - 1;
+        // #region agent log
+        fetch('http://127.0.0.1:7539/ingest/47d65063-da39-4589-8187-0bb2721ced5a',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'3ea769'},body:JSON.stringify({sessionId:'3ea769',runId:'pre-fix',hypothesisId:'A,C,D',location:'CMS/lib/media.js:scheduleUnlink',message:'unlink attempt failed',data:{filePath,attempt:i,elapsedMs:Date.now()-startedAt,code:err.code,errMsg:err.message,willRetry,exists:fs.existsSync(filePath)},timestamp:Date.now()})}).catch(()=>{});
+        // #endregion
+        if (willRetry) {
           await sleep(delays[i]);
           continue;
         }
