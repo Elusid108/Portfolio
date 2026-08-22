@@ -35,7 +35,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-12T01:03:01.269Z",
     "wip": false,
-    "order": 9,
+    "order": 10,
     "specs": "<p><strong>Framework:</strong> React 18 (CDN), Node.js</p><p><strong>Language:</strong> Vanilla JavaScript</p><p><strong>Backend:</strong> Express, Sharp, Multer</p><p><strong>Styling:</strong> Tailwind CSS, Quill</p><p><strong>Storage:</strong> Local JSON (filesystem)</p><p><strong>Deploy:</strong> GitHub Pages (static output)</p>",
     "related": [
       {
@@ -463,14 +463,15 @@
     "timestamp": "2026-01-12T01:03:01.269Z",
     "wip": true,
     "order": 0,
-    "specs": "<p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite</p><p><strong>3D Engine:</strong> JSCAD Modeling</p><p><strong>AI:</strong> Google Gemini (text/image)</p><p><strong>Export:</strong> JSZip (STL bundling)</p><p><strong>Deploy:</strong> GitHub Pages</p>",
+    "specs": "",
     "related": [
       {
         "name": "Pallet generator",
         "url": "#project/968"
       }
     ],
-    "thumbnail": "media/Apps/LithoLab/image2-thumb.webp"
+    "thumbnail": "media/Apps/LithoLab/image2-thumb.webp",
+    "specsData": []
   },
   {
     "id": "3670",
@@ -518,7 +519,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-12T01:03:01.269Z",
     "wip": false,
-    "order": 1,
+    "order": 4,
     "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite (SWC)</p><p><strong>Styling:</strong> Tailwind CSS, Radix UI</p><p><strong>Storage:</strong> localStorage</p><p><strong>Deploy:</strong> GitHub Pages</p>",
     "related": [],
     "thumbnail": "media/Apps/Unfold/Screenshot 2026-07-25 154856-thumb.webp"
@@ -1796,7 +1797,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-18T13:45:57.049Z",
     "wip": true,
-    "order": 8,
+    "order": 9,
     "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite (SWC)</p><p><strong>Styling:</strong> Tailwind CSS, Radix UI</p><p><strong>Maps:</strong> Leaflet, React-Leaflet</p><p><strong>Geo:</strong> exifr (EXIF extraction)</p><p><strong>Storage:</strong> Dexie (IndexedDB)</p><p><strong>Export:</strong> jsPDF</p><p><strong>Backend:</strong> Supabase</p><p><strong>Deploy:</strong> Lovable</p>",
     "related": [],
     "thumbnail": "media/Apps/GeoLens Pro/Screenshot_20260118_082950_Chrome-thumb.webp"
@@ -1860,7 +1861,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-18T14:24:23.784Z",
     "wip": true,
-    "order": 2,
+    "order": 5,
     "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite</p><p><strong>Styling:</strong> Tailwind CSS</p><p><strong>State:</strong> Zustand</p><p><strong>AI:</strong> Google Gemini (text), Google Imagen (image)</p><p><strong>Storage:</strong> IndexedDB, localStorage</p><p><strong>Export:</strong> JSZip</p><p><strong>Deploy:</strong> GitHub Pages</p>",
     "related": [],
     "thumbnail": "media/Apps/PixelForge/Screenshot 2026-07-25 173231-thumb.webp"
@@ -1948,7 +1949,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-19T00:26:00.827Z",
     "wip": true,
-    "order": 5,
+    "order": 7,
     "specs": "<p><strong>Framework:</strong> React 18 (CDN, zero-build)</p><p><strong>Language:</strong> JavaScript (ES Modules)</p><p><strong>Styling:</strong> Tailwind CSS (CDN)</p><p><strong>AI:</strong> Google Gemini (text/image/TTS)</p><p><strong>Audio:</strong> Web Speech API (fallback)</p><p><strong>Storage:</strong> localStorage</p><p><strong>Deploy:</strong> GitHub Pages</p>",
     "related": [],
     "thumbnail": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 182215-thumb.webp"
@@ -1961,18 +1962,38 @@
       "React",
       "Google Drive API"
     ],
-    "image": "media/Apps/Strata - Digital Notebook/Screenshot 2026-01-23 200024.webp",
+    "image": "media/Apps/Strata - Digital Notebook/Screenshot 2026-08-22 151928.webp",
     "description": "<p>I built a serverless digital notebook that embeds Google Drive files inside a custom client-side canvas.</p>",
     "longDescription": "<p>Flipping through dozens of Google Docs, Sheets, and Slides every day at Boston Dynamics got exhausting without a clear hierarchy to organize them. I wanted a OneNote layout with notebooks, tabs, and pages, but I refused to pay for a server. Piping everything straight through the Google Drive API and browser storage solved the hosting cost, but it meant building the engine from scratch.</p><p>To embed webpages directly into notebook pages, I built a desktop prototype to dodge iframe security blocks. The desktop build worked, but needing an installed app killed the convenience of opening a workspace on any browser. I abandoned the desktop build, accepted the iframe limitations, and pivoted back to the web application.</p><p>The browser fought back on performance. Canvas zooming stuttered, and touchscreen inputs refused to line up with SVG drawings. While I sorted out the coordinate math, sync remains a headache. Edits sometimes drop, and deleted pages occasionally resurrect themselves on reload. Strata is still an active work in progress, but the client-side layout is set.</p>",
     "video": "",
     "gallery": [
       {
-        "url": "media/Apps/Strata - Digital Notebook/Screenshot 2026-01-23 195925.webp",
-        "thumbnail": "media/Apps/Strata - Digital Notebook/Screenshot 2026-01-23 195925-thumb.webp"
+        "url": "media/Apps/Strata - Digital Notebook/Screenshot 2026-08-22 151928.webp",
+        "thumbnail": "media/Apps/Strata - Digital Notebook/Screenshot 2026-08-22 151928-thumb.webp"
       },
       {
-        "url": "media/Apps/Strata - Digital Notebook/Screenshot 2026-01-24 223430.webp",
-        "thumbnail": "media/Apps/Strata - Digital Notebook/Screenshot 2026-01-24 223430-thumb.webp"
+        "url": "media/Apps/Strata - Digital Notebook/Screenshot 2026-08-22 152921.webp",
+        "thumbnail": "media/Apps/Strata - Digital Notebook/Screenshot 2026-08-22 152921-thumb.webp"
+      },
+      {
+        "url": "media/Apps/Strata - Digital Notebook/Screenshot 2026-08-22 152122.webp",
+        "thumbnail": "media/Apps/Strata - Digital Notebook/Screenshot 2026-08-22 152122-thumb.webp"
+      },
+      {
+        "url": "media/Apps/Strata - Digital Notebook/Screenshot 2026-08-22 152531.webp",
+        "thumbnail": "media/Apps/Strata - Digital Notebook/Screenshot 2026-08-22 152531-thumb.webp"
+      },
+      {
+        "url": "media/Apps/Strata - Digital Notebook/Screenshot 2026-08-22 152046.webp",
+        "thumbnail": "media/Apps/Strata - Digital Notebook/Screenshot 2026-08-22 152046-thumb.webp"
+      },
+      {
+        "url": "media/Apps/Strata - Digital Notebook/Screenshot 2026-08-22 152022.webp",
+        "thumbnail": "media/Apps/Strata - Digital Notebook/Screenshot 2026-08-22 152022-thumb.webp"
+      },
+      {
+        "url": "media/Apps/Strata - Digital Notebook/Screenshot 2026-08-22 151942.webp",
+        "thumbnail": "media/Apps/Strata - Digital Notebook/Screenshot 2026-08-22 151942-thumb.webp"
       }
     ],
     "launchLink": "https://elusid108.github.io/Strata-vite/",
@@ -1983,10 +2004,21 @@
     "websiteLink": "",
     "timestamp": "2026-01-24T02:36:52.522Z",
     "wip": true,
-    "order": 7,
-    "specs": "<p><strong>Framework:</strong> React 19</p><p><strong>Build:</strong> Vite 7</p><p><strong>Styling:</strong> Tailwind CSS 4</p><p><strong>Editor:</strong> CodeMirror (JS/HTML/Python)</p><p><strong>Diagrams:</strong> Mermaid</p><p><strong>Maps:</strong> Leaflet</p><p><strong>Cloud:</strong> Google Drive API</p><p><strong>Storage:</strong> localStorage</p><p><strong>Deploy:</strong> GitHub Pages</p>",
+    "order": 2,
+    "specs": "",
     "related": [],
-    "thumbnail": "media/Apps/Strata - Digital Notebook/Screenshot 2026-01-23 200024-thumb.webp"
+    "thumbnail": "media/Apps/Strata - Digital Notebook/Screenshot 2026-08-22 151928-thumb.webp",
+    "thumbnailFit": {
+      "scale": 1.4,
+      "x": 0,
+      "y": 0
+    },
+    "bannerFit": {
+      "scale": 1,
+      "x": 46.3,
+      "y": 0
+    },
+    "specsData": []
   },
   {
     "id": "6962",
@@ -2024,7 +2056,7 @@
     "websiteLink": "",
     "timestamp": "2026-02-15T04:59:58.733Z",
     "wip": true,
-    "order": 4,
+    "order": 6,
     "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite (SWC)</p><p><strong>Styling:</strong> Tailwind CSS, Radix UI</p><p><strong>State:</strong> Zustand</p><p><strong>AI:</strong> Google Gemini</p><p><strong>Cloud:</strong> Google Drive API, Google Sheets API</p><p><strong>Testing:</strong> Vitest</p><p><strong>Deploy:</strong> GitHub Pages</p>",
     "related": [],
     "thumbnail": "media/Apps/IdeaForge.AI/Screenshot 2026-02-14 232928-thumb.webp"
@@ -2104,7 +2136,7 @@
     "websiteLink": "",
     "timestamp": "2026-03-22T16:37:25.240Z",
     "wip": true,
-    "order": 6,
+    "order": 8,
     "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite</p><p><strong>Styling:</strong> Tailwind CSS</p><p><strong>State:</strong> Zustand</p><p><strong>AI:</strong> Google Gemini 2.5 Flash, Imagen 4.0</p><p><strong>Storage:</strong> IndexedDB</p><p><strong>Export:</strong> JSZip</p><p><strong>Deploy:</strong> GitHub Pages</p>",
     "related": [],
     "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174417-thumb.webp"
@@ -8076,5 +8108,104 @@
     "timestamp": "2026-08-16T20:29:37.203Z",
     "id": "2451",
     "order": 11
+  },
+  {
+    "title": "TangiPix",
+    "category": "Software",
+    "image": "media/Apps/TangiPix/Screenshot 2026-08-22 150517.webp",
+    "thumbnail": "media/Apps/TangiPix/Screenshot 2026-08-22 150517-thumb.webp",
+    "thumbnailFit": {
+      "scale": 1,
+      "x": 49.5,
+      "y": 0
+    },
+    "bannerFit": {
+      "scale": 1,
+      "x": 45.7,
+      "y": 29.1
+    },
+    "description": "<p>A browser based application that reduces images into limited physical color palettes and generates printable build schematics.</p>",
+    "longDescription": "<p>I had several ideas for physical builds floating around in my head, like bead curtains and stacked brick images. They all required reducing a photo to a low resolution and mapping it to a strict limited color space. I built TangiPix to give myself a foundation for these projects. It operates entirely in the browser as a mosaic planner. The interface takes an uploaded photo, locks it to a physical grid, and maps those cells onto available inventory colors.</p><p>The heavy lifting happens off the main thread. I set up a Web Worker to handle the resampling and Lab color space math. Passing large pixel buffers for 15 iterations of k-means clustering would normally freeze a browser tab, so isolating that process keeps the interface responsive. I dropped G-code export from the final version because the focus remains on human assembly rather than direct machine control.</p><p>To test the engine, I ran the Mona Lisa through the pipeline and forced it into a saturated neon rainbow palette. TangiPix generated a multi page PDF schematic. The first page displayed the original photo, the converted preview, and the exact bill of materials. The rest of the document broke the grid down into numbered colored squares, ready for hand sorting.</p>",
+    "websiteLink": "",
+    "launchLink": "https://elusid108.github.io/TangiPix/",
+    "githubLink": "https://github.com/Elusid108/TangiPix",
+    "shopLink": "",
+    "featured": false,
+    "wip": true,
+    "tags": [
+      "Custom Fabrication",
+      "TypeScript",
+      "React",
+      "Vite"
+    ],
+    "gallery": [
+      {
+        "url": "media/Apps/TangiPix/Screenshot 2026-08-22 150517.webp",
+        "thumbnail": "media/Apps/TangiPix/Screenshot 2026-08-22 150517-thumb.webp"
+      },
+      {
+        "url": "media/Apps/TangiPix/Screenshot 2026-08-22 150529.webp",
+        "thumbnail": "media/Apps/TangiPix/Screenshot 2026-08-22 150529-thumb.webp"
+      },
+      {
+        "url": "media/Apps/TangiPix/Screenshot 2026-08-22 150548.webp",
+        "thumbnail": "media/Apps/TangiPix/Screenshot 2026-08-22 150548-thumb.webp"
+      },
+      {
+        "url": "media/Apps/TangiPix/Screenshot 2026-08-22 150613.webp",
+        "thumbnail": "media/Apps/TangiPix/Screenshot 2026-08-22 150613-thumb.webp"
+      }
+    ],
+    "files": [
+      {
+        "name": "monalisa_rainbow.pdf",
+        "url": "media/Apps/TangiPix/files/monalisa_rainbow.pdf",
+        "description": ""
+      }
+    ],
+    "specsData": [
+      {
+        "id": "8c6a9073-4c8c-4af0-8e69-130b0e05a611",
+        "title": "SOFTWARE & STACK",
+        "items": [
+          {
+            "id": "e4c2d9e4-2113-4c50-b981-abe311f6c9db",
+            "name": "Framework",
+            "qty": "",
+            "specs": "React 19.1"
+          },
+          {
+            "id": "df919454-4bfe-4543-8e9c-9b5ba8130ac9",
+            "name": "Language",
+            "qty": "",
+            "specs": "TypeScript ~5.9"
+          },
+          {
+            "id": "572139ce-6707-478c-8738-40d8822f4c53",
+            "name": "Build",
+            "qty": "",
+            "specs": "Vite 6.4"
+          },
+          {
+            "id": "c6938eae-40f2-41e8-9606-b2a69994e90b",
+            "name": "Styling",
+            "qty": "",
+            "specs": "Custom CSS"
+          },
+          {
+            "id": "a23adc71-b60c-415d-9102-4d1f74355f0d",
+            "name": "Deploy",
+            "qty": "",
+            "specs": "GitHub Pages"
+          }
+        ]
+      }
+    ],
+    "specs": "<h2>SOFTWARE &amp; STACK</h2><p><strong>Framework</strong><br><em>React 19.1</em></p><p><strong>Language</strong><br><em>TypeScript ~5.9</em></p><p><strong>Build</strong><br><em>Vite 6.4</em></p><p><strong>Styling</strong><br><em>Custom CSS</em></p><p><strong>Deploy</strong><br><em>GitHub Pages</em></p>",
+    "related": [],
+    "video": "",
+    "timestamp": "2026-08-22T19:10:36.064Z",
+    "id": "2955",
+    "order": 1
   }
 ]
