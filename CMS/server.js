@@ -69,9 +69,12 @@ app.get('/api/projects', (req, res) => {
   }
 });
 
-app.post('/api/projects', (req, res) => {
+app.post('/api/projects', async (req, res) => {
   try {
     let incoming = req.body;
+    const oldProject = incoming.id
+      ? data.getProjects().find(p => String(p.id) === String(incoming.id)) || null
+      : null;
     // Always relocate media for existing projects. relocateAsset is a no-op
     // when a file is already in the canonical path, so this is safe to run
     // on every save — it fixes stale paths from prior category/title changes.
@@ -81,15 +84,36 @@ app.post('/api/projects', (req, res) => {
       if (warnings.length) console.warn('[relocate] missing files:', warnings);
       if (moved > 0) console.log(`[relocate] moved ${moved} file(s) for project "${incoming.title}"`);
     }
-    res.json(data.saveProject(incoming));
+    const result = data.saveProject(incoming);
+    try {
+      const trashResult = await media.trashDroppedAssets(oldProject, result.project);
+      if (trashResult.moved > 0) {
+        console.log(`[trash] moved ${trashResult.moved} unused file(s) after save of "${result.project?.title}"`);
+      }
+      if (trashResult.warnings.length) console.warn('[trash] after save:', trashResult.warnings);
+    } catch (err) {
+      console.error('[trash] after save:', err.message);
+    }
+    res.json(result);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
-app.delete('/api/projects/:id', (req, res) => {
+app.delete('/api/projects/:id', async (req, res) => {
   try {
-    res.json(data.deleteProject(req.params.id));
+    const oldProject = data.getProjects().find(p => String(p.id) === String(req.params.id)) || null;
+    const result = data.deleteProject(req.params.id);
+    try {
+      const trashResult = await media.trashDroppedAssets(oldProject, null);
+      if (trashResult.moved > 0) {
+        console.log(`[trash] moved ${trashResult.moved} unused file(s) after delete`);
+      }
+      if (trashResult.warnings.length) console.warn('[trash] after delete:', trashResult.warnings);
+    } catch (err) {
+      console.error('[trash] after delete:', err.message);
+    }
+    res.json(result);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -113,9 +137,20 @@ app.get('/api/settings', (req, res) => {
   }
 });
 
-app.post('/api/settings', (req, res) => {
+app.post('/api/settings', async (req, res) => {
   try {
-    res.json(data.saveSettings(req.body));
+    const oldSettings = data.getSettings();
+    const result = data.saveSettings(req.body);
+    try {
+      const trashResult = await media.trashDroppedAssets(oldSettings, req.body);
+      if (trashResult.moved > 0) {
+        console.log(`[trash] moved ${trashResult.moved} unused file(s) after settings save`);
+      }
+      if (trashResult.warnings.length) console.warn('[trash] after settings save:', trashResult.warnings);
+    } catch (err) {
+      console.error('[trash] after settings save:', err.message);
+    }
+    res.json(result);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -192,6 +227,19 @@ app.post('/api/media/fix-structure', async (req, res) => {
     const result = media.fixFileStructure();
     const publishResult = publish();
     res.json({ success: true, ...result, published: publishResult.success });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.post('/api/media/cleanup', async (req, res) => {
+  try {
+    const result = await media.trashUnusedMedia();
+    if (result.moved > 0) {
+      console.log(`[trash] cleanup moved ${result.moved} unused file(s)`);
+    }
+    if (result.warnings.length) console.warn('[trash] cleanup:', result.warnings);
+    res.json({ success: true, ...result });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

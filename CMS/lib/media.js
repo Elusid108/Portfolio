@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const sharp = require('sharp');
 const convertHeic = require('heic-convert');
-const { getProjects } = require('./data');
+const { getProjects, getSettings } = require('./data');
 
 const PORTFOLIO_ROOT = path.join(__dirname, '..', '..');
 const MEDIA_DIR = path.join(PORTFOLIO_ROOT, 'media');
@@ -242,6 +242,7 @@ function removeEmptyDirs(dir, isRoot = false) {
   let removedCount = 0;
 
   for (const entry of fs.readdirSync(dir)) {
+    if (isRoot && entry === '_trash') continue;
     const full = path.join(dir, entry);
     if (fs.statSync(full).isDirectory()) {
       removedCount += removeEmptyDirs(full, false);
@@ -361,4 +362,235 @@ function relocateProject(project) {
   return { project: updated, moved: ctx.moved, copied: ctx.copied, missing: ctx.missing, warnings: ctx.warnings };
 }
 
-module.exports = { processUpload, processFileUpload, fixFileStructure, relocateProject, CATEGORY_FOLDER_MAP, sanitize, scheduleUnlink };
+// --- Unused media trash ---
+//
+// Uploads write files immediately, but removing a gallery row, replacing a
+// banner, recapturing a video frame, or deleting a project only updates JSON.
+// These helpers move unreferenced files under media/ into media/_trash/ so
+// they can be restored by moving them back.
+
+const TRASH_DIRNAME = '_trash';
+
+function normalizeMediaPath(value) {
+  if (typeof value !== 'string') return null;
+  let s = value.trim();
+  if (s.startsWith('/')) s = s.slice(1);
+  s = s.split('?')[0].split('#')[0];
+  s = s.replace(/\\/g, '/');
+  if (!s.startsWith('media/')) return null;
+  if (s.startsWith(`media/${TRASH_DIRNAME}/`)) return null;
+  s = s.replace(/[.,;:)]+$/, '');
+  return s || null;
+}
+
+function addMediaPath(set, value) {
+  const normalized = normalizeMediaPath(value);
+  if (normalized) set.add(normalized);
+}
+
+function extractMediaFromHtml(html, set) {
+  if (typeof html !== 'string' || !html) return;
+  const re = /media\/[^\s"'<>\\]+/g;
+  let match;
+  while ((match = re.exec(html)) !== null) {
+    addMediaPath(set, match[0]);
+  }
+}
+
+function collectPathsFromProject(project, set = new Set()) {
+  if (!project || typeof project !== 'object') return set;
+  addMediaPath(set, project.image);
+  addMediaPath(set, project.thumbnail);
+  addMediaPath(set, project.video);
+  if (Array.isArray(project.gallery)) {
+    for (const item of project.gallery) {
+      if (typeof item === 'string') {
+        addMediaPath(set, item);
+      } else if (item && typeof item === 'object') {
+        addMediaPath(set, item.url);
+        addMediaPath(set, item.poster);
+        addMediaPath(set, item.thumbnail);
+      }
+    }
+  }
+  if (Array.isArray(project.files)) {
+    for (const file of project.files) {
+      if (file && typeof file.url === 'string') addMediaPath(set, file.url);
+    }
+  }
+  extractMediaFromHtml(project.description, set);
+  extractMediaFromHtml(project.longDescription, set);
+  extractMediaFromHtml(project.specs, set);
+  return set;
+}
+
+function collectPathsFromSettings(settings, set = new Set()) {
+  if (!settings || typeof settings !== 'object') return set;
+  addMediaPath(set, settings.about_headshot);
+  extractMediaFromHtml(settings.about_text, set);
+  return set;
+}
+
+function collectEntityPaths(entity) {
+  const set = new Set();
+  collectPathsFromProject(entity, set);
+  collectPathsFromSettings(entity, set);
+  return set;
+}
+
+function companionPaths(webPath) {
+  const slash = webPath.lastIndexOf('/');
+  if (slash === -1) return [];
+  const dir = webPath.slice(0, slash);
+  const base = webPath.slice(slash + 1);
+  const dot = base.lastIndexOf('.');
+  const stem = dot === -1 ? base : base.slice(0, dot);
+  const ext = dot === -1 ? '' : base.slice(dot);
+  const companions = [];
+
+  if (ext.toLowerCase() === '.webp' && !stem.endsWith('-thumb')) {
+    companions.push(`${dir}/${stem}-thumb.webp`);
+  }
+  if (/\.(mp4|webm|mov|m4v|avi)$/i.test(ext)) {
+    companions.push(`${dir}/${stem}-poster.webp`);
+    companions.push(`${dir}/${stem}-poster-thumb.webp`);
+  }
+  return companions;
+}
+
+function addCompanions(set) {
+  const extra = [];
+  for (const webPath of set) {
+    extra.push(...companionPaths(webPath));
+  }
+  extra.forEach((p) => set.add(p));
+  return set;
+}
+
+function collectReferencedPaths(projects, settings) {
+  const set = new Set();
+  (projects || getProjects()).forEach((p) => collectPathsFromProject(p, set));
+  collectPathsFromSettings(settings || getSettings(), set);
+  addCompanions(set);
+  return set;
+}
+
+function listMediaFiles(dir = MEDIA_DIR, acc = [], isMediaRoot = true) {
+  if (!fs.existsSync(dir)) return acc;
+  let entries;
+  try {
+    entries = fs.readdirSync(dir, { withFileTypes: true });
+  } catch (_) {
+    return acc;
+  }
+  for (const entry of entries) {
+    if (isMediaRoot && entry.name === TRASH_DIRNAME) continue;
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      listMediaFiles(full, acc, false);
+    } else if (entry.isFile()) {
+      acc.push(toWebPath(full));
+    }
+  }
+  return acc;
+}
+
+async function retryFsOp(fn, delays = [300, 800, 1500, 3000, 6000, 10000]) {
+  let lastErr;
+  for (let i = 0; i < delays.length; i++) {
+    try {
+      return fn();
+    } catch (err) {
+      lastErr = err;
+      if ((err.code === 'EPERM' || err.code === 'EBUSY') && i < delays.length - 1) {
+        await sleep(delays[i]);
+        continue;
+      }
+      throw err;
+    }
+  }
+  throw lastErr;
+}
+
+async function moveToTrash(webPath) {
+  const srcAbs = webPathToAbs(webPath);
+  try {
+    if (!fs.existsSync(srcAbs) || !fs.statSync(srcAbs).isFile()) {
+      return { ok: false, reason: 'missing' };
+    }
+  } catch (err) {
+    return { ok: false, reason: err.message };
+  }
+
+  const rel = webPath.replace(/^media\//, '');
+  const destAbs = uniquePath(path.join(MEDIA_DIR, TRASH_DIRNAME, ...rel.split('/')));
+  fs.mkdirSync(path.dirname(destAbs), { recursive: true });
+
+  try {
+    await retryFsOp(() => { fs.renameSync(srcAbs, destAbs); });
+    return { ok: true, dest: toWebPath(destAbs) };
+  } catch (_) {
+    try {
+      await retryFsOp(() => { fs.copyFileSync(srcAbs, destAbs); });
+      await retryFsOp(() => { fs.unlinkSync(srcAbs); });
+      return { ok: true, dest: toWebPath(destAbs) };
+    } catch (copyErr) {
+      return { ok: false, reason: copyErr.message };
+    }
+  }
+}
+
+async function trashPaths(candidates) {
+  const moved = [];
+  const warnings = [];
+  const seen = new Set();
+
+  for (const webPath of candidates) {
+    if (!webPath || seen.has(webPath)) continue;
+    seen.add(webPath);
+    const result = await moveToTrash(webPath);
+    if (result.ok) {
+      moved.push(webPath);
+    } else if (result.reason !== 'missing') {
+      warnings.push(`${webPath}: ${result.reason}`);
+    }
+  }
+
+  if (moved.length > 0) removeEmptyDirs(MEDIA_DIR, true);
+  return { moved: moved.length, files: moved, warnings };
+}
+
+async function trashUnusedMedia() {
+  const used = collectReferencedPaths();
+  const unused = listMediaFiles().filter((p) => !used.has(p));
+  return trashPaths(unused);
+}
+
+async function trashDroppedAssets(oldEntity, newEntity) {
+  const oldPaths = collectEntityPaths(oldEntity);
+  const newPaths = collectEntityPaths(newEntity);
+  const dropped = [...oldPaths].filter((p) => !newPaths.has(p));
+  if (dropped.length === 0) return { moved: 0, files: [], warnings: [] };
+
+  const used = collectReferencedPaths();
+  const toTrash = new Set(dropped.filter((p) => !used.has(p)));
+  for (const p of [...toTrash]) {
+    for (const companion of companionPaths(p)) {
+      if (!used.has(companion)) toTrash.add(companion);
+    }
+  }
+
+  return trashPaths([...toTrash]);
+}
+
+module.exports = {
+  processUpload,
+  processFileUpload,
+  fixFileStructure,
+  relocateProject,
+  trashUnusedMedia,
+  trashDroppedAssets,
+  CATEGORY_FOLDER_MAP,
+  sanitize,
+  scheduleUnlink
+};

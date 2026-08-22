@@ -44,9 +44,9 @@
         <button onclick="tryRefresh()" class="px-4 py-2 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-600 flex items-center gap-2">
           <i class="ph ph-arrow-clockwise"></i> Refresh
         </button>
-        <a href="/preview" target="_blank" class="px-4 py-2 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-600 flex items-center gap-2">
-          <i class="ph ph-desktop"></i> Preview
-        </a>
+        <button onclick="cleanupMedia()" id="cleanupBtn" class="px-4 py-2 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-600 flex items-center gap-2">
+          <i class="ph ph-broom"></i> Cleanup
+        </button>
         <button onclick="publish()" id="pubBtn" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 shadow-md flex items-center gap-2 font-medium">
           <i class="ph ph-export"></i> Publish Website
         </button>
@@ -2275,6 +2275,72 @@
           flushListOrder().then(performPublish);
       } else {
           performPublish();
+      }
+    }
+
+    function cleanupMedia() {
+      if (uploadQueue._running) {
+        Toastify({ text: "Wait for uploads to finish before cleanup", duration: 3000, backgroundColor: "#f59e0b" }).showToast();
+        return;
+      }
+      if (!confirm("This will move all media files that are not linked to any project or settings into media/_trash. Continue?")) return;
+
+      if (isDirty) {
+        if (!document.getElementById('editor').classList.contains('hidden')) {
+          saveCurrent(performCleanup);
+        } else if (!document.getElementById('settingsForm').classList.contains('hidden')) {
+          saveSettings(async () => {
+            await flushListOrder();
+            performCleanup();
+          });
+        } else {
+          flushListOrder().then(performCleanup);
+        }
+      } else if (listOrderDirty) {
+        flushListOrder().then(performCleanup);
+      } else {
+        performCleanup();
+      }
+    }
+
+    async function performCleanup() {
+      const btn = document.getElementById('cleanupBtn');
+      const originalText = btn ? btn.innerHTML : '';
+      if (btn) {
+        btn.innerHTML = '<i class="ph ph-spinner animate-spin"></i> Cleanup';
+        btn.disabled = true;
+      }
+      document.getElementById('loadingOverlay').classList.remove('hidden');
+      document.getElementById('loadingText').innerText = "Cleaning unused media...";
+
+      try {
+        const result = await api.post('/media/cleanup');
+        const n = result.moved || 0;
+        Toastify({
+          text: n === 0 ? "No unused media found" : `Moved ${n} unused file${n === 1 ? '' : 's'} to trash`,
+          duration: 5000,
+          backgroundColor: "#10b981"
+        }).showToast();
+        if (result.files && result.files.length) {
+          console.info('Moved to trash:', result.files);
+        }
+        if (result.warnings && result.warnings.length) {
+          console.warn('Cleanup warnings:', result.warnings);
+          Toastify({
+            text: `Warning: ${result.warnings.length} file(s) could not be moved (see console)`,
+            duration: 7000,
+            backgroundColor: "#f59e0b"
+          }).showToast();
+        }
+      } catch (err) {
+        onError(err);
+      } finally {
+        if (btn) {
+          btn.innerHTML = originalText;
+          btn.disabled = false;
+        }
+        document.getElementById('loadingOverlay').classList.add('hidden');
+        document.getElementById('loadingText').innerText = "Saving Changes...";
       }
     }
 
