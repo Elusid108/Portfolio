@@ -431,7 +431,9 @@
     "category": "Software",
     "tags": [
       "LLM Integration",
-      "TypeScript"
+      "TypeScript",
+      "FDM 3D Printing",
+      "Custom Fabrication"
     ],
     "image": "media/Apps/LithoLab/image2.webp",
     "description": "<p>A client-side web application that generates multi-color lithophanes in custom shapes with an exportable border for 3D printing.</p>",
@@ -446,6 +448,24 @@
       {
         "url": "media/Apps/LithoLab/20260717_135329.webp",
         "thumbnail": "media/Apps/LithoLab/20260717_135329-thumb.webp"
+      },
+      {
+        "url": "media/Apps/LithoLab/20260725_094414 (1).webp",
+        "fit": {
+          "scale": 1.05,
+          "x": 48,
+          "y": 42.7
+        },
+        "thumbnail": "media/Apps/LithoLab/20260725_094414 (1)-thumb.webp"
+      },
+      {
+        "url": "media/Apps/LithoLab/20260712_074944.webp",
+        "fit": {
+          "scale": 1.15,
+          "x": 77.3,
+          "y": 60.8
+        },
+        "thumbnail": "media/Apps/LithoLab/20260712_074944-thumb.webp"
       }
     ],
     "launchLink": "https://elusid108.github.io/LithoLab/",
@@ -8141,19 +8161,75 @@
     "gallery": [
       {
         "url": "media/Apps/TangiPix/Screenshot 2026-08-22 150517.webp",
+        "fit": {
+          "scale": 1,
+          "x": 52.5,
+          "y": 47.9
+        },
         "thumbnail": "media/Apps/TangiPix/Screenshot 2026-08-22 150517-thumb.webp"
       },
       {
         "url": "media/Apps/TangiPix/Screenshot 2026-08-22 150529.webp",
+        "fit": {
+          "scale": 1,
+          "x": 52.7,
+          "y": 23.3
+        },
         "thumbnail": "media/Apps/TangiPix/Screenshot 2026-08-22 150529-thumb.webp"
       },
       {
         "url": "media/Apps/TangiPix/Screenshot 2026-08-22 150548.webp",
+        "fit": {
+          "scale": 1,
+          "x": 50,
+          "y": 71.6
+        },
         "thumbnail": "media/Apps/TangiPix/Screenshot 2026-08-22 150548-thumb.webp"
       },
       {
         "url": "media/Apps/TangiPix/Screenshot 2026-08-22 150613.webp",
+        "fit": {
+          "scale": 1,
+          "x": 51.3,
+          "y": 44
+        },
         "thumbnail": "media/Apps/TangiPix/Screenshot 2026-08-22 150613-thumb.webp"
+      },
+      {
+        "url": "media/Apps/TangiPix/Screenshot 2026-08-22 163010.webp",
+        "fit": {
+          "scale": 1.1,
+          "x": 47.7,
+          "y": 94.8
+        },
+        "thumbnail": "media/Apps/TangiPix/Screenshot 2026-08-22 163010-thumb.webp"
+      },
+      {
+        "url": "media/Apps/TangiPix/Screenshot 2026-08-22 163024.webp",
+        "fit": {
+          "scale": 1.1,
+          "x": 52.3,
+          "y": 94.3
+        },
+        "thumbnail": "media/Apps/TangiPix/Screenshot 2026-08-22 163024-thumb.webp"
+      },
+      {
+        "url": "media/Apps/TangiPix/Screenshot 2026-08-22 163102.webp",
+        "fit": {
+          "scale": 1.1,
+          "x": 41.9,
+          "y": 13.8
+        },
+        "thumbnail": "media/Apps/TangiPix/Screenshot 2026-08-22 163102-thumb.webp"
+      },
+      {
+        "url": "media/Apps/TangiPix/Screenshot 2026-08-22 163229.webp",
+        "fit": {
+          "scale": 1.1,
+          "x": 57.4,
+          "y": 14
+        },
+        "thumbnail": "media/Apps/TangiPix/Screenshot 2026-08-22 163229-thumb.webp"
       }
     ],
     "files": [
