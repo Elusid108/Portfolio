@@ -539,7 +539,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-12T01:03:01.269Z",
     "wip": false,
-    "order": 4,
+    "order": 7,
     "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite (SWC)</p><p><strong>Styling:</strong> Tailwind CSS, Radix UI</p><p><strong>Storage:</strong> localStorage</p><p><strong>Deploy:</strong> GitHub Pages</p>",
     "related": [],
     "thumbnail": "media/Apps/Unfold/Screenshot 2026-07-25 154856-thumb.webp"
@@ -1881,7 +1881,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-18T14:24:23.784Z",
     "wip": true,
-    "order": 5,
+    "order": 8,
     "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite</p><p><strong>Styling:</strong> Tailwind CSS</p><p><strong>State:</strong> Zustand</p><p><strong>AI:</strong> Google Gemini (text), Google Imagen (image)</p><p><strong>Storage:</strong> IndexedDB, localStorage</p><p><strong>Export:</strong> JSZip</p><p><strong>Deploy:</strong> GitHub Pages</p>",
     "related": [],
     "thumbnail": "media/Apps/PixelForge/Screenshot 2026-07-25 173231-thumb.webp"
@@ -1969,7 +1969,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-19T00:26:00.827Z",
     "wip": true,
-    "order": 7,
+    "order": 4,
     "specs": "<p><strong>Framework:</strong> React 18 (CDN, zero-build)</p><p><strong>Language:</strong> JavaScript (ES Modules)</p><p><strong>Styling:</strong> Tailwind CSS (CDN)</p><p><strong>AI:</strong> Google Gemini (text/image/TTS)</p><p><strong>Audio:</strong> Web Speech API (fallback)</p><p><strong>Storage:</strong> localStorage</p><p><strong>Deploy:</strong> GitHub Pages</p>",
     "related": [],
     "thumbnail": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 182215-thumb.webp"
@@ -2076,7 +2076,7 @@
     "websiteLink": "",
     "timestamp": "2026-02-15T04:59:58.733Z",
     "wip": true,
-    "order": 6,
+    "order": 5,
     "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite (SWC)</p><p><strong>Styling:</strong> Tailwind CSS, Radix UI</p><p><strong>State:</strong> Zustand</p><p><strong>AI:</strong> Google Gemini</p><p><strong>Cloud:</strong> Google Drive API, Google Sheets API</p><p><strong>Testing:</strong> Vitest</p><p><strong>Deploy:</strong> GitHub Pages</p>",
     "related": [],
     "thumbnail": "media/Apps/IdeaForge.AI/Screenshot 2026-02-14 232928-thumb.webp"
@@ -2090,62 +2090,50 @@
       "TypeScript",
       "LLM Integration"
     ],
-    "image": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174417.webp",
+    "image": "media/Apps/CharGen.AI/Screenshot 2026-08-22 171906.webp",
     "description": "<p>I built a browser-based character engine that turns 100 attributes into structured profiles and Imagen 4.0 artwork.</p>",
     "longDescription": "<p>I wanted to generate varied, realistic characters across human and fantasy archetypes without paying for server infrastructure or storing user data. I built the entire engine to run locally in the browser using React 18, Vite, and Zustand. The interface uses an 8 section builder with over 100 conditional attributes that adapt dynamically to species selection. Users plug in their own Google API keys, and the application coordinates Gemini 2.5 Flash for text generation and Imagen 4.0 for visual synthesis, saving complex JSON objects and image payloads directly to IndexedDB.</p><p>I started the build in Gemini Canvas, but the app rotted once the single file hit 1000 lines of code. Options disappeared, previous settings reverted, and the interface broke completely. I moved the project to Cursor and GitHub to break the architecture into modular files. Once the app compiled reliably, the AI models struggled with basic logic. Without context, the randomizer picked identical stats repeatedly. The vision pipeline also fought clothing layers. When a prompt described muscle definition, the model rendered bare skin right through the shirt. I reduced that visual bleed by looping reference images back through NanoBanana to enforce outfit consistency.</p><p>The engine now operates in 2 directions. I can generate a character from scratch and lock specific parameters like species or clothing, or I can feed reference art into the vision model to extract structured physical and psychological data. It serves as a working proof of concept, and I plan to use the underlying system to drive an AI tabletop RPG generator and a random persona chat tool.</p>",
     "video": "",
     "gallery": [
       {
-        "url": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174417.webp",
-        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174417-thumb.webp"
+        "url": "media/Apps/CharGen.AI/Screenshot 2026-08-22 171630.webp",
+        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-08-22 171630-thumb.webp"
       },
       {
-        "url": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174050.webp",
-        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174050-thumb.webp"
+        "url": "media/Apps/CharGen.AI/Screenshot 2026-08-22 171906.webp",
+        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-08-22 171906-thumb.webp"
       },
       {
-        "url": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174702.webp",
-        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174702-thumb.webp"
+        "url": "media/Apps/CharGen.AI/Screenshot 2026-08-22 171939.webp",
+        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-08-22 171939-thumb.webp"
       },
       {
-        "url": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174709.webp",
-        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174709-thumb.webp"
+        "url": "media/Apps/CharGen.AI/Screenshot 2026-08-22 172118.webp",
+        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-08-22 172118-thumb.webp"
       },
       {
-        "url": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174717.webp",
-        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174717-thumb.webp"
+        "url": "media/Apps/CharGen.AI/Screenshot 2026-08-22 172149.webp",
+        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-08-22 172149-thumb.webp"
       },
       {
-        "url": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174725.webp",
-        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174725-thumb.webp"
+        "url": "media/Apps/CharGen.AI/Screenshot 2026-08-22 172406.webp",
+        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-08-22 172406-thumb.webp"
       },
       {
-        "url": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174647.webp",
-        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174647-thumb.webp"
+        "url": "media/Apps/CharGen.AI/Screenshot 2026-08-22 171609.webp",
+        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-08-22 171609-thumb.webp"
       },
       {
-        "url": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174641.webp",
-        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174641-thumb.webp"
+        "url": "media/Apps/CharGen.AI/Screenshot 2026-08-22 171600.webp",
+        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-08-22 171600-thumb.webp"
       },
       {
-        "url": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174635.webp",
-        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174635-thumb.webp"
+        "url": "media/Apps/CharGen.AI/Screenshot 2026-08-22 171552.webp",
+        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-08-22 171552-thumb.webp"
       },
       {
-        "url": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174607.webp",
-        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174607-thumb.webp"
-      },
-      {
-        "url": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174504.webp",
-        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174504-thumb.webp"
-      },
-      {
-        "url": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174752.webp",
-        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174752-thumb.webp"
-      },
-      {
-        "url": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174744.webp",
-        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174744-thumb.webp"
+        "url": "media/Apps/CharGen.AI/Screenshot 2026-08-22 171525.webp",
+        "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-08-22 171525-thumb.webp"
       }
     ],
     "launchLink": "https://elusid108.github.io/CharGen.AI/",
@@ -2156,10 +2144,27 @@
     "websiteLink": "",
     "timestamp": "2026-03-22T16:37:25.240Z",
     "wip": true,
-    "order": 8,
-    "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite</p><p><strong>Styling:</strong> Tailwind CSS</p><p><strong>State:</strong> Zustand</p><p><strong>AI:</strong> Google Gemini 2.5 Flash, Imagen 4.0</p><p><strong>Storage:</strong> IndexedDB</p><p><strong>Export:</strong> JSZip</p><p><strong>Deploy:</strong> GitHub Pages</p>",
+    "order": 3,
+    "specs": "<h2>PLACEHOLDER</h2>",
     "related": [],
-    "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-07-25 174417-thumb.webp"
+    "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-08-22 171906-thumb.webp",
+    "thumbnailFit": {
+      "scale": 1.7,
+      "x": 60.6,
+      "y": 41.8
+    },
+    "bannerFit": {
+      "scale": 1,
+      "x": 50,
+      "y": 50
+    },
+    "specsData": [
+      {
+        "id": "5794a903-4b20-4914-a01f-301f2417dc8c",
+        "title": "Placeholder",
+        "items": []
+      }
+    ]
   },
   {
     "id": "968",
@@ -2201,7 +2206,7 @@
     "websiteLink": "",
     "timestamp": "2026-06-11T17:19:00.407Z",
     "wip": false,
-    "order": 3,
+    "order": 6,
     "specs": "<p><strong>Language:</strong> Vanilla JavaScript</p><p><strong>Build:</strong> None (zero-dependency)</p><p><strong>Engine:</strong> Canvas API (pixel averaging)</p><p><strong>Storage:</strong> IndexedDB, localStorage</p><p><strong>Export:</strong> PIXEstl JSON (HSL/Hex)</p><p><strong>Deploy:</strong> GitHub Pages</p>",
     "related": [
       {
