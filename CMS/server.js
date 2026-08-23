@@ -6,6 +6,7 @@ const fs = require('fs');
 const data = require('./lib/data');
 const media = require('./lib/media');
 const video = require('./lib/video');
+const disk = require('./lib/disk');
 const { publish } = require('./lib/publish');
 
 // SSE connections for video progress: jobId -> res
@@ -132,6 +133,14 @@ app.post('/api/projects/reorder', (req, res) => {
 app.get('/api/settings', (req, res) => {
   try {
     res.json(data.getSettings());
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.get('/api/storage', (req, res) => {
+  try {
+    res.json(disk.getStorage(PORTFOLIO_ROOT));
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

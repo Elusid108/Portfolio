@@ -23,7 +23,9 @@
     #crop-zoom-slider { height: 4px; }
     .spec-item-card:hover .spec-item-controls { opacity: 1; }
     .spec-item-controls { opacity: 0; transition: opacity 0.15s; }
+    #gemini-settings-modal select option { background-color: #0f172a; color: #fff; }
   </style>
+  <script src="/js/gemini-settings.js"></script>
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen relative">
 
@@ -40,7 +42,15 @@
         <h1 class="text-3xl font-bold text-slate-800">Portfolio CMS <span class="text-sm font-medium text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full align-middle">v2.1 Local</span></h1>
         <p class="text-slate-500 text-sm mt-1">Local portfolio manager</p>
       </div>
-      <div class="flex gap-3">
+      <div class="flex gap-3 items-center">
+        <button type="button" onclick="GeminiSettings.open()" title="Gemini settings" aria-label="Gemini settings"
+          class="h-10 w-10 rounded-xl bg-gradient-to-br from-purple-600 to-blue-500 flex items-center justify-center shadow-md hover:opacity-90 shrink-0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5" aria-hidden="true">
+            <path fill="#fbbf24" d="M12 2.4 13.55 7.1 18.4 8.6l-4.85 1.5L12 14.8l-1.55-4.7L5.6 8.6l4.85-1.5L12 2.4z"/>
+            <path fill="#f59e0b" d="M5.2 14.4 6 16.7l2.3.8-2.3.8-.8 2.3-.8-2.3-2.3-.8 2.3-.8.8-2.3z"/>
+            <path fill="#fcd34d" d="M18.6 13.1 19.2 14.9 21 15.5l-1.8.6-.6 1.8-.6-1.8-1.8-.6 1.8-.6.6-1.8z"/>
+          </svg>
+        </button>
         <button onclick="tryRefresh()" class="px-4 py-2 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-600 flex items-center gap-2">
           <i class="ph ph-arrow-clockwise"></i> Refresh
         </button>
@@ -913,6 +923,7 @@
 
     window.onload = () => {
         initQuill();
+        if (window.GeminiSettings) GeminiSettings.init();
         refreshData();
         setupDirtyTracking();
         setupGalleryDragDrop();
@@ -2792,6 +2803,117 @@
           <i class="ph ph-camera"></i> Use As Thumbnail
         </button>
       </div>
+    </div>
+  </div>
+
+  <!-- GEMINI SETTINGS MODAL -->
+  <div id="gemini-settings-modal" class="hidden fixed inset-0 z-[80] bg-black/80 items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="gemini-settings-title">
+    <div class="bg-slate-900 border border-slate-700 rounded-xl p-6 max-w-lg w-full shadow-2xl max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
+      <div class="flex justify-between items-center mb-6">
+        <h2 id="gemini-settings-title" class="text-xl font-bold text-white">Settings</h2>
+        <button type="button" id="gemini-settings-close" class="hidden text-slate-400 hover:text-white" aria-label="Close settings">
+          <i class="ph ph-x text-xl"></i>
+        </button>
+      </div>
+
+      <div class="space-y-4 mb-8">
+        <div class="flex items-center gap-2 text-sm font-bold text-slate-400 uppercase tracking-wide">
+          <i class="ph ph-key text-sm"></i>
+          Google AI API Key
+        </div>
+
+        <div id="gemini-key-required" class="p-3 bg-amber-900/20 border border-amber-900/30 rounded-lg">
+          <p class="text-amber-400 text-xs font-medium mb-1">API Key Required</p>
+          <p class="text-slate-400 text-xs">
+            The CMS needs a Google AI API key to generate project copy. Your key is stored locally in this browser and never written to the repo or sent anywhere except Google's API.
+          </p>
+        </div>
+
+        <div class="flex gap-2">
+          <input
+            id="gemini-api-key"
+            type="password"
+            placeholder="Enter your Google AI API key..."
+            class="flex-1 bg-slate-950 border border-slate-700 text-white rounded-lg px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+          >
+          <button type="button" id="gemini-save-key"
+            class="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-lg font-medium text-sm shadow-lg shadow-blue-900/20">
+            Save
+          </button>
+        </div>
+
+        <a
+          href="https://aistudio.google.com/apikey"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-xs text-blue-400 hover:text-blue-300 flex items-center gap-1"
+        >
+          Get a free API key from Google AI Studio
+          <i class="ph ph-arrow-square-out text-[10px]"></i>
+        </a>
+
+        <div id="gemini-models-row" class="hidden flex-col sm:flex-row sm:justify-between sm:items-center gap-3 p-3 bg-slate-800/50 border border-slate-700 rounded-lg">
+          <span id="gemini-models-count" class="text-xs text-slate-400">No models loaded — refresh to scan your account</span>
+          <button
+            type="button"
+            id="gemini-refresh-models"
+            class="text-xs px-3 py-2 bg-blue-600/20 text-blue-300 hover:bg-blue-600/30 rounded-md transition-colors flex items-center justify-center gap-2 font-medium disabled:opacity-50 border border-blue-500/30"
+          >
+            <i id="gemini-refresh-icon" class="ph ph-arrow-clockwise text-sm shrink-0"></i>
+            <span id="gemini-refresh-label">Refresh List</span>
+          </button>
+        </div>
+
+        <div id="gemini-text-model-wrap" class="hidden">
+          <label for="gemini-text-model" class="block text-xs font-bold text-slate-400 uppercase tracking-wide mb-1">
+            Text generation model
+          </label>
+          <select
+            id="gemini-text-model"
+            class="w-full bg-slate-950 border border-slate-700 text-white rounded-lg px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+          ></select>
+        </div>
+
+        <div id="gemini-image-model-wrap" class="hidden">
+          <label for="gemini-image-model" class="block text-xs font-bold text-slate-400 uppercase tracking-wide mb-1">
+            Image generation model
+          </label>
+          <select
+            id="gemini-image-model"
+            class="w-full bg-slate-950 border border-slate-700 text-white rounded-lg px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+          ></select>
+        </div>
+      </div>
+
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-sm font-bold text-slate-400 uppercase tracking-wide">
+          <i class="ph ph-hard-drives text-sm"></i>
+          Local Storage
+        </div>
+
+        <div id="gemini-storage-box" class="hidden p-4 bg-slate-800/50 rounded-lg border border-slate-700">
+          <div class="flex justify-between text-sm mb-2">
+            <span class="text-slate-400">Used</span>
+            <span id="gemini-storage-used" class="text-white font-mono">—</span>
+          </div>
+          <div id="gemini-storage-available-row" class="flex justify-between text-sm mb-3">
+            <span class="text-slate-400">Available</span>
+            <span id="gemini-storage-available" class="text-white font-mono">—</span>
+          </div>
+          <div class="w-full bg-slate-700 rounded-full h-2">
+            <div id="gemini-storage-bar" class="bg-blue-500 h-2 rounded-full transition-all" style="width: 0%"></div>
+          </div>
+          <p id="gemini-storage-percent" class="text-xs text-slate-500 mt-1"></p>
+        </div>
+
+        <p class="text-xs text-slate-500">
+          Media, project data, and the published site live on disk. The API key and model choices stay in this browser only.
+        </p>
+      </div>
+
+      <p class="text-[10px] text-slate-600 font-mono tabular-nums mt-6 text-center">
+        Portfolio CMS v2.1 Local
+      </p>
     </div>
   </div>
 
