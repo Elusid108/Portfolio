@@ -7,6 +7,7 @@ const data = require('./lib/data');
 const media = require('./lib/media');
 const video = require('./lib/video');
 const disk = require('./lib/disk');
+const gemini = require('./lib/gemini');
 const { publish } = require('./lib/publish');
 
 // SSE connections for video progress: jobId -> res
@@ -143,6 +144,16 @@ app.get('/api/storage', (req, res) => {
     res.json(disk.getStorage(PORTFOLIO_ROOT));
   } catch (err) {
     res.status(500).json({ error: err.message });
+  }
+});
+
+app.post('/api/gemini', async (req, res) => {
+  try {
+    const result = await gemini.runTask(req.body || {});
+    res.json(result);
+  } catch (err) {
+    const status = err.status || 500;
+    res.status(status).json({ error: err.message });
   }
 });
 

@@ -23,9 +23,41 @@
     #crop-zoom-slider { height: 4px; }
     .spec-item-card:hover .spec-item-controls { opacity: 1; }
     .spec-item-controls { opacity: 0; transition: opacity 0.15s; }
-    #gemini-settings-modal select option { background-color: #0f172a; color: #fff; }
+    #gemini-settings-modal select option { background-color: #fff; color: #1e293b; }
+    .ql-toolbar.ql-snow button.ql-ai-short,
+    .ql-toolbar.ql-snow button.ql-ai-long,
+    .ql-snow.ql-toolbar button.ql-ai-short,
+    .ql-snow.ql-toolbar button.ql-ai-long {
+      width: 28px;
+      height: 24px;
+      padding: 3px 5px;
+      border-radius: 8px;
+      background: linear-gradient(to bottom right, #9333ea, #3b82f6) !important;
+      margin-left: 4px;
+    }
+    .ql-toolbar.ql-snow button.ql-ai-short svg,
+    .ql-toolbar.ql-snow button.ql-ai-long svg,
+    .ql-snow.ql-toolbar button.ql-ai-short svg,
+    .ql-snow.ql-toolbar button.ql-ai-long svg {
+      float: none;
+      width: 14px;
+      height: 14px;
+      display: block;
+      margin: 0 auto;
+    }
+    .ql-toolbar.ql-snow button.ql-ai-short:hover,
+    .ql-toolbar.ql-snow button.ql-ai-long:hover {
+      opacity: 0.9;
+    }
+    .ql-toolbar.ql-snow button.ql-ai-busy {
+      opacity: 0.65;
+      pointer-events: none;
+    }
+    @keyframes ql-ai-spin { to { transform: rotate(360deg); } }
+    .ql-ai-spin { animation: ql-ai-spin 0.8s linear infinite; }
   </style>
   <script src="/js/gemini-settings.js"></script>
+  <script src="/js/gemini-copy.js"></script>
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen relative">
 
@@ -1130,14 +1162,28 @@
     }
 
     function initQuill() {
-        const toolbarBasic = [['bold', 'italic', 'underline', 'strike']];
-        const toolbarFull = [
-            ['bold', 'italic', 'underline', 'strike'],
-            [{ 'header': 1 }, { 'header': 2 }],
-            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-            [{ 'indent': '-1'}, { 'indent': '+1' }],
-            ['link', 'clean']
-        ];
+        const toolbarBasic = {
+            container: [
+                ['bold', 'italic', 'underline', 'strike'],
+                ['ai-short']
+            ],
+            handlers: {
+                'ai-short': function () { GeminiCopy.generateShort(); }
+            }
+        };
+        const toolbarFull = {
+            container: [
+                ['bold', 'italic', 'underline', 'strike'],
+                [{ 'header': 1 }, { 'header': 2 }],
+                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                [{ 'indent': '-1'}, { 'indent': '+1' }],
+                ['link', 'clean'],
+                ['ai-long']
+            ],
+            handlers: {
+                'ai-long': function () { GeminiCopy.openInterview(); }
+            }
+        };
 
         const stripColors = [Node.ELEMENT_NODE, function(node, delta) {
             delta.ops.forEach(function(op) {
@@ -1165,13 +1211,55 @@
 
         quillAbout = new Quill('#about-editor', {
             theme: 'snow',
-            modules: { toolbar: toolbarFull, clipboard: { matchers: [stripColors] } },
+            modules: { toolbar: {
+                container: [
+                    ['bold', 'italic', 'underline', 'strike'],
+                    [{ 'header': 1 }, { 'header': 2 }],
+                    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                    [{ 'indent': '-1'}, { 'indent': '+1' }],
+                    ['link', 'clean']
+                ]
+            }, clipboard: { matchers: [stripColors] } },
             placeholder: 'Write about yourself...'
         });
 
         quillShort.on('text-change', () => isDirty = true);
         quillLong.on('text-change', () => isDirty = true);
         quillAbout.on('text-change', () => isDirty = true);
+
+        if (window.GeminiCopy) {
+            GeminiCopy.init({
+                getLongText: () => (quillLong.getText() || '').trim(),
+                getProject: getAiProjectContext,
+                setShortText: (text) => {
+                    quillShort.clipboard.dangerouslyPasteHTML(`<p>${escapeHtml(text)}</p>`);
+                    isDirty = true;
+                },
+                setLongHtml: (html) => {
+                    quillLong.clipboard.dangerouslyPasteHTML(html);
+                    isDirty = true;
+                }
+            });
+        }
+    }
+
+    function getAiProjectContext() {
+        const specs = getSpecsData().map(cat => {
+            const items = (cat.items || [])
+                .map(item => [item.name, item.qty ? `x${item.qty}` : '', item.specs].filter(Boolean).join(' '))
+                .filter(Boolean)
+                .join('; ');
+            if (!cat.title && !items) return '';
+            return cat.title ? `${cat.title}: ${items}` : items;
+        }).filter(Boolean).join('\n');
+        return {
+            title: document.getElementById('title')?.value || '',
+            category: document.getElementById('category')?.value || '',
+            tags: document.getElementById('tags')?.value || '',
+            specs,
+            short: (quillShort.getText() || '').trim(),
+            long: (quillLong.getText() || '').trim()
+        };
     }
 
     function setupDirtyTracking() {
@@ -2806,25 +2894,64 @@
     </div>
   </div>
 
+  <!-- GEMINI COPY INTERVIEW MODAL -->
+  <div id="gemini-copy-modal" class="hidden fixed inset-0 z-[85] bg-black/50 items-center justify-center backdrop-blur-sm p-4" role="dialog" aria-modal="true" aria-labelledby="gemini-copy-title">
+    <div class="bg-white rounded-xl shadow-2xl p-6 max-w-lg w-full max-h-[90vh] overflow-y-auto flex flex-col" onclick="event.stopPropagation()">
+      <div class="flex justify-between items-start mb-4">
+        <div>
+          <h2 id="gemini-copy-title" class="text-lg font-bold text-slate-800">Polish long description</h2>
+          <p id="gemini-copy-status" class="text-sm text-slate-500 mt-0.5">Answer, skip, or generate now. Close leaves the current text.</p>
+        </div>
+        <button type="button" id="gemini-copy-close" class="text-slate-400 hover:text-slate-600 mt-0.5" aria-label="Close">
+          <i class="ph ph-x text-xl"></i>
+        </button>
+      </div>
+      <div id="gemini-copy-log" class="hidden mb-4 max-h-40 overflow-y-auto border border-slate-200 rounded-lg p-3 bg-slate-50"></div>
+      <div id="gemini-copy-questions" class="mb-4"></div>
+      <label for="gemini-copy-answers" class="block text-xs font-bold text-slate-400 uppercase tracking-wide mb-1">Your answer</label>
+      <textarea id="gemini-copy-answers" rows="4" placeholder="Answer in fragments. Ctrl+Enter to send."
+        class="w-full bg-slate-50 border border-slate-200 text-slate-800 rounded-lg px-3 py-2 text-sm outline-none focus:border-indigo-500 mb-4"></textarea>
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <button type="button" id="gemini-copy-skip"
+          class="px-4 py-2 border border-slate-200 rounded-lg text-slate-600 hover:bg-slate-50 text-sm transition-colors">
+          Skip
+        </button>
+        <div class="flex flex-col sm:flex-row gap-3 sm:justify-end">
+          <button type="button" id="gemini-copy-send"
+            class="px-4 py-2 border border-slate-200 rounded-lg text-slate-700 hover:bg-slate-50 font-medium text-sm transition-colors">
+            Send answer
+          </button>
+          <button type="button" id="gemini-copy-generate"
+            class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-bold text-sm transition-colors">
+            Generate
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- GEMINI SETTINGS MODAL -->
-  <div id="gemini-settings-modal" class="hidden fixed inset-0 z-[80] bg-black/80 items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="gemini-settings-title">
-    <div class="bg-slate-900 border border-slate-700 rounded-xl p-6 max-w-lg w-full shadow-2xl max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
-      <div class="flex justify-between items-center mb-6">
-        <h2 id="gemini-settings-title" class="text-xl font-bold text-white">Settings</h2>
-        <button type="button" id="gemini-settings-close" class="hidden text-slate-400 hover:text-white" aria-label="Close settings">
+  <div id="gemini-settings-modal" class="hidden fixed inset-0 z-[80] bg-black/50 items-center justify-center backdrop-blur-sm p-4" role="dialog" aria-modal="true" aria-labelledby="gemini-settings-title">
+    <div class="bg-white rounded-xl shadow-2xl p-6 max-w-lg w-full max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
+      <div class="flex justify-between items-start mb-6">
+        <div>
+          <h2 id="gemini-settings-title" class="text-lg font-bold text-slate-800">Settings</h2>
+          <p class="text-sm text-slate-500 mt-0.5">API key and models stay in this browser only.</p>
+        </div>
+        <button type="button" id="gemini-settings-close" class="hidden text-slate-400 hover:text-slate-600 mt-0.5" aria-label="Close settings">
           <i class="ph ph-x text-xl"></i>
         </button>
       </div>
 
       <div class="space-y-4 mb-8">
-        <div class="flex items-center gap-2 text-sm font-bold text-slate-400 uppercase tracking-wide">
+        <div class="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-wide">
           <i class="ph ph-key text-sm"></i>
           Google AI API Key
         </div>
 
-        <div id="gemini-key-required" class="p-3 bg-amber-900/20 border border-amber-900/30 rounded-lg">
-          <p class="text-amber-400 text-xs font-medium mb-1">API Key Required</p>
-          <p class="text-slate-400 text-xs">
+        <div id="gemini-key-required" class="p-3 bg-amber-50 border border-amber-200 rounded-lg">
+          <p class="text-amber-800 text-xs font-medium mb-1">API Key Required</p>
+          <p class="text-slate-600 text-xs">
             The CMS needs a Google AI API key to generate project copy. Your key is stored locally in this browser and never written to the repo or sent anywhere except Google's API.
           </p>
         </div>
@@ -2834,10 +2961,10 @@
             id="gemini-api-key"
             type="password"
             placeholder="Enter your Google AI API key..."
-            class="flex-1 bg-slate-950 border border-slate-700 text-white rounded-lg px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+            class="flex-1 bg-slate-50 border border-slate-200 text-slate-800 rounded-lg px-3 py-2 text-sm outline-none focus:border-indigo-500"
           >
           <button type="button" id="gemini-save-key"
-            class="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-lg font-medium text-sm shadow-lg shadow-blue-900/20">
+            class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-bold text-sm transition-colors">
             Save
           </button>
         </div>
@@ -2846,18 +2973,18 @@
           href="https://aistudio.google.com/apikey"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-xs text-blue-400 hover:text-blue-300 flex items-center gap-1"
+          class="text-xs text-indigo-600 hover:underline flex items-center gap-1"
         >
           Get a free API key from Google AI Studio
           <i class="ph ph-arrow-square-out text-[10px]"></i>
         </a>
 
-        <div id="gemini-models-row" class="hidden flex-col sm:flex-row sm:justify-between sm:items-center gap-3 p-3 bg-slate-800/50 border border-slate-700 rounded-lg">
-          <span id="gemini-models-count" class="text-xs text-slate-400">No models loaded — refresh to scan your account</span>
+        <div id="gemini-models-row" class="hidden flex-col sm:flex-row sm:justify-between sm:items-center gap-3 p-3 bg-slate-50 border border-slate-200 rounded-lg">
+          <span id="gemini-models-count" class="text-xs text-slate-500">No models loaded — refresh to scan your account</span>
           <button
             type="button"
             id="gemini-refresh-models"
-            class="text-xs px-3 py-2 bg-blue-600/20 text-blue-300 hover:bg-blue-600/30 rounded-md transition-colors flex items-center justify-center gap-2 font-medium disabled:opacity-50 border border-blue-500/30"
+            class="text-xs px-3 py-2 bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 rounded-lg transition-colors flex items-center justify-center gap-2 font-medium disabled:opacity-50"
           >
             <i id="gemini-refresh-icon" class="ph ph-arrow-clockwise text-sm shrink-0"></i>
             <span id="gemini-refresh-label">Refresh List</span>
@@ -2870,7 +2997,7 @@
           </label>
           <select
             id="gemini-text-model"
-            class="w-full bg-slate-950 border border-slate-700 text-white rounded-lg px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+            class="w-full bg-white border border-slate-200 text-slate-800 rounded-lg px-3 py-2 text-sm outline-none focus:border-indigo-500"
           ></select>
         </div>
 
@@ -2880,28 +3007,28 @@
           </label>
           <select
             id="gemini-image-model"
-            class="w-full bg-slate-950 border border-slate-700 text-white rounded-lg px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+            class="w-full bg-white border border-slate-200 text-slate-800 rounded-lg px-3 py-2 text-sm outline-none focus:border-indigo-500"
           ></select>
         </div>
       </div>
 
       <div class="space-y-3">
-        <div class="flex items-center gap-2 text-sm font-bold text-slate-400 uppercase tracking-wide">
+        <div class="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-wide">
           <i class="ph ph-hard-drives text-sm"></i>
           Local Storage
         </div>
 
-        <div id="gemini-storage-box" class="hidden p-4 bg-slate-800/50 rounded-lg border border-slate-700">
+        <div id="gemini-storage-box" class="hidden p-4 bg-slate-50 rounded-lg border border-slate-200">
           <div class="flex justify-between text-sm mb-2">
-            <span class="text-slate-400">Used</span>
-            <span id="gemini-storage-used" class="text-white font-mono">—</span>
+            <span class="text-slate-500">Used</span>
+            <span id="gemini-storage-used" class="text-slate-800 font-mono">—</span>
           </div>
           <div id="gemini-storage-available-row" class="flex justify-between text-sm mb-3">
-            <span class="text-slate-400">Available</span>
-            <span id="gemini-storage-available" class="text-white font-mono">—</span>
+            <span class="text-slate-500">Available</span>
+            <span id="gemini-storage-available" class="text-slate-800 font-mono">—</span>
           </div>
-          <div class="w-full bg-slate-700 rounded-full h-2">
-            <div id="gemini-storage-bar" class="bg-blue-500 h-2 rounded-full transition-all" style="width: 0%"></div>
+          <div class="w-full bg-slate-200 rounded-full h-2">
+            <div id="gemini-storage-bar" class="bg-indigo-600 h-2 rounded-full transition-all" style="width: 0%"></div>
           </div>
           <p id="gemini-storage-percent" class="text-xs text-slate-500 mt-1"></p>
         </div>
@@ -2911,7 +3038,7 @@
         </p>
       </div>
 
-      <p class="text-[10px] text-slate-600 font-mono tabular-nums mt-6 text-center">
+      <p class="text-[10px] text-slate-400 font-mono tabular-nums mt-6 text-center">
         Portfolio CMS v2.1 Local
       </p>
     </div>
