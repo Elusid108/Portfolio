@@ -35,7 +35,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-12T01:03:01.269Z",
     "wip": false,
-    "order": 10,
+    "order": 9,
     "specs": "<p><strong>Framework:</strong> React 18 (CDN), Node.js</p><p><strong>Language:</strong> Vanilla JavaScript</p><p><strong>Backend:</strong> Express, Sharp, Multer</p><p><strong>Styling:</strong> Tailwind CSS, Quill</p><p><strong>Storage:</strong> Local JSON (filesystem)</p><p><strong>Deploy:</strong> GitHub Pages (static output)</p>",
     "related": [
       {
@@ -486,6 +486,10 @@
     "specs": "",
     "related": [
       {
+        "name": "BorderBuilder",
+        "url": "#project/8287"
+      },
+      {
         "name": "Pallet generator",
         "url": "#project/968"
       }
@@ -539,7 +543,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-12T01:03:01.269Z",
     "wip": false,
-    "order": 7,
+    "order": 6,
     "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite (SWC)</p><p><strong>Styling:</strong> Tailwind CSS, Radix UI</p><p><strong>Storage:</strong> localStorage</p><p><strong>Deploy:</strong> GitHub Pages</p>",
     "related": [],
     "thumbnail": "media/Apps/Unfold/Screenshot 2026-07-25 154856-thumb.webp"
@@ -1817,7 +1821,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-18T13:45:57.049Z",
     "wip": true,
-    "order": 9,
+    "order": 10,
     "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite (SWC)</p><p><strong>Styling:</strong> Tailwind CSS, Radix UI</p><p><strong>Maps:</strong> Leaflet, React-Leaflet</p><p><strong>Geo:</strong> exifr (EXIF extraction)</p><p><strong>Storage:</strong> Dexie (IndexedDB)</p><p><strong>Export:</strong> jsPDF</p><p><strong>Backend:</strong> Supabase</p><p><strong>Deploy:</strong> Lovable</p>",
     "related": [],
     "thumbnail": "media/Apps/GeoLens Pro/Screenshot_20260118_082950_Chrome-thumb.webp"
@@ -1881,7 +1885,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-18T14:24:23.784Z",
     "wip": true,
-    "order": 8,
+    "order": 11,
     "specs": "<p><strong>Framework:</strong> React 18</p><p><strong>Language:</strong> TypeScript</p><p><strong>Build:</strong> Vite</p><p><strong>Styling:</strong> Tailwind CSS</p><p><strong>State:</strong> Zustand</p><p><strong>AI:</strong> Google Gemini (text), Google Imagen (image)</p><p><strong>Storage:</strong> IndexedDB, localStorage</p><p><strong>Export:</strong> JSZip</p><p><strong>Deploy:</strong> GitHub Pages</p>",
     "related": [],
     "thumbnail": "media/Apps/PixelForge/Screenshot 2026-07-25 173231-thumb.webp"
@@ -1969,7 +1973,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-19T00:26:00.827Z",
     "wip": true,
-    "order": 4,
+    "order": 7,
     "specs": "<p><strong>Framework:</strong> React 18 (CDN, zero-build)</p><p><strong>Language:</strong> JavaScript (ES Modules)</p><p><strong>Styling:</strong> Tailwind CSS (CDN)</p><p><strong>AI:</strong> Google Gemini (text/image/TTS)</p><p><strong>Audio:</strong> Web Speech API (fallback)</p><p><strong>Storage:</strong> localStorage</p><p><strong>Deploy:</strong> GitHub Pages</p>",
     "related": [],
     "thumbnail": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 182215-thumb.webp"
@@ -2024,7 +2028,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-24T02:36:52.522Z",
     "wip": true,
-    "order": 2,
+    "order": 4,
     "specs": "",
     "related": [],
     "thumbnail": "media/Apps/Strata - Digital Notebook/Screenshot 2026-08-22 151928-thumb.webp",
@@ -2144,7 +2148,7 @@
     "websiteLink": "",
     "timestamp": "2026-03-22T16:37:25.240Z",
     "wip": true,
-    "order": 3,
+    "order": 8,
     "specs": "<h2>PLACEHOLDER</h2>",
     "related": [],
     "thumbnail": "media/Apps/CharGen.AI/Screenshot 2026-08-22 171906-thumb.webp",
@@ -2206,7 +2210,7 @@
     "websiteLink": "",
     "timestamp": "2026-06-11T17:19:00.407Z",
     "wip": false,
-    "order": 6,
+    "order": 3,
     "specs": "<p><strong>Language:</strong> Vanilla JavaScript</p><p><strong>Build:</strong> None (zero-dependency)</p><p><strong>Engine:</strong> Canvas API (pixel averaging)</p><p><strong>Storage:</strong> IndexedDB, localStorage</p><p><strong>Export:</strong> PIXEstl JSON (HSL/Hex)</p><p><strong>Deploy:</strong> GitHub Pages</p>",
     "related": [
       {
@@ -8287,6 +8291,66 @@
     "video": "",
     "timestamp": "2026-08-22T19:10:36.064Z",
     "id": "2955",
+    "order": 2
+  },
+  {
+    "title": "BorderBuilder",
+    "category": "Software",
+    "image": "media/Apps/BorderBuilder/Screenshot 2026-08-22 224715.webp",
+    "thumbnailFit": {
+      "scale": 1.25,
+      "x": 9.6,
+      "y": 47.5
+    },
+    "bannerFit": {
+      "scale": 1.25,
+      "x": 0,
+      "y": 32.2
+    },
+    "description": "<p>Placeholder</p>",
+    "longDescription": "<p>Placeholder</p>",
+    "websiteLink": "",
+    "launchLink": "https://elusid108.github.io/BorderBuilder/",
+    "githubLink": "https://github.com/Elusid108/BorderBuilder",
+    "shopLink": "",
+    "featured": false,
+    "wip": true,
+    "tags": [
+      "Custom Fabrication",
+      "FDM 3D Printing"
+    ],
+    "gallery": [
+      {
+        "url": "media/Apps/BorderBuilder/Screenshot 2026-08-22 224715.webp",
+        "thumbnail": "media/Apps/BorderBuilder/Screenshot 2026-08-22 224715-thumb.webp"
+      },
+      {
+        "url": "media/Apps/BorderBuilder/Screenshot 2026-08-22 224540.webp",
+        "thumbnail": "media/Apps/BorderBuilder/Screenshot 2026-08-22 224540-thumb.webp"
+      },
+      {
+        "url": "media/Apps/BorderBuilder/Screenshot 2026-08-22 224522.webp",
+        "thumbnail": "media/Apps/BorderBuilder/Screenshot 2026-08-22 224522-thumb.webp"
+      }
+    ],
+    "files": [],
+    "specsData": [
+      {
+        "id": "311aa5f2-39d0-4b36-8772-4d596fa9f9b4",
+        "title": "Placeholder",
+        "items": []
+      }
+    ],
+    "specs": "<h2>PLACEHOLDER</h2>",
+    "related": [
+      {
+        "name": "LithoLab",
+        "url": "#project/2944"
+      }
+    ],
+    "video": "",
+    "timestamp": "2026-08-23T03:28:57.175Z",
+    "id": "8287",
     "order": 1
   }
 ]
