@@ -2,6 +2,8 @@
 
 This is the source for my personal portfolio website — a showcase of work spanning lighting design, art installations, electronics, apps, fabrication, and systems integration.
 
+The local authoring tool is **CMS v2.2 Local**.
+
 The live site (`[index.html](index.html)`) is a single, self-contained static page built with React 18 (UMD), Babel Standalone, and Tailwind CSS (all via CDN). It reads its content from a JSON block embedded directly in the page, so there's no build step and no backend required to host or view it — it can be served as-is from GitHub Pages or any static file host.
 
 Projects are organized into six categories that map to folders under `[media/](media/)`:
@@ -66,7 +68,7 @@ The admin UI lets you manage, per project:
 
 - Title, category, and tags
 - Banner image (uploaded or linked by path/URL)
-- Short and long descriptions, edited with a rich-text (Quill) editor
+- Short and long descriptions, edited with a rich-text (Quill) editor. Sparkle buttons on those toolbars can generate copy through Gemini (API key in Settings; writing prompts stay on the server and are never published)
 - A gallery of images and/or YouTube links, with drag-to-reorder and thumbnail previews
 - Action links — website, launch app, GitHub, shop
 - Downloadable files (name + URL pairs)

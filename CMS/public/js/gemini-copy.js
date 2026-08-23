@@ -26,6 +26,7 @@
       skipped: [],
       asking: false,
       generating: false,
+      action: '',
     };
   }
 
@@ -56,6 +57,27 @@
     btn.title = title;
     btn.setAttribute('aria-label', title);
     btn.innerHTML = SPARKLE_SVG;
+  }
+
+  function showAiBusy(label) {
+    const overlay = el('aiBusyOverlay');
+    const text = el('aiBusyText');
+    if (text) text.textContent = label;
+    if (!overlay) return;
+    overlay.classList.remove('hidden');
+    overlay.classList.add('flex');
+  }
+
+  function hideAiBusy() {
+    const overlay = el('aiBusyOverlay');
+    if (!overlay) return;
+    overlay.classList.add('hidden');
+    overlay.classList.remove('flex');
+  }
+
+  function setActionSpinner(name, busy) {
+    const icon = el('gemini-copy-' + name + '-icon');
+    if (icon) icon.classList.toggle('hidden', !busy);
   }
 
   function setButtonBusy(btn, busy) {
@@ -110,6 +132,7 @@
       return;
     }
     setButtonBusy(btn, true);
+    showAiBusy('Writing short description…');
     try {
       const result = await postGemini('short');
       if (!result) return;
@@ -118,6 +141,7 @@
     } catch (err) {
       toast(err.message || 'Failed to generate short description', 'error');
     } finally {
+      hideAiBusy();
       setButtonBusy(btn, false);
     }
   }
@@ -207,11 +231,15 @@
     if (sendBtn) sendBtn.disabled = busy;
     if (skipBtn) skipBtn.disabled = busy;
     if (genBtn) genBtn.disabled = interview.generating;
+    setActionSpinner('skip', interview.asking && interview.action === 'skip');
+    setActionSpinner('send', interview.asking && interview.action === 'send');
+    setActionSpinner('generate', interview.generating);
   }
 
   async function askQuestion() {
     interview.asking = true;
     renderInterview();
+    showAiBusy('Asking a question…');
     try {
       const result = await postGemini('interview', messagesForAsk());
       if (!result) return;
@@ -220,6 +248,8 @@
       toast(err.message || 'Failed to get a follow-up question', 'error');
     } finally {
       interview.asking = false;
+      interview.action = '';
+      hideAiBusy();
       renderInterview();
     }
   }
@@ -243,6 +273,7 @@
   }
 
   function closeInterview() {
+    hideAiBusy();
     const modal = el('gemini-copy-modal');
     if (!modal) return;
     modal.classList.add('hidden');
@@ -257,6 +288,7 @@
       toast('Add an answer before sending', 'warning');
       return;
     }
+    interview.action = 'send';
     interview.answered.push({
       question: interview.question || '(note)',
       answer: text,
@@ -270,6 +302,7 @@
   async function skipQuestion() {
     if (!requireKey()) return;
     if (interview.asking || interview.generating) return;
+    interview.action = 'skip';
     if (interview.question) {
       interview.skipped.push(interview.question);
       interview.question = '';
@@ -282,9 +315,11 @@
   async function generateLong() {
     if (!requireKey()) return;
     interview.generating = true;
+    interview.action = 'generate';
     renderInterview();
     const btn = document.querySelector('.ql-ai-long');
     setButtonBusy(btn, true);
+    showAiBusy('Writing long description…');
     try {
       const result = await postGemini('long', messagesForGenerate());
       if (!result) return;
@@ -295,6 +330,8 @@
       toast(err.message || 'Failed to generate long description', 'error');
     } finally {
       interview.generating = false;
+      interview.action = '';
+      hideAiBusy();
       setButtonBusy(btn, false);
       if (isInterviewOpen()) renderInterview();
     }
@@ -308,7 +345,9 @@
     el('gemini-copy-skip')?.addEventListener('click', () => void skipQuestion());
     el('gemini-copy-generate')?.addEventListener('click', () => void generateLong());
     el('gemini-copy-modal')?.addEventListener('click', (e) => {
-      if (e.target === el('gemini-copy-modal')) closeInterview();
+      if (e.target === el('gemini-copy-modal') && !interview.asking && !interview.generating) {
+        closeInterview();
+      }
     });
     el('gemini-copy-answers')?.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
@@ -317,7 +356,9 @@
       }
     });
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && isInterviewOpen() && !interview.generating) closeInterview();
+      if (e.key === 'Escape' && isInterviewOpen() && !interview.generating && !interview.asking) {
+        closeInterview();
+      }
     });
   }
 
