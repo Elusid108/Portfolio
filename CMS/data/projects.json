@@ -8307,8 +8307,8 @@
       "x": 0,
       "y": 32.2
     },
-    "description": "<p>Placeholder</p>",
-    "longDescription": "<p>Placeholder</p>",
+    "description": "<p>I refuse to pay for server time when a local browser can calculate 3D geometry for custom frames.</p>",
+    "longDescription": "<p>I wanted nice frames for the custom lithophanes my app LithoLab generates. Initially, I planned to print the frame and lithophane as one piece. The tradeoff was time. If the frame was attached, I would have to print the whole thing with a 0.2mm nozzle. It would take forever, and the image would be permanently locked to that frame.</p><p>I split the generator into its own tool, BorderBuilder. Simple rectangles were easy. Moving to irregular shapes was a mess. Wrapping a 3D bevel around a custom mask created overlapping planes and rough edges. I debugged the geometry until the tracing worked.</p><p>A user selects their dimensions, or drops in a LithoLab export to generate a matching frame and DXF files for the acrylic panels. It runs entirely in the browser. I host it on GitHub Pages for free. I refuse to pay for server time when a local machine can do the work.</p>",
     "websiteLink": "",
     "launchLink": "https://elusid108.github.io/BorderBuilder/",
     "githubLink": "https://github.com/Elusid108/BorderBuilder",
