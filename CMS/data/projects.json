@@ -61,10 +61,23 @@
       "Roadhog 4"
     ],
     "image": "media/Lighting/Immersive Dance Lighting Rig/20210516_134200.webp",
-    "description": "<p><strong>Temple Nightclub | San Francisco </strong>- The main room remodel at Temple San Francisco wraps a 208V curved video ceiling and 10 custom pixel pillars into a flat-black, switched-relay infrastructure built across a two-year pandemic shutdown.</p>",
-    "longDescription": "<p>The main room at Temple Nightclub in San Francisco required a dense hybrid lighting, pixel and video rig that could vanish entirely into the dark when unlit. I designed the system around a curved video ceiling wrapping behind the DJ, 10 custom LED pixel pillars, beams, wash's, profiles, all built in flat black. Before aesthetic integration could even start, the physical ceiling forced a massive life-safety detour. Because the curved video wall blocked standard fire suppression coverage, I brought in a fire crew to reroute the sprinklers both above and below the solid ceiling plane using side sprayers with a 15 ft reach. When we found the main sewer drain blocked, we had to run the drainage above grade through an alley test valve and cut in a new low-point basement drain just to clear the system.</p><p>Powering that density without burning equipment lifespan meant overhauling the venue's electrical capacity with new 400A and 200A services. I split the load across two new panels: 24 circuits of 208V on twist-lock connectors dedicated exclusively to the video ceiling, and 60 circuits of standard 120V Edison for the lighting. Rather than relying on independent wall switches, I wired the entire rig onto switched relays grouped in clusters of 4. That setup gave us centralized shutdown so fixtures would not sit sucking dust and burning hours during dark days, while hardwired house lights let staff handle maintenance without booting the show systems.</p><p>What was supposed to be a three-month build turned into a two-year pandemic ordeal where I cycled through three separate crews and stepped up to manage electricians, plumbers, and carpenters directly. The hardest recurring fight was not mechanical, but restraint. The owner and creative director wanted every fixture and screen blasted at 100% all the time. I argued that crowding that many lights into a small room is about having angles and combinations, like a single-color sweep or white eggbeater prisms, not raw brightness. When we finally opened and they tested that full-blast look on the crowd, the patrons rejected it within 10 minutes. When we ran the rig my way, linking the Resolume and Madrix engines across the ceiling, pillars, and scrap-built VIP tape walls, the entire room lit up on the first try without a single glitch.</p>",
+    "description": "<p>We packed two hundred moving lights into the room, but running them at full brightness emptied the dance floor.</p>",
+    "longDescription": "<p>The physical ceiling forced a massive life-safety detour before we even hung a light. We were building a dense hybrid rig for the main room at Temple San Francisco, centering on a curved video ceiling that wrapped down behind the DJ. Because the solid ceiling plane blocked standard fire suppression, I brought in a crew to reroute the sprinklers above and below it using side sprayers with a 15-foot reach. When we found the main sewer drain blocked, we had to cut in a new basement drain just to clear the system. We hung a strut channel grid from scissor lifts, leaning heavily on a laser level to line up the video panels down the center of the room. Nearly 200 moving lights flanked the screens.</p><p>My goal was the rig had to vanish into the dark when unlit. We built ten custom pillars out of OSB and drywall mud, sinking aluminum LED extrusions into the corners. We also salvaged chipped acrylic and old LED strips lost in the building to build 32 VIP pixel tables. Because pandemic PPP loans covered wages instead of materials, it made sense to have my skeleton crew build them by hand. I wired the entire rig onto switched relays grouped in fours, so fixtures wouldn't sit sucking dust on dark days.</p><p>The real fight was the software backend. I wanted video content to carry over into the pixels and the lighting rig, but the lighting console couldn't switch back to independent color control fast enough. I rebuilt the routing from the ground up several times. The trick was using Madrix as the central processing hub. I fed ArtNet data from Resolume and a Roadhog 4 console into Madrix on unused universes, merged them, and pushed that out to the decoders. Getting the room to act as one system took weeks. My go-to test was a single diagonal line sweep. I would slow it down to see how closely the systems aligned as the line dragged across the ceiling, down the back wall, and across a double-sided video monolith sitting in the middle of the dance floor.</p><p>The owner wanted every fixture and screen blasted at 100 percent all the time. I argued that crowding that many lights into a small room is about angles and combinations, not raw brightness. When we opened, they tested that full-blast look on the crowd. Within ten minutes, people left and the dance floor was almost entirely empty.</p>",
     "video": "",
     "gallery": [
+      {
+        "url": "media/Lighting/Immersive Dance Lighting Rig/20210516_134200.webp",
+        "fit": {
+          "scale": 1.15,
+          "x": 32,
+          "y": 69.3
+        },
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/20210516_134200-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Immersive Dance Lighting Rig/20210517_104219.webp",
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/20210517_104219-thumb.webp"
+      },
       {
         "url": "media/Lighting/Immersive Dance Lighting Rig/Screen Recording 2025-03-14 124624.mp4",
         "fit": {
@@ -80,18 +93,29 @@
         "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Screenshot 2025-03-14 124321-thumb.webp"
       },
       {
-        "url": "media/Lighting/Immersive Dance Lighting Rig/20210516_134200.webp",
+        "url": "media/Lighting/Immersive Dance Lighting Rig/20210620_220939.mp4",
         "fit": {
-          "scale": 1.15,
-          "x": 32,
-          "y": 69.3
+          "scale": 1.25,
+          "x": 48,
+          "y": 32.5
         },
-        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/20210516_134200-thumb.webp"
+        "poster": "media/Lighting/Immersive Dance Lighting Rig/frame-thumb-1787700497004.webp",
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/frame-thumb-1787700497004-thumb.webp"
       },
       {
-        "url": "media/Lighting/Immersive Dance Lighting Rig/VID_20200416_142554.mp4",
-        "poster": "media/Lighting/Immersive Dance Lighting Rig/VID_20200416_142554-poster.webp",
-        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/VID_20200416_142554-poster-thumb.webp"
+        "url": "media/Lighting/Immersive Dance Lighting Rig/20210516_192856.mp4",
+        "poster": "media/Lighting/Immersive Dance Lighting Rig/20210516_192856-poster.webp",
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/20210516_192856-poster-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Immersive Dance Lighting Rig/20210618_234036.mp4",
+        "fit": {
+          "scale": 1.25,
+          "x": 0.4,
+          "y": 40.9
+        },
+        "poster": "media/Lighting/Immersive Dance Lighting Rig/frame-thumb-1787700638835.webp",
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/frame-thumb-1787700638835-thumb.webp"
       },
       {
         "url": "media/Lighting/Immersive Dance Lighting Rig/20210517_112418~2.mp4",
@@ -104,13 +128,27 @@
         "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/frame-thumb-1786196823000-thumb.webp"
       },
       {
-        "url": "media/Lighting/Immersive Dance Lighting Rig/Screenshot 2025-03-12 151156.webp",
+        "url": "media/Lighting/Immersive Dance Lighting Rig/20210714_100641.webp",
         "fit": {
           "scale": 1,
-          "x": 50.5,
-          "y": 1.6
+          "x": 0.2,
+          "y": 65.9
         },
-        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Screenshot 2025-03-12 151156-thumb.webp"
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/20210714_100641-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Immersive Dance Lighting Rig/20210403_183018.mp4",
+        "poster": "media/Lighting/Immersive Dance Lighting Rig/20210403_183018-poster.webp",
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/20210403_183018-poster-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Immersive Dance Lighting Rig/20210403_195106.webp",
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/20210403_195106-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Immersive Dance Lighting Rig/VID_20200416_142554.mp4",
+        "poster": "media/Lighting/Immersive Dance Lighting Rig/VID_20200416_142554-poster.webp",
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/VID_20200416_142554-poster-thumb.webp"
       },
       {
         "url": "media/Lighting/Immersive Dance Lighting Rig/Screenshot 2025-03-17 193550.webp",
@@ -120,6 +158,15 @@
           "y": 39.4
         },
         "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Screenshot 2025-03-17 193550-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Immersive Dance Lighting Rig/Screenshot 2025-03-12 151156.webp",
+        "fit": {
+          "scale": 1,
+          "x": 50.5,
+          "y": 1.6
+        },
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Screenshot 2025-03-12 151156-thumb.webp"
       },
       {
         "url": "media/Lighting/Immersive Dance Lighting Rig/Screenshot 2025-03-12 151235.webp",
@@ -5472,8 +5519,8 @@
       "x": 54.2,
       "y": 21.5
     },
-    "description": "<p>Hiding a 12V pixel wash on a wrap-around dining room pyramid required painted extrusion and balancing to solder.</p>",
-    "longDescription": "<p>The decorative pyramid above the kitchen at Que Bueno Suerte! sat 12 ft over the dining room tile and bar. I wanted to wash the steps with LED pixel tape. The catch was the sightlines. Guests taking the stairs to the second floor got a straight shot down the side of the structure. The track had to vanish during the day from the ground floor, but look pristine from above.</p><p>I mounted 45 deg aluminum extrusions with frosted lenses. Finding the correct offset required checking sightlines from the main floor to push the track back enough to hide it, while keeping enough forward throw for a clean wash. Hiding the hardware required pulling the exact paint match with a NIX digital sensor. I modeled and 3D printed custom jigs to hold the cut extrusions off the ground, then sprayed them with an airless gun in batches.</p><p>The layout covered 6 steps and 2 partial steps wrapping two sides of the pyramid. I tucked fanless MEAN WELL power supplies in the corner, controlled by wired Advatek receivers tied to the main server rack. Firing it up revealed a problem. The 12V pixel strips suffered voltage drop, causing color shift on the bottom steps. Fixing it required adding power injection points at the far ends and hardwiring the 90 deg corner joints. I sat on the 12 ft edge with my field solder station, splicing the injection points over the tile floor. I wrapped the bundles in wire wrap to create a black arc at every corner.</p><p>Painting the track made it inconsequential under daytime lighting. At night, the clean wiring and steady voltage turned the top of the kitchen into a massive accent for the room.</p>",
+    "description": "<p>Fixing the voltage drop meant sitting on a twelve-foot ledge over the tile with a battery-powered soldering iron.</p>",
+    "longDescription": "<p>The decorative pyramid above the kitchen sat twelve feet over the dining room tile. I wanted to wash the steps with pixel tape. Guests taking the stairs to the second floor had a clear view down the side. I refused to let the hardware show during the day, but it needed enough throw for a clean wash. I mounted 45-degree aluminum extrusions under the lip of each step. To make the track disappear, I pulled a paint match with a digital sensor, printed custom jigs, and sprayed the metal in batches.</p><p>The layout wrapped two sides of the pyramid. I tucked fanless power supplies in the corner, wired to receivers on the main rack. Firing it up revealed a voltage drop. The bottom steps shifted color. Fixing it meant hardwiring the corners and adding power injection at the far ends. I sat on the twelve-foot edge, splicing wire over the tile floor with a battery-powered iron. I bundled the new lines in black wire wrap, leaving a clean arc at every corner.</p><p>The painted track vanished during the day. At night, the steady voltage let the server push smooth, flowing shapes across the steps. The top of the kitchen rolled with slow waves, and on certain patterns, the pyramid looked like it was on fire.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -5676,7 +5723,7 @@
       }
     ],
     "files": [],
-    "specs": "<p><strong>Pixels: </strong>1742px<strong> </strong></p><p><strong>LED:</strong> RGBW (3000k)</p><p><strong>IC:</strong> WS2814</p><p><strong>Density:</strong> 60/m (3 x 1) 20px</p><p><strong>Power:</strong> 8 MEAN WELL HLH-320H-12</p><p><strong>Control:</strong> Madrix 5.x</p>",
+    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x1742)</strong><br><em>87.1m • WS2814 • RGBW (3000k) • 20px/m • 12Vdc</em></p><h2>POWER &amp; DISTRIBUTION</h2><p><strong>Power Supplies (x8)</strong><br><em>MEAN WELL • HLG-320H-12 • 12Vdc • 22A</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>LED Extrusion (x87.5m)</strong><br><em>45deg • 12mm width • opal diffusion • color paint matched</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>Pixel Control</strong><br><em>Madrix 5.x</em></p>",
     "related": [
       {
         "name": "Que Bueno Suerte!",
@@ -5687,7 +5734,57 @@
     "timestamp": "2026-08-09T12:31:15.774Z",
     "id": "1088",
     "order": 3,
-    "thumbnail": "media/Lighting/Pyramid Steps/20240713_100537-thumb.webp"
+    "thumbnail": "media/Lighting/Pyramid Steps/20240713_100537-thumb.webp",
+    "specsData": [
+      {
+        "id": "1d9a3f8a-aa4d-4291-af3e-6db8a194fc6e",
+        "title": "Pixels & display",
+        "items": [
+          {
+            "id": "34bc59b2-ba01-445e-a459-4a7ca131e509",
+            "name": "LED Pixels",
+            "qty": "1742",
+            "specs": "87.1m, WS2814, RGBW (3000k), 20px/m, 12Vdc, "
+          }
+        ]
+      },
+      {
+        "id": "d8817a68-cf6f-4cbf-ad81-2516ea3381b1",
+        "title": "power & distribution",
+        "items": [
+          {
+            "id": "68c7d491-a1cd-4940-84bd-73cb6aee79ef",
+            "name": "Power Supplies",
+            "qty": "8",
+            "specs": "MEAN WELL, HLG-320H-12,12Vdc, 22A"
+          }
+        ]
+      },
+      {
+        "id": "ce7d57f2-e059-4bcc-ae9a-ddf693ab5cfb",
+        "title": "Fabrication & Materials",
+        "items": [
+          {
+            "id": "f1213d63-cbe2-46fe-9902-ff17b2bb87a9",
+            "name": "LED Extrusion",
+            "qty": "87.5m",
+            "specs": "45deg, 12mm width, opal diffusion, color paint matched, "
+          }
+        ]
+      },
+      {
+        "id": "3b03b67e-8ee3-4958-b32c-c831dcfcf584",
+        "title": "Software & stack",
+        "items": [
+          {
+            "id": "85fe3474-8606-47db-aa4f-558177829e48",
+            "name": "Pixel Control",
+            "qty": "",
+            "specs": "Madrix 5.x"
+          }
+        ]
+      }
+    ]
   },
   {
     "title": "Tracks Discotheque",
@@ -6797,8 +6894,8 @@
       "x": 48.6,
       "y": 37.4
     },
-    "description": "<p>Pixel mapping 23 irregular sheet metal shelves and working around dining room furniture at Que Bueno Suerte!</p>",
-    "longDescription": "<p>The bottle shelves on the mezzanine at Que Bueno Suerte! were just sheet metal plates stacked on wood blocks. I needed to wash the liquor bottles from the front without exposing the wiring. I custom cut, soldered, and heat-shrunk 23 strips of 3000K RGBW tape. I mounted them inside 45-degree aluminum extrusions and stuck them to the top of each shelf with double-sided foam tape. To hide the wiring, I ran the cables between the wood blocks and sleeved the visible gaps in wire wrap.</p><p>The space under the bar had a different physical constraint. At night, the staff turned the mezzanine into a dance floor and shoved the heavy tables and chairs underneath. I loaded more LED tape into extrusion and siliconed it directly to the underside of the bar. Keeping the profile low and mounting the track far enough back meant the sliding furniture never caught it.</p><p>Every line ran to a single Advatek decoder and a MEAN WELL power supply hidden behind the bar. I mapped the entire rig in Madrix. The 23 irregular shelves created a fun canvas. When the rig fired up, it made a nice addition to the mezzanine, especially fire presets.</p>",
+    "description": "<p>I hid twenty-three pixel segments across staggered sheet metal shelves to wash the bottles without exposing the wiring.</p>",
+    "longDescription": "<p>I didn't realize how the mezzanine bar at Que Bueno Suerte was built until I got there. The bottle shelves were blocks of wood with sheet metal stacked on top. I needed to wash the bottles from the front without exposing the wiring. I pre-cut 23 segments of aluminum extrusion and built the strips on a workbench. I soldered and heat-shrunk 3000K RGBW tape inside 45-degree channels, leaving wire whips on both ends.</p><p>I stuck the tracks to the top of each metal plate with foam tape. I used Dolphin crimps to splice the segments into four rows. To hide the connections, I ran cables between the wood blocks and sleeved the gaps in wire wrap.</p><p>The space under the bar had a different constraint. At night, the staff turned the mezzanine into a dance floor and shoved heavy tables underneath. Knees, coats, and sliding furniture were going to hit the lighting. I loaded more tape into an extrusion and siliconed it directly to the underside of the bar. I mounted it far enough back to survive the room flips.</p><p>Every line ran to an Advatek decoder and a power supply hidden behind the bar. I patched the rig in Madrix. Because the shelves were staggered, I had to approximate the empty space in the software patch so effects would travel at the right speed. When the rig fired up, the fire presets moved naturally across the metal plates.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -6916,7 +7013,7 @@
       }
     ],
     "files": [],
-    "specs": "<h2><strong>PIXELS &amp; DISPLAY</strong></h2><p><strong>LED Pixel Tape (x26.3m)</strong></p><p><em>QTY: 526px • WS2814 • RGBW (3000k) • 12Vdc • 60/m • 20px/m</em></p><h2><strong>POWER &amp; DISTRIBUTION</strong></h2><p><strong>Power Supplies (x2)</strong></p><p><em>MEAN WELL • HLG-320H-12 • 12Vdc • 22A</em></p><p><strong>Pixel Decoder (x1)</strong></p><p><em>Advatek • R4D-S</em></p>",
+    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixel Tape (x26.3m)</strong><br><em>qty: 526px • WS2814 • RGBW (3000k) • 12Vdc • 60/m • 20px/m</em></p><h2>POWER &amp; DISTRIBUTION</h2><p><strong>Power Supplies (x2)</strong><br><em>MEAN WELL • HLG-320H-12 • 12Vdc • 22A</em></p><p><strong>Pixel Decoder (x1)</strong><br><em>Advatek • R4D-S</em></p>",
     "related": [
       {
         "name": "Que Bueno Suerte!",
@@ -6926,7 +7023,39 @@
     "video": "",
     "timestamp": "2026-08-14T23:16:48.264Z",
     "id": "9280",
-    "order": 4
+    "order": 4,
+    "specsData": [
+      {
+        "id": "b17a8cbf-3ff5-462f-80b7-56c22280151c",
+        "title": "PIXELS & DISPLAY",
+        "items": [
+          {
+            "id": "346a2b07-d67e-48a1-b7af-6896d3628f57",
+            "name": "LED Pixel Tape",
+            "qty": "26.3m",
+            "specs": "qty: 526px, WS2814 • RGBW (3000k) • 12Vdc • 60/m • 20px/m"
+          }
+        ]
+      },
+      {
+        "id": "b35a608e-c635-4ec3-b144-886803feec1c",
+        "title": "POWER & DISTRIBUTION",
+        "items": [
+          {
+            "id": "cf792f41-9a72-4384-828f-e0d685ea9f61",
+            "name": "Power Supplies",
+            "qty": "2",
+            "specs": "MEAN WELL • HLG-320H-12 • 12Vdc • 22A"
+          },
+          {
+            "id": "885e4a48-7afa-46f5-b8b6-d9294139b588",
+            "name": "Pixel Decoder",
+            "qty": "1",
+            "specs": "Advatek, R4D-S"
+          }
+        ]
+      }
+    ]
   },
   {
     "title": "Bubblescape",
