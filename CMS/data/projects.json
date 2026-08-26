@@ -108,16 +108,6 @@
         "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/20210516_192856-poster-thumb.webp"
       },
       {
-        "url": "media/Lighting/Immersive Dance Lighting Rig/20210618_234036.mp4",
-        "fit": {
-          "scale": 1.25,
-          "x": 0.4,
-          "y": 40.9
-        },
-        "poster": "media/Lighting/Immersive Dance Lighting Rig/frame-thumb-1787700638835.webp",
-        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/frame-thumb-1787700638835-thumb.webp"
-      },
-      {
         "url": "media/Lighting/Immersive Dance Lighting Rig/20210517_112418~2.mp4",
         "fit": {
           "scale": 1.3,
@@ -2482,7 +2472,7 @@
     "launchLink": "",
     "githubLink": "",
     "shopLink": "",
-    "featured": false,
+    "featured": true,
     "wip": false,
     "tags": [
       "Power Distribution",
@@ -2633,7 +2623,7 @@
     "files": [],
     "video": "",
     "order": 1,
-    "specs": "<p><strong>Form:</strong> 8 ft aluminum sphere</p><p><strong>Voltage:</strong> 12V DC</p><p><strong>Power:</strong> MEAN WELL (remote sense · load sharing) · 35 ft DC run</p><p><strong>Wiring:</strong> 2/0 welding cable · spiral-wrapped · PVC center pipe</p><p><strong>Decoder:</strong> Pixel decoders (internal)</p><p><strong>Control:</strong> Madrix 5.x (3D voxel)</p>",
+    "specs": "",
     "related": [
       {
         "name": "Control system",
@@ -2650,7 +2640,8 @@
       "x": 49.8,
       "y": 29.8
     },
-    "thumbnail": "media/Electronics/The Orb/MVIMG_20190303_010156_1 (1)-thumb.webp"
+    "thumbnail": "media/Electronics/The Orb/MVIMG_20190303_010156_1 (1)-thumb.webp",
+    "specsData": []
   },
   {
     "title": "The Basement",
@@ -3479,8 +3470,8 @@
     "title": "Curved Liquor Bottle Display",
     "category": "Lighting",
     "image": "media/Lighting/Curved Liquor Bottle Display/frame-thumb-1786198604784.webp",
-    "description": "<p><strong>Que Bueno Suerte! | Denver</strong> - I designed and hardwired 96 custom louvered corner fixtures to illuminate a see-through sheet metal bottle shelf without blinding guests.</p>",
-    "longDescription": "<p>Off-the-shelf extrusion was out of the question for the main bottle display at Que Bueno Suerte!. I wanted to aim light up at the bottles from the corners of the display sections without putting a lens or diffuser in front of the LEDs, preserving maximum throw distance and brightness. To keep raw diodes out of the guests' eyes, I 3D printed custom corner fixtures with integrated light-blocking louvers. Getting the louver spacing and angle right took a few rapid prototyping iterations, and the alignment pins snapped off on almost every print, but the LED tape track itself held the end caps in line.</p><p>The shelf is a see-through metal grid, which made hiding the wiring for 96 individual fixtures a project in itself. I handwired the entire array and wrapped the routing in black tubing secured with mini zip ties. Because there was no closed conduit to hide inside, I used double-sided foam tape to mount the louvers and leaned on the physical stiffness of the bundled wire to support its own weight across the grid.</p><p>In action, the shelf is mapped into the rest of the venue's LED pixel installations through a centralized Madrix server, running unified, building-wide dynamic looks. It worked cleanly until the restaurant opened for dancing and guests started abandoning drinks on every flat surface in the room. I had built the shelf for empty display bottles and never anticipated liquids up there. Spills dripped into the tracks and corroded the LED tape, and because of how the louver tracks were dimensioned, standard waterproof silicone tape would not fit as a drop-in replacement. I ended up requesting a sign to keep drinks off the display and keeping spare parts on hand.</p>",
+    "description": "<p>I printed 96 louvered tracks with tolerances so tight a solder joint would prevent assembly.</p>",
+    "longDescription": "<p>I refused to put a diffuser over the LEDs and kill the brightness. The liquor display was an open metal grid. I wanted to hit the glass bottles from multiple angles to make them pop. To preserve the throw distance while hiding raw diodes from guests, I needed custom louvered fixtures.</p><p>I designed the tracks and ran my 3D printers for a couple of weeks to manufacture 96 units. A flat bracer slid in behind the LED strip to hold it against the plastic. The fit was so tight I had to use un-spliced sections, because a solder joint would not clear the gap. The diodes poked perfectly through the slots. I wired them all at my house, hiding a strain relief inside the end caps.</p><p>The metal frame started at hip level. I sat on a checkout table behind it and used foam tape to mount the fixtures into the corners. With nowhere to hide wiring, I wrapped the routing in black tubing and let the stiff bundle support itself across the gaps.</p><p>The array tied into the building's Madrix server. It worked cleanly until guests started abandoning drinks on the shelf. Spills dripped down and corroded the unsealed tape. Because my printed tolerances were so tight, waterproof tape would not fit as a replacement. I had to pry five fixtures off the metal and completely rebuild them. I asked management for a sign to not put drinks there.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -3581,7 +3572,7 @@
     "timestamp": "2026-07-20T21:09:12.884Z",
     "id": "6808",
     "order": 5,
-    "specs": "<p><strong>Pixels:</strong> 1152x WS2815 RGB</p><p><strong>Strip:</strong> 96x 0.2m @ 60/m · 12V DC</p><p><strong>Fixtures:</strong> 96x 3D-printed PLA+ louver corners</p><p><strong>Mounting:</strong> Double-sided tape · black cable wrap</p><p><strong>Control:</strong> Madrix 5.x</p>",
+    "specs": "",
     "related": [
       {
         "name": "Control system",
@@ -3602,7 +3593,8 @@
       "scale": 1.05,
       "x": 53,
       "y": 39.8
-    }
+    },
+    "specsData": []
   },
   {
     "title": "Temple Denver",
@@ -4144,7 +4136,7 @@
     "launchLink": "",
     "githubLink": "",
     "shopLink": "",
-    "featured": true,
+    "featured": false,
     "wip": false,
     "tags": [
       "Custom Fabrication",
