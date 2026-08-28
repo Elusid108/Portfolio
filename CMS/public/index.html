@@ -242,10 +242,10 @@
                      <i class="ph ph-upload-simple"></i> Image Upload
                      <input type="file" accept="image/*" multiple class="hidden" onchange="handleGalleryMultiUpload(this)">
                    </label>
-                   <label class="cursor-pointer text-xs bg-sky-100 text-sky-600 px-2 py-1 rounded hover:bg-sky-200 font-bold flex items-center gap-1">
+                   <button type="button" onclick="openVideoAudioPrompt()" class="text-xs bg-sky-100 text-sky-600 px-2 py-1 rounded hover:bg-sky-200 font-bold flex items-center gap-1">
                      <i class="ph ph-film-slate"></i> Upload Video
-                     <input type="file" accept="video/*" multiple class="hidden" onchange="handleGalleryVideoUpload(this)">
-                   </label>
+                   </button>
+                   <input type="file" id="gallery-video-input" accept="video/*" multiple class="hidden" onchange="handleGalleryVideoUpload(this)">
                    <button type="button" onclick="addGalleryRow()" class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded hover:bg-indigo-200 font-bold">+ Add URL</button>
                  </div>
              </div>
@@ -469,12 +469,13 @@
         if (!res.ok) throw new Error(await res.text());
         return res.json();
       },
-      async uploadVideo(file, category, project, jobId) {
+      async uploadVideo(file, category, project, jobId, keepAudio) {
         const form = new FormData();
         form.append('file', file);
         form.append('category', category);
         form.append('project', project);
         if (jobId) form.append('jobId', jobId);
+        if (keepAudio) form.append('keepAudio', 'true');
         const res = await fetch('/api/media/upload-video', { method: 'POST', body: form });
         if (!res.ok) throw new Error(await res.text());
         return res.json();
@@ -1490,7 +1491,7 @@
       if (Array.isArray(p.gallery) && p.gallery.length > 0) {
          p.gallery.forEach(item => {
             if (typeof item === 'string') addGalleryRow(item, '', null, true);
-            else addGalleryRow(item?.url || '', item?.caption || '', item?.fit || null, true, item?.poster || '', item?.thumbnail || '');
+            else addGalleryRow(item?.url || '', item?.caption || '', item?.fit || null, true, item?.poster || '', item?.thumbnail || '', !!item?.hasAudio);
          });
       } else {
         addGalleryRow("", "", null, true);
@@ -1654,7 +1655,7 @@
         if (nameInput && !nameInput.value.trim()) nameInput.value = proj.title;
     }
 
-    function addGalleryRow(url = "", caption = "", fit = null, isBulk = false, poster = "", thumbnail = "") {
+    function addGalleryRow(url = "", caption = "", fit = null, isBulk = false, poster = "", thumbnail = "", hasAudio = false) {
         const container = document.getElementById('gallery-container');
         const div = document.createElement('div');
         div.className = "gallery-row space-y-1 bg-white border border-slate-200 rounded p-1";
@@ -1682,6 +1683,7 @@
             <input type="hidden" class="gallery-fit" value="${escAttr(fitJson)}">
             <input type="hidden" class="gallery-poster" value="${escAttr(poster)}">
             <input type="hidden" class="gallery-thumbnail" value="${escAttr(thumbnail)}">
+            <input type="hidden" class="gallery-has-audio" value="${hasAudio ? 'true' : ''}">
         `;
         container.appendChild(div);
         updateListIndices('gallery-container');
@@ -1695,8 +1697,10 @@
         const thumb = row.querySelector('.gallery-thumb');
         const cropBtn = row.querySelector('.gallery-crop-btn');
         const posterInput = row.querySelector('.gallery-poster');
+        const hasAudioInput = row.querySelector('.gallery-has-audio');
         // The URL changed by hand, so any previously-generated poster no longer applies.
         if (posterInput) posterInput.value = '';
+        if (hasAudioInput) hasAudioInput.value = '';
         if (cropBtn) cropBtn.classList.toggle('hidden', isVideoPath(input.value) && !posterInput?.value?.trim());
         if (isVideoPath(input.value)) thumb.dataset.videoUrl = input.value;
         else delete thumb.dataset.videoUrl;
@@ -2092,7 +2096,41 @@
       input.value = '';
     }
 
+    let pendingVideoKeepAudio = false;
+
+    function openVideoAudioPrompt() {
+      const project = document.getElementById('title').value;
+      if (!project) {
+        alert('Please enter a project title first.');
+        return;
+      }
+      pendingVideoKeepAudio = false;
+      document.getElementById('video-audio-modal').classList.remove('hidden');
+      document.getElementById('video-audio-no')?.focus();
+    }
+
+    function closeVideoAudioPrompt() {
+      document.getElementById('video-audio-modal').classList.add('hidden');
+    }
+
+    function resolveVideoAudioPrompt(keepAudio) {
+      pendingVideoKeepAudio = !!keepAudio;
+      closeVideoAudioPrompt();
+      document.getElementById('gallery-video-input').click();
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const modal = document.getElementById('video-audio-modal');
+      if (modal && !modal.classList.contains('hidden')) {
+        e.preventDefault();
+        closeVideoAudioPrompt();
+      }
+    });
+
     async function handleGalleryVideoUpload(input) {
+      const keepAudio = pendingVideoKeepAudio;
+      pendingVideoKeepAudio = false;
       const files = Array.from(input.files);
       if (!files.length) return;
       const category = document.getElementById('category').value;
@@ -2134,9 +2172,9 @@
           };
 
           try {
-            const result = await api.uploadVideo(file, category, project, jobId);
+            const result = await api.uploadVideo(file, category, project, jobId, keepAudio);
             evtSource.close();
-            addGalleryRow(result.path, '', null, false, result.poster || '', result.posterThumbnail || '');
+            addGalleryRow(result.path, '', null, false, result.poster || '', result.posterThumbnail || '', !!result.hasAudio);
             isDirty = true;
             succeeded++;
             if (idx === total - 1 && succeeded > 0) {
@@ -2233,15 +2271,17 @@
           const fitRaw = row.querySelector('.gallery-fit')?.value?.trim() || '';
           const poster = row.querySelector('.gallery-poster')?.value?.trim() || '';
           const thumbnail = row.querySelector('.gallery-thumbnail')?.value?.trim() || '';
+          const hasAudio = row.querySelector('.gallery-has-audio')?.value === 'true';
           let fit = null;
           try { fit = fitRaw ? JSON.parse(fitRaw) : null; } catch {}
-          const hasExtra = caption || fit || poster || thumbnail;
+          const hasExtra = caption || fit || poster || thumbnail || hasAudio;
           if (hasExtra) {
               const obj = { url };
               if (caption) obj.caption = caption;
               if (fit) obj.fit = fit;
               if (poster) obj.poster = poster;
               if (thumbnail) obj.thumbnail = thumbnail;
+              if (hasAudio) obj.hasAudio = true;
               return obj;
           }
           return url;
@@ -2897,6 +2937,18 @@
         <button type="button" onclick="captureVideoFrame()" class="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-bold text-sm transition-colors">
           <i class="ph ph-camera"></i> Use As Thumbnail
         </button>
+      </div>
+    </div>
+  </div>
+  <!-- VIDEO AUDIO PROMPT -->
+  <div id="video-audio-modal" class="hidden fixed inset-0 z-[80] bg-black/50 flex items-center justify-center backdrop-blur-sm p-4" role="dialog" aria-modal="true" aria-labelledby="video-audio-title" onclick="if(event.target===this)closeVideoAudioPrompt()">
+    <div class="bg-white rounded-xl shadow-2xl p-6 max-w-sm w-full" onclick="event.stopPropagation()">
+      <h2 id="video-audio-title" class="text-lg font-bold text-slate-800 mb-2">Include audio?</h2>
+      <p class="text-sm text-slate-600 mb-6">Include audio on the files being uploaded?</p>
+      <div class="flex flex-col gap-3">
+        <button type="button" id="video-audio-no" onclick="resolveVideoAudioPrompt(false)" class="w-full py-2 bg-indigo-600 text-white rounded-lg font-bold hover:bg-indigo-700">No — strip audio</button>
+        <button type="button" onclick="resolveVideoAudioPrompt(true)" class="w-full py-2 border border-slate-300 text-slate-700 rounded-lg font-bold hover:bg-slate-50">Yes — keep audio</button>
+        <button type="button" onclick="closeVideoAudioPrompt()" class="w-full py-2 text-slate-500 rounded-lg font-bold hover:bg-slate-50">Cancel</button>
       </div>
     </div>
   </div>

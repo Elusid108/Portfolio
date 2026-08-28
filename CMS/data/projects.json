@@ -3572,7 +3572,7 @@
     "timestamp": "2026-07-20T21:09:12.884Z",
     "id": "6808",
     "order": 5,
-    "specs": "",
+    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x1152)</strong><br><em>19.2m • WS2815 • RGB • 60px/m • 12Vdc</em></p><h2>POWER &amp; DISTRIBUTION</h2><p><strong>Power Supplies (x1)</strong><br><em>MEAN WELL • HLG-320H-12 • 12Vdc • 22A</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>Louver Lights (x96)</strong><br><em>custom • 3D printed • 45deg • louvers • corner fixture</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>Pixel Control</strong><br><em>Madrix 5.x</em></p>",
     "related": [
       {
         "name": "Control system",
@@ -3594,7 +3594,56 @@
       "x": 53,
       "y": 39.8
     },
-    "specsData": []
+    "specsData": [
+      {
+        "id": "17c12cf8-6551-4f47-a9ee-db122a361299",
+        "title": "Pixels & display",
+        "items": [
+          {
+            "id": "caa5503b-214b-4a29-adb3-4372491f11c4",
+            "name": "LED Pixels",
+            "qty": "1152",
+            "specs": "19.2m, WS2815, RGB, 60px/m, 12Vdc, "
+          }
+        ]
+      },
+      {
+        "id": "418e2640-91d7-43bc-a96c-b96a39ea011c",
+        "title": "power & distribution",
+        "items": [
+          {
+            "id": "eb5879d4-57ba-41e3-bb09-d61fa94795a9",
+            "name": "Power Supplies",
+            "qty": "1",
+            "specs": "MEAN WELL, HLG-320H-12,12Vdc, 22A"
+          }
+        ]
+      },
+      {
+        "id": "92e00212-9979-480a-be42-2be1188089bd",
+        "title": "Fabrication & Materials",
+        "items": [
+          {
+            "id": "6fa7a3ce-4d2d-4707-bbd6-d2ba4a0f7606",
+            "name": "Louver Lights",
+            "qty": "96",
+            "specs": "custom, 3D printed, 45deg, louvers, corner fixture"
+          }
+        ]
+      },
+      {
+        "id": "3a9cc267-0afc-4945-9466-4e0894fd903b",
+        "title": "Software & stack",
+        "items": [
+          {
+            "id": "502a45de-5065-4eb5-872b-0f54ba75309f",
+            "name": "Pixel Control",
+            "qty": "",
+            "specs": "Madrix 5.x"
+          }
+        ]
+      }
+    ]
   },
   {
     "title": "Temple Denver",
@@ -6130,8 +6179,8 @@
     "title": "Alabaster Bar Top",
     "category": "Lighting",
     "image": "media/Lighting/Alabaster Bar Top/Gemini_Generated_Image_jevrnrjevrnrjevr.webp",
-    "description": "<p>Retrofitting addressable pixels into an active alabaster bar top within a rolling 6 hour daily window.</p>",
-    "longDescription": "<p>Walking into Que Bueno Suerte!, the main bar extends the full length of the dining room under vaulted ceilings. The bar top is alabaster. The original contractors treated the low voltage DC lighting like high voltage AC, using wire nuts, leaving dark sections of stone across the bar. I wanted to get the whole surface working again using addressable pixels. The venue could not close. I had a 6 hour window each morning before the 3 PM open to finish a single section.</p><p>I pulled off the alabaster, removed the etched acrylic lighting panel, and stripped the dead static white strips. Narrow 12VDC SK6812 pixels went into the edges to reduce voltage drop. I ran power and data through the bar to 3 Advatek long range decoders, then siliconed the stone back in. Putting it back together was a fight. Hitting a mechanical problem meant racing the opening staff to clear the bar. The center section sat around a support pillar. The acrylic here was incredibly heavy and bolted through the stone. I bought spreader bars to lift it, unbolted the legs, and shoved the entire piece onto an adjacent table to work.</p><p>The project took several weeks. I wrote a temporary patch that locked the new pixels to a static warm white. This matched the surviving original LEDs and hid the ongoing construction. Once every section was online, the density of the new pixels made a standard single line sweep impossible in Madrix. I used fluid effects and mirroring instead. The light hits the edges of the etched acrylic panels and naturally drops off toward the center of the stone.</p>",
+    "description": "<p>I had six hours each morning to lift the stone, wire new pixels, and seal it before the bartenders arrived.</p>",
+    "longDescription": "<p>The main bar at Que Bueno Suerte! runs the length of the dining room under vaulted ceilings. The top is solid alabaster. The original contractors wired the low-voltage LEDs using wire nuts. The connections failed, leaving dead spots across the stone. I wanted to install addressable pixels, but the venue refused to close. I had a six-hour window each morning to finish one section before the 3 PM open.</p><p>Every day, I sliced the old adhesive and lifted a piece of stone. I stripped the dead tape, installed narrow 12-volt pixels along the edges, and sealed the alabaster down with quick-dry silicone just before the bartenders arrived. The center section was worse. A 200-pound acrylic table wrapped around a support beam. I used spreader bars to lift it, unbolted the legs, and slowly inched the acrylic onto an adjacent table so it wouldn't crack. I ran new DC wire through the sheet metal studs and hid waterproof power supplies behind the kickers.</p><p>For weeks, I locked the finished sections to a static warm white to hide the construction. When the bar finally came online, my Madrix patch wasn't wide enough for a continuous 1500-pixel sweep. I stacked the strips in Z-layers and used fluid effects with mirroring to hide the seams. The alabaster was originally meant for a uniform white. Hitting it with dynamic color created deep internal gradients across the stone.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -6282,7 +6331,7 @@
       }
     ],
     "files": [],
-    "specs": "<p>3027 RGB Pixels</p><p>2020 SK6812</p><p>12VDC</p>",
+    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x3027)</strong><br><em>25.2m • WS2811 • RGB • 3535 • 120px/m • 12Vdc</em></p><h2>POWER &amp; DISTRIBUTION</h2><p><strong>Power Supplies (x3)</strong><br><em>MEAN WELL • HLG-320H-12 • 12Vdc • 22A</em></p><p><strong>Pixel Decoders (x3)</strong><br><em>Advatek • 4D-S</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>Pixel Control</strong><br><em>Madrix 5.x</em></p>",
     "related": [
       {
         "name": "Que Bueno Suerte!",
@@ -6315,14 +6364,58 @@
       "scale": 1.5,
       "x": 0,
       "y": 23.9
-    }
+    },
+    "specsData": [
+      {
+        "id": "bda15dfe-33f2-4954-ae44-ec52fd5e1533",
+        "title": "Pixels & display",
+        "items": [
+          {
+            "id": "958c0d0c-c6fa-431b-b041-6d3cacd4a5f7",
+            "name": "LED Pixels",
+            "qty": "3027",
+            "specs": "25.2m, WS2811, RGB, 3535, 120px/m, 12Vdc, "
+          }
+        ]
+      },
+      {
+        "id": "cbe18650-4c44-4b92-b212-97185aed71c6",
+        "title": "power & distribution",
+        "items": [
+          {
+            "id": "c702f9b9-7e52-49ec-8d28-8688fb106f4b",
+            "name": "Power Supplies",
+            "qty": "3",
+            "specs": "MEAN WELL, HLG-320H-12,12Vdc, 22A"
+          },
+          {
+            "id": "168615f4-45e1-4e07-a27b-8802efd16150",
+            "name": "Pixel Decoders",
+            "qty": "3",
+            "specs": "Advatek, 4D-S"
+          }
+        ]
+      },
+      {
+        "id": "7f2a7fda-f180-43e1-93d1-9206e0bb5442",
+        "title": "Software & stack",
+        "items": [
+          {
+            "id": "542c8593-b641-4797-ab05-cd02298a8f0b",
+            "name": "Pixel Control",
+            "qty": "",
+            "specs": "Madrix 5.x"
+          }
+        ]
+      }
+    ]
   },
   {
     "title": "Bar Kicker",
     "category": "Lighting",
     "image": "media/Lighting/Bar Kicker/frame-thumb-1786735695778.webp",
-    "description": "<p>I replaced a failing bar lighting system with custom neon flex while fighting severe physical clearance constraints.</p>",
-    "longDescription": "<p>The kicker panels at Que Bueno Suerte! were built from plywood and 3/8 in amber acrylic. There were 9 panels total, weighing 25 lb each, mounted beneath the main bar. The original lighting behind them was poorly executed.</p><p>Taking the panels off revealed structural damage. I repaired the wood as I went. For the lighting, I built custom lengths of neon flex using a square flex tube and WS2814 pixels. The rig ran on 12V power with redundant data and a 3000K channel. I pulled 1 panel down at a time, siliconed the flex along the waveform cuts on the acrylic, and taped it until it cured. Everything wired back to an Advatek receiver and a Meanwell supply with DC protection.</p><p>Reinstalling the panels was a physical fight. I had 1 to 2 inches of clearance behind the acrylic, blocked by a 3 inch steel rail. Every time I had to pull a panel, I wedged my heel on the rail, pried the 25 lb sheet up with my toe, and disconnected the leads blind with my free hand. I dropped 2 of the panels doing this. The impact ripped the silicone right off the back. With no time for wet silicone to cure, I remounted the flex with industrial tape on the fly.</p><p>When I finally powered the rig up, the materials dictated the programming. The amber acrylic completely blocked the blue spectrum. I dropped blue from the palette entirely and built the installation a series of slow sweeps using only red, green, and warm white.</p>",
+    "description": "<p>I pried heavy plywood panels up with my toe to wire custom neon flex in a two-inch gap.</p>",
+    "longDescription": "<p>The original lighting behind the bar was wired like a house. Someone laid a row of white LED modules flat on the floor, hoping the light would bounce through thick amber acrylic. There were nine of these kicker panels at Que Bueno Suerte, built from plywood and weighing 25 pounds each.</p><p>I pulled them down, repaired the damaged wood, and built custom neon flex using square tube and WS2814 pixels. I siliconed the flex along the waveform cuts on the back of the acrylic and taped it until it cured.</p><p>Because I was also lighting the alabaster bar top above, I had to keep pulling the kickers back off. Getting them back in was a physical fight. I had two inches of clearance blocked by a steel rail. I wedged my heel on the rail, pried a 25-pound sheet up with my toe, and disconnected leads blind with my free hand. I dropped two panels doing this. The impact ripped the silicone right off the back. I remounted the flex with industrial tape on the fly.</p><p>When I finally powered the rig up, the physical materials dictated the programming. The amber acrylic completely ate the blue spectrum. I dropped blue from the palette entirely. I built a series of slow sweeps using only red, green, and warm white, giving the lower bar a heavy, saturated accent.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -6475,7 +6568,7 @@
       }
     ],
     "files": [],
-    "specs": "<p><strong>Panels:</strong> 9</p><p><strong>Pixels:</strong> 405</p><p><strong>LEDs:</strong> 5050 RGBW (3000k)</p><p><strong>Density:</strong> 60/m @ 20/px</p><p><strong>IC: </strong>WS2814</p><p><strong>Voltage:</strong> 12vdc</p>",
+    "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>Custom Neon Flex (x18)</strong></p><h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x405)</strong><br><em>20.25m • WS2814 • RGBW (3000k) • 20px/m • 12Vdc</em></p><h2>POWER &amp; DISTRIBUTION</h2><p><strong>Power Supplies (x1)</strong><br><em>MEAN WELL • HLG-320H-12 • 12Vdc • 22A</em></p><p><strong>Pixel Decoder (x1)</strong><br><em>Advatek • R4D-S</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>Pixel Control</strong><br><em>Madrix 5.x</em></p>",
     "related": [
       {
         "name": "Que Bueno Suerte!",
@@ -6508,7 +6601,63 @@
       "scale": 1,
       "x": 50,
       "y": 47.7
-    }
+    },
+    "specsData": [
+      {
+        "id": "f30890d8-ec55-4469-971f-f49965ec96ff",
+        "title": "FIXTURES & FX",
+        "items": [
+          {
+            "id": "17054c5c-f13d-4fe8-83f9-cbb9e6df05be",
+            "name": "Custom Neon Flex",
+            "qty": "18",
+            "specs": ""
+          }
+        ]
+      },
+      {
+        "id": "7f5b0ab9-de00-4d9b-8ff2-b96215bf6092",
+        "title": "PIXELS & DISPLAY",
+        "items": [
+          {
+            "id": "f246e80d-ae1c-41bb-9999-51c11bd05725",
+            "name": "LED Pixels",
+            "qty": "405",
+            "specs": "20.25m, WS2814, RGBW (3000k), 20px/m, 12Vdc"
+          }
+        ]
+      },
+      {
+        "id": "8b7c0b27-eedc-4f9c-a3d8-96bd391d4a11",
+        "title": "POWER & DISTRIBUTION",
+        "items": [
+          {
+            "id": "dea0ad57-262c-4b2c-9ed5-6043406ee470",
+            "name": "Power Supplies",
+            "qty": "1",
+            "specs": "MEAN WELL • HLG-320H-12 • 12Vdc • 22A"
+          },
+          {
+            "id": "4d643fe1-39c7-409c-831a-f336c0828f73",
+            "name": "Pixel Decoder",
+            "qty": "1",
+            "specs": "Advatek, R4D-S"
+          }
+        ]
+      },
+      {
+        "id": "14f399c8-a102-49f0-920d-b56236468f06",
+        "title": "Software & stack",
+        "items": [
+          {
+            "id": "084dfe9c-329a-40d3-ac03-ad9a2e6a681a",
+            "name": "Pixel Control",
+            "qty": "",
+            "specs": "Madrix 5.x"
+          }
+        ]
+      }
+    ]
   },
   {
     "title": "Bar Backsplash",
@@ -6525,8 +6674,8 @@
       "x": 0,
       "y": 59
     },
-    "description": "<p>Extracting a secured LED track from behind a permanent acrylic wall using a ratchet strap and a deadblow.</p>",
-    "longDescription": "<p>The bar backsplash at Que Bueno Suerte! is a giant acrylic wall extending up to a vaulted ceiling. The original LEDs were burnt out, and the wiring was shot. I needed to relight the edges of the acrylic and underlight the 3 glass bottle shelves. The wall was never meant to come apart, and the shelves were mounted directly through the acrylic after initial assembly. This trapped the bottom LED track under the panels. It was also locked in with double-sided gummy tape.</p><p>I got the top and side strips out quickly. The bottom track was an 8 ft problem. My only option was pulling it out sideways, fighting the friction of the adhesives and the weight of the wall. I drilled a hole through the end of the aluminum track and hooked a ratchet strap to it. I ran the strap across the room, out the door, and anchored it to the welded metal patio fence. Sliding a 2 ft piece of strut channel through the strap gave me a strike plate. I stood next to the bar and hit the strut channel with a deadblow. The track inched out fraction by fraction. It took me about 4 hours in total to get it out. I ran out of time before the venue opened for service, so I packed up and came back the next day to finish the LED installation.</p><p>Assembly was much easier. I skipped the adhesive on the new bottom track. For the glass shelves, I mounted pixel tape into thin black channels and siliconed them face up. They sit mid-shelf, firing light directly up through the bottles. I loomed the wiring and ran it back to an Advatek decoder and a couple of Mean Well power supplies, tying the installation into the main server upstairs. The bright acrylic acts as a prominent backdrop for the bartenders, tying the main bar in with the alabaster top and kicker.</p>",
+    "description": "<p>I anchored a ratchet strap to a patio fence and spent four hours hammering a trapped LED track sideways.</p>",
+    "longDescription": "<p>The bar backsplash was a massive acrylic wall extending to a vaulted ceiling. The original LEDs were dead. I needed to relight the acrylic edges and underlight three glass shelves. The wall was never meant to come apart. The shelves were mounted directly through the acrylic, trapping the bottom LED track under the panels. It was also locked down with double-sided tape. The top and side strips came out quickly. The bottom track was an eight-foot problem.</p><p>My only option was pulling it sideways. I drilled a hole through the aluminum track, hooked a ratchet strap to it, ran the strap out the door, and anchored it to a metal patio fence. I slid a piece of strut channel through the strap as a strike plate. I stood next to the bar and hit the strut with a deadblow. The track inched out fraction by fraction. It took four hours of hammering to clear the wall.</p><p>Assembly went faster. I skipped the adhesive and slid the new track into the gap. For the shelves, I mounted pixel tape into black channels, firing light up through the bottles. Because the shelves were bolted through the wall, I could not hide the cables. I put the wires inside black wrap and pulled them perfectly straight. If wiring sits in direct eyesight, it has to look intentional. The bright acrylic acts as a backdrop for the bartenders, tying the room together.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -6716,7 +6865,7 @@
       }
     ],
     "files": [],
-    "specs": "<p><strong>Pixels: </strong>418</p><p><strong>LED: </strong>5050 RGBW (3000k)</p><p><strong>IC:</strong> WS2814</p><p><strong>Density: </strong>60/m @ 20px/m</p><p><strong>Voltage: </strong>12vdc</p><p><br></p>",
+    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x418)</strong><br><em>20.9m • WS2814 • RGBW (3000k) • 12Vdc • 60/m • 20px/m</em></p><h2>POWER &amp; DISTRIBUTION</h2><p><strong>Power Supplies (x2)</strong><br><em>MEAN WELL • HLG-320H-12 • 12Vdc • 22A</em></p><p><strong>Pixel Decoder (x1)</strong><br><em>Advatek • R4D-S</em></p>",
     "related": [
       {
         "name": "Que Bueno Suerte!",
@@ -6738,7 +6887,39 @@
     "video": "",
     "timestamp": "2026-08-14T21:28:07.028Z",
     "id": "7026",
-    "order": 6
+    "order": 6,
+    "specsData": [
+      {
+        "id": "48a6bb27-606d-4cac-a29c-5b7a3c2a72e7",
+        "title": "PIXELS & DISPLAY",
+        "items": [
+          {
+            "id": "1fb1eef9-ab6d-4dca-bae9-8b0ba85c4dff",
+            "name": "LED Pixels",
+            "qty": "418",
+            "specs": "20.9m, WS2814 • RGBW (3000k) • 12Vdc • 60/m • 20px/m"
+          }
+        ]
+      },
+      {
+        "id": "b4972bf9-88b7-4728-a6af-9667f5a1b13b",
+        "title": "POWER & DISTRIBUTION",
+        "items": [
+          {
+            "id": "d21020e8-d5cc-4c51-8918-19122694f631",
+            "name": "Power Supplies",
+            "qty": "2",
+            "specs": "MEAN WELL • HLG-320H-12 • 12Vdc • 22A"
+          },
+          {
+            "id": "9854588c-7821-4ae3-972b-7e7f9e41a627",
+            "name": "Pixel Decoder",
+            "qty": "1",
+            "specs": "Advatek, R4D-S"
+          }
+        ]
+      }
+    ]
   },
   {
     "title": "Glow Lounge",

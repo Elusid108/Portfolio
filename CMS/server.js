@@ -221,6 +221,7 @@ app.post('/api/media/upload-video', uploadVideo.single('file'), async (req, res)
     if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
     if (!category || !project) return res.status(400).json({ error: 'Category and project name required' });
 
+    const keepAudio = req.body.keepAudio === 'true' || req.body.keepAudio === true;
     const sseRes = jobId ? sseClients.get(jobId) : null;
     const sendProgress = (percent, timemark) => {
       if (sseRes && !sseRes.writableEnded) {
@@ -228,7 +229,7 @@ app.post('/api/media/upload-video', uploadVideo.single('file'), async (req, res)
       }
     };
 
-    const result = await video.processVideoUpload(req.file, category, project, sseRes ? sendProgress : null);
+    const result = await video.processVideoUpload(req.file, category, project, sseRes ? sendProgress : null, keepAudio);
 
     if (sseRes && !sseRes.writableEnded) {
       sseRes.write(`data: ${JSON.stringify({ percent: 100, done: true })}\n\n`);
