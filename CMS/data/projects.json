@@ -601,8 +601,8 @@
     "title": "Pyramid",
     "category": "Art",
     "image": "media/Art/Pyramid/Gemini_Generated_Image_rmmssrmmssrmmssr.webp",
-    "description": "<p>Trapped LED heat inside a sealed, 3 material PLA+ pyramid print required software current limiting to prevent structural melting.</p>",
-    "longDescription": "<p>Getting crisp pixel isolation without light bleed across an internally divided pyramid required printing the entire sculpture as a single piece. Each cell needed a black core to block light from adjacent shafts, white walls to bounce illumination upward, and a frosted PLA+ shell for diffusion. Building that geometry without manual post-processing meant committing to a 1 to 3 day continuous print cycle on a Bambu Lab X1C, with 3 filament swaps on every single layer and a mountain of purge waste.</p><p>Trapped LED heat nearly killed the design during burn-in testing. I lifted the sculpture after a long run and accidentally mushed the softened grid with my thumb. Venting the back enclosure helped, but drilling holes into the frosted top shell would have ruined the display.</p><p>To keep the structure solid without sacrificing visual punch, I swapped the hardware to 12V WS2815 matrices and set a 1A current limit in WLED. Keeping the diodes over 1 cm from the surface eliminated visible hotspots while letting the grid show through the frost. The finished piece hung at Glow Lounge in Denver and ran for days at a time without warping, becoming the foundation for a fabrication process I still use.</p>",
+    "description": "<p>I trapped a pixel matrix inside a sealed 3D print and accidentally mushed the melting plastic with my thumb.</p>",
+    "longDescription": "<p>I wanted a pixel effect on the surface of a 3D object. To get it, I built a glowing pyramid with a subdivided grid inside.</p><p>Getting crisp isolation without light bleed meant printing the sculpture as a single piece. Every layer needed a black core to block light between shafts, white walls to bounce it up, and a frosted shell for diffusion. The printer did three filament swaps per layer, leaving a mountain of purge waste. I put a 256-pixel matrix inside and turned it on. Heat built up fast. I picked the piece up after a burn-in test and accidentally mushed the softened grid in with my thumb.</p><p>Venting the back helped, but drilling holes in the front would ruin the look. I swapped to 12-volt matrices, kept the diodes a centimeter off the surface, and set a 1-amp current limit in the software. The piece hung at Glow Lounge in Denver and ran for months without warping, proving out a single-piece fabrication rule I still use.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -3413,8 +3413,8 @@
     "title": "Celtic Owl",
     "category": "Art",
     "image": "media/Art/Celtic Owl/frame-thumb-1786238531082.webp",
-    "description": "<p>An internally subdivided 16x16 LED matrix housed inside a dual-material relief sculpture of an organic Celtic owl.</p>",
-    "longDescription": "<p>My workstation laptop crashes if I calculate an internal grid larger than 16x16. This piece was a test to see if I could map that geometric matrix inside an organic shape. I bought an owl model online and split the workflow between SolidWorks and Blender for the first time. The processing load of subtracting those 256 cells from Celtic knotwork pushed my hardware to its limit.</p><p>Early attempts on a Tenlog TL-D3 IDEX printer leaked light everywhere. Stopping the bleed between cells took 0.8 mm walls of black PLA+, which meant 2 passes with a 0.4 mm nozzle. Moving the job to a Bambu Lab X1C with an AMS unit solved the bleed immediately. A 0.4 mm wall of black PLA+ now isolates every cell cleanly.</p><p>The front relief is thin enough to act like a lithophane. When powered off, it reads as a white carving in a black frame. Turn on the ATHOM ESP8266 controller, and the 16x16 grid cuts straight through the surface lines.</p>",
+    "description": "<p>I embedded a 256-pixel matrix inside a relief carving, printing double black walls to stop the light bleed.</p>",
+    "longDescription": "<p>I wanted to map a rigid geometric matrix inside an organic shape. This piece is a dual-material relief sculpture of a Celtic owl. When powered off, the front face acts like a lithophane, reading as a white carving in a black frame. Turn it on, and a 16x16 LED grid cuts straight through the surface lines.</p><p>My workstation laptop crashes if I calculate an internal grid larger than 16x16. I bought an owl model online and split the workflow between SolidWorks and Blender. Subtracting those 256 cells from the knotwork pushed the hardware to its limit.</p><p>Early prints leaked light everywhere. Stopping the bleed initially took 0.8 mm walls, requiring two passes with the nozzle. Moving the job to a Bambu Lab X1C with an AMS unit solved it. The fabrication rule became simple: a double 0.4 mm wall of black PLA+ now isolates every cell cleanly.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -5172,8 +5172,8 @@
     "title": "Pixel Rocks",
     "category": "Art",
     "image": "media/Art/Pixel Rocks/Screenshot 2026-08-08 133451.webp",
-    "description": "<p>10 wirelessly controlled, 3D printed LED rocks built from topographical scans for a contemporary ballet piece.</p>",
-    "longDescription": "<p>My good friend, mentor, and lighting designer for LINES ballet needed internally lit rocks controlled wirelessly from the console. The artistic director rejected my initial hand sculpted models. He wanted them sharp and jagged. They needed to look like they were meant to stone someone to death, but remain small enough to hold in one hand. I hiked outside Denver and collected 30 small stones that fit the aesthetic and my 3D scanner turntable. Working in a digital format let me scale the scans up to the size of about a pineapple. I printed 10 final shells in clear PLA+ at 5% infill. The hollow space kept the LED brightness high. The ballet company handled the faux painting on site.</p><p>The internal hardware needed to be completely modular. I modeled a universal sled that inserted into the base of any rock, locked in by a threaded cap. A custom pixel puck slid into that sled. Each puck held a lithium ion battery, a charge port, a rocker switch, a disassembled ESP8266 based Athom LED decoder running WLED, and two strips of pixel tape. The completed assemblies weighed about 5 lbs.</p><p>We drove them from the light console using ELM over a wireless router. This was the last project where I relied on 2.4GHz WiFi for live show control. The network environment choked the decoders, causing some units to drop control and freeze on stage. I specify 5GHz hardware for wireless pixel control now.</p>",
+    "description": "<p>The director wanted hand-held props that looked sharp enough to stone someone, but glowed from the inside.</p>",
+    "longDescription": "<p>A lighting designer friend needed internally lit rocks for a contemporary ballet. The artistic director wanted them sharp and jagged. They had to look like they could stone someone to death, but fit in one hand.</p><p>I hiked outside Denver and collected stones that fit the aesthetic and my 3D scanner. Scanning them let me scale the models up to the size of about a pineapple. I modeled a universal sled that locked into the base of any rock. A custom puck slid inside, holding the battery, the decoder, and the pixel tape. During the run, the live network choked the 2.4GHz decoders, causing some units to freeze on stage. I never used 2.4GHz for show control again.</p><p>The design worked because of one fabrication rule: absolute modularity. I printed the clear PLA shells at five percent infill to keep the brightness high, and built the internal hardware to slide out with a single threaded cap.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -5344,7 +5344,7 @@
       }
     ],
     "files": [],
-    "specs": "<p><strong>Medium:</strong> PLA+</p><p><strong>Color:</strong> Transparent</p><p><strong>LEDs: </strong>65 (144/m)</p><p><strong>Driver: </strong>WS2815 (RGB)</p><p><strong>Decoder:</strong> Athom ESP8266</p><p><strong>Firmware: </strong>WLED</p>",
+    "specs": "",
     "related": [],
     "video": "",
     "timestamp": "2026-08-08T15:03:36.390Z",
@@ -5360,7 +5360,8 @@
       "x": 100,
       "y": 51.1
     },
-    "thumbnail": "media/Art/Pixel Rocks/Screenshot 2026-08-08 133451-thumb.webp"
+    "thumbnail": "media/Art/Pixel Rocks/Screenshot 2026-08-08 133451-thumb.webp",
+    "specsData": []
   },
   {
     "title": "Backboard",

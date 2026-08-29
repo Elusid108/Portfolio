@@ -593,6 +593,8 @@
         const VideoPlayer = ({ src, poster, className = "", autoPlay = false, hasAudio = false }) => {
             const videoRef = useRef(null);
             const containerRef = useRef(null);
+            const mountId = useRef(Math.random().toString(36).slice(2, 7));
+            const lastTick = useRef(0);
             const [playing, setPlaying] = useState(false);
             const [currentTime, setCurrentTime] = useState(0);
             const [duration, setDuration] = useState(0);
@@ -602,8 +604,41 @@
             const [muted, setMuted] = useState(!!hasAudio);
             const [volume, setVolume] = useState(1);
 
+            const snap = (extra) => {
+                const v = videoRef.current;
+                const buffered = [];
+                if (v && v.buffered) {
+                    for (let i = 0; i < v.buffered.length; i++) buffered.push({ s: +v.buffered.start(i).toFixed(2), e: +v.buffered.end(i).toFixed(2) });
+                }
+                return {
+                    mountId: mountId.current,
+                    src: src ? src.split('/').slice(-2).join('/') : '',
+                    poster: poster ? String(poster).split('/').pop() : '',
+                    t: v ? +v.currentTime.toFixed(2) : null,
+                    dur: v && isFinite(v.duration) ? +v.duration.toFixed(2) : null,
+                    paused: v ? v.paused : null,
+                    ended: v ? v.ended : null,
+                    ready: v ? v.readyState : null,
+                    net: v ? v.networkState : null,
+                    buffered,
+                    fs: document.fullscreenElement === containerRef.current,
+                    ...extra
+                };
+            };
+            const agentLog = (hypothesisId, location, message, extra) => {
+                // #region agent log
+                fetch('http://127.0.0.1:7539/ingest/47d65063-da39-4589-8187-0bb2721ced5a',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'efb62c'},body:JSON.stringify({sessionId:'efb62c',runId:'pre-fix',hypothesisId,location,message,data:snap(extra||{}),timestamp:Date.now()})}).catch(()=>{});
+                // #endregion
+            };
+
+            useEffect(() => {
+                agentLog('H4', 'VideoPlayer:mount', 'VideoPlayer mounted', { autoPlay, hasAudio });
+                return () => agentLog('H4', 'VideoPlayer:unmount', 'VideoPlayer unmounted');
+            }, []);
+
             useEffect(() => {
                 const v = videoRef.current;
+                agentLog('H4', 'VideoPlayer:srcEffect', 'src/autoPlay/hasAudio effect', { autoPlay, hasAudio });
                 if (v) {
                     v.playbackRate = 1;
                     v.muted = !!hasAudio;
@@ -611,11 +646,15 @@
                 }
                 setMuted(!!hasAudio);
                 setVolume(1);
-                if (autoPlay) v?.play().catch(() => {});
+                if (autoPlay) v?.play().catch((err) => agentLog('H4', 'VideoPlayer:autoPlayFail', 'autoPlay rejected', { err: String(err && err.message || err) }));
             }, [src, autoPlay, hasAudio]);
 
             useEffect(() => {
-                const onFsChange = () => setIsFullscreen(document.fullscreenElement === containerRef.current);
+                const onFsChange = () => {
+                    const nowFs = document.fullscreenElement === containerRef.current;
+                    setIsFullscreen(nowFs);
+                    agentLog('H1', 'VideoPlayer:fullscreen', nowFs ? 'entered fullscreen' : 'exited fullscreen');
+                };
                 document.addEventListener('fullscreenchange', onFsChange);
                 return () => document.removeEventListener('fullscreenchange', onFsChange);
             }, []);
@@ -637,7 +676,9 @@
             const commitSeek = (e) => {
                 e.stopPropagation();
                 const v = videoRef.current;
-                if (v) v.currentTime = parseFloat(e.target.value);
+                const next = parseFloat(e.target.value);
+                agentLog('H5', 'VideoPlayer:commitSeek', 'range onChange/commitSeek', { next, inputMax: e.target.max });
+                if (v) v.currentTime = next;
                 setSeeking(false);
             };
 
@@ -697,11 +738,23 @@
                         muted={hasAudio ? muted : false}
                         loop={looping}
                         onClick={togglePlay}
-                        onPlay={() => setPlaying(true)}
-                        onPause={() => setPlaying(false)}
-                        onEnded={() => setPlaying(false)}
+                        onPlay={() => { setPlaying(true); agentLog('H3', 'VideoPlayer:onPlay', 'play'); }}
+                        onPause={() => { setPlaying(false); agentLog('H3', 'VideoPlayer:onPause', 'pause'); }}
+                        onEnded={() => { setPlaying(false); agentLog('H3', 'VideoPlayer:onEnded', 'ended'); }}
+                        onWaiting={() => agentLog('H3', 'VideoPlayer:onWaiting', 'waiting for buffer')}
+                        onStalled={() => agentLog('H3', 'VideoPlayer:onStalled', 'stalled')}
+                        onPlaying={() => agentLog('H3', 'VideoPlayer:onPlaying', 'playing after wait')}
+                        onError={() => agentLog('H3', 'VideoPlayer:onError', 'video error', { code: videoRef.current && videoRef.current.error && videoRef.current.error.code })}
+                        onLoadedData={() => agentLog('H2', 'VideoPlayer:onLoadedData', 'first frame ready')}
                         onLoadedMetadata={(e) => setDuration(e.target.duration || 0)}
-                        onTimeUpdate={(e) => { if (!seeking) setCurrentTime(e.target.currentTime); }}
+                        onTimeUpdate={(e) => {
+                            if (!seeking) setCurrentTime(e.target.currentTime);
+                            const now = Date.now();
+                            if (now - lastTick.current > 1000) {
+                                lastTick.current = now;
+                                agentLog('H3', 'VideoPlayer:tick', 'timeupdate');
+                            }
+                        }}
                         className="w-full h-full max-h-full object-contain cursor-pointer"
                     />
 
@@ -885,6 +938,13 @@
             const captionExpanded = expandedFor === index;
             const ytId = getYouTubeId(currentUrl);
             const isVid = !ytId && isVideoUrl(currentUrl);
+
+            useEffect(() => {
+                if (!isVid) return;
+                // #region agent log
+                fetch('http://127.0.0.1:7539/ingest/47d65063-da39-4589-8187-0bb2721ced5a',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'efb62c'},body:JSON.stringify({sessionId:'efb62c',runId:'pre-fix',hypothesisId:'H1',location:'Lightbox:video',message:'lightbox opened or switched to video',data:{index,src:(currentUrl||'').split('/').slice(-2).join('/'),poster:(mediaPoster(currentItem)||'').toString().split('/').pop(),thumb:(mediaThumbnail(currentItem)||'').toString().split('/').pop()},timestamp:Date.now()})}).catch(()=>{});
+                // #endregion
+            }, [index, isVid, currentUrl]);
 
             // Only offer the toggle when the text is actually cut off. Measuring is
             // skipped while expanded (nothing is clamped then), which leaves the last
