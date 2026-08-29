@@ -42,12 +42,49 @@ function buildSystemInstruction(task) {
   ].join('\n');
 }
 
+function relatedNames(project = {}) {
+  const raw = project.related;
+  if (Array.isArray(raw)) {
+    return raw.map((item) => {
+      if (typeof item === 'string') return item.trim();
+      return String(item && item.name ? item.name : '').trim();
+    }).filter(Boolean);
+  }
+  if (typeof raw === 'string') {
+    return raw.split(',').map((s) => s.trim()).filter(Boolean);
+  }
+  return [];
+}
+
+function categoryBankName(category) {
+  const raw = String(category || '').trim();
+  if (/^sculpture$/i.test(raw)) return 'Art';
+  return raw || '(none)';
+}
+
+function categorySteer(task, project = {}) {
+  const bank = categoryBankName(project.category);
+  const isSatellite = relatedNames(project).length > 0;
+  if (task === 'interview') {
+    const satellite = isSatellite
+      ? ' Related links are present, so treat this as a satellite: ask about the part, not how the whole venue came together.'
+      : '';
+    return `Use the Category interview bank for ${bank}. Sculpture uses Art. If this category has no bank, use the shared interview rules only and do not invent a bank.${satellite}`;
+  }
+  const satellite = isSatellite
+    ? ' Related links are present, so treat this as a satellite: do not retell how the whole venue came together.'
+    : '';
+  return `Write the long body using the Category shape for ${bank}. Sculpture uses Art. If this category has no bank, use the shared long rules only and do not invent a shape.${satellite}`;
+}
+
 function projectBlock(project = {}) {
   const specs = project.specs ? String(project.specs).trim() : '';
+  const related = relatedNames(project);
   return [
     `Title: ${project.title || '(untitled)'}`,
     `Category: ${project.category || '(none)'}`,
     `Tags: ${Array.isArray(project.tags) ? project.tags.join(', ') : (project.tags || '(none)')}`,
+    related.length ? `Related: ${related.join(', ')}` : 'Related: (none)',
     specs ? `Specifications (do not dump these unless a number is the story):\n${specs}` : 'Specifications: (none)',
     '',
     'Current short description:',
@@ -73,6 +110,7 @@ function userPromptForTask(task, project, messages) {
       context,
       transcript ? `\nQ&A so far:\n${transcript}` : '',
       '',
+      categorySteer('interview', project),
       'Ask exactly one question that would actually improve this draft. Not a list. If he already answered or skipped something, do not ask it again. JSON: { "question": "..." }',
     ].join('\n');
   }
@@ -81,6 +119,7 @@ function userPromptForTask(task, project, messages) {
     context,
     transcript ? `\nQ&A so far:\n${transcript}` : '\nNo extra answers. Polish the current long description. Do not invent facts.',
     '',
+    categorySteer('long', project),
     'Write the long project body. JSON: { "html": "<p>...</p>" }',
   ].join('\n');
 }

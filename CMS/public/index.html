@@ -78,7 +78,7 @@
   <div id="app" class="max-w-5xl mx-auto p-6">
     <div class="flex justify-between items-center mb-8">
       <div>
-        <h1 class="text-3xl font-bold text-slate-800">Portfolio CMS <span class="text-sm font-medium text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full align-middle">v2.2 Local</span></h1>
+        <h1 class="text-3xl font-bold text-slate-800">Portfolio CMS <span class="text-sm font-medium text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full align-middle">v2.3 Local</span></h1>
         <p class="text-slate-500 text-sm mt-1">Local portfolio manager</p>
       </div>
       <div class="flex gap-3 items-center">
@@ -1260,10 +1260,14 @@
             if (!cat.title && !items) return '';
             return cat.title ? `${cat.title}: ${items}` : items;
         }).filter(Boolean).join('\n');
+        const related = Array.from(document.querySelectorAll('.related-row:not(.opacity-50)'))
+            .map((row) => row.querySelector('.related-name')?.value.trim())
+            .filter(Boolean);
         return {
             title: document.getElementById('title')?.value || '',
             category: document.getElementById('category')?.value || '',
             tags: document.getElementById('tags')?.value || '',
+            related,
             specs,
             short: (quillShort.getText() || '').trim(),
             long: (quillLong.getText() || '').trim()
@@ -3101,7 +3105,7 @@
       </div>
 
       <p class="text-[10px] text-slate-400 font-mono tabular-nums mt-6 text-center">
-        Portfolio CMS v2.2 Local
+        Portfolio CMS v2.3 Local
       </p>
     </div>
   </div>

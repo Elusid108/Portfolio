@@ -2,7 +2,7 @@
 
 This is the source for my personal portfolio website — a showcase of work spanning lighting design, art installations, electronics, apps, fabrication, and systems integration.
 
-The local authoring tool is **CMS v2.2 Local**.
+The local authoring tool is **CMS v2.3 Local**.
 
 The live site (`[index.html](index.html)`) is a single, self-contained static page built with React 18 (UMD), Babel Standalone, and Tailwind CSS (all via CDN). It reads its content from a JSON block embedded directly in the page, so there's no build step and no backend required to host or view it — it can be served as-is from GitHub Pages or any static file host.
 
@@ -10,10 +10,10 @@ Projects are organized into six categories that map to folders under `[media/](m
 
 - **Lighting**
 - **Art**
-- **Circuits** (Electronics)
-- **Apps**
-- **Solutions** (Fabrication)
-- **Integration**
+- **Fixtures**
+- **Software**
+- **Tooling**
+- **Systems**
 
 ## Repository Structure
 
@@ -25,8 +25,12 @@ Portfolio/
 │   ├── server.js               # Express server (API + admin UI + preview)
 │   ├── lib/
 │   │   ├── data.js              # Project/settings CRUD, ordering & featured logic
+│   │   ├── gemini.js            # Server-side Gemini interview / short / long copy
 │   │   ├── media.js             # Image upload processing (WebP conversion)
 │   │   └── publish.js           # Injects data into the template to produce index.html
+│   ├── prompts/
+│   │   ├── writing-guide.md     # Shared system prompt (per-category interview and long banks)
+│   │   └── sputnik.txt          # Voice sample (gitignored; never published)
 │   ├── public/index.html       # The admin UI itself
 │   ├── template/
 │   │   └── Portfolio Template.html   # Site template with a {{PORTFOLIO_DATA}} placeholder
@@ -68,7 +72,7 @@ The admin UI lets you manage, per project:
 
 - Title, category, and tags
 - Banner image (uploaded or linked by path/URL)
-- Short and long descriptions, edited with a rich-text (Quill) editor. Sparkle buttons on those toolbars can generate copy through Gemini (API key in Settings; writing prompts stay on the server and are never published)
+- Short and long descriptions, edited with a rich-text (Quill) editor. Sparkle buttons on those toolbars can generate copy through Gemini (API key in Settings; writing prompts stay on the server and are never published). Interview questions and long-copy shape are steered by the project's category (Lighting, Art, Fixtures, Software, Tooling, Systems; Sculpture follows Art)
 - A gallery of images and/or YouTube links, with drag-to-reorder and thumbnail previews
 - Action links — website, launch app, GitHub, shop
 - Downloadable files (name + URL pairs)

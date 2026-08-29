@@ -310,8 +310,8 @@
     "title": "Emmy Stand",
     "category": "Art",
     "image": "media/Art/Emmy Stand/Gemini_Generated_Image_4xox7h4xox7h4xox.webp",
-    "description": "<p>I built a desktop display stand to house and illuminate a friend’s Emmy without melting the PLA+ enclosure.</p>",
-    "longDescription": "<p>An old coworker from my Tracks days won an Emmy and asked for a custom display. We used to work together when he was a bartender, so he knew my lighting background. I built him a desktop rig that scaled ballet lighting principles into a PLA+ enclosure.</p><p>The stand runs 512 addressable WS2815 LEDs across 7 data lines, driven by a Wasatch Pixels Basic Eight controller hidden inside the base. There are 3 boom towers per side with frosted lenses that arch back from downstage to upstage, while 45 deg wall washers sit recessed along the outer edges. A black and white film strip lines the bottom, printed in dual materials for diffusion and masking. The curved backdrop was too large for a single Bambu Lab print, so I built it in modular sections and turned the seams into an exaggerated surface texture.</p><p>Packing 144/m density LEDs into closed plastic is basically building a slow toaster. To keep heat from destroying the display from the inside out, I locked the current limit to 3A at 12V in WLED before I powered it on for the first time. I programmed the fixture in my dark apartment. When I set the Emmy on the pedestal, the reflective gold finish mirrored the light sources more than it absorbed the illumination, creating a warped mirror effect across the metal.</p>",
+    "description": "<p>I lit the gold statue with miniature boom towers, locking the current limit so the plastic wouldn't melt.</p>",
+    "longDescription": "<p>An old coworker from my club days won an Emmy. He asked for a custom display, so I scaled ballet lighting principles down to a desktop rig. The stand uses three boom towers per side that arch from downstage to upstage, plus angled wall washers recessed along the outer edges. A dual-material film strip lines the bottom for diffusion and masking.</p><p>The curved backdrop was too large for a single print. I built it in modular sections and turned the seams into an exaggerated surface texture. When I set the statue on the pedestal, the gold finish mirrored the light sources instead of absorbing them. The metal warped the reflections.</p><p>Packing 512 LEDs into closed plastic is basically building a slow toaster. To keep the enclosure from melting from the inside out, the hard fabrication rule was power management. I locked the current limit to three amps before I ever turned it on.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -1203,12 +1203,12 @@
         "description": "Zip file containing the 3mf of the field solder station. Ready to download and print."
       }
     ],
-    "featured": false,
+    "featured": true,
     "websiteLink": "",
     "timestamp": "2026-01-13T00:23:48.073Z",
     "wip": false,
     "order": 1,
-    "specs": "<p><strong>Designed In:</strong> SolidWorks 2022</p><p><strong>Printed On:</strong> Bambu Lab X1C</p><p><strong>Material:</strong> Black PLA+</p><p><strong>Iron:</strong> TS100 (friction-fit mount)</p>",
+    "specs": "",
     "related": [],
     "thumbnailFit": {
       "scale": 1,
@@ -1220,7 +1220,8 @@
       "x": 49.5,
       "y": 58
     },
-    "thumbnail": "media/Fabrication/Field Solder Station/20250317_180657-thumb.webp"
+    "thumbnail": "media/Fabrication/Field Solder Station/20250317_180657-thumb.webp",
+    "specsData": []
   },
   {
     "id": "9469",
@@ -6038,7 +6039,7 @@
     "title": "Tracks Discotheque",
     "category": "Lighting",
     "image": "media/Lighting/Tracks Discotheque/FB_IMG_1561801234515.webp",
-    "description": "<p>I layered modern LED fixtures with retro 90s scanners to build an immersive discotheque lighting rig.</p>",
+    "description": "<p>I surrounded the crowd with twenty-six vintage scanners and cannibalized dead units in the basement to keep them alive.</p>",
     "longDescription": "<p>Tracks was one of the last classic discotheques left in the country. The design rule was simple: surround the crowd, and keep the focus off the DJ booth. To put the audience directly inside the show, I stacked 26 vintage scanners across three layers in the ceiling. Twelve Trackspot 1s circled the dance floor. Eight Trackspot 2s flanked the sides in straight lines, and six Martin MX10s hung in tilted triangles overhead. I mixed them with pinspots, mirror balls, DataFlash strobes, and modern LEDs, all run from an old GrandMA Light Gen 1 console. Its motorized faders and audio BPM detection were exactly what the room needed.</p><p>For an unconventional layer, I built a dynamic truss warmer. I took leftover raw pixel PCBs from the Lobby Wall install, stuck adhesive zip-tie mounts to the back, and strapped them to the bottom pipe of the triangular truss. I aimed them straight up. The point was to illuminate the metal, not light the crowd. If I pointed them down, the bare diodes would sit directly in the patrons' line of sight.</p><p>The contrast between the hardware defined the look. Modern moving heads provided the brightness, but the 90s/2000's scanners were incredibly fast and locked onto a beat. The problem was keeping them alive. Stepper motor brakes failed. Scanners would start stuttering during slow movements and lose their tracking. The circuit boards were at least a decade obsolete, so we cannibalized dead units in the basement shop, replacing blown capacitors and motor drive chips to keep the rig running.</p><p>I expect a programmed sequence to look the same every time I recall it. With vintage mechanics, that was a constant fight. When a scanner lost its position mid-show, I would drop its intensity to zero and intentionally slam the mirror into its hard stops to force it back into alignment. When the room was packed and the console locked onto the beat, the sheer speed of those old scanners firing overhead proved why the classic club format worked.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -7279,7 +7280,7 @@
       "y": 25.4
     },
     "description": "<p>I tucked salvaged fixtures between fixed memorial art panels and bounced tight beams off a mirrored torso.</p>",
-    "longDescription": "<p>The ceiling at Glow Lounge was 8 feet high. Three art panels hung over the dance floor. A community member painted them with UV paint before he passed away, so they stayed put. I scrapped my plan for pixel strips to save money and pulled down the old rig. The fixtures were gross. Dust choked the fans until they stopped spinning, causing the lights to overheat and thermal cycle. I scrubbed the salvageable units and mapped a new layout around the art.</p><p>Every inch mattered. I mounted strut channels flush to the drywall and bolted them into the joists. I tucked short beam fixtures between the panels and pushed the taller lights to the edges. I bundled the cables along the channel and balanced the rig on 2 circuits. I hung new wash lights next to the DJ, but they got stuck while panning. The metal frames bent during transport and rubbed against the housing. I just bent the yokes back by hand.</p><p>A spinning torso covered in mirrors hung over the floor. I built the show on a Wolfmix WMX1 controller. I could narrow the wash fixtures into tight beams and aim them at the torso and the mirror balls. The light shot across the room just above the crowd. If a patron was exceptionally tall, they would likely get hit in the face. The scattered reflection filled the room, us. It felt compact and balanced.</p>",
+    "longDescription": "<p>The ceiling at Glow Lounge was 8 feet high. Three art panels hung over the dance floor. A community member painted them with UV paint before he passed away, so they stayed put. I scrapped my plan for pixel strips to save money and pulled down the old rig. The fixtures were gross. Dust choked the fans until they stopped spinning, causing the lights to overheat and thermal cycle. I scrubbed the salvageable units and mapped a new layout around the art.</p><p>Every inch mattered. I mounted strut channels flush to the drywall and bolted them into the joists. I tucked short beam fixtures between the panels and pushed the taller lights to the edges. I bundled the cables along the channel and balanced the rig on 2 circuits. I hung new wash lights next to the DJ, but they got stuck while panning. The metal frames bent during transport and rubbed against the housing. I just bent the yokes back by hand.</p><p>A spinning torso covered in mirrors hung over the floor. I built the show on a Wolfmix WMX1 controller. I could narrow the wash fixtures into tight beams and aim them at the torso and the mirror balls. The light shot across the room just above the crowd. If a patron was exceptionally tall, they would likely get hit in the face. The scattered reflection filled the room. It felt compact and balanced.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
