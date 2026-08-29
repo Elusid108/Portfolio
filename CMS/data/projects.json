@@ -1518,8 +1518,8 @@
       "Wire-to-Board Soldering"
     ],
     "image": "media/Lighting/MIRUS/IMG_20180614_235653.webp",
-    "description": "<p><strong>Mirus Art Gallery | Denver </strong>- I wired an RGBW wash lighting system into hanging wooden baffles 12 ft above MIRUS Art Gallery.</p>",
-    "longDescription": "<p>On my first install for the company, someone else handed me a parts list and told me to build a ceiling rig at MIRUS Art Gallery in Denver. Another contracting team had already hung the wooden louvers 12 ft in the air. That meant I spent the project on a scissor lift, adhering RGBW strips into routed channels overhead. If I had chosen the materials, I would have spec'd addressable pixels for full mapping across the room. Instead, I worked with wash strips driven by Madrix Basic, keeping the entire room on 1 DMX universe.</p><p>The routed channels in the baffles ended in 90 degree corners. Forcing the LED tape around those sharp turns snapped the copper backing on my first attempt. Because they were wash strips instead of pixels, the repair was simple. I cut out the broken module at each corner and soldered jumper wires across the gap to the next copper pads.</p><p>Up in the 6 ft plenum above the ceiling, I stashed the high current supplies and DMX decoders. Each supply group controlled 16 baffles. The spec'd power units were thin and ran with loud fans, which usually spells trouble in an art space. Luckily, the gallery connected to a club room with a Funktion-One sound system, so ambient noise swallowed the fan hum.</p><p>Because the gallery walls are painted white, the saturated colors transform the space. Flip the rig from white illumination to psychedelic chases, and the whole room changes. The client loved it.</p>",
+    "description": "<p>Blasting saturated light against white walls washes out the art, but the paintings were psychedelic anyway.</p>",
+    "longDescription": "<p>Someone handed me a parts list and told me to build a ceiling rig. Another crew had already hung eighty wooden baffles twelve feet above the floor. I spent the project on a scissor lift, pressing RGBW wash strips into routed channels upside down. The channels had sharp ninety-degree corners. Bending flexible copper tape around those turns snapped the backing. I ended up doing quite a lot of repairs.</p><p>To keep the install clean, I ran the wiring out the ends of the wood and straight up into a six-foot plenum. I walked across the rafters up there to build the control system. I grouped the baffles into ten zones, pairing one power supply to one DMX decoder with 8 outputs. The power units they bought ran with loud fans. Usually, that ruins an art gallery. Luckily, the room shared a door with a nightclub. The ambient bass swallowed the fan hum.</p><p>I wired the decoders to control each baffle individually while keeping the ceiling on a single DMX universe. During the day, the room needed flat white illumination. At night, we flipped a preset and the ceiling ran heavy color chases. Blasting saturated light against white walls completely washed out the art. Because most of the paintings were psychedelic anyway, I threw out standard gallery rules. We let the colors bleed and turned the room into an extension of the dance floor.</p>",
     "video": "",
     "gallery": [
       {
@@ -1560,6 +1560,11 @@
         "thumbnail": "media/Lighting/MIRUS/IMG_20180408_233818~2-thumb.webp"
       },
       {
+        "url": "media/Lighting/MIRUS/VID_20180319_194746.mp4",
+        "poster": "media/Lighting/MIRUS/VID_20180319_194746-poster.webp",
+        "thumbnail": "media/Lighting/MIRUS/VID_20180319_194746-poster-thumb.webp"
+      },
+      {
         "url": "media/Lighting/MIRUS/IMG_20180311_221410.webp",
         "fit": {
           "scale": 1,
@@ -1597,9 +1602,65 @@
       "x": 50.4,
       "y": 27.4
     },
-    "specs": "<p><strong>Strip:</strong> RGBW LED wash (non-addressable)</p><p><strong>Universes:</strong> 1 DMX</p><p><strong>Decoder:</strong> DMX decoders (plenum-mounted)</p><p><strong>Power:</strong> 16 baffles per supply group</p><p><strong>Control:</strong> Madrix Basic</p>",
+    "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>Custom Wood Baffles (x80)</strong><br><em>5m RGBW Strip</em></p><h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Strip (x80)</strong><br><em>Environmental Lights • 5m • RGBW (6000k) • wash strip • 24Vdc</em></p><h2>POWER &amp; DISTRIBUTION</h2><p><strong>Power Supplies (x12)</strong><br><em>MEAN WELL • RSP-1000-24 • 24Vdc • 40A</em></p><p><strong>DMX Decoder (x12)</strong><br><em>Environmental Lights • 32ch • 8 RGBW output</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>LED Control</strong><br><em>Madrix 5.x</em></p>",
     "related": [],
-    "thumbnail": "media/Lighting/MIRUS/IMG_20180614_235653-thumb.webp"
+    "thumbnail": "media/Lighting/MIRUS/IMG_20180614_235653-thumb.webp",
+    "specsData": [
+      {
+        "id": "43d0b178-c6e7-451f-8994-612a14bc0f1d",
+        "title": "FIXTURES & FX",
+        "items": [
+          {
+            "id": "beac86e1-79e3-4305-be0b-ee1417789754",
+            "name": "Custom Wood Baffles",
+            "qty": "80",
+            "specs": "5m RGBW Strip"
+          }
+        ]
+      },
+      {
+        "id": "ada1b23b-9410-489d-8ec9-9446a1ad6f7e",
+        "title": "PIXELS & DISPLAY",
+        "items": [
+          {
+            "id": "d7b6f77e-ec42-436d-8298-2eaed1f31198",
+            "name": "LED Strip",
+            "qty": "80",
+            "specs": "Environmental Lights, 5m, RGBW (6000k), wash strip, 24Vdc, "
+          }
+        ]
+      },
+      {
+        "id": "7fa95e97-485f-4831-972d-26e8cc81b728",
+        "title": "POWER & DISTRIBUTION",
+        "items": [
+          {
+            "id": "8e53273d-2deb-4043-ad6b-17a693109af5",
+            "name": "Power Supplies",
+            "qty": "12",
+            "specs": "MEAN WELL • RSP-1000-24 • 24Vdc • 40A"
+          },
+          {
+            "id": "55f9aa27-688e-4cc8-967e-cde9b7e08a11",
+            "name": "DMX Decoder",
+            "qty": "12",
+            "specs": "Environmental Lights, 32ch, 8 RGBW output"
+          }
+        ]
+      },
+      {
+        "id": "def52289-3940-4dcc-8425-0dc52008c7fe",
+        "title": "Software & stack",
+        "items": [
+          {
+            "id": "598bc5e8-01ef-4f2d-93b0-b1a4454eda2f",
+            "name": "LED Control",
+            "qty": "",
+            "specs": "Madrix 5.x"
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "8787",
@@ -2701,8 +2762,8 @@
     "title": "The Basement",
     "category": "Lighting",
     "image": "media/Lighting/The Basement/IMG_20180614_174327.webp",
-    "description": "<p><strong>Triangle Bar | Denver</strong> - I bounced upward pixels off ceiling slats to light a 10 ft basement club in Denver.</p>",
-    "longDescription": "<p>The basement at Triangle in Denver had a concrete ceiling under 10 ft high. I handled the entire build solo as an independent contractor, covering design, procurement, installation, programming, and training. Hanging moving lights overhead meant rotary-hammering 8 pieces of strut channel directly into the ceiling with 2 to 3 anchor points per piece. Working alone on a ladder, the hardest part was simply holding a fixture in place with one hand while threading a bolt or seating a cable with the other.</p><p>I despise looking directly at bare sources. Instead of covering the overhead array in standard diffusion, I pointed the pixel modules upward to bounce light off the ceiling slats. The reflected light bled through the gaps, creating a smooth gradient overhead without blinding the crowd. I also isolated the power supplies in an adjacent room to keep fan noise out of the club. I did not know fanless supplies existed at the time, but the quiet room made programming and maintenance much easier.</p><p>To bridge the gap from the remote racks to the ceiling array, I used long-range decoders. The run distance was short enough for standard decoders, but I wanted to test the hardware on a live build. During testing, loose connections at 2 points caused the ground to drop and the pixels to flicker. Because pixel runs work cleanly up to a break, finding the fault points was straightforward.</p><p>The indirect wash turned a hidden basement into an intimate club. Venue owners and patrons loved the clean look, and hiding the rig in the ceiling structure kept the low room from feeling crowded.</p>",
+    "description": "<p>I hid hundreds of pixels on top of wooden slats and bounced the wash off the bare concrete.</p>",
+    "longDescription": "<p>The basement at Triangle had a concrete ceiling at 10ft high. I despise looking directly at bare light sources. Instead of covering an overhead array in standard diffusion, I decided to bounce the light. A carpenter hung 62 slats under the concrete, leaving a four-inch gap. I mounted a 20-pixel strand on top of each slat, pointing straight up.</p><p>I prepped the strands on the ground and wired them as the carpenter worked. I also hung moving lights in the remaining space. That meant rotary-hammering strut channel directly into the ceiling. You get really good at working one-handed when you have to balance on a ladder, hold a fifteen-pound fixture, and thread a bolt. During testing, a loose connection caused the ground to drop and the pixels to flicker. I had zip-tied the wiring tight. With only four inches of clearance, I couldn't squeeze my hands in to pull the cables down. I had to pry the slats back off the ceiling to fix the joints.</p><p>I isolated the power supplies in an adjacent room. I didn't know fanless supplies existed then, but the quiet room made programming easier. When the rig ran, you never saw a source. The reflected wash bled through the gaps and filled the negative space. It took fluid and fire effects perfectly, and hiding the hardware kept a low room from feeling crowded.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -2738,12 +2799,12 @@
       {
         "url": "media/Lighting/The Basement/VID_20180708_050000.mp4",
         "fit": {
-          "scale": 1.1,
-          "x": 99.7,
-          "y": 46.6
+          "scale": 1.15,
+          "x": 100,
+          "y": 31.1
         },
-        "poster": "media/Lighting/The Basement/frame-thumb-1786199318423.webp",
-        "thumbnail": "media/Lighting/The Basement/frame-thumb-1786199318423-thumb.webp"
+        "poster": "media/Lighting/The Basement/frame-thumb-1788013946540.webp",
+        "thumbnail": "media/Lighting/The Basement/frame-thumb-1788013946540-thumb.webp"
       },
       {
         "url": "media/Lighting/The Basement/VID_20180612_163951 (1).mp4",
@@ -2783,7 +2844,7 @@
     "timestamp": "2026-06-21T22:55:23.650Z",
     "id": "5045",
     "order": 12,
-    "specs": "<p><strong>Strip:</strong> RGBW pixel modules (upward-facing)</p><p><strong>Mount:</strong> 8x strut channel · rotary-hammered into concrete</p><p><strong>Decoder:</strong> Long-range receivers</p><p><strong>Power:</strong> Isolated PSU room (fan noise mitigation)</p><p><strong>Control:</strong> Madrix 5.x</p>",
+    "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>Intimidator Spot 255 IRC (x6)</strong><br><em>Chauvet • profile • 60w white • 15° • 8 colors + white • 7 rotating gobos + open</em></p><p><strong>Generic UV LED (x6)</strong><br><em>dmx</em></p><p><strong>Wood Slats (x62)</strong><br><em>20px</em></p><p><strong>Drink Rails (x3)</strong><br><em>frost diffusion</em></p><h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixel Modules (x1500)</strong><br><em>WS2801 • RGB • 12Vdc</em></p><p><strong>LED Video Panels (x21)</strong><br><em>480mm x 480mm • 192 x 192 • 2.5P</em></p><h2>POWER &amp; DISTRIBUTION</h2><p><strong>Power Supplies (x5)</strong><br><em>MEAN WELL • 12Vdc</em></p><p><strong>Pixel Decoder (x1)</strong><br><em>Advatek • Pixlite 16 Long Range MKII</em></p><p><strong>Pixel Receiver (x5)</strong><br><em>Advatek • PixLite Long Range Receiver</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>Pixel Control</strong><br><em>LightJams</em></p><p><strong>Video Control</strong><br><em>Resolume Arena</em></p>",
     "related": [],
     "thumbnailFit": {
       "scale": 1,
@@ -2795,7 +2856,99 @@
       "x": 50,
       "y": 66.9
     },
-    "thumbnail": "media/Lighting/The Basement/IMG_20180614_174327-thumb.webp"
+    "thumbnail": "media/Lighting/The Basement/IMG_20180614_174327-thumb.webp",
+    "specsData": [
+      {
+        "id": "114f5c4f-a433-4128-815d-4ea6e76610f8",
+        "title": "FIXTURES & FX",
+        "items": [
+          {
+            "id": "c9d0f12b-2e40-4d6d-b059-d5d7d80d1774",
+            "name": "Intimidator Spot 255 IRC",
+            "qty": "6",
+            "specs": "Chauvet, profile, 60w white, 15°, 8 colors + white, 7 rotating gobos + open"
+          },
+          {
+            "id": "47a5b4ce-4a3f-4d56-a996-e1237c567f57",
+            "name": "Generic UV LED",
+            "qty": "6",
+            "specs": "dmx"
+          },
+          {
+            "id": "01969051-9360-4e98-a959-e6bac6cfff79",
+            "name": "Wood Slats",
+            "qty": "62",
+            "specs": "20px"
+          },
+          {
+            "id": "6fe88cd8-d93c-4c1f-a976-e55e5475ed5b",
+            "name": "Drink Rails",
+            "qty": "3",
+            "specs": "frost diffusion"
+          }
+        ]
+      },
+      {
+        "id": "16544ad9-26af-4183-a62c-23aae8b2eeeb",
+        "title": "PIXELS & DISPLAY",
+        "items": [
+          {
+            "id": "b37e0c87-8100-444b-86e4-e12854f769d4",
+            "name": "LED Pixel Modules",
+            "qty": "1500",
+            "specs": "WS2801, RGB, 12Vdc"
+          },
+          {
+            "id": "b91e2226-db50-417c-a487-877f8cc27e5b",
+            "name": "LED Video Panels",
+            "qty": "21",
+            "specs": "480mm x 480mm, 192 x 192, 2.5P, "
+          }
+        ]
+      },
+      {
+        "id": "a1a880c8-c45c-4ba7-bfb7-7a7f01ef8c72",
+        "title": "POWER & DISTRIBUTION",
+        "items": [
+          {
+            "id": "41bddce4-975c-4919-9883-c92b48aea027",
+            "name": "Power Supplies",
+            "qty": "5",
+            "specs": "MEAN WELL • 12Vdc "
+          },
+          {
+            "id": "a33ca46a-82d3-411b-9491-2ab1bc97bc93",
+            "name": "Pixel Decoder",
+            "qty": "1",
+            "specs": "Advatek, Pixlite 16 Long Range MKII"
+          },
+          {
+            "id": "829f0a75-82fb-4812-bc35-7b6c6f8cf703",
+            "name": "Pixel Receiver",
+            "qty": "5",
+            "specs": "Advatek, PixLite Long Range Receiver"
+          }
+        ]
+      },
+      {
+        "id": "5368c1be-093d-4196-83ac-b87001c5014c",
+        "title": "Software & stack",
+        "items": [
+          {
+            "id": "aa2ba3a4-2d3d-48cc-8002-c1cb3c2fe570",
+            "name": "Pixel Control",
+            "qty": "",
+            "specs": "LightJams"
+          },
+          {
+            "id": "e327b0be-c204-45ed-ab02-13c76dfa3c19",
+            "name": "Video Control",
+            "qty": "",
+            "specs": "Resolume Arena"
+          }
+        ]
+      }
+    ]
   },
   {
     "title": "Que Bueno Suerte!",
