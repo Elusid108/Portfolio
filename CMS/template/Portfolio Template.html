@@ -593,8 +593,6 @@
         const VideoPlayer = ({ src, poster, className = "", autoPlay = false, hasAudio = false }) => {
             const videoRef = useRef(null);
             const containerRef = useRef(null);
-            const mountId = useRef(Math.random().toString(36).slice(2, 7));
-            const lastTick = useRef(0);
             const [playing, setPlaying] = useState(false);
             const [currentTime, setCurrentTime] = useState(0);
             const [duration, setDuration] = useState(0);
@@ -603,42 +601,15 @@
             const [looping, setLooping] = useState(false);
             const [muted, setMuted] = useState(!!hasAudio);
             const [volume, setVolume] = useState(1);
-
-            const snap = (extra) => {
-                const v = videoRef.current;
-                const buffered = [];
-                if (v && v.buffered) {
-                    for (let i = 0; i < v.buffered.length; i++) buffered.push({ s: +v.buffered.start(i).toFixed(2), e: +v.buffered.end(i).toFixed(2) });
-                }
-                return {
-                    mountId: mountId.current,
-                    src: src ? src.split('/').slice(-2).join('/') : '',
-                    poster: poster ? String(poster).split('/').pop() : '',
-                    t: v ? +v.currentTime.toFixed(2) : null,
-                    dur: v && isFinite(v.duration) ? +v.duration.toFixed(2) : null,
-                    paused: v ? v.paused : null,
-                    ended: v ? v.ended : null,
-                    ready: v ? v.readyState : null,
-                    net: v ? v.networkState : null,
-                    buffered,
-                    fs: document.fullscreenElement === containerRef.current,
-                    ...extra
-                };
-            };
-            const agentLog = (hypothesisId, location, message, extra) => {
-                // #region agent log
-                fetch('http://127.0.0.1:7539/ingest/47d65063-da39-4589-8187-0bb2721ced5a',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'efb62c'},body:JSON.stringify({sessionId:'efb62c',runId:'pre-fix',hypothesisId,location,message,data:snap(extra||{}),timestamp:Date.now()})}).catch(()=>{});
-                // #endregion
-            };
-
-            useEffect(() => {
-                agentLog('H4', 'VideoPlayer:mount', 'VideoPlayer mounted', { autoPlay, hasAudio });
-                return () => agentLog('H4', 'VideoPlayer:unmount', 'VideoPlayer unmounted');
-            }, []);
+            const [buffering, setBuffering] = useState(!!autoPlay);
+            const [frameReady, setFrameReady] = useState(false);
 
             useEffect(() => {
                 const v = videoRef.current;
-                agentLog('H4', 'VideoPlayer:srcEffect', 'src/autoPlay/hasAudio effect', { autoPlay, hasAudio });
+                setFrameReady(false);
+                setBuffering(!!autoPlay);
+                setCurrentTime(0);
+                setDuration(0);
                 if (v) {
                     v.playbackRate = 1;
                     v.muted = !!hasAudio;
@@ -646,15 +617,11 @@
                 }
                 setMuted(!!hasAudio);
                 setVolume(1);
-                if (autoPlay) v?.play().catch((err) => agentLog('H4', 'VideoPlayer:autoPlayFail', 'autoPlay rejected', { err: String(err && err.message || err) }));
+                if (autoPlay) v?.play().catch(() => {});
             }, [src, autoPlay, hasAudio]);
 
             useEffect(() => {
-                const onFsChange = () => {
-                    const nowFs = document.fullscreenElement === containerRef.current;
-                    setIsFullscreen(nowFs);
-                    agentLog('H1', 'VideoPlayer:fullscreen', nowFs ? 'entered fullscreen' : 'exited fullscreen');
-                };
+                const onFsChange = () => setIsFullscreen(document.fullscreenElement === containerRef.current);
                 document.addEventListener('fullscreenchange', onFsChange);
                 return () => document.removeEventListener('fullscreenchange', onFsChange);
             }, []);
@@ -663,7 +630,8 @@
                 e?.stopPropagation();
                 const v = videoRef.current;
                 if (!v) return;
-                if (v.paused) v.play().catch(() => {});
+                // A stall looks like a stop. Clicking should resume, not pause.
+                if (v.paused || v.readyState < 3) v.play().catch(() => {});
                 else v.pause();
             };
 
@@ -676,9 +644,7 @@
             const commitSeek = (e) => {
                 e.stopPropagation();
                 const v = videoRef.current;
-                const next = parseFloat(e.target.value);
-                agentLog('H5', 'VideoPlayer:commitSeek', 'range onChange/commitSeek', { next, inputMax: e.target.max });
-                if (v) v.currentTime = next;
+                if (v) v.currentTime = parseFloat(e.target.value);
                 setSeeking(false);
             };
 
@@ -733,32 +699,31 @@
                     <video
                         ref={videoRef}
                         src={src}
-                        poster={poster || undefined}
+                        poster={autoPlay ? undefined : (poster || undefined)}
+                        preload="auto"
                         playsInline
                         muted={hasAudio ? muted : false}
                         loop={looping}
                         onClick={togglePlay}
-                        onPlay={() => { setPlaying(true); agentLog('H3', 'VideoPlayer:onPlay', 'play'); }}
-                        onPause={() => { setPlaying(false); agentLog('H3', 'VideoPlayer:onPause', 'pause'); }}
-                        onEnded={() => { setPlaying(false); agentLog('H3', 'VideoPlayer:onEnded', 'ended'); }}
-                        onWaiting={() => agentLog('H3', 'VideoPlayer:onWaiting', 'waiting for buffer')}
-                        onStalled={() => agentLog('H3', 'VideoPlayer:onStalled', 'stalled')}
-                        onPlaying={() => agentLog('H3', 'VideoPlayer:onPlaying', 'playing after wait')}
-                        onError={() => agentLog('H3', 'VideoPlayer:onError', 'video error', { code: videoRef.current && videoRef.current.error && videoRef.current.error.code })}
-                        onLoadedData={() => agentLog('H2', 'VideoPlayer:onLoadedData', 'first frame ready')}
+                        onPlay={() => setPlaying(true)}
+                        onPause={() => setPlaying(false)}
+                        onEnded={() => setPlaying(false)}
+                        onWaiting={() => setBuffering(true)}
+                        onStalled={() => setBuffering(true)}
+                        onPlaying={() => setBuffering(false)}
+                        onLoadedData={() => setFrameReady(true)}
                         onLoadedMetadata={(e) => setDuration(e.target.duration || 0)}
-                        onTimeUpdate={(e) => {
-                            if (!seeking) setCurrentTime(e.target.currentTime);
-                            const now = Date.now();
-                            if (now - lastTick.current > 1000) {
-                                lastTick.current = now;
-                                agentLog('H3', 'VideoPlayer:tick', 'timeupdate');
-                            }
-                        }}
-                        className="w-full h-full max-h-full object-contain cursor-pointer"
+                        onTimeUpdate={(e) => { if (!seeking) setCurrentTime(e.target.currentTime); }}
+                        className={`w-full h-full max-h-full object-contain cursor-pointer ${frameReady ? 'opacity-100' : 'opacity-0'}`}
                     />
 
-                    {!playing && (
+                    {buffering && frameReady && (
+                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <div className="w-10 h-10 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        </div>
+                    )}
+
+                    {!playing && frameReady && !buffering && (
                         <button type="button" onClick={togglePlay} aria-label="Play video" className="absolute inset-0 flex items-center justify-center">
                             <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
                                 <Play className="text-zinc-900 fill-zinc-900 ml-1" size={28} />
@@ -939,13 +904,6 @@
             const ytId = getYouTubeId(currentUrl);
             const isVid = !ytId && isVideoUrl(currentUrl);
 
-            useEffect(() => {
-                if (!isVid) return;
-                // #region agent log
-                fetch('http://127.0.0.1:7539/ingest/47d65063-da39-4589-8187-0bb2721ced5a',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'efb62c'},body:JSON.stringify({sessionId:'efb62c',runId:'pre-fix',hypothesisId:'H1',location:'Lightbox:video',message:'lightbox opened or switched to video',data:{index,src:(currentUrl||'').split('/').slice(-2).join('/'),poster:(mediaPoster(currentItem)||'').toString().split('/').pop(),thumb:(mediaThumbnail(currentItem)||'').toString().split('/').pop()},timestamp:Date.now()})}).catch(()=>{});
-                // #endregion
-            }, [index, isVid, currentUrl]);
-
             // Only offer the toggle when the text is actually cut off. Measuring is
             // skipped while expanded (nothing is clamped then), which leaves the last
             // clamped result standing so the collapse control stays available.
@@ -965,7 +923,7 @@
 
             return (
                 <div ref={dialogRef} role="dialog" aria-modal="true" aria-label={`Media viewer for ${projectTitle || 'project'}`}
-                     className="fixed inset-0 z-[200] bg-black flex flex-col animate-fade-in"
+                     className="fixed inset-0 z-[200] bg-black flex flex-col"
                      onClick={onBackdropClick}
                      onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
                     <button onClick={(e) => { e.stopPropagation(); onClose(); }} aria-label="Close media viewer" className="absolute top-4 right-4 p-3 bg-zinc-800/80 rounded-full text-white hover:bg-zinc-700 transition-colors z-[210]">
@@ -1012,7 +970,7 @@
                             </div>
                         ) : isVid ? (
                             <div className="relative w-full h-full max-w-5xl aspect-video" onClick={stopClick}>
-                                <VideoPlayer src={currentUrl} poster={mediaPoster(currentItem)} hasAudio={mediaHasAudio(currentItem)} className="w-full h-full rounded-lg shadow-2xl" autoPlay />
+                                <VideoPlayer key={currentUrl} src={currentUrl} poster={mediaPoster(currentItem)} hasAudio={mediaHasAudio(currentItem)} className="w-full h-full rounded-lg shadow-2xl" autoPlay />
                             </div>
                         ) : (
                             <img
