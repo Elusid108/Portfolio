@@ -761,8 +761,8 @@
       "Wire-to-Board Soldering"
     ],
     "image": "media/Art/Mini Pyramid/minipyramidfix.webp",
-    "description": "<p>An 8x8 pixel matrix desk lamp powered over 5V USB-C with a scannable QR code base.</p>",
-    "longDescription": "<p>Stepping down from my 16x16 matrix to an 8x8 desk piece meant solving a packaging problem. I modeled the Pixel Mini Pyramid in SolidWorks and Blender around an ESP32 running WLED on 5V USB-C power. The base doubles as a scannable QR code that links to my site.</p><p>Squeezing 64 LEDs into the small footprint left very little room for hardware. The USB-C port wanted to push back into the case whenever I plugged a cable in, and closing the shell kept crushing the internal wiring. It took several 3D printed iterations and test fits to anchor the controller securely and route the leads cleanly.</p><p>A short throw distance usually creates hotspots. I used a frosted diffusion layer over white cell walls to break up the light, and printed the case in 3 materials on an X1C. A few friends and family have them on their desks now, and the QR code base still scans on the first try.</p>",
+    "description": "<p>It took several iterations to keep the esp32 held in place so that plugging in a cable didn't push the port inside.</p>",
+    "longDescription": "<p>Stepping down to a desk piece, I wanted an 8x8 pixel display housed in a pyramid. I went with a pyramid simply because it was an easy shape to model in SolidWorks. The bottom doubled as a scannable QR code linking to my site.</p><p>Squeezing 64 LEDs and an ESP32 into that footprint left almost no room for hardware. I had to do several iterations of the base to hold the board in place. The USB-C port wanted to push back into the case whenever I plugged a cable in, and closing the shell kept crushing the internal wiring. It took several printed iterations to anchor the controller securely and route the leads.</p><p>Putting pixels that close to the surface usually creates hotspots, so I kept at least 10mm distance. I used a frosted layer over white cell walls to break up the light, printing the whole case in three different materials.</p>",
     "video": "",
     "gallery": [
       {
@@ -3157,8 +3157,8 @@
     "title": "Negative \"X\"",
     "category": "Art",
     "image": "media/Art/Negative _X_/negative x fix.webp",
-    "description": "<p>An internal X obstruction inside each cell turns a white square into an array of 1024 converging arrows.</p>",
-    "longDescription": "<p>I wanted to build the pixel diffusion equivalent of a stage gobo. I designed an X obstruction through the center of 256 isolated cells in SolidWorks. Powered off, the piece sat like a plain square. Powered on, the solid X blocked the center of each WS2815 LED and created 4 arrows pointing toward each other.</p><p>My first attempt on a Tenlog TL-D3 failed when the nozzle dragged across the X pattern and caused layer shifts. Printing directly against the buildplate kept the face flat. A 1 mm PLA+ face provided the right balance of diffusion and opacity without bleeding light between cells.</p><p>I capped the current in WLED on an ATHOM ESP8266 controller to stop the PLA+ from heating and warping. Running fluid patterns across the grid made the uniform obstructions look fuzzy and ripply.</p>",
+    "description": "<p>I blocked the center of 256 isolated cells to turn square pixels into 1,024 converging arrows.</p>",
+    "longDescription": "<p>I wanted to build the pixel diffusion equivalent of a stage gobo. I modeled 256 isolated cells in SolidWorks. I put a solid X obstruction inside each one. Powered off, the piece sat like a plain square. Powered on, the X blocked the center of each LED. It turned a single square pixel into four converging arrows. Running fluid patterns across the grid made the uniform obstructions look fuzzy and ripply.</p><p>My first print failed. The nozzle dragged across the X pattern and caused layer shifts. I fixed it by printing the face directly against the buildplate to keep it flat. A one-millimeter PLA face provided enough diffusion without bleeding light between the cells. Because the entire frame was plastic, heat was the final limit. I capped the current in the controller to stop the grid from warping.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -3285,8 +3285,8 @@
     "title": "Seed of Life",
     "category": "Art",
     "image": "media/Art/Seed of Life/seedoflifefix.webp",
-    "description": "<p>A 1mm face printed over a subdivided matrix hides the seed of life until the pixels fire.</p>",
-    "longDescription": "<p>I built this as a proof of concept to expand what I could do with subdivided matrices. Printed face down, the piece looks like a white square when turned off. Getting that surface required a 1mm face. That thickness balanced structural stability and light transmission without showing bleedthrough from the black walls behind it. With a 10mm throw, bouncing the light was unnecessary.</p><p>Heat became the immediate problem. Early tests ran at full brightness inside sealed enclosures. Over time, the corners curled and the grid walls softened enough to move by hand. Without vent holes on the back, the units bowed away from the wall as the PLA+ heated up. Adding vents and limiting current in the firmware stopped the deformation.</p><p>Now the symbol stays hidden until the matrix powers on. Lighting large clusters of pixels reveals parts of the pattern across the surface. The complete shape only appears when every pixel is active.</p>",
+    "description": "<p>I printed a one-millimeter face to hide the matrix, and ran enough current to melt the internal grid.</p>",
+    "longDescription": "<p>The piece looks like a white square when turned off. I built this 3D-printed lightbox as a proof of concept to test subdivided matrices.</p><p>I printed it face down. Getting a clean surface required a 1mm face. That dimension let light through while hiding the black walls behind it. With a 10mm throw, bouncing the light was unnecessary.</p><p>Heat became the immediate problem. I ran early tests at full brightness inside sealed enclosures. Over time, the corners curled. The internal grid softened enough to move by hand, and the unit bowed away from the wall as the plastic heated up.</p><p>Lighting large clusters reveals parts of the pattern. The complete shape only appears when every pixel is active. Surviving that heat set the fabrication rule for these prints. The enclosure needs back vents, and the firmware has to limit the current.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -8727,8 +8727,8 @@
       "x": 27.2,
       "y": 35.1
     },
-    "description": "<p>Placeholder</p>",
-    "longDescription": "<p>Placeholder</p>",
+    "description": "<p>I blacked out half of every pixel from behind so hidden shapes only appear when the board lights up.</p>",
+    "longDescription": "<p>I wanted to do something abstract and simple by working at the pixel level. Circles Corner is a flat, 3D-printed matrix of 256 LEDs where each ten-millimeter cell acts like a tiny gobo.</p><p>From the front, the mask looks like a plain white circle. The trick is on the inside. I blacked out exactly half of each pixel cell from behind. When the board is off, the face is blank. When it lights up, the hidden half-shapes appear through the diffusion.</p><p>If light bleeds across a cell, the shape gets lost. The fabrication rule was strict. To guarantee a total blackout on the dark half of the pixel, the black layer behind the white diffusion had to be exactly one millimeter thick.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
