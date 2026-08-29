@@ -6039,7 +6039,7 @@
     "category": "Lighting",
     "image": "media/Lighting/Tracks Discotheque/FB_IMG_1561801234515.webp",
     "description": "<p>I layered modern LED fixtures with retro 90s scanners to build an immersive discotheque lighting rig.</p>",
-    "longDescription": "<p>Tracks was a time capsule and one of the few classic discotheques left in the country. The focus belonged on the music and the crowd, not the DJ. To put the audience directly inside the performance, I stacked multiple lighting layers in the ceiling. We ran TrackSpot 1 and 2 fixtures, Martin MX10 , pinspots, mirror balls, and DataFlash Strobes alongside modern LED lights and a video wall. I controlled the entire mix of legacy and modern gear using a GrandMA Light Gen 1. It was old, but its motorized faders and BPM detection audio input were a perfect fit for the room.</p><p>The contrast between the hardware defined the look. The moving heads provided the brightness, but the vintage scanners were incredibly fast and reacted perfectly to the beat. I expect a programmed sequence to look exactly the same every time I recall it. With vintage mechanics, that was a constant fight. Stepper motor brakes failed and ruined smooth movements. The handmade circuit boards were decades obsolete. We kept the rig alive by cannibalizing parts from dead units in the basement shop and scouring the internet to buy old fixtures to strip down.</p><p>For an unconventional layer, I built a dynamic truss warmer. We had leftover raw pixel PCBs from a lobby installation. I attached adhesive zip-tie mounts to the back of the boards. Because we used triangular truss, I zip-tied the strands to the single bottom center pipe and aimed them straight up at the ceiling. When the room was packed and the console locked onto the beat, the sheer speed of the scanners and the raw pixels firing overhead created an environment where the crowd came to life.</p>",
+    "longDescription": "<p>Tracks was one of the last classic discotheques left in the country. The design rule was simple: surround the crowd, and keep the focus off the DJ booth. To put the audience directly inside the show, I stacked 26 vintage scanners across three layers in the ceiling. Twelve Trackspot 1s circled the dance floor. Eight Trackspot 2s flanked the sides in straight lines, and six Martin MX10s hung in tilted triangles overhead. I mixed them with pinspots, mirror balls, DataFlash strobes, and modern LEDs, all run from an old GrandMA Light Gen 1 console. Its motorized faders and audio BPM detection were exactly what the room needed.</p><p>For an unconventional layer, I built a dynamic truss warmer. I took leftover raw pixel PCBs from the Lobby Wall install, stuck adhesive zip-tie mounts to the back, and strapped them to the bottom pipe of the triangular truss. I aimed them straight up. The point was to illuminate the metal, not light the crowd. If I pointed them down, the bare diodes would sit directly in the patrons' line of sight.</p><p>The contrast between the hardware defined the look. Modern moving heads provided the brightness, but the 90s/2000's scanners were incredibly fast and locked onto a beat. The problem was keeping them alive. Stepper motor brakes failed. Scanners would start stuttering during slow movements and lose their tracking. The circuit boards were at least a decade obsolete, so we cannibalized dead units in the basement shop, replacing blown capacitors and motor drive chips to keep the rig running.</p><p>I expect a programmed sequence to look the same every time I recall it. With vintage mechanics, that was a constant fight. When a scanner lost its position mid-show, I would drop its intensity to zero and intentionally slam the mirror into its hard stops to force it back into alignment. When the room was packed and the console locked onto the beat, the sheer speed of those old scanners firing overhead proved why the classic club format worked.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -6231,7 +6231,7 @@
       }
     ],
     "files": [],
-    "specs": "",
+    "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>Trackspot 1 (x12)</strong><br><em>HighEnd • scanner • halogen</em></p><p><strong>Trackspot 2 (x8)</strong><br><em>HighEnd • scanner • halogen</em></p><p><strong>MX10 (x6)</strong><br><em>Martin • scanner • arch lamp</em></p><p><strong>MAC250 (x4)</strong><br><em>Martin • profile • arch lamp</em></p><p><strong>BEAM 200 (x8)</strong><br><em>beam • arch lamp</em></p><p><strong>DataFlash (x6)</strong><br><em>strobe</em></p><p><strong>Intimidator 250 (x12)</strong><br><em>Chauvet • profile • LED</em></p><p><strong>FlurryQ (x8)</strong><br><em>wash • LED • RGBW</em></p><p><strong>Pinspot (x48)</strong><br><em>beam • par36</em></p><p><strong>LED Pinspot (x48)</strong><br><em>beam • LED • RGBW</em></p><p><strong>Lasers (x2)</strong><br><em>X-Laser • RGB</em></p><p><strong>Cryo Jets (x4)</strong></p><h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x96)</strong><br><em>WS2811 • RGB • 12Vdc</em></p><h2>COMPUTE &amp; CONTROL</h2><p><strong>GrandMA Lite Gen1 (x1)</strong><br><em>lighting console • 4 universe</em></p>",
     "related": [
       {
         "name": "Discobasket",
@@ -6256,7 +6256,110 @@
       "x": 99.8,
       "y": 38.6
     },
-    "specsData": []
+    "specsData": [
+      {
+        "id": "f6855c20-1622-4d99-b1a3-0095f7fef71f",
+        "title": "FIXTURES & FX",
+        "items": [
+          {
+            "id": "66333786-8f63-44ad-bdf0-1b564f45eb1b",
+            "name": "Trackspot 1",
+            "qty": "12",
+            "specs": "HighEnd, scanner, halogen"
+          },
+          {
+            "id": "db2a238d-fc8d-4be5-a48e-22685a5b0d76",
+            "name": "Trackspot 2",
+            "qty": "8",
+            "specs": "HighEnd, scanner, halogen"
+          },
+          {
+            "id": "484118dc-f6bf-4125-b9d5-4414da83323f",
+            "name": "MX10",
+            "qty": "6",
+            "specs": "Martin, scanner, arch lamp "
+          },
+          {
+            "id": "1cf833de-0413-4403-9965-4603c6d54b2d",
+            "name": "MAC250",
+            "qty": "4",
+            "specs": "Martin, profile, arch lamp"
+          },
+          {
+            "id": "74277503-5804-4bcb-a2bb-bf8530c0b37d",
+            "name": "BEAM 200",
+            "qty": "8",
+            "specs": "beam, arch lamp"
+          },
+          {
+            "id": "6a837b67-c28b-427d-a12f-c42b69e46a00",
+            "name": "DataFlash",
+            "qty": "6",
+            "specs": "strobe"
+          },
+          {
+            "id": "dc0d873f-7ed8-4f45-9ae3-23275307a917",
+            "name": "Intimidator 250",
+            "qty": "12",
+            "specs": "Chauvet, profile, LED"
+          },
+          {
+            "id": "703de63c-5d35-4788-986f-02831071266d",
+            "name": "FlurryQ",
+            "qty": "8",
+            "specs": "wash, LED, RGBW"
+          },
+          {
+            "id": "86460b88-bcb5-4dd2-9286-9080548cb23a",
+            "name": "Pinspot",
+            "qty": "48",
+            "specs": "beam, par36"
+          },
+          {
+            "id": "390ebe3d-0613-4fcf-9cf3-8783f1b56833",
+            "name": "LED Pinspot",
+            "qty": "48",
+            "specs": "beam, LED, RGBW"
+          },
+          {
+            "id": "f069da1f-34e6-4329-b097-74c9277c827f",
+            "name": "Lasers",
+            "qty": "2",
+            "specs": "X-Laser, RGB"
+          },
+          {
+            "id": "58d0f106-eb6a-4017-a4a2-7dcae0efae08",
+            "name": "Cryo Jets",
+            "qty": "4",
+            "specs": ""
+          }
+        ]
+      },
+      {
+        "id": "e6ebdd4d-c24a-4259-ad23-76d8cdd197fe",
+        "title": "PIXELS & DISPLAY",
+        "items": [
+          {
+            "id": "4861a114-e223-4661-80a2-de33173650ea",
+            "name": "LED Pixels",
+            "qty": "96",
+            "specs": "WS2811, RGB, 12Vdc"
+          }
+        ]
+      },
+      {
+        "id": "192a49d1-ce46-41ba-9c17-0f9dc08dea4b",
+        "title": "COMPUTE & CONTROL",
+        "items": [
+          {
+            "id": "8ac8ec48-2eef-402a-86c6-2048d171753d",
+            "name": "GrandMA Lite Gen1",
+            "qty": "1",
+            "specs": "lighting console, 4 universe,"
+          }
+        ]
+      }
+    ]
   },
   {
     "title": "Remote Fill Fog Jets",
