@@ -128,11 +128,21 @@
       },
       {
         "url": "media/Lighting/Immersive Dance Lighting Rig/20210403_183018.mp4",
-        "poster": "media/Lighting/Immersive Dance Lighting Rig/20210403_183018-poster.webp",
-        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/20210403_183018-poster-thumb.webp"
+        "fit": {
+          "scale": 1.05,
+          "x": 28.9,
+          "y": 50.3
+        },
+        "poster": "media/Lighting/Immersive Dance Lighting Rig/frame-thumb-1787967838496.webp",
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/frame-thumb-1787967838496-thumb.webp"
       },
       {
         "url": "media/Lighting/Immersive Dance Lighting Rig/20210403_195106.webp",
+        "fit": {
+          "scale": 1,
+          "x": 49.3,
+          "y": 84
+        },
         "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/20210403_195106-thumb.webp"
       },
       {
@@ -2341,8 +2351,8 @@
     "title": "Club Lexi",
     "category": "Lighting",
     "image": "media/Lighting/Club Lexi/20230508_171150.webp",
-    "description": "<p><strong>CrazyHorse | Denver</strong> - I packed 64 fixtures into a low-ceiling basement club using flush-mounted strut channel and DJ-proofed standalone control.</p>",
-    "longDescription": "<p>Club Lexi is a basement with three areas (a lounge, a bar, and a main dance floor), all trapped under a ceiling just short of 10 feet. Patrons could jump and touch the rig. Standard box truss would have eaten too much headroom, so I hung the entire system from strut channel mounted flush to the drywall. Working flush against a ceiling means you have zero room above the fixture to route cable or hide a mess. Everything is exposed. I had an electrician drop power at pre-planned locations on dedicated switches, which let the venue kill half the rig across two zones during early hours without touching the software.</p><p>I ran 64 fixtures over 4 universes on a single Wolfmix WMX1. Fitting hybrid profiles and moving heads into a room that low meant watching every inch of clearance. Because the venue operates without a lighting technician, the WMX1 sat in the booth for the DJs to run standalone.</p><p>Handing live control to DJs immediately exposed the weak points. They would twist knobs, drag fade times to a crawl, and assume the rig was broken when the lights stopped responding. They also loved to mash the strobe button until the room was unreadable, and running a Radiance Hazer from the controller turned into a mess. I locked the hazer to a low-output toggle, set up a hard reset so they couldn't trap the program in a crawl, and let the rig do what I built it to do.</p>",
+    "description": "<p>I anchored 64 fixtures straight into the joists and locked the controller so DJs couldn't mess up the presets.</p>",
+    "longDescription": "<p>Club Lexi is a basement trapped under a ceiling just short of ten feet. If I used standard box truss, patrons would be hitting their heads on the moving lights. I hung the entire lighting system from strut channel anchored straight through the drywall into the joists. Working flush against a ceiling leaves zero room to hide a mess. Everything is exposed. I laid out the fixtures in straight lines so I could bundle the cables into tight runs.</p><p>An electrician dropped power on dedicated switches, letting the venue kill half the rig early in the night without touching the software. I packed 64 fixtures into the space. I programmed the presets alone on the dance floor with the music blasting. Putting moving heads right above people means watching every inch of clearance. My rule was to never have all fixture types on at the same time. Firing everything at once in a room that low was blinding and unpleasant.</p><p>The venue operates without a technician, so a Wolfmix controller sat in the booth for the DJs. Handing them live control immediately exposed the weak points. They dragged fade times to a crawl and assumed the rig was broken when the lights stopped moving. They also mashed the strobe button until the room was unreadable. I locked the hazer to a low-output toggle, built pre-programmed looks to enforce my lighting rules, and set up a hard reset so they could not trap the program.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -2446,7 +2456,7 @@
     "timestamp": "2026-06-21T22:45:09.610Z",
     "id": "6350",
     "order": 9,
-    "specs": "<p><strong>Pixel Spot:</strong> 34x PixelDots RGBW</p><p><strong>Profile:</strong> 12x Profile Zoom 150W</p><p><strong>Beye:</strong> 18x 6×40W RGBW</p><p><strong>SFX:</strong> 1x Radiance Hazer</p><p><strong>Universes:</strong> 4 sACN</p><p><strong>Control:</strong> Wolfmix WMX1</p>",
+    "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>Beam (x34)</strong><br><em>ColorfulLighting • PD60 • LED • beam 4° • 60W • RGBW • infinite pan &amp; tilt</em></p><p><strong>Zoom (x12)</strong><br><em>ColorfulLighting • LM150Z • LED • hybrid • 4.5°- 22 ° • 150W • pan 520° • tilt 270° • 7 colors + white • 5 rotating glass gobos + 2 open • 8 facet prism</em></p><p><strong>Beye (x18)</strong><br><em>ColorfulLighting • B6 • LED • wash + FX hybrid • 240W • RGBW</em></p><p><strong>Hazer (x1)</strong><br><em>Radiance Hazer • DMX • 120Vac • 500W</em></p><h2>COMPUTE &amp; CONTROL</h2><p><strong>Lighting Console (x1)</strong><br><em>WOLFMIX WMX1 • 4u unlocked</em></p>",
     "related": [],
     "thumbnailFit": {
       "scale": 1,
@@ -2458,7 +2468,51 @@
       "x": 63.4,
       "y": 48
     },
-    "thumbnail": "media/Lighting/Club Lexi/20230508_171150-thumb.webp"
+    "thumbnail": "media/Lighting/Club Lexi/20230508_171150-thumb.webp",
+    "specsData": [
+      {
+        "id": "2a8fd0a8-5138-42c1-ad10-6c14bc0750fc",
+        "title": "FIXTURES & FX",
+        "items": [
+          {
+            "id": "53552772-9133-4c71-87ff-04e7536c835c",
+            "name": "Beam",
+            "qty": "34",
+            "specs": "ColorfulLighting, PD60, LED, beam 4°, 60W, RGBW, infinite pan & tilt "
+          },
+          {
+            "id": "2dfbe0b3-06ff-4789-a1c2-84102fe5ef08",
+            "name": "Zoom",
+            "qty": "12",
+            "specs": "ColorfulLighting, LM150Z, LED, hybrid, 4.5°- 22 °, 150W, pan 520°, tilt 270°, 7 colors + white, 5 rotating glass gobos + 2 open, 8 facet prism"
+          },
+          {
+            "id": "e8f45c0e-734c-4427-86bb-3245ec81e226",
+            "name": "Beye",
+            "qty": "18",
+            "specs": "ColorfulLighting, B6, LED, wash + FX hybrid, 240W, RGBW"
+          },
+          {
+            "id": "b4321f93-5b02-4c83-b1dc-7e61eb0cf4d3",
+            "name": "Hazer",
+            "qty": "1",
+            "specs": "Radiance Hazer, DMX, 120Vac, 500W"
+          }
+        ]
+      },
+      {
+        "id": "e25ad7b7-35ee-4254-a7e9-bc8c7cea607a",
+        "title": "COMPUTE & CONTROL",
+        "items": [
+          {
+            "id": "4974cb20-3b00-4a9f-9c9b-6afe53b144d8",
+            "name": "Lighting Console",
+            "qty": "1",
+            "specs": "WOLFMIX WMX1, 4u unlocked"
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "6841",
