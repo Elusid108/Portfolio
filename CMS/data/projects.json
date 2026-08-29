@@ -1354,8 +1354,8 @@
       "Wire-to-Board Soldering"
     ],
     "image": "media/Electronics/LVL/IMG_20191009_231844.webp",
-    "description": "<p><strong>Temple Nightclub | Denver</strong> - I salvaged 8 dead pixel runs from ruined floor channels and rewired them for 3D voxel mapping.</p>",
-    "longDescription": "<p>When I walked into LVL, the side room at Temple Denver, the lighting rig was dead or stuck on solid blue. Someone had installed unsealed channels in the floor, and the wood support strips had absorbed months of spilled drinks, mop water, and sewage backups until the diffusion caved in and shattered. Even the foam tape holding the strips smelled like club funk. The EnvironmentalLighting pixel tape itself was expensive and salvageable, so I cut out the shorted sections, scrubbed the tracks, and built new structural support out of acrylic.</p><p>Wiring 16 strip runs across a room requires heavy power injection to stop voltage drop. My first attempt was immediately unstable. I ran DC wire in parallel and tied the negative leads together back in the supply room, which wasn't sufficient and triggered ground loop flicker across part of the system. The fix was coupling the negative leads close to the pixels above the dancefloor in addition to at the power supplies. The 12V pillar modules also fought me because of undersized wire, so I added more injection points and ground jumpers between sections until the signal stabilized. The ceiling and floor ran on 24V tape and behaved once the grounds were tied overhead.</p><p>With the power and data lines stable, I mapped all 16 floor and ceiling runs plus the pillars into a 3D voxel setup. The room runs almost entirely on those pixels, so getting the hardware clean mattered. Now the control system drives spatial sweeps through the floor, pillars, and ceiling without a single drop.</p>",
+    "description": "<p>I salvaged expensive pixel tape from rotting floor channels and built acrylic supports to survive the next spilled drink.</p>",
+    "longDescription": "<p>I needed custom acrylic support strips for floor pixels because the existing channels were construction-adhesived into the floor and refused to come out. Someone had installed unsealed tracks using wood inserts. The wood absorbed months of spilled drinks, mop water, and sewage backups until the diffusion caved in and shattered. Even the foam tape holding the strips smelled like club funk. The pixel tape itself was expensive and salvageable. I cut out the shorted sections, scrubbed the tracks, and built new supports out of acrylic. I knew the plastic would survive if the silicone seal ever broke again.</p><p>Wiring sixteen strip runs across the room required heavy power injection to stop voltage drop. My first attempt was unstable. I ran DC wire in parallel and tied the negative leads together back in the supply room, which triggered ground loop flicker across part of the system. The fix was coupling the negative leads close to the pixels above the dancefloor. The pillar modules also fought me because of undersized wire, so I added more injection points and ground jumpers until the signal stabilized.</p><p>Once the power and data lines behaved, I mapped the floor, pillars, and ceiling into a 3D voxel setup. The room runs almost entirely on those pixels. Now the control system drives spatial sweeps through the room, and the floor channels can take a direct hit from a spilled drink without shorting out.</p>",
     "video": "",
     "gallery": [
       {
@@ -1516,7 +1516,7 @@
     "timestamp": "2026-01-17T17:46:42.266Z",
     "wip": false,
     "order": 2,
-    "specs": "<p><strong>Strip:</strong> EnvironmentalLighting pixel tape (salvaged)</p><p><strong>Voltage:</strong> 12V DC (pillars) · 24V DC (floor / ceiling)</p><p><strong>Runs:</strong> 16 strip runs</p><p><strong>Protocol:</strong> sACN</p><p><strong>Control:</strong> Madrix 5.x</p>",
+    "specs": "<h2>SOFTWARE &amp; STACK</h2><p><strong>Pixel Control</strong><br><em>Madrix 5.x</em></p>",
     "related": [],
     "thumbnailFit": {
       "scale": 1,
@@ -1528,7 +1528,21 @@
       "x": 42.1,
       "y": 24.6
     },
-    "thumbnail": "media/Electronics/LVL/IMG_20191009_231844-thumb.webp"
+    "thumbnail": "media/Electronics/LVL/IMG_20191009_231844-thumb.webp",
+    "specsData": [
+      {
+        "id": "e7ddab30-0d75-4dbb-9572-cc575815adf5",
+        "title": "Software & stack",
+        "items": [
+          {
+            "id": "678778b4-98c8-4395-99c2-df5f0aeebd11",
+            "name": "Pixel Control",
+            "qty": "",
+            "specs": "Madrix 5.x"
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "4939",
@@ -2609,8 +2623,8 @@
     "title": "The Orb",
     "category": "Fixtures",
     "image": "media/Electronics/The Orb/MVIMG_20190303_010156_1 (1).webp",
-    "description": "<p><strong>Temple Nightclub | Denver</strong> - I finished an 8 ft aluminum LED sphere and ran high-current DC power over 35 ft.</p>",
-    "longDescription": "<p>The original installer walked away mid-job, leaving an 8 ft aluminum sphere sitting in 2 halves on the top-floor. 1 dome was partly covered in LED pixel modules zip-tied to the metal, with tape over the lenses and black spray paint over the rest. Masked strands lay scattered across the floor. I stripped the mess and started over.</p><p>Keeping the power supplies in the ceiling left empty space inside the frame for the 3D effect, but it meant pushing DC power across a 35 ft run. To beat the voltage drop, I installed MEAN WELL supplies with load sharing and remote sense that adjusted output voltage in real time. Every circuit stayed under 80% capacity at 100% white load. Inside the sphere, decoders handled the signal for a 3D voxel map in Madrix.</p><p>The whole rig hung from a hoist that dropped it over the crowd. Moving heavy copper without snagging required a PVC pipe with a flange mounted through the center of the orb. I spiral-wrapped 2/0 welding cables around each other and fed them down through the pipe. That guide kept the cables clean during motion and stopped the sphere from spinning as it traveled.</p><p>We finished the build for New Year's Eve 2018. People on the dance floor mostly miss it, but the surrounding VIP tiers get a clear view of the full voxel map. Every night around midnight, the hoist dropped the sphere with the headliner.</p>",
+    "description": "<p>I finished an abandoned 8-foot aluminum pixel orb project and pushed DC power down a 35-foot hoist drop.</p>",
+    "longDescription": "<p>You cannot buy an 8-foot orb built from aluminum to hold a 3D pixel array off the shelf. The original installer walked off the job, leaving the frame in two halves. One dome was covered in taped-over pixel modules and black spray paint. I stripped the mess and started over.</p><p>Keeping the power supplies in the ceiling left empty space inside the frame for the visual effect, but it meant pushing DC power across a 35-foot run. To beat the voltage drop, I installed supplies with remote sense to adjust output voltage in real time.</p><p>The whole rig hung from a hoist. Moving heavy copper without snagging required a PVC pipe flange mounted through the center. I spiral-wrapped welding cables and fed them down through the pipe. That guide kept the cables clean and stopped the sphere from spinning as it dropped to the dance floor every night.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -3091,8 +3105,8 @@
     "title": "Bar Tubes",
     "category": "Fixtures",
     "image": "media/Electronics/Bar Tubes/20240619_122306.webp",
-    "description": "<p><strong>Que Bueno Suerte! | Denver</strong> - Rebuilding an inherited array of 131 recycled fluorescent tube bundles over an operating bar required 70 universes of control and a 3D voxel map.</p>",
-    "longDescription": "<p>The vertical tubes above the main bar at Que Bueno Suerte! came with the building, and by the time I got to them, they needed serious help. The array was made of 62 four-foot and 69 eight-foot recycled fluorescent tubes hung in clusters of 3, with 60/m density LED tape running down the center. After years above a bar, the materials were brittle, and because the restaurant was open every day, I could only take down a few clusters at a time. I stood on a telescoping ladder resting on the ceiling grid (which flexed enough to make every climb interesting), lowered the clusters onto the bar, broke the old wraps, and pulled the dead strip from the center.</p><p>I kept the original pixel spacing so I wouldn't have to redesign the physical bundle, but I swapped the strip for WS2813 LEDs. The backup data line meant a single failed pixel wouldn't force another sketchy ladder climb over an open bar. Up in the custom power boxes, I gutted the original decoders, which had zero documentation, and replaced them with Advatek PixLite 16s to tie the array into the venue-wide system I installed. When I first fired the rig up, it immediately tripped breakers and blew the inline fuses. I eventually bumped the fuse rating to 7A per tube to handle the inrush, and the rig stabilized.</p><p>Because I was locked into the original 60/m density, the display takes an astronomical 35,640 channels across 70 universes to run. Once the hardware was solid, I built a 3D voxel map of the entire layout. Because the tubes hang at uneven lengths and the display isn't a straight line, clean 3D effects can get lost if you push them too hard. But isolating different zones and mapping through the depth of the room turned a partially dead, inherited fixture into the centerpiece of the bar.</p>",
+    "description": "<p>I gutted a brittle array of recycled fluorescent bundles and added backup data lines to stay off the ladder.</p>",
+    "longDescription": "<p>The array over the main bar was 131 recycled fluorescent tubes hung in clusters of three. They came with the building and needed serious help. The materials were brittle. If I wasn't locked into saving the original bundles, I would have used plastic tubes and found a better way to hang them.</p><p>Because the restaurant was open every day, I could only pull down a few clusters at a time. I stood on a telescoping ladder resting on the ceiling grid, which flexed just enough to make every climb interesting. I lowered the clusters, broke the old wraps, and pulled the dead strip from the center. I swapped the tape for WS2813 LEDs. The backup data line meant a single failed pixel wouldn't force another ladder climb. Up in the power boxes, I gutted the undocumented decoders and wired in Advatek PixLite 16 MK2s. When I first fired the rig up, the inrush current blew the inline fuses. I bumped the fuses to seven amps per tube, and the rig stabilized.</p><p>Keeping the original pixel density meant the display needed 70 universes to run. I built a 3D voxel map of the layout to push effects through the depth of the room. The tubes hang at uneven lengths, but the rebuilt bundles survived the daily grind of an open bar, and the backup data lines kept me off that flexing ceiling grid.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -3149,7 +3163,7 @@
     "timestamp": "2026-06-21T23:30:44.785Z",
     "id": "4411",
     "order": 5,
-    "specs": "<p><strong>Pixels:</strong> 11,880x WS2813 RGBW</p><p><strong>Strip:</strong> 62x 60px (4ft) · 69x 120px (8ft) · 60/m density</p><p><strong>Channels:</strong> 35,640 (70 universes sACN)</p><p><strong>Voltage:</strong> 12V DC</p><p><strong>Decoder:</strong> Advatek PixLite 16</p><p><strong>Power:</strong> 7A fused per tube · custom power boxes</p><p><strong>Control:</strong> Madrix 5.x</p>",
+    "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>Short Tubes (x62)</strong><br><em>4ft • 60px</em></p><p><strong>Long tubes (x69)</strong><br><em>8ft • 120px</em></p><h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x11880)</strong><br><em>198m • WS281x • RGB 60px/m • 5Vdc</em></p><h2>POWER &amp; DISTRIBUTION</h2><p><strong>Power Supplies (x6)</strong><br><em>5Vdc</em></p><p><strong>Pixel Decoder (x6)</strong><br><em>Advatek • PixLite 16 MK12</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>Pixel Control</strong><br><em>Madrix 5.x</em></p>",
     "related": [
       {
         "name": "Que Bueno Suerte!",
@@ -3178,7 +3192,69 @@
       "x": 30.8,
       "y": 41
     },
-    "thumbnail": "media/Electronics/Bar Tubes/20240619_122306-thumb.webp"
+    "thumbnail": "media/Electronics/Bar Tubes/20240619_122306-thumb.webp",
+    "specsData": [
+      {
+        "id": "a4d6fc6a-1532-4804-ab76-e090dcae0e0b",
+        "title": "FIXTURES & FX",
+        "items": [
+          {
+            "id": "444b756a-55a5-40de-aade-2fea8f3dc959",
+            "name": "Short Tubes",
+            "qty": "62",
+            "specs": "4ft, 60px"
+          },
+          {
+            "id": "39011a65-8dd8-48df-9de5-e9b885508ef8",
+            "name": "Long tubes",
+            "qty": "69",
+            "specs": "8ft, 120px"
+          }
+        ]
+      },
+      {
+        "id": "fc41dba2-3261-4fc1-98d5-bf6f5e7b42b7",
+        "title": "Pixels & display",
+        "items": [
+          {
+            "id": "5807c140-15a7-4338-a938-ab0fe932d253",
+            "name": "LED Pixels",
+            "qty": "11880",
+            "specs": "198m, WS281x, RGB 60px/m, 5Vdc, "
+          }
+        ]
+      },
+      {
+        "id": "cbeb5929-df93-45b5-ba4c-28381c5a6345",
+        "title": "power & distribution",
+        "items": [
+          {
+            "id": "3ac185c7-4743-4103-9d06-7c1be8fbf11d",
+            "name": "Power Supplies",
+            "qty": "6",
+            "specs": "5Vdc, "
+          },
+          {
+            "id": "5c16bebd-8873-4c71-8536-dfb03b8c3bc7",
+            "name": "Pixel Decoder",
+            "qty": "6",
+            "specs": "Advatek, PixLite 16 MK12"
+          }
+        ]
+      },
+      {
+        "id": "d1e65ded-6d58-4ff8-a09d-89cec905140d",
+        "title": "Software & stack",
+        "items": [
+          {
+            "id": "3cc40cfe-6d5a-4d3f-bb83-8bb4f2aa4fc7",
+            "name": "Pixel Control",
+            "qty": "",
+            "specs": "Madrix 5.x"
+          }
+        ]
+      }
+    ]
   },
   {
     "title": "Negative \"X\"",
@@ -4101,8 +4177,8 @@
     "title": "Dance Floor Pillars",
     "category": "Fixtures",
     "image": "media/Electronics/Dance Floor Pillars/Screenshot_20210306-180716_Photos~2.webp",
-    "description": "<p><strong>Temple Nightclub | San Francisco</strong> - I built 320 meters of custom recessed pixel tape into 10 floor-to-ceiling structural pillars on a skeleton budget.</p>",
-    "longDescription": "<p>We remodeled the main room at Temple Nightclub in San Francisco during the pandemic lockdowns with a skeleton crew and no budget. I was putting 320 meters of SM16704 RGBW (6000k) pixel tape seemingly built directly into 10 structural pillars on the dance floor. To build recessed tracks without expensive hardware, I wrapped the columns in OSB and mounted mud-in aluminum extrusions with a pneumatic nailer. I filled the remaining gaps with more board, plastered everything with drywall mud, and spent weeks on a scissor lift with an orbital sander hooked to a shop vac. Then I primed the columns, painted them flat black, and sealed the bottoms with silicone caulk.</p><p>The wiring had to survive crowd contact below and attic heat above. At the bottom of each column, thin metal tubing protected 3-conductor 18 AWG wiring from kick damage. Power injection runs went up inside the corner moldings to fight voltage drop across the 4 m strips. At the top, the lines met at a 24-pin ATX power coupler that connected to custom distribution boards above the video ceiling. Working up there meant crawling across strut channel and the backs of video panels in a 16 in gap, fighting condensation and heat while carpet blower fans pushed air toward the rear wall.</p><p>Just 2 weeks before we opened, the owner decided to flip the building entrance 180 degrees, but the main room layout held. Firing all 10 pillars from the dance floor looked like light jumping out of the concrete and vanishing into the ceiling above. Building custom distribution boards for morning hardware swaps took extra time that I would handle differently today, but the rig survived the crowds exactly as built.</p>",
+    "description": "<p>I armored ten century-old wooden columns in OSB and drywall mud to make light jump straight out of the concrete.</p>",
+    "longDescription": "<p>I needed ten floor-to-ceiling pillars of recessed pixel tape on the dance floor. The original columns were a hundred years old and made of uneven wood. I was not going to drill into structural supports, and you cannot buy a uniform enclosure that wraps a century-old beam.</p><p>I encased the columns in OSB to build a straight box. I mounted mud-in aluminum extrusions to the wood with a pneumatic nailer, then filled the gaps with more board. I plastered everything with drywall mud. That meant spending weeks on a scissor lift with an orbital sander hooked to a shop vac. I primed the columns and painted them flat black. Firing the 320 meters of tape made it look like light was jumping straight out of the concrete.</p><p>The wiring had to survive a nightclub dance floor. I sealed the bottoms with silicone caulk and ran the base wiring through thin metal tubing to protect it from kick damage. To fight voltage drop across the four-meter strips, power injection lines hid inside the corner moldings. The pillars took the crowd abuse exactly as built.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -4442,7 +4518,7 @@
       }
     ],
     "files": [],
-    "specs": "<p><strong>Control:</strong> Madrix 5.x</p><p><strong>Fixtures:</strong> (80) 4m</p><p><strong>LED: </strong>5050 RGBW (6000k)</p><p><strong>Pixel Driver:</strong> SM16704</p><p><strong>Pixel Size: </strong>3 LEDs</p><p><strong>LED Spacing: </strong>60/m</p><p><strong>Pixel Voltage: </strong>12vdc</p><p><strong>Decoder Tx: </strong>(2) Advatek PixLite 16 Long Range MK2</p><p><strong>Decoder Rx: </strong>(10) Advatek PixLite Long Range Receiver</p><p><strong>Power:</strong> (10) MEAN WELL 50a,12vdc</p>",
+    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x6400)</strong><br><em>320m • SM16704 • RGBW (6000k) • 20px/m • 12Vdc</em></p><h2>POWER &amp; DISTRIBUTION</h2><p><strong>Power Supplies (x10)</strong><br><em>MEAN WELL • 12Vdc • 50A</em></p><p><strong>Pixel Decoder (x2)</strong><br><em>Advatek • PixLite 16 Long Range MK2</em></p><p><strong>Pixel Receiver (x10)</strong><br><em>Advatek • PixLite Long Range Receiver</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>Mud-In Extrusion ( flat ) (x40)</strong><br><em>4m • flush • drywall mud-in • opal diffusion</em></p><p><strong>Mud-In Extrusion ( corner ) (x40)</strong><br><em>4m • flush • drywall mud-in • opal diffusion</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>Pixel Control</strong><br><em>Madrix 5.x</em></p>",
     "related": [
       {
         "name": "Extrusion Center Sled",
@@ -4471,14 +4547,82 @@
       "x": 50.4,
       "y": 55.7
     },
-    "thumbnail": "media/Electronics/Dance Floor Pillars/Screenshot_20210306-180716_Photos~2-thumb.webp"
+    "thumbnail": "media/Electronics/Dance Floor Pillars/Screenshot_20210306-180716_Photos~2-thumb.webp",
+    "specsData": [
+      {
+        "id": "dad0f335-04ea-4841-9848-9a7d9f0c86fd",
+        "title": "Pixels & display",
+        "items": [
+          {
+            "id": "bbc56ba3-274f-42fe-82d7-81e04f104f11",
+            "name": "LED Pixels",
+            "qty": "6400",
+            "specs": "320m, SM16704, RGBW (6000k), 20px/m, 12Vdc, "
+          }
+        ]
+      },
+      {
+        "id": "08aa8e42-9fc4-4404-b662-ce25d90de22f",
+        "title": "power & distribution",
+        "items": [
+          {
+            "id": "82024af1-2b73-4b85-9873-33dba42a5802",
+            "name": "Power Supplies",
+            "qty": "10",
+            "specs": "MEAN WELL, 12Vdc, 50A"
+          },
+          {
+            "id": "6cdbfef8-1ed8-4de8-9d01-690d3531eebd",
+            "name": "Pixel Decoder",
+            "qty": "2",
+            "specs": "Advatek, PixLite 16 Long Range MK2"
+          },
+          {
+            "id": "16dbc46f-8612-47ac-beb2-8976755aa8b4",
+            "name": "Pixel Receiver",
+            "qty": "10",
+            "specs": "Advatek, PixLite Long Range Receiver"
+          }
+        ]
+      },
+      {
+        "id": "b4d8a265-f57a-42f6-8760-62ae13ac5e3e",
+        "title": "Fabrication & Materials",
+        "items": [
+          {
+            "id": "7f65aacb-0522-4afb-a7ae-6afc08f477aa",
+            "name": "Mud-In Extrusion ( flat )",
+            "qty": "40",
+            "specs": "4m, flush, drywall mud-in, opal diffusion"
+          },
+          {
+            "id": "7a09a9e4-5cae-4474-a563-51f87bc07c67",
+            "name": "Mud-In Extrusion ( corner )",
+            "qty": "40",
+            "specs": "4m, flush, drywall mud-in, opal diffusion"
+          }
+        ]
+      },
+      {
+        "id": "4c8f95ba-d365-42a2-8248-2949f7991c87",
+        "title": "Software & stack",
+        "items": [
+          {
+            "id": "c50b9f55-4aa8-4b45-9ee4-e258c2cc4500",
+            "name": "Pixel Control",
+            "qty": "",
+            "specs": "Madrix 5.x"
+          }
+        ]
+      }
+    ]
   },
   {
     "title": "Pixel Louver Lights",
     "category": "Fixtures",
     "image": "media/Electronics/Pixel Louver Lights/20240322_115100.webp",
-    "description": "<p>96 3D-printed louver fixtures that illuminate 48 bar cubbies without shining raw RGB pixels at patrons.</p>",
-    "longDescription": "<p>The bar display at Que Bueno Suerte! has 48 cubbies arranged in 4 sets of 3x4. I needed a way to light the bottles from the front corners without blinding patrons walking past the shelves. Using Solidworks, I modeled louver fixtures and printed 96 of them across a Bambu labs X1C and a P1P. Each unit houses 12 WS2815 RGB pixels and mounts to the metal shelf with double-sided tape for simple servicing.</p><p>Getting the slide-in backing to fit required several revisions. Solder splices along the LED tape cause height variations that block the backing from sliding into place, so I cut the tape to avoid the splices entirely. I also added zip ties to hold the wiring. They act as strain relief so hanging cables never rip the solder pads off the strips.</p><p>Because the bottles sit on dry shelves, I installed non-waterproof strips. That caused problems later on. During dancing nights, patrons set drinks on the cubbies, and spills corroded and shorted the pixel strips inside the fixtures. Even with a redundant data line, a fried strip stops working, so I had to pull the dead units and replace the tape.</p><p>Running the strips into the shelves creates a 3D voxel display that sweeps light across the glass from every angle. This was the first time I designed and manufactured a 3D-printed pixel fixture for a live rig.</p>",
+    "description": "<p>I printed 96 corner extrusions to hide the raw pixels, then watched spilled drinks short out the electronics.</p>",
+    "longDescription": "<p>I needed to light 48 bar cubbies from the front corners without blasting raw RGB pixels into people's eyes. I have never seen a commercial LED channel with louvers, let alone a corner extrusion built for illumination. I modeled one in SolidWorks and printed 96 of them.</p><p>Getting the slide-in backing to fit took a few tries. Factory solder splices on the LED tape created bumps that jammed the plastic. I had to cut the tape strictly between splices to keep it flat. I also added internal zip ties so hanging wires wouldn't rip the solder pads off the strips.</p><p>Since the shelves were supposed to stay dry, I used non-waterproof tape. That was a mistake. On busy nights, people set drinks in the cubbies. Spills pooled in the corners, corroded the strips, and shorted them out. If I make these again, I am elevating the electronics off the deck and using waterproof tape.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -4543,7 +4687,7 @@
         "description": "ZIP containing STL files for the pixel louver lights I designed and installed at Que Bueno Suerte! specifically for the curved liquor display install."
       }
     ],
-    "specs": "",
+    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x12)</strong><br><em>0.2m • WS2815 • RGB • 60px/m • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>BambuLabs • X1C • P1P</em></p><p><strong>PLA+ (Black)</strong><br><em>3 piece assembly</em></p><p><strong>Zipties (x2)</strong><br><em>Mini</em></p><p><strong>Hook-up Wire</strong><br><em>18awg</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>CAD</strong><br><em>SolidWorks 2022</em></p>",
     "related": [
       {
         "name": "Bottle shelf",
@@ -4565,7 +4709,62 @@
       "y": 40.8
     },
     "thumbnail": "media/Electronics/Pixel Louver Lights/20240322_115100-thumb.webp",
-    "specsData": []
+    "specsData": [
+      {
+        "id": "1cb3620c-8933-4ee8-bc37-e23c521282aa",
+        "title": "Pixels & display",
+        "items": [
+          {
+            "id": "302af920-5e88-43c5-8b66-b46454de298e",
+            "name": "LED Pixels",
+            "qty": "12",
+            "specs": "0.2m, WS2815, RGB, 60px/m, 12Vdc, "
+          }
+        ]
+      },
+      {
+        "id": "bebac490-6699-4056-84b8-c1e504fbcdde",
+        "title": "Fabrication & Materials",
+        "items": [
+          {
+            "id": "5992b5df-11f0-4f8b-bf05-75737be4204b",
+            "name": "3D Printer",
+            "qty": "",
+            "specs": "BambuLabs, X1C, P1P"
+          },
+          {
+            "id": "fb8fce1c-dc12-445d-8c41-1cdb2c6a78e5",
+            "name": "PLA+ (Black)",
+            "qty": "",
+            "specs": "3 piece assembly"
+          },
+          {
+            "id": "c406b472-7d39-493f-a8e3-9586c0858a24",
+            "name": "Zipties",
+            "qty": "2",
+            "specs": "Mini"
+          },
+          {
+            "id": "ce8a574b-2d40-4453-9be3-021e3415410a",
+            "name": "Hook-up Wire",
+            "qty": "",
+            "specs": "18awg"
+          }
+        ]
+      },
+      {
+        "id": "89a1d670-470d-4d7d-96ba-c57eb4268343",
+        "title": "SOFTWARE & STACK",
+        "items": [
+          {
+            "id": "4860b126-f1f4-4eaa-98ce-4c99bc6745dc",
+            "name": "CAD",
+            "qty": "",
+            "specs": "SolidWorks 2022"
+          }
+        ]
+      }
+    ]
   },
   {
     "title": "Blackout Ceiling Tubes",
@@ -5075,8 +5274,8 @@
       "x": 24.3,
       "y": 62.6
     },
-    "description": "<p><strong>Temple Nightclub | San Francisco </strong>- I found thousands of dollars of buried 24V LED strip under a staircase during lockdown and turned it into a 1:1 pixel grid for the mezzanine.</p>",
-    "longDescription": "<p>During the COVID-19 lockdown at Temple SF, we had time on our hands and scoured the building. Back in an overflowing hallway, inside a cubby under some stairs, I found several boxes of brand new, 20m long, 24V waterproof LED strips from Environmental Lighting left over from the original install. I also found the rigid mounting track. It was thousands of dollars of high-end product buried in the bowels of the club, meant to replace a single dead strand of pixels at the bottom of the long glass mezzanine wall. I gathered enough salvaged Madrix Nebula decoders and power supplies to build a proper installation.</p><p>The glass panels were around 100 pounds each. I bought industrial suction cups, used body mechanics to get them over the lip, and walked them out by the corners to expose a five-inch working gap. I shot a laser level across the far wall to set the rigid track, then calculated the physical length of a single pixel on the strips. I set the vertical spacing between the tracks to match that measurement exactly, building a 1:1 pixel grid that ran in one continuous shot across the raised VIP area.</p><p>Even with 24V strips and thick power rails, voltage drop over a 20m run is inevitable. When I ran all channels at full white, the strips gradually tinted red toward the far end. I countered this by running an 18AWG power injection wire across the top of the channels to the opposite end, and tied the DC- lines together across the silent, waterproof power supplies and two Nebulas behind the far glass panel.</p><p>When we powered it up, the wall mapped cleanly into the main room programming and transformed the mezzanine. But it immediately created an operational problem: because the venue never fixed the house lighting in that area, our pixel wall was the primary light source for VIP. When the main dancefloor system hit a master blackout, the lounge plunged into pitch black, generating immediate complaints from people trying to drink. We ended up having to isolate the mezzanine wall to ignore master blackouts entirely.</p>",
+    "description": "<p>I walked hundred-pound glass panels out with suction cups to fit a salvaged pixel grid into a five-inch gap.</p>",
+    "longDescription": "<p>You can't buy a pixel grid perfectly sized for a glass mezzanine wall. I built this one from salvaged parts. I found boxes of 24V waterproof LED strips buried under some stairs during lockdown. It was thousands of dollars of high-end product meant to replace a single dead strand. I gathered enough leftover Madrix Nebula decoders and power supplies to build a proper installation.</p><p>The glass panels weighed 100 pounds each. I bought industrial suction cups, got them over the lip, and walked them out by the corners to expose a five-inch working gap. I shot a laser level across the wall to set the rigid track, calculated the physical length of a single pixel, and set the vertical spacing to match exactly.</p><p>Voltage drop over a 20-meter run is inevitable. When I ran all channels at full white, the far end tinted red. I countered this by running an 18AWG power injection wire to the opposite end, tying the DC lines together across the power supplies behind the last panel. The wall mapped cleanly, but it hit an operational reality. The venue never fixed the house lighting in that area, making our grid the primary light source for VIP. When the dancefloor hit a master blackout, the lounge plunged into pitch black. We had to isolate the mezzanine to ignore blackouts entirely so people could see their drinks.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
