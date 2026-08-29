@@ -6119,8 +6119,8 @@
       "x": 48.2,
       "y": 34.6
     },
-    "description": "<p>A 55 gal fluid distribution system feeding 6 inverted fog jets to bypass strict city CO2 permits.</p>",
-    "longDescription": "<p>Denver had become strict with CO2 permits following the local increase in grow houses. Securing clearance for a cryo system inside a venue was legally impossible. The client still wanted a massive atmospheric effect for the stage. I adapted 6 Antari fog jets using quick dissipating fluid to simulate the cold blast.</p><p>The venue had 16 ft ceilings, so staff couldn't reach them for manual fluid fills. I installed an Antari fluid distribution system using a 55 gal drum in the dressing room. 2 ground pumps pushed fluid up to 2 header tanks in the ceiling, which then fed 3 jets each. The 1500W jets required new dedicated circuits and remote booth switches. The units lacked a built in way to hang upside down. I built adjustable mounts using strut channel L-brackets and bolted them directly to the existing ceiling grid.</p><p>During the initial power up, 1 header tank immediately started pouring fluid from the ceiling. A factory float valve was wired backward, signaling the pump to continue filling an overflowing tank. I caught the leak quick and pulled the tank down to wait for a replacement part.</p><p>I patched the rig into their Chamsys console. The RGBA wash LEDs built into the jets colored the blast and successfully sold the cryo illusion. It worked exactly as intended mechanically, but the vapor condensed on the metal stage poles. The steel became incredibly slick, and the only remaining option was for the staff to wipe the poles down between sets.</p>",
+    "description": "<p>I pumped 55 gallons of fluid into the ceiling to fake a cryo blast, but the poles got slick.</p>",
+    "longDescription": "<p>After Denver cracked down on CO2 permits, securing clearance for an indoor cryo system became legally impossible. I adapted six Antari fog jets using fast dissipating fluid to simulate the massive cold blast the client wanted. With 16ft ceilings, staff couldn't reach them for manual refills. I set up a 55 gallon drum in the dressing room. Two ground pumps pushed fluid to two header tanks in the ceiling, feeding three jets each.</p><p>The 30 pound jets lacked a built in way to hang upside down. I built adjustable mounts using strut channel L-brackets and bolted them to the ceiling grid from a scissor lift. They required new dedicated circuits and remote booth switches. During the initial power up, one header tank started pouring fluid from the ceiling. A factory float valve was wired backward, signaling the pump to continue filling an overflowing tank. I sprinted to the dressing room to kill the power, then pulled the tank down for a replacement.</p><p>I patched the rig into their ChamSys console. The wash LEDs built into the jets colored the blast and sold the cryo illusion. It worked exactly as intended mechanically, but the vapor condensed on the stage poles. The steel became incredibly slick. The dancers commented, and the only remaining option was for the staff to wipe the poles down between sets.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -6221,13 +6221,45 @@
       }
     ],
     "files": [],
-    "specs": "<p>(6) Antari M7-X RGBA</p><p>(2) LCU-2S Liquid Supply System</p><p>(1) 55GAL FLC-200</p>",
+    "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>Fog Jet (x6)</strong><br><em>Antari • M7-X RGBA • 1516W • 200ml/m max</em></p><p><strong>Liquid Supply System (x2)</strong><br><em>Antari • LCU-2S • 3 output</em></p><h2>CONSUMABLES</h2><p><strong>Fog Fluid (x1)</strong><br><em>Antari • FLC-200 • 55gal</em></p>",
     "related": [],
     "video": "",
     "timestamp": "2026-08-09T23:05:35.692Z",
     "id": "6654",
     "order": 11,
-    "thumbnail": "media/Lighting/Remote Fill Fog Jets/frame-thumb-1786744075304-thumb.webp"
+    "thumbnail": "media/Lighting/Remote Fill Fog Jets/frame-thumb-1786744075304-thumb.webp",
+    "specsData": [
+      {
+        "id": "b49f0444-1c55-4782-b1dd-2cf4439b3e9a",
+        "title": "FIXTURES & FX",
+        "items": [
+          {
+            "id": "958ebd3f-16be-4298-96ae-79c1c8ca9315",
+            "name": "Fog Jet",
+            "qty": "6",
+            "specs": "Antari, M7-X RGBA, 1516W, 200ml/m max"
+          },
+          {
+            "id": "ac638336-7be8-444b-b8d7-5be95f9f0371",
+            "name": "Liquid Supply System",
+            "qty": "2",
+            "specs": "Antari, LCU-2S, 3 output"
+          }
+        ]
+      },
+      {
+        "id": "8cd124ff-ab3c-4f82-83e9-cb18247e0315",
+        "title": "Consumables",
+        "items": [
+          {
+            "id": "7f432cc4-ef36-49b0-bdd3-d70c1559ca50",
+            "name": "Fog Fluid",
+            "qty": "1",
+            "specs": "Antari, FLC-200, 55gal"
+          }
+        ]
+      }
+    ]
   },
   {
     "title": "Alabaster Bar Top",
@@ -6990,8 +7022,8 @@
       "x": 45.4,
       "y": 25.4
     },
-    "description": "<p>I upgraded the dance floor lighting at Glow Lounge on an 8ft ceiling around a fixed art installation.</p>",
-    "longDescription": "<p>Glow Lounge wanted more energy on their dance floor. Budget was the primary constraint. The room had an 8 ft ceiling, and 3 art panels hung angled over the floor. A community member painted them with UV paint before he passed away, so they could not be moved. I scrapped my initial pixel designs to keep costs down. After pulling down the existing rig, I cleaned the usable units and mapped a new layout around the art.</p><p>I found a few open spots and mounted 5 ft strut channels to the ceiling. Four RGBW pixel dot beams went onto each bar, finished with a reused hybrid fixture on the end. I added 2 new B6 FX wash lights flanking the DJ and 2 at the back of the room. I relocated the existing mirror balls into a symmetrical pattern. The centerpiece was a rotating mannequin torso covered entirely in small mirrors.</p><p>The fixtures did not cooperate immediately. The new B6 washes sometimes got stuck while panning. I had to repair a couple of them multiple times to keep them operating correctly.</p><p>The system ran off a Wolfmix WMX1 controller. I narrowed the B6 washes into beams and aimed them at the mirror balls and the spinning torso. The reflection scattered light across the low room and the dance floor.</p>",
+    "description": "<p>I tucked salvaged fixtures between fixed memorial art panels and bounced tight beams off a mirrored torso.</p>",
+    "longDescription": "<p>The ceiling at Glow Lounge was 8 feet high. Three art panels hung over the dance floor. A community member painted them with UV paint before he passed away, so they stayed put. I scrapped my plan for pixel strips to save money and pulled down the old rig. The fixtures were gross. Dust choked the fans until they stopped spinning, causing the lights to overheat and thermal cycle. I scrubbed the salvageable units and mapped a new layout around the art.</p><p>Every inch mattered. I mounted strut channels flush to the drywall and bolted them into the joists. I tucked short beam fixtures between the panels and pushed the taller lights to the edges. I bundled the cables along the channel and balanced the rig on 2 circuits. I hung new wash lights next to the DJ, but they got stuck while panning. The metal frames bent during transport and rubbed against the housing. I just bent the yokes back by hand.</p><p>A spinning torso covered in mirrors hung over the floor. I built the show on a Wolfmix WMX1 controller. I could narrow the wash fixtures into tight beams and aim them at the torso and the mirror balls. The light shot across the room just above the crowd. If a patron was exceptionally tall, they would likely get hit in the face. The scattered reflection filled the room, us. It felt compact and balanced.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -7099,12 +7131,50 @@
       }
     ],
     "files": [],
-    "specs": "<p><strong>Controller: </strong>WolfMix WMX1</p><p><strong>Lighting:</strong> (8) PixelDot . (4) B6 FX . (2) Intimidator Hybrid</p>",
+    "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>Beam (x8)</strong><br><em>ColorfulLighting • PD60 • LED • beam 4° • 60W • RGBW • infinite pan &amp; tilt</em></p><p><strong>Beye (x4)</strong><br><em>ColorfulLighting • B6 • LED • wash + FX hybrid • 240W • RGBW</em></p><p><strong>Hybrid (x2)</strong><br><em>Chauvet • Intimidator Hybrid</em></p><h2>COMPUTE &amp; CONTROL</h2><p><strong>Lighting Console (x1)</strong><br><em>WOLFMIX WMX1 • 1u unlocked</em></p>",
     "related": [],
     "video": "",
     "timestamp": "2026-08-14T22:12:34.696Z",
     "id": "3309",
-    "order": 10
+    "order": 10,
+    "specsData": [
+      {
+        "id": "27d573e7-38bd-4778-9512-591f50d76a13",
+        "title": "FIXTURES & FX",
+        "items": [
+          {
+            "id": "28a35fd9-74b9-41cf-8e29-f62051c22fbd",
+            "name": "Beam",
+            "qty": "8",
+            "specs": "ColorfulLighting, PD60, LED, beam 4°, 60W, RGBW, infinite pan & tilt "
+          },
+          {
+            "id": "f1130102-946e-4416-be80-c474cfccd3f9",
+            "name": "Beye",
+            "qty": "4",
+            "specs": "ColorfulLighting, B6, LED, wash + FX hybrid, 240W, RGBW"
+          },
+          {
+            "id": "822959ea-e0bc-4e00-a24d-5de09436b3a8",
+            "name": "Hybrid",
+            "qty": "2",
+            "specs": "Chauvet, Intimidator Hybrid"
+          }
+        ]
+      },
+      {
+        "id": "b458cc90-e634-4fc3-b7de-84c0f67b2ce1",
+        "title": "COMPUTE & CONTROL",
+        "items": [
+          {
+            "id": "35d316c1-7ca4-4d8f-9f1d-28178fe5ca60",
+            "name": "Lighting Console",
+            "qty": "1",
+            "specs": "WOLFMIX WMX1, 1u unlocked"
+          }
+        ]
+      }
+    ]
   },
   {
     "title": "Mezzanine Bar",

@@ -61,14 +61,14 @@
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen relative">
 
-  <div id="loadingOverlay" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm">
+  <div id="loadingOverlay" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70">
       <div class="bg-white p-6 rounded-xl shadow-2xl flex items-center gap-4 animate-bounce">
           <div class="w-6 h-6 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
           <span id="loadingText" class="font-bold text-slate-700 text-lg">Saving Changes...</span>
       </div>
   </div>
 
-  <div id="aiBusyOverlay" class="hidden fixed inset-0 z-[90] flex items-center justify-center bg-black/50 backdrop-blur-sm" role="status" aria-live="polite" aria-busy="true">
+  <div id="aiBusyOverlay" class="hidden fixed inset-0 z-[90] flex items-center justify-center bg-black/50" role="status" aria-live="polite" aria-busy="true">
       <div class="bg-white p-6 rounded-xl shadow-2xl flex items-center gap-4">
           <div class="w-6 h-6 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
           <span id="aiBusyText" class="font-bold text-slate-700 text-lg">Working…</span>
@@ -400,7 +400,7 @@
   </div>
 
   <!-- Unsaved Changes Modal -->
-  <div id="unsavedModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center backdrop-blur-sm p-4">
+  <div id="unsavedModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
     <div class="bg-white rounded-xl shadow-2xl p-6 max-w-sm w-full mx-4">
         <h3 class="text-lg font-bold text-slate-800 mb-2">Unsaved Changes</h3>
         <p class="text-sm text-slate-600 mb-6">You have unsaved changes. What would you like to do?</p>
@@ -413,7 +413,7 @@
   </div>
 
   <!-- Publish Modal -->
-  <div id="publishModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center backdrop-blur-sm p-4">
+  <div id="publishModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
       <div class="bg-white rounded-xl shadow-2xl p-6 max-w-2xl w-full flex flex-col h-[80vh]">
           <div class="flex justify-between items-center mb-4">
               <h2 class="text-xl font-bold text-slate-800">Website Published!</h2>
@@ -2849,7 +2849,7 @@
     })();
   </script>
   <!-- COPY SPECS MODAL -->
-  <div id="copy-specs-modal" class="hidden fixed inset-0 bg-black/60 z-[60] flex items-center justify-center backdrop-blur-sm p-4" onclick="if(event.target===this)closeCopySpecsModal()">
+  <div id="copy-specs-modal" class="hidden fixed inset-0 bg-black/60 z-[60] flex items-center justify-center p-4" onclick="if(event.target===this)closeCopySpecsModal()">
     <div class="bg-white rounded-xl shadow-2xl w-full flex flex-col overflow-hidden" style="max-width:520px;max-height:90vh;">
       <div class="flex justify-between items-start p-6 pb-3 flex-shrink-0">
         <div>
@@ -2875,7 +2875,7 @@
     </div>
   </div>
   <!-- CROP MODAL -->
-  <div id="crop-modal" class="hidden fixed inset-0 bg-black/60 z-[60] flex items-center justify-center backdrop-blur-sm p-4">
+  <div id="crop-modal" class="hidden fixed inset-0 bg-black/60 z-[60] flex items-center justify-center p-4">
     <div class="bg-white rounded-xl shadow-2xl p-6 w-full flex flex-col gap-4" style="max-width:640px;">
       <div class="flex justify-between items-start">
         <div>
@@ -2923,7 +2923,7 @@
     </div>
   </div>
   <!-- VIDEO PREVIEW MODAL -->
-  <div id="video-preview-modal" class="hidden fixed inset-0 bg-black/80 z-[70] flex items-center justify-center backdrop-blur-sm p-4" onclick="if(event.target===this)closeVideoPreview()">
+  <div id="video-preview-modal" class="hidden fixed inset-0 bg-black/80 z-[70] flex items-center justify-center p-4" onclick="if(event.target===this)closeVideoPreview()">
     <div class="bg-zinc-900 rounded-xl shadow-2xl flex flex-col overflow-hidden" style="max-width:900px;width:100%;max-height:90vh;">
       <div class="flex justify-between items-center px-4 py-3 border-b border-zinc-700 flex-shrink-0">
         <h2 class="text-sm font-bold text-white">Video Preview</h2>
@@ -2941,7 +2941,7 @@
     </div>
   </div>
   <!-- VIDEO AUDIO PROMPT -->
-  <div id="video-audio-modal" class="hidden fixed inset-0 z-[80] bg-black/50 flex items-center justify-center backdrop-blur-sm p-4" role="dialog" aria-modal="true" aria-labelledby="video-audio-title" onclick="if(event.target===this)closeVideoAudioPrompt()">
+  <div id="video-audio-modal" class="hidden fixed inset-0 z-[80] bg-black/50 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="video-audio-title" onclick="if(event.target===this)closeVideoAudioPrompt()">
     <div class="bg-white rounded-xl shadow-2xl p-6 max-w-sm w-full" onclick="event.stopPropagation()">
       <h2 id="video-audio-title" class="text-lg font-bold text-slate-800 mb-2">Include audio?</h2>
       <p class="text-sm text-slate-600 mb-6">Include audio on the files being uploaded?</p>
@@ -2954,7 +2954,7 @@
   </div>
 
   <!-- GEMINI COPY INTERVIEW MODAL -->
-  <div id="gemini-copy-modal" class="hidden fixed inset-0 z-[85] bg-black/50 items-center justify-center backdrop-blur-sm p-4" role="dialog" aria-modal="true" aria-labelledby="gemini-copy-title">
+  <div id="gemini-copy-modal" class="hidden fixed inset-0 z-[85] bg-black/50 items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="gemini-copy-title">
     <div class="bg-white rounded-xl shadow-2xl p-6 max-w-lg w-full max-h-[90vh] overflow-y-auto flex flex-col" onclick="event.stopPropagation()">
       <div class="flex justify-between items-start mb-4">
         <div>
@@ -2993,7 +2993,7 @@
   </div>
 
   <!-- GEMINI SETTINGS MODAL -->
-  <div id="gemini-settings-modal" class="hidden fixed inset-0 z-[80] bg-black/50 items-center justify-center backdrop-blur-sm p-4" role="dialog" aria-modal="true" aria-labelledby="gemini-settings-title">
+  <div id="gemini-settings-modal" class="hidden fixed inset-0 z-[80] bg-black/50 items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="gemini-settings-title">
     <div class="bg-white rounded-xl shadow-2xl p-6 max-w-lg w-full max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
       <div class="flex justify-between items-start mb-6">
         <div>
