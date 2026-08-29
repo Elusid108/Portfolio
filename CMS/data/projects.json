@@ -7690,8 +7690,8 @@
       "x": 50,
       "y": 27.7
     },
-    "description": "<p>Placeholder</p>",
-    "longDescription": "<p>Placeholder</p>",
+    "description": "<p>I fused spheres together to print a mask where no internal overhang could create a dark pocket.</p>",
+    "longDescription": "<p>I wanted to see a cluster of overlapping, organic shapes lit from behind. Bubblescape is a 3D-printed light piece built over a 16 x 16 pixel LED pixel matrix. Before this, I generated my internal structures in SolidWorks. But these shapes were too organic, which forced me to bring Blender into my workflow. I just took spheres of different sizes and fused them together.</p><p>The print used three materials: black for the mask, white to bounce light, and clear for diffusion. The internal geometry was a step up in complexity. The rule for these is maintaining an even internal grid. You can't let the pixels get close enough to the face to cause a hotspot. I also had to make sure there were no overhangs in the model. Any overhang creates a dark pocket that the matrix underneath can never reach.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -7920,8 +7920,8 @@
       "x": 50,
       "y": 36.3
     },
-    "description": "<p>Placeholder</p>",
-    "longDescription": "<p>Placeholder</p>",
+    "description": "<p>I scanned my first clay sculpture and forced the rough shell to map to a rigid pixel grid.</p>",
+    "longDescription": "<p>I wanted to capture something rough and abstract. Clay Face is a 3D-printed LED matrix based on my first attempt at hand-sculpting. I shaped the original mask out of white modeling clay, keeping the geometry basic enough to eventually hold an internal grid.</p><p>Then I scanned it with a RevoPop hand scanner. The scan refused to cooperate. I kept getting holes in the mesh that I struggled to fill, and the model lacked the vertical height at the base to fit the hardware. I ended up doing a low-poly pass on the scan just to force a closed shape.</p><p>Once I had a solid model, I pulled it into Blender. I built out the internal subdivision to isolate the light from 256 pixels. The fabrication rule was strict: the organic, rough exterior had to map perfectly to a rigid 16 by 16 grid of black structural walls and white diffusion layers inside.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -8283,8 +8283,8 @@
       "x": 50.2,
       "y": 21.4
     },
-    "description": "<p>Placeholder</p>",
-    "longDescription": "<p>Placeholder</p>",
+    "description": "<p>Making a human expression read on a low-resolution matrix meant dialing in the exact thickness of white plastic.</p>",
+    "longDescription": "<p>I wanted to map a human face onto a 16x16 LED matrix. It was one of the first ideas I had when I started making internally subdivided 3D prints. Face is a physical matrix that uses black plastic to mask light and white plastic to bounce and diffuse it.</p><p>I waited a few years to actually build it. My old printers could not handle the job. The surface came out too rough to read as a face, and I could not get the material thickness right. The machines also refused to print the white-lined walls I needed for internal bounce.</p><p>I shelved the idea until I had the hardware to print it properly. A newer machine solved the surface finish. I printed the mask and borders in black, and used white for the diffusion. Dialing in the exact thickness of that white layer was the rule that finally made the face readable.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
