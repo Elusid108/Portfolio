@@ -1913,7 +1913,12 @@
     "video": "",
     "order": 2,
     "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>Short Tubes (x4)</strong><br><em>2x UCS1903 strand (23m) • clear lens • 6 LED • RGB • 5px/m • 24Vdc • 115px</em></p><p><strong>Long Tubes (x4)</strong><br><em>2x UCS1903 strand (30m) • clear lens • 6 LED • RGB • 5px/m • 24Vdc • 150px</em></p><h2>POWER &amp; DISTRIBUTION</h2><p><strong>Power Supply (x16)</strong><br><em>MEAN WELL • HLG-240H-24 • 24Vdc • 10A</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x16)</strong><br><em>Athom • LS4P-WLED-LA • WLED</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>Pixel Mapping</strong><br><em>Resolume Arena</em></p>",
-    "related": [],
+    "related": [
+      {
+        "name": "Tracks Discotheque",
+        "url": "#project/3671"
+      }
+    ],
     "thumbnailFit": {
       "scale": 1.4,
       "x": 56.3,
@@ -6879,6 +6884,10 @@
       {
         "name": "Lobby Wall",
         "url": "#project/7590"
+      },
+      {
+        "name": "Inflatable Tubes",
+        "url": "#project/8787"
       }
     ],
     "video": "",
@@ -8248,69 +8257,6 @@
         ]
       }
     ]
-  },
-  {
-    "title": "Bubblescape",
-    "category": "Sculpture",
-    "image": "media/Art/Bubblescape/frame-thumb-1786909172165.webp",
-    "thumbnail": "media/Art/Bubblescape/frame-thumb-1786909172165-thumb.webp",
-    "thumbnailFit": {
-      "scale": 1,
-      "x": 50,
-      "y": 27.8
-    },
-    "bannerFit": {
-      "scale": 1,
-      "x": 50,
-      "y": 24.3
-    },
-    "description": "<p>Placeholder</p>",
-    "longDescription": "<p>Placeholder</p>",
-    "websiteLink": "",
-    "launchLink": "",
-    "githubLink": "",
-    "shopLink": "",
-    "featured": false,
-    "wip": false,
-    "tags": [
-      "Blender",
-      "Custom Fabrication",
-      "Embedded Systems",
-      "ESP8266",
-      "FDM 3D Printing",
-      "Lighting Design",
-      "Pixel Mapping",
-      "Rapid Prototyping",
-      "SPI",
-      "Wire-to-Board Soldering",
-      "WLED"
-    ],
-    "gallery": [
-      {
-        "url": "media/Art/Bubblescape/20230808_072127~3.mp4",
-        "fit": {
-          "scale": 1,
-          "x": 49.8,
-          "y": 30.3
-        },
-        "poster": "media/Art/Bubblescape/frame-thumb-1786909172165.webp",
-        "thumbnail": "media/Art/Bubblescape/frame-thumb-1786909172165-thumb.webp"
-      }
-    ],
-    "files": [],
-    "specsData": [
-      {
-        "id": "796e3c74-9989-41d9-80b0-672f73312765",
-        "title": "Placeholder",
-        "items": []
-      }
-    ],
-    "specs": "<h2>PLACEHOLDER</h2>",
-    "related": [],
-    "video": "",
-    "timestamp": "2026-08-16T19:42:16.340Z",
-    "id": 7131,
-    "order": 0
   },
   {
     "title": "Bubblescape",
