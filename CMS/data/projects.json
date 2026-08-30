@@ -4817,7 +4817,7 @@
         "description": "ZIP containing STL files for the pixel louver lights I designed and installed at Que Bueno Suerte! specifically for the curved liquor display install."
       }
     ],
-    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x12)</strong><br><em>0.2m • WS2815 • RGB • 60px/m • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>BambuLabs • X1C • P1P</em></p><p><strong>PLA+ (Black)</strong><br><em>3 piece assembly</em></p><p><strong>Zipties (x2)</strong><br><em>Mini</em></p><p><strong>Hook-up Wire</strong><br><em>18awg</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>CAD</strong><br><em>SolidWorks 2022</em></p>",
+    "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>Pixel Louver Light (x96)</strong><br><em>12px • 0.2m</em></p><h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x1152)</strong><br><em>230.4m • WS2815 • RGB • 60px/m • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>BambuLabs • X1C • P1P</em></p><p><strong>PLA+ (Black)</strong><br><em>3 piece assembly</em></p><p><strong>Zipties (x2)</strong><br><em>Mini</em></p><p><strong>Hook-up Wire</strong><br><em>18awg</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>CAD</strong><br><em>SolidWorks 2022</em></p>",
     "related": [
       {
         "name": "Bottle shelf",
@@ -4841,14 +4841,26 @@
     "thumbnail": "media/Electronics/Pixel Louver Lights/20240322_115100-thumb.webp",
     "specsData": [
       {
+        "id": "f54da86a-4fe1-44b2-bd2b-5eb659821c68",
+        "title": "FIXTURES & FX",
+        "items": [
+          {
+            "id": "b5dc4ce7-2226-42e6-b051-722a12363dc5",
+            "name": "Pixel Louver Light",
+            "qty": "96",
+            "specs": "12px, 0.2m"
+          }
+        ]
+      },
+      {
         "id": "1cb3620c-8933-4ee8-bc37-e23c521282aa",
         "title": "Pixels & display",
         "items": [
           {
             "id": "302af920-5e88-43c5-8b66-b46454de298e",
             "name": "LED Pixels",
-            "qty": "12",
-            "specs": "0.2m, WS2815, RGB, 60px/m, 12Vdc, "
+            "qty": "1152",
+            "specs": "230.4m, WS2815, RGB, 60px/m, 12Vdc, "
           }
         ]
       },
