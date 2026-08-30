@@ -3758,8 +3758,8 @@
     "title": "Lobby Wall",
     "category": "Fixtures",
     "image": "media/Electronics/Lobby Wall/0321151647.webp",
-    "description": "<p><strong>Tracks | Denver </strong>- I built a double-sided wall of LEDs for Tracks in 5 days after soldering 5000 joints by hand.</p>",
-    "longDescription": "<p>Tracks could not close for a remodel, so we had 5 days between open weekends to install a double-sided wall of LEDs and as part of a full remodel. It sits right at the entrance where people walk in. To hit that window, another tech and I spent weeks in the club basement and my home shop building modular panels off site. Each 2x4 pegboard panel held 520 raw LED pucks contact-cemented in 8 pixel configurations. Instead of buying pre-made strands, we manually soldered custom wire lengths using lamp cord for power injection, leaving us with over 5000 solder points before we ever hung a panel.</p><p>We mounted the rows of pegboard modules to the wall and wired each row to a dedicated output on a 16 output SanDevices E682 decoder running WS2801 protocol. Frosted plexiglass sheets on standoffs covered both sides to diffuse the light. I mapped the array using Madrix 3.6 software.</p><p>This was one of my first LED pixel builds, and the initial test run was rough. The pixels flickered badly across the wall. I had not linked grounds across multiple power supplies, and I did not know about power injection yet. Adding inline resistors at the inputs smoothed out the data signal, and I later retrofitted power injection at the midpoint. The E682 is a Christmas light decoder and not very rugged, but it worked.</p><p>When we opened the doors that Thursday, regulars gasped walking into the room. Teaching myself pixel mapping on that build launched an entire lighting design focus in my career, even if I should have just bought pre-made LED strands.</p>",
+    "description": "<p>We spent weeks in the basement soldering five thousand joints by hand, then hung this double-sided array in five days.</p>",
+    "longDescription": "<p>I didn't know you could buy pre-made LED pixel strands. I was just figuring out that addressable pixels existed at all, and they were hard to source. Instead, I built a double-sided LED wall from scratch.</p><p>Another tech and I spent weeks in the basement building modular panels. We used standard two-by-four pegboard. We contact-cemented 8 raw LED pucks to each board. We manually soldered custom wire lengths using 4 conductor wire. We made over 5000 solder joints by hand before we ever hung a panel.</p><p>We mounted the rows of pegboard to the lobby wall and covered both sides with frosted plexiglass on standoffs. I wired each row to a SanDevices E682, which is essentially a Christmas light decoder. The initial test run was rough. The pixels flickered badly across the entire wall. I didn't know about power injection yet. I added inline resistors at the inputs to smooth out the data signal, and I retrofitted power injection later.</p><p>We had to get the modules out of the basement and onto the wall without shutting the club down. We had exactly five days between open weekends to hang the panels, wire the decoders, and map the array in Madrix. The wall was running when the doors opened that Thursday.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -3881,7 +3881,7 @@
     "timestamp": "2026-07-20T20:00:01.882Z",
     "id": "7590",
     "order": 11,
-    "specs": "",
+    "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>Modular Panels (x65)</strong><br><em>8px • 2' x 4' • peg board</em></p><h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x520)</strong><br><em>WS2811 • 6LED/px • 12Vdc</em></p><h2>POWER &amp; DISTRIBTUION</h2><p><strong>Power Supply (x1)</strong><br><em>12Vdc</em></p><p><strong>Pixel Decoder (x1)</strong><br><em>SanDevice E682</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>Madrix 3.6</strong></p>",
     "related": [
       {
         "name": "Tracks Discotheque ",
@@ -3894,7 +3894,62 @@
       "y": 47.6
     },
     "thumbnail": "media/Electronics/Lobby Wall/0321151647-thumb.webp",
-    "specsData": []
+    "specsData": [
+      {
+        "id": "3707c80c-26d6-48e6-93c6-42cba4a38bff",
+        "title": "Fixtures & FX",
+        "items": [
+          {
+            "id": "cbc09764-0415-48a9-832c-83e4b9a981e9",
+            "name": "Modular Panels",
+            "qty": "65",
+            "specs": "8px, 2' x 4', peg board"
+          }
+        ]
+      },
+      {
+        "id": "bc1b415b-2f6c-48c7-853d-8b9c78466ce8",
+        "title": "PIXELS & DISPLAY",
+        "items": [
+          {
+            "id": "37a81dda-b88e-495a-8554-442da4e96677",
+            "name": "LED Pixels",
+            "qty": "520",
+            "specs": "WS2811, 6LED/px, 12Vdc"
+          }
+        ]
+      },
+      {
+        "id": "05a5fcb0-f0ee-4c6a-8e30-2c28e1781fe5",
+        "title": "Power & Distribtuion",
+        "items": [
+          {
+            "id": "89f918f4-0d51-47fc-a61a-57e9ec114b92",
+            "name": "Power Supply",
+            "qty": "1",
+            "specs": "12Vdc"
+          },
+          {
+            "id": "d6eb69b5-75c8-4a4b-a0b2-fa2e068797f3",
+            "name": "Pixel Decoder",
+            "qty": "1",
+            "specs": "SanDevice E682"
+          }
+        ]
+      },
+      {
+        "id": "1be9fca9-dd25-4a9d-9429-c613ab4264ee",
+        "title": "Software & Stack",
+        "items": [
+          {
+            "id": "727125bf-f815-49e5-96cb-8664999b3866",
+            "name": "Madrix 3.6",
+            "qty": "",
+            "specs": ""
+          }
+        ]
+      }
+    ]
   },
   {
     "title": "Curved Liquor Bottle Display",
@@ -6175,8 +6230,8 @@
       "x": 25.3,
       "y": 40.3
     },
-    "description": "<p>I armored LED strips for a repurposed dance platform with aluminum, heat shrink, and hot glue to survive a rowdy nightclub crowd.</p>",
-    "longDescription": "<p>The Tracks remodel required lighting an old dance platform that sat right in the middle of a rowdy crowd. I had to armor the rig so people could grab the cage without destroying pixels or slicing their hands. I heatshrunk LED strips to 10 mm aluminum sticks, securing them to the spokes with hose clamps buried in hot glue.</p><p>I built the 4 ft tall metal basket in half to fit it through the warehouse garage doors across the alley. I programmed the pixel map while it sat in pieces. The armored sticks survived the floor, but the sharp square channel base eventually chewed through wire insulation. Pull force ripped the solder pads, taking out 1 or 2 strips at a time until I spliced new ones in.</p><p>Data hit a decoder under the deck via a cheap AP bridge or a hardline cable. When it ran, about 6 people packed inside the cage dancing surrounded by light.</p>",
+    "description": "<p>I armored pixel strips with aluminum and buried the hose clamps in hot glue so people could grab the cage.</p>",
+    "longDescription": "<p>I had to design an LED strip that survives a crowd grabbing it all night without someone slicing their hands. I built a metal basket with armored pixel sticks for a dance platform in the middle of a nightclub floor.</p><p>I heatshrunk the strips to aluminum sticks. I secured them to the cage spokes with hose clamps and buried the hardware in hot glue. I built the basket in halves to fit it through the garage doors across the alley. I programmed the pixel map while it sat in pieces. Data hit a decoder under the deck through a cheap access point bridge or a hardline cable.</p><p>The square channel base eventually chewed through the wire insulation. Pull force ripped the solder pads, taking out a couple strips at a time until I spliced new ones in. But when half a dozen people packed inside the cage to dance, the armored sticks survived the crowd.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -6246,7 +6301,7 @@
       }
     ],
     "files": [],
-    "specs": "<p><strong>Control: </strong>Madrix 3.6</p>",
+    "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>LED Strips (x26)</strong><br><em>28px • 0.94m • white heat shrink diffusion</em></p><h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x728)</strong><br><em>24.3m • WS2812B • 30LED/m • 30px/m • 5Vdc</em></p><h2>POWER &amp; DISTRIBTUION</h2><p><strong>Power Supply (x1)</strong><br><em>5Vdc</em></p><p><strong>Pixel Decoder (x1)</strong><br><em>SanDevice E682</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>Madrix 3.6</strong></p>",
     "related": [
       {
         "name": "Tracks Danceclub",
@@ -6257,7 +6312,63 @@
     "timestamp": "2026-08-08T20:42:07.206Z",
     "id": "4903",
     "order": 10,
-    "thumbnail": "media/Electronics/Discobasket/IMG_20171108_200749-thumb.webp"
+    "thumbnail": "media/Electronics/Discobasket/IMG_20171108_200749-thumb.webp",
+    "specsData": [
+      {
+        "id": "67f54c91-bd1c-4ffd-ae5d-0fd838a0c74b",
+        "title": "Fixtures & FX",
+        "items": [
+          {
+            "id": "bfc7bb02-9ff4-4343-8eb9-60abd437e1f6",
+            "name": "LED Strips",
+            "qty": "26",
+            "specs": "28px, 0.94m, white heat shrink diffusion"
+          }
+        ]
+      },
+      {
+        "id": "673875ef-964d-4ffb-a46d-f4ece4705b73",
+        "title": "PIXELS & DISPLAY",
+        "items": [
+          {
+            "id": "827f2737-68d1-464e-bbea-3cce0c7b777e",
+            "name": "LED Pixels",
+            "qty": "728",
+            "specs": "24.3m, WS2812B, 30LED/m, 30px/m, 5Vdc"
+          }
+        ]
+      },
+      {
+        "id": "cd7f534e-b11e-4223-9ba0-b1a2b145a600",
+        "title": "Power & Distribtuion",
+        "items": [
+          {
+            "id": "3ca7dfff-0e7b-46d9-b375-b634214903c5",
+            "name": "Power Supply",
+            "qty": "1",
+            "specs": "5Vdc"
+          },
+          {
+            "id": "e2062ed8-128f-41aa-9889-532e3038e4fa",
+            "name": "Pixel Decoder",
+            "qty": "1",
+            "specs": "SanDevice E682"
+          }
+        ]
+      },
+      {
+        "id": "8ec19cf7-57f4-4559-81df-df917ece2a07",
+        "title": "Software & Stack",
+        "items": [
+          {
+            "id": "bfbb1cbd-595d-4486-a758-6aee640c1073",
+            "name": "Madrix 3.6",
+            "qty": "",
+            "specs": ""
+          }
+        ]
+      }
+    ]
   },
   {
     "title": "Pyramid Steps",
