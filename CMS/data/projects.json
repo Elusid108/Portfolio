@@ -1283,8 +1283,8 @@
       "Hand tools"
     ],
     "image": "media/Fabrication/Field Solder Station/20250317_180657.webp",
-    "description": "<p>A compact solder station built to survive ladder work and crawl spaces during a nightclub remodel.</p>",
-    "longDescription": "<p>The Temple SF remodel required 80 vertical pixel strips running 4m straight up from the dance floor. 8 strips covered each pillar, which meant soldering bases at ground level or working from lifts and ladders. My bench setup was useless there. I needed a compact carrier for a TS100 iron, solder spool, flux, wick, desoldering pump, sponges, and 2 helping hands.</p><p>Early prototypes used integrated rechargeable batteries. That added too much risk, so I stripped the design down to not integrate power at all. The first field version was a rough assembly held together by tape and magnets. I iterated on it over 1 year as the remodel expanded.</p><p>I modeled the final chassis in SolidWorks and printed it in PLA on Bambu Lab printers. Precision tolerances secure the hardware through a friction fit without secondary fasteners. The helping hands are stiff enough that I have to hold the base down to bend them, but it became my main iron for pixel work.</p>",
+    "description": "<p>I couldn't drag my bench setup up a ladder, so I printed a friction-fit block for my iron and spools.</p>",
+    "longDescription": "<p>The Temple San Francisco remodel required eighty vertical pixel strips running four meters straight up from the dance floor. Eight strips covered each pillar. That meant soldering from lifts and ladders, which made my standard bench setup useless. I needed a compact carrier for a TS100 iron, solder spool, flux, wick, pump, sponges, and two helping hands.</p><p>Early prototypes used integrated rechargeable batteries. That added too much risk, so I stripped the design down to remove power entirely. The first field version was a rough assembly held together by tape and magnets. I tweaked it over a year as the remodel expanded.</p><p>I modeled the final chassis in SolidWorks and printed it in PLA. The hardware secures through a friction fit without secondary fasteners. The helping hands are stiff enough that I have to hold the base down to bend them, but this station became my main rig for pixel work.</p>",
     "video": "",
     "gallery": [
       {
@@ -1328,7 +1328,7 @@
     "timestamp": "2026-01-13T00:23:48.073Z",
     "wip": false,
     "order": 1,
-    "specs": "",
+    "specs": "<h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>BambuLabs • X1C • | • TenLog • TL-D3</em></p><p><strong>Black PLA+</strong><br><em>Duramic • 1.75mm</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>SolidWorks 2022</strong></p>",
     "related": [],
     "thumbnailFit": {
       "scale": 1,
@@ -1341,7 +1341,38 @@
       "y": 58
     },
     "thumbnail": "media/Fabrication/Field Solder Station/20250317_180657-thumb.webp",
-    "specsData": []
+    "specsData": [
+      {
+        "id": "c4925e9b-717d-481a-abcf-6baae4ac7da4",
+        "title": "FABRICATION & MATERIALS",
+        "items": [
+          {
+            "id": "8f273703-afae-48e1-904c-02b52ee06a05",
+            "name": "3D Printer",
+            "qty": "",
+            "specs": "BambuLabs, X1C, |,TenLog, TL-D3"
+          },
+          {
+            "id": "d0e12412-40fe-4f7f-b8c0-50895c38d66d",
+            "name": "Black PLA+",
+            "qty": "",
+            "specs": "Duramic, 1.75mm"
+          }
+        ]
+      },
+      {
+        "id": "f10047c8-f68a-43e5-bbbd-a28849cd8e76",
+        "title": "SOFTWARE & STACK",
+        "items": [
+          {
+            "id": "60e81bea-0aaf-4bf9-b6c7-b0df71788f42",
+            "name": "SolidWorks 2022",
+            "qty": "",
+            "specs": ""
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "9469",
@@ -2823,8 +2854,8 @@
     "title": "Field Bench PSU",
     "category": "Tooling",
     "image": "media/Fabrication/Field Bench PSU/20250317_180727.webp",
-    "description": "<p>A 3D printed, portable, DC power supply built from a buck-boost converter designed for testing LED lighting installations in the field.</p>",
-    "longDescription": "<p>On-site LED pixel work always runs on 5V, 12V, or 24V DC at under 5A. I wanted to test new strips and isolate lighting sections without dragging a heavy bench supply up a ladder. A PLA+ enclosure housed a buck-boost converter, commonly fed 19V from a 100W laptop brick through a USB-C to 5521-DC adapter cable or a 24v 5a brick. I left a direct USB-C port off the chassis because my print tolerances could not hold one cleanly.</p><p>Assembling the wiring inside the box was a challenge. I had to build an awkward ring-crimp split to feed the banana plugs, and threading the retaining nuts on in that cramped footprint was frustrating. The screw terminals on the back of the converter module also fought me as I slid the unit into the shell.</p><p>I first brought it to Que Bueno Suerte to test 5m blackout pixel tubes on the mezzanine, verifying every strip before and after cutting. It survived a few years of site work until the built-in voltage meter drifted out of spec and I retired it.</p>",
+    "description": "<p>I replaced a heavy steel rig with a printed box and a laptop brick to test pixel strips.</p>",
+    "longDescription": "<p>Dragging a heavy bench power supply up a ladder during the Temple San Francisco install got old fast. On-site pixel work runs on 5V, 12V, or 24V DC. I needed a way to test strips without hauling a steel box into the air.</p><p>I built a portable field supply around a buck-boost converter. I printed a PLA enclosure and powered it with a laptop brick. I left a direct USB-C port off the chassis because my print tolerances could not hold one cleanly. Assembling the box was a fight. I had to build an awkward ring-crimp split to feed the banana plugs, and threading the retaining nuts in that cramped footprint was miserable.</p><p>The little box replaced the bench rig entirely. I brought it to Que Bueno Suerte to test blackout pixel tubes on the mezzanine, verifying every strip before cutting. It survived a few years of site work until the voltage meter drifted and I retired it.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -2885,7 +2916,7 @@
     "timestamp": "2026-06-21T22:41:13.337Z",
     "id": "707",
     "order": 2,
-    "specs": "<p><strong>Designed In:</strong> SolidWorks 2022</p><p><strong>Printed On:</strong> Tenlog TL-D3</p><p><strong>Material:</strong> Black PLA+</p><p><strong>Converter:</strong> Buck-boost · 19V laptop brick input</p><p><strong>Output:</strong> 5V-32V DC · max 5A</p><p><strong>Connectors:</strong> Banana plugs · 5521-DC barrel</p>",
+    "specs": "<h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>BambuLabs • X1C • | • TenLog • TL-D3</em></p><p><strong>Black PLA+</strong><br><em>Duramic • 1.75mm</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>SolidWorks 2022</strong></p>",
     "related": [],
     "thumbnailFit": {
       "scale": 1.15,
@@ -2897,7 +2928,39 @@
       "x": 28.2,
       "y": 41.4
     },
-    "thumbnail": "media/Fabrication/Field Bench PSU/20250317_180727-thumb.webp"
+    "thumbnail": "media/Fabrication/Field Bench PSU/20250317_180727-thumb.webp",
+    "specsData": [
+      {
+        "id": "c2777f80-b44c-4416-961c-5c0ff226c28f",
+        "title": "FABRICATION & MATERIALS",
+        "items": [
+          {
+            "id": "c19cdf65-3798-47d6-ad25-0d85f1287c70",
+            "name": "3D Printer",
+            "qty": "",
+            "specs": "BambuLabs, X1C, |,TenLog, TL-D3"
+          },
+          {
+            "id": "01f8d859-cd60-4be7-9458-d8e1cbe15137",
+            "name": "Black PLA+",
+            "qty": "",
+            "specs": "Duramic, 1.75mm"
+          }
+        ]
+      },
+      {
+        "id": "b2906ebc-8158-4f03-a625-51187ed79337",
+        "title": "SOFTWARE & STACK",
+        "items": [
+          {
+            "id": "5a669bbc-ae76-462b-9a1b-fd39abc0923e",
+            "name": "SolidWorks 2022",
+            "qty": "",
+            "specs": ""
+          }
+        ]
+      }
+    ]
   },
   {
     "title": "Club Lexi",
@@ -4600,8 +4663,8 @@
     "title": "Extrusion Centering Sled",
     "category": "Tooling",
     "image": "media/Fabrication/Extrusion Centering Sled/20200909_213244.webp",
-    "description": "<p>A 4 part 3D printed sled aligned 160m of vertical LED track across 10 wavy nightclub pillars.</p>",
-    "longDescription": "<p>Temple nightclub in San Francisco had 10 foundational pillars going from floor to ceiling. Each 4m column was boxed in and wavy, but needed 12mm LED track centered vertically on all 4 sides. Because the thin lines mirrored across the room, any drift would be obvious.</p><p>Standard measuring was useless on the uneven casing. I built a 4 part sled that rode inside the center track, breaking the jig into pieces to beat my 3D printer build plate limit. Notched ends marked with yellow china marker referenced the outer corner extrusions at any height. My first prints did not fit inside the channel, taking a couple of tries to dial in the sled width. Once the sizing was right, the interlocking joints held rigid.</p><p>Using the tool on site was fast. As I slid the jig upward, it actively found true center while I tacked the extrusion progressively with a pneumatic nailer. I finished all 160m of track in a couple of hours. The installation hid the wavy casing and kept every line straight.</p>",
+    "description": "<p>I printed a sliding jig to force 160 meters of straight track onto ten wavy pillars.</p>",
+    "longDescription": "<p>I did one pillar with a laser level and it looked awful. I built a four-part 3D printed sled to find true center instead. The wavy casing made standard measuring useless, and any drift in the vertical LED track would mirror across the room.</p><p>I broke the jig into pieces to beat my printer's build plate limit. The first prints refused to fit inside the aluminum channel. Once I dialed in the width, the interlocking joints held rigid. I rubbed a yellow china marker on the notched ends to reference the outer corner extrusions at any height.</p><p>As I slid the jig upward, it actively found center while I tacked the extrusion with a pneumatic nailer. I finished 160 meters of track in a couple of hours. The sled hid the wavy casing and kept every line straight.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -4663,7 +4726,7 @@
       }
     ],
     "files": [],
-    "specs": "<p><strong>Designed In:</strong> SolidWorks 2022</p><p><strong>Printed On:</strong> Tenlog TL-D3</p><p><strong>Material:</strong> Black PLA+</p><p><strong>Track Size:</strong> 12mm aluminum extrusion</p>",
+    "specs": "<h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>TenLog • TL-D3</em></p><p><strong>Black PLA+</strong><br><em>Duramic • 1.75mm</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>SolidWorks 2022</strong></p>",
     "related": [
       {
         "name": "Pixel Pillars",
@@ -4684,7 +4747,39 @@
       "x": 48.8,
       "y": 41.4
     },
-    "thumbnail": "media/Fabrication/Extrusion Centering Sled/20200909_213244-thumb.webp"
+    "thumbnail": "media/Fabrication/Extrusion Centering Sled/20200909_213244-thumb.webp",
+    "specsData": [
+      {
+        "id": "eeb42c74-a961-4c8d-8a70-6196647d2935",
+        "title": "FABRICATION & MATERIALS",
+        "items": [
+          {
+            "id": "36d1fc9a-87fa-4102-a856-10ef5ccaa27b",
+            "name": "3D Printer",
+            "qty": "",
+            "specs": "TenLog, TL-D3"
+          },
+          {
+            "id": "7b4a148e-42e2-426c-8c84-796d3bd630fd",
+            "name": "Black PLA+",
+            "qty": "",
+            "specs": "Duramic, 1.75mm"
+          }
+        ]
+      },
+      {
+        "id": "eedd62d7-6819-40f0-8d73-1c6ae9e380fc",
+        "title": "SOFTWARE & STACK",
+        "items": [
+          {
+            "id": "27fb98c6-878c-4da7-9e26-27c7e18fc93d",
+            "name": "SolidWorks 2022",
+            "qty": "",
+            "specs": ""
+          }
+        ]
+      }
+    ]
   },
   {
     "title": "Dance Floor Pillars",
@@ -5536,8 +5631,8 @@
       "x": 64.6,
       "y": 54.8
     },
-    "description": "<p>I built 3 3D-printed boot sequencers to stagger 18 power supplies without popping the venue breakers.</p>",
-    "longDescription": "<p>Que Bueno Suerte! needed 18 MEAN WELL HLG-320H-12 power supplies to drive an LED pixel ceiling across 3 circuits. Firing up that many capacitors at once meant tripping the breakers from high inrush current. Pulling more electrical circuits cost too much, and commercial gear was overpriced. I built 3 3D-printed boot sequencers instead, putting 6 supplies on each box.</p><p>Inside each unit, a small MEAN WELL supply ran a relay board that acted as an automated switch bank. Packing high-voltage lines, relay boards, and a nest of WAGOs cleanly into a sealed case without risking a short took several enclosure revisions. Every connection used locking connectors, with indicator LEDs on the front to show live outputs and status lights on the back to verify AC power. I capped the lighting load at 80% of maximum capacity when every channel ran at full brightness. That headroom kept heat down and made the hardware impossible to kill with software mistakes.</p><p>I mounted the boxes on the black wall just above the display rafters. Flipping the power starts a cascade of relay clicks across the room. Every 5 to 10 seconds, another ceiling section wakes up segment by segment as the capacitors charge and the DC output stabilizes. Once the boot sequence finishes, the whole rig runs silent.</p>",
+    "description": "<p>I packed a nest of relays into three printed boxes to keep the room's breakers from popping.</p>",
+    "longDescription": "<p>Firing up eighteen power supplies at once tripped the venue breakers from high inrush current. Pulling more electrical circuits cost too much, so I built three 3D-printed boot sequencers to stagger the load.</p><p>I assigned six supplies to each box. Inside, a small power supply ran a relay board that acted as a switch bank. Packing high-voltage lines, relays, and a nest of WAGOs into a sealed case took a few printed revisions to ensure everything fit. Every connection used locking connectors. I added indicator LEDs on the front to show live outputs and status lights on the back to verify AC power.</p><p>I mounted the boxes on the black wall just above the rafters. Flipping the power starts a cascade of relay clicks across the room. Every five to ten seconds, another ceiling section wakes up as the capacitors charge. Once the boot sequence finishes, the whole rig runs silent.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -5608,7 +5703,7 @@
       }
     ],
     "files": [],
-    "specs": "<p><strong>Designed In:</strong> SolidWorks 2022</p><p><strong>Printed On:</strong> Bambu Lab X1C</p><p><strong>Material:</strong> Black PLA+</p><p><strong>Connectors:</strong> Locking connectors · WAGO junction blocks</p><p><strong>Indicators:</strong> Front output LEDs · rear AC status lights</p>",
+    "specs": "<h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>BambuLabs • X1C</em></p><p><strong>Black PLA+</strong><br><em>Duramic • 1.75mm</em></p><p><strong>Indicators</strong><br><em>AC power • relay board power • output power</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>SolidWorks 2022</strong></p>",
     "related": [
       {
         "name": "Blackout ceiling",
@@ -5619,7 +5714,45 @@
     "timestamp": "2026-08-01T21:44:42.857Z",
     "id": "1430",
     "order": 0,
-    "thumbnail": "media/Fabrication/LED PSU Boot Sequencer/20221201_184622-thumb.webp"
+    "thumbnail": "media/Fabrication/LED PSU Boot Sequencer/20221201_184622-thumb.webp",
+    "specsData": [
+      {
+        "id": "8007955d-c441-4a54-a15b-1a85e78c75ff",
+        "title": "FABRICATION & MATERIALS",
+        "items": [
+          {
+            "id": "f55b0ebc-640a-4b6d-add9-e55adaf8a988",
+            "name": "3D Printer",
+            "qty": "",
+            "specs": "BambuLabs, X1C"
+          },
+          {
+            "id": "cc9711b4-4d88-4b54-8310-8c966324b71f",
+            "name": "Black PLA+",
+            "qty": "",
+            "specs": "Duramic, 1.75mm"
+          },
+          {
+            "id": "782f1024-d07f-4270-9f1b-000755b90d48",
+            "name": "Indicators",
+            "qty": "",
+            "specs": "AC power, relay board power, output power"
+          }
+        ]
+      },
+      {
+        "id": "f1c2f9a6-2a5f-4e3f-8c6e-b49372c62e19",
+        "title": "SOFTWARE & STACK",
+        "items": [
+          {
+            "id": "4d077ec7-0718-4aec-8c77-5a9f1d4a555b",
+            "name": "SolidWorks 2022",
+            "qty": "",
+            "specs": ""
+          }
+        ]
+      }
+    ]
   },
   {
     "title": "WiFi VIP Tables",
