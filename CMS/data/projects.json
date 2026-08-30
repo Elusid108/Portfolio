@@ -1157,10 +1157,10 @@
     "files": [],
     "video": "",
     "order": 1,
-    "specs": "<p>Lighting Console: Roadhog 4</p><p>Video: Resolume Arena</p><p>Pixels: Madrix</p><p>DJ link: ShowKontrol</p><p>Signal Manipulation: Show Cockpit</p><p>Touch Software: OSCPilot</p>",
+    "specs": "",
     "related": [
       {
-        "name": "Lighting design",
+        "name": "Immersive Dance Lighting Rig",
         "url": "#project/1"
       },
       {
@@ -1174,9 +1174,14 @@
       {
         "name": "VIP glass wall",
         "url": "#project/8983"
+      },
+      {
+        "name": "LED Pixel Panel",
+        "url": "#project/9469"
       }
     ],
-    "thumbnail": "media/Integration/Temple SF/banner-thumb.webp"
+    "thumbnail": "media/Integration/Temple SF/banner-thumb.webp",
+    "specsData": []
   },
   {
     "id": "9517",
@@ -1326,7 +1331,12 @@
     "wip": false,
     "order": 7,
     "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>Custom PCB</strong><br><em>12 x 6 pixel matrix</em></p><h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x72)</strong><br><em>WS2818 • RGB • 24v</em></p><h2>FABRICATION &amp; DISTRIBUTION</h2><p><strong>Custom Rigging</strong><br><em>t-track • t-nuts • rubber washers • bolts</em></p>",
-    "related": [],
+    "related": [
+      {
+        "name": "Temple SF",
+        "url": "#project/8252"
+      }
+    ],
     "bannerFit": {
       "scale": 1,
       "x": 47.9,
