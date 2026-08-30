@@ -1262,8 +1262,8 @@
       "Lighting Design"
     ],
     "image": "media/Electronics/LED Pixel Panel/20200910_134441.webp",
-    "description": "<p><strong>Temple Nightclub | San Francisco</strong> - With eight feet from tile to joists and a basement ceiling gutted to the wood, we bolted custom LED dancefloor boards directly to aluminum T-track to build an array under an inch thick.</p>",
-    "longDescription": "<p>We ripped out and rerouted the fire suppression system and two layers of ceiling drywall just to buy a little breathing room. From the tile floor to the bottom of the wooden joists was exactly 8 feet, and every 1/4\" mattered. Half the joists up there were broken anyway, so I had those fixed and the others restructured to push electrical, data, and HVAC down the runs of the room in line with the pillars, leaving the center in between clear.</p><p>We needed a rigid, identical grid that could hold a diffuser at an even distance without sagging. Strips droop, and wiring them is a mess. Large, cheap rigid PCBs are a good solution, so we took LED dancefloor boards and had the manufacturer alter the pixel spacing, enlarge the mounting holes, and swap in 90-degree headers. We bolted them straight into aluminum T-track mounted to the ceiling infrastructure, compressing a 24-volt WS2818 pixel matrix into a vertical profile under an inch.</p><p>I never actually saw it powered on overhead. By the time the basement was ready for the hang, I had hit my breaking point with the remodel and walked away. I had completed the upstairs main room immersive dance lighting rig during the COVID-19 pandemic and had designed and procured the parts for the basement. I pixel-mapped the array flat across a sea of road cases in the unfinished basement, proved it worked, and handed the plans off to my crew to finish the hang.</p>",
+    "description": "<p>With eight feet of clearance, we bolted altered dancefloor boards to aluminum track to build an array under an inch thick.</p>",
+    "longDescription": "<p>LED strips droop, and wiring them overhead is a mess. We needed a rigid, identical grid that could hold a diffuser at an even distance without sagging. Large, cheap PCBs were the answer. I took standard LED dancefloor boards and had the manufacturer alter the pixel spacing, enlarge the mounting holes, and swap in 90-degree headers.</p><p>The basement gave us exactly eight feet from the floor tile to the bottom of the wooden joists. Every quarter inch mattered. We ripped out two layers of drywall and rerouted the fire suppression system just to buy breathing room. Half the joists were broken, so I had them fixed and restructured to push the electrical, data, and HVAC runs to the edges of the room, leaving the center clear.</p><p>We bolted the custom boards straight into aluminum T-track, compressing a 24-volt WS2818 pixel matrix into a vertical profile under an inch. I never actually saw it powered on overhead. By the time the basement was ready for the hang, I had left the company. I pixel-mapped the array flat across a sea of road cases, proved the hardware worked, and handed the plans off to my crew to lift into a ceiling that refused to give us another inch.</p>",
     "video": "",
     "gallery": [
       {
@@ -1325,14 +1325,52 @@
     "timestamp": "2026-01-13T00:48:58.329Z",
     "wip": false,
     "order": 7,
-    "specs": "<p><strong>Pixels:</strong> WS2818 RGB</p><p><strong>Voltage:</strong> 24V DC</p><p><strong>Mount:</strong> Aluminum T-track · custom 90-degree headers · under 1 in profile</p><p><strong>Clearance:</strong> 8 ft tile to joist</p><p><strong>Distribution:</strong> 24-pin ATX power couplers</p>",
+    "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>Custom PCB</strong><br><em>12 x 6 pixel matrix</em></p><h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x72)</strong><br><em>WS2818 • RGB • 24v</em></p><h2>FABRICATION &amp; DISTRIBUTION</h2><p><strong>Custom Rigging</strong><br><em>t-track • t-nuts • rubber washers • bolts</em></p>",
     "related": [],
     "bannerFit": {
       "scale": 1,
       "x": 47.9,
       "y": 27.7
     },
-    "thumbnail": "media/Electronics/LED Pixel Panel/20200910_134441-thumb.webp"
+    "thumbnail": "media/Electronics/LED Pixel Panel/20200910_134441-thumb.webp",
+    "specsData": [
+      {
+        "id": "c7663470-16b3-4ba1-a295-a9a5b64110bb",
+        "title": "Fixtures & FX",
+        "items": [
+          {
+            "id": "e8637ca3-4dca-41d5-945d-697eeac4a790",
+            "name": "Custom PCB",
+            "qty": "",
+            "specs": "12 x 6 pixel matrix"
+          }
+        ]
+      },
+      {
+        "id": "7dabe810-f058-4cc9-b0c0-6029a9ce1868",
+        "title": "PIXELS & DISPLAY",
+        "items": [
+          {
+            "id": "63558504-0796-49cf-a8cd-5aa0f05810de",
+            "name": "LED Pixels",
+            "qty": "72",
+            "specs": "WS2818, RGB, 24v"
+          }
+        ]
+      },
+      {
+        "id": "5e61eaa1-f00d-464b-a939-757c8e644dc3",
+        "title": "Fabrication & Distribution",
+        "items": [
+          {
+            "id": "7088ad25-8923-40c3-93f5-df306ca35cfd",
+            "name": "Custom Rigging",
+            "qty": "",
+            "specs": "t-track, t-nuts, rubber washers, bolts"
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "5416",
@@ -1517,7 +1555,16 @@
     "wip": false,
     "order": 2,
     "specs": "<h2>SOFTWARE &amp; STACK</h2><p><strong>Pixel Control</strong><br><em>Madrix 5.x</em></p>",
-    "related": [],
+    "related": [
+      {
+        "name": "Temple Denver",
+        "url": "#project/4382"
+      },
+      {
+        "name": "MIRUS",
+        "url": "#project/4939"
+      }
+    ],
     "thumbnailFit": {
       "scale": 1,
       "x": 0,
@@ -1645,7 +1692,16 @@
       "y": 27.4
     },
     "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>Custom Wood Baffles (x80)</strong><br><em>5m RGBW Strip</em></p><h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Strip (x80)</strong><br><em>Environmental Lights • 5m • RGBW (6000k) • wash strip • 24Vdc</em></p><h2>POWER &amp; DISTRIBUTION</h2><p><strong>Power Supplies (x12)</strong><br><em>MEAN WELL • RSP-1000-24 • 24Vdc • 40A</em></p><p><strong>DMX Decoder (x12)</strong><br><em>Environmental Lights • 32ch • 8 RGBW output</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>LED Control</strong><br><em>Madrix 5.x</em></p>",
-    "related": [],
+    "related": [
+      {
+        "name": "Temple Denver",
+        "url": "#project/4382"
+      },
+      {
+        "name": "LVL",
+        "url": "#project/5416"
+      }
+    ],
     "thumbnail": "media/Lighting/MIRUS/IMG_20180614_235653-thumb.webp",
     "specsData": [
       {
@@ -4066,7 +4122,7 @@
     "timestamp": "2026-07-25T16:47:23.504Z",
     "id": "4382",
     "order": 2,
-    "specs": "<p><strong>Console:</strong> Roadhog 4</p><p><strong>Pixel:</strong> Madrix 5.x (main room · Orb · hallway)</p><p><strong>Video:</strong> Resolume Arena</p><p><strong>Bridge:</strong> NDI (Resolume → Madrix)</p><p><strong>Protocol:</strong> DMX · sACN · SPI</p><p><strong>Canvas:</strong> ~200px wide across full room</p>",
+    "specs": "",
     "related": [
       {
         "name": "The Orb",
@@ -4079,9 +4135,18 @@
       {
         "name": "Entrance Hall",
         "url": "#project/5650"
+      },
+      {
+        "name": "LVL",
+        "url": "#project/5416"
+      },
+      {
+        "name": "MIRUS",
+        "url": "#project/4939"
       }
     ],
-    "thumbnail": "media/Integration/Temple Denver/MVIMG_20190817_211751-thumb.webp"
+    "thumbnail": "media/Integration/Temple Denver/MVIMG_20190817_211751-thumb.webp",
+    "specsData": []
   },
   {
     "title": "Extrusion Centering Sled",
@@ -5100,8 +5165,8 @@
     "title": "WiFi VIP Tables",
     "category": "Fixtures",
     "image": "media/Electronics/WiFi VIP Tables/Screenshot 2026-08-07 201527.webp",
-    "description": "<p>I salvaged 32 waterlogged acrylic VIP tables into wireless ArtNet pixel fixtures using routers and kitchen soup containers.</p>",
-    "longDescription": "<p>Temple SF had 32 old VIP tables with heavy laminated MDF bases and black acrylic tops. The MDF had soaked up spilled drinks for years, expanding and separating, while the acrylic had sharp, chipped corners that were a hazard in a drunk crowd. Most of the hardwired RGB wash strips underneath were already dead. Buying new plastic during the pandemic was too expensive and too slow, but the acrylic sheets were still good. I decided to strip them down and rebuild them from scratch.</p><p>My carpenter and I used a router with a shop vac attached to carve the existing acrylic channels deeper for new LED strips and cut a center path for the wiring. We rounded the top and bottom edges across all 32 sheets, which eliminated the sharp corners and gave the acrylic a smooth, clean line from every angle. To replace the ruined MDF bases, I cut plywood sheets, painted them black, and secured them to the underside so we could attach modern metal legs.</p><p>Time got tight toward the end, and my 3D printer could not produce clean enclosures fast enough. I walked into the kitchen, grabbed a stack of plastic soup containers, and siliconed them to the center underside of each table to house an ESP32 decoder and a Li-ion battery. The electronics sat safely out of reach of nightly spills. For power management, I built a charging station on the side of the control rack. The lighting operator gathered the batteries at the end of the night to charge them, then swapped them back in before doors opened.</p><p>I mapped all 32 tables into Madrix 5.x over wireless ArtNet so they matched the colors of the main room lighting rig. Running Wi-Fi control through a crowded club floor is always a fight against RF noise, but high-gain antennas on the receivers kept the signal alive. The tables fit the room, survived the crowd, and salvaged the most expensive material we had.</p>",
+    "description": "<p>I salvaged the acrylic from 32 rotting tables and built wireless pixel fixtures using kitchen soup containers.</p>",
+    "longDescription": "<p>Temple SF needed 32 illuminated VIP tables, but buying new plastic during the pandemic was too expensive. We had a stack of old ones, but the heavy MDF bases had spent years soaking up spilled drinks. The black acrylic tops were chipped into sharp points, and the hardwired wash strips were dead. The acrylic itself was still good, so we stripped them down to rebuild them.</p><p>My carpenter and I routed the acrylic channels deeper for new LED strips and cut a center path for the wiring. We rounded off the sharp edges across all 32 sheets. To replace the ruined MDF, I cut plywood bases, painted them black, and bolted on metal legs. Time got tight, and my 3D printer could not produce enclosures fast enough. I grabbed a stack of plastic soup containers from the kitchen and siliconed them to the underside of each table. They housed an ESP32 decoder and a lithium-ion battery, keeping the electronics safe from spills.</p><p>The operator gathered the batteries at the end of the night to charge them at the control rack. I mapped the tables into Madrix over wireless ArtNet. Running Wi-Fi through a crowded club is a fight against RF noise, but high-gain antennas kept the signal alive. I would have chosen legs with a wider base, since the tables could tip if someone leaned hard on the edge. But they salvaged our most expensive material and survived the crowd.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -5233,7 +5298,7 @@
       }
     ],
     "files": [],
-    "specs": "<p><strong>Control:</strong> Madrix 5.x</p><p><strong>Fixtures:</strong> (32) 2.1m</p><p><strong>LED: </strong>5050 RGBW (6000k)</p><p><strong>Pixel Driver:</strong> SM16704</p><p><strong>Pixel Size: </strong>3 LEDs</p><p><strong>LED Spacing: </strong>60/m</p><p><strong>Pixel Voltage: </strong>12vdc</p><p><strong>Decoder: ESP32</strong></p><p><strong>Power: </strong>12vdc Li-ion</p>",
+    "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>VIP Tables (x32)</strong><br><em>22px • 2.1m • WiFI • acrylic • edge lighting</em></p><h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x704)</strong><br><em>67.2m • SM16704 • 60LED/m • 20px/m • 12Vdc</em></p><h2>POWER &amp; DISTRIBTUION</h2><p><strong>Battery Pack (x32)</strong><br><em>Li-Ion • 12Vdc</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Microcontroller (x32)</strong><br><em>ESP32</em></p>",
     "related": [
       {
         "name": "Immersive lighting",
@@ -5258,7 +5323,57 @@
       "x": 46.1,
       "y": 49
     },
-    "thumbnail": "media/Electronics/WiFi VIP Tables/Screenshot 2026-08-07 201527-thumb.webp"
+    "thumbnail": "media/Electronics/WiFi VIP Tables/Screenshot 2026-08-07 201527-thumb.webp",
+    "specsData": [
+      {
+        "id": "f4435fa0-366c-481e-880d-41ef96e0fb96",
+        "title": "Fixtures & FX",
+        "items": [
+          {
+            "id": "9e7cb0d3-7d04-4aa9-80c5-ec7952e7ba0d",
+            "name": "VIP Tables",
+            "qty": "32",
+            "specs": "22px, 2.1m, WiFI, acrylic, edge lighting"
+          }
+        ]
+      },
+      {
+        "id": "00123af1-75e4-4ade-bd8d-fe1249b4f3c1",
+        "title": "PIXELS & DISPLAY",
+        "items": [
+          {
+            "id": "ecfd6e34-aa45-429d-8140-c7f7542c998f",
+            "name": "LED Pixels",
+            "qty": "704",
+            "specs": "67.2m, SM16704, 60LED/m, 20px/m, 12Vdc"
+          }
+        ]
+      },
+      {
+        "id": "e07027c6-315b-4ae2-939a-4e463d4f6730",
+        "title": "Power & Distribtuion",
+        "items": [
+          {
+            "id": "2e676b74-dbb6-4611-a30c-d731df6df64b",
+            "name": "Battery Pack",
+            "qty": "32",
+            "specs": "Li-Ion, 12Vdc"
+          }
+        ]
+      },
+      {
+        "id": "1eb8722e-554d-46bd-bbbe-019fafbb79f1",
+        "title": "EmbedDED ELECTRONICS",
+        "items": [
+          {
+            "id": "5c45dec2-2210-43c8-ade6-c8de640eea74",
+            "name": "Microcontroller",
+            "qty": "32",
+            "specs": "ESP32"
+          }
+        ]
+      }
+    ]
   },
   {
     "title": "Glass VIP Wall",
@@ -5666,8 +5781,8 @@
       "x": 76.6,
       "y": 69.3
     },
-    "description": "<p><strong>Temple Nightclub | Denver</strong> - I rebuilt a failing 36x40 resolution LED backwall at Temple Denver to eliminate an active fire hazard.</p>",
-    "longDescription": "<p>Temple Denver brought me in to fix a swept LED backwall on their main stage. I pushed 100% intensity through all channels to see where the rig stood. The 36x40 resolution wall was a fire hazard. The previous installer misunderstood load calculations and wire gauges. Severed cables were shorting against the metal frame and melting.</p><p>Getting to the hardware proved worse than the electrical work. The wall curved into a sloped ceiling directly above the DJ booth and VIP seating. I spent 3 days perched 20 ft up an extension ladder footed on a concrete access ramp. Leaning backward against the curve, I pulled and wired 30 lb plywood panels. Each 3/8 in board measured 2x4 ft and carried 20 pixel modules. We pinched a wire replacing one of them and had to drop it again for an extra repair. The wood shifts and chips every time it comes down, so I minimized removals.</p><p>I ripped out the bad distribution and installed fused DC power protection. Fresh 18awg wire went to the injection points to bypass the melted lines. I mapped the data runs and swapped the dead modules. To prevent future software-driven failures, I calculated the new hardware so a 100% software output would draw a maximum 80% physical load. The wall powered up and ran, but the existing pixel wiring was thin and brittle. Ripping the entire system out would have doubled the timeline and cost. We salvaged the existing rig, and the damage cemented my rule to mandate DC power protection on all future builds.</p>",
+    "description": "<p>I spent three days on an extension ladder pulling thirty-pound plywood panels to fix a melting LED wall.</p>",
+    "longDescription": "<p>I could not just buy off-the-shelf LED pixel panels for the swept backwall because cost was the absolute bottom line. The existing rig was built from thirty-pound plywood panels carrying pixel modules, and I had to salvage it. I pushed all channels to full intensity to see what I was dealing with. It was an active fire hazard. Severed cables were shorting against the metal frame and melting. The previous installer misunderstood load calculations and wire gauges.</p><p>I ripped out the bad distribution. Getting to the hardware was worse than the electrical work. The wall curved into a sloped ceiling directly above the DJ booth. I spent three days perched twenty feet up an extension ladder footed on a concrete access ramp. Leaning backward against the curve, I pulled the heavy wood panels. The edges shifted and chipped every time a board came down. We pinched a wire replacing one of them and had to drop it a second time to fix the mistake.</p><p>I installed fused DC protection and ran fresh wire to the injection points. I mapped the data runs and swapped the dead modules. I calculated the new hardware so a full software output would only draw an eighty percent physical load. The old pixel wiring was thin and brittle, but tearing the entire system out would have doubled the timeline. The repaired panels went back up the ladder and survived the curved frame.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -5825,7 +5940,7 @@
       }
     ],
     "files": [],
-    "specs": "<p><strong>Software:</strong> Madrix 5.x</p><p><strong>Pixels:</strong> 36x40</p><p><strong>Voltage:</strong> 12VDC</p>",
+    "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>Pixel Backboard</strong><br><em>36 x 40 pixel matrix</em></p><h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x1440)</strong><br><em>WS2801 • 12v</em></p><h2>POWER &amp; DISTRIBUTION</h2><p><strong>Power Supplies (x2)</strong><br><em>MEAN WELL • 12Vdc • 22A</em></p><p><strong>LED Decoder (x2)</strong><br><em>Madrix • Nebula</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>Pixel Control</strong><br><em>Madrix 5.x</em></p>",
     "related": [
       {
         "name": "Temple Denver",
@@ -5836,14 +5951,70 @@
     "timestamp": "2026-08-08T18:29:33.775Z",
     "id": "3965",
     "order": 9,
-    "thumbnail": "media/Electronics/Backboard/Gemini_Generated_Image_5l003m5l003m5l00-thumb.webp"
+    "thumbnail": "media/Electronics/Backboard/Gemini_Generated_Image_5l003m5l003m5l00-thumb.webp",
+    "specsData": [
+      {
+        "id": "bfbbf834-1718-489f-8233-34319655fe7c",
+        "title": "FIXTURES & FX",
+        "items": [
+          {
+            "id": "90ccdba1-c36e-4122-83f2-beb0cf06cc45",
+            "name": "Pixel Backboard",
+            "qty": "",
+            "specs": "36 x 40 pixel matrix"
+          }
+        ]
+      },
+      {
+        "id": "74dde7bc-2053-441c-982e-9d0acae9fe8e",
+        "title": "Pixels & display",
+        "items": [
+          {
+            "id": "5569d6fc-4ea8-4fcb-abe3-6689466d29db",
+            "name": "LED Pixels",
+            "qty": "1440",
+            "specs": "WS2801, 12v, "
+          }
+        ]
+      },
+      {
+        "id": "eaf57759-8eeb-45bb-a468-92ce9ddde9b5",
+        "title": "power & distribution",
+        "items": [
+          {
+            "id": "6966afed-1bcc-4b20-ac73-58e7be47e146",
+            "name": "Power Supplies",
+            "qty": "2",
+            "specs": "MEAN WELL, 12Vdc, 22A"
+          },
+          {
+            "id": "99292e9d-980f-4d7e-a4f5-de69edd758ff",
+            "name": "LED Decoder",
+            "qty": "2",
+            "specs": "Madrix, Nebula"
+          }
+        ]
+      },
+      {
+        "id": "5022a6b0-6e68-41b5-933d-8e13988c2ea3",
+        "title": "Software & stack",
+        "items": [
+          {
+            "id": "4cde439b-f978-490b-8e16-f21a9db5aa8d",
+            "name": "Pixel Control",
+            "qty": "",
+            "specs": "Madrix 5.x"
+          }
+        ]
+      }
+    ]
   },
   {
     "title": "Entrance Hall",
     "category": "Fixtures",
     "image": "media/Electronics/Entrance Hall/VID_20190706_212708-poster.webp",
-    "description": "<p><strong>Temple Nightclub | Denver</strong> - I gutted and rebuilt a failing 30 ft LED entrance tunnel down to raw pixel strips to fix a rushed installation.</p>",
-    "longDescription": "<p>The entrance tunnel at Temple Denver was a rush job that slowly died. It was 30 ft long and never meant to be serviced. The walls were framed with 3/4 in MDF panels, which are incredibly heavy, and wires were woven haphazardly through sheet metal cutouts. Patching a failing custom LED installation is a waste of time. I decided to gut the entire run down to the pixel strips.</p><p>Mid-week gave me a 2 day window while the club was closed. Getting the tunnel open was a giant pain. I found hidden shims and adhesives in unexpected places. Pulling the aluminum extrusions was my first plan, but construction adhesive held them fast. I left the tracks in place. Removing the old soldering left me with clean copper to wire fresh. Rebuilding the power distribution from the ground up, I balanced the load across a couple 24V power supplies above the ceiling. I tied the DC- lines together to keep the data stable. Reassembling the heavy MDF meant driving screws into panels that were originally held together by double-sided tape.</p><p>My eye instantly snaps to any pixel that drops a color or gets stuck. I can spot a dead point in a data chain by instinct. Powering up the rebuilt rig lit the entire 30 ft run perfectly. Seeing a complex pixel setup firing at 100 percent is always deeply satisfying.</p>",
+    "description": "<p>I gutted a dead thirty-foot LED tunnel down to raw copper and rebuilt it inside walls that were glued shut.</p>",
+    "longDescription": "<p>You cannot buy an off-the-shelf replacement for a 30-foot LED tunnel woven through sheet metal and MDF. The original entrance at Temple Denver was a rush job that slowly died. It was never meant to be serviced. Patching a failing rig is a waste of time, so I gutted the entire run down to the raw pixel strips.</p><p>Mid-week gave me a two-day window while the club was closed. Getting the walls open was a pain. I found hidden shims and double-sided tape holding the 3/4-inch panels together. My first plan was to pull the aluminum extrusions, but construction adhesive held them fast. I left the tracks in place and removed the old solder to get clean copper. I wired the data chain fresh and rebuilt the power distribution from the ground up. I balanced the load across two 24-volt power supplies above the ceiling. I tied the DC negative lines together to keep the data stable.</p><p>If I had built the hallway from scratch, I would have made proper access panels. Instead, I routed the new wires in a repeatable pattern and drove actual screws into the MDF so the walls could be opened later. The rebuilt rig lit the full run perfectly, surviving a heavy enclosure that was originally glued shut.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -5923,7 +6094,7 @@
       }
     ],
     "files": [],
-    "specs": "<p><strong>Strip:</strong> EnvironmentalLighting pixel tape (salvaged)</p><p><strong>Voltage:</strong> 24vdc</p><p><strong>Runs:</strong> 13 strip runs</p><p><strong>Protocol:</strong> ArtNet</p><p><strong>Control:</strong> Madrix 5.x</p>",
+    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x1017)</strong><br><em>Environmental Lights • strips • RGB • 24v • 7px/m</em></p><h2>POWER &amp; DISTRIBUTION</h2><p><strong>Power Supplies (x2)</strong><br><em>MEAN WELL • 24Vdc</em></p><p><strong>Pixel Decoder (x1)</strong><br><em>Madrix • Nebula</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>Pixel Control</strong><br><em>Madrix 5.x</em></p>",
     "related": [
       {
         "name": "Temple Denver",
@@ -5944,7 +6115,51 @@
       "x": 49.1,
       "y": 48.6
     },
-    "thumbnail": "media/Electronics/Entrance Hall/VID_20190706_212708-poster-thumb.webp"
+    "thumbnail": "media/Electronics/Entrance Hall/VID_20190706_212708-poster-thumb.webp",
+    "specsData": [
+      {
+        "id": "daa98db8-4a17-45a5-ad9a-b0e13e2b4aa4",
+        "title": "PIXELS & DISPLAY",
+        "items": [
+          {
+            "id": "eac98089-efca-46c7-91f5-903eb1ecf39a",
+            "name": "LED Pixels",
+            "qty": "1017",
+            "specs": "Environmental Lights, strips, RGB, 24v, 7px/m"
+          }
+        ]
+      },
+      {
+        "id": "d0332395-4b84-4ddb-940c-a9c6e3d4801f",
+        "title": "POWER & DISTRIBUTION",
+        "items": [
+          {
+            "id": "1cb97795-a0ae-489a-85c8-395ac87b6a38",
+            "name": "Power Supplies",
+            "qty": "2",
+            "specs": "MEAN WELL • 24Vdc "
+          },
+          {
+            "id": "5b12f841-e7ab-4d7a-99b2-06cc9d38a586",
+            "name": "Pixel Decoder",
+            "qty": "1",
+            "specs": "Madrix, Nebula"
+          }
+        ]
+      },
+      {
+        "id": "90d7b454-ae24-4eea-ad72-dafb85b72236",
+        "title": "Software & stack",
+        "items": [
+          {
+            "id": "d95f13d0-3376-4a3a-b6f1-582c31ebb636",
+            "name": "Pixel Control",
+            "qty": "",
+            "specs": "Madrix 5.x"
+          }
+        ]
+      }
+    ]
   },
   {
     "title": "Discobasket",
