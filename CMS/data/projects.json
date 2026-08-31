@@ -105,8 +105,8 @@
       "Roadhog 4"
     ],
     "image": "media/Lighting/Immersive Dance Lighting Rig/20210516_134200.webp",
-    "description": "<p>We packed two hundred moving lights into the room, but running them at full brightness emptied the dance floor.</p>",
-    "longDescription": "<p>The rig had to vanish into the dark when unlit. We packed nearly two hundred moving lights into a small room, but crowding that many fixtures together is about angles and combinations, not raw brightness. The rig was a canvas, and I wanted the room dark so effects could appear out of nowhere.</p><p>Everything centered on a curved video ceiling that wrapped down behind the DJ. We hung a strut channel grid from scissor lifts, using a laser level to line up the video panels, then flanked the screens with the movers. I wired the rig onto switched relays so fixtures wouldn't sit sucking dust on dark days. The real fight was the software. I wanted video content to carry over into the lighting rig, but the console couldn't switch back to independent color control fast enough.</p><p>I rebuilt the routing using Madrix as a central hub. I fed ArtNet data from Resolume and a Roadhog console into Madrix on unused universes, merged them, and pushed that to the decoders. My go-to test was a single diagonal line sweep, slowed down to watch the systems align as the line dragged across the ceiling and down the back wall. When we opened, the owner wanted every fixture and screen blasted at full brightness. They tested that look on the crowd. Within ten minutes, people left and the dance floor was almost entirely empty.</p>",
+    "description": "<p>I packed two hundred fixtures into the ceiling, but running them at full brightness emptied the dance floor.</p>",
+    "longDescription": "<p>There was an ambient power that emanated from the rig. It was all black and incredibly dense. I had never packed so much equipment into such a small space before. When the room was dark, the hardware vanished. It felt like a beast was sleeping up there. The owner wanted a video ceiling running the length of the room, curving down behind the DJ. The designer wanted the support pillars encased in LED strips. I added my own lighting layer, dropping in nearly two hundred moving fixtures.</p><p>Getting it wired and working was half the battle. Getting programming that looked pro was another beast entirely. I spent weeks integrating the video ceiling, the pixel pillars, and the movers so a couple of operators could actually run it. We had a monstrous rig, and it was tempting to use all of it at once.</p><p>But when we finally opened the room, we found out what happens when you do. Running everything at full brightness emptied the dance floor. It was not just about the raw intensity, though that was part of it. It was the ratio of fixtures firing simultaneously. People felt exposed. If you want people to dance, you have to let them feel like no one is watching. We dialed the overall output way back. We learned to let individual elements emerge from the blackness, keeping the crowd in the dark where they belonged.</p>",
     "video": "",
     "gallery": [
       {
@@ -1150,8 +1150,8 @@
     "title": "Temple SF",
     "category": "Systems",
     "image": "media/Integration/Temple SF/banner.webp",
-    "description": "<p><strong>Temple Nightclub | San Francisco</strong> - Routing a three layer club rig through an inherited lighting console to survive single operator control.</p>",
-    "longDescription": "<p>The owners at Temple San Francisco wanted 1 person to operate the lighting, video, and pixels in the main room simultaneously. That was never going to work with 2 hands, especially since we were stuck with the Road Hog 4 that came from the last rig. It lacked the routing capability to act as a central hub. Releasing a DMX overwrite on that console took a macro requiring dozens of screen presses. That cost several seconds, which meant missing the drop on any heavy track.</p><p>I bypassed the console entirely by routing Art-Net out of Resolume and the Hog into Madrix. I merged them using highest takes priority (HTP) on the RGB channels across 8 universes of sACN. That gave instant control back and forth just by blacking out 1 system. I also routed the video so a clip on the ceiling sliced across the main screens, overrode console colors, and drove the pillar pixels. Mask patterns kept the intensity in check. Behind the booth, I built a dedicated Resolume server with RAID6 SSDs to push simultaneous 4K layers, and we installed 400 A and 200 A electrical services to power the room. My crew built wireless receivers using ESP32s for the acrylic VIP tables and I installed a pixel wall on the mezzanine for matching ambiance.</p><p>I tore the pixel mapping down to the ground 6 times before I got all 3 systems talking to each other clean. The first night they fired together without tearing, I got goosebumps. But my control scheme was too ambitious. I installed a 65 in touchscreen running OSC Pilot to handle signal routing and live previews. It technically worked, but live operation under pressure is a different beast. The operators ripped the screen out after a few months and went back to MIDI controllers.</p><p>The demand for 1 operator survived for slow nights. Using a global fader for blackouts and the video routing from the ceiling, 1 person could run the whole room from a couple of controllers. But for busy nights and headlining DJs, the reality of the rig won out. They put 2 operators in the booth.</p>",
+    "description": "<p>A slow diagonal line sweep across the ceiling proved three separate control systems were finally aligned.</p>",
+    "longDescription": "<p>Releasing a DMX overwrite on the room's old Road Hog 4 took a macro requiring dozens of screen presses. I built a routing system using Madrix as a central hub to bypass the console and eliminate the delay. The owners wanted one person to run the lighting, video, and pixels simultaneously, but those lost seconds meant the operator missed the drop on every heavy track.</p><p>I fed Art-Net data out of Resolume and the Hog into Madrix on unused universes, merged them using highest takes priority (HTP), and pushed the result to the decoders. That gave control back and forth instantly just by blacking out one system. A video clip on the ceiling could slice across the main screens, override the console colors, and drive the room's pixels.</p><p>My control scheme was a little too ambitious. I installed a 65-inch touchscreen running OSC Pilot for signal routing and live previews. It technically worked, but live operation under pressure is a different beast. The operators ripped the screen out after a few months and went back to MIDI controllers.</p><p>I tore the mapping down to the ground six times before I got all three systems talking to each other clean. My go-to test was a single diagonal line sweep, slowed way down. I would trigger it and watch the systems align as the line dragged across the ceiling and down the back wall.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -1245,7 +1245,7 @@
     "files": [],
     "video": "",
     "order": 1,
-    "specs": "",
+    "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>Beam (x144)</strong><br><em>PD60 • LED • beam 4° • 60W • RGBW • infinite pan &amp; tilt</em></p><p><strong>Spot (x12)</strong><br><em>LSM150 • LED • spot 15° • 150W • pan 520° • tilt 270° • 7 colors + white • 6 static gobos • 6 rotating gobos • 3 facet prism</em></p><p><strong>Wash (x40)</strong><br><em>WFP12 • LED • wash 35° • 280W • RGBWA+UV</em></p><p><strong>Hazer (x2)</strong><br><em>Radiance Hazer • DMX • 120Vac • 500W</em></p><h2>PIXELS &amp; DISPLAY</h2><p><strong>Dancefloor Pixel Pillars (x10)</strong><br><em>x8 + 4m • RGBW (6000k) • 60/m • 20px/m</em></p><p><strong>WiFi VIP Pixel Tables (x32)</strong><br><em>2.1m • RGBW (6000k) • 60/m • 20px/m</em></p><p><strong>Ceiling Screen (x1)</strong><br><em>3.5m x 23m • P4.81 • 728 x 4784</em></p><p><strong>DJ Booth Screen (x1)</strong><br><em>7m x 1.5m • P4.81 • 1456 x 312</em></p><p><strong>Marquee Left Screen (x1)</strong><br><em>14m x 1m • P4.81 • 2912 x 208</em></p><p><strong>Marquee Right Screen (x1)</strong><br><em>18m x 1m • P4.81 • 3744 x 208</em></p><p><strong>Monolith Screens (x1)</strong><br><em>1.5m x 3m (x2) • P4.81 • 312 x 624 (x2)</em></p>",
     "related": [
       {
         "name": "Immersive Dance Lighting Rig",
@@ -1269,7 +1269,86 @@
       }
     ],
     "thumbnail": "media/Integration/Temple SF/banner-thumb.webp",
-    "specsData": []
+    "specsData": [
+      {
+        "id": "5781dcd9-ca49-4cc5-8cfc-53e6c3a3a11a",
+        "title": "FIXTURES & FX",
+        "items": [
+          {
+            "id": "2a7f3582-faf0-4be1-ae62-dc7d8ff56e31",
+            "name": "Beam",
+            "qty": "144",
+            "specs": "PD60, LED, beam 4°, 60W, RGBW, infinite pan & tilt "
+          },
+          {
+            "id": "76142e55-860f-48e2-bb5f-b7468cb60503",
+            "name": "Spot",
+            "qty": "12",
+            "specs": "LSM150, LED, spot 15°, 150W, pan 520°, tilt 270°, 7 colors + white, 6 static gobos, 6 rotating gobos, 3 facet prism"
+          },
+          {
+            "id": "8c3d986a-891b-4e6b-864f-c007e984b1eb",
+            "name": "Wash",
+            "qty": "40",
+            "specs": "WFP12, LED, wash 35°, 280W, RGBWA+UV"
+          },
+          {
+            "id": "5c1bb3b7-ad0e-408e-9d35-4145a8053729",
+            "name": "Hazer",
+            "qty": "2",
+            "specs": "Radiance Hazer, DMX, 120Vac, 500W"
+          }
+        ]
+      },
+      {
+        "id": "580af2a5-e2b9-4148-8c9e-d0911a9d43f5",
+        "title": "PIXELS & DISPLAY",
+        "items": [
+          {
+            "id": "8e2d8abf-0a4e-45a6-8baa-322226ffc900",
+            "name": "Dancefloor Pixel Pillars",
+            "qty": "10",
+            "specs": "x8 + 4m, RGBW (6000k), 60/m, 20px/m, "
+          },
+          {
+            "id": "66a7221e-084b-4cc5-a3b4-5b57ac03acd4",
+            "name": "WiFi VIP Pixel Tables",
+            "qty": "32",
+            "specs": "2.1m, RGBW (6000k), 60/m, 20px/m, "
+          },
+          {
+            "id": "24b408bb-0e21-4f08-906d-83417c86b959",
+            "name": "Ceiling Screen",
+            "qty": "1",
+            "specs": "3.5m x 23m, P4.81, 728 x 4784, "
+          },
+          {
+            "id": "3cd1a281-f17e-4ec5-a6fb-625e1cb07dd6",
+            "name": "DJ Booth Screen",
+            "qty": "1",
+            "specs": "7m x 1.5m, P4.81, 1456 x 312, "
+          },
+          {
+            "id": "34e22b00-f32c-44de-9039-8d44b6ac6615",
+            "name": "Marquee Left Screen",
+            "qty": "1",
+            "specs": "14m x 1m, P4.81, 2912 x 208, "
+          },
+          {
+            "id": "cc95cc9f-d9e8-4da7-aeea-231af6ba29ed",
+            "name": "Marquee Right Screen",
+            "qty": "1",
+            "specs": "18m x 1m, P4.81, 3744 x 208, "
+          },
+          {
+            "id": "3646545c-487a-4e9e-867b-6ecb081002c4",
+            "name": "Monolith Screens",
+            "qty": "1",
+            "specs": "1.5m x 3m (x2), P4.81, 312 x 624 (x2), "
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "9517",
@@ -3508,8 +3587,8 @@
     "title": "Que Bueno Suerte!",
     "category": "Systems",
     "image": "media/Integration/Que Bueno Suerte!/20240606_211259.webp",
-    "description": "<p><strong>Que Bueno Suerte! | Denver</strong> - Over 2 years, I wired 11 custom lighting installations into a single restaurant server rack.</p>",
-    "longDescription": "<p>My friend let me perpetually add lighting inside Que Bueno Suerte! over 2 years, eventually totaling 11 distinct installations. With so many LEDs, the system risked overpowering the dining room. Finesse was key. Deep reds, oranges, and yellows looked phenomenal against the gold walls and red accents, but only if the hardware stayed invisible in broad daylight. I ran long-range decoders back to a server rack in the upstairs office. Wires snaked under bars, behind walls, above the kitchen ceiling, and inside rafters upstairs. Retrofitting the acrylic etchings meant climbing over tables while brittle adhesive exploded into fine powder that turned sticky again the second I sweated.</p><p>I built an iPad remote early on using OSCpilot for touch control and Show Cockpit for signal distribution. Originally, I ran ELM on the server because it was cheaper and isolated the different rigs easily. The tradeoff was programming flexibility. I couldn't transition one element at a time without shifting the entire building. Switching to Madrix solved the visual output, creating room looks that shifted together across the mezzanine ceiling, alabaster bartop, bottle shelves, and roof liners.</p><p>A rig of this complexity in a packed restaurant breaks in predictable ways. The PixLite 16 controllers above the main bar occasionally drop data and require a breaker flip to reboot. The wireless etchings lose signal through dense crowds. Outdoor fixtures leak water, break their IP rating, and trip breakers. Even the iPad control drops out if staff connect to the wrong network or the WLAN hiccups.</p><p>To keep the system usable for bartenders during a rush, I locked the iPad interface down to basic parameters and playlists of preset looks. For everything else, I installed a slide-out KVM in the rack so I could fix server issues directly. The fine control over the building proved worth the routing headaches, and the warm palettes still sit right in the room.</p>",
+    "description": "<p>I snaked wire through a two-story restaurant to tie eleven custom lighting rigs into one show.</p>",
+    "longDescription": "<p>I started with ELM running on an upstairs server to control eleven distinct lighting zones. It was a massive LED network wired across a two-story restaurant, but the software could not hand off transitions between the rigs. If I wanted to fade the mezzanine ceiling, I had to shift the entire building at once. I ran long-range decoders back to a single rack in the office. Wires snaked under bars, behind walls, and above the kitchen ceiling. The physical install got messy. Retrofitting the acrylic etchings meant climbing over tables while old adhesive exploded into a fine powder, which turned sticky again the second I sweated.</p><p>To get the machines talking, I built an iPad remote using OSCpilot for touch control and Show Cockpit for signal distribution. A rig this size in a packed room breaks in predictable ways. Controllers drop data and need a breaker flipped. Wireless fixtures lose signal through dense crowds. To keep the system usable for bartenders during a rush, I locked the iPad interface down to a few basic preset playlists. I put a slide-out KVM in the server rack so I could fix the inevitable routing issues directly.</p><p>Switching the core software to Madrix finally solved the visual output. I could trigger a single cue and watch the deep reds and oranges move together. The test that proved it worked was standing in the dining room and watching a slow color shift travel from the alabaster bartop, up the bottle shelves, and across the roof liners as one show.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -3576,7 +3655,7 @@
     "timestamp": "2026-06-21T23:26:29.795Z",
     "id": "4113",
     "order": 0,
-    "specs": "<p><strong>Pixel:</strong> Madrix 5.x · ELM (deprecated)</p><p><strong>Decoder:</strong> Advatek PixLite 16 (wired) · wireless decoders (acrylic etchings)</p><p><strong>Protocol:</strong> sACN · ArtNet</p><p><strong>GPU:</strong> RTX 2080 Ti</p><p><strong>Server:</strong> Slide-out KVM rack</p><p><strong>Control Surface:</strong> iPad · OSCPilot · Show Cockpit</p><p><strong>Installations:</strong> 11 (see related entries)</p><p><strong>Pixels: </strong>22,800</p>",
+    "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>Bar Tubes</strong></p><p><strong>Alabaster Bar Top</strong></p><p><strong>Bar Kicker</strong></p><p><strong>Backsplash</strong></p><p><strong>Curved Bottle Display</strong></p><p><strong>Pyramid Steps</strong></p><p><strong>Blackout Tubes</strong></p><p><strong>Mezzanine Bar</strong></p><p><strong>Acrylic Etchings</strong></p><p><strong>Epoxy Wedges</strong></p><p><strong>Patio Lighting</strong></p><h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x22800)</strong><br><em>WS2814 • WS2815 • SK6812</em></p><h2>COMPUTE &amp; CONTROL</h2><p><strong>Custom PC</strong><br><em>rackmount • RTX 2080 TI • slide-out KVM</em></p><p><strong>iPad Remote</strong><br><em>OSC/Pilot • custom touch control</em></p><h2>POWER &amp; DISTRIBUTION</h2><p><strong>Advatek PixLite 16 MK2 (x6)</strong><br><em>Bar Tubes</em></p><p><strong>Athom WLED Decoders</strong><br><em>Acrylic Etchings</em></p><p><strong>Advatek T8-S MK3 (x2)</strong><br><em>Alabaster Bar Top • Bar Kicker • Backsplash • Curved Bottle Display • Epoxy Wedges • Pyramid • Blackout Tubes • Mezzanine Tubes • Patio Lights • Roof-Line</em></p><p><strong>Advatek T4-DS (x11)</strong><br><em>Alabaster Bar Top • Bar Kicker • Backsplash • Curved Bottle Display • Epoxy Wedges • Pyramid • Blackout Tubes • Mezzanine Tubes • Roof-Line</em></p>",
     "related": [
       {
         "name": "Mezz tubes",
@@ -3611,7 +3690,141 @@
         "url": "#project/468"
       }
     ],
-    "thumbnail": "media/Integration/Que Bueno Suerte!/20240606_211259-thumb.webp"
+    "thumbnail": "media/Integration/Que Bueno Suerte!/20240606_211259-thumb.webp",
+    "specsData": [
+      {
+        "id": "f3018628-8a44-49d1-bed4-4f984225a1d6",
+        "title": "FIXTURES & FX",
+        "items": [
+          {
+            "id": "3aafcc94-f37b-4c58-85d6-a7377c133ba5",
+            "name": "Bar Tubes",
+            "qty": "",
+            "specs": ""
+          },
+          {
+            "id": "c0fd943a-a3b3-4f16-b812-cd260a8e5da3",
+            "name": "Alabaster Bar Top",
+            "qty": "",
+            "specs": ""
+          },
+          {
+            "id": "c2eee51f-356a-4159-9b99-65ae60448369",
+            "name": "Bar Kicker",
+            "qty": "",
+            "specs": ""
+          },
+          {
+            "id": "4f2bd286-5bd0-4b8e-af91-559617abeb98",
+            "name": "Backsplash",
+            "qty": "",
+            "specs": ""
+          },
+          {
+            "id": "1fa4cdea-63ba-47bb-8d5e-e33104a984c2",
+            "name": "Curved Bottle Display",
+            "qty": "",
+            "specs": ""
+          },
+          {
+            "id": "eaf66dc6-2971-4d92-a256-0ccabb5f0107",
+            "name": "Pyramid Steps",
+            "qty": "",
+            "specs": ""
+          },
+          {
+            "id": "6ec608cf-785b-4d48-b871-4d0730434f64",
+            "name": "Blackout Tubes",
+            "qty": "",
+            "specs": ""
+          },
+          {
+            "id": "bb28a53e-6cb2-47f9-b9d2-b41dbf6648d4",
+            "name": "Mezzanine Bar",
+            "qty": "",
+            "specs": ""
+          },
+          {
+            "id": "5b5859cf-9cb5-454f-9f77-e2408b4c1835",
+            "name": "Acrylic Etchings",
+            "qty": "",
+            "specs": ""
+          },
+          {
+            "id": "d8bfd222-6eaf-4d2e-8de3-0987aa687791",
+            "name": "Epoxy Wedges",
+            "qty": "",
+            "specs": ""
+          },
+          {
+            "id": "0f3a4c37-0a89-4f45-ab6c-3ab6e6650801",
+            "name": "Patio Lighting",
+            "qty": "",
+            "specs": ""
+          }
+        ]
+      },
+      {
+        "id": "14cbca74-b0bf-4874-b9ba-991186b6aec7",
+        "title": "PIXELS & DISPLAY",
+        "items": [
+          {
+            "id": "8b56bf63-3ebe-4c42-a986-31ea078279a7",
+            "name": "LED Pixels",
+            "qty": "22800",
+            "specs": "WS2814, WS2815, SK6812"
+          }
+        ]
+      },
+      {
+        "id": "0c20cbe3-2d9c-4364-8e79-2e1ea5d8f758",
+        "title": "Compute & Control",
+        "items": [
+          {
+            "id": "b95d7312-7691-40e0-814b-60c54b9c0d23",
+            "name": "Custom PC",
+            "qty": "",
+            "specs": "rackmount, RTX 2080 TI, slide-out KVM"
+          },
+          {
+            "id": "f2019ae8-1192-43e4-a5cb-e52073b96b7d",
+            "name": "iPad Remote",
+            "qty": "",
+            "specs": "OSC/Pilot, custom touch control"
+          }
+        ]
+      },
+      {
+        "id": "ee90beae-349e-4f5d-8169-99decd011ba4",
+        "title": "POWER & DISTRIBUTION",
+        "items": [
+          {
+            "id": "b74c9a02-a969-4595-a287-c58e53f52165",
+            "name": "Advatek PixLite 16 MK2",
+            "qty": "6",
+            "specs": "Bar Tubes"
+          },
+          {
+            "id": "b68b4783-1213-44f5-935a-52eec530294b",
+            "name": "Athom WLED Decoders",
+            "qty": "",
+            "specs": "Acrylic Etchings"
+          },
+          {
+            "id": "aafecc15-9f14-4ea3-91b9-e860be470bd3",
+            "name": "Advatek T8-S MK3",
+            "qty": "2",
+            "specs": "Alabaster Bar Top, Bar Kicker, Backsplash, Curved Bottle Display, Epoxy Wedges, Pyramid, Blackout Tubes, Mezzanine Tubes, Patio Lights, Roof-Line"
+          },
+          {
+            "id": "1ae6fcc4-b061-4f48-a583-33bf8e3e57c8",
+            "name": "Advatek T4-DS",
+            "qty": "11",
+            "specs": "Alabaster Bar Top, Bar Kicker, Backsplash, Curved Bottle Display, Epoxy Wedges, Pyramid, Blackout Tubes, Mezzanine Tubes, Roof-Line"
+          }
+        ]
+      }
+    ]
   },
   {
     "title": "Bar Tubes",
@@ -4590,8 +4803,8 @@
     "title": "Temple Denver",
     "category": "Systems",
     "image": "media/Integration/Temple Denver/MVIMG_20190817_211751.webp",
-    "description": "<p><strong>Temple - Main Room | Denver</strong> - Bridging Resolume and Madrix over NDI to stretch a 196 pixel canvas across an entire nightclub room.</p>",
-    "longDescription": "<p>Touring DJs kept coming through with custom VJ content and nowhere to realistically play it. The venue had 3 screens with a 48x48 resolution, giving the main room an accumulative resolution smaller than a phone icon. To give those artists a usable canvas, I needed to span the room without tearing out the existing hardware.</p><p>This was my first time integrating systems past DMX and MIDI cross triggers alone. Resolume Arena pushed slices of video to converter boxes that output SPI pixel signals, while Madrix ran the floor-to-ceiling custom pixel pillars with about 12 modules per row. Bridging the two over NDI let the content cross between machines. From there, I added DMX triggers from our Roadhog 4 console to the main pixel and video rigs, plus the orb and hallway computers, so we could grab master intensity and speed live.</p><p>Getting the low resolution pixel mesh to map onto the frosted pillars was the hardest problem to solve. The pixel spacing was not an even grid, which made scaling irregular shapes across the room a constant headache. If I were building the rig from the ground up, I would have chosen Madrix for the entire system.</p><p>Combining the setups got us an uninterrupted canvas just under 200 pixels wide. A couple of friends were working with me at the time, and we all geeked out when it finally came together. We could display logos and short messages across the whole wall.</p>",
+    "description": "<p>I bridged Resolume and Madrix over NDI until we could read a few words scaled across the room.</p>",
+    "longDescription": "<p>Touring DJs kept handing us custom video content, but we had nowhere to realistically play it. The club had three screens, each running at 48 by 48 pixels. The total resolution of the main room was smaller than an app icon on a phone.</p><p>I needed to stretch a usable canvas across the walls without tearing out the existing hardware. Resolume Arena pushed slices of video to converter boxes for the screens, while Madrix drove the floor-to-ceiling frosted pixel pillars. I bridged the two over NDI so content could cross between machines. From there, I networked our Roadhog console to send DMX triggers to the video rig, the pixel pillars, the orb, and the hallway computers. That gave us live control over master intensity and speed for the entire room.</p><p>Mapping a low-resolution mesh onto the frosted pillars was a headache. The pixel spacing was not an even grid, which made scaling irregular shapes across the walls a mess. If I were building the rig from scratch, I would have just used Madrix for everything.</p><p>Combining the setups gave us an uninterrupted canvas just under 200 pixels wide. To prove the two machines were actually aligned, we used text. Once we could scale a few words down and read it across the room, it was one show.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
