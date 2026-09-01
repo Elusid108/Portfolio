@@ -237,7 +237,7 @@
     "timestamp": "2026-01-12T01:03:01.269Z",
     "wip": false,
     "order": 0,
-    "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>Beam (x144)</strong><br><em>PD60 • LED • beam 4° • 60W • RGBW • infinite pan &amp; tilt</em></p><p><strong>Spot (x12)</strong><br><em>LSM150 • LED • spot 15° • 150W • pan 520° • tilt 270° • 7 colors + white • 6 static gobos • 6 rotating gobos • 3 facet prism</em></p><p><strong>Wash (x40)</strong><br><em>WFP12 • LED • wash 35° • 280W • RGBWA+UV</em></p><p><strong>Hazer (x2)</strong><br><em>Radiance Hazer • DMX • 120Vac • 500W</em></p><h2>PIXELS &amp; DISPLAY</h2><p><strong>Dancefloor Pixel Pillars (x10)</strong><br><em>x8 + 4m • RGBW (6000k) • 60/m • 20px/m</em></p><p><strong>WiFi VIP Pixel Tables (x32)</strong><br><em>2.1m • RGBW (6000k) • 60/m • 20px/m</em></p><p><strong>Ceiling Screen (x1)</strong><br><em>3.5m x 23m • P4.81 • 728 x 4784</em></p><p><strong>DJ Booth Screen (x1)</strong><br><em>7m x 1.5m • P4.81 • 1456 x 312</em></p><p><strong>Marquee Left Screen (x1)</strong><br><em>14m x 1m • P4.81 • 2912 x 208</em></p><p><strong>Marquee Right Screen (x1)</strong><br><em>18m x 1m • P4.81 • 3744 x 208</em></p><p><strong>Monolith Screens (x1)</strong><br><em>1.5m x 3m (x2) • P4.81 • 312 x 624 (x2)</em></p>",
+    "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>PD60 (x144)</strong><br><em>ColorfulLighting • LED • beam 4° • 60W • RGBW • infinite pan &amp; tilt</em></p><p><strong>LSM150 (x12)</strong><br><em>ColorfulLighting • LED • spot 15° • 150W • pan 520° • tilt 270° • 7 colors + white • 6 static gobos • 6 rotating gobos • 3 facet prism</em></p><p><strong>WFP12, (x40)</strong><br><em>ColorfulLighting • LED • wash 35° • 280W • RGBWA+UV</em></p><p><strong>Radiance Hazer, (x2)</strong><br><em>Ultratec • hazer • DMX • 120Vac • 500W</em></p><h2>PIXELS &amp; DISPLAY</h2><p><strong>Dancefloor Pixel Pillars (x10)</strong><br><em>x8 + 4m • RGBW (6000k) • 60/m • 20px/m</em></p><p><strong>WiFi VIP Pixel Tables (x32)</strong><br><em>2.1m • RGBW (6000k) • 60/m • 20px/m</em></p><p><strong>Ceiling Screen (x1)</strong><br><em>3.5m x 23m • P4.81 • 728 x 4784</em></p><p><strong>DJ Booth Screen (x1)</strong><br><em>7m x 1.5m • P4.81 • 1456 x 312</em></p><p><strong>Marquee Left Screen (x1)</strong><br><em>14m x 1m • P4.81 • 2912 x 208</em></p><p><strong>Marquee Right Screen (x1)</strong><br><em>18m x 1m • P4.81 • 3744 x 208</em></p><p><strong>Monolith Screens (x1)</strong><br><em>1.5m x 3m (x2) • P4.81 • 312 x 624 (x2)</em></p>",
     "related": [
       {
         "name": "Temple SF",
@@ -274,27 +274,27 @@
         "items": [
           {
             "id": "1cf89442-7060-4640-8bf6-3abd67934dab",
-            "name": "Beam",
+            "name": "PD60",
             "qty": "144",
-            "specs": "PD60, LED, beam 4°, 60W, RGBW, infinite pan & tilt "
+            "specs": "ColorfulLighting, LED, beam 4°, 60W, RGBW, infinite pan & tilt "
           },
           {
             "id": "6a8eac7f-ac32-4287-99d2-058f056372a7",
-            "name": "Spot",
+            "name": "LSM150",
             "qty": "12",
-            "specs": "LSM150, LED, spot 15°, 150W, pan 520°, tilt 270°, 7 colors + white, 6 static gobos, 6 rotating gobos, 3 facet prism"
+            "specs": "ColorfulLighting, LED, spot 15°, 150W, pan 520°, tilt 270°, 7 colors + white, 6 static gobos, 6 rotating gobos, 3 facet prism"
           },
           {
             "id": "b5db22a3-0fe8-491c-b125-67b63a8b6302",
-            "name": "Wash",
+            "name": "WFP12,",
             "qty": "40",
-            "specs": "WFP12, LED, wash 35°, 280W, RGBWA+UV"
+            "specs": "ColorfulLighting, LED, wash 35°, 280W, RGBWA+UV"
           },
           {
             "id": "cc57064d-00ad-4329-baa4-04600df0bba5",
-            "name": "Hazer",
+            "name": "Radiance Hazer,",
             "qty": "2",
-            "specs": "Radiance Hazer, DMX, 120Vac, 500W"
+            "specs": "Ultratec, hazer, DMX, 120Vac, 500W"
           }
         ]
       },
@@ -6369,7 +6369,7 @@
       }
     ],
     "files": [],
-    "specs": "",
+    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x1638)</strong><br><em>Environmental Lights • strips • RGB • 24v • 7px/m</em></p><h2>POWER &amp; DISTRIBUTION</h2><p><strong>Power Supplies (x12)</strong><br><em>MEAN WELL • HLG-240H-24 • 24Vdc</em></p><p><strong>Pixel Decoder (x2)</strong><br><em>Madrix • Nebula</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>Pixel Control</strong><br><em>Madrix 5.x</em></p>",
     "related": [
       {
         "name": "Temple SF",
@@ -6385,7 +6385,50 @@
     "id": "8983",
     "order": 3,
     "thumbnail": "media/Electronics/Glass VIP Wall/Screenshot 2026-08-07 204525-thumb.webp",
-    "specsData": []
+    "specsData": [
+      {
+        "id": "65e0b2b2-60e0-44ad-adf6-8219df487ee3",
+        "title": "PIXELS & DISPLAY",
+        "items": [
+          {
+            "id": "634cf00a-8a95-4f33-934f-45e39256ceec",
+            "name": "LED Pixels",
+            "qty": "1638",
+            "specs": "Environmental Lights, strips, RGB, 24v, 7px/m"
+          }
+        ]
+      },
+      {
+        "id": "bead0df4-4f97-4a8d-94ff-639e369091eb",
+        "title": "POWER & DISTRIBUTION",
+        "items": [
+          {
+            "id": "e6665bc8-de42-44c6-b772-07886d64822b",
+            "name": "Power Supplies",
+            "qty": "12",
+            "specs": "MEAN WELL • HLG-240H-24, 24Vdc "
+          },
+          {
+            "id": "c9800165-0866-497d-8072-2a0d0c26671c",
+            "name": "Pixel Decoder",
+            "qty": "2",
+            "specs": "Madrix, Nebula"
+          }
+        ]
+      },
+      {
+        "id": "79d281ce-a1c2-440f-92d4-a72dce2ac65d",
+        "title": "Software & stack",
+        "items": [
+          {
+            "id": "fb185db1-549c-4d1a-9d9e-470834264c3f",
+            "name": "Pixel Control",
+            "qty": "",
+            "specs": "Madrix 5.x"
+          }
+        ]
+      }
+    ]
   },
   {
     "title": "Pixel Rocks",
@@ -6518,14 +6561,29 @@
       },
       {
         "url": "media/Art/Pixel Rocks/20240308_134505.webp",
+        "fit": {
+          "scale": 1.1,
+          "x": 50.5,
+          "y": 52.2
+        },
         "thumbnail": "media/Art/Pixel Rocks/20240308_134505-thumb.webp"
       },
       {
         "url": "media/Art/Pixel Rocks/20240308_134510.webp",
+        "fit": {
+          "scale": 1,
+          "x": 50.2,
+          "y": 55.7
+        },
         "thumbnail": "media/Art/Pixel Rocks/20240308_134510-thumb.webp"
       },
       {
         "url": "media/Art/Pixel Rocks/20240308_134502.webp",
+        "fit": {
+          "scale": 1.5,
+          "x": 67.9,
+          "y": 51.7
+        },
         "thumbnail": "media/Art/Pixel Rocks/20240308_134502-thumb.webp"
       },
       {
@@ -6563,7 +6621,7 @@
       }
     ],
     "files": [],
-    "specs": "",
+    "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>Pixel Puck (x10)</strong><br><em>rgb • wireless • universal module</em></p><h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x68)</strong><br><em>ws2815 • rgb • 12Vdc • redundant data</em></p><h2>POWER &amp; DISTRIBUTION</h2><p><strong>Battery (x1)</strong><br><em>Li-Ion • 12Vdc • 24000mAh</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>PLA+ (white)</strong><br><em>puck • 15% infill</em></p><p><strong>PLA+ (clear)</strong><br><em>sled • rocks • 5% infill</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x1)</strong><br><em>Harvested Athom PCB • WLED • 12Vdc</em></p>",
     "related": [],
     "video": "",
     "timestamp": "2026-08-08T15:03:36.390Z",
@@ -6580,7 +6638,74 @@
       "y": 51.1
     },
     "thumbnail": "media/Art/Pixel Rocks/Screenshot 2026-08-08 133451-thumb.webp",
-    "specsData": []
+    "specsData": [
+      {
+        "id": "ae26563a-ed4d-4749-a149-e1d0940d92ab",
+        "title": "Fixtures & fx",
+        "items": [
+          {
+            "id": "9298f4f6-9ba6-46f3-aaab-f9e4b7224efc",
+            "name": "Pixel Puck",
+            "qty": "10",
+            "specs": "rgb, wireless, universal module"
+          }
+        ]
+      },
+      {
+        "id": "3bb3a574-1052-4c03-b949-234251a25e61",
+        "title": "pixels & display",
+        "items": [
+          {
+            "id": "5e44972c-2023-4a40-9118-2cfb7280bc16",
+            "name": "LED Pixels",
+            "qty": "68",
+            "specs": "ws2815, rgb, 12Vdc, redundant data"
+          }
+        ]
+      },
+      {
+        "id": "ae9d1e72-1202-4db2-a764-b22b391bbcf1",
+        "title": "Power & distribution",
+        "items": [
+          {
+            "id": "c4d6e1a9-c494-4e95-9576-cbbe7969de31",
+            "name": "Battery",
+            "qty": "1",
+            "specs": "Li-Ion, 12Vdc, 24000mAh"
+          }
+        ]
+      },
+      {
+        "id": "46ca0a74-ffee-45d4-a3a5-ad76898c7a44",
+        "title": "Fabrication & materials",
+        "items": [
+          {
+            "id": "6d239714-938b-40c0-a2e9-d5e2025d744c",
+            "name": "PLA+ (white)",
+            "qty": "",
+            "specs": "puck, 15% infill"
+          },
+          {
+            "id": "7327d2ea-17bb-4425-9d35-5ec32748e83d",
+            "name": "PLA+ (clear)",
+            "qty": "",
+            "specs": "sled, rocks, 5% infill"
+          }
+        ]
+      },
+      {
+        "id": "f1c309b6-7074-4ecc-ac31-bbf53987087e",
+        "title": "embedded electronics",
+        "items": [
+          {
+            "id": "7b4f81f3-6b4d-4006-ba7a-f1635067cfa3",
+            "name": "Pixel Decoder",
+            "qty": "1",
+            "specs": "Harvested Athom PCB, WLED, 12Vdc, "
+          }
+        ]
+      }
+    ]
   },
   {
     "title": "Backboard",
