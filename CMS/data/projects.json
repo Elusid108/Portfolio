@@ -523,8 +523,7 @@
     "tags": [
       "LLM Integration",
       "TypeScript",
-      "FDM 3D Printing",
-      "Custom Fabrication"
+      "FDM 3D Printing"
     ],
     "image": "media/Apps/LithoLab/image2.webp",
     "description": "<p>Standard CMYK generators turn skin tones into magenta splotches, so I ported an opensource color lithophane engine to the browser.</p>",
@@ -1460,7 +1459,6 @@
     "tags": [
       "Resolume Arena",
       "Video Mapping",
-      "Custom Fabrication",
       "SPI",
       "Lighting Design"
     ],
@@ -1806,7 +1804,6 @@
     "tags": [
       "AC/DC Load Calc",
       "DMX",
-      "Custom Fabrication",
       "Hand tools",
       "Lighting Design",
       "Madrix",
@@ -3055,7 +3052,6 @@
     "wip": false,
     "tags": [
       "Capture",
-      "Custom Fabrication",
       "Hand tools",
       "Lighting Design",
       "Power tools",
@@ -3406,7 +3402,6 @@
     "tags": [
       "AC/DC Load Calc",
       "ArtNet",
-      "Custom Fabrication",
       "DMX",
       "Hand tools",
       "Lighting Design",
@@ -6214,7 +6209,6 @@
     "wip": false,
     "tags": [
       "AC/DC Load Calc",
-      "Custom Fabrication",
       "ArtNet",
       "Hand tools",
       "Madrix",
@@ -7891,7 +7885,6 @@
     "wip": false,
     "tags": [
       "AC/DC Load Calc",
-      "Custom Fabrication",
       "DMX",
       "Hand tools",
       "Power Distribution",
@@ -8037,7 +8030,6 @@
     "wip": false,
     "tags": [
       "AC/DC Load Calc",
-      "Custom Fabrication",
       "Hand tools",
       "Lighting Design",
       "Madrix",
@@ -8793,7 +8785,6 @@
     "featured": false,
     "wip": false,
     "tags": [
-      "Custom Fabrication",
       "Lighting Design",
       "DMX",
       "Power Distribution",
@@ -10461,7 +10452,6 @@
     "featured": false,
     "wip": true,
     "tags": [
-      "Custom Fabrication",
       "TypeScript",
       "React",
       "Vite"
@@ -10615,7 +10605,6 @@
     "featured": false,
     "wip": true,
     "tags": [
-      "Custom Fabrication",
       "FDM 3D Printing"
     ],
     "gallery": [
