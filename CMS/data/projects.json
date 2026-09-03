@@ -10,7 +10,7 @@
       "REST APIs"
     ],
     "image": "media/Apps/Portfolio CMS/Screenshot 2026-07-25 181136.webp",
-    "description": "<p>I refused to pay for video hosting, so I built a local server that compiles everything into a single file.</p>",
+    "description": "<p>Drop in a video. A server on my laptop strips the audio, encodes it, and folds the site into one HTML file in ten seconds.</p>",
     "longDescription": "<p>I dropped a video into the editor, and a local server handled the rest. This was a custom content management system I built to run entirely on my laptop.</p><p>The Express back end caught the files. It stripped audio, encoded to 1080p, converted images to WebP, and sorted them into project folders. The front end ran React from a CDN and read from a single JSON block. Updating a project felt as fast as moving desktop files around. When I hit publish, the server compiled the text and media into one HTML file in under ten seconds.</p><p>Pushing that directory to GitHub Pages updated the live site immediately. My old workflow relied on YouTube, which left content fragmented and slow to load. I refused to pay a monthly fee or use external video hosting for a basic portfolio.</p>",
     "video": "",
     "gallery": [
@@ -354,7 +354,7 @@
     "title": "Emmy Stand",
     "category": "Art",
     "image": "media/Art/Emmy Stand/Gemini_Generated_Image_4xox7h4xox7h4xox.webp",
-    "description": "<p>I lit the gold statue with miniature boom towers, locking the current limit so the plastic wouldn't melt.</p>",
+    "description": "<p>A coworker won an Emmy. He got a desktop ballet rig: six boom towers, recessed washers, and a gold finish that threw every source back at me.</p>",
     "longDescription": "<p>An old coworker from my club days won an Emmy. He asked for a custom display, so I scaled ballet lighting principles down to a desktop rig. The stand uses three boom towers per side that arch from downstage to upstage, plus angled wall washers recessed along the outer edges. A dual-material film strip lines the bottom for diffusion and masking.</p><p>The curved backdrop was too large for a single print. I built it in modular sections and turned the seams into an exaggerated surface texture. When I set the statue on the pedestal, the gold finish mirrored the light sources instead of absorbing them. The metal warped the reflections.</p><p>Packing 512 LEDs into closed plastic is basically building a slow toaster. To keep the enclosure from melting from the inside out, the hard fabrication rule was power management. I locked the current limit to three amps before I ever turned it on.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -526,7 +526,7 @@
       "FDM 3D Printing"
     ],
     "image": "media/Apps/LithoLab/image2.webp",
-    "description": "<p>Standard CMYK generators turn skin tones into magenta splotches, so I ported an opensource color lithophane engine to the browser.</p>",
+    "description": "<p>Standard CMYK generators turn skin tones into magenta splotches, so I ported an open-source color lithophane engine to the browser.</p>",
     "longDescription": "<p>You import a photo, overlay a custom mask, set the filament colors and depths, and export the files. LithoLab is a client-side web application that generates multi-color lithophanes with independent borders. CMYK-lithophane generators output flat rectangles and turn skin tones into magenta splotches. I wanted custom shapes and expanded palettes, so I ported the PIXEStl engine to run directly in the browser.</p><p>Early prints on a Bambu Lab X1C exposed a persistent micro-gap along the right edge between the image and its border. It took several failed attempts to close it. To keep the primary interface clean, I stripped the calibration tools out and moved them to a standalone companion app that handles color mapping.</p><p>Once calibrated and backlit, the physical prints match the source photos. I pushed the application to GitHub Pages. I refused to pay for a backend or host server overhead.</p>",
     "video": "",
     "gallery": [
@@ -596,7 +596,7 @@
       "TypeScript"
     ],
     "image": "media/Apps/Unfold/Screenshot 2026-07-25 154856.webp",
-    "description": "<p>I built a browser game to skip small talk, and I refused to pay for a database.</p>",
+    "description": "<p>Four decks of prompts for people on a video call who are tired of asking about the weather.</p>",
     "longDescription": "<p>A user on a video call clicks through a deck of prompts to get past routine small talk. Unfold is a browser-based card game that runs four conversation decks across three play modes. I started it as a quick prototype on Lovable to handle deck combining and card draws.</p><p>To make it work across multiple sessions, the app needed to track previously seen cards and store custom decks. I used Cursor to build a save-state layer with React Hooks and browser storage. The interface is built with Tailwind and Radix UI, keeping all the state directly on the client. Since the game required no user registration, paying for a subscription platform made no sense. I pulled the codebase into a dedicated repository and hosted it statically on GitHub Pages. I refused to host a database or pay for servers.</p>",
     "video": "",
     "gallery": [
@@ -857,7 +857,7 @@
       "Wire-to-Board Soldering"
     ],
     "image": "media/Art/Mini Pyramid/minipyramidfix.webp",
-    "description": "<p>It took several iterations to keep the esp32 held in place so that plugging in a cable didn't push the port inside.</p>",
+    "description": "<p>Sixty-four LEDs, an ESP32, and a QR code on the bottom. Every time I plugged in a cable, the USB-C port retreated into the case.</p>",
     "longDescription": "<p>Stepping down to a desk piece, I wanted an 8x8 pixel display housed in a pyramid. I went with a pyramid simply because it was an easy shape to model in SolidWorks. The bottom doubled as a scannable QR code linking to my site.</p><p>Squeezing 64 LEDs and an ESP32 into that footprint left almost no room for hardware. I had to do several iterations of the base to hold the board in place. The USB-C port wanted to push back into the case whenever I plugged a cable in, and closing the shell kept crushing the internal wiring. It took several printed iterations to anchor the controller securely and route the leads.</p><p>Putting pixels that close to the surface usually creates hotspots, so I kept at least 10mm distance. I used a frosted layer over white cell walls to break up the light, printing the whole case in three different materials.</p>",
     "video": "",
     "gallery": [
@@ -1149,7 +1149,7 @@
     "title": "Temple SF",
     "category": "Systems",
     "image": "media/Integration/Temple SF/banner.webp",
-    "description": "<p>A slow diagonal line sweep across the ceiling proved three separate control systems were finally aligned.</p>",
+    "description": "<p>Six teardowns before three control systems would talk to each other. The test was one slow diagonal line dragging across the ceiling.</p>",
     "longDescription": "<p>Releasing a DMX overwrite on the room's old Road Hog 4 took a macro requiring dozens of screen presses. I built a routing system using Madrix as a central hub to bypass the console and eliminate the delay. The owners wanted one person to run the lighting, video, and pixels simultaneously, but those lost seconds meant the operator missed the drop on every heavy track.</p><p>I fed Art-Net data out of Resolume and the Hog into Madrix on unused universes, merged them using highest takes priority (HTP), and pushed the result to the decoders. That gave control back and forth instantly just by blacking out one system. A video clip on the ceiling could slice across the main screens, override the console colors, and drive the room's pixels.</p><p>My control scheme was a little too ambitious. I installed a 65-inch touchscreen running OSC Pilot for signal routing and live previews. It technically worked, but live operation under pressure is a different beast. The operators ripped the screen out after a few months and went back to MIDI controllers.</p><p>I tore the mapping down to the ground six times before I got all three systems talking to each other clean. My go-to test was a single diagonal line sweep, slowed way down. I would trigger it and watch the systems align as the line dragged across the ceiling and down the back wall.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -1361,7 +1361,7 @@
       "Hand tools"
     ],
     "image": "media/Fabrication/Field Solder Station/20250317_180657.webp",
-    "description": "<p>I couldn't drag my bench setup up a ladder, so I printed a friction-fit block for my iron and spools.</p>",
+    "description": "<p>Eighty strips, four meters straight up, soldered from a lift. Iron, spool, flux, wick, pump, and two helping hands in one printed block.</p>",
     "longDescription": "<p>The Temple San Francisco remodel required eighty vertical pixel strips running four meters straight up from the dance floor. Eight strips covered each pillar. That meant soldering from lifts and ladders, which made my standard bench setup useless. I needed a compact carrier for a TS100 iron, solder spool, flux, wick, pump, sponges, and two helping hands.</p><p>Early prototypes used integrated rechargeable batteries. That added too much risk, so I stripped the design down to remove power entirely. The first field version was a rough assembly held together by tape and magnets. I tweaked it over a year as the remodel expanded.</p><p>I modeled the final chassis in SolidWorks and printed it in PLA. The hardware secures through a friction fit without secondary fasteners. The helping hands are stiff enough that I have to hold the base down to bend them, but this station became my main rig for pixel work.</p>",
     "video": "",
     "gallery": [
@@ -1598,7 +1598,7 @@
       "Wire-to-Board Soldering"
     ],
     "image": "media/Electronics/LVL/IMG_20191009_231844.webp",
-    "description": "<p>I salvaged expensive pixel tape from rotting floor channels and built acrylic supports to survive the next spilled drink.</p>",
+    "description": "<p>Floor channels set on wood inserts. Months of spilled drinks swelled them until the diffusion caved in. The tape was worth saving.</p>",
     "longDescription": "<p>I needed custom acrylic support strips for floor pixels because the existing channels were construction-adhesived into the floor and refused to come out. Someone had installed unsealed tracks using wood inserts. The wood absorbed months of spilled drinks, mop water, and sewage backups until the diffusion caved in and shattered. Even the foam tape holding the strips smelled like club funk. The pixel tape itself was expensive and salvageable. I cut out the shorted sections, scrubbed the tracks, and built new supports out of acrylic. I knew the plastic would survive if the silicone seal ever broke again.</p><p>Wiring sixteen strip runs across the room required heavy power injection to stop voltage drop. My first attempt was unstable. I ran DC wire in parallel and tied the negative leads together back in the supply room, which triggered ground loop flicker across part of the system. The fix was coupling the negative leads close to the pixels above the dancefloor. The pillar modules also fought me because of undersized wire, so I added more injection points and ground jumpers until the signal stabilized.</p><p>Once the power and data lines behaved, I mapped the floor, pillars, and ceiling into a 3D voxel setup. The room runs almost entirely on those pixels. Now the control system drives spatial sweeps through the room, and the floor channels can take a direct hit from a spilled drink without shorting out.</p>",
     "video": "",
     "gallery": [
@@ -2192,7 +2192,7 @@
       "REST APIs"
     ],
     "image": "media/Apps/GeoLens Pro/Screenshot_20260118_082950_Chrome.webp",
-    "description": "<p>I built a localized browser app that automatically sorts field photos by GPS coordinate into project folders.</p>",
+    "description": "<p>A day on site leaves two hundred photos in one camera roll. This reads the GPS tag and files each one under the job it was shot at.</p>",
     "longDescription": "<p>Doing custom lighting work meant taking reference photos on my phone all day. They dumped into one camera roll, and I never took the time to sort them. I built GeoLens Pro, a browser app that drops incoming photos into project folders based on their GPS coordinates.</p><p>You can import a batch of photos or take them in real time. Using Leaflet for map boundaries and exifr to read metadata, the app runs Haversine math against active project geofences. If a photo falls inside a boundary, it goes straight to that job. Anything it misses lands in a bin for manual sorting. I also added a canvas editor to scribble wiring notes over the images.</p><p>The app was built as a prototype on Lovable, with Dexie handling the IndexedDB storage locally. I left contract work before running it through a full season, so I kept the files local rather than paying to host a cloud backend I wasn't using yet.</p>",
     "video": "",
     "gallery": [
@@ -2320,7 +2320,7 @@
       "LLM Integration"
     ],
     "image": "media/Apps/PixelForge/Screenshot 2026-07-25 173231.webp",
-    "description": "<p>I use a language model to hallucinate abstract prompts that force image generators out of their visual ruts.</p>",
+    "description": "<p>Pick a category, roll the dice, type nothing. It kept producing the same pose until I found I was feeding old prompts back into the context.</p>",
     "longDescription": "<p>I usually just select a category and roll the dice without typing anything. PixelForge is a web workspace that uses a language model to hallucinate an abstract prompt before any image rendering starts.</p><p>Early iterations got stuck in a rut. The app kept generating characters in the exact same poses. It turned out I was accidentally feeding previous prompts into the new input context. I isolated the client-side state to force the app to forget old generations between runs. Even with a clean state, individual models drift toward repetitive styles. I added a manual switch to route prompts across different versions and break the visual convergence.</p><p>The frontend runs on React, and the whole session history lives locally in IndexedDB. I refused to pay a database or hosting bill for this. I am not a fan of SaaS companies taking money for things that can be free.</p>",
     "video": "",
     "gallery": [
@@ -2446,7 +2446,7 @@
       "LLM Integration"
     ],
     "image": "media/Apps/Chronicle_ Iterative Fiction Engine/Screenshot 2026-01-26 182215.webp",
-    "description": "<p>I wired React directly through the browser to generate a story, illustration, and spoken audio without a backend.</p>",
+    "description": "<p>Every turn generates a scene, an illustration, and narration. Without a memory stack, the art drifted and the plot looped.</p>",
     "longDescription": "<p>A player boots up the page, reads a short scene, and clicks one of four choices or enters in a custom response. I built Chronicle as an interactive storytelling engine inspired by the retro text-adventure aesthetic. The game generates a narrative, an illustration, and spoken audio for every turn. A player can keep going as long as they want. When they have had enough, they hit the end button to trigger the final five choices that lock in the story outcome.</p><p>Every turn hits the Google Gemini API to build the next beat. The early versions fell apart fast. Without a strict memory structure, the image styles drifted, the story got stuck in loops, and the narrative rambled. The prompt kept growing until the engine choked. I had to build a memory stack. It compresses older events into shorthand summaries while passing along the exact visual tags the image generator needs. A single turn used to take two minutes to load. I swapped to lighter models to drop the wait down to twenty seconds.</p><p>I wanted to host the whole thing for free on GitHub Pages. That meant no backend and no bundlers. I wired React, ES modules, and Tailwind directly through the browser. Every API call and state change runs client-side. Managing that much state without a build step is painful enough that I plan to tear the engine down and start over.</p>",
     "video": "",
     "gallery": [
@@ -2583,7 +2583,7 @@
       "Google Drive API"
     ],
     "image": "media/Apps/Strata - Digital Notebook/Screenshot 2026-08-22 151928.webp",
-    "description": "<p>I refused to host a backend, so I turned Google Drive into an infinite canvas and split-screen code editor.</p>",
+    "description": "<p>OneNote's notebook structure, an infinite canvas, and a code editor that runs what you write. Every file lives in your own Google Drive.</p>",
     "longDescription": "<p>A user logs in with a Google account and organizes Docs, Sheets, Slides, and live code with block pages and an infinite canvas. I built Strata to manage my digital life at work. Boston Dynamics uses the Google ecosystem, and my old workflow was just native Drive sorting and browser bookmarks.</p><p>I used the three-tier system of OneNote (notebooks, tabs, and pages) as the foundation. I added block pages for structure and a split-screen editor to write and execute code, letting you build specialized calculators directly in your notes. The only total block I hit was trying to embed external webpages. Almost all sites block being loaded in embedded iframes, so I had to make a page with shortcut links instead.</p><p>Every file is stored directly in the user's Google Drive. If I design an app from the ground up, my rule is to refuse a backend entirely. The whole thing is serverless and hosted on GitHub Pages.</p>",
     "video": "",
     "gallery": [
@@ -2655,7 +2655,7 @@
       "Google Drive API"
     ],
     "image": "media/Apps/IdeaForge.AI/Screenshot 2026-02-14 232928.webp",
-    "description": "<p>I refused to pay for a cloud database, so this AI idea sifter runs entirely on GitHub Pages and Google Drive.</p>",
+    "description": "<p>Raw thoughts go in. The model interviews you about the gaps, then hands back an execution plan, a budget, and a task list.</p>",
     "longDescription": "<p>Users drop in raw thoughts, and a Gemini integration tags them. It is a multi-stage idea sifter that builds up concepts before anyone can shoot holes in them. When an idea shows promise, you promote it to a brainstorm. The model runs an interview to pull out missing details. Then it compiles an execution strategy, an expense tracker, and a task list.</p><p>I prototyped the workflow in Notion first, then rebuilt it with Lovable and Supabase. Both setups meant monthly subscriptions. I stripped out the cloud database entirely. I wired the React and TypeScript frontend directly into the Google Sheets and Drive APIs. A data layer handles offline edits. I ran my lithophane generator, LithoLab, through the pipeline to test the playbook generation.</p><p>Every user already has a Google account. I refused to pay for backend infrastructure, so the whole tool costs nothing to run.</p>",
     "video": "",
     "gallery": [
@@ -2757,7 +2757,7 @@
       "LLM Integration"
     ],
     "image": "media/Apps/CharGen.AI/Screenshot 2026-08-22 171906.webp",
-    "description": "<p>The engine saves directly to the browser because I refused to pay for servers or store user data.</p>",
+    "description": "<p>The vision model kept rendering muscle definition straight through the shirt.</p>",
     "longDescription": "<p>A user plugs in a Google API key, dials in conditional attributes, and generates a structured profile with NanoBanana artwork.</p><p>I started the build in Gemini Canvas, but the app rotted once the file hit a thousand lines. The interface just broke. I moved the project to Cursor to break it into modular files. Once it compiled, the AI struggled with basic logic. The vision pipeline fought clothing layers. If a prompt described muscle definition, the model rendered bare skin right through the shirt. I fixed the bleed by looping reference images through NanoBanana to enforce outfit consistency.</p><p>The engine runs in two directions. You can generate a character from scratch, or feed reference art into the vision model to extract physical data. I built the whole thing to run locally in the browser. It saves payloads directly to IndexedDB, because I refused to pay for server infrastructure or store user data. </p>",
     "video": "",
     "gallery": [
@@ -2930,7 +2930,7 @@
     "title": "Field Bench PSU",
     "category": "Tooling",
     "image": "media/Fabrication/Field Bench PSU/20250317_180727.webp",
-    "description": "<p>I replaced a heavy steel rig with a printed box and a laptop brick to test pixel strips.</p>",
+    "description": "<p>5, 12, or 24 volts off a laptop brick. It went up the ladder instead of the steel bench supply, and lasted until the voltmeter drifted.</p>",
     "longDescription": "<p>Dragging a heavy bench power supply up a ladder during the Temple San Francisco install got old fast. On-site pixel work runs on 5V, 12V, or 24V DC. I needed a way to test strips without hauling a steel box into the air.</p><p>I built a portable field supply around a buck-boost converter. I printed a PLA enclosure and powered it with a laptop brick. I left a direct USB-C port off the chassis because my print tolerances could not hold one cleanly. Assembling the box was a fight. I had to build an awkward ring-crimp split to feed the banana plugs, and threading the retaining nuts in that cramped footprint was miserable.</p><p>The little box replaced the bench rig entirely. I brought it to Que Bueno Suerte to test blackout pixel tubes on the mezzanine, verifying every strip before cutting. It survived a few years of site work until the voltage meter drifted and I retired it.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -3042,7 +3042,7 @@
     "title": "Club Lexi",
     "category": "Lighting",
     "image": "media/Lighting/Club Lexi/20230508_171150.webp",
-    "description": "<p>I anchored 64 fixtures straight into the joists and locked the controller so DJs couldn't mess up the presets.</p>",
+    "description": "<p>Ten-foot basement ceiling, 64 fixtures, no truss. Then I handed the DJs live control and watched them find every weak point.</p>",
     "longDescription": "<p>Club Lexi is a basement trapped under a ceiling just short of ten feet. If I used standard box truss, patrons would be hitting their heads on the moving lights. I hung the entire lighting system from strut channel anchored straight through the drywall into the joists. Working flush against a ceiling leaves zero room to hide a mess. Everything is exposed. I laid out the fixtures in straight lines so I could bundle the cables into tight runs.</p><p>An electrician dropped power on dedicated switches, letting the venue kill half the rig early in the night without touching the software. I packed 64 fixtures into the space. I programmed the presets alone on the dance floor with the music blasting. Putting moving heads right above people means watching every inch of clearance. My rule was to never have all fixture types on at the same time. Firing everything at once in a room that low was blinding and unpleasant.</p><p>The venue operates without a technician, so a Wolfmix controller sat in the booth for the DJs. Handing them live control immediately exposed the weak points. They dragged fade times to a crawl and assumed the rig was broken when the lights stopped moving. They also mashed the strobe button until the room was unreadable. I locked the hazer to a low-output toggle, built pre-programmed looks to enforce my lighting rules, and set up a hard reset so they could not trap the program.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -3210,7 +3210,7 @@
     "title": "The Orb",
     "category": "Fixtures",
     "image": "media/Electronics/The Orb/MVIMG_20190303_010156_1 (1).webp",
-    "description": "<p>I finished an abandoned 8-foot aluminum pixel orb project and pushed DC power down a 35-foot hoist drop.</p>",
+    "description": "<p>The installer walked off and left an eight-foot aluminum sphere in halves. Power had to come 35 feet down the hoist.</p>",
     "longDescription": "<p>You cannot buy an 8-foot orb built from aluminum to hold a 3D pixel array off the shelf. The original installer walked off the job, leaving the frame in two halves. One dome was covered in taped-over pixel modules and black spray paint. I stripped the mess and started over.</p><p>Keeping the power supplies in the ceiling left empty space inside the frame for the visual effect, but it meant pushing DC power across a 35-foot run. To beat the voltage drop, I installed supplies with remote sense to adjust output voltage in real time.</p><p>The whole rig hung from a hoist. Moving heavy copper without snagging required a PVC pipe flange mounted through the center. I spiral-wrapped welding cables and fed them down through the pipe. That guide kept the cables clean and stopped the sphere from spinning as it dropped to the dance floor every night.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -3391,7 +3391,7 @@
     "title": "The Basement",
     "category": "Lighting",
     "image": "media/Lighting/The Basement/IMG_20180614_174327.webp",
-    "description": "<p>I hid hundreds of pixels on top of wooden slats and bounced the wash off the bare concrete.</p>",
+    "description": "<p>I really don't like looking straight at a light source. Sixty-two slats, four inches under bare concrete, every strand aimed up.</p>",
     "longDescription": "<p>The basement at Triangle had a concrete ceiling at 10ft high. I despise looking directly at bare light sources. Instead of covering an overhead array in standard diffusion, I decided to bounce the light. A carpenter hung 62 slats under the concrete, leaving a four-inch gap. I mounted a 20-pixel strand on top of each slat, pointing straight up.</p><p>I prepped the strands on the ground and wired them as the carpenter worked. I also hung moving lights in the remaining space. That meant rotary-hammering strut channel directly into the ceiling. You get really good at working one-handed when you have to balance on a ladder, hold a fifteen-pound fixture, and thread a bolt. During testing, a loose connection caused the ground to drop and the pixels to flicker. I had zip-tied the wiring tight. With only four inches of clearance, I couldn't squeeze my hands in to pull the cables down. I had to pry the slats back off the ceiling to fix the joints.</p><p>I isolated the power supplies in an adjacent room. I didn't know fanless supplies existed then, but the quiet room made programming easier. When the rig ran, you never saw a source. The reflected wash bled through the gaps and filled the negative space. It took fluid and fire effects perfectly, and hiding the hardware kept a low room from feeling crowded.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -3582,7 +3582,7 @@
     "title": "Que Bueno Suerte!",
     "category": "Systems",
     "image": "media/Integration/Que Bueno Suerte!/20240606_211259.webp",
-    "description": "<p>I snaked wire through a two-story restaurant to tie eleven custom lighting rigs into one show.</p>",
+    "description": "<p>Eleven rigs, two floors, one rack. The old software could not fade the mezzanine without moving the whole building.</p>",
     "longDescription": "<p>I started with ELM running on an upstairs server to control eleven distinct lighting zones. It was a massive LED network wired across a two-story restaurant, but the software could not hand off transitions between the rigs. If I wanted to fade the mezzanine ceiling, I had to shift the entire building at once. I ran long-range decoders back to a single rack in the office. Wires snaked under bars, behind walls, and above the kitchen ceiling. The physical install got messy. Retrofitting the acrylic etchings meant climbing over tables while old adhesive exploded into a fine powder, which turned sticky again the second I sweated.</p><p>To get the machines talking, I built an iPad remote using OSCpilot for touch control and Show Cockpit for signal distribution. A rig this size in a packed room breaks in predictable ways. Controllers drop data and need a breaker flipped. Wireless fixtures lose signal through dense crowds. To keep the system usable for bartenders during a rush, I locked the iPad interface down to a few basic preset playlists. I put a slide-out KVM in the server rack so I could fix the inevitable routing issues directly.</p><p>Switching the core software to Madrix finally solved the visual output. I could trigger a single cue and watch the deep reds and oranges move together. The test that proved it worked was standing in the dining room and watching a slow color shift travel from the alabaster bartop, up the bottle shelves, and across the roof liners as one show.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -3825,7 +3825,7 @@
     "title": "Bar Tubes",
     "category": "Fixtures",
     "image": "media/Electronics/Bar Tubes/20240619_122306.webp",
-    "description": "<p>I gutted a brittle array of recycled fluorescent bundles and added backup data lines to stay off the ladder.</p>",
+    "description": "<p>393 recycled fluorescent tubes, hung in threes, all brittle. A ladder on a flexing ceiling grid is a strong argument for backup data lines.</p>",
     "longDescription": "<p>The array over the main bar was 131 recycled fluorescent tubes hung in clusters of three. They came with the building and needed serious help. The materials were brittle. If I wasn't locked into saving the original bundles, I would have used plastic tubes and found a better way to hang them.</p><p>Because the restaurant was open every day, I could only pull down a few clusters at a time. I stood on a telescoping ladder resting on the ceiling grid, which flexed just enough to make every climb interesting. I lowered the clusters, broke the old wraps, and pulled the dead strip from the center. I swapped the tape for WS2813 LEDs. The backup data line meant a single failed pixel wouldn't force another ladder climb. Up in the power boxes, I gutted the undocumented decoders and wired in Advatek PixLite 16 MK2s. When I first fired the rig up, the inrush current blew the inline fuses. I bumped the fuses to seven amps per tube, and the rig stabilized.</p><p>Keeping the original pixel density meant the display needed 70 universes to run. I built a 3D voxel map of the layout to push effects through the depth of the room. The tubes hang at uneven lengths, but the rebuilt bundles survived the daily grind of an open bar, and the backup data lines kept me off that flexing ceiling grid.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -3980,8 +3980,8 @@
     "title": "Negative \"X\"",
     "category": "Art",
     "image": "media/Art/Negative _X_/negative x fix.webp",
-    "description": "<p>I blocked the center of 256 isolated cells to turn square pixels into 1,024 converging arrows.</p>",
-    "longDescription": "<p>I wanted to build the pixel diffusion equivalent of a stage gobo. I modeled 256 isolated cells in SolidWorks. I put a solid X obstruction inside each one. Powered off, the piece sat like a plain square. Powered on, the X blocked the center of each LED. It turned a single square pixel into four converging arrows. Running fluid patterns across the grid made the uniform obstructions look fuzzy and ripply.</p><p>My first print failed. The nozzle dragged across the X pattern and caused layer shifts. I fixed it by printing the face directly against the buildplate to keep it flat. A one-millimeter PLA face provided enough diffusion without bleeding light between the cells. Because the entire frame was plastic, heat was the final limit. I capped the current in the controller to stop the grid from warping.</p>",
+    "description": "<p>Blocking each cell's center turns 256 pixels into 1,024 converging arrows. It also still catches the print head.</p>",
+    "longDescription": "<p>I wanted to build the pixel diffusion equivalent of a stage gobo. I modeled 256 isolated cells in SolidWorks. I put a solid X obstruction inside each one. Powered off, the piece sat like a plain square. Powered on, the X blocked the center of each LED. It turned a single square pixel into four converging arrows. Running fluid patterns across the grid made the uniform obstructions look fuzzy and ripply.</p><p>My first print failed. The nozzle dragged across the X pattern and caused layer shifts. Printing the face directly against the buildplate helped, but this model never became reliable. Even on the X1C, the wall thickness inside the X shapes still catches the print head on some runs. A one-millimeter PLA face provided enough diffusion without bleeding light between the cells. Because the entire frame was plastic, heat was the final limit. I capped the current in the controller to stop the grid from warping. It hung at Glow Lounge for several months.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -4133,8 +4133,8 @@
     "title": "Seed of Life",
     "category": "Art",
     "image": "media/Art/Seed of Life/seedoflifefix.webp",
-    "description": "<p>I printed a one-millimeter face to hide the matrix, and ran enough current to melt the internal grid.</p>",
-    "longDescription": "<p>The piece looks like a white square when turned off. I built this 3D-printed lightbox as a proof of concept to test subdivided matrices.</p><p>I printed it face down. Getting a clean surface required a 1mm face. That dimension let light through while hiding the black walls behind it. With a 10mm throw, bouncing the light was unnecessary.</p><p>Heat became the immediate problem. I ran early tests at full brightness inside sealed enclosures. Over time, the corners curled. The internal grid softened enough to move by hand, and the unit bowed away from the wall as the plastic heated up.</p><p>Lighting large clusters reveals parts of the pattern. The complete shape only appears when every pixel is active. Surviving that heat set the fabrication rule for these prints. The enclosure needs back vents, and the firmware has to limit the current.</p>",
+    "description": "<p>The proof of concept for the whole series. The corners curled, the grid went soft, and it still hung at Glow Lounge for months.</p>",
+    "longDescription": "<p>The piece looks like a white square when turned off. I built this 3D-printed lightbox as a proof of concept to test subdivided matrices.</p><p>I printed it face down. Getting a clean surface required a 1mm face. That dimension let light through while hiding the black walls behind it. With a 10mm throw, bouncing the light was unnecessary.</p><p>Heat became the immediate problem. I ran early tests at full brightness inside sealed enclosures. Over time, the corners curled. The internal grid softened enough to move by hand, and the unit bowed away from the wall as the plastic heated up.</p><p>Lighting large clusters reveals parts of the pattern. The complete shape only appears when every pixel is active. Surviving that heat set the fabrication rule for these prints. The enclosure needs back vents, and the firmware has to limit the current. It hung at Glow Lounge for several months alongside Negative \"X\".</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -4295,7 +4295,7 @@
     "title": "Celtic Owl",
     "category": "Art",
     "image": "media/Art/Celtic Owl/frame-thumb-1786238531082.webp",
-    "description": "<p>I embedded a 256-pixel matrix inside a relief carving, printing double black walls to stop the light bleed.</p>",
+    "description": "<p>My workstation crashes on any grid bigger than 16x16. Cutting 256 cells out of Celtic knotwork sat exactly at that limit.</p>",
     "longDescription": "<p>I wanted to map a rigid geometric matrix inside an organic shape. This piece is a dual-material relief sculpture of a Celtic owl. When powered off, the front face acts like a lithophane, reading as a white carving in a black frame. Turn it on, and a 16x16 LED grid cuts straight through the surface lines.</p><p>My workstation laptop crashes if I calculate an internal grid larger than 16x16. I bought an owl model online and split the workflow between SolidWorks and Blender. Subtracting those 256 cells from the knotwork pushed the hardware to its limit.</p><p>Early prints leaked light everywhere. Stopping the bleed initially took 0.8 mm walls, requiring two passes with the nozzle. Moving the job to a Bambu Lab X1C with an AMS unit solved it. The fabrication rule became simple: a double 0.4 mm wall of black PLA+ now isolates every cell cleanly.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -4880,7 +4880,7 @@
     "title": "Extrusion Centering Sled",
     "category": "Tooling",
     "image": "media/Fabrication/Extrusion Centering Sled/20200909_213244.webp",
-    "description": "<p>I printed a sliding jig to force 160 meters of straight track onto ten wavy pillars.</p>",
+    "description": "<p>One pillar with a laser level looked awful. The jig found true center on its own, and the other 160 meters took an afternoon.</p>",
     "longDescription": "<p>I did one pillar with a laser level and it looked awful. I built a four-part 3D printed sled to find true center instead. The wavy casing made standard measuring useless, and any drift in the vertical LED track would mirror across the room.</p><p>I broke the jig into pieces to beat my printer's build plate limit. The first prints refused to fit inside the aluminum channel. Once I dialed in the width, the interlocking joints held rigid. I rubbed a yellow china marker on the notched ends to reference the outer corner extrusions at any height.</p><p>As I slid the jig upward, it actively found center while I tacked the extrusion with a pneumatic nailer. I finished 160 meters of track in a couple of hours. The sled hid the wavy casing and kept every line straight.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -5002,7 +5002,7 @@
     "title": "Dance Floor Pillars",
     "category": "Fixtures",
     "image": "media/Electronics/Dance Floor Pillars/Screenshot_20210306-180716_Photos~2.webp",
-    "description": "<p>I armored ten century-old wooden columns in OSB and drywall mud to make light jump straight out of the concrete.</p>",
+    "description": "<p>Ten uneven columns, a hundred years old, and no drilling into structural wood. OSB, drywall mud, and weeks of sanding on a scissor lift.</p>",
     "longDescription": "<p>I needed ten floor-to-ceiling pillars of recessed pixel tape on the dance floor. The original columns were a hundred years old and made of uneven wood. I was not going to drill into structural supports, and you cannot buy a uniform enclosure that wraps a century-old beam.</p><p>I encased the columns in OSB to build a straight box. I mounted mud-in aluminum extrusions to the wood with a pneumatic nailer, then filled the gaps with more board. I plastered everything with drywall mud. That meant spending weeks on a scissor lift with an orbital sander hooked to a shop vac. I primed the columns and painted them flat black. Firing the 320 meters of tape made it look like light was jumping straight out of the concrete.</p><p>The wiring had to survive a nightclub dance floor. I sealed the bottoms with silicone caulk and ran the base wiring through thin metal tubing to protect it from kick damage. To fight voltage drop across the four-meter strips, power injection lines hid inside the corner moldings. The pillars took the crowd abuse exactly as built.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -5446,7 +5446,7 @@
     "title": "Pixel Louver Lights",
     "category": "Fixtures",
     "image": "media/Electronics/Pixel Louver Lights/20240322_115100.webp",
-    "description": "<p>I printed 96 corner extrusions to hide the raw pixels, then watched spilled drinks short out the electronics.</p>",
+    "description": "<p>Nobody sells a corner LED channel with louvers in it, so I modeled one and printed enough for 48 cubbies. They were supposed to stay dry.</p>",
     "longDescription": "<p>I needed to light 48 bar cubbies from the front corners without blasting raw RGB pixels into people's eyes. I have never seen a commercial LED channel with louvers, let alone a corner extrusion built for illumination. I modeled one in SolidWorks and printed 96 of them.</p><p>Getting the slide-in backing to fit took a few tries. Factory solder splices on the LED tape created bumps that jammed the plastic. I had to cut the tape strictly between splices to keep it flat. I also added internal zip ties so hanging wires wouldn't rip the solder pads off the strips.</p><p>Since the shelves were supposed to stay dry, I used non-waterproof tape. That was a mistake. On busy nights, people set drinks in the cubbies. Spills pooled in the corners, corroded the strips, and shorted them out. If I make these again, I am elevating the electronics off the deck and using waterproof tape.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -5617,8 +5617,8 @@
       "x": 100,
       "y": 48.4
     },
-    "description": "<p>I shot a laser level under a low duct and hung a flat array that vanishes into the dark paint.</p>",
-    "longDescription": "<p>A central HVAC duct and a low mezzanine ceiling had already killed a previous lighting concept. I took the lowest point of that duct as a hard clearance limit and shot a laser level across the room. We hung a flat array of blackout pixel tubes. Standard milky white LED diffusion looks cheap when powered off. I used black diffusion against dark ceiling paint so the rig would visually disappear during the day.</p><p>We assembled the five-meter tubes on the floor. A friend helped me lift them onto two six-foot ladders, stringing them up and leveling them a few inches at a time. I originally ran wire inside the casing for power injection at the far end, but it drooped and cast shadows. I ripped the extra wiring out. The strips ran full white from a single end with zero color shift. Black diffusion eats light, but pixel rigs are usually too bright anyway. The physical dimming was exactly what we wanted.</p><p>Silent operation meant no fanned power supplies. I split eighteen waterproof units across three circuits. Booting them at once tripped the breakers instantly from inrush current. I wired generic relay PCBs into custom sequencer boxes to stagger the startup by five seconds. The hardware vanishes into the ceiling by afternoon, washes the tables in warm white for dinner, and runs heavy chases when the dance floor opens.</p>",
+    "description": "<p>The lowest point of an HVAC duct set the height of the whole rig. Black diffusion on black paint keeps it invisible until dinner service.</p>",
+    "longDescription": "<p>A central HVAC duct and a low mezzanine ceiling had already killed a previous lighting concept. I took the lowest point of that duct as a hard clearance limit and shot a laser level across the room. We hung a flat array of blackout pixel tubes. Standard milky white LED diffusion looks cheap when powered off. I used black diffusion against dark ceiling paint so the rig would visually disappear during the day.</p><p>We assembled the five-meter tubes on the floor. A friend helped me lift them onto two six-foot ladders, stringing them up and leveling them a few inches at a time. I originally ran wire inside the casing for power injection at the far end, but it drooped and cast shadows. I ripped the extra wiring out. The strips ran full white from a single end with zero color shift. Black diffusion eats light, but pixel rigs are usually too bright anyway. The physical dimming was exactly what we wanted.</p><p>Silent operation meant no fanned power supplies. I split eighteen waterproof units across three circuits. Booting them at once tripped the breakers instantly from inrush current. I wired generic relay PCBs into custom sequencer boxes to stagger the startup by five seconds. The hardware vanishes into the ceiling by afternoon, washes the tables in warm white for dinner, and runs heavy chases when the dance floor opens. The only repair since has been one strip with a single pixel stuck on.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -5848,7 +5848,7 @@
       "x": 64.6,
       "y": 54.8
     },
-    "description": "<p>I packed a nest of relays into three printed boxes to keep the room's breakers from popping.</p>",
+    "description": "<p>Eighteen power supplies booting at once trip a breaker every time. Three boxes of relays stagger them five seconds apart.</p>",
     "longDescription": "<p>Firing up eighteen power supplies at once tripped the venue breakers from high inrush current. Pulling more electrical circuits cost too much, so I built three 3D-printed boot sequencers to stagger the load.</p><p>I assigned six supplies to each box. Inside, a small power supply ran a relay board that acted as a switch bank. Packing high-voltage lines, relays, and a nest of WAGOs into a sealed case took a few printed revisions to ensure everything fit. Every connection used locking connectors. I added indicator LEDs on the front to show live outputs and status lights on the back to verify AC power.</p><p>I mounted the boxes on the black wall just above the rafters. Flipping the power starts a cascade of relay clicks across the room. Every five to ten seconds, another ceiling section wakes up as the capacitors charge. Once the boot sequence finishes, the whole rig runs silent.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -5975,7 +5975,7 @@
     "title": "WiFi VIP Tables",
     "category": "Fixtures",
     "image": "media/Electronics/WiFi VIP Tables/Screenshot 2026-08-07 201527.webp",
-    "description": "<p>I salvaged the acrylic from 32 rotting tables and built wireless pixel fixtures using kitchen soup containers.</p>",
+    "description": "<p>Thirty-two rotting tables, salvaged for their acrylic. The electronics live in soup containers from the kitchen.</p>",
     "longDescription": "<p>Temple SF needed 32 illuminated VIP tables, but buying new plastic during the pandemic was too expensive. We had a stack of old ones, but the heavy MDF bases had spent years soaking up spilled drinks. The black acrylic tops were chipped into sharp points, and the hardwired wash strips were dead. The acrylic itself was still good, so we stripped them down to rebuild them.</p><p>My carpenter and I routed the acrylic channels deeper for new LED strips and cut a center path for the wiring. We rounded off the sharp edges across all 32 sheets. To replace the ruined MDF, I cut plywood bases, painted them black, and bolted on metal legs. Time got tight, and my 3D printer could not produce enclosures fast enough. I grabbed a stack of plastic soup containers from the kitchen and siliconed them to the underside of each table. They housed an ESP32 decoder and a lithium-ion battery, keeping the electronics safe from spills.</p><p>The operator gathered the batteries at the end of the night to charge them at the control rack. I mapped the tables into Madrix over wireless ArtNet. Running Wi-Fi through a crowded club is a fight against RF noise, but high-gain antennas kept the signal alive. I would have chosen legs with a wider base, since the tables could tip if someone leaned hard on the edge. But they salvaged our most expensive material and survived the crowd.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -6199,7 +6199,7 @@
       "x": 24.3,
       "y": 62.6
     },
-    "description": "<p>I walked hundred-pound glass panels out with suction cups to fit a salvaged pixel grid into a five-inch gap.</p>",
+    "description": "<p>Hundred-pound glass panels, walked out on suction cups, to fit a salvaged pixel grid into a five-inch gap.</p>",
     "longDescription": "<p>You can't buy a pixel grid perfectly sized for a glass mezzanine wall. I built this one from salvaged parts. I found boxes of 24V waterproof LED strips buried under some stairs during lockdown. It was thousands of dollars of high-end product meant to replace a single dead strand. I gathered enough leftover Madrix Nebula decoders and power supplies to build a proper installation.</p><p>The glass panels weighed 100 pounds each. I bought industrial suction cups, got them over the lip, and walked them out by the corners to expose a five-inch working gap. I shot a laser level across the wall to set the rigid track, calculated the physical length of a single pixel, and set the vertical spacing to match exactly.</p><p>Voltage drop over a 20-meter run is inevitable. When I ran all channels at full white, the far end tinted red. I countered this by running an 18AWG power injection wire to the opposite end, tying the DC lines together across the power supplies behind the last panel. The wall mapped cleanly, but it hit an operational reality. The venue never fixed the house lighting in that area, making our grid the primary light source for VIP. When the dancefloor hit a master blackout, the lounge plunged into pitch black. We had to isolate the mezzanine to ignore blackouts entirely so people could see their drinks.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -6715,7 +6715,7 @@
       "x": 76.6,
       "y": 69.3
     },
-    "description": "<p>I spent three days on an extension ladder pulling thirty-pound plywood panels to fix a melting LED wall.</p>",
+    "description": "<p>Three days on an extension ladder, pulling thirty-pound plywood panels off a wall that was actively melting.</p>",
     "longDescription": "<p>I could not just buy off-the-shelf LED pixel panels for the swept backwall because cost was the absolute bottom line. The existing rig was built from thirty-pound plywood panels carrying pixel modules, and I had to salvage it. I pushed all channels to full intensity to see what I was dealing with. It was an active fire hazard. Severed cables were shorting against the metal frame and melting. The previous installer misunderstood load calculations and wire gauges.</p><p>I ripped out the bad distribution. Getting to the hardware was worse than the electrical work. The wall curved into a sloped ceiling directly above the DJ booth. I spent three days perched twenty feet up an extension ladder footed on a concrete access ramp. Leaning backward against the curve, I pulled the heavy wood panels. The edges shifted and chipped every time a board came down. We pinched a wire replacing one of them and had to drop it a second time to fix the mistake.</p><p>I installed fused DC protection and ran fresh wire to the injection points. I mapped the data runs and swapped the dead modules. I calculated the new hardware so a full software output would only draw an eighty percent physical load. The old pixel wiring was thin and brittle, but tearing the entire system out would have doubled the timeline. The repaired panels went back up the ladder and survived the curved frame.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -6947,7 +6947,7 @@
     "title": "Entrance Hall",
     "category": "Fixtures",
     "image": "media/Electronics/Entrance Hall/VID_20190706_212708-poster.webp",
-    "description": "<p>I gutted a dead thirty-foot LED tunnel down to raw copper and rebuilt it inside walls that were glued shut.</p>",
+    "description": "<p>A dead thirty-foot LED tunnel, gutted to raw copper and rebuilt inside walls that were glued shut.</p>",
     "longDescription": "<p>You cannot buy an off-the-shelf replacement for a 30-foot LED tunnel woven through sheet metal and MDF. The original entrance at Temple Denver was a rush job that slowly died. It was never meant to be serviced. Patching a failing rig is a waste of time, so I gutted the entire run down to the raw pixel strips.</p><p>Mid-week gave me a two-day window while the club was closed. Getting the walls open was a pain. I found hidden shims and double-sided tape holding the 3/4-inch panels together. My first plan was to pull the aluminum extrusions, but construction adhesive held them fast. I left the tracks in place and removed the old solder to get clean copper. I wired the data chain fresh and rebuilt the power distribution from the ground up. I balanced the load across two 24-volt power supplies above the ceiling. I tied the DC negative lines together to keep the data stable.</p><p>If I had built the hallway from scratch, I would have made proper access panels. Instead, I routed the new wires in a repeatable pattern and drove actual screws into the MDF so the walls could be opened later. The rebuilt rig lit the full run perfectly, surviving a heavy enclosure that was originally glued shut.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -7109,7 +7109,7 @@
       "x": 25.3,
       "y": 40.3
     },
-    "description": "<p>I armored pixel strips with aluminum and buried the hose clamps in hot glue so people could grab the cage.</p>",
+    "description": "<p>Six people dancing inside a metal cage will grab whatever is in reach. Aluminum-backed strips, hose clamps buried in hot glue, no sharp edges.</p>",
     "longDescription": "<p>I had to design an LED strip that survives a crowd grabbing it all night without someone slicing their hands. I built a metal basket with armored pixel sticks for a dance platform in the middle of a nightclub floor.</p><p>I heatshrunk the strips to aluminum sticks. I secured them to the cage spokes with hose clamps and buried the hardware in hot glue. I built the basket in halves to fit it through the garage doors across the alley. I programmed the pixel map while it sat in pieces. Data hit a decoder under the deck through a cheap access point bridge or a hardline cable.</p><p>The square channel base eventually chewed through the wire insulation. Pull force ripped the solder pads, taking out a couple strips at a time until I spliced new ones in. But when half a dozen people packed inside the cage to dance, the armored sticks survived the crowd.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -7264,7 +7264,7 @@
       "y": 21.5
     },
     "description": "<p>Fixing the voltage drop meant sitting on a twelve-foot ledge over the tile with a battery-powered soldering iron.</p>",
-    "longDescription": "<p>The decorative pyramid above the kitchen sat twelve feet over the dining room tile. I wanted to wash the steps with pixel tape. Guests taking the stairs to the second floor had a clear view down the side. I refused to let the hardware show during the day, but it needed enough throw for a clean wash. I mounted 45-degree aluminum extrusions under the lip of each step. To make the track disappear, I pulled a paint match with a digital sensor, printed custom jigs, and sprayed the metal in batches.</p><p>The layout wrapped two sides of the pyramid. I tucked fanless power supplies in the corner, wired to receivers on the main rack. Firing it up revealed a voltage drop. The bottom steps shifted color. Fixing it meant hardwiring the corners and adding power injection at the far ends. I sat on the twelve-foot edge, splicing wire over the tile floor with a battery-powered iron. I bundled the new lines in black wire wrap, leaving a clean arc at every corner.</p><p>The painted track vanished during the day. At night, the steady voltage let the server push smooth, flowing shapes across the steps. The top of the kitchen rolled with slow waves, and on certain patterns, the pyramid looked like it was on fire.</p>",
+    "longDescription": "<p>The decorative pyramid above the kitchen sat twelve feet over the dining room tile. I wanted to wash the steps with pixel tape. Guests taking the stairs to the second floor had a clear view down the side. I refused to let the hardware show during the day, but it needed enough throw for a clean wash. I mounted 45-degree aluminum extrusions under the lip of each step. To make the track disappear, I pulled a paint match with a digital sensor, printed custom jigs, and sprayed the metal in batches.</p><p>The layout wrapped two sides of the pyramid. I tucked fanless power supplies in the corner, wired to receivers on the main rack. Firing it up revealed a voltage drop. The bottom steps shifted color. Fixing it meant adding power injection at the far ends. I sat on the twelve-foot edge, splicing wire over the tile floor with a battery-powered iron. I bundled the new lines in black wire wrap, leaving a clean arc at every corner.</p><p>The painted track vanished during the day. At night, the steady voltage let the server push smooth, flowing shapes across the steps. The top of the kitchen rolled with slow waves, and on certain patterns, the pyramid looked like it was on fire.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -7534,7 +7534,7 @@
     "title": "Tracks Discotheque",
     "category": "Lighting",
     "image": "media/Lighting/Tracks Discotheque/FB_IMG_1561801234515.webp",
-    "description": "<p>I surrounded the crowd with twenty-six vintage scanners and cannibalized dead units in the basement to keep them alive.</p>",
+    "description": "<p>Twenty-six vintage scanners surrounding the crowd, kept alive by cannibalizing dead units in the basement shop.</p>",
     "longDescription": "<p>Tracks was one of the last classic discotheques left in the country. The design rule was simple: surround the crowd, and keep the focus off the DJ booth. To put the audience directly inside the show, I stacked 26 vintage scanners across three layers in the ceiling. Twelve Trackspot 1s circled the dance floor. Eight Trackspot 2s flanked the sides in straight lines, and six Martin MX10s hung in tilted triangles overhead. I mixed them with pinspots, mirror balls, DataFlash strobes, and modern LEDs, all run from an old GrandMA Light Gen 1 console. Its motorized faders and audio BPM detection were exactly what the room needed.</p><p>For an unconventional layer, I built a dynamic truss warmer. I took leftover raw pixel PCBs from the Lobby Wall install, stuck adhesive zip-tie mounts to the back, and strapped them to the bottom pipe of the triangular truss. I aimed them straight up. The point was to illuminate the metal, not light the crowd. If I pointed them down, the bare diodes would sit directly in the patrons' line of sight.</p><p>The contrast between the hardware defined the look. Modern moving heads provided the brightness, but the 90s/2000's scanners were incredibly fast and locked onto a beat. The problem was keeping them alive. Stepper motor brakes failed. Scanners would start stuttering during slow movements and lose their tracking. The circuit boards were at least a decade obsolete, so we cannibalized dead units in the basement shop, replacing blown capacitors and motor drive chips to keep the rig running.</p><p>I expect a programmed sequence to look the same every time I recall it. With vintage mechanics, that was a constant fight. When a scanner lost its position mid-show, I would drop its intensity to zero and intentionally slam the mirror into its hard stops to force it back into alignment. When the room was packed and the console locked onto the beat, the sheer speed of those old scanners firing overhead proved why the classic club format worked.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -7875,7 +7875,7 @@
       "x": 48.2,
       "y": 34.6
     },
-    "description": "<p>I pumped 55 gallons of fluid into the ceiling to fake a cryo blast, but the poles got slick.</p>",
+    "description": "<p>Fifty-five gallons of fluid pumped into the ceiling to fake a cryo blast. It worked. The poles got slick.</p>",
     "longDescription": "<p>After Denver cracked down on CO2 permits, securing clearance for an indoor cryo system became legally impossible. I adapted six Antari fog jets using fast dissipating fluid to simulate the massive cold blast the client wanted. With 16ft ceilings, staff couldn't reach them for manual refills. I set up a 55 gallon drum in the dressing room. Two ground pumps pushed fluid to two header tanks in the ceiling, feeding three jets each.</p><p>The 30 pound jets lacked a built in way to hang upside down. I built adjustable mounts using strut channel L-brackets and bolted them to the ceiling grid from a scissor lift. They required new dedicated circuits and remote booth switches. During the initial power up, one header tank started pouring fluid from the ceiling. A factory float valve was wired backward, signaling the pump to continue filling an overflowing tank. I sprinted to the dressing room to kill the power, then pulled the tank down for a replacement.</p><p>I patched the rig into their ChamSys console. The wash LEDs built into the jets colored the blast and sold the cryo illusion. It worked exactly as intended mechanically, but the vapor condensed on the stage poles. The steel became incredibly slick. The dancers commented, and the only remaining option was for the staff to wipe the poles down between sets.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -8020,7 +8020,7 @@
     "title": "Alabaster Bar Top",
     "category": "Lighting",
     "image": "media/Lighting/Alabaster Bar Top/Gemini_Generated_Image_jevrnrjevrnrjevr.webp",
-    "description": "<p>I had six hours each morning to lift the stone, wire new pixels, and seal it before the bartenders arrived.</p>",
+    "description": "<p>Six hours each morning to lift the stone, wire new pixels, and seal it back down before the bartenders arrived.</p>",
     "longDescription": "<p>The main bar at Que Bueno Suerte! runs the length of the dining room under vaulted ceilings. The top is solid alabaster. The original contractors wired the low-voltage LEDs using wire nuts. The connections failed, leaving dead spots across the stone. I wanted to install addressable pixels, but the venue refused to close. I had a six-hour window each morning to finish one section before the 3 PM open.</p><p>Every day, I sliced the old adhesive and lifted a piece of stone. I stripped the dead tape, installed narrow 12-volt pixels along the edges, and sealed the alabaster down with quick-dry silicone just before the bartenders arrived. The center section was worse. A 200-pound acrylic table wrapped around a support beam. I used spreader bars to lift it, unbolted the legs, and slowly inched the acrylic onto an adjacent table so it wouldn't crack. I ran new DC wire through the sheet metal studs and hid waterproof power supplies behind the kickers.</p><p>For weeks, I locked the finished sections to a static warm white to hide the construction. When the bar finally came online, my Madrix patch wasn't wide enough for a continuous 1500-pixel sweep. I stacked the strips in Z-layers and used fluid effects with mirroring to hide the seams. The alabaster was originally meant for a uniform white. Hitting it with dynamic color created deep internal gradients across the stone.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -8254,7 +8254,7 @@
     "title": "Bar Kicker",
     "category": "Lighting",
     "image": "media/Lighting/Bar Kicker/frame-thumb-1786735695778.webp",
-    "description": "<p>I pried heavy plywood panels up with my toe to wire custom neon flex in a two-inch gap.</p>",
+    "description": "<p>Two inches of clearance behind a steel rail. The 25-pound panels came up with my toe.</p>",
     "longDescription": "<p>The original lighting behind the bar was wired like a house. Someone laid a row of white LED modules flat on the floor, hoping the light would bounce through thick amber acrylic. There were nine of these kicker panels at Que Bueno Suerte, built from plywood and weighing 25 pounds each.</p><p>I pulled them down, repaired the damaged wood, and built custom neon flex using square tube and WS2814 pixels. I siliconed the flex along the waveform cuts on the back of the acrylic and taped it until it cured.</p><p>Because I was also lighting the alabaster bar top above, I had to keep pulling the kickers back off. Getting them back in was a physical fight. I had two inches of clearance blocked by a steel rail. I wedged my heel on the rail, pried a 25-pound sheet up with my toe, and disconnected leads blind with my free hand. I dropped two panels doing this. The impact ripped the silicone right off the back. I remounted the flex with industrial tape on the fly.</p><p>When I finally powered the rig up, the physical materials dictated the programming. The amber acrylic completely ate the blue spectrum. I dropped blue from the palette entirely. I built a series of slow sweeps using only red, green, and warm white, giving the lower bar a heavy, saturated accent.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -8514,7 +8514,7 @@
       "x": 0,
       "y": 59
     },
-    "description": "<p>I anchored a ratchet strap to a patio fence and spent four hours hammering a trapped LED track sideways.</p>",
+    "description": "<p>A ratchet strap anchored to the patio fence, a deadblow, and four hours of hammering a trapped LED track sideways.</p>",
     "longDescription": "<p>The bar backsplash was a massive acrylic wall extending to a vaulted ceiling. The original LEDs were dead. I needed to relight the acrylic edges and underlight three glass shelves. The wall was never meant to come apart. The shelves were mounted directly through the acrylic, trapping the bottom LED track under the panels. It was also locked down with double-sided tape. The top and side strips came out quickly. The bottom track was an eight-foot problem.</p><p>My only option was pulling it sideways. I drilled a hole through the aluminum track, hooked a ratchet strap to it, ran the strap out the door, and anchored it to a metal patio fence. I slid a piece of strut channel through the strap as a strike plate. I stood next to the bar and hit the strut with a deadblow. The track inched out fraction by fraction. It took four hours of hammering to clear the wall.</p><p>Assembly went faster. I skipped the adhesive and slid the new track into the gap. For the shelves, I mounted pixel tape into black channels, firing light up through the bottles. Because the shelves were bolted through the wall, I could not hide the cables. I put the wires inside black wrap and pulled them perfectly straight. If wiring sits in direct eyesight, it has to look intentional. The bright acrylic acts as a backdrop for the bartenders, tying the room together.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -8776,7 +8776,7 @@
       "x": 45.4,
       "y": 25.4
     },
-    "description": "<p>I tucked salvaged fixtures between fixed memorial art panels and bounced tight beams off a mirrored torso.</p>",
+    "description": "<p>Three UV panels painted by a member who had passed were not coming down. The rig went around them, aimed at a mirrored torso.</p>",
     "longDescription": "<p>The ceiling at Glow Lounge was 8 feet high. Three art panels hung over the dance floor. A community member painted them with UV paint before he passed away, so they stayed put. I scrapped my plan for pixel strips to save money and pulled down the old rig. The fixtures were gross. Dust choked the fans until they stopped spinning, causing the lights to overheat and thermal cycle. I scrubbed the salvageable units and mapped a new layout around the art.</p><p>Every inch mattered. I mounted strut channels flush to the drywall and bolted them into the joists. I tucked short beam fixtures between the panels and pushed the taller lights to the edges. I bundled the cables along the channel and balanced the rig on 2 circuits. I hung new wash lights next to the DJ, but they got stuck while panning. The metal frames bent during transport and rubbed against the housing. I just bent the yokes back by hand.</p><p>A spinning torso covered in mirrors hung over the floor. I built the show on a Wolfmix WMX1 controller. I could narrow the wash fixtures into tight beams and aim them at the torso and the mirror balls. The light shot across the room just above the crowd. If a patron was exceptionally tall, they would likely get hit in the face. The scattered reflection filled the room. It felt compact and balanced.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -8944,7 +8944,7 @@
       "x": 48.6,
       "y": 37.4
     },
-    "description": "<p>I hid twenty-three pixel segments across staggered sheet metal shelves to wash the bottles without exposing the wiring.</p>",
+    "description": "<p>The bottle shelves turned out to be wood blocks with sheet metal on top. Twenty-three extrusions, and gaps I had to fake in the patch.</p>",
     "longDescription": "<p>I didn't realize how the mezzanine bar at Que Bueno Suerte was built until I got there. The bottle shelves were blocks of wood with sheet metal stacked on top. I needed to wash the bottles from the front without exposing the wiring. I pre-cut 23 segments of aluminum extrusion and built the strips on a workbench. I soldered and heat-shrunk 3000K RGBW tape inside 45-degree channels, leaving wire whips on both ends.</p><p>I stuck the tracks to the top of each metal plate with foam tape. I used Dolphin crimps to splice the segments into four rows. To hide the connections, I ran cables between the wood blocks and sleeved the gaps in wire wrap.</p><p>The space under the bar had a different constraint. At night, the staff turned the mezzanine into a dance floor and shoved heavy tables underneath. Knees, coats, and sliding furniture were going to hit the lighting. I loaded more tape into an extrusion and siliconed it directly to the underside of the bar. I mounted it far enough back to survive the room flips.</p><p>Every line ran to an Advatek decoder and a power supply hidden behind the bar. I patched the rig in Madrix. Because the shelves were staggered, I had to approximate the empty space in the software patch so effects would travel at the right speed. When the rig fired up, the fire presets moved naturally across the metal plates.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -9122,7 +9122,7 @@
       "x": 50,
       "y": 27.7
     },
-    "description": "<p>I fused spheres together to print a mask where no internal overhang could create a dark pocket.</p>",
+    "description": "<p>Fused spheres, and not one overhang anywhere. An overhang makes a pocket the matrix underneath can never reach.</p>",
     "longDescription": "<p>I wanted to see a cluster of overlapping, organic shapes lit from behind. Bubblescape is a 3D-printed light piece built over a 16 x 16 pixel LED pixel matrix. Before this, I generated my internal structures in SolidWorks. But these shapes were too organic, which forced me to bring Blender into my workflow. I just took spheres of different sizes and fused them together.</p><p>The print used three materials: black for the mask, white to bounce light, and clear for diffusion. The internal geometry was a step up in complexity. The rule for these is maintaining an even internal grid. You can't let the pixels get close enough to the face to cause a hotspot. I also had to make sure there were no overhangs in the model. Any overhang creates a dark pocket that the matrix underneath can never reach.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -9253,8 +9253,8 @@
       "x": 50.2,
       "y": 21.4
     },
-    "description": "<p>I used exactly one millimeter of white plastic to hide the internal grid without killing the brightness of the lights.</p>",
-    "longDescription": "<p>I wanted a geometric pattern that hid in plain sight. Zig-Zag is a 16x16 LED matrix enclosed in a 3D-printed shell. When the piece is off, the front is a flat white square. When it powers up, a repeating grid of alternating L shapes punches through the surface.</p><p>I designed a black internal grid that divides the board into 10mm cells to isolate each light. I printed the piece face down, laying the white diffusion layer first and building the black cell walls directly behind it. A small controller running WLED handles the animation.</p><p>The whole effect relied on the depth of the front face. If the white PLA was too thin, you could see the plastic shapes resting behind it. If it was too thick, the LEDs could not push light through. One millimeter of white filament was the exact limit. It was enough material to mask the internal structure, but thin enough to let the pattern glow.</p>",
+    "description": "<p>Every other panel keeps its shape inside one cell. This pattern runs across all 256.</p>",
+    "longDescription": "<p>I wanted a geometric pattern that hid in plain sight. Zig-Zag is a 16x16 LED matrix enclosed in a 3D-printed shell. When the piece is off, the front is a flat white square. When it powers up, a repeating grid of alternating L shapes punches through the surface. Unlike the other panels in this series, the pattern is not confined to a single cell. Each L spans several cells, so the shapes read as one continuous figure across the whole face.</p><p>I designed a black internal grid that divides the board into 10mm cells to isolate each light. I printed the piece face down, laying the white diffusion layer first and building the black cell walls directly behind it. A small controller running WLED handles the animation.</p><p>The whole effect relied on the depth of the front face. If the white PLA was too thin, you could see the plastic shapes resting behind it. If it was too thick, the LEDs could not push light through. One millimeter of white filament was the exact limit. It was enough material to mask the internal structure, but thin enough to let the pattern glow.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -9390,8 +9390,8 @@
       "x": 50,
       "y": 36.3
     },
-    "description": "<p>I scanned my first clay sculpture and forced the rough shell to map to a rigid pixel grid.</p>",
-    "longDescription": "<p>I wanted to capture something rough and abstract. Clay Face is a 3D-printed LED matrix based on my first attempt at hand-sculpting. I shaped the original mask out of white modeling clay, keeping the geometry basic enough to eventually hold an internal grid.</p><p>Then I scanned it with a RevoPop hand scanner. The scan refused to cooperate. I kept getting holes in the mesh that I struggled to fill, and the model lacked the vertical height at the base to fit the hardware. I ended up doing a low-poly pass on the scan just to force a closed shape.</p><p>Once I had a solid model, I pulled it into Blender. I built out the internal subdivision to isolate the light from 256 pixels. The fabrication rule was strict: the organic, rough exterior had to map perfectly to a rigid 16 by 16 grid of black structural walls and white diffusion layers inside.</p>",
+    "description": "<p>First thing I'd sculpted since grade school. Kept simple enough for the scanner to see it and a 16x16 grid to divide it.</p>",
+    "longDescription": "<p>I wanted to capture something rough and abstract. Clay Face is a 3D-printed LED matrix based on my first attempt at hand-sculpting since a grade-school art class. I shaped the original mask out of white modeling clay, keeping the geometry basic enough for the scanner to read and for a 16x16 grid to divide.</p><p>Then I scanned it with a RevoPop hand scanner. The scan refused to cooperate. I kept getting holes in the mesh that I struggled to fill, and the model lacked the vertical height at the base to fit the hardware. I ended up doing a low-poly pass on the scan just to force a closed shape.</p><p>Once I had a solid model, I pulled it into Blender. I built out the internal subdivision to isolate the light from 256 pixels. The fabrication rule was strict: the organic, rough exterior had to map perfectly to a rigid 16 by 16 grid of black structural walls and white diffusion layers inside.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -9507,7 +9507,7 @@
       "x": 49.3,
       "y": 34
     },
-    "description": "<p>I forced a flat pixel grid behind steep organic curves without letting a single diode hotspot the plastic.</p>",
+    "description": "<p>The face dives deep into a flat surface, dragging the plastic toward the diodes. Ten extra millimeters of frame fixed it.</p>",
     "longDescription": "<p>I really liked the steep, dramatic edges of this model, but I refused to compromise the no-hotspot look. It is a 3D-printed mask illuminated by a flat 16-by-16 LED pixel matrix.</p><p>The problem with organic curves is depth. This face dips heavily into the flat surface surrounding it. When you put a rigid pixel grid behind a curved object, the distance between the light and the plastic constantly changes. The deepest parts of the mask get too close to the diodes, creating harsh bright spots.</p><p>To keep the light even, I changed how I built the internal structure. I added 10mm to the height of the grid's base layer and the outer frame. That pushed the electronics just far enough back. It all relies on a hard fabrication rule: an LED can never get closer than 10mm to the surface of the print.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -9650,8 +9650,8 @@
       "x": 50.4,
       "y": 45.4
     },
-    "description": "<p>I molded a shape out of clay, scanned it, and printed a one-millimeter shell to let the LEDs punch through.</p>",
-    "longDescription": "<p>I couldn't tell you exactly what this shape is. A tree is the closest thing I can think of. I just wanted something interesting with enough depth to test a 3D scanner. Clay Tree is a custom 3D-printed LED sculpture built around that experiment. I molded the original shape out of white modeling clay by hand, then scanned it with a RevoPop.</p><p>Once the scan worked, I brought the mesh into Blender and ran it through my usual internal subdivision process. I printed it in dual-color PLA, using black for the mask and white for the diffusion. Underneath, it runs on a 256-pixel matrix. To get the light to actually punch through the printed geometry, I had to keep the outer shell thin. The surface of the model is exactly one millimeter thick, letting the LEDs illuminate the organic shape from the internal grid.</p>",
+    "description": "<p>I still can't tell you what it is. A tree is the closest word. I sculpted it knowing 256 LEDs were going inside.</p>",
+    "longDescription": "<p>I couldn't tell you exactly what this shape is. A tree is the closest thing I can think of. I sculpted it knowing from the start that it would be scanned and filled with LEDs, so the only real requirement was enough depth to hold an internal grid. Clay Tree is the 3D-printed LED sculpture that came out of that. I molded the original shape out of white modeling clay by hand, then scanned it with a RevoPop.</p><p>Once the scan worked, I brought the mesh into Blender and ran it through my usual internal subdivision process. I printed it in dual-color PLA, using black for the mask and white for the diffusion. Underneath, it runs on a 256-pixel matrix. To get the light to actually punch through the printed geometry, I had to keep the outer shell thin. The surface of the model is exactly one millimeter thick, letting the LEDs illuminate the organic shape from the internal grid.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -9776,8 +9776,8 @@
       "x": 50.2,
       "y": 21.4
     },
-    "description": "<p>Making a human expression read on a low-resolution matrix meant dialing in the exact thickness of white plastic.</p>",
-    "longDescription": "<p>I wanted to map a human face onto a 16x16 LED matrix. It was one of the first ideas I had when I started making internally subdivided 3D prints. Face is a physical matrix that uses black plastic to mask light and white plastic to bounce and diffuse it.</p><p>I waited a few years to actually build it. My old printers could not handle the job. The surface came out too rough to read as a face, and I could not get the material thickness right. The machines also refused to print the white-lined walls I needed for internal bounce.</p><p>I shelved the idea until I had the hardware to print it properly. A newer machine solved the surface finish. I printed the mask and borders in black, and used white for the diffusion. Dialing in the exact thickness of that white layer was the rule that finally made the face readable.</p>",
+    "description": "<p>Shelved for a year. My printers could not hold a surface smooth enough for a face to read, so I waited for one that could.</p>",
+    "longDescription": "<p>I wanted to map a human face onto a 16x16 LED matrix. It was one of the first ideas I had when I started making internally subdivided 3D prints. Face is a physical matrix that uses black plastic to mask light and white plastic to bounce and diffuse it.</p><p>I waited about a year to actually build it. My old printers could not handle the job. The surface came out too rough to read as a face, and I could not get the material thickness right. The machines also refused to print the white-lined walls I needed for internal bounce.</p><p>I shelved the idea until I got a Bambu Lab X1C. That machine solved the surface finish. I printed the mask and borders in black, and used white for the diffusion. Dialing in the exact thickness of that white layer was the rule that finally made the face readable.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -9900,7 +9900,7 @@
       "x": 50,
       "y": 27.1
     },
-    "description": "<p>I printed a one-millimeter black mask directly behind a flat diffusion panel to trap the light into exact shapes.</p>",
+    "description": "<p>The first time I put a 3D printer and an LED matrix in the same object. Flat white face, hidden mask, nothing outside to give it away.</p>",
     "longDescription": "<p>I was tired of regular squares. X is a 256-pixel matrix that changes how light bleeds through a flat surface. I had been building 3D objects with internal subdivisions, but I wanted to take the process in a different direction. Instead of putting texture on the outside, I kept the front face completely flat and altered the light coming from behind.</p><p>Behind the panel, the grid breaks into 10-millimeter cells. Each one holds a simple X shape. To make those shapes read clearly without bleeding into each other, the print had to be exact. I held the white diffusion layer to exactly one millimeter thick across the entire surface. Then I printed a one-millimeter black mask directly onto the back of the diffusion. That mask is where the shapes actually live.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -10036,8 +10036,8 @@
       "x": 48.6,
       "y": 41.4
     },
-    "description": "<p>I printed a black grid behind a solid white face so a perfectly flat surface shows individual circles.</p>",
-    "longDescription": "<p>I wanted to recreate the circular dot look from the old lighting rigs at Temple Nightclub. Dot Matrix is a 16 x 16 LED display housed in a multi-material 3D print. The surface is perfectly flat. The circles only appear because I printed black filament behind a solid white front layer, framing each individual cell in an internal grid.</p><p>I tried to run the enclosure on my IDEX printer first. It struggled to print the pattern inside the tiny cells and just kept failing. I shelved the project until I got a Bambu X1C. That machine finally laid down the two colors facedown on the bed without making a mess. Printing the whole thing facedown on a reliable machine was the only way to get that flat surface.</p>",
+    "description": "<p>Temple SF's old dot-matrix rig went in a dumpster to make room for mine. This is that look, rebuilt at 16x16.</p>",
+    "longDescription": "<p>I wanted to recreate the circular dot look from the old rigs at Temple Denver and Temple San Francisco. The San Francisco rig was the one I tore out myself to make room for the new install. Dot Matrix is a 16 x 16 LED display housed in a multi-material 3D print. The surface is perfectly flat. The circles only appear because I printed black filament behind a solid white front layer, framing each individual cell in an internal grid.</p><p>I tried to run the enclosure on my IDEX printer first. It struggled to print the pattern inside the tiny cells and just kept failing. I shelved the project until I got a Bambu X1C. That machine finally laid down the two colors facedown on the bed without making a mess. Printing the whole thing facedown on a reliable machine was the only way to get that flat surface.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -10172,7 +10172,7 @@
       "x": 50,
       "y": 42.6
     },
-    "description": "<p>Exactly one millimeter of white plastic hides a black printed mask until the pixel matrix fires.</p>",
+    "description": "<p>By this one the technique was muscle memory. Designed, printed, and wired in a single day.</p>",
     "longDescription": "<p>I wanted to build a piece that only existed when the power was on. When it sits on a wall unplugged, Inverted Triangles looks like a plain white square.</p><p>By this point, I had the printing technique figured out. I designed and printed the whole object in a single day. The frame holds a 16 x 16 LED pixel matrix running WLED. To create the pattern, I printed a mask of inverted triangles in black PLA and hid it directly behind the white front face. When the matrix fires, the black plastic blocks the light and the shapes punch through.</p><p>The trick to making the pattern completely vanish when the power drops is the thickness of the front panel. The white diffusion layer has to be exactly one millimeter thick.</p>",
     "websiteLink": "",
     "launchLink": "",
@@ -10308,8 +10308,8 @@
       "x": 27.2,
       "y": 35.1
     },
-    "description": "<p>I blacked out half of every pixel from behind so hidden shapes only appear when the board lights up.</p>",
-    "longDescription": "<p>I wanted to do something abstract and simple by working at the pixel level. Circles Corner is a flat, 3D-printed matrix of 256 LEDs where each ten-millimeter cell acts like a tiny gobo.</p><p>From the front, the mask looks like a plain white circle. The trick is on the inside. I blacked out exactly half of each pixel cell from behind. When the board is off, the face is blank. When it lights up, the hidden half-shapes appear through the diffusion.</p><p>If light bleeds across a cell, the shape gets lost. The fabrication rule was strict. To guarantee a total blackout on the dark half of the pixel, the black layer behind the white diffusion had to be exactly one millimeter thick.</p>",
+    "description": "<p>One diagonal cut across every cell. The simplest mask in the series, repeated 256 times.</p>",
+    "longDescription": "<p>I wanted to do something abstract and simple by working at the pixel level. Circles Corner is a flat, 3D-printed matrix of 256 LEDs where each ten-millimeter cell acts like a tiny gobo.</p><p>From the front, the mask looks like a plain white circle. The trick is on the inside. I blacked out half of each pixel cell from behind with a single diagonal cut. It is the simplest mask in the series, and the easiest to repeat 256 times. When the board is off, the face is blank. When it lights up, the hidden half-shapes appear through the diffusion.</p><p>If light bleeds across a cell, the shape gets lost. The fabrication rule was strict. To guarantee a total blackout on the dark half of the pixel, the black layer behind the white diffusion had to be exactly one millimeter thick.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -10443,7 +10443,7 @@
       "x": 45.7,
       "y": 29.1
     },
-    "description": "<p>I wrote a local browser engine that forces digital photos into printable schematics for bead curtains.</p>",
+    "description": "<p>Photo in, bead-curtain schematic out, with a bill of materials and numbered squares for hand sorting. Test subject: the Mona Lisa in neon.</p>",
     "longDescription": "<p>You drop a photo into the browser, lock it to a grid, and map the cells to whatever inventory colors you have. TangiPix is a mosaic planner. I wanted to build bead curtains and stacked brick images, but I had no way to map them out.</p><p>The engine reduces the image and forces it into a strict color space. Getting a digital image to map cleanly to physical inventory is difficult, so I built a few different rendering options. Heavy math like k-means clustering would normally freeze a tab. I pushed that processing to a Web Worker. To test it, I forced the Mona Lisa into a neon rainbow palette. It generated a PDF schematic with a bill of materials and numbered squares for hand sorting.</p><p>The application runs locally. I refuse to pay for monthly subscriptions. By keeping the heavy lifting on the client side, I skipped a backend server entirely and hosted it for free.</p>",
     "websiteLink": "",
     "launchLink": "https://elusid108.github.io/TangiPix/",
@@ -10596,7 +10596,7 @@
       "x": 0,
       "y": 32.2
     },
-    "description": "<p>I refuse to pay for server time when a local browser can calculate the geometry for a custom frame.</p>",
+    "description": "<p>A lithophane goes in, a printable frame comes out. I tested the geometry on a cog, because if the math survives a cog it survives anything.</p>",
     "longDescription": "<p>A user drops an exported lithophane into the browser, dials in a decorative edge, and exports a frame to 3D print. The lithophane drops right into the back. The app also works standalone to generate frames for normal photos or mirrors, complete with DXF exports for laser-cutting acrylic light panels.</p><p>BorderBuilder branched off from LithoLab. With the introduction of vibecoding, it made sense to build a dedicated app rather than figuring out how to model these manually in Blender. The main hurdle was getting the math right for highly irregular shapes. I used a complex cog to test the routing and masks. It took several attempts before the app stopped failing and produced the correct outcome.</p><p>I forced the entire tool to run locally. I refuse to pay for server time when a browser can calculate the geometry.</p>",
     "websiteLink": "",
     "launchLink": "https://elusid108.github.io/BorderBuilder/",
