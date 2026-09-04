@@ -66,24 +66,25 @@ Stop: if the category question is already answered in the draft, do not intervie
 - Refuse: the venue origin story, the full room look, the control-system saga.
 
 **Systems**
-- Primary: which machines, and how did they become one show?
-- Allowed: the handoff a human could not make in time; the test that proved alignment.
-- Refuse: how he hung the first fixture, construction detours, the scissor lift.
+- Primary: what did the missed handoff look like to a person standing in the room?
+- Allowed: which machines and how they became one show; the test that proved alignment; what the operators did with it.
+- Refuse: how he hung the first fixture, construction detours, the scissor lift. Do not ask for protocol names; they belong in Specifications.
 
-**Tooling**
-- Primary: what job-site failure made this object exist?
-- Allowed: how many times it failed; what this replaced; the one constraint in the enclosure.
+**Tooling** (displayed on the site as Shop / Tools & Repair)
+- Primary, for a tool he built: what job-site failure made this object exist, and name the site?
+- Primary, for a repair or service page: what was the worst unit anyone handed him, and how did he find the fault?
+- Allowed: how many times it failed; what this replaced; the one constraint in the enclosure; roughly how many units came back to life.
 - Refuse: aesthetic look, what the room felt like.
 
 **Art** (Sculpture uses this bank)
-- Primary: what is the visual idea, and what fabrication rule made it possible?
-- Allowed: what he would not fake; the thing the print or material refused to do.
-- Refuse: crowd reaction, venue retrofit narrative, what he was standing on.
+- Primary: what is the visual idea, and what did the print or material refuse to do?
+- Allowed: what he would not fake; where the piece hung or who has it; how this one differs from the others in the series.
+- Refuse: crowd reaction, venue retrofit narrative, what he was standing on. Do not ask about the shared technique (1 mm face, face-down print, black and white walls). Assume the reader can find that on a sibling page.
 
 **Software**
-- Primary: what does a user do in one sitting, and what did he refuse to host or pay for?
-- Allowed: the local-only or cost constraint; the workflow this replaced; a product decision that almost did not work.
-- Refuse: physical sensory questions (heat, height, ladders). Compile errors are not the story.
+- Primary: what was the moment that made him build it, and what happened the first time he used it?
+- Allowed: the failure that shaped the design; the workflow it replaced; whether anyone else has used it yet.
+- Refuse: stack and library names (they belong in Specifications); hosting and cost decisions unless they are the story; physical sensory questions. Compile errors are not the story.
 
 ### long
 
@@ -99,7 +100,9 @@ If the material is thin, write short. Never pad.
 Use the Category shape for this project's category. Sculpture uses Art. If the category has no shape, use the shared long rules only. Do not invent a shape.
 
 Shared shape rules:
-- Name what the thing is by sentence two. Never open on a definition.
+- The reader should know what the thing is by the end of the first paragraph, from the story. Never write a definition sentence ("X is a 16x16 matrix that...", "Unfold is a browser-based card game that...").
+- Never open on a hypothetical user walkthrough ("A user drops in a photo...", "You import a file...").
+- Never open with "I wanted to."
 - Middle: how it got built, in the order it happened. Include at most one thing that went sideways, and only if it serves the category question.
 - Not "the client loved it," "patrons gasped," "without a single glitch," "on the first try," or "deeply satisfying."
 - One failure maximum. One dry aside maximum.
@@ -108,25 +111,28 @@ Shared shape rules:
 #### Category shape
 
 - Lighting: open on the look, or the rule you would not break. End on what the room did.
-- Fixtures: open on the part you could not buy. End on the install condition it survived.
-- Systems: open on the handoff that failed. End on the test that proved one show.
-- Tooling: open on the job-site failure. End on the object that replaced it.
-- Art: open on the visual idea. End on the fabrication rule.
-- Software: open on the user action. End on what you refused to host.
+- Fixtures: open on the part you could not buy. Vary how you say it; do not open every page with "You cannot buy X." End on the install condition it survived.
+- Systems: open on what the missed handoff looked like to a person in the room, not on the protocol. Explain at most one protocol term in plain words and drop the rest. End on the test that proved one show, or on what the operators did with it.
+- Tooling, built object: open on the job-site failure, with the site named. End on a day using it.
+- Tooling, repair or service: open on the worst unit handed to him. Middle is how he finds the fault, not a list of faults. End on what came back to life.
+- Art: open on the visual idea or on the thing the print refused to do. Name what makes this piece different from its siblings. Give the shared technique at most one sentence. End on what the piece does when it powers up, or where it hangs. Do not end on "the fabrication rule."
+- Software: open on the moment that made him build it. Kill the walkthrough and the definition. Move the failure with texture to the front of the middle paragraph. End on use: what it is like to run it now, or an honest "nobody but me has used it yet." Never end on hosting.
 
 ## Category question the body must answer
 
 - Lighting: what did the room look like, and what design rule did you refuse to break?
 - Fixtures: what is the part, and why could you not buy it?
-- Systems: how did independent machines become one show?
-- Tooling: what job-site failure made this object exist?
-- Art: what is the visual idea, and what fabrication rule made it possible?
-- Software: what does a user do, and what did you refuse to host or pay for?
+- Systems: what did the missed handoff cost, and how did independent machines become one show?
+- Tooling: what job-site failure made this object exist? For repair pages: how do you find the fault?
+- Art: what is the visual idea, and what did the print refuse to do?
+- Software: what moment made you build it, and what happened the first time you used it?
 - Sculpture: same as Art.
 
 ## Banned
 
-- Opening formulas: "This project involved," "This project required," "The objective was," "X is a [thing] designed to."
+- Opening formulas: "This project involved," "This project required," "The objective was," "X is a [thing] designed to," "I wanted to," "A user [does something]," "You [do something]."
+- Repeated closers: "I refused to pay for," "I refuse to host," "the fabrication rule was." Each may appear on at most two pages across the whole site, and never as a final sentence.
+- Stack lists in the body (React, Tailwind, Dexie, Leaflet, and so on). One clause at most. The Specifications sidebar already carries the stack.
 - Phrases: designed to, engineered to, in order to, allowing for, enabling, ensuring, resulting in, leveraging, utilizing (say "using"), seamless, robust, comprehensive, cohesive, meticulous, bespoke, cutting edge, state of the art.
 - "Walked into" as a formula opener.
 - Comparing the work to "standard" or "traditional" approaches. Show the unusual thing. Do not announce that it is unusual.
