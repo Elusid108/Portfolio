@@ -571,7 +571,7 @@
     "featured": true,
     "websiteLink": "",
     "timestamp": "2026-01-12T01:03:01.269Z",
-    "wip": true,
+    "wip": false,
     "order": 0,
     "specs": "",
     "related": [
@@ -1155,7 +1155,7 @@
     "launchLink": "",
     "githubLink": "",
     "shopLink": "",
-    "featured": true,
+    "featured": false,
     "wip": false,
     "tags": [
       "OSCpilot",
@@ -3588,7 +3588,7 @@
     "launchLink": "",
     "githubLink": "",
     "shopLink": "",
-    "featured": false,
+    "featured": true,
     "wip": false,
     "tags": [
       "Madrix",
