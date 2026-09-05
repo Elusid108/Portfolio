@@ -1492,7 +1492,7 @@
       if (Array.isArray(p.files) && p.files.length > 0) {
          p.files.forEach(f => {
             if (typeof f === 'string') addFileRow("Download", f, '', true);
-            else addFileRow(f.name, f.url, f.description || '', true);
+            else addFileRow(f.name, f.url, f.description || '', true, f.license || '');
          });
       } else {
         addFileRow("", "", '', true);
@@ -1589,7 +1589,7 @@
         });
     }
 
-    function addFileRow(name = "", url = "", description = "", isBulk = false) {
+    function addFileRow(name = "", url = "", description = "", isBulk = false, license = "") {
         const container = document.getElementById('files-container');
         const div = document.createElement('div');
         div.className = "file-row space-y-1";
@@ -1603,6 +1603,7 @@
                 <button type="button" onclick="this.closest('.file-row').remove(); updateListIndices('files-container'); isDirty=true;" class="text-red-400 hover:text-red-600 px-2 transition-colors"><i class="ph ph-trash"></i></button>
             </div>
             <input type="text" placeholder="Description (optional — shown in popout on portfolio)" value="${escAttr(description)}" class="file-desc w-full bg-white border border-slate-200 rounded px-2 py-1 text-xs text-slate-500 focus:border-indigo-500 outline-none" oninput="isDirty=true">
+            <input type="text" placeholder="License (optional — e.g. CC BY-NC-SA 4.0)" value="${escAttr(license)}" class="file-license w-full bg-white border border-slate-200 rounded px-2 py-1 text-xs text-slate-500 focus:border-indigo-500 outline-none" oninput="isDirty=true">
         `;
         container.appendChild(div);
         updateListIndices('files-container');
@@ -2271,11 +2272,16 @@
       const csvToArray = (str) => (!str ? [] : str.split(',').map(item => item.trim()).filter(i => i !== ''));
 
       const fileRows = document.querySelectorAll('.file-row');
-      const filesList = Array.from(fileRows).map(row => ({
-          name: row.querySelector('.file-name').value,
-          url: row.querySelector('.file-url').value,
-          description: row.querySelector('.file-desc').value
-      })).filter(f => f.name && f.url);
+      const filesList = Array.from(fileRows).map(row => {
+          const f = {
+              name: row.querySelector('.file-name').value,
+              url: row.querySelector('.file-url').value,
+              description: row.querySelector('.file-desc').value
+          };
+          const license = row.querySelector('.file-license')?.value.trim();
+          if (license) f.license = license;
+          return f;
+      }).filter(f => f.name && f.url);
 
       const galleryRows = document.querySelectorAll('.gallery-row');
       const galleryList = Array.from(galleryRows).map(row => {

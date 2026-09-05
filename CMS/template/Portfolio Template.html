@@ -1334,6 +1334,7 @@
                                                     const url = typeof f === 'string' ? f : f.url;
                                                     const name = typeof f === 'string' ? `File ${i+1}` : f.name;
                                                     const desc = typeof f === 'object' ? f.description : '';
+                                                    const license = typeof f === 'object' ? f.license : '';
                                                     return (
                                                         <li key={i} className="relative" onMouseEnter={() => setHoveredFile(i)} onMouseLeave={() => setHoveredFile(null)} onFocus={() => setHoveredFile(i)} onBlur={() => setHoveredFile(null)}>
                                                             <a href={ensureProtocol(url)} download aria-label={`Download ${name}, ${getFileExt(url)} file${desc ? '. ' + desc : ''}`} className="flex items-center gap-3 p-3 rounded-lg bg-zinc-800 hover:bg-zinc-700 transition-colors group">
@@ -1360,6 +1361,9 @@
                                                                         </div>
                                                                         {desc && (
                                                                             <p className="text-xs text-zinc-400 leading-relaxed">{desc}</p>
+                                                                        )}
+                                                                        {license && (
+                                                                            <p className={`text-xs text-zinc-500 text-left ${desc ? 'mt-2' : ''}`}>{license}</p>
                                                                         )}
                                                                     </div>
                                                                 </div>

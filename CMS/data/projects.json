@@ -1388,14 +1388,15 @@
       {
         "name": "Field Solder Station",
         "url": "media/Fabrication/Field Solder Station/files/fieldsolderstation.zip",
-        "description": "Zip file containing the 3mf of the field solder station. Ready to download and print."
+        "description": "Zip file containing the 3mf of the field solder station. Ready to download and print.",
+        "license": "CC BY-NC-SA 4.0"
       }
     ],
     "featured": true,
     "websiteLink": "",
     "timestamp": "2026-01-13T00:23:48.073Z",
     "wip": false,
-    "order": 1,
+    "order": 4,
     "specs": "<h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>BambuLabs • X1C • | • TenLog • TL-D3</em></p><p><strong>Black PLA+</strong><br><em>Duramic • 1.75mm</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>SolidWorks 2022</strong></p>",
     "related": [],
     "thumbnailFit": {
@@ -1440,7 +1441,8 @@
           }
         ]
       }
-    ]
+    ],
+    "draft": false
   },
   {
     "id": "9469",
@@ -2974,13 +2976,14 @@
       {
         "name": "Field Bench PSU",
         "url": "media/Fabrication/Field Bench PSU/files/fieldbenchpsu.zip",
-        "description": "Download, print, and assemble the Field Bench PSU. Zip file containing 3mf."
+        "description": "Download, print, and assemble the Field Bench PSU. Zip file containing 3mf.",
+        "license": "CC BY-NC-SA 4.0"
       }
     ],
     "video": "",
     "timestamp": "2026-06-21T22:41:13.337Z",
     "id": "707",
-    "order": 2,
+    "order": 5,
     "specs": "<h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>BambuLabs • X1C • | • TenLog • TL-D3</em></p><p><strong>Black PLA+</strong><br><em>Duramic • 1.75mm</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>SolidWorks 2022</strong></p>",
     "related": [],
     "thumbnailFit": {
@@ -3025,7 +3028,8 @@
           }
         ]
       }
-    ]
+    ],
+    "draft": false
   },
   {
     "title": "Club Lexi",
@@ -4932,7 +4936,7 @@
     "video": "",
     "timestamp": "2026-07-26T23:20:01.923Z",
     "id": "5376",
-    "order": 3,
+    "order": 6,
     "thumbnailFit": {
       "scale": 1.05,
       "x": 5.3,
@@ -5909,7 +5913,7 @@
     "video": "",
     "timestamp": "2026-08-01T21:44:42.857Z",
     "id": "1430",
-    "order": 0,
+    "order": 3,
     "thumbnail": "media/Fabrication/LED PSU Boot Sequencer/20221201_184622-thumb.webp",
     "specsData": [
       {
@@ -10747,5 +10751,80 @@
     "timestamp": "2026-09-05T01:42:23.411Z",
     "id": "1772",
     "order": 8
+  },
+  {
+    "title": "Lighting & SFX Repair",
+    "category": "Tooling",
+    "image": "media/Fabrication/Lighting Repair/20260620_121930.webp",
+    "thumbnail": "media/Fabrication/Lighting Repair/20260620_121930-thumb.webp",
+    "description": "<p>Add info about my skills in repairing lighting and SFX equipment</p>",
+    "longDescription": "<p><br></p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "draft": true,
+    "tags": [],
+    "gallery": [],
+    "files": [],
+    "specsData": [],
+    "specs": "",
+    "related": [],
+    "video": "",
+    "timestamp": "2026-09-05T01:52:02.598Z",
+    "id": 1862,
+    "order": 2
+  },
+  {
+    "title": "LED Video Repair",
+    "category": "Tooling",
+    "image": "media/Fabrication/LED Video Repair/20260620_121930.webp",
+    "thumbnail": "media/Fabrication/LED Video Repair/20260620_121930-thumb.webp",
+    "description": "<p>Add info and images about my skills in repairing LED videowalls. Lots of images from BNP</p>",
+    "longDescription": "<p><br></p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "draft": true,
+    "tags": [],
+    "gallery": [],
+    "files": [],
+    "specsData": [],
+    "specs": "",
+    "related": [],
+    "video": "",
+    "timestamp": "2026-09-05T01:53:03.450Z",
+    "id": 4623,
+    "order": 1
+  },
+  {
+    "title": "Chain Hoist Service & Repair",
+    "category": "Tooling",
+    "image": "media/Fabrication/Chain Hoist Service & Repair/20260620_121930.webp",
+    "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/20260620_121930-thumb.webp",
+    "description": "<p>My time doing CM chain hoist servicing. Images and specs. Get specific.</p>",
+    "longDescription": "<p><br></p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "draft": true,
+    "tags": [],
+    "gallery": [],
+    "files": [],
+    "specsData": [],
+    "specs": "",
+    "related": [],
+    "video": "",
+    "timestamp": "2026-09-05T01:55:24.530Z",
+    "id": 989,
+    "order": 0
   }
 ]
