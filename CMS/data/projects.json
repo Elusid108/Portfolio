@@ -4117,7 +4117,7 @@
     "title": "Seed of Life",
     "category": "Art",
     "image": "media/Art/Seed of Life/seedoflifefix.webp",
-    "description": "<p>The proof of concept for the whole series. The corners curled, the grid went soft, and it still hung at Glow Lounge for months.</p>",
+    "description": "<p>The proof of concept for a sub-series. The corners curled, the grid went soft, and it still hung at Glow Lounge for months.</p>",
     "longDescription": "<p>Off, it is a white square. Lit in clusters, you see fragments of a pattern. The full Seed of Life only appears when every pixel is on. I built it as a proof of concept, to find out whether a subdivided matrix behind a printed face would actually read.</p><p>I printed it face down so the front came out clean, with a one-millimeter face thin enough to pass light and thick enough to hide the black walls behind it. At a ten-millimeter throw there was no need to bounce anything. What I did not account for was heat. I ran the early tests at full brightness inside a sealed enclosure, and over time the corners curled, the internal grid softened enough to move by hand, and the whole unit bowed away from the wall.</p><p>It survived, and it taught me the two things every one of these panels now has: vents in the back, and a current limit in the firmware. It hung at Glow Lounge for several months next to Negative \"X\".</p>",
     "websiteLink": "",
     "launchLink": "",
