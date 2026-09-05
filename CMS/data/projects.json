@@ -371,9 +371,7 @@
       "Rapid Prototyping",
       "ESP32",
       "Custom Fabrication",
-      "AC/DC Load Calc",
-      "Wire-to-Board Soldering",
-      "Embedded Systems"
+      "Wire-to-Board Soldering"
     ],
     "gallery": [
       {
@@ -702,10 +700,7 @@
       "SPI",
       "Rapid Prototyping",
       "Lighting Design",
-      "ESP8266",
-      "Custom Fabrication",
-      "Wire-to-Board Soldering",
-      "Pixel Mapping"
+      "Custom Fabrication"
     ],
     "gallery": [
       {
@@ -851,9 +846,7 @@
       "Lighting Design",
       "Rapid Prototyping",
       "SPI",
-      "WLED",
-      "Pixel Mapping",
-      "Wire-to-Board Soldering"
+      "WLED"
     ],
     "image": "media/Art/Mini Pyramid/minipyramidfix.webp",
     "description": "<p>Sixty-four LEDs, an ESP32, and a QR code on the bottom. Every time I plugged in a cable, the USB-C port retreated into the case.</p>",
@@ -1011,10 +1004,7 @@
       "Custom Fabrication",
       "SPI",
       "Rapid Prototyping",
-      "Lighting Design",
-      "ESP8266",
-      "Pixel Mapping",
-      "Wire-to-Board Soldering"
+      "Lighting Design"
     ],
     "gallery": [
       {
@@ -1456,10 +1446,9 @@
     "title": "LED Pixel Panel",
     "category": "Fixtures",
     "tags": [
-      "Resolume Arena",
-      "Video Mapping",
       "SPI",
-      "Lighting Design"
+      "Lighting Design",
+      "Custom Fabrication"
     ],
     "image": "media/Electronics/LED Pixel Panel/20200910_134441.webp",
     "description": "<p>With eight feet of clearance, we bolted altered dancefloor boards to aluminum track to build an array under an inch thick.</p>",
@@ -3600,7 +3589,6 @@
       "ArtNet",
       "WLED",
       "Pixel Mapping",
-      "ESP8266",
       "Show Cockpit",
       "Custom Fabrication",
       "Power Distribution"
@@ -3994,10 +3982,7 @@
       "SPI",
       "Rapid Prototyping",
       "Custom Fabrication",
-      "ESP8266",
-      "Lighting Design",
-      "Pixel Mapping",
-      "Wire-to-Board Soldering"
+      "Lighting Design"
     ],
     "gallery": [
       {
@@ -4143,14 +4128,11 @@
     "tags": [
       "FDM 3D Printing",
       "SolidWorks",
-      "ESP8266",
       "WLED",
       "SPI",
       "Lighting Design",
       "Rapid Prototyping",
-      "Custom Fabrication",
-      "Wire-to-Board Soldering",
-      "Pixel Mapping"
+      "Custom Fabrication"
     ],
     "gallery": [
       {
@@ -4309,11 +4291,8 @@
       "SPI",
       "Rapid Prototyping",
       "Lighting Design",
-      "ESP8266",
       "Custom Fabrication",
-      "Blender",
-      "Pixel Mapping",
-      "Wire-to-Board Soldering"
+      "Blender"
     ],
     "gallery": [
       {
@@ -6439,7 +6418,6 @@
       "ArtNet",
       "Blender",
       "Custom Fabrication",
-      "ESP8266",
       "FDM 3D Printing",
       "Pixel Mapping",
       "Rapid Prototyping",
@@ -9131,14 +9109,10 @@
     "tags": [
       "Blender",
       "Custom Fabrication",
-      "Embedded Systems",
-      "ESP8266",
       "FDM 3D Printing",
       "Lighting Design",
-      "Pixel Mapping",
       "Rapid Prototyping",
       "SPI",
-      "Wire-to-Board Soldering",
       "WLED"
     ],
     "gallery": [
@@ -9262,14 +9236,10 @@
     "tags": [
       "Blender",
       "Custom Fabrication",
-      "Embedded Systems",
-      "ESP8266",
       "FDM 3D Printing",
       "Lighting Design",
-      "Pixel Mapping",
       "Rapid Prototyping",
       "SPI",
-      "Wire-to-Board Soldering",
       "WLED"
     ],
     "gallery": [
@@ -9399,14 +9369,10 @@
     "tags": [
       "Blender",
       "Custom Fabrication",
-      "Embedded Systems",
-      "ESP8266",
       "Lighting Design",
       "FDM 3D Printing",
-      "Pixel Mapping",
       "Rapid Prototyping",
       "SPI",
-      "Wire-to-Board Soldering",
       "WLED"
     ],
     "gallery": [
@@ -9516,12 +9482,9 @@
     "tags": [
       "Blender",
       "Custom Fabrication",
-      "ESP8266",
       "FDM 3D Printing",
       "Lighting Design",
-      "Pixel Mapping",
       "SPI",
-      "Wire-to-Board Soldering",
       "WLED"
     ],
     "gallery": [
@@ -9659,13 +9622,9 @@
     "tags": [
       "Blender",
       "Custom Fabrication",
-      "Embedded Systems",
-      "ESP8266",
       "Lighting Design",
       "FDM 3D Printing",
-      "Pixel Mapping",
       "SPI",
-      "Wire-to-Board Soldering",
       "WLED"
     ],
     "gallery": [
@@ -9785,13 +9744,9 @@
     "tags": [
       "Blender",
       "Custom Fabrication",
-      "Embedded Systems",
-      "ESP8266",
       "FDM 3D Printing",
       "Lighting Design",
-      "Pixel Mapping",
       "SPI",
-      "Wire-to-Board Soldering",
       "WLED"
     ],
     "gallery": [
@@ -9909,13 +9864,9 @@
     "tags": [
       "Blender",
       "Custom Fabrication",
-      "ESP8266",
-      "Embedded Systems",
       "Lighting Design",
       "FDM 3D Printing",
-      "Pixel Mapping",
       "SPI",
-      "Wire-to-Board Soldering",
       "WLED"
     ],
     "gallery": [
@@ -10045,13 +9996,9 @@
     "tags": [
       "Blender",
       "Custom Fabrication",
-      "Embedded Systems",
-      "ESP8266",
       "Lighting Design",
-      "Pixel Mapping",
       "FDM 3D Printing",
       "SPI",
-      "Wire-to-Board Soldering",
       "WLED"
     ],
     "gallery": [
@@ -10181,13 +10128,9 @@
     "tags": [
       "Blender",
       "Custom Fabrication",
-      "ESP8266",
-      "Embedded Systems",
       "Lighting Design",
-      "Pixel Mapping",
       "FDM 3D Printing",
       "SPI",
-      "Wire-to-Board Soldering",
       "WLED"
     ],
     "gallery": [
@@ -10317,12 +10260,9 @@
     "tags": [
       "Blender",
       "Custom Fabrication",
-      "ESP8266",
       "FDM 3D Printing",
       "Lighting Design",
-      "Pixel Mapping",
       "SPI",
-      "Wire-to-Board Soldering",
       "WLED"
     ],
     "gallery": [
