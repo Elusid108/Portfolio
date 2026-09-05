@@ -1067,9 +1067,12 @@
             const [hoveredFile, setHoveredFile] = useState(null);
             const [showShare, setShowShare] = useState(false);
             const [copied, setCopied] = useState(false);
+            const [bannerLoaded, setBannerLoaded] = useState(false);
             const dialogRef = useRef(null);
             const scrollRef = useRef(null);
+            const bannerRef = useRef(null);
             const titleId = `project-modal-title-${project.id}`;
+            const hasBannerPlaceholder = project.thumbnail && project.thumbnail !== project.image;
 
             // Escape peels off one layer at a time; the lightbox owns the trap when open.
             useDialog(
@@ -1086,6 +1089,12 @@
             useEffect(() => {
                 if (scrollRef.current) scrollRef.current.scrollTop = 0;
             }, [project.id]);
+
+            useEffect(() => {
+                setBannerLoaded(false);
+                const el = bannerRef.current;
+                if (el && el.complete && el.naturalWidth > 0) setBannerLoaded(true);
+            }, [project.id, project.image]);
 
             const shareUrl = `${window.location.origin}${window.location.pathname}#project/${encodeURIComponent(project.id)}`;
 
@@ -1130,16 +1139,25 @@
                         </button>
 
                         <div ref={scrollRef} className="overflow-y-auto overflow-x-hidden custom-scrollbar flex-1">
-                            <div className="relative h-64 md:h-96 w-full overflow-hidden">
-                                {/* PERFORMANCE: Lazy Loading on Modal Header */}
+                            <div className="relative h-64 md:h-96 w-full overflow-hidden bg-zinc-900">
                                 {/* Empty alt: the h2 below is the accessible name for this dialog. */}
-                                <img 
-                                    src={project.image} 
-                                    alt="" 
-                                    loading="lazy"
-                                    decoding="async"
-                                    className="w-full h-full object-cover" 
+                                {hasBannerPlaceholder && (
+                                    <img
+                                        src={project.thumbnail}
+                                        alt=""
+                                        className="absolute inset-0 w-full h-full object-cover"
+                                        style={fitStyle(project.bannerFit)}
+                                    />
+                                )}
+                                <img
+                                    ref={bannerRef}
+                                    src={project.image}
+                                    alt=""
+                                    loading="eager"
+                                    fetchPriority="high"
+                                    className={`w-full h-full object-cover ${hasBannerPlaceholder ? `absolute inset-0 transition-opacity duration-300 ${bannerLoaded ? 'opacity-100' : 'opacity-0'}` : ''}`}
                                     style={fitStyle(project.bannerFit)}
+                                    onLoad={() => setBannerLoaded(true)}
                                 />
                                 <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-zinc-950 to-transparent"></div>
                                 {/* SHARE BUTTON - scrolls with header */}

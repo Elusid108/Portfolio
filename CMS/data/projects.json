@@ -95,14 +95,13 @@
     "category": "Lighting",
     "tags": [
       "Lighting Design",
-      "Capture",
-      "Madrix",
-      "Resolume Arena",
-      "OSCpilot",
       "Video Mapping",
       "Pixel Mapping",
+      "Roadhog 4",
+      "Resolume Arena",
+      "Madrix",
       "Custom Fabrication",
-      "Roadhog 4"
+      "Capture"
     ],
     "image": "media/Lighting/Immersive Dance Lighting Rig/20210516_134200.webp",
     "description": "<p>I packed two hundred fixtures into the ceiling, but running them at full brightness emptied the dance floor.</p>",
@@ -1980,13 +1979,13 @@
     "featured": false,
     "wip": false,
     "tags": [
-      "ArtNet",
-      "Resolume Arena",
-      "Pixel Mapping",
       "Lighting Design",
-      "AC/DC Load Calc",
+      "Pixel Mapping",
+      "Resolume Arena",
+      "ArtNet",
       "WLED",
-      "Custom Fabrication"
+      "Embedded Systems",
+      "AC/DC Load Calc"
     ],
     "gallery": [
       {
@@ -5626,12 +5625,12 @@
     "featured": false,
     "wip": false,
     "tags": [
-      "Madrix",
       "Lighting Design",
-      "Capture",
-      "Custom Fabrication",
+      "Pixel Mapping",
+      "Madrix",
       "ELM",
-      "Pixel Mapping"
+      "Capture",
+      "Custom Fabrication"
     ],
     "gallery": [
       {
@@ -7281,7 +7280,6 @@
       "Power Distribution",
       "Power tools",
       "SPI",
-      "TCP/IP",
       "Wire-to-Board Soldering"
     ],
     "gallery": [
