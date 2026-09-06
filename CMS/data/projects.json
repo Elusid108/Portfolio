@@ -441,7 +441,14 @@
         "thumbnail": "media/Art/Emmy Stand/16a32949-8804-4094-9421-f709f77425ed-thumb.webp"
       }
     ],
-    "files": [],
+    "files": [
+      {
+        "name": "Emmy stand.zip",
+        "url": "media/Art/Emmy Stand/files/Emmy stand.zip",
+        "description": "Multi‑plate .3mf with every printed part for the Emmy Stand, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+      }
+    ],
     "video": "",
     "order": 0,
     "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x512)</strong><br><em>WS2815 • RGB • white flex pcb • 144/m • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border • base</em></p><p><strong>PLA+ ( White )</strong><br><em>diffusion • bounce</em></p><p><strong>PLA+ ( &quot;Transparent&quot; )</strong><br><em>lens frost</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x1)</strong><br><em>Wasatch Pixels Basic Eight • ESP32 • 12Vdc</em></p>",
@@ -512,7 +519,8 @@
           }
         ]
       }
-    ]
+    ],
+    "draft": false
   },
   {
     "id": "2944",
@@ -747,7 +755,14 @@
         "thumbnail": "media/Art/Pyramid/20230707_082949~2-poster-thumb.webp"
       }
     ],
-    "files": [],
+    "files": [
+      {
+        "name": "Pyramid.zip",
+        "url": "media/Art/Pyramid/files/Pyramid.zip",
+        "description": "Multi‑plate .3mf with every printed part for the Pyramid, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+      }
+    ],
     "video": "",
     "order": 1,
     "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x256)</strong><br><em>WS2815 • RGB • 16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C with AMS</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>bounce</em></p><p><strong>PLA+ ( &quot;Transparent&quot; )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x1)</strong><br><em>Athom • LS2812B-WLED • ESP8266 • WLED</em></p>",
@@ -833,7 +848,8 @@
           }
         ]
       }
-    ]
+    ],
+    "draft": false
   },
   {
     "id": "5632",
@@ -899,12 +915,19 @@
     "launchLink": "",
     "githubLink": "",
     "shopLink": "",
-    "files": [],
+    "files": [
+      {
+        "name": "Mini Pyramid.zip",
+        "url": "media/Art/Mini Pyramid/files/Mini Pyramid.zip",
+        "description": "Multi‑plate .3mf with every printed part for the Mini Pyramid, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+      }
+    ],
     "featured": false,
     "websiteLink": "",
     "timestamp": "2026-01-13T00:01:33.897Z",
     "wip": false,
-    "order": 12,
+    "order": 13,
     "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x64)</strong><br><em>WS2812b • RGB • 8 x 8 matrix • black flex pcb • 5Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border • case</em></p><p><strong>PLA+ ( White )</strong><br><em>bounce • QR code</em></p><p><strong>PLA+ ( &quot;Transparent&quot; )</strong><br><em>diffusion</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x1)</strong><br><em>ESP32-S3 • WLED • USB-C</em></p>",
     "related": [
       {
@@ -982,7 +1005,8 @@
           }
         ]
       }
-    ]
+    ],
+    "draft": false
   },
   {
     "id": "8000",
@@ -1045,9 +1069,16 @@
         "thumbnail": "media/Art/Plane Warp/20230712_072919-thumb.webp"
       }
     ],
-    "files": [],
+    "files": [
+      {
+        "name": "Plane Warp.zip",
+        "url": "media/Art/Plane Warp/files/Plane Warp.zip",
+        "description": "Multi‑plate .3mf with every printed part for the Plane Warp, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+      }
+    ],
     "video": "",
-    "order": 6,
+    "order": 7,
     "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x256)</strong><br><em>WS2815 • RGB • 16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>bounce</em></p><p><strong>PLA+ ( &quot;Transparent&quot; )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x1)</strong><br><em>Athom • LS2812B-WLED • ESP8266 • WLED</em></p>",
     "related": [
       {
@@ -1131,7 +1162,8 @@
           }
         ]
       }
-    ]
+    ],
+    "draft": false
   },
   {
     "id": "8252",
@@ -4018,11 +4050,18 @@
         "thumbnail": "media/Art/Negative _X_/20230808_152442-thumb.webp"
       }
     ],
-    "files": [],
+    "files": [
+      {
+        "name": "Negative X.zip",
+        "url": "media/Art/Negative _X_/files/Negative X.zip",
+        "description": "Multi‑plate .3mf with every printed part for the Negative X, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+      }
+    ],
     "video": "",
     "timestamp": "2026-07-02T22:15:06.716Z",
     "id": "2285",
-    "order": 14,
+    "order": 15,
     "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x256)</strong><br><em>WS2815 • RGB • 16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x1)</strong><br><em>Athom • LS2812B-WLED • ESP8266 • WLED</em></p>",
     "related": [
       {
@@ -4116,7 +4155,8 @@
           }
         ]
       }
-    ]
+    ],
+    "draft": false
   },
   {
     "title": "Seed of Life",
@@ -4177,11 +4217,18 @@
         "thumbnail": "media/Art/Seed of Life/20230808_152626-thumb.webp"
       }
     ],
-    "files": [],
+    "files": [
+      {
+        "name": "Seed of Life.zip",
+        "url": "media/Art/Seed of Life/files/Seed of Life.zip",
+        "description": "Multi‑plate .3mf with every printed part for the Seed of Life, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+      }
+    ],
     "video": "",
     "timestamp": "2026-07-02T22:16:10.943Z",
     "id": "9896",
-    "order": 15,
+    "order": 16,
     "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x256)</strong><br><em>WS2815 • RGB • 16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x1)</strong><br><em>Athom • LS2812B-WLED • ESP8266 • WLED</em></p>",
     "related": [
       {
@@ -4275,7 +4322,8 @@
           }
         ]
       }
-    ]
+    ],
+    "draft": false
   },
   {
     "title": "Celtic Owl",
@@ -4322,7 +4370,14 @@
         "thumbnail": "media/Art/Celtic Owl/Screenshot 2026-07-02 185618-thumb.webp"
       }
     ],
-    "files": [],
+    "files": [
+      {
+        "name": "Celtic Owl.zip",
+        "url": "media/Art/Celtic Owl/files/Celtic Owl.zip",
+        "description": "Multi‑plate .3mf with every printed part for the Celtic Owl, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+      }
+    ],
     "video": "",
     "timestamp": "2026-07-02T23:00:41.951Z",
     "id": "8609",
@@ -4408,7 +4463,8 @@
           }
         ]
       }
-    ]
+    ],
+    "draft": false
   },
   {
     "title": "Lobby Wall",
@@ -9132,7 +9188,14 @@
         "thumbnail": "media/Art/Bubblescape/frame-thumb-1786909472631-thumb.webp"
       }
     ],
-    "files": [],
+    "files": [
+      {
+        "name": "Bubblescape.zip",
+        "url": "media/Art/Bubblescape/files/Bubblescape.zip",
+        "description": "Multi‑plate .3mf with every printed part for the Bubblescape, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+      }
+    ],
     "specsData": [
       {
         "id": "8fa6b1f5-4c62-41d3-8dbd-aaf51953633f",
@@ -9213,7 +9276,8 @@
     "video": "",
     "timestamp": "2026-08-16T19:45:09.127Z",
     "id": "9191",
-    "order": 9
+    "order": 10,
+    "draft": false
   },
   {
     "title": "Zig-Zag",
@@ -9259,7 +9323,14 @@
         "thumbnail": "media/Art/Zig-Zag/frame-thumb-1786909779529-thumb.webp"
       }
     ],
-    "files": [],
+    "files": [
+      {
+        "name": "Zig-Zag.zip",
+        "url": "media/Art/Zig-Zag/files/Zig-Zag.zip",
+        "description": "Multi‑plate .3mf with every printed part for the Zig-Zag, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+      }
+    ],
     "specsData": [
       {
         "id": "9eb1b583-1891-4993-80d1-a91d631349e1",
@@ -9346,7 +9417,8 @@
     "video": "",
     "timestamp": "2026-08-16T19:50:18.919Z",
     "id": "7412",
-    "order": 17
+    "order": 18,
+    "draft": false
   },
   {
     "title": "Clay Face",
@@ -9392,7 +9464,14 @@
         "thumbnail": "media/Art/Clay Face/frame-thumb-1786910058148-thumb.webp"
       }
     ],
-    "files": [],
+    "files": [
+      {
+        "name": "Clay Face.zip",
+        "url": "media/Art/Clay Face/files/Clay Face.zip",
+        "description": "Multi‑plate .3mf with every printed part for the Clay Face, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+      }
+    ],
     "specsData": [
       {
         "id": "bf11d302-b13c-4607-bf70-4616effbd140",
@@ -9459,7 +9538,8 @@
     "video": "",
     "timestamp": "2026-08-16T19:55:48.429Z",
     "id": "8740",
-    "order": 5
+    "order": 5,
+    "draft": false
   },
   {
     "title": "Scream-Face",
@@ -9524,7 +9604,14 @@
         "thumbnail": "media/Art/Scream-Face/20231002_203931-poster-thumb.webp"
       }
     ],
-    "files": [],
+    "files": [
+      {
+        "name": "Scream-Face.zip",
+        "url": "media/Art/Scream-Face/files/Scream-Face.zip",
+        "description": "Multi‑plate .3mf with every printed part for the Scream Face, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+      }
+    ],
     "specsData": [
       {
         "id": "6cf14105-abfc-46d0-8e93-1abaea19a1f4",
@@ -9599,7 +9686,8 @@
     "video": "",
     "timestamp": "2026-08-16T20:00:30.235Z",
     "id": "1829",
-    "order": 7
+    "order": 8,
+    "draft": false
   },
   {
     "title": "Clay Tree",
@@ -9654,7 +9742,14 @@
         "thumbnail": "media/Art/Clay Tree/frame-thumb-1786910729386-thumb.webp"
       }
     ],
-    "files": [],
+    "files": [
+      {
+        "name": "Clay Tree.zip",
+        "url": "media/Art/Clay Tree/files/Clay Tree.zip",
+        "description": "Multi‑plate .3mf with every printed part for the Clay Tree, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+      }
+    ],
     "specsData": [
       {
         "id": "8dec7f70-9d41-47ae-8090-ef298c34424b",
@@ -9721,7 +9816,8 @@
     "video": "",
     "timestamp": "2026-08-16T20:06:37.433Z",
     "id": "3139",
-    "order": 11
+    "order": 12,
+    "draft": false
   },
   {
     "title": "Face",
@@ -9766,7 +9862,14 @@
         "thumbnail": "media/Art/Face/frame-thumb-1786911050766-thumb.webp"
       }
     ],
-    "files": [],
+    "files": [
+      {
+        "name": "Face.zip",
+        "url": "media/Art/Face/files/Face.zip",
+        "description": "Multi‑plate .3mf with every printed part for the Face, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+      }
+    ],
     "specsData": [
       {
         "id": "acf9c148-f475-48bb-b206-fa45de3b1ed7",
@@ -9841,7 +9944,8 @@
     "video": "",
     "timestamp": "2026-08-16T20:11:26.500Z",
     "id": "4827",
-    "order": 10
+    "order": 11,
+    "draft": false
   },
   {
     "title": "X",
@@ -9886,7 +9990,14 @@
         "thumbnail": "media/Art/X/frame-thumb-1786911519833-thumb.webp"
       }
     ],
-    "files": [],
+    "files": [
+      {
+        "name": "X.zip",
+        "url": "media/Art/X/files/X.zip",
+        "description": "Multi‑plate .3mf with every printed part for the X, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+      }
+    ],
     "specsData": [
       {
         "id": "634f4530-dc6e-48fb-8fc9-3e1bdd02880b",
@@ -9973,7 +10084,8 @@
     "video": "",
     "timestamp": "2026-08-16T20:19:44.564Z",
     "id": "7080",
-    "order": 18
+    "order": 19,
+    "draft": false
   },
   {
     "title": "Dot Matrix",
@@ -10018,7 +10130,14 @@
         "thumbnail": "media/Art/Dot Matrix/20231125_093701~2-poster-thumb.webp"
       }
     ],
-    "files": [],
+    "files": [
+      {
+        "name": "Dot Matrix.zip",
+        "url": "media/Art/Dot Matrix/files/Dot Matrix.zip",
+        "description": "Multi‑plate .3mf with every printed part for the Dot Matrix, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+      }
+    ],
     "specsData": [
       {
         "id": "46cb4384-3ea3-49b8-8790-f741ca46f0be",
@@ -10105,7 +10224,8 @@
     "video": "",
     "timestamp": "2026-08-16T20:23:22.050Z",
     "id": "5202",
-    "order": 16
+    "order": 17,
+    "draft": false
   },
   {
     "title": "Inverted Triangles",
@@ -10150,7 +10270,14 @@
         "thumbnail": "media/Art/Inverted Triangles/frame-thumb-1786911861387-thumb.webp"
       }
     ],
-    "files": [],
+    "files": [
+      {
+        "name": "Inverted Triangles.zip",
+        "url": "media/Art/Inverted Triangles/files/Inverted Triangles.zip",
+        "description": "Multi‑plate .3mf with every printed part for the Inverted Triangles, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+      }
+    ],
     "specsData": [
       {
         "id": "f3bfd48d-cc16-41fd-8410-957eb53d3600",
@@ -10237,7 +10364,8 @@
     "video": "",
     "timestamp": "2026-08-16T20:25:20.687Z",
     "id": "6865",
-    "order": 19
+    "order": 20,
+    "draft": false
   },
   {
     "title": "Circles Corner",
@@ -10282,7 +10410,14 @@
         "thumbnail": "media/Art/Circles Corner/frame-thumb-1786912100385-thumb.webp"
       }
     ],
-    "files": [],
+    "files": [
+      {
+        "name": "Circles Corner.zip",
+        "url": "media/Art/Circles Corner/files/Circles Corner.zip",
+        "description": "Multi‑plate .3mf with every printed part for the Circles Corner, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+      }
+    ],
     "specsData": [
       {
         "id": "ee69bf60-a93d-43a7-91ad-90bbbb101da6",
@@ -10369,7 +10504,8 @@
     "video": "",
     "timestamp": "2026-08-16T20:29:37.203Z",
     "id": "2451",
-    "order": 13
+    "order": 14,
+    "draft": false
   },
   {
     "title": "TangiPix",
@@ -10730,7 +10866,14 @@
     "draft": true,
     "tags": [],
     "gallery": [],
-    "files": [],
+    "files": [
+      {
+        "name": "Lighting Rig.zip",
+        "url": "media/Art/Home Light Rig/files/Lighting Rig.zip",
+        "description": "Multi‑plate .3mf with every printed part for the Home Light Rig, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+      }
+    ],
     "specsData": [],
     "specs": "",
     "related": [],
@@ -10756,14 +10899,21 @@
     "draft": true,
     "tags": [],
     "gallery": [],
-    "files": [],
+    "files": [
+      {
+        "name": "Mound.zip",
+        "url": "media/Art/Mound/files/Mound.zip",
+        "description": "Multi‑plate .3mf with every printed part for the Mound, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+      }
+    ],
     "specsData": [],
     "specs": "",
     "related": [],
     "video": "",
     "timestamp": "2026-09-05T01:42:23.411Z",
     "id": "1772",
-    "order": 8
+    "order": 9
   },
   {
     "title": "Lighting & SFX Repair",
@@ -11265,5 +11415,37 @@
     "timestamp": "2026-09-05T01:55:24.530Z",
     "id": "989",
     "order": 0
+  },
+  {
+    "title": "Mini Heart",
+    "category": "Art",
+    "image": "media/Art/Mini Heart/20260620_121930.webp",
+    "thumbnail": "media/Art/Mini Heart/20260620_121930-thumb.webp",
+    "description": "<p><br></p>",
+    "longDescription": "<p><br></p>",
+    "websiteLink": "",
+    "launchLink": "",
+    "githubLink": "",
+    "shopLink": "",
+    "featured": false,
+    "wip": false,
+    "draft": true,
+    "tags": [],
+    "gallery": [],
+    "files": [
+      {
+        "name": "Mini Heart.zip",
+        "url": "media/Art/Mini Heart/files/Mini Heart.zip",
+        "description": "Multi‑plate .3mf with every printed part for the Mini Heart, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+      }
+    ],
+    "specsData": [],
+    "specs": "",
+    "related": [],
+    "video": "",
+    "timestamp": "2026-09-05T22:51:50.484Z",
+    "id": "8230",
+    "order": 6
   }
 ]
