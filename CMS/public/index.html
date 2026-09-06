@@ -534,12 +534,14 @@
       async reorderProjects(items) {
         return this.post('/projects/reorder', { items });
       },
-      // 3D models: the browser converts to GLB first; both GLB and the original are stored.
-      async uploadModel(glbBlob, originalFile, category, project, onProgress) {
+      // 3D models: the browser converts to GLB first; only the GLB preview is stored
+      // (the original file never leaves the machine).
+      async uploadModel(glbBlob, originalName, format, category, project, onProgress) {
         const form = new FormData();
-        const stem = (originalFile.name || 'model').replace(/\.[^.]+$/, '');
+        const stem = (originalName || 'model').replace(/\.[^.]+$/, '');
         form.append('glb', new File([glbBlob], `${stem}.glb`, { type: 'model/gltf-binary' }));
-        form.append('original', originalFile, originalFile.name);
+        form.append('originalName', originalName || '');
+        form.append('format', format || '');
         form.append('category', category);
         form.append('project', project);
         return uploadXhr('/api/media/upload-model', form, onProgress);
@@ -1234,13 +1236,12 @@
         return typeof url === 'string' && /\.glb$/i.test(url.split('?')[0]);
     }
 
-    // Builds the model descriptor stored on a gallery item ({ type, source, format, up, parts }).
+    // Builds the model descriptor stored on a gallery item ({ type, format, up, parts }).
     function modelDescriptor(item) {
         if (!item || typeof item !== 'object') return null;
         if (item.type !== 'model' && !isModelPath(item.url)) return null;
         return {
             type: 'model',
-            source: item.source || '',
             format: item.format || '',
             up: item.up === 'y' ? 'y' : 'z',
             parts: Array.isArray(item.parts) ? item.parts : []
@@ -1842,7 +1843,7 @@
         const hasFit = !!fitJson;
         const isVideo = isVideoPath(url);
         const isModel = !!model || isModelPath(url);
-        const modelJson = isModel ? JSON.stringify(model || { type: 'model', source: '', format: '', up: 'z', parts: [] }) : '';
+        const modelJson = isModel ? JSON.stringify(model || { type: 'model', format: '', up: 'z', parts: [] }) : '';
         const thumbSrc = poster ? getThumbnailSrc(poster) : (isModel ? '' : getThumbnailSrc(url));
         const previewAttr = isVideo
             ? 'onclick="openVideoPreview(this.closest(\'.gallery-row\'))" title="Click to preview video" style="cursor:pointer"'
@@ -1906,7 +1907,7 @@
         if (hasAudioInput) hasAudioInput.value = '';
         if (isModel) {
             // Keep any existing model settings; start fresh ones for a hand-entered GLB path.
-            if (!readRowModel(row)) writeRowModel(row, { type: 'model', source: '', format: 'glb', up: 'z', parts: [] });
+            if (!readRowModel(row)) writeRowModel(row, { type: 'model', format: 'glb', up: 'z', parts: [] });
             else row.querySelector('.gallery-model-btn')?.classList.remove('hidden');
         } else {
             writeRowModel(row, null);
@@ -2379,10 +2380,9 @@
             task.setProgress(2, 'Converting');
             const converted = await ModelTools.convertToGlb(file, (stage) => task.setProgress(15, stage.replace(/…$/, '')));
             task.setProgress(40, 'Uploading');
-            const result = await api.uploadModel(converted.glbBlob, file, category, project, (pct) => task.setProgress(40 + pct * 0.4, 'Uploading'));
+            const result = await api.uploadModel(converted.glbBlob, file.name, converted.format, category, project, (pct) => task.setProgress(40 + pct * 0.4, 'Uploading'));
             const model = {
               type: 'model',
-              source: result.source || '',
               format: result.format || converted.format,
               up: 'z',
               parts: converted.parts.map(p => ({ name: p.name, color: p.color || undefined, opacity: typeof p.opacity === 'number' ? p.opacity : 1 }))
@@ -2414,7 +2414,7 @@
       if (!window.ModelViewerCore) { Toastify({ text: 'Model viewer is still loading.', duration: 2500, backgroundColor: '#ef4444' }).showToast(); return; }
 
       closeModelEditor(true);
-      const model = readRowModel(row) || { type: 'model', source: '', format: 'glb', up: 'z', parts: [] };
+      const model = readRowModel(row) || { type: 'model', format: 'glb', up: 'z', parts: [] };
       modelEditor.row = row;
       modelEditor.autoRotate = false;
 
@@ -2426,8 +2426,7 @@
       partsEl.innerHTML = '<p class="text-xs text-zinc-500">Loading model…</p>';
       status.textContent = '';
       document.getElementById('model-editor-title').textContent = url.split('/').pop();
-      document.getElementById('model-editor-source').textContent = model.source ? `Original: ${model.source.split('/').pop()}` : 'No original file stored';
-      document.getElementById('model-editor-source').classList.toggle('hidden', !model.source);
+      document.getElementById('model-editor-source').textContent = `${(model.format || 'glb').toUpperCase()} preview · only this GLB is stored, the source file is never published`;
       document.querySelectorAll('#model-editor-up button').forEach(b => {
         b.classList.toggle('bg-indigo-600', b.dataset.up === model.up);
         b.classList.toggle('text-white', b.dataset.up === model.up);
@@ -2477,11 +2476,11 @@
     function syncRowFromViewer() {
       const { row, viewer } = modelEditor;
       if (!row || !viewer) return;
-      const prev = readRowModel(row) || { type: 'model', source: '', format: 'glb' };
+      const prev = readRowModel(row) || { type: 'model', format: 'glb' };
       const state = viewer.getState();
       const names = Array.from(document.querySelectorAll('#model-editor-parts .model-part-name')).map(el => el.value.trim());
       const parts = state.parts.map((p, i) => ({ ...p, name: names[i] || p.name }));
-      writeRowModel(row, { type: 'model', source: prev.source || '', format: prev.format || 'glb', up: state.up, parts });
+      writeRowModel(row, { type: 'model', format: prev.format || 'glb', up: state.up, parts });
       isDirty = true;
     }
 
@@ -2790,7 +2789,6 @@
               const obj = { url };
               if (model) {
                   obj.type = 'model';
-                  if (model.source) obj.source = model.source;
                   if (model.format) obj.format = model.format;
                   obj.up = model.up === 'y' ? 'y' : 'z';
                   if (Array.isArray(model.parts) && model.parts.length) {

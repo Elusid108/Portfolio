@@ -158,21 +158,20 @@ async function processFileUpload(file, category, projectName) {
 // --- 3D models ---
 //
 // Models are converted to GLB in the CMS browser (three.js loaders +
-// occt-import-js for STEP) and uploaded together with the original file.
-// Both land in media/<Folder>/<Project>/models/ so the site can stream the
-// GLB while visitors can still download the original STL/3MF/STEP.
+// occt-import-js for STEP). Only the GLB is stored — it is a reduced-poly
+// preview for the website, so the original STL/3MF/STEP never lands in the
+// repo and is never offered for download.
 
-const MODEL_SOURCE_EXTS = ['.stl', '.3mf', '.step', '.stp'];
+const MODEL_FORMATS = ['stl', '3mf', 'step', 'glb'];
 
-function modelFormatFromName(name) {
-  const ext = path.extname(name || '').toLowerCase();
-  if (ext === '.stp') return 'step';
-  return ext.replace(/^\./, '') || 'model';
+function normalizeModelFormat(format, fallbackName) {
+  let f = String(format || '').toLowerCase().replace(/^\./, '');
+  if (!f && fallbackName) f = path.extname(fallbackName).toLowerCase().replace(/^\./, '');
+  if (f === 'stp') f = 'step';
+  return MODEL_FORMATS.includes(f) ? f : 'glb';
 }
 
-async function processModelUpload(files, category, projectName) {
-  const glbFile = files?.glb?.[0];
-  const originalFile = files?.original?.[0];
+async function processModelUpload(glbFile, category, projectName, { format, originalName } = {}) {
   if (!glbFile) throw new Error('No GLB uploaded');
 
   const folder = CATEGORY_FOLDER_MAP[category] || category;
@@ -180,28 +179,15 @@ async function processModelUpload(files, category, projectName) {
   const destDir = path.join(MEDIA_DIR, folder, safeProject, 'models');
   fs.mkdirSync(destDir, { recursive: true });
 
-  const originalName = sanitize(originalFile ? originalFile.originalname : glbFile.originalname);
-  const stem = path.parse(originalName).name;
+  const nameForStem = sanitize(originalName || glbFile.originalname || 'model');
+  const stem = path.parse(nameForStem).name || 'model';
   const glbName = `${stem}.glb`;
   const webDir = `media/${folder}/${safeProject}/models`;
 
   await retryFsOp(() => { fs.copyFileSync(glbFile.path, path.join(destDir, glbName)); });
   scheduleUnlink(glbFile.path);
 
-  let source = '';
-  let format = 'glb';
-  if (originalFile) {
-    const ext = path.extname(originalName).toLowerCase();
-    if (MODEL_SOURCE_EXTS.includes(ext)) {
-      const srcName = `${stem}${ext}`;
-      await retryFsOp(() => { fs.copyFileSync(originalFile.path, path.join(destDir, srcName)); });
-      source = `${webDir}/${srcName}`;
-      format = modelFormatFromName(srcName);
-    }
-    scheduleUnlink(originalFile.path);
-  }
-
-  return { path: `${webDir}/${glbName}`, source, format };
+  return { path: `${webDir}/${glbName}`, format: normalizeModelFormat(format, originalName) };
 }
 
 // --- Fix File Structure ---
@@ -344,9 +330,6 @@ function fixFileStructure() {
           if (typeof item.thumbnail === 'string') {
             updated.thumbnail = relocateAsset(item.thumbnail, targetWebDir, ctx);
           }
-          if (typeof item.source === 'string') {
-            updated.source = relocateAsset(item.source, targetWebDir, ctx);
-          }
           return updated;
         }
         return item;
@@ -401,7 +384,6 @@ function relocateProject(project) {
         const result = { ...item, url: relocateAsset(item.url, targetWebDir, ctx) };
         if (typeof item.poster === 'string') result.poster = relocateAsset(item.poster, targetWebDir, ctx);
         if (typeof item.thumbnail === 'string') result.thumbnail = relocateAsset(item.thumbnail, targetWebDir, ctx);
-        if (typeof item.source === 'string') result.source = relocateAsset(item.source, targetWebDir, ctx);
         return result;
       }
       return item;
@@ -465,7 +447,6 @@ function collectPathsFromProject(project, set = new Set()) {
         addMediaPath(set, item.url);
         addMediaPath(set, item.poster);
         addMediaPath(set, item.thumbnail);
-        addMediaPath(set, item.source);
       }
     }
   }
@@ -520,10 +501,6 @@ function companionPaths(webPath) {
   if (ext.toLowerCase() === '.glb') {
     companions.push(`${dir}/${stem}-poster.webp`);
     companions.push(`${dir}/${stem}-poster-thumb.webp`);
-    for (const srcExt of MODEL_SOURCE_EXTS) companions.push(`${dir}/${stem}${srcExt}`);
-  }
-  if (MODEL_SOURCE_EXTS.includes(ext.toLowerCase())) {
-    companions.push(`${dir}/${stem}.glb`);
   }
   return companions;
 }

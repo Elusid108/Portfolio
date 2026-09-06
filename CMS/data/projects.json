@@ -760,6 +760,37 @@
         "url": "media/Art/Pyramid/20230707_082949~2.mp4",
         "poster": "media/Art/Pyramid/20230707_082949~2-poster.webp",
         "thumbnail": "media/Art/Pyramid/20230707_082949~2-poster-thumb.webp"
+      },
+      {
+        "url": "media/Art/Pyramid/models/pyramid_preview.glb",
+        "type": "model",
+        "source": "media/Art/Pyramid/models/pyramid_preview.3mf",
+        "format": "3mf",
+        "up": "z",
+        "parts": [
+          {
+            "name": "Part_1",
+            "color": "#000000",
+            "opacity": 1
+          },
+          {
+            "name": "Part_2",
+            "color": "#ffffff",
+            "opacity": 1
+          },
+          {
+            "name": "Part_3",
+            "color": "#9ca3af",
+            "opacity": 0.5
+          }
+        ],
+        "fit": {
+          "scale": 1.3,
+          "x": 55.5,
+          "y": 41.8
+        },
+        "poster": "media/Art/Pyramid/pyramid_preview-poster.webp",
+        "thumbnail": "media/Art/Pyramid/pyramid_preview-poster-thumb.webp"
       }
     ],
     "files": [

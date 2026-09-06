@@ -214,13 +214,13 @@ app.post('/api/media/upload-file', upload.single('file'), async (req, res) => {
 });
 
 // 3D model upload: the admin UI converts STL/3MF/STEP to GLB in the browser and
-// sends both the GLB and the original file.
-app.post('/api/media/upload-model', uploadModel.fields([{ name: 'glb', maxCount: 1 }, { name: 'original', maxCount: 1 }]), async (req, res) => {
+// sends only the GLB (preview asset) plus the source format / filename for naming.
+app.post('/api/media/upload-model', uploadModel.single('glb'), async (req, res) => {
   try {
-    const { category, project } = req.body;
-    if (!req.files?.glb?.length) return res.status(400).json({ error: 'No GLB uploaded' });
+    const { category, project, format, originalName } = req.body;
+    if (!req.file) return res.status(400).json({ error: 'No GLB uploaded' });
     if (!category || !project) return res.status(400).json({ error: 'Category and project name required' });
-    const result = await media.processModelUpload(req.files, category, project);
+    const result = await media.processModelUpload(req.file, category, project, { format, originalName });
     res.json({ success: true, ...result });
   } catch (err) {
     res.status(500).json({ error: err.message });
