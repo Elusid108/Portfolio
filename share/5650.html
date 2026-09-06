@@ -24,17 +24,8 @@
     <meta name="twitter:image:alt" content="Entrance Hall">
     <meta name="theme-color" content="#09090b">
     <meta name="robots" content="noindex, follow">
-    <script>
-    (function () {
-      var target = "../#project/5650";
-      var ua = navigator.userAgent || '';
-      // Social crawlers must stay on this HTML so they can read the Open Graph tags.
-      // An instant meta-refresh / location.replace sends them to index.html, which
-      // has no per-project image (URL hashes are ignored).
-      if (/facebookexternalhit|Facebot|LinkedInBot|Twitterbot|Slackbot|WhatsApp|Discordbot|TelegramBot|Pinterest|Googlebot|bingbot|Applebot|Embedly|outbrain|vkShare|W3C_Validator|Quora Link Preview/i.test(ua)) return;
-      setTimeout(function () { window.location.assign(target); }, 2500);
-    })();
-    </script>
+    <meta http-equiv="refresh" content="0; url=../#project/5650">
+    <script>window.location.replace("../#project/5650");</script>
     <style>
         body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#09090b;color:#e4e4e7;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
         main{max-width:640px;padding:32px;text-align:center}
@@ -51,7 +42,7 @@
         <h1>Entrance Hall</h1>
         <p>A dead thirty-foot LED tunnel, gutted to raw copper and rebuilt inside walls that were glued shut.</p>
         <a href="../#project/5650">View this project on chrismoore.me →</a>
-        <small>Opening the project…</small>
+        <small>Redirecting…</small>
     </main>
 </body>
 </html>
