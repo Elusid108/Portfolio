@@ -78,7 +78,7 @@
   <div id="app" class="max-w-5xl mx-auto p-6">
     <div class="flex justify-between items-center mb-8">
       <div>
-        <h1 class="text-3xl font-bold text-slate-800">Portfolio CMS <span class="text-sm font-medium text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full align-middle">v2.3 Local</span></h1>
+        <h1 class="text-3xl font-bold text-slate-800">Portfolio CMS <span class="text-sm font-medium text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full align-middle">v2.4 Local</span></h1>
         <p class="text-slate-500 text-sm mt-1">Local portfolio manager</p>
       </div>
       <div class="flex gap-3 items-center">
@@ -1492,7 +1492,7 @@
       if (Array.isArray(p.files) && p.files.length > 0) {
          p.files.forEach(f => {
             if (typeof f === 'string') addFileRow("Download", f, '', true);
-            else addFileRow(f.name, f.url, f.description || '', true, f.license || '');
+            else addFileRow(f.name, f.url, f.description || '', true, f.license || '', f.image || '', f.thumbnail || '', f.thumbnailFit || null);
          });
       } else {
         addFileRow("", "", '', true);
@@ -1589,11 +1589,15 @@
         });
     }
 
-    function addFileRow(name = "", url = "", description = "", isBulk = false, license = "") {
+    function addFileRow(name = "", url = "", description = "", isBulk = false, license = "", image = "", thumbnail = "", thumbnailFit = null) {
         const container = document.getElementById('files-container');
         const div = document.createElement('div');
         div.className = "file-row space-y-1";
         div.draggable = true;
+        const fitJson = thumbnailFit ? JSON.stringify(thumbnailFit) : '';
+        const hasFit = !!fitJson;
+        const previewSrc = getThumbnailSrc(thumbnail || image);
+        const hasImage = !!(image || thumbnail);
         div.innerHTML = `
             <div class="flex gap-2 items-center">
                 <span class="drag-handle cursor-grab text-slate-300 hover:text-slate-500 px-1 flex-shrink-0"><i class="ph ph-dots-six-vertical"></i></span>
@@ -1604,10 +1608,75 @@
             </div>
             <input type="text" placeholder="Description (optional — shown in popout on portfolio)" value="${escAttr(description)}" class="file-desc w-full bg-white border border-slate-200 rounded px-2 py-1 text-xs text-slate-500 focus:border-indigo-500 outline-none" oninput="isDirty=true">
             <input type="text" placeholder="License (optional — e.g. CC BY-NC-SA 4.0)" value="${escAttr(license)}" class="file-license w-full bg-white border border-slate-200 rounded px-2 py-1 text-xs text-slate-500 focus:border-indigo-500 outline-none" oninput="isDirty=true">
+            <div class="flex gap-2 items-center">
+                <div class="file-thumb-wrap relative w-10 h-10 flex-shrink-0 overflow-hidden rounded bg-slate-100 ${hasImage ? '' : 'hidden'}">
+                    <img class="file-thumb w-10 h-10 object-cover" src="${escAttr(previewSrc)}" alt="" onerror="this.closest('.file-thumb-wrap').classList.add('hidden')">
+                </div>
+                <input type="text" placeholder="Toast thumbnail (optional — path or URL)" value="${escAttr(image)}" class="file-image flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-xs font-mono text-slate-500 focus:border-indigo-500 outline-none" oninput="onFileImageChange(this)">
+                <label class="cursor-pointer bg-indigo-100 text-indigo-600 px-2 py-1 rounded hover:bg-indigo-200 flex items-center gap-1 text-xs font-bold whitespace-nowrap">
+                    <i class="ph ph-upload-simple"></i> Image Upload
+                    <input type="file" accept="image/*" class="hidden" onchange="handleFileThumbUpload(this)">
+                </label>
+                <button type="button" onclick="openFileThumbCrop(this.closest('.file-row'))" title="Set crop"
+                        class="file-crop-btn flex-shrink-0 px-2 transition-colors ${hasFit ? 'text-indigo-500' : 'text-slate-300 hover:text-indigo-500'}">
+                    <i class="ph ph-crop"></i>
+                </button>
+                <button type="button" onclick="clearFileThumb(this.closest('.file-row'))" title="Remove thumbnail"
+                        class="file-thumb-clear flex-shrink-0 px-1 text-slate-300 hover:text-red-500 transition-colors ${hasImage ? '' : 'hidden'}">
+                    <i class="ph ph-x"></i>
+                </button>
+            </div>
+            <input type="hidden" class="file-thumbnail" value="${escAttr(thumbnail)}">
+            <input type="hidden" class="file-fit" value="${escAttr(fitJson)}">
         `;
         container.appendChild(div);
         updateListIndices('files-container');
         if (!isBulk) isDirty = true;
+    }
+
+    function onFileImageChange(input) {
+        isDirty = true;
+        const row = input.closest('.file-row');
+        const thumbInput = row.querySelector('.file-thumbnail');
+        if (thumbInput) thumbInput.value = '';
+        updateFileThumbPreview(row);
+    }
+
+    function updateFileThumbPreview(row) {
+        const image = row.querySelector('.file-image')?.value.trim() || '';
+        const thumbnail = row.querySelector('.file-thumbnail')?.value.trim() || '';
+        const wrap = row.querySelector('.file-thumb-wrap');
+        const img = row.querySelector('.file-thumb');
+        const clearBtn = row.querySelector('.file-thumb-clear');
+        const src = getThumbnailSrc(thumbnail || image);
+        if (src) {
+            if (img) img.src = src;
+            wrap?.classList.remove('hidden');
+            clearBtn?.classList.remove('hidden');
+        } else {
+            wrap?.classList.add('hidden');
+            clearBtn?.classList.add('hidden');
+        }
+    }
+
+    function setFileCropBtnState(row, hasFit) {
+        const cropBtn = row.querySelector('.file-crop-btn');
+        if (!cropBtn) return;
+        cropBtn.classList.toggle('text-indigo-500', !!hasFit);
+        cropBtn.classList.toggle('text-slate-300', !hasFit);
+        cropBtn.classList.toggle('hover:text-indigo-500', !hasFit);
+    }
+
+    function clearFileThumb(row) {
+        const imageInput = row.querySelector('.file-image');
+        const thumbInput = row.querySelector('.file-thumbnail');
+        const fitInput = row.querySelector('.file-fit');
+        if (imageInput) imageInput.value = '';
+        if (thumbInput) thumbInput.value = '';
+        if (fitInput) fitInput.value = '';
+        setFileCropBtnState(row, false);
+        updateFileThumbPreview(row);
+        isDirty = true;
     }
 
     function setupFileDragDrop() {
@@ -1617,6 +1686,10 @@
         container.addEventListener('dragstart', (e) => {
             const row = e.target.closest('.file-row');
             if (!row) return;
+            if (!e.target.closest('.drag-handle')) {
+                e.preventDefault();
+                return;
+            }
             dragEl = row;
             row.classList.add('opacity-50');
         });
@@ -2242,6 +2315,33 @@
       input.value = '';
     }
 
+    async function handleFileThumbUpload(input) {
+      const file = input.files[0];
+      if (!file) return;
+      const row = input.closest('.file-row');
+      if (!row) return;
+      const category = document.getElementById('category').value;
+      const project = document.getElementById('title').value;
+      if (!project) { alert('Please enter a project title first.'); input.value = ''; return; }
+
+      try {
+        showStatus("Uploading image...");
+        const result = await api.upload(file, category, project);
+        const imageInput = row.querySelector('.file-image');
+        const thumbInput = row.querySelector('.file-thumbnail');
+        if (imageInput) imageInput.value = result.path;
+        if (thumbInput) thumbInput.value = result.thumbnail || '';
+        isDirty = true;
+        updateFileThumbPreview(row);
+        hideStatus();
+        Toastify({ text: "Image uploaded!", duration: 2000, backgroundColor: "#10b981" }).showToast();
+      } catch (err) {
+        hideStatus();
+        onError(err);
+      }
+      input.value = '';
+    }
+
     async function handleHeadshotUpload(input) {
       const file = input.files[0];
       if (!file) return;
@@ -2280,6 +2380,14 @@
           };
           const license = row.querySelector('.file-license')?.value.trim();
           if (license) f.license = license;
+          const image = row.querySelector('.file-image')?.value.trim();
+          if (image) f.image = image;
+          const thumbnail = row.querySelector('.file-thumbnail')?.value.trim();
+          if (thumbnail) f.thumbnail = thumbnail;
+          const fitRaw = row.querySelector('.file-fit')?.value?.trim() || '';
+          let thumbnailFit = null;
+          try { thumbnailFit = fitRaw ? JSON.parse(fitRaw) : null; } catch {}
+          if (thumbnailFit) f.thumbnailFit = thumbnailFit;
           return f;
       }).filter(f => f.name && f.url);
 
@@ -2740,6 +2848,23 @@
       });
     }
 
+    function openFileThumbCrop(row) {
+      const imgSrc = row.querySelector('.file-image')?.value.trim();
+      if (!imgSrc) {
+        Toastify({ text: "Add a thumbnail image first", duration: 2000, backgroundColor: "#ef4444" }).showToast();
+        return;
+      }
+      const fitInput = row.querySelector('.file-fit');
+      let currentFit = null;
+      try { currentFit = JSON.parse(fitInput?.value || 'null'); } catch {}
+      const cropSrc = getThumbnailSrc(imgSrc) || imgSrc;
+      openCropModal(cropSrc, 16, 9, 'File Toast Thumbnail  (16 : 9)', currentFit, (fit) => {
+        fitInput.value = JSON.stringify(fit);
+        isDirty = true;
+        setFileCropBtnState(row, true);
+      });
+    }
+
     // --- VIDEO PREVIEW MODAL ---
     let videoPreviewRow = null;
 
@@ -3121,7 +3246,7 @@
       </div>
 
       <p class="text-[10px] text-slate-400 font-mono tabular-nums mt-6 text-center">
-        Portfolio CMS v2.3 Local
+        Portfolio CMS v2.4 Local
       </p>
     </div>
   </div>

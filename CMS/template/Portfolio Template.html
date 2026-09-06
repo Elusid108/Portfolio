@@ -1335,12 +1335,21 @@
                                                     const name = typeof f === 'string' ? `File ${i+1}` : f.name;
                                                     const desc = typeof f === 'object' ? f.description : '';
                                                     const license = typeof f === 'object' ? f.license : '';
+                                                    const fileImage = typeof f === 'object' ? (f.image || f.thumbnail || '') : '';
+                                                    const fileThumb = typeof f === 'object' ? (f.thumbnail || f.image || '') : '';
+                                                    const fileFit = typeof f === 'object' ? (f.thumbnailFit || null) : null;
                                                     return (
                                                         <li key={i} className="relative" onMouseEnter={() => setHoveredFile(i)} onMouseLeave={() => setHoveredFile(null)} onFocus={() => setHoveredFile(i)} onBlur={() => setHoveredFile(null)}>
                                                             <a href={ensureProtocol(url)} download aria-label={`Download ${name}, ${getFileExt(url)} file${desc ? '. ' + desc : ''}`} className="flex items-center gap-3 p-3 rounded-lg bg-zinc-800 hover:bg-zinc-700 transition-colors group">
-                                                                <div aria-hidden="true" className="bg-zinc-900 p-2 rounded text-zinc-400 group-hover:text-white">
-                                                                    <FileIcon size={20}/>
-                                                                </div>
+                                                                {fileThumb ? (
+                                                                    <div className="w-10 h-10 rounded shrink-0 overflow-hidden bg-zinc-700">
+                                                                        <img src={fileThumb} alt="" className="w-full h-full object-cover" style={fitStyle(fileFit)} />
+                                                                    </div>
+                                                                ) : (
+                                                                    <div aria-hidden="true" className="bg-zinc-900 p-2 rounded text-zinc-400 group-hover:text-white">
+                                                                        <FileIcon size={20}/>
+                                                                    </div>
+                                                                )}
                                                                 <div className="flex-1 min-w-0">
                                                                     <div className="text-sm font-bold text-white truncate">{name}</div>
                                                                     <div className="text-xs text-zinc-500 uppercase tracking-wider">{getFileExt(url)}</div>
@@ -1349,22 +1358,31 @@
                                                             </a>
                                                             {hoveredFile === i && (
                                                                 <div aria-hidden="true" className="absolute right-full bottom-0 mr-3 z-50 w-72 pointer-events-none">
-                                                                    <div className="bg-zinc-900 border border-zinc-700 rounded-xl shadow-2xl p-4">
-                                                                        <div className="flex items-start gap-3 mb-3">
-                                                                            <div className="bg-zinc-800 p-2 rounded text-zinc-400 shrink-0">
-                                                                                <FileIcon size={20}/>
+                                                                    <div className={`bg-zinc-900 border border-zinc-700 rounded-xl shadow-2xl ${fileImage ? 'overflow-hidden' : 'p-4'}`}>
+                                                                        {fileImage && (
+                                                                            <div className="aspect-video w-full overflow-hidden">
+                                                                                <img src={fileImage} alt="" className="w-full h-full object-cover" style={fitStyle(fileFit)} />
                                                                             </div>
-                                                                            <div className="min-w-0">
-                                                                                <div className="text-sm font-bold text-white break-words leading-snug">{name}</div>
-                                                                                <div className="text-xs text-cyan-400 uppercase tracking-wider mt-1">{getFileExt(url)} File</div>
+                                                                        )}
+                                                                        <div className={fileImage ? 'p-4' : ''}>
+                                                                            <div className={`flex items-start gap-3 ${desc || license ? 'mb-3' : ''}`}>
+                                                                                {!fileImage && (
+                                                                                    <div className="bg-zinc-800 p-2 rounded text-zinc-400 shrink-0">
+                                                                                        <FileIcon size={20}/>
+                                                                                    </div>
+                                                                                )}
+                                                                                <div className="min-w-0">
+                                                                                    <div className="text-sm font-bold text-white break-words leading-snug">{name}</div>
+                                                                                    <div className="text-xs text-cyan-400 uppercase tracking-wider mt-1">{getFileExt(url)} File</div>
+                                                                                </div>
                                                                             </div>
+                                                                            {desc && (
+                                                                                <p className="text-xs text-zinc-400 leading-relaxed">{desc}</p>
+                                                                            )}
+                                                                            {license && (
+                                                                                <p className={`text-xs text-zinc-500 text-left ${desc ? 'mt-2' : ''}`}>{license}</p>
+                                                                            )}
                                                                         </div>
-                                                                        {desc && (
-                                                                            <p className="text-xs text-zinc-400 leading-relaxed">{desc}</p>
-                                                                        )}
-                                                                        {license && (
-                                                                            <p className={`text-xs text-zinc-500 text-left ${desc ? 'mt-2' : ''}`}>{license}</p>
-                                                                        )}
                                                                     </div>
                                                                 </div>
                                                             )}

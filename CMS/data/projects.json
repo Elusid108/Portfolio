@@ -445,8 +445,15 @@
       {
         "name": "Emmy stand.zip",
         "url": "media/Art/Emmy Stand/files/Emmy stand.zip",
-        "description": "Multi‑plate .3mf with every printed part for the Emmy Stand, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
-        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+        "description": "Multi‑plate .3mf with every printed part for the Emmy Stand, ready to slice and assemble. Fits 144/m WS2815 strips (electronics not included). Read SAFETY NOTICE.txt before wiring.",
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale.",
+        "image": "media/Art/Emmy Stand/Screenshot 2026-09-05 214227.webp",
+        "thumbnail": "media/Art/Emmy Stand/Screenshot 2026-09-05 214227-thumb.webp",
+        "thumbnailFit": {
+          "scale": 1.35,
+          "x": 63.6,
+          "y": 65.6
+        }
       }
     ],
     "video": "",
@@ -760,7 +767,14 @@
         "name": "Pyramid.zip",
         "url": "media/Art/Pyramid/files/Pyramid.zip",
         "description": "Multi‑plate .3mf with every printed part for the Pyramid, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
-        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale.",
+        "image": "media/Art/Pyramid/Screenshot 2026-09-05 214818.webp",
+        "thumbnail": "media/Art/Pyramid/Screenshot 2026-09-05 214818-thumb.webp",
+        "thumbnailFit": {
+          "scale": 1.4,
+          "x": 56.3,
+          "y": 52.1
+        }
       }
     ],
     "video": "",
@@ -920,7 +934,14 @@
         "name": "Mini Pyramid.zip",
         "url": "media/Art/Mini Pyramid/files/Mini Pyramid.zip",
         "description": "Multi‑plate .3mf with every printed part for the Mini Pyramid, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
-        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale.",
+        "image": "media/Art/Mini Pyramid/Screenshot 2026-09-05 214615.webp",
+        "thumbnail": "media/Art/Mini Pyramid/Screenshot 2026-09-05 214615-thumb.webp",
+        "thumbnailFit": {
+          "scale": 1.5,
+          "x": 39.8,
+          "y": 59.6
+        }
       }
     ],
     "featured": false,
@@ -1074,7 +1095,14 @@
         "name": "Plane Warp.zip",
         "url": "media/Art/Plane Warp/files/Plane Warp.zip",
         "description": "Multi‑plate .3mf with every printed part for the Plane Warp, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
-        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale.",
+        "image": "media/Art/Plane Warp/Screenshot 2026-09-05 214749.webp",
+        "thumbnail": "media/Art/Plane Warp/Screenshot 2026-09-05 214749-thumb.webp",
+        "thumbnailFit": {
+          "scale": 1.45,
+          "x": 51.5,
+          "y": 37.1
+        }
       }
     ],
     "video": "",
@@ -4055,7 +4083,14 @@
         "name": "Negative X.zip",
         "url": "media/Art/Negative _X_/files/Negative X.zip",
         "description": "Multi‑plate .3mf with every printed part for the Negative X, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
-        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale.",
+        "image": "media/Art/Negative _X_/Screenshot 2026-09-05 214721.webp",
+        "thumbnail": "media/Art/Negative _X_/Screenshot 2026-09-05 214721-thumb.webp",
+        "thumbnailFit": {
+          "scale": 1.35,
+          "x": 65.2,
+          "y": 51.4
+        }
       }
     ],
     "video": "",
@@ -4222,7 +4257,14 @@
         "name": "Seed of Life.zip",
         "url": "media/Art/Seed of Life/files/Seed of Life.zip",
         "description": "Multi‑plate .3mf with every printed part for the Seed of Life, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
-        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale.",
+        "image": "media/Art/Seed of Life/Screenshot 2026-09-05 214908.webp",
+        "thumbnail": "media/Art/Seed of Life/Screenshot 2026-09-05 214908-thumb.webp",
+        "thumbnailFit": {
+          "scale": 1.2,
+          "x": 62.1,
+          "y": 48.4
+        }
       }
     ],
     "video": "",
@@ -4375,7 +4417,14 @@
         "name": "Celtic Owl.zip",
         "url": "media/Art/Celtic Owl/files/Celtic Owl.zip",
         "description": "Multi‑plate .3mf with every printed part for the Celtic Owl, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
-        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale.",
+        "image": "media/Art/Celtic Owl/Screenshot 2026-09-05 213845.webp",
+        "thumbnail": "media/Art/Celtic Owl/Screenshot 2026-09-05 213845-thumb.webp",
+        "thumbnailFit": {
+          "scale": 1.35,
+          "x": 69.1,
+          "y": 54.5
+        }
       }
     ],
     "video": "",
@@ -9193,7 +9242,14 @@
         "name": "Bubblescape.zip",
         "url": "media/Art/Bubblescape/files/Bubblescape.zip",
         "description": "Multi‑plate .3mf with every printed part for the Bubblescape, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
-        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale.",
+        "image": "media/Art/Bubblescape/Screenshot 2026-09-05 213740.webp",
+        "thumbnail": "media/Art/Bubblescape/Screenshot 2026-09-05 213740-thumb.webp",
+        "thumbnailFit": {
+          "scale": 1.3,
+          "x": 62.1,
+          "y": 32
+        }
       }
     ],
     "specsData": [
@@ -9328,7 +9384,14 @@
         "name": "Zig-Zag.zip",
         "url": "media/Art/Zig-Zag/files/Zig-Zag.zip",
         "description": "Multi‑plate .3mf with every printed part for the Zig-Zag, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
-        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale.",
+        "image": "media/Art/Zig-Zag/Screenshot 2026-09-05 214954.webp",
+        "thumbnail": "media/Art/Zig-Zag/Screenshot 2026-09-05 214954-thumb.webp",
+        "thumbnailFit": {
+          "scale": 1.25,
+          "x": 74.7,
+          "y": 49.2
+        }
       }
     ],
     "specsData": [
@@ -9469,7 +9532,14 @@
         "name": "Clay Face.zip",
         "url": "media/Art/Clay Face/files/Clay Face.zip",
         "description": "Multi‑plate .3mf with every printed part for the Clay Face, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
-        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale.",
+        "image": "media/Art/Clay Face/Screenshot 2026-09-05 214045.webp",
+        "thumbnail": "media/Art/Clay Face/Screenshot 2026-09-05 214045-thumb.webp",
+        "thumbnailFit": {
+          "scale": 1.25,
+          "x": 53.4,
+          "y": 43.4
+        }
       }
     ],
     "specsData": [
@@ -9609,7 +9679,14 @@
         "name": "Scream-Face.zip",
         "url": "media/Art/Scream-Face/files/Scream-Face.zip",
         "description": "Multi‑plate .3mf with every printed part for the Scream Face, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
-        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale.",
+        "image": "media/Art/Scream-Face/Screenshot 2026-09-05 214848.webp",
+        "thumbnail": "media/Art/Scream-Face/Screenshot 2026-09-05 214848-thumb.webp",
+        "thumbnailFit": {
+          "scale": 1.5,
+          "x": 56,
+          "y": 47
+        }
       }
     ],
     "specsData": [
@@ -9747,7 +9824,14 @@
         "name": "Clay Tree.zip",
         "url": "media/Art/Clay Tree/files/Clay Tree.zip",
         "description": "Multi‑plate .3mf with every printed part for the Clay Tree, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
-        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale.",
+        "image": "media/Art/Clay Tree/Screenshot 2026-09-05 214118.webp",
+        "thumbnail": "media/Art/Clay Tree/Screenshot 2026-09-05 214118-thumb.webp",
+        "thumbnailFit": {
+          "scale": 1.35,
+          "x": 54.8,
+          "y": 53.5
+        }
       }
     ],
     "specsData": [
@@ -9867,7 +9951,14 @@
         "name": "Face.zip",
         "url": "media/Art/Face/files/Face.zip",
         "description": "Multi‑plate .3mf with every printed part for the Face, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
-        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale.",
+        "image": "media/Art/Face/Screenshot 2026-09-05 214256.webp",
+        "thumbnail": "media/Art/Face/Screenshot 2026-09-05 214256-thumb.webp",
+        "thumbnailFit": {
+          "scale": 1.5,
+          "x": 61.6,
+          "y": 58.1
+        }
       }
     ],
     "specsData": [
@@ -9995,7 +10086,14 @@
         "name": "X.zip",
         "url": "media/Art/X/files/X.zip",
         "description": "Multi‑plate .3mf with every printed part for the X, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
-        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale.",
+        "image": "media/Art/X/Screenshot 2026-09-05 214931.webp",
+        "thumbnail": "media/Art/X/Screenshot 2026-09-05 214931-thumb.webp",
+        "thumbnailFit": {
+          "scale": 1.25,
+          "x": 66.2,
+          "y": 47.5
+        }
       }
     ],
     "specsData": [
@@ -10135,7 +10233,14 @@
         "name": "Dot Matrix.zip",
         "url": "media/Art/Dot Matrix/files/Dot Matrix.zip",
         "description": "Multi‑plate .3mf with every printed part for the Dot Matrix, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
-        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale.",
+        "image": "media/Art/Dot Matrix/Screenshot 2026-09-05 214144.webp",
+        "thumbnail": "media/Art/Dot Matrix/Screenshot 2026-09-05 214144-thumb.webp",
+        "thumbnailFit": {
+          "scale": 1.35,
+          "x": 45.1,
+          "y": 46.7
+        }
       }
     ],
     "specsData": [
@@ -10275,7 +10380,14 @@
         "name": "Inverted Triangles.zip",
         "url": "media/Art/Inverted Triangles/files/Inverted Triangles.zip",
         "description": "Multi‑plate .3mf with every printed part for the Inverted Triangles, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
-        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale.",
+        "image": "media/Art/Inverted Triangles/Screenshot 2026-09-05 214326.webp",
+        "thumbnail": "media/Art/Inverted Triangles/Screenshot 2026-09-05 214326-thumb.webp",
+        "thumbnailFit": {
+          "scale": 1.25,
+          "x": 59.4,
+          "y": 47.2
+        }
       }
     ],
     "specsData": [
@@ -10415,7 +10527,14 @@
         "name": "Circles Corner.zip",
         "url": "media/Art/Circles Corner/files/Circles Corner.zip",
         "description": "Multi‑plate .3mf with every printed part for the Circles Corner, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
-        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale.",
+        "image": "media/Art/Circles Corner/Screenshot 2026-09-05 213936.webp",
+        "thumbnail": "media/Art/Circles Corner/Screenshot 2026-09-05 213936-thumb.webp",
+        "thumbnailFit": {
+          "scale": 1.15,
+          "x": 42,
+          "y": 49.2
+        }
       }
     ],
     "specsData": [
@@ -10871,7 +10990,14 @@
         "name": "Lighting Rig.zip",
         "url": "media/Art/Home Light Rig/files/Lighting Rig.zip",
         "description": "Multi‑plate .3mf with every printed part for the Home Light Rig, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
-        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale.",
+        "image": "media/Art/Home Light Rig/Screenshot 2026-09-05 214406.webp",
+        "thumbnail": "media/Art/Home Light Rig/Screenshot 2026-09-05 214406-thumb.webp",
+        "thumbnailFit": {
+          "scale": 1.25,
+          "x": 57.1,
+          "y": 59.4
+        }
       }
     ],
     "specsData": [],
@@ -10904,7 +11030,14 @@
         "name": "Mound.zip",
         "url": "media/Art/Mound/files/Mound.zip",
         "description": "Multi‑plate .3mf with every printed part for the Mound, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
-        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale.",
+        "image": "media/Art/Mound/Screenshot 2026-09-05 214645.webp",
+        "thumbnail": "media/Art/Mound/Screenshot 2026-09-05 214645-thumb.webp",
+        "thumbnailFit": {
+          "scale": 1.65,
+          "x": 55.1,
+          "y": 50.5
+        }
       }
     ],
     "specsData": [],
@@ -11437,7 +11570,14 @@
         "name": "Mini Heart.zip",
         "url": "media/Art/Mini Heart/files/Mini Heart.zip",
         "description": "Multi‑plate .3mf with every printed part for the Mini Heart, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
-        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale."
+        "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale.",
+        "image": "media/Art/Mini Heart/Screenshot 2026-09-05 214550.webp",
+        "thumbnail": "media/Art/Mini Heart/Screenshot 2026-09-05 214550-thumb.webp",
+        "thumbnailFit": {
+          "scale": 1.5,
+          "x": 58.4,
+          "y": 47.3
+        }
       }
     ],
     "specsData": [],

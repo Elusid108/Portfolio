@@ -237,6 +237,16 @@ function relocateAsset(oldWebPath, targetWebDir, ctx) {
   return oldWebPath;
 }
 
+function relocateFileEntry(file, targetWebDir, ctx) {
+  if (typeof file === 'string') return relocateAsset(file, targetWebDir, ctx);
+  if (!file || typeof file !== 'object') return file;
+  const updated = { ...file };
+  if (typeof file.url === 'string') updated.url = relocateAsset(file.url, targetWebDir, ctx);
+  if (typeof file.image === 'string') updated.image = relocateAsset(file.image, targetWebDir, ctx);
+  if (typeof file.thumbnail === 'string') updated.thumbnail = relocateAsset(file.thumbnail, targetWebDir, ctx);
+  return updated;
+}
+
 function removeEmptyDirs(dir, isRoot = false) {
   if (!fs.existsSync(dir)) return 0;
   let removedCount = 0;
@@ -292,12 +302,7 @@ function fixFileStructure() {
     }
 
     if (Array.isArray(project.files)) {
-      project.files = project.files.map(file => {
-        if (file && typeof file.url === 'string') {
-          return { ...file, url: relocateAsset(file.url, targetWebDir, ctx) };
-        }
-        return file;
-      });
+      project.files = project.files.map(file => relocateFileEntry(file, targetWebDir, ctx));
     }
   }
 
@@ -351,10 +356,7 @@ function relocateProject(project) {
   }
 
   if (Array.isArray(updated.files)) {
-    updated.files = updated.files.map(file => {
-      if (file && typeof file.url === 'string') return { ...file, url: relocateAsset(file.url, targetWebDir, ctx) };
-      return file;
-    });
+    updated.files = updated.files.map(file => relocateFileEntry(file, targetWebDir, ctx));
   }
 
   if (ctx.moved > 0) removeEmptyDirs(MEDIA_DIR, true);
@@ -415,7 +417,13 @@ function collectPathsFromProject(project, set = new Set()) {
   }
   if (Array.isArray(project.files)) {
     for (const file of project.files) {
-      if (file && typeof file.url === 'string') addMediaPath(set, file.url);
+      if (typeof file === 'string') {
+        addMediaPath(set, file);
+      } else if (file && typeof file === 'object') {
+        addMediaPath(set, file.url);
+        addMediaPath(set, file.image);
+        addMediaPath(set, file.thumbnail);
+      }
     }
   }
   extractMediaFromHtml(project.description, set);
