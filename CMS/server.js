@@ -279,12 +279,39 @@ app.post('/api/media/fix-structure', async (req, res) => {
 
 app.post('/api/media/cleanup', async (req, res) => {
   try {
-    const result = await media.trashUnusedMedia();
-    if (result.moved > 0) {
-      console.log(`[trash] cleanup moved ${result.moved} unused file(s)`);
+    const trashBefore = await media.trashUnusedMedia();
+    if (trashBefore.moved > 0) {
+      console.log(`[trash] cleanup moved ${trashBefore.moved} unused file(s)`);
     }
-    if (result.warnings.length) console.warn('[trash] cleanup:', result.warnings);
-    res.json({ success: true, ...result });
+    const projects = data.getProjects();
+    const settings = data.getSettings();
+    const renameResult = await media.renameReferencedMedia(projects, settings);
+    if (renameResult.renamed > 0) {
+      console.log(`[rename] cleanup renamed ${renameResult.renamed} media file(s)`);
+    }
+    const trashAfter = await media.trashUnusedMedia();
+    if (trashAfter.moved > 0) {
+      console.log(`[trash] post-rename moved ${trashAfter.moved} unused file(s)`);
+    }
+    const warnings = [
+      ...(trashBefore.warnings || []),
+      ...(renameResult.warnings || []),
+      ...(trashAfter.warnings || [])
+    ];
+    if (warnings.length) console.warn('[cleanup]', warnings);
+    const publishResult = publish();
+    const moved = trashBefore.moved + trashAfter.moved;
+    res.json({
+      success: true,
+      moved,
+      trashed: moved,
+      files: [...(trashBefore.files || []), ...(trashAfter.files || [])],
+      renamed: renameResult.renamed,
+      skippedAlreadyNamed: renameResult.skippedAlreadyNamed,
+      missing: renameResult.missing,
+      warnings,
+      published: publishResult.success
+    });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

@@ -1,8 +1,9 @@
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 const sharp = require('sharp');
 const convertHeic = require('heic-convert');
-const { getProjects, getSettings } = require('./data');
+const { getProjects, getSettings, writeJSON } = require('./data');
 
 const PORTFOLIO_ROOT = path.join(__dirname, '..', '..');
 const MEDIA_DIR = path.join(PORTFOLIO_ROOT, 'media');
@@ -24,6 +25,50 @@ const CATEGORY_FOLDER_MAP = {
 
 function sanitize(name) {
   return name.replace(/[<>:"/\\|?*]/g, '_');
+}
+
+const MEDIA_KINDS = ['img', 'vid', 'gfx'];
+const NAMED_PRIMARY_RE = /^(.+)-(img|vid|gfx)-([a-z0-9]{6})$/;
+const NAMED_COMPANION_RE = /^(.+)-(img|vid|gfx)-([a-z0-9]{6})-(poster-thumb|poster|thumb)$/i;
+
+function titleSlug(title) {
+  const slug = String(title || 'Untitled')
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^A-Za-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+  return slug || 'Untitled';
+}
+
+function randomMediaId() {
+  return crypto.randomBytes(4).toString('hex').slice(0, 6);
+}
+
+function mediaStem(projectTitle, kind) {
+  const k = MEDIA_KINDS.includes(kind) ? kind : 'img';
+  return `${titleSlug(projectTitle)}-${k}-${randomMediaId()}`;
+}
+
+function allocateMediaStem(destDir, projectTitle, kind) {
+  fs.mkdirSync(destDir, { recursive: true });
+  for (let i = 0; i < 40; i++) {
+    const stem = mediaStem(projectTitle, kind);
+    const taken = ['webp', 'mp4', 'glb', 'webm', 'mov', 'm4v'].some((ext) =>
+      fs.existsSync(path.join(destDir, `${stem}.${ext}`))
+    );
+    if (!taken) return stem;
+  }
+  throw new Error('Could not allocate a unique media filename');
+}
+
+function parseNamedPrimary(stem) {
+  const m = String(stem || '').match(NAMED_PRIMARY_RE);
+  return m ? { slug: m[1], kind: m[2], id: m[3] } : null;
+}
+
+function parseNamedCompanion(stem) {
+  const m = String(stem || '').match(NAMED_COMPANION_RE);
+  return m ? { slug: m[1], kind: m[2], id: m[3], role: m[4].toLowerCase() } : null;
 }
 
 function looksLikeHeic(buf) {
@@ -73,22 +118,24 @@ function scheduleUnlink(filePath, delays = [300, 800, 1500, 3000, 6000, 10000]) 
 
 async function processUpload(file, category, projectName) {
   const originalName = sanitize(file.originalname);
-  const stem = path.parse(originalName).name;
-  const webpName = `${stem}.webp`;
-  const thumbName = `${stem}-thumb.webp`;
-  let destDir, webPath, thumbWebPath;
+  let destDir, webDir, stem;
 
   if (category === '_root' || !projectName) {
     destDir = MEDIA_DIR;
-    webPath = `media/${webpName}`;
-    thumbWebPath = `media/${thumbName}`;
+    webDir = 'media';
+    stem = path.parse(originalName).name;
   } else {
     const folder = CATEGORY_FOLDER_MAP[category] || category;
     const safeProject = sanitize(projectName);
     destDir = path.join(MEDIA_DIR, folder, safeProject);
-    webPath = `media/${folder}/${safeProject}/${webpName}`;
-    thumbWebPath = `media/${folder}/${safeProject}/${thumbName}`;
+    webDir = `media/${folder}/${safeProject}`;
+    stem = allocateMediaStem(destDir, projectName, 'img');
   }
+
+  const webpName = `${stem}.webp`;
+  const thumbName = `${stem}-thumb.webp`;
+  const webPath = `${webDir}/${webpName}`;
+  const thumbWebPath = `${webDir}/${thumbName}`;
 
   fs.mkdirSync(destDir, { recursive: true });
 
@@ -179,8 +226,7 @@ async function processModelUpload(glbFile, category, projectName, { format, orig
   const destDir = path.join(MEDIA_DIR, folder, safeProject, 'models');
   fs.mkdirSync(destDir, { recursive: true });
 
-  const nameForStem = sanitize(originalName || glbFile.originalname || 'model');
-  const stem = path.parse(nameForStem).name || 'model';
+  const stem = allocateMediaStem(destDir, projectName, 'gfx');
   const glbName = `${stem}.glb`;
   const webDir = `media/${folder}/${safeProject}/models`;
 
@@ -613,6 +659,435 @@ async function trashUnusedMedia() {
   return trashPaths(unused);
 }
 
+function webBasename(webPath) {
+  const parts = String(webPath || '').split('/');
+  return parts[parts.length - 1] || '';
+}
+
+function webDirname(webPath) {
+  const i = String(webPath || '').lastIndexOf('/');
+  return i === -1 ? '' : webPath.slice(0, i);
+}
+
+function webStem(webPath) {
+  const base = webBasename(webPath);
+  const d = base.lastIndexOf('.');
+  return d === -1 ? base : base.slice(0, d);
+}
+
+function webExt(webPath) {
+  const base = webBasename(webPath);
+  const d = base.lastIndexOf('.');
+  return d === -1 ? '' : base.slice(d).toLowerCase();
+}
+
+function skipRename(webPath) {
+  const n = normalizeMediaPath(webPath);
+  if (!n) return true;
+  if (n.includes('/files/')) return true;
+  const parts = n.split('/');
+  return parts.length < 4;
+}
+
+function kindFromPrimary(webPath) {
+  const ext = webExt(webPath);
+  if (['.mp4', '.webm', '.mov', '.m4v', '.avi'].includes(ext)) return 'vid';
+  if (ext === '.glb') return 'gfx';
+  return 'img';
+}
+
+function companionRole(webPath) {
+  const stem = webStem(webPath);
+  const named = parseNamedCompanion(stem);
+  if (named) return named.role;
+  if (/-poster-thumb$/i.test(stem)) return 'poster-thumb';
+  if (/-poster$/i.test(stem)) return 'poster';
+  if (/-thumb$/i.test(stem)) return 'thumb';
+  return null;
+}
+
+function companionSuffix(role) {
+  if (role === 'poster-thumb') return '-poster-thumb.webp';
+  if (role === 'poster') return '-poster.webp';
+  if (role === 'thumb') return '-thumb.webp';
+  return null;
+}
+
+function galleryCompanionRole(primaryKind, field, webPath) {
+  const named = companionRole(webPath);
+  if (primaryKind === 'vid' || primaryKind === 'gfx') {
+    if (field === 'poster') return named === 'poster-thumb' ? 'poster-thumb' : 'poster';
+    if (field === 'thumbnail') return named === 'poster' ? 'poster' : 'poster-thumb';
+  }
+  return named || 'thumb';
+}
+
+function familyOwningPath(webPath, families, currentFam) {
+  const asPrimary = families.find((f) => f.primary === webPath);
+  if (asPrimary) return asPrimary;
+  const namedC = parseNamedCompanion(webStem(webPath));
+  if (namedC) {
+    const stem = `${namedC.slug}-${namedC.kind}-${namedC.id}`;
+    const match = families.find((f) => webStem(f.primary) === stem);
+    if (match) return match;
+  }
+  const namedP = parseNamedPrimary(webStem(webPath));
+  if (namedP) {
+    const stem = `${namedP.slug}-${namedP.kind}-${namedP.id}`;
+    const match = families.find((f) => webStem(f.primary) === stem);
+    if (match) return match;
+  }
+  const imgFam = families.find((f) => f.kind === 'img' && f.companions.some((c) => c.path === webPath));
+  if (imgFam) return imgFam;
+  return currentFam;
+}
+
+function applyPathMapping(value, mapping) {
+  if (typeof value !== 'string' || !value.includes('media/')) return value;
+  let out = value;
+  const keys = [...mapping.keys()]
+    .filter((oldPath) => mapping.get(oldPath) && mapping.get(oldPath) !== oldPath)
+    .sort((a, b) => b.length - a.length);
+  for (const oldPath of keys) {
+    if (out.includes(oldPath)) out = out.split(oldPath).join(mapping.get(oldPath));
+  }
+  return out;
+}
+
+function collectRenameFamilies(projects, settings) {
+  const families = new Map();
+
+  const addPrimary = (raw) => {
+    const n = normalizeMediaPath(raw);
+    if (!n || skipRename(n)) return null;
+    if (companionRole(n)) return null;
+    if (!families.has(n)) {
+      families.set(n, { primary: n, kind: kindFromPrimary(n), companions: [] });
+    }
+    return families.get(n);
+  };
+
+  const addCompanion = (primaryRaw, companionRaw, roleHint) => {
+    const fam = addPrimary(primaryRaw);
+    if (!fam) return;
+    const n = normalizeMediaPath(companionRaw);
+    if (!n || skipRename(n) || n === fam.primary) return;
+    const role = roleHint || companionRole(n) || (fam.kind === 'img' ? 'thumb' : 'poster');
+    if (!fam.companions.some((c) => c.path === n)) {
+      fam.companions.push({ path: n, role });
+    }
+  };
+
+  const visitProject = (project) => {
+    addPrimary(project.image);
+    if (project.image && project.thumbnail && companionRole(project.thumbnail)) {
+      addCompanion(project.image, project.thumbnail);
+    } else if (project.thumbnail && !companionRole(project.thumbnail)) {
+      addPrimary(project.thumbnail);
+    }
+    if (typeof project.video === 'string' && project.video.startsWith('media/')) {
+      addPrimary(project.video);
+    }
+    if (Array.isArray(project.gallery)) {
+      for (const item of project.gallery) {
+        const url = typeof item === 'string' ? item : item && item.url;
+        addPrimary(url);
+        if (item && typeof item === 'object') {
+          const kind = kindFromPrimary(url);
+          if (item.poster) addCompanion(url, item.poster, galleryCompanionRole(kind, 'poster', item.poster));
+          if (item.thumbnail) addCompanion(url, item.thumbnail, galleryCompanionRole(kind, 'thumbnail', item.thumbnail));
+        }
+      }
+    }
+    if (Array.isArray(project.files)) {
+      for (const file of project.files) {
+        if (!file || typeof file === 'string') continue;
+        if (file.image) {
+          addPrimary(file.image);
+          if (file.thumbnail && companionRole(file.thumbnail)) addCompanion(file.image, file.thumbnail);
+          else if (file.thumbnail) addPrimary(file.thumbnail);
+        }
+      }
+    }
+    const htmlSet = new Set();
+    extractMediaFromHtml(project.description, htmlSet);
+    extractMediaFromHtml(project.longDescription, htmlSet);
+    extractMediaFromHtml(project.specs, htmlSet);
+    htmlSet.forEach((p) => addPrimary(p));
+  };
+
+  (projects || []).forEach(visitProject);
+  if (settings) {
+    addPrimary(settings.about_headshot);
+    const htmlSet = new Set();
+    extractMediaFromHtml(settings.about_text, htmlSet);
+    htmlSet.forEach((p) => addPrimary(p));
+  }
+
+  for (const fam of families.values()) {
+    for (const extra of companionPaths(fam.primary)) {
+      if (fs.existsSync(webPathToAbs(extra))) addCompanion(fam.primary, extra);
+    }
+  }
+
+  return [...families.values()];
+}
+
+async function renameWebFile(oldWeb, newWeb, ctx) {
+  if (!oldWeb || !newWeb) return oldWeb;
+  if (ctx.mapping.has(oldWeb)) return ctx.mapping.get(oldWeb);
+  if (oldWeb === newWeb) {
+    ctx.mapping.set(oldWeb, newWeb);
+    return newWeb;
+  }
+
+  const oldAbs = webPathToAbs(oldWeb);
+  if (!fs.existsSync(oldAbs)) {
+    ctx.missing++;
+    ctx.warnings.push(oldWeb);
+    ctx.mapping.set(oldWeb, oldWeb);
+    return oldWeb;
+  }
+
+  const destAbs = webPathToAbs(newWeb);
+  if (fs.existsSync(destAbs) && path.resolve(destAbs) !== path.resolve(oldAbs)) {
+    ctx.mapping.set(oldWeb, newWeb);
+    return newWeb;
+  }
+
+  fs.mkdirSync(path.dirname(destAbs), { recursive: true });
+  await retryFsOp(() => { fs.renameSync(oldAbs, destAbs); });
+  ctx.renamed++;
+  ctx.mapping.set(oldWeb, newWeb);
+  return newWeb;
+}
+
+async function copyWebFile(oldWeb, newWeb, ctx) {
+  if (!oldWeb || !newWeb) return oldWeb;
+  if (oldWeb === newWeb) return newWeb;
+  const destAbs = webPathToAbs(newWeb);
+  if (fs.existsSync(destAbs)) return newWeb;
+  const sourceWeb = ctx.mapping.get(oldWeb) || oldWeb;
+  const oldAbs = webPathToAbs(sourceWeb);
+  if (!fs.existsSync(oldAbs)) {
+    ctx.missing++;
+    ctx.warnings.push(oldWeb);
+    return oldWeb;
+  }
+  fs.mkdirSync(path.dirname(destAbs), { recursive: true });
+  await retryFsOp(() => { fs.copyFileSync(oldAbs, destAbs); });
+  ctx.renamed++;
+  return newWeb;
+}
+
+function isNamedImgPrimary(webPath) {
+  const n = normalizeMediaPath(webPath);
+  if (!n) return false;
+  const parsed = parseNamedPrimary(webStem(n));
+  return !!(parsed && parsed.kind === 'img' && !companionRole(n));
+}
+
+function betterStillSource(webPath) {
+  const n = normalizeMediaPath(webPath);
+  if (!n) return webPath;
+  const named = parseNamedCompanion(webStem(n));
+  if (!named) return n;
+  const dir = webDirname(n);
+  const base = `${dir}/${named.slug}-${named.kind}-${named.id}`;
+  const poster = `${base}-poster.webp`;
+  const full = `${base}.webp`;
+  if (named.role === 'poster-thumb' || named.role === 'thumb') {
+    if (fs.existsSync(webPathToAbs(poster))) return poster;
+    if (fs.existsSync(webPathToAbs(full))) return full;
+  }
+  return n;
+}
+
+async function rehomeCardImages(projects, ctx) {
+  for (const project of projects || []) {
+    if (typeof project.image !== 'string' || skipRename(project.image)) continue;
+
+    if (!isNamedImgPrimary(project.image)) {
+      const source = betterStillSource(project.image);
+      if (!fs.existsSync(webPathToAbs(source))) continue;
+      const stem = allocateMediaStem(path.dirname(webPathToAbs(source)), project.title || 'Untitled', 'img');
+      const dir = webDirname(source);
+      const imageDest = `${dir}/${stem}.webp`;
+      const thumbDest = `${dir}/${stem}-thumb.webp`;
+      project.image = await copyWebFile(source, imageDest, ctx);
+
+      let thumbSrc = null;
+      if (typeof project.thumbnail === 'string' && fs.existsSync(webPathToAbs(project.thumbnail))) {
+        thumbSrc = project.thumbnail;
+      } else {
+        const srcNamed = parseNamedCompanion(webStem(source));
+        if (srcNamed) {
+          const sibling = `${webDirname(source)}/${srcNamed.slug}-${srcNamed.kind}-${srcNamed.id}-poster-thumb.webp`;
+          if (fs.existsSync(webPathToAbs(sibling))) thumbSrc = sibling;
+        }
+      }
+      project.thumbnail = thumbSrc
+        ? await copyWebFile(thumbSrc, thumbDest, ctx)
+        : project.image;
+      continue;
+    }
+
+    if (typeof project.thumbnail === 'string' && !skipRename(project.thumbnail)) {
+      const dest = `${webDirname(project.image)}/${webStem(project.image)}-thumb.webp`;
+      if (project.thumbnail === dest) continue;
+      if (fs.existsSync(webPathToAbs(dest))) {
+        project.thumbnail = dest;
+      } else if (fs.existsSync(webPathToAbs(project.thumbnail))) {
+        project.thumbnail = await copyWebFile(project.thumbnail, dest, ctx);
+      }
+    }
+  }
+}
+
+async function renameReferencedMedia(projects, settings) {
+  const ctx = {
+    renamed: 0,
+    skipped: 0,
+    missing: 0,
+    warnings: [],
+    mapping: new Map()
+  };
+
+  const families = collectRenameFamilies(projects, settings);
+  const kindRank = { img: 0, vid: 1, gfx: 2 };
+  families.sort((a, b) => (kindRank[a.kind] ?? 9) - (kindRank[b.kind] ?? 9));
+  const familyByPrimary = new Map(families.map((f) => [f.primary, f]));
+  console.log(`[rename] ${families.length} media families`);
+
+  for (let fi = 0; fi < families.length; fi++) {
+    const fam = families[fi];
+    const owner = (projects || []).find((p) => {
+      const set = new Set();
+      collectPathsFromProject(p, set);
+      return set.has(fam.primary) || fam.companions.some((c) => set.has(c.path));
+    });
+    const title = owner && owner.title
+      ? owner.title
+      : webBasename(webDirname(fam.primary).replace(/\/models$/, ''));
+
+    const canonical = parseNamedPrimary(webStem(fam.primary));
+    const already = !!(canonical && canonical.kind === fam.kind);
+    const primaryDir = webDirname(fam.primary);
+    const destDirAbs = path.dirname(webPathToAbs(fam.primary));
+
+    let stem;
+    let newPrimary;
+    if (already) {
+      stem = webStem(fam.primary);
+      newPrimary = fam.primary;
+    } else {
+      stem = allocateMediaStem(destDirAbs, title, fam.kind);
+      newPrimary = `${primaryDir}/${stem}${webExt(fam.primary)}`;
+    }
+
+    if (already) {
+      ctx.skipped++;
+      ctx.mapping.set(fam.primary, fam.primary);
+    } else {
+      await renameWebFile(fam.primary, newPrimary, ctx);
+    }
+
+    const finalPrimary = ctx.mapping.get(fam.primary) || fam.primary;
+    const finalStem = webStem(finalPrimary);
+    fam.finalPrimary = finalPrimary;
+    fam.destByRole = {};
+
+    for (const companion of fam.companions) {
+      const suffix = companionSuffix(companion.role);
+      if (!suffix) continue;
+      const dest = `${webDirname(companion.path)}/${finalStem}${suffix}`;
+      const shared = familyOwningPath(companion.path, families, fam) !== fam;
+
+      if (companion.path === dest) {
+        fam.destByRole[companion.role] = dest;
+        if (!shared) ctx.mapping.set(companion.path, dest);
+        continue;
+      }
+
+      if (shared) {
+        fam.destByRole[companion.role] = await copyWebFile(companion.path, dest, ctx);
+        continue;
+      }
+
+      fam.destByRole[companion.role] = await renameWebFile(companion.path, dest, ctx);
+    }
+
+    if ((fi + 1) % 50 === 0 || fi + 1 === families.length) {
+      console.log(`[rename] ${fi + 1}/${families.length} (renamed ${ctx.renamed}, skipped ${ctx.skipped}, missing ${ctx.missing})`);
+    }
+  }
+
+  const rewriteProject = (project) => {
+    if (typeof project.image === 'string') project.image = applyPathMapping(project.image, ctx.mapping);
+    if (typeof project.thumbnail === 'string') project.thumbnail = applyPathMapping(project.thumbnail, ctx.mapping);
+    if (typeof project.video === 'string') project.video = applyPathMapping(project.video, ctx.mapping);
+    if (typeof project.description === 'string') project.description = applyPathMapping(project.description, ctx.mapping);
+    if (typeof project.longDescription === 'string') project.longDescription = applyPathMapping(project.longDescription, ctx.mapping);
+    if (typeof project.specs === 'string') project.specs = applyPathMapping(project.specs, ctx.mapping);
+    if (Array.isArray(project.gallery)) {
+      project.gallery = project.gallery.map((item) => {
+        if (typeof item === 'string') return applyPathMapping(item, ctx.mapping);
+        if (!item || typeof item !== 'object') return item;
+        const updated = { ...item };
+        const fam = typeof item.url === 'string' ? familyByPrimary.get(normalizeMediaPath(item.url)) : null;
+        if (typeof item.url === 'string') updated.url = applyPathMapping(item.url, ctx.mapping);
+        if (typeof item.poster === 'string') {
+          const role = fam ? galleryCompanionRole(fam.kind, 'poster', item.poster) : null;
+          updated.poster = (fam && fam.destByRole && (fam.destByRole[role] || fam.destByRole.poster))
+            || applyPathMapping(item.poster, ctx.mapping);
+        }
+        if (typeof item.thumbnail === 'string') {
+          const role = fam ? galleryCompanionRole(fam.kind, 'thumbnail', item.thumbnail) : null;
+          updated.thumbnail = (fam && fam.destByRole && (fam.destByRole[role] || fam.destByRole['poster-thumb'] || fam.destByRole.thumb))
+            || applyPathMapping(item.thumbnail, ctx.mapping);
+        }
+        return updated;
+      });
+    }
+    if (Array.isArray(project.files)) {
+      project.files = project.files.map((file) => {
+        if (typeof file === 'string') return file;
+        if (!file || typeof file !== 'object') return file;
+        const updated = { ...file };
+        if (typeof file.image === 'string') updated.image = applyPathMapping(file.image, ctx.mapping);
+        if (typeof file.thumbnail === 'string') updated.thumbnail = applyPathMapping(file.thumbnail, ctx.mapping);
+        return updated;
+      });
+    }
+  };
+
+  (projects || []).forEach(rewriteProject);
+  await rehomeCardImages(projects, ctx);
+
+  let settingsChanged = false;
+  if (settings) {
+    const beforeHeadshot = settings.about_headshot;
+    const beforeAbout = settings.about_text;
+    if (typeof settings.about_headshot === 'string') {
+      settings.about_headshot = applyPathMapping(settings.about_headshot, ctx.mapping);
+    }
+    if (typeof settings.about_text === 'string') {
+      settings.about_text = applyPathMapping(settings.about_text, ctx.mapping);
+    }
+    settingsChanged = settings.about_headshot !== beforeHeadshot || settings.about_text !== beforeAbout;
+  }
+
+  writeJSON('projects.json', projects);
+  if (settings && settingsChanged) writeJSON('settings.json', settings);
+
+  return {
+    renamed: ctx.renamed,
+    skippedAlreadyNamed: ctx.skipped,
+    missing: ctx.missing,
+    warnings: ctx.warnings
+  };
+}
+
 async function trashDroppedAssets(oldEntity, newEntity) {
   const oldPaths = collectEntityPaths(oldEntity);
   const newPaths = collectEntityPaths(newEntity);
@@ -638,6 +1113,10 @@ module.exports = {
   relocateProject,
   trashUnusedMedia,
   trashDroppedAssets,
+  renameReferencedMedia,
+  allocateMediaStem,
+  mediaStem,
+  titleSlug,
   CATEGORY_FOLDER_MAP,
   sanitize,
   scheduleUnlink

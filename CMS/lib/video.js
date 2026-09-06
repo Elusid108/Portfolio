@@ -5,7 +5,7 @@ const sharp = require('sharp');
 const ffmpeg = require('fluent-ffmpeg');
 const ffmpegPath = require('ffmpeg-static');
 const ffprobePath = require('ffprobe-static').path;
-const { CATEGORY_FOLDER_MAP, sanitize, scheduleUnlink } = require('./media');
+const { CATEGORY_FOLDER_MAP, sanitize, scheduleUnlink, allocateMediaStem } = require('./media');
 
 ffmpeg.setFfmpegPath(ffmpegPath);
 ffmpeg.setFfprobePath(ffprobePath);
@@ -57,15 +57,14 @@ function extractFrame(srcPath, atSeconds, destDir, filename) {
 }
 
 async function processVideoUpload(file, category, projectName, onProgress, keepAudio = false) {
-  const originalName = sanitize(file.originalname);
-  const stem = path.parse(originalName).name;
+  const folder = CATEGORY_FOLDER_MAP[category] || category;
+  const safeProject = sanitize(projectName);
+  const destDir = path.join(MEDIA_DIR, folder, safeProject);
+  const stem = allocateMediaStem(destDir, projectName, 'vid');
   const mp4Name = `${stem}.mp4`;
   const posterName = `${stem}-poster.webp`;
   const posterThumbName = `${stem}-poster-thumb.webp`;
 
-  const folder = CATEGORY_FOLDER_MAP[category] || category;
-  const safeProject = sanitize(projectName);
-  const destDir = path.join(MEDIA_DIR, folder, safeProject);
   const videoWebPath = `media/${folder}/${safeProject}/${mp4Name}`;
   const posterWebPath = `media/${folder}/${safeProject}/${posterName}`;
   const posterThumbWebPath = `media/${folder}/${safeProject}/${posterThumbName}`;

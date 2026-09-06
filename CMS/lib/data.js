@@ -197,4 +197,4 @@ function saveSettings(newSettings) {
   return { success: true };
 }
 
-module.exports = { getProjects, getSettings, saveProject, deleteProject, saveSettings, reorderProjects };
+module.exports = { getProjects, getSettings, saveProject, deleteProject, saveSettings, reorderProjects, writeJSON };

@@ -2982,7 +2982,7 @@
         Toastify({ text: "Wait for uploads to finish before cleanup", duration: 3000, backgroundColor: "#f59e0b" }).showToast();
         return;
       }
-      if (!confirm("This will move all media files that are not linked to any project or settings into media/_trash. Continue?")) return;
+      if (!confirm("This will move unlinked media into media/_trash, rename remaining gallery files to the project-img/vid/gfx pattern, update all links, and republish the site. Continue?")) return;
 
       if (isDirty) {
         if (!document.getElementById('editor').classList.contains('hidden')) {
@@ -3003,6 +3003,7 @@
     }
 
     async function performCleanup() {
+      const openId = currentEditIndex >= 0 ? projects[currentEditIndex] && projects[currentEditIndex].id : null;
       const btn = document.getElementById('cleanupBtn');
       const originalText = btn ? btn.innerHTML : '';
       if (btn) {
@@ -3010,13 +3011,15 @@
         btn.disabled = true;
       }
       document.getElementById('loadingOverlay').classList.remove('hidden');
-      document.getElementById('loadingText').innerText = "Cleaning unused media...";
+      document.getElementById('loadingText').innerText = "Cleaning unused media and renaming files...";
 
       try {
         const result = await api.post('/media/cleanup');
-        const n = result.moved || 0;
+        const parts = [];
+        if (result.moved) parts.push(`Moved ${result.moved} unused file${result.moved === 1 ? '' : 's'} to trash`);
+        if (result.renamed) parts.push(`Renamed ${result.renamed} media file${result.renamed === 1 ? '' : 's'}`);
         Toastify({
-          text: n === 0 ? "No unused media found" : `Moved ${n} unused file${n === 1 ? '' : 's'} to trash`,
+          text: parts.length ? parts.join('. ') : 'Media already clean — no unused files, names already normalized',
           duration: 5000,
           backgroundColor: "#10b981"
         }).showToast();
@@ -3026,10 +3029,16 @@
         if (result.warnings && result.warnings.length) {
           console.warn('Cleanup warnings:', result.warnings);
           Toastify({
-            text: `Warning: ${result.warnings.length} file(s) could not be moved (see console)`,
+            text: `Warning: ${result.warnings.length} file(s) could not be updated (see console)`,
             duration: 7000,
             backgroundColor: "#f59e0b"
           }).showToast();
+        }
+        lastSavedId = null;
+        await refreshData();
+        if (openId) {
+          const idx = projects.findIndex(p => String(p.id) === String(openId));
+          if (idx !== -1) editItem(idx);
         }
       } catch (err) {
         onError(err);
