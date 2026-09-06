@@ -9,6 +9,7 @@ const video = require('./lib/video');
 const disk = require('./lib/disk');
 const gemini = require('./lib/gemini');
 const { publish } = require('./lib/publish');
+const share = require('./lib/share');
 
 // SSE connections for video progress: jobId -> res
 const sseClients = new Map();
@@ -37,10 +38,14 @@ fs.mkdirSync(UPLOAD_TEMP_DIR, { recursive: true });
   } catch (_) { /* directory may not exist yet on first run */ }
 })();
 
-app.use(express.json({ limit: '50mb' }));
+// Share cards arrive as base64 JPEG data URLs (dozens of ~150 KB images per publish).
+app.use(express.json({ limit: '100mb' }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/media', express.static(path.join(PORTFOLIO_ROOT, 'media')));
+app.use('/share', express.static(path.join(PORTFOLIO_ROOT, 'share')));
+// OpenCascade WASM (STEP tessellation) — served to the admin UI for in-browser model conversion
+app.use('/vendor/occt', express.static(path.join(__dirname, 'node_modules', 'occt-import-js', 'dist')));
 
 app.get('/preview', (req, res) => {
   const indexPath = path.join(PORTFOLIO_ROOT, 'index.html');
@@ -59,6 +64,11 @@ const upload = multer({
 const uploadVideo = multer({
   dest: UPLOAD_TEMP_DIR,
   limits: { fileSize: 500 * 1024 * 1024 }
+});
+
+const uploadModel = multer({
+  dest: UPLOAD_TEMP_DIR,
+  limits: { fileSize: 300 * 1024 * 1024 }
 });
 
 // --- Projects ---
@@ -203,6 +213,20 @@ app.post('/api/media/upload-file', upload.single('file'), async (req, res) => {
   }
 });
 
+// 3D model upload: the admin UI converts STL/3MF/STEP to GLB in the browser and
+// sends both the GLB and the original file.
+app.post('/api/media/upload-model', uploadModel.fields([{ name: 'glb', maxCount: 1 }, { name: 'original', maxCount: 1 }]), async (req, res) => {
+  try {
+    const { category, project } = req.body;
+    if (!req.files?.glb?.length) return res.status(400).json({ error: 'No GLB uploaded' });
+    if (!category || !project) return res.status(400).json({ error: 'Category and project name required' });
+    const result = await media.processModelUpload(req.files, category, project);
+    res.json({ success: true, ...result });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // SSE endpoint — client subscribes before starting a video upload
 app.get('/api/media/video-progress/:jobId', (req, res) => {
   res.setHeader('Content-Type', 'text/event-stream');
@@ -268,6 +292,18 @@ app.post('/api/media/cleanup', async (req, res) => {
 
 // --- Publish ---
 
+// Social preview cards rendered by the admin UI (canvas -> JPEG data URLs).
+// Called right before /api/publish so the meta tags can reference them.
+app.post('/api/share-cards', async (req, res) => {
+  try {
+    const result = await share.writeCards(req.body?.cards || []);
+    if (result.warnings.length) console.warn('[share] card warnings:', result.warnings);
+    res.json({ success: true, ...result });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 app.post('/api/publish', (req, res) => {
   try {
     const result = publish();
@@ -317,6 +353,8 @@ app.post('/api/media/generate-thumbnails', async (req, res) => {
           const item = project.gallery[i];
           const url = typeof item === 'string' ? item : (item?.url || '');
           const isVideo = /\.(mp4|webm|mov|avi)$/i.test(url);
+          const isModel = /\.glb$/i.test(url) || (typeof item === 'object' && item?.type === 'model');
+          if (isModel) { skipped++; continue; } // model posters are captured in the CMS model editor
           const existingThumb = typeof item === 'object' ? (item?.thumbnail || '') : '';
 
           if (existingThumb && fs.existsSync(path.join(PORTFOLIO_ROOT, ...existingThumb.split('/')))) {

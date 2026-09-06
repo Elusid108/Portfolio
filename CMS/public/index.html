@@ -10,6 +10,8 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
   <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+  <!-- Inter is the site's typeface; loaded here so share cards render with the same font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     .list-item-enter { animation: fadeIn 0.3s ease-out; }
@@ -58,6 +60,18 @@
   </style>
   <script src="/js/gemini-settings.js"></script>
   <script src="/js/gemini-copy.js"></script>
+  <!-- three.js (3D model viewer + STL/3MF/STEP -> GLB conversion). Pinned; keep in sync with the site template. -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.185.1/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.185.1/examples/jsm/"
+    }
+  }
+  </script>
+  <script src="/js/model-viewer-core.js"></script>
+  <script type="module" src="/js/model-tools.js"></script>
+  <script src="/js/share-cards.js"></script>
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen relative">
 
@@ -78,7 +92,7 @@
   <div id="app" class="max-w-5xl mx-auto p-6">
     <div class="flex justify-between items-center mb-8">
       <div>
-        <h1 class="text-3xl font-bold text-slate-800">Portfolio CMS <span class="text-sm font-medium text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full align-middle">v2.4 Local</span></h1>
+        <h1 class="text-3xl font-bold text-slate-800">Portfolio CMS <span class="text-sm font-medium text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full align-middle">v2.5 Local</span></h1>
         <p class="text-slate-500 text-sm mt-1">Local portfolio manager</p>
       </div>
       <div class="flex gap-3 items-center">
@@ -241,8 +255,8 @@
           <!-- Gallery -->
           <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
              <div class="flex justify-between items-center mb-3 border-b border-slate-200 pb-2">
-                 <h3 class="text-xs font-bold text-slate-500 uppercase">Gallery Images / Video URLs</h3>
-                 <div class="flex gap-2">
+                 <h3 class="text-xs font-bold text-slate-500 uppercase">Gallery Images / Videos / 3D Models</h3>
+                 <div class="flex gap-2 flex-wrap justify-end">
                    <label class="cursor-pointer text-xs bg-green-100 text-green-600 px-2 py-1 rounded hover:bg-green-200 font-bold flex items-center gap-1">
                      <i class="ph ph-upload-simple"></i> Image Upload
                      <input type="file" accept="image/*" multiple class="hidden" onchange="handleGalleryMultiUpload(this)">
@@ -251,6 +265,10 @@
                      <i class="ph ph-film-slate"></i> Upload Video
                    </button>
                    <input type="file" id="gallery-video-input" accept="video/*" multiple class="hidden" onchange="handleGalleryVideoUpload(this)">
+                   <label class="cursor-pointer text-xs bg-amber-100 text-amber-700 px-2 py-1 rounded hover:bg-amber-200 font-bold flex items-center gap-1" title="STL, 3MF or STEP — converted to GLB in the browser">
+                     <i class="ph ph-cube"></i> 3D Model
+                     <input type="file" id="gallery-model-input" accept=".stl,.3mf,.step,.stp,model/stl,model/3mf,application/step" multiple class="hidden" onchange="handleGalleryModelUpload(this)">
+                   </label>
                    <button type="button" onclick="addGalleryRow()" class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded hover:bg-indigo-200 font-bold">+ Add URL</button>
                  </div>
              </div>
@@ -386,6 +404,25 @@
             </div>
           </div>
 
+          <div class="bg-amber-50 p-4 rounded-xl border border-amber-100 mt-4">
+            <h3 class="text-xs font-bold text-amber-800 uppercase mb-2">Sharing &amp; Social Previews</h3>
+            <p class="text-[10px] text-amber-700 mb-3">Used for the link previews Facebook, LinkedIn, X and iMessage show when the site or a project is shared. Publishing writes one <code>share/&lt;id&gt;.html</code> page and a 1200x630 card per project, plus a site card built from the hero board.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-[10px] font-bold text-amber-700 uppercase mb-1">Public Site URL</label>
+                  <input type="text" id="site_url" placeholder="https://chrismoore.me" class="w-full bg-white border border-amber-200 rounded px-2 py-1 text-xs font-mono">
+                </div>
+                <div>
+                  <label class="block text-[10px] font-bold text-amber-700 uppercase mb-1">Site Title</label>
+                  <input type="text" id="site_title" placeholder="Chris Moore Designs" class="w-full bg-white border border-amber-200 rounded px-2 py-1 text-xs">
+                </div>
+                <div class="md:col-span-2">
+                  <label class="block text-[10px] font-bold text-amber-700 uppercase mb-1">Site Description <span class="font-normal normal-case">(one line, shown under the title in previews)</span></label>
+                  <input type="text" id="site_description" placeholder="Creative Technologist &amp; Systems Integrator" class="w-full bg-white border border-amber-200 rounded px-2 py-1 text-xs">
+                </div>
+            </div>
+          </div>
+
           <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-100 mt-4">
             <h3 class="text-xs font-bold text-indigo-800 uppercase mb-2">Contact Form Configuration (EmailJS)</h3>
             <p class="text-[10px] text-indigo-600 mb-3">Leave blank to use default email client (mailto). To send directly from the site, sign up at <a href="https://www.emailjs.com/" target="_blank" class="underline">emailjs.com</a>.</p>
@@ -426,8 +463,17 @@
           </div>
           <div class="mb-4 space-y-2">
             <p class="text-sm text-slate-600">Your site has been generated at <code class="bg-slate-100 px-1 rounded text-xs">index.html</code> in the Portfolio root.</p>
+            <p id="publishShareSummary" class="text-xs text-slate-500"></p>
             <div class="flex gap-3 text-sm">
                 <a href="/preview" target="_blank" class="text-indigo-600 hover:underline flex items-center gap-1"><i class="ph ph-desktop"></i> Preview Locally</a>
+            </div>
+          </div>
+          <div id="publishShareCard" class="hidden mb-4 flex gap-4 items-start">
+            <img id="publishShareCardImg" src="" alt="Site share card preview" class="w-64 aspect-[1200/630] object-cover rounded-lg border border-slate-200 shadow-sm flex-shrink-0">
+            <div class="text-xs text-slate-500 leading-relaxed">
+              <p class="font-bold text-slate-700 mb-1">Social preview card</p>
+              <p>This image (and one per project in <code class="bg-slate-100 px-1 rounded">share/cards/</code>) is what Facebook, LinkedIn and X show when a link is shared. Commit the <code class="bg-slate-100 px-1 rounded">share/</code> folder along with <code class="bg-slate-100 px-1 rounded">index.html</code>.</p>
+              <p class="mt-1">Project share links look like <code id="publishShareExample" class="bg-slate-100 px-1 rounded"></code></p>
             </div>
           </div>
           <div class="flex-grow relative border border-slate-200 rounded-lg bg-slate-50 overflow-hidden mb-4">
@@ -487,6 +533,16 @@
       },
       async reorderProjects(items) {
         return this.post('/projects/reorder', { items });
+      },
+      // 3D models: the browser converts to GLB first; both GLB and the original are stored.
+      async uploadModel(glbBlob, originalFile, category, project, onProgress) {
+        const form = new FormData();
+        const stem = (originalFile.name || 'model').replace(/\.[^.]+$/, '');
+        form.append('glb', new File([glbBlob], `${stem}.glb`, { type: 'model/gltf-binary' }));
+        form.append('original', originalFile, originalFile.name);
+        form.append('category', category);
+        form.append('project', project);
+        return uploadXhr('/api/media/upload-model', form, onProgress);
       }
     };
 
@@ -1174,6 +1230,23 @@
         return typeof url === 'string' && /\.(mp4|webm|mov|m4v)$/i.test(url.split('?')[0]);
     }
 
+    function isModelPath(url) {
+        return typeof url === 'string' && /\.glb$/i.test(url.split('?')[0]);
+    }
+
+    // Builds the model descriptor stored on a gallery item ({ type, source, format, up, parts }).
+    function modelDescriptor(item) {
+        if (!item || typeof item !== 'object') return null;
+        if (item.type !== 'model' && !isModelPath(item.url)) return null;
+        return {
+            type: 'model',
+            source: item.source || '',
+            format: item.format || '',
+            up: item.up === 'y' ? 'y' : 'z',
+            parts: Array.isArray(item.parts) ? item.parts : []
+        };
+    }
+
     function initQuill() {
         const toolbarBasic = {
             container: [
@@ -1389,9 +1462,14 @@
           </div>
           <button
             onclick="event.stopPropagation(); copyProjectHash('${p.id}')"
-            title="Copy project link"
+            title="Copy in-site link (#project/…). Shift-click for the public share link."
             class="opacity-0 group-hover:opacity-100 text-slate-400 hover:text-indigo-500 transition-all p-1 rounded flex-shrink-0"
           ><i class="ph ph-link-simple"></i></button>
+          <button
+            onclick="event.stopPropagation(); copyProjectShareUrl('${p.id}')"
+            title="Copy public share link (Open Graph preview for Facebook / LinkedIn)"
+            class="opacity-0 group-hover:opacity-100 text-slate-400 hover:text-indigo-500 transition-all p-1 rounded flex-shrink-0"
+          ><i class="ph ph-share-network"></i></button>
         </div>`;
     }
 
@@ -1429,20 +1507,33 @@
       if (idx !== -1) tryEditItem(idx);
     }
 
-    function copyProjectHash(id) {
-      const hash = '#project/' + encodeURIComponent(id);
-      navigator.clipboard.writeText(hash)
+    function copyTextWithToast(text) {
+      navigator.clipboard.writeText(text)
         .catch(() => {
           const el = document.createElement('textarea');
-          el.value = hash;
+          el.value = text;
           document.body.appendChild(el);
           el.select();
           document.execCommand('copy');
           document.body.removeChild(el);
         })
         .finally(() => {
-          Toastify({ text: '📋 Copied: ' + hash, duration: 3000, backgroundColor: '#4f46e5' }).showToast();
+          Toastify({ text: '📋 Copied: ' + text, duration: 3000, backgroundColor: '#4f46e5' }).showToast();
         });
+    }
+
+    function projectShareUrl(id) {
+      const base = (cachedSettings.site_url || 'https://chrismoore.me').trim().replace(/\/+$/, '');
+      return `${base}/share/${String(id).replace(/[^A-Za-z0-9_-]/g, '_')}`;
+    }
+
+    function copyProjectHash(id) {
+      if (window.event?.shiftKey) { copyProjectShareUrl(id); return; }
+      copyTextWithToast('#project/' + encodeURIComponent(id));
+    }
+
+    function copyProjectShareUrl(id) {
+      copyTextWithToast(projectShareUrl(id));
     }
 
     function hideAllForms() {
@@ -1503,7 +1594,7 @@
       if (Array.isArray(p.gallery) && p.gallery.length > 0) {
          p.gallery.forEach(item => {
             if (typeof item === 'string') addGalleryRow(item, '', null, true);
-            else addGalleryRow(item?.url || '', item?.caption || '', item?.fit || null, true, item?.poster || '', item?.thumbnail || '', !!item?.hasAudio);
+            else addGalleryRow(item?.url || '', item?.caption || '', item?.fit || null, true, item?.poster || '', item?.thumbnail || '', !!item?.hasAudio, modelDescriptor(item));
          });
       } else {
         addGalleryRow("", "", null, true);
@@ -1565,7 +1656,7 @@
 
             isDirty = false;
             document.getElementById('settingsForm').classList.remove('hidden');
-            ['email', 'instagram', 'linkedin', 'github', 'emailjs_service', 'emailjs_template', 'emailjs_public_key', 'about_headshot', 'skills_hardware', 'skills_lighting', 'skills_software', 'skills_fabrication', 'skills_systems'].forEach(key => {
+            ['email', 'instagram', 'linkedin', 'github', 'emailjs_service', 'emailjs_template', 'emailjs_public_key', 'about_headshot', 'skills_hardware', 'skills_lighting', 'skills_software', 'skills_fabrication', 'skills_systems', 'site_url', 'site_title', 'site_description'].forEach(key => {
                 document.getElementById(key).value = settings[key] || '';
             });
 
@@ -1742,7 +1833,7 @@
         if (nameInput && !nameInput.value.trim()) nameInput.value = proj.title;
     }
 
-    function addGalleryRow(url = "", caption = "", fit = null, isBulk = false, poster = "", thumbnail = "", hasAudio = false) {
+    function addGalleryRow(url = "", caption = "", fit = null, isBulk = false, poster = "", thumbnail = "", hasAudio = false, model = null) {
         const container = document.getElementById('gallery-container');
         const div = document.createElement('div');
         div.className = "gallery-row space-y-1 bg-white border border-slate-200 rounded p-1";
@@ -1750,18 +1841,26 @@
         const fitJson = fit ? JSON.stringify(fit) : '';
         const hasFit = !!fitJson;
         const isVideo = isVideoPath(url);
-        const thumbSrc = poster ? getThumbnailSrc(poster) : getThumbnailSrc(url);
+        const isModel = !!model || isModelPath(url);
+        const modelJson = isModel ? JSON.stringify(model || { type: 'model', source: '', format: '', up: 'z', parts: [] }) : '';
+        const thumbSrc = poster ? getThumbnailSrc(poster) : (isModel ? '' : getThumbnailSrc(url));
+        const previewAttr = isVideo
+            ? 'onclick="openVideoPreview(this.closest(\'.gallery-row\'))" title="Click to preview video" style="cursor:pointer"'
+            : (isModel ? 'onclick="openModelEditor(this.closest(\'.gallery-row\'))" title="Click to open the 3D editor" style="cursor:pointer"' : '');
         div.innerHTML = `
             <div class="flex gap-2 items-center">
                 <span class="drag-handle cursor-grab text-slate-300 hover:text-slate-500 px-1"><i class="ph ph-dots-six-vertical"></i></span>
                 <span class="index-badge text-[10px] font-bold text-slate-400 w-6"></span>
-                <div class="gallery-thumb-wrap relative w-10 h-10 flex-shrink-0 ${url ? '' : 'hidden'}" ${isVideo ? 'onclick="openVideoPreview(this.closest(\'.gallery-row\'))" title="Click to preview video" style="cursor:pointer"' : ''}>
-                    <img class="gallery-thumb w-10 h-10 object-cover rounded bg-slate-100 ${isVideo ? '' : 'cursor-zoom-in'}" src="${escAttr(thumbSrc)}" ${isVideo ? `data-video-url="${escAttr(url)}"` : ''} onerror="this.closest('.gallery-thumb-wrap').classList.add('hidden')">
+                <div class="gallery-thumb-wrap relative w-10 h-10 flex-shrink-0 ${(url && (thumbSrc || isModel)) ? '' : 'hidden'}" ${previewAttr}>
+                    <img class="gallery-thumb w-10 h-10 object-cover rounded bg-slate-100 ${isVideo || isModel ? '' : 'cursor-zoom-in'}" src="${escAttr(thumbSrc)}" ${isVideo ? `data-video-url="${escAttr(url)}"` : ''} onerror="${isModel ? "this.removeAttribute('src')" : "this.closest('.gallery-thumb-wrap').classList.add('hidden')"}">
                     ${isVideo ? '<i class="ph ph-play-circle absolute inset-0 flex items-center justify-center text-white text-lg drop-shadow pointer-events-none"></i>' : ''}
+                    ${isModel ? '<i class="ph ph-cube absolute inset-0 flex items-center justify-center text-white text-lg drop-shadow pointer-events-none"></i>' : ''}
                 </div>
-                <input type="text" placeholder="Image path, video path, URL, or YouTube link" value="${escAttr(url)}" class="gallery-url flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="onGalleryUrlChange(this)">
+                <input type="text" placeholder="Image path, video path, GLB path, URL, or YouTube link" value="${escAttr(url)}" class="gallery-url flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="onGalleryUrlChange(this)">
+                <button type="button" onclick="openModelEditor(this.closest('.gallery-row'))" title="3D model: colors, transparency, thumbnail"
+                        class="gallery-model-btn flex-shrink-0 px-2 text-[10px] font-bold rounded transition-colors ${isModel ? '' : 'hidden'} bg-amber-100 text-amber-700 hover:bg-amber-200">3D</button>
                 <button type="button" onclick="openGalleryCrop(this.closest('.gallery-row'))" title="Set crop"
-                        class="gallery-crop-btn flex-shrink-0 px-2 transition-colors ${isVideo && !poster ? 'hidden' : ''} ${hasFit ? 'text-indigo-500' : 'text-slate-300 hover:text-indigo-500'}">
+                        class="gallery-crop-btn flex-shrink-0 px-2 transition-colors ${(isVideo || isModel) && !poster ? 'hidden' : ''} ${hasFit ? 'text-indigo-500' : 'text-slate-300 hover:text-indigo-500'}">
                     <i class="ph ph-crop"></i>
                 </button>
                 <button type="button" onclick="this.closest('.gallery-row').remove(); updateListIndices('gallery-container'); isDirty=true;" class="text-red-400 hover:text-red-600 px-2 transition-colors"><i class="ph ph-trash"></i></button>
@@ -1771,10 +1870,26 @@
             <input type="hidden" class="gallery-poster" value="${escAttr(poster)}">
             <input type="hidden" class="gallery-thumbnail" value="${escAttr(thumbnail)}">
             <input type="hidden" class="gallery-has-audio" value="${hasAudio ? 'true' : ''}">
+            <input type="hidden" class="gallery-model" value="${escAttr(modelJson)}">
         `;
         container.appendChild(div);
         updateListIndices('gallery-container');
         if (!isBulk) isDirty = true;
+        return div;
+    }
+
+    function readRowModel(row) {
+        const raw = row?.querySelector('.gallery-model')?.value?.trim() || '';
+        if (!raw) return null;
+        try { return modelDescriptor({ ...JSON.parse(raw), url: row.querySelector('.gallery-url')?.value || '' }); }
+        catch { return null; }
+    }
+
+    function writeRowModel(row, model) {
+        const input = row?.querySelector('.gallery-model');
+        if (!input) return;
+        input.value = model ? JSON.stringify(model) : '';
+        row.querySelector('.gallery-model-btn')?.classList.toggle('hidden', !model);
     }
 
     function onGalleryUrlChange(input) {
@@ -1785,13 +1900,21 @@
         const cropBtn = row.querySelector('.gallery-crop-btn');
         const posterInput = row.querySelector('.gallery-poster');
         const hasAudioInput = row.querySelector('.gallery-has-audio');
+        const isModel = isModelPath(input.value);
         // The URL changed by hand, so any previously-generated poster no longer applies.
         if (posterInput) posterInput.value = '';
         if (hasAudioInput) hasAudioInput.value = '';
-        if (cropBtn) cropBtn.classList.toggle('hidden', isVideoPath(input.value) && !posterInput?.value?.trim());
+        if (isModel) {
+            // Keep any existing model settings; start fresh ones for a hand-entered GLB path.
+            if (!readRowModel(row)) writeRowModel(row, { type: 'model', source: '', format: 'glb', up: 'z', parts: [] });
+            else row.querySelector('.gallery-model-btn')?.classList.remove('hidden');
+        } else {
+            writeRowModel(row, null);
+        }
+        if (cropBtn) cropBtn.classList.toggle('hidden', (isVideoPath(input.value) || isModel) && !posterInput?.value?.trim());
         if (isVideoPath(input.value)) thumb.dataset.videoUrl = input.value;
         else delete thumb.dataset.videoUrl;
-        const src = getThumbnailSrc(input.value);
+        const src = isModel ? '' : getThumbnailSrc(input.value);
         if (src) { thumb.src = src; wrap.classList.remove('hidden'); }
         else { wrap.classList.add('hidden'); }
     }
@@ -2183,6 +2306,260 @@
       input.value = '';
     }
 
+    // --- 3D MODELS (STL / 3MF / STEP -> GLB) ---
+
+    function currentCategoryAndProject() {
+      return {
+        category: document.getElementById('category').value,
+        project: document.getElementById('title').value
+      };
+    }
+
+    // Uploads a PNG capture of the model through the normal image pipeline so it
+    // gets a WebP poster + -thumb pair, then stores both on the gallery row.
+    async function uploadModelPoster(row, blob, stemHint) {
+      const { category, project } = currentCategoryAndProject();
+      const stem = (stemHint || 'model').replace(/[^\w\- ]+/g, '_');
+      const file = new File([blob], `${stem}-poster.png`, { type: 'image/png' });
+      const result = await api.upload(file, category, project);
+      const posterInput = row.querySelector('.gallery-poster');
+      const thumbnailInput = row.querySelector('.gallery-thumbnail');
+      const thumbImg = row.querySelector('.gallery-thumb');
+      const thumbWrap = row.querySelector('.gallery-thumb-wrap');
+      if (posterInput) posterInput.value = result.path;
+      if (thumbnailInput) thumbnailInput.value = result.thumbnail || '';
+      if (thumbImg) thumbImg.src = getThumbnailSrc(result.thumbnail || result.path) + '?t=' + Date.now();
+      if (thumbWrap) thumbWrap.classList.remove('hidden');
+      const cropBtn = row.querySelector('.gallery-crop-btn');
+      if (cropBtn) cropBtn.classList.remove('hidden');
+      isDirty = true;
+      return result;
+    }
+
+    // Renders the model once off-screen and captures a default poster so every
+    // model has a grid thumbnail even if the editor is never opened.
+    async function autoCaptureModelThumbnail(row) {
+      const url = row.querySelector('.gallery-url')?.value?.trim();
+      if (!url || !window.ModelViewerCore) return;
+      const model = readRowModel(row) || { up: 'z', parts: [] };
+      const host = document.createElement('div');
+      host.style.cssText = 'position:fixed;left:-10000px;top:0;width:800px;height:600px;pointer-events:none;';
+      document.body.appendChild(host);
+      let viewer = null;
+      try {
+        viewer = await ModelViewerCore.createModelViewer(host, { url: '/' + url, up: model.up, parts: model.parts });
+        const blob = await viewer.capture(1600, 1200);
+        const stem = url.split('/').pop().replace(/\.glb$/i, '');
+        await uploadModelPoster(row, blob, stem);
+      } finally {
+        if (viewer) viewer.dispose();
+        host.remove();
+      }
+    }
+
+    async function handleGalleryModelUpload(input) {
+      const files = Array.from(input.files);
+      if (!files.length) return;
+      const { category, project } = currentCategoryAndProject();
+      if (!project) { alert('Please enter a project title first.'); input.value = ''; return; }
+      if (!window.ModelTools) {
+        Toastify({ text: 'Model tools are still loading — try again in a moment.', duration: 3000, backgroundColor: '#ef4444' }).showToast();
+        input.value = '';
+        return;
+      }
+
+      const container = document.getElementById('gallery-container');
+      const rows = container.querySelectorAll('.gallery-row');
+      if (rows.length === 1 && rows[0].querySelector('.gallery-url').value.trim() === '') rows[0].remove();
+
+      const single = files.length === 1;
+      files.forEach((file) => {
+        uploadQueue.add(file.name, 'model', async (task) => {
+          try {
+            task.setProgress(2, 'Converting');
+            const converted = await ModelTools.convertToGlb(file, (stage) => task.setProgress(15, stage.replace(/…$/, '')));
+            task.setProgress(40, 'Uploading');
+            const result = await api.uploadModel(converted.glbBlob, file, category, project, (pct) => task.setProgress(40 + pct * 0.4, 'Uploading'));
+            const model = {
+              type: 'model',
+              source: result.source || '',
+              format: result.format || converted.format,
+              up: 'z',
+              parts: converted.parts.map(p => ({ name: p.name, color: p.color || undefined, opacity: typeof p.opacity === 'number' ? p.opacity : 1 }))
+            };
+            const row = addGalleryRow(result.path, '', null, false, '', '', false, model);
+            isDirty = true;
+            task.setProgress(85, 'Thumbnail');
+            try { await autoCaptureModelThumbnail(row); }
+            catch (err) { console.warn('Auto thumbnail failed:', err); }
+            Toastify({ text: `${file.name}: ${converted.parts.length} part(s), ${converted.triangles.toLocaleString()} triangles`, duration: 3000, backgroundColor: '#10b981' }).showToast();
+            if (single) openModelEditor(row);
+          } catch (err) {
+            Toastify({ text: `Model failed: ${file.name} — ${err.message || err}`, duration: 6000, backgroundColor: '#ef4444' }).showToast();
+            throw err;
+          }
+        }, 20000);
+      });
+
+      input.value = '';
+    }
+
+    // --- MODEL EDITOR MODAL ---
+    let modelEditor = { row: null, viewer: null, autoRotate: false };
+
+    async function openModelEditor(row) {
+      if (!row) return;
+      const url = row.querySelector('.gallery-url')?.value?.trim();
+      if (!url) { Toastify({ text: 'Enter a GLB path first.', duration: 2500, backgroundColor: '#ef4444' }).showToast(); return; }
+      if (!window.ModelViewerCore) { Toastify({ text: 'Model viewer is still loading.', duration: 2500, backgroundColor: '#ef4444' }).showToast(); return; }
+
+      closeModelEditor(true);
+      const model = readRowModel(row) || { type: 'model', source: '', format: 'glb', up: 'z', parts: [] };
+      modelEditor.row = row;
+      modelEditor.autoRotate = false;
+
+      const modal = document.getElementById('model-editor-modal');
+      const stage = document.getElementById('model-editor-stage');
+      const partsEl = document.getElementById('model-editor-parts');
+      const status = document.getElementById('model-editor-status');
+      stage.innerHTML = '';
+      partsEl.innerHTML = '<p class="text-xs text-zinc-500">Loading model…</p>';
+      status.textContent = '';
+      document.getElementById('model-editor-title').textContent = url.split('/').pop();
+      document.getElementById('model-editor-source').textContent = model.source ? `Original: ${model.source.split('/').pop()}` : 'No original file stored';
+      document.getElementById('model-editor-source').classList.toggle('hidden', !model.source);
+      document.querySelectorAll('#model-editor-up button').forEach(b => {
+        b.classList.toggle('bg-indigo-600', b.dataset.up === model.up);
+        b.classList.toggle('text-white', b.dataset.up === model.up);
+        b.classList.toggle('text-zinc-300', b.dataset.up !== model.up);
+      });
+      const rotBtn = document.getElementById('model-editor-rotate');
+      rotBtn.classList.remove('bg-indigo-600', 'text-white');
+      modal.classList.remove('hidden');
+
+      try {
+        modelEditor.viewer = await ModelViewerCore.createModelViewer(stage, {
+          url: getThumbnailSrc(url) || url,
+          up: model.up,
+          parts: model.parts,
+          onProgress: (f) => { status.textContent = `Loading ${Math.round(f * 100)}%`; }
+        });
+        status.textContent = '';
+        if (modelEditor.row !== row) return; // closed while loading
+        renderModelEditorParts();
+        syncRowFromViewer();
+      } catch (err) {
+        partsEl.innerHTML = `<p class="text-xs text-red-400">Could not load model: ${escAttr(err.message || err)}</p>`;
+      }
+    }
+
+    function renderModelEditorParts() {
+      const partsEl = document.getElementById('model-editor-parts');
+      const viewer = modelEditor.viewer;
+      if (!viewer) return;
+      const parts = viewer.listParts();
+      if (!parts.length) { partsEl.innerHTML = '<p class="text-xs text-zinc-500">No meshes found in this model.</p>'; return; }
+      partsEl.innerHTML = parts.map((p, i) => `
+        <div class="model-part flex flex-col gap-1.5 p-2 rounded-lg bg-zinc-800/70 border border-zinc-700" data-index="${i}">
+          <div class="flex items-center gap-2">
+            <input type="color" value="${escAttr(p.color)}" class="model-part-color w-8 h-8 rounded cursor-pointer bg-transparent border-0 p-0" title="Part color" oninput="onModelPartColor(${i}, this.value)">
+            <input type="text" value="${escAttr(p.name)}" class="model-part-name flex-1 min-w-0 bg-transparent text-xs text-zinc-200 border-b border-transparent focus:border-indigo-500 outline-none" title="Part name (shown in the viewer)" oninput="onModelPartName(${i}, this.value)">
+            <button type="button" onclick="onModelPartReset(${i})" class="text-zinc-500 hover:text-white text-xs" title="Reset to file color"><i class="ph ph-arrow-counter-clockwise"></i></button>
+          </div>
+          <div class="flex items-center gap-2 text-[10px] text-zinc-400">
+            <span class="w-14 uppercase font-bold">Opacity</span>
+            <input type="range" min="0" max="100" value="${Math.round(p.opacity * 100)}" class="model-part-opacity flex-1 accent-indigo-500" oninput="onModelPartOpacity(${i}, this.value)">
+            <span class="model-part-opacity-label w-9 text-right font-mono">${Math.round(p.opacity * 100)}%</span>
+          </div>
+        </div>`).join('');
+    }
+
+    function syncRowFromViewer() {
+      const { row, viewer } = modelEditor;
+      if (!row || !viewer) return;
+      const prev = readRowModel(row) || { type: 'model', source: '', format: 'glb' };
+      const state = viewer.getState();
+      const names = Array.from(document.querySelectorAll('#model-editor-parts .model-part-name')).map(el => el.value.trim());
+      const parts = state.parts.map((p, i) => ({ ...p, name: names[i] || p.name }));
+      writeRowModel(row, { type: 'model', source: prev.source || '', format: prev.format || 'glb', up: state.up, parts });
+      isDirty = true;
+    }
+
+    function onModelPartColor(i, value) {
+      modelEditor.viewer?.setPart(i, { color: value });
+      syncRowFromViewer();
+    }
+    function onModelPartOpacity(i, value) {
+      const o = Math.max(0, Math.min(100, Number(value))) / 100;
+      modelEditor.viewer?.setPart(i, { opacity: o });
+      const label = document.querySelector(`#model-editor-parts .model-part[data-index="${i}"] .model-part-opacity-label`);
+      if (label) label.textContent = Math.round(o * 100) + '%';
+      syncRowFromViewer();
+    }
+    function onModelPartName(i, value) {
+      syncRowFromViewer();
+    }
+    function onModelPartReset(i) {
+      const viewer = modelEditor.viewer;
+      if (!viewer) return;
+      viewer.resetPart(i);
+      const p = viewer.listParts()[i];
+      const card = document.querySelector(`#model-editor-parts .model-part[data-index="${i}"]`);
+      if (card && p) {
+        card.querySelector('.model-part-color').value = p.color;
+        card.querySelector('.model-part-opacity').value = Math.round(p.opacity * 100);
+        card.querySelector('.model-part-opacity-label').textContent = Math.round(p.opacity * 100) + '%';
+      }
+      syncRowFromViewer();
+    }
+    function onModelUp(axis) {
+      modelEditor.viewer?.setUp(axis);
+      document.querySelectorAll('#model-editor-up button').forEach(b => {
+        const on = b.dataset.up === axis;
+        b.classList.toggle('bg-indigo-600', on);
+        b.classList.toggle('text-white', on);
+        b.classList.toggle('text-zinc-300', !on);
+      });
+      syncRowFromViewer();
+    }
+    function onModelResetView() { modelEditor.viewer?.resetView(); }
+    function onModelToggleRotate() {
+      modelEditor.autoRotate = !modelEditor.autoRotate;
+      modelEditor.viewer?.setAutoRotate(modelEditor.autoRotate);
+      const btn = document.getElementById('model-editor-rotate');
+      btn.classList.toggle('bg-indigo-600', modelEditor.autoRotate);
+      btn.classList.toggle('text-white', modelEditor.autoRotate);
+    }
+
+    async function captureModelThumbnail() {
+      const { row, viewer } = modelEditor;
+      if (!row || !viewer) return;
+      const { project } = currentCategoryAndProject();
+      if (!project) { Toastify({ text: 'Please enter a project title first', duration: 2000, backgroundColor: '#ef4444' }).showToast(); return; }
+      const status = document.getElementById('model-editor-status');
+      try {
+        status.textContent = 'Capturing…';
+        const blob = await viewer.capture(1600, 1200);
+        status.textContent = 'Uploading thumbnail…';
+        const url = row.querySelector('.gallery-url').value.trim();
+        await uploadModelPoster(row, blob, url.split('/').pop().replace(/\.glb$/i, ''));
+        status.textContent = 'Thumbnail saved';
+        Toastify({ text: 'Thumbnail updated', duration: 2000, backgroundColor: '#10b981' }).showToast();
+        setTimeout(() => { if (status.textContent === 'Thumbnail saved') status.textContent = ''; }, 2000);
+      } catch (err) {
+        status.textContent = '';
+        onError(err);
+      }
+    }
+
+    function closeModelEditor(silent = false) {
+      if (modelEditor.viewer) { try { modelEditor.viewer.dispose(); } catch {} }
+      modelEditor.viewer = null;
+      modelEditor.row = null;
+      document.getElementById('model-editor-modal')?.classList.add('hidden');
+      if (!silent) updateListIndices('gallery-container');
+    }
+
     let pendingVideoKeepAudio = false;
 
     function openVideoAudioPrompt() {
@@ -2212,6 +2589,12 @@
       if (modal && !modal.classList.contains('hidden')) {
         e.preventDefault();
         closeVideoAudioPrompt();
+        return;
+      }
+      const modelModal = document.getElementById('model-editor-modal');
+      if (modelModal && !modelModal.classList.contains('hidden')) {
+        e.preventDefault();
+        closeModelEditor();
       }
     });
 
@@ -2399,11 +2782,25 @@
           const poster = row.querySelector('.gallery-poster')?.value?.trim() || '';
           const thumbnail = row.querySelector('.gallery-thumbnail')?.value?.trim() || '';
           const hasAudio = row.querySelector('.gallery-has-audio')?.value === 'true';
+          const model = readRowModel(row);
           let fit = null;
           try { fit = fitRaw ? JSON.parse(fitRaw) : null; } catch {}
-          const hasExtra = caption || fit || poster || thumbnail || hasAudio;
+          const hasExtra = caption || fit || poster || thumbnail || hasAudio || model;
           if (hasExtra) {
               const obj = { url };
+              if (model) {
+                  obj.type = 'model';
+                  if (model.source) obj.source = model.source;
+                  if (model.format) obj.format = model.format;
+                  obj.up = model.up === 'y' ? 'y' : 'z';
+                  if (Array.isArray(model.parts) && model.parts.length) {
+                      obj.parts = model.parts.map(p => ({
+                          name: String(p?.name || ''),
+                          color: typeof p?.color === 'string' ? p.color : undefined,
+                          opacity: typeof p?.opacity === 'number' ? Math.round(p.opacity * 1000) / 1000 : 1
+                      }));
+                  }
+              }
               if (caption) obj.caption = caption;
               if (fit) obj.fit = fit;
               if (poster) obj.poster = poster;
@@ -2487,7 +2884,10 @@
         skills_lighting: document.getElementById('skills_lighting').value,
         skills_software: document.getElementById('skills_software').value,
         skills_fabrication: document.getElementById('skills_fabrication').value,
-        skills_systems: document.getElementById('skills_systems').value
+        skills_systems: document.getElementById('skills_systems').value,
+        site_url: document.getElementById('site_url').value.trim().replace(/\/+$/, ''),
+        site_title: document.getElementById('site_title').value.trim(),
+        site_description: document.getElementById('site_description').value.trim()
       };
 
       api.post('/settings', settings).then(() => {
@@ -2655,33 +3055,71 @@
       }
     }
 
-    function performPublish() {
+    // Publish = (1) render social share cards in the browser and upload them,
+    // (2) regenerate index.html + share/<id>.html pages on the server.
+    async function performPublish() {
       const btn = document.getElementById('pubBtn');
       const originalText = btn.innerHTML;
+      const overlay = document.getElementById('loadingOverlay');
+      const loadingText = document.getElementById('loadingText');
       btn.innerHTML = '<i class="ph ph-spinner animate-spin"></i> Building...';
       btn.disabled = true;
-      document.getElementById('loadingOverlay').classList.remove('hidden');
-      document.getElementById('loadingText').innerText = "Publishing Website...";
+      overlay.classList.remove('hidden');
+      loadingText.innerText = "Rendering share cards...";
 
-      api.post('/publish').then(res => {
-           btn.innerHTML = originalText;
-           btn.disabled = false;
-           hideStatus();
-           document.getElementById('loadingOverlay').classList.add('hidden');
-           document.getElementById('loadingText').innerText = "Saving Changes...";
-           if(res.success) {
-             document.getElementById('publishCode').value = res.html;
-             document.getElementById('publishModal').classList.remove('hidden');
-             Toastify({ text: "Website Published!", duration: 3000, backgroundColor: "#10b981" }).showToast();
-           } else {
-             onError(res.error || "Publish failed");
-           }
-      }).catch(err => {
-          document.getElementById('loadingOverlay').classList.add('hidden');
-          btn.innerHTML = originalText;
-          btn.disabled = false;
-          onError(err);
-      });
+      const finish = () => {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        hideStatus();
+        overlay.classList.add('hidden');
+        loadingText.innerText = "Saving Changes...";
+      };
+
+      try {
+        // 1. Share cards (best effort — publishing still proceeds if this fails)
+        let cardResult = null;
+        try {
+          const [latestProjects, latestSettings] = await Promise.all([api.get('/projects'), api.get('/settings')]);
+          cachedSettings = latestSettings || cachedSettings;
+          if (window.ShareCards) {
+            const cards = await ShareCards.renderAll(latestProjects, latestSettings, (done, total) => {
+              loadingText.innerText = `Rendering share cards... ${done}/${total}`;
+            });
+            loadingText.innerText = "Saving share cards...";
+            cardResult = await api.post('/share-cards', { cards });
+            if (cardResult.warnings?.length) console.warn('Share card warnings:', cardResult.warnings);
+          }
+        } catch (err) {
+          console.error('Share cards failed:', err);
+          Toastify({ text: "Share cards could not be rendered — publishing without them.", duration: 5000, backgroundColor: "#f59e0b" }).showToast();
+        }
+
+        // 2. Publish
+        loadingText.innerText = "Publishing Website...";
+        const res = await api.post('/publish');
+        finish();
+        if (!res.success) { onError(res.error || "Publish failed"); return; }
+
+        document.getElementById('publishCode').value = res.html;
+        const share = res.share || {};
+        const summary = document.getElementById('publishShareSummary');
+        summary.textContent = `${share.pages ?? 0} project share page(s) written to share/` +
+          (cardResult ? `, ${cardResult.written} preview card(s) rendered` : '') +
+          (share.removedPages ? `, ${share.removedPages} stale page(s) removed` : '') + '.';
+        const cardBox = document.getElementById('publishShareCard');
+        if (share.siteCard) {
+          document.getElementById('publishShareCardImg').src = '/' + share.siteCard + '?t=' + Date.now();
+          document.getElementById('publishShareExample').textContent = `${share.siteUrl || ''}/share/<project-id>`;
+          cardBox.classList.remove('hidden');
+        } else {
+          cardBox.classList.add('hidden');
+        }
+        document.getElementById('publishModal').classList.remove('hidden');
+        Toastify({ text: "Website Published!", duration: 3000, backgroundColor: "#10b981" }).showToast();
+      } catch (err) {
+        finish();
+        onError(err);
+      }
     }
 
     async function downloadSource() {
@@ -3085,6 +3523,48 @@
       </div>
     </div>
   </div>
+  <!-- 3D MODEL EDITOR MODAL -->
+  <div id="model-editor-modal" class="hidden fixed inset-0 bg-black/80 z-[70] flex items-center justify-center p-4" onclick="if(event.target===this)closeModelEditor()">
+    <div class="bg-zinc-900 rounded-xl shadow-2xl flex flex-col overflow-hidden" style="max-width:1100px;width:100%;max-height:92vh;">
+      <div class="flex justify-between items-center px-4 py-3 border-b border-zinc-700 flex-shrink-0 gap-3">
+        <div class="min-w-0">
+          <h2 class="text-sm font-bold text-white truncate"><i class="ph ph-cube mr-1 text-amber-400"></i> <span id="model-editor-title">3D Model</span></h2>
+          <p id="model-editor-source" class="text-[11px] text-zinc-500 truncate"></p>
+        </div>
+        <div class="flex items-center gap-2 flex-shrink-0">
+          <span id="model-editor-status" class="text-xs text-zinc-400 font-mono"></span>
+          <button type="button" onclick="closeModelEditor()" class="text-zinc-400 hover:text-white transition-colors"><i class="ph ph-x text-xl"></i></button>
+        </div>
+      </div>
+      <div class="flex-1 flex flex-col md:flex-row min-h-0">
+        <div class="relative flex-1 bg-zinc-950 min-h-[300px] md:min-h-[480px]">
+          <div id="model-editor-stage" class="absolute inset-0"></div>
+          <div class="absolute left-3 bottom-3 flex items-center gap-2">
+            <button type="button" onclick="onModelResetView()" class="px-2.5 py-1.5 rounded-lg bg-zinc-800/90 text-zinc-300 hover:text-white text-xs font-bold flex items-center gap-1" title="Reset view"><i class="ph ph-arrows-in-cardinal"></i> Reset</button>
+            <button type="button" id="model-editor-rotate" onclick="onModelToggleRotate()" class="px-2.5 py-1.5 rounded-lg bg-zinc-800/90 text-zinc-300 hover:text-white text-xs font-bold flex items-center gap-1" title="Auto-rotate"><i class="ph ph-arrow-clockwise"></i> Spin</button>
+            <div id="model-editor-up" class="flex rounded-lg overflow-hidden bg-zinc-800/90 text-xs font-bold" title="Which axis points up in the source file">
+              <button type="button" data-up="z" onclick="onModelUp('z')" class="px-2.5 py-1.5 text-zinc-300">Z up</button>
+              <button type="button" data-up="y" onclick="onModelUp('y')" class="px-2.5 py-1.5 text-zinc-300">Y up</button>
+            </div>
+          </div>
+          <p class="absolute right-3 bottom-3 text-[10px] text-zinc-500 hidden md:block">Drag: rotate · Right-drag / two fingers: pan · Wheel / pinch: zoom</p>
+        </div>
+        <div class="w-full md:w-80 flex flex-col border-t md:border-t-0 md:border-l border-zinc-700 min-h-0">
+          <div class="px-4 py-3 border-b border-zinc-700">
+            <h3 class="text-[10px] font-bold text-zinc-400 uppercase">Parts &amp; Materials</h3>
+            <p class="text-[11px] text-zinc-500 mt-0.5">Set a color and opacity per part to match the real object. Changes save with the project.</p>
+          </div>
+          <div id="model-editor-parts" class="flex-1 overflow-y-auto p-3 space-y-2 min-h-[120px] max-h-[40vh] md:max-h-none"></div>
+          <div class="p-3 border-t border-zinc-700 flex flex-col gap-2">
+            <button type="button" onclick="captureModelThumbnail()" class="w-full flex items-center justify-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-bold text-sm transition-colors">
+              <i class="ph ph-camera"></i> Capture Thumbnail From This View
+            </button>
+            <button type="button" onclick="closeModelEditor()" class="w-full px-4 py-2 border border-zinc-600 text-zinc-200 rounded-lg hover:bg-zinc-800 font-bold text-sm transition-colors">Done</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- VIDEO AUDIO PROMPT -->
   <div id="video-audio-modal" class="hidden fixed inset-0 z-[80] bg-black/50 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="video-audio-title" onclick="if(event.target===this)closeVideoAudioPrompt()">
     <div class="bg-white rounded-xl shadow-2xl p-6 max-w-sm w-full" onclick="event.stopPropagation()">
@@ -3246,7 +3726,7 @@
       </div>
 
       <p class="text-[10px] text-slate-400 font-mono tabular-nums mt-6 text-center">
-        Portfolio CMS v2.4 Local
+        Portfolio CMS v2.5 Local
       </p>
     </div>
   </div>

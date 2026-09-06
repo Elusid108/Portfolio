@@ -155,6 +155,55 @@ async function processFileUpload(file, category, projectName) {
   return webPath;
 }
 
+// --- 3D models ---
+//
+// Models are converted to GLB in the CMS browser (three.js loaders +
+// occt-import-js for STEP) and uploaded together with the original file.
+// Both land in media/<Folder>/<Project>/models/ so the site can stream the
+// GLB while visitors can still download the original STL/3MF/STEP.
+
+const MODEL_SOURCE_EXTS = ['.stl', '.3mf', '.step', '.stp'];
+
+function modelFormatFromName(name) {
+  const ext = path.extname(name || '').toLowerCase();
+  if (ext === '.stp') return 'step';
+  return ext.replace(/^\./, '') || 'model';
+}
+
+async function processModelUpload(files, category, projectName) {
+  const glbFile = files?.glb?.[0];
+  const originalFile = files?.original?.[0];
+  if (!glbFile) throw new Error('No GLB uploaded');
+
+  const folder = CATEGORY_FOLDER_MAP[category] || category;
+  const safeProject = sanitize(projectName);
+  const destDir = path.join(MEDIA_DIR, folder, safeProject, 'models');
+  fs.mkdirSync(destDir, { recursive: true });
+
+  const originalName = sanitize(originalFile ? originalFile.originalname : glbFile.originalname);
+  const stem = path.parse(originalName).name;
+  const glbName = `${stem}.glb`;
+  const webDir = `media/${folder}/${safeProject}/models`;
+
+  await retryFsOp(() => { fs.copyFileSync(glbFile.path, path.join(destDir, glbName)); });
+  scheduleUnlink(glbFile.path);
+
+  let source = '';
+  let format = 'glb';
+  if (originalFile) {
+    const ext = path.extname(originalName).toLowerCase();
+    if (MODEL_SOURCE_EXTS.includes(ext)) {
+      const srcName = `${stem}${ext}`;
+      await retryFsOp(() => { fs.copyFileSync(originalFile.path, path.join(destDir, srcName)); });
+      source = `${webDir}/${srcName}`;
+      format = modelFormatFromName(srcName);
+    }
+    scheduleUnlink(originalFile.path);
+  }
+
+  return { path: `${webDir}/${glbName}`, source, format };
+}
+
 // --- Fix File Structure ---
 //
 // Media on disk is originally filed under media/<categoryFolder>/<projectTitle>/...
@@ -295,6 +344,9 @@ function fixFileStructure() {
           if (typeof item.thumbnail === 'string') {
             updated.thumbnail = relocateAsset(item.thumbnail, targetWebDir, ctx);
           }
+          if (typeof item.source === 'string') {
+            updated.source = relocateAsset(item.source, targetWebDir, ctx);
+          }
           return updated;
         }
         return item;
@@ -349,6 +401,7 @@ function relocateProject(project) {
         const result = { ...item, url: relocateAsset(item.url, targetWebDir, ctx) };
         if (typeof item.poster === 'string') result.poster = relocateAsset(item.poster, targetWebDir, ctx);
         if (typeof item.thumbnail === 'string') result.thumbnail = relocateAsset(item.thumbnail, targetWebDir, ctx);
+        if (typeof item.source === 'string') result.source = relocateAsset(item.source, targetWebDir, ctx);
         return result;
       }
       return item;
@@ -412,6 +465,7 @@ function collectPathsFromProject(project, set = new Set()) {
         addMediaPath(set, item.url);
         addMediaPath(set, item.poster);
         addMediaPath(set, item.thumbnail);
+        addMediaPath(set, item.source);
       }
     }
   }
@@ -462,6 +516,14 @@ function companionPaths(webPath) {
   if (/\.(mp4|webm|mov|m4v|avi)$/i.test(ext)) {
     companions.push(`${dir}/${stem}-poster.webp`);
     companions.push(`${dir}/${stem}-poster-thumb.webp`);
+  }
+  if (ext.toLowerCase() === '.glb') {
+    companions.push(`${dir}/${stem}-poster.webp`);
+    companions.push(`${dir}/${stem}-poster-thumb.webp`);
+    for (const srcExt of MODEL_SOURCE_EXTS) companions.push(`${dir}/${stem}${srcExt}`);
+  }
+  if (MODEL_SOURCE_EXTS.includes(ext.toLowerCase())) {
+    companions.push(`${dir}/${stem}.glb`);
   }
   return companions;
 }
@@ -594,6 +656,7 @@ async function trashDroppedAssets(oldEntity, newEntity) {
 module.exports = {
   processUpload,
   processFileUpload,
+  processModelUpload,
   fixFileStructure,
   relocateProject,
   trashUnusedMedia,
