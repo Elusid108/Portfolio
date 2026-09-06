@@ -954,6 +954,36 @@
           "y": 40.2
         },
         "thumbnail": "media/Art/Mini Pyramid/20230808_152641-thumb.webp"
+      },
+      {
+        "url": "media/Art/Mini Pyramid/models/mini_pyramid_preview.glb",
+        "type": "model",
+        "format": "3mf",
+        "up": "z",
+        "parts": [
+          {
+            "name": "bounce",
+            "color": "#9ca3af",
+            "opacity": 1
+          },
+          {
+            "name": "mask / frame",
+            "color": "#000000",
+            "opacity": 1
+          },
+          {
+            "name": "diffusion",
+            "color": "#9ca3af",
+            "opacity": 0.5
+          }
+        ],
+        "fit": {
+          "scale": 1.1,
+          "x": 54.2,
+          "y": 25.3
+        },
+        "poster": "media/Art/Mini Pyramid/mini_pyramid_preview-poster.webp",
+        "thumbnail": "media/Art/Mini Pyramid/mini_pyramid_preview-poster-thumb.webp"
       }
     ],
     "launchLink": "",
@@ -1118,6 +1148,36 @@
           "y": 40.5
         },
         "thumbnail": "media/Art/Plane Warp/20230712_072919-thumb.webp"
+      },
+      {
+        "url": "media/Art/Plane Warp/models/plane_warp_preview.glb",
+        "type": "model",
+        "format": "3mf",
+        "up": "z",
+        "parts": [
+          {
+            "name": "bounce",
+            "color": "#9ca3af",
+            "opacity": 1
+          },
+          {
+            "name": "mask / frame",
+            "color": "#000000",
+            "opacity": 1
+          },
+          {
+            "name": "diffusion",
+            "color": "#9ca3af",
+            "opacity": 0.5
+          }
+        ],
+        "fit": {
+          "scale": 1.2,
+          "x": 60.3,
+          "y": 35.3
+        },
+        "poster": "media/Art/Plane Warp/plane_warp_preview-poster.webp",
+        "thumbnail": "media/Art/Plane Warp/plane_warp_preview-poster-thumb.webp"
       }
     ],
     "files": [
@@ -4107,6 +4167,31 @@
           "y": 24.5
         },
         "thumbnail": "media/Art/Negative _X_/20230808_152442-thumb.webp"
+      },
+      {
+        "url": "media/Art/Negative _X_/models/negative_x_preview.glb",
+        "type": "model",
+        "format": "3mf",
+        "up": "z",
+        "parts": [
+          {
+            "name": "diffusion",
+            "color": "#9ca3af",
+            "opacity": 1
+          },
+          {
+            "name": "mask / border",
+            "color": "#000000",
+            "opacity": 1
+          }
+        ],
+        "fit": {
+          "scale": 1.2,
+          "x": 75.4,
+          "y": 34.6
+        },
+        "poster": "media/Art/Negative _X_/negative_x_preview-poster.webp",
+        "thumbnail": "media/Art/Negative _X_/negative_x_preview-poster-thumb.webp"
       }
     ],
     "files": [
@@ -4281,6 +4366,31 @@
           "y": 30.6
         },
         "thumbnail": "media/Art/Seed of Life/20230808_152626-thumb.webp"
+      },
+      {
+        "url": "media/Art/Seed of Life/models/seed_of_life_preview.glb",
+        "type": "model",
+        "format": "3mf",
+        "up": "z",
+        "parts": [
+          {
+            "name": "diffusion",
+            "color": "#9ca3af",
+            "opacity": 1
+          },
+          {
+            "name": "mask / border",
+            "color": "#000000",
+            "opacity": 1
+          }
+        ],
+        "fit": {
+          "scale": 1.15,
+          "x": 53.1,
+          "y": 33.7
+        },
+        "poster": "media/Art/Seed of Life/seed_of_life_preview-poster.webp",
+        "thumbnail": "media/Art/Seed of Life/seed_of_life_preview-poster-thumb.webp"
       }
     ],
     "files": [
@@ -4449,19 +4559,19 @@
         "up": "z",
         "parts": [
           {
-            "name": "diffusion",
-            "color": "#c7c7c7",
+            "name": "Part_1",
+            "color": "#9ca3af",
             "opacity": 1
           },
           {
-            "name": "mask / frame",
+            "name": "Part_2",
             "color": "#000000",
             "opacity": 1
           }
         ],
         "fit": {
-          "scale": 1.35,
-          "x": 57.4,
+          "scale": 1.25,
+          "x": 62.1,
           "y": 33.1
         },
         "poster": "media/Art/Celtic Owl/celtic_owl_preview-poster.webp",
@@ -9292,6 +9402,36 @@
         },
         "poster": "media/Art/Bubblescape/frame-thumb-1786909472631.webp",
         "thumbnail": "media/Art/Bubblescape/frame-thumb-1786909472631-thumb.webp"
+      },
+      {
+        "url": "media/Art/Bubblescape/models/bubblescape_preview.glb",
+        "type": "model",
+        "format": "3mf",
+        "up": "z",
+        "parts": [
+          {
+            "name": "bounce",
+            "color": "#9ca3af",
+            "opacity": 1
+          },
+          {
+            "name": "mask / frame",
+            "color": "#000000",
+            "opacity": 1
+          },
+          {
+            "name": "diffusion",
+            "color": "#9ca3af",
+            "opacity": 0.5
+          }
+        ],
+        "fit": {
+          "scale": 1.4,
+          "x": 56.4,
+          "y": 34.4
+        },
+        "poster": "media/Art/Bubblescape/bubblescape_preview-poster.webp",
+        "thumbnail": "media/Art/Bubblescape/bubblescape_preview-poster-thumb.webp"
       }
     ],
     "files": [
@@ -9434,6 +9574,31 @@
         },
         "poster": "media/Art/Zig-Zag/frame-thumb-1786909779529.webp",
         "thumbnail": "media/Art/Zig-Zag/frame-thumb-1786909779529-thumb.webp"
+      },
+      {
+        "url": "media/Art/Zig-Zag/models/zigzag_preview.glb",
+        "type": "model",
+        "format": "3mf",
+        "up": "z",
+        "parts": [
+          {
+            "name": "diffusion",
+            "color": "#9ca3af",
+            "opacity": 1
+          },
+          {
+            "name": "mask / frame",
+            "color": "#000000",
+            "opacity": 1
+          }
+        ],
+        "fit": {
+          "scale": 1.25,
+          "x": 60.7,
+          "y": 35
+        },
+        "poster": "media/Art/Zig-Zag/zigzag_preview-poster.webp",
+        "thumbnail": "media/Art/Zig-Zag/zigzag_preview-poster-thumb.webp"
       }
     ],
     "files": [
@@ -9582,6 +9747,31 @@
         },
         "poster": "media/Art/Clay Face/frame-thumb-1786910058148.webp",
         "thumbnail": "media/Art/Clay Face/frame-thumb-1786910058148-thumb.webp"
+      },
+      {
+        "url": "media/Art/Clay Face/models/clay_face_preview.glb",
+        "type": "model",
+        "format": "3mf",
+        "up": "z",
+        "parts": [
+          {
+            "name": "Part_1",
+            "color": "#9ca3af",
+            "opacity": 1
+          },
+          {
+            "name": "Part_2",
+            "color": "#000000",
+            "opacity": 1
+          }
+        ],
+        "fit": {
+          "scale": 1.3,
+          "x": 69.2,
+          "y": 35.4
+        },
+        "poster": "media/Art/Clay Face/clay_face_preview-poster.webp",
+        "thumbnail": "media/Art/Clay Face/clay_face_preview-poster-thumb.webp"
       }
     ],
     "files": [
@@ -9729,6 +9919,31 @@
         },
         "poster": "media/Art/Scream-Face/20231002_203931-poster.webp",
         "thumbnail": "media/Art/Scream-Face/20231002_203931-poster-thumb.webp"
+      },
+      {
+        "url": "media/Art/Scream-Face/models/screamface_preview.glb",
+        "type": "model",
+        "format": "3mf",
+        "up": "z",
+        "parts": [
+          {
+            "name": "mask / frame",
+            "color": "#000000",
+            "opacity": 1
+          },
+          {
+            "name": "bounce / diffusion",
+            "color": "#9ca3af",
+            "opacity": 1
+          }
+        ],
+        "fit": {
+          "scale": 1.35,
+          "x": 51.7,
+          "y": 37.3
+        },
+        "poster": "media/Art/Scream-Face/screamface_preview-poster.webp",
+        "thumbnail": "media/Art/Scream-Face/screamface_preview-poster-thumb.webp"
       }
     ],
     "files": [
@@ -9874,6 +10089,31 @@
         },
         "poster": "media/Art/Clay Tree/frame-thumb-1786910729386.webp",
         "thumbnail": "media/Art/Clay Tree/frame-thumb-1786910729386-thumb.webp"
+      },
+      {
+        "url": "media/Art/Clay Tree/models/clay_tree_preview.glb",
+        "type": "model",
+        "format": "3mf",
+        "up": "z",
+        "parts": [
+          {
+            "name": "bounce / diffusion",
+            "color": "#9ca3af",
+            "opacity": 1
+          },
+          {
+            "name": "mask",
+            "color": "#000000",
+            "opacity": 1
+          }
+        ],
+        "fit": {
+          "scale": 1.45,
+          "x": 62.2,
+          "y": 39.7
+        },
+        "poster": "media/Art/Clay Tree/clay_tree_preview-poster.webp",
+        "thumbnail": "media/Art/Clay Tree/clay_tree_preview-poster-thumb.webp"
       }
     ],
     "files": [
@@ -10001,6 +10241,31 @@
         },
         "poster": "media/Art/Face/frame-thumb-1786911050766.webp",
         "thumbnail": "media/Art/Face/frame-thumb-1786911050766-thumb.webp"
+      },
+      {
+        "url": "media/Art/Face/models/face_preview.glb",
+        "type": "model",
+        "format": "3mf",
+        "up": "z",
+        "parts": [
+          {
+            "name": "bounce / diffusion",
+            "color": "#9ca3af",
+            "opacity": 1
+          },
+          {
+            "name": "mask",
+            "color": "#000000",
+            "opacity": 1
+          }
+        ],
+        "fit": {
+          "scale": 1.45,
+          "x": 64.2,
+          "y": 39.8
+        },
+        "poster": "media/Art/Face/face_preview-poster.webp",
+        "thumbnail": "media/Art/Face/face_preview-poster-thumb.webp"
       }
     ],
     "files": [
@@ -10136,6 +10401,31 @@
         },
         "poster": "media/Art/X/frame-thumb-1786911519833.webp",
         "thumbnail": "media/Art/X/frame-thumb-1786911519833-thumb.webp"
+      },
+      {
+        "url": "media/Art/X/models/X_preview.glb",
+        "type": "model",
+        "format": "3mf",
+        "up": "z",
+        "parts": [
+          {
+            "name": "diffusion",
+            "color": "#9ca3af",
+            "opacity": 1
+          },
+          {
+            "name": "mask / frame",
+            "color": "#000000",
+            "opacity": 1
+          }
+        ],
+        "fit": {
+          "scale": 1.25,
+          "x": 51.7,
+          "y": 35.5
+        },
+        "poster": "media/Art/X/X_preview-poster.webp",
+        "thumbnail": "media/Art/X/X_preview-poster-thumb.webp"
       }
     ],
     "files": [
@@ -10283,6 +10573,31 @@
         },
         "poster": "media/Art/Dot Matrix/20231125_093701~2-poster.webp",
         "thumbnail": "media/Art/Dot Matrix/20231125_093701~2-poster-thumb.webp"
+      },
+      {
+        "url": "media/Art/Dot Matrix/models/dot_matrix_preview.glb",
+        "type": "model",
+        "format": "3mf",
+        "up": "z",
+        "parts": [
+          {
+            "name": "mask / border",
+            "color": "#000000",
+            "opacity": 1
+          },
+          {
+            "name": "diffusion",
+            "color": "#9ca3af",
+            "opacity": 1
+          }
+        ],
+        "fit": {
+          "scale": 1.25,
+          "x": 59.1,
+          "y": 30.2
+        },
+        "poster": "media/Art/Dot Matrix/dot_matrix_preview-poster.webp",
+        "thumbnail": "media/Art/Dot Matrix/dot_matrix_preview-poster-thumb.webp"
       }
     ],
     "files": [
@@ -10430,6 +10745,31 @@
         },
         "poster": "media/Art/Inverted Triangles/frame-thumb-1786911861387.webp",
         "thumbnail": "media/Art/Inverted Triangles/frame-thumb-1786911861387-thumb.webp"
+      },
+      {
+        "url": "media/Art/Inverted Triangles/models/inverted_triangles_preview.glb",
+        "type": "model",
+        "format": "3mf",
+        "up": "z",
+        "parts": [
+          {
+            "name": "Part_1",
+            "color": "#000000",
+            "opacity": 1
+          },
+          {
+            "name": "Part_2",
+            "color": "#9ca3af",
+            "opacity": 1
+          }
+        ],
+        "fit": {
+          "scale": 1.3,
+          "x": 52.4,
+          "y": 34.2
+        },
+        "poster": "media/Art/Inverted Triangles/inverted_triangles_preview-poster.webp",
+        "thumbnail": "media/Art/Inverted Triangles/inverted_triangles_preview-poster-thumb.webp"
       }
     ],
     "files": [
@@ -10577,6 +10917,31 @@
         },
         "poster": "media/Art/Circles Corner/frame-thumb-1786912100385.webp",
         "thumbnail": "media/Art/Circles Corner/frame-thumb-1786912100385-thumb.webp"
+      },
+      {
+        "url": "media/Art/Circles Corner/models/circles_corner_preview.glb",
+        "type": "model",
+        "format": "3mf",
+        "up": "z",
+        "parts": [
+          {
+            "name": "diffusion",
+            "color": "#9ca3af",
+            "opacity": 1
+          },
+          {
+            "name": "mask / border",
+            "color": "#000000",
+            "opacity": 1
+          }
+        ],
+        "fit": {
+          "scale": 1.2,
+          "x": 76.8,
+          "y": 28.4
+        },
+        "poster": "media/Art/Circles Corner/circles_corner_preview-poster.webp",
+        "thumbnail": "media/Art/Circles Corner/circles_corner_preview-poster-thumb.webp"
       }
     ],
     "files": [
@@ -11081,7 +11446,38 @@
     "wip": false,
     "draft": true,
     "tags": [],
-    "gallery": [],
+    "gallery": [
+      {
+        "url": "media/Art/Mound/models/mound_preview.glb",
+        "type": "model",
+        "format": "3mf",
+        "up": "z",
+        "parts": [
+          {
+            "name": "mask / frame",
+            "color": "#000000",
+            "opacity": 1
+          },
+          {
+            "name": "bounce",
+            "color": "#9ca3af",
+            "opacity": 1
+          },
+          {
+            "name": "diffusion",
+            "color": "#9ca3af",
+            "opacity": 0.5
+          }
+        ],
+        "fit": {
+          "scale": 1.4,
+          "x": 54.9,
+          "y": 40.2
+        },
+        "poster": "media/Art/Mound/mound_preview-poster.webp",
+        "thumbnail": "media/Art/Mound/mound_preview-poster-thumb.webp"
+      }
+    ],
     "files": [
       {
         "name": "Mound.zip",
@@ -11621,7 +12017,33 @@
     "wip": false,
     "draft": true,
     "tags": [],
-    "gallery": [],
+    "gallery": [
+      {
+        "url": "media/Art/Mini Heart/models/mini_heart_preview.glb",
+        "type": "model",
+        "format": "3mf",
+        "up": "z",
+        "parts": [
+          {
+            "name": "Part_1",
+            "color": "#9ca3af",
+            "opacity": 1
+          },
+          {
+            "name": "Part_2",
+            "color": "#000000",
+            "opacity": 1
+          }
+        ],
+        "fit": {
+          "scale": 1.35,
+          "x": 63.8,
+          "y": 33.4
+        },
+        "poster": "media/Art/Mini Heart/mini_heart_preview-poster.webp",
+        "thumbnail": "media/Art/Mini Heart/mini_heart_preview-poster-thumb.webp"
+      }
+    ],
     "files": [
       {
         "name": "Mini Heart.zip",
