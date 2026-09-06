@@ -4,6 +4,8 @@
 // crops; the server just writes the JPEGs to share/cards/.
 //
 // window.ShareCards = { renderProjectCard, renderSiteCard, renderAll, stripHtml }
+// renderAll(projects, settings, onProgress, ids?) — omit ids to render every
+// published card; pass an id list (from GET /api/share-cards/plan) to remake only those.
 (function () {
   const W = 1200;
   const H = 630;
@@ -367,20 +369,29 @@
     return canvas.toDataURL('image/jpeg', JPEG_QUALITY);
   }
 
-  // Renders every published project card plus the site card.
-  // onProgress(done, total) is called after each card.
-  async function renderAll(projects, settings, onProgress = () => {}) {
+  // Renders published project cards plus the site card.
+  // ids: optional list of card IDs to render (e.g. ['site','670']). Omit to
+  // render everything. onProgress(done, total) is called after each card.
+  async function renderAll(projects, settings, onProgress = () => {}, ids = null) {
     const published = (projects || []).filter(p => p.draft !== true);
-    const total = published.length + 1;
+    const want = ids ? new Set(ids.map(String)) : null;
+    const targets = [];
+    if (!want || want.has('site')) targets.push({ kind: 'site' });
+    for (const p of published) {
+      if (!want || want.has(String(p.id))) targets.push({ kind: 'project', project: p });
+    }
+    const total = targets.length;
     const cards = [];
     let done = 0;
-    cards.push({ id: 'site', dataUrl: await renderSiteCard(published, settings) });
-    onProgress(++done, total);
-    for (const p of published) {
-      try {
-        cards.push({ id: String(p.id), dataUrl: await renderProjectCard(p, settings) });
-      } catch (err) {
-        console.warn('Share card failed for', p.title, err);
+    for (const t of targets) {
+      if (t.kind === 'site') {
+        cards.push({ id: 'site', dataUrl: await renderSiteCard(published, settings) });
+      } else {
+        try {
+          cards.push({ id: String(t.project.id), dataUrl: await renderProjectCard(t.project, settings) });
+        } catch (err) {
+          console.warn('Share card failed for', t.project.title, err);
+        }
       }
       onProgress(++done, total);
     }

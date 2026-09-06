@@ -2,7 +2,7 @@
 
 This is the source for my personal portfolio website — a showcase of work spanning lighting design, art installations, electronics, apps, fabrication, and systems integration.
 
-The local authoring tool is **CMS v2.5.2 Local**.
+The local authoring tool is **CMS v2.5.3 Local**.
 
 The live site (`[index.html](index.html)`) is a single, self-contained static page built with React 18 (UMD), Babel Standalone, and Tailwind CSS (all via CDN). It reads its content from a JSON block embedded directly in the page, so there's no build step and no backend required to host or view it — it can be served as-is from GitHub Pages or any static file host. Alongside it, the `[share/](share/)` folder holds small generated pages and preview images that give each project a proper social-media link preview.
 
@@ -53,7 +53,8 @@ Portfolio/
 │   │   └── Portfolio Template.html   # Site template with {{PORTFOLIO_DATA}}, {{MODEL_VIEWER_CORE}}, {{SITE_META}}
 │   ├── data/
 │   │   ├── projects.json        # Source of truth for all portfolio projects
-│   │   └── settings.json        # Site-wide settings (about, socials, contact form, sharing)
+│   │   ├── settings.json        # Site-wide settings (about, socials, contact form, sharing)
+│   │   └── share-manifest.json  # Fingerprints of last-written share cards (CMS-local)
 │   └── scripts/
 │       └── migrate.js           # Re-extracts data from a published index.html
 ```
@@ -161,7 +162,7 @@ On the live site, models open in the lightbox in a three.js viewer (`[CMS/public
 
 ### Publishing
 
-Clicking **Publish Website** first renders the social preview cards in the browser (`[CMS/public/js/share-cards.js](CMS/public/js/share-cards.js)`, uploaded via `POST /api/share-cards`), then triggers `[CMS/lib/publish.js](CMS/lib/publish.js)`, which:
+Clicking **Publish Website** first asks `GET /api/share-cards/plan` which cards actually changed, renders only those in the browser (`[CMS/public/js/share-cards.js](CMS/public/js/share-cards.js)`, uploaded via `POST /api/share-cards`), then triggers `[CMS/lib/publish.js](CMS/lib/publish.js)`, which:
 
 1. Reads the current `projects.json` and `settings.json` (drafts are excluded).
 2. Loads `[CMS/template/Portfolio Template.html](CMS/template/Portfolio%20Template.html)`, the React-based site template.
@@ -171,15 +172,17 @@ Clicking **Publish Website** first renders the social preview cards in the brows
 
 Before publishing (or any time after), you can preview the currently-published site locally at `http://localhost:3000/preview`.
 
-Because publishing fully regenerates `index.html` and `share/`, **both should be treated as generated output** — content changes should always go through the CMS and a re-publish, not direct edits to the files, or they'll be lost the next time you publish.
+Because publishing regenerates `index.html` and the `share/<id>.html` pages, **those should be treated as generated output** — content changes should always go through the CMS and a re-publish, not direct edits to the files, or they'll be lost the next time you publish. Share card JPEGs are rewritten only when that card's inputs changed.
 
 ### Social sharing (Open Graph)
 
 The site is a single page with hash routing (`#project/<id>`), and social crawlers ignore URL fragments, so a hash link alone would always show the generic site preview. Publishing therefore produces:
 
-- `share/cards/<id>.jpg` — a 1200x630 card per project: the project thumbnail with the title, short description, category, and `chrismoore.me` on it.
-- `share/cards/site.jpg` — a site card built from the hero board (the featured thumbnail from each of the six categories).
+- `share/cards/<id>.jpg` — a 1200x630 card per project: the project thumbnail with the title, short description, category, and `chrismoore.me` on it. Remade only when those fields, the thumbnail file, or site branding change.
+- `share/cards/site.jpg` — a site card built from the hero board (the featured thumbnail from each of the six categories). Remade when the hero tiles or site title/description/url change.
 - `share/<id>.html` — a tiny page per project carrying `og:*` and `twitter:*` tags pointing at that card. Crawlers stay on this HTML so they can read the tags. Humans get a short delay, then are sent to `/#project/<id>` (known social-bot user agents skip the redirect entirely). There is no instant meta-refresh.
+
+The first publish after upgrading the CMS rebuilds every card and writes `[CMS/data/share-manifest.json](CMS/data/share-manifest.json)`. Later publishes skip unchanged cards. A card-layout change in `share-cards.js` is a `RENDERER_VERSION` bump in `[CMS/lib/share.js](CMS/lib/share.js)`, which remakes the set once.
 
 The **Share** button on a project (and the copy-link buttons in the CMS project list) hands out `https://chrismoore.me/share/<id>`, which is what should be pasted into Facebook, LinkedIn, X, iMessage, etc. `index.html` itself carries the site-wide tags, so sharing the bare domain also gets a rich preview. The public URL, title and description live in Settings.
 

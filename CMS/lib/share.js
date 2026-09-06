@@ -10,18 +10,36 @@
 //   share/cards/<id>.jpg   1200x630 preview card rendered by the CMS browser
 //   share/cards/site.jpg   site-wide card (hero board) referenced from index.html
 //
+// Cards are remade only when their visible inputs change. Fingerprints live in
+// CMS/data/share-manifest.json (not served on the live site).
+//
 // og:url and canonical point at the share page itself: Facebook re-scrapes
 // og:url, so pointing it at the hash URL would lose the per-project tags.
 
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 const sharp = require('sharp');
 
 const PORTFOLIO_ROOT = path.join(__dirname, '..', '..');
 const SHARE_DIR = path.join(PORTFOLIO_ROOT, 'share');
 const CARDS_DIR = path.join(SHARE_DIR, 'cards');
+const MANIFEST_PATH = path.join(__dirname, '..', 'data', 'share-manifest.json');
 const CARD_W = 1200;
 const CARD_H = 630;
+// Bump when the canvas layout in public/js/share-cards.js changes so every
+// card remakes once. Independent of the CMS package version.
+const RENDERER_VERSION = 1;
+
+// Same order and labels as share-cards.js / the site hero board.
+const HERO_CATEGORIES = [
+  { id: 'Lighting', label: 'Lighting' },
+  { id: 'Art', label: 'Art' },
+  { id: 'Fixtures', label: 'Fixtures' },
+  { id: 'Software', label: 'Software' },
+  { id: 'Tooling', label: 'Shop' },
+  { id: 'Systems', label: 'Systems' }
+];
 
 const DEFAULTS = {
   site_url: 'https://chrismoore.me',
@@ -81,6 +99,152 @@ function cardWebPath(id) {
 
 function cardExists(id) {
   return fs.existsSync(path.join(PORTFOLIO_ROOT, ...cardWebPath(id).split('/')));
+}
+
+// --- incremental fingerprints ------------------------------------------------------
+// A card remakes only when something that appears on it changed: title, short
+// description, category, thumbnail path/bytes, crop, or site branding. Gallery,
+// specs, tags, etc. are ignored.
+
+function readManifest() {
+  try {
+    const raw = JSON.parse(fs.readFileSync(MANIFEST_PATH, 'utf-8'));
+    if (!raw || typeof raw !== 'object') return { rendererVersion: 0, cards: {} };
+    return {
+      rendererVersion: Number(raw.rendererVersion) || 0,
+      cards: raw.cards && typeof raw.cards === 'object' ? raw.cards : {}
+    };
+  } catch {
+    return { rendererVersion: 0, cards: {} };
+  }
+}
+
+function writeManifest(manifest) {
+  fs.mkdirSync(path.dirname(MANIFEST_PATH), { recursive: true });
+  fs.writeFileSync(MANIFEST_PATH, JSON.stringify(manifest, null, 2), 'utf-8');
+}
+
+function fingerprint(payload) {
+  return crypto.createHash('sha256').update(JSON.stringify(payload)).digest('hex');
+}
+
+function fitStamp(fit) {
+  if (!fit || typeof fit !== 'object') return null;
+  return {
+    scale: Number(fit.scale) || 1,
+    x: Number.isFinite(Number(fit.x)) ? Number(fit.x) : 50,
+    y: Number.isFinite(Number(fit.y)) ? Number(fit.y) : 50
+  };
+}
+
+function mediaStamp(relPath) {
+  if (!relPath || typeof relPath !== 'string') return null;
+  if (/^https?:\/\//i.test(relPath)) return { remote: relPath };
+  const cleaned = relPath.replace(/^\/+/, '').replace(/\\/g, '/');
+  const abs = path.join(PORTFOLIO_ROOT, ...cleaned.split('/'));
+  const root = PORTFOLIO_ROOT.endsWith(path.sep) ? PORTFOLIO_ROOT : PORTFOLIO_ROOT + path.sep;
+  if (abs !== PORTFOLIO_ROOT && !abs.startsWith(root)) return null;
+  try {
+    const st = fs.statSync(abs);
+    if (!st.isFile()) return { missing: cleaned };
+    return { size: st.size, mtimeMs: Math.round(st.mtimeMs) };
+  } catch {
+    return { missing: cleaned };
+  }
+}
+
+function heroProjectsByCategory(projects) {
+  return HERO_CATEGORIES.map(cat => {
+    const list = (projects || []).filter(p => p.category === cat.id && p.draft !== true);
+    const featured = list.find(p => p.featured === true);
+    const project = featured || list.slice().sort((a, b) => (a.order ?? 0) - (b.order ?? 0))[0] || null;
+    return { ...cat, project };
+  });
+}
+
+function projectCardPayload(project, site) {
+  const image = project.thumbnail || project.image || '';
+  return {
+    v: RENDERER_VERSION,
+    title: project.title || '',
+    description: stripHtml(project.description),
+    category: project.category || '',
+    image,
+    fit: fitStamp(project.thumbnailFit),
+    media: mediaStamp(image),
+    site_title: site.title,
+    site_url: site.url
+  };
+}
+
+function siteCardPayload(projects, site) {
+  return {
+    v: RENDERER_VERSION,
+    site_title: site.title,
+    site_description: site.description,
+    site_url: site.url,
+    tiles: heroProjectsByCategory(projects).map(tile => {
+      const p = tile.project;
+      const image = p ? (p.thumbnail || p.image || '') : '';
+      return {
+        id: tile.id,
+        projectId: p ? String(p.id) : null,
+        image,
+        fit: p ? fitStamp(p.thumbnailFit) : null,
+        media: p ? mediaStamp(image) : null
+      };
+    })
+  };
+}
+
+function currentFingerprints(projects, settings) {
+  const published = (projects || []).filter(p => p && p.draft !== true && p.id != null);
+  const site = siteConfig(settings);
+  const out = { site: fingerprint(siteCardPayload(published, site)) };
+  for (const p of published) {
+    out[safeId(p.id)] = fingerprint(projectCardPayload(p, site));
+  }
+  return out;
+}
+
+function recordWrittenCards(ids, projects, settings) {
+  if (!ids || !ids.length) return;
+  const current = currentFingerprints(projects, settings);
+  const manifest = readManifest();
+  manifest.rendererVersion = RENDERER_VERSION;
+  for (const id of ids) {
+    const key = safeId(id);
+    if (current[key]) manifest.cards[key] = current[key];
+  }
+  writeManifest(manifest);
+}
+
+function pruneManifest(projects) {
+  const keep = new Set(['site', ...(projects || []).map(p => safeId(p.id))]);
+  const manifest = readManifest();
+  let changed = false;
+  for (const key of Object.keys(manifest.cards)) {
+    if (keep.has(key)) continue;
+    delete manifest.cards[key];
+    changed = true;
+  }
+  if (changed) writeManifest(manifest);
+}
+
+// Compare current card inputs to the last successful write. Missing JPEGs and
+// a renderer-version bump both force a remake.
+function planCards(projects, settings) {
+  const published = (projects || []).filter(p => p && p.draft !== true && p.id != null);
+  const current = currentFingerprints(published, settings);
+  const manifest = readManifest();
+  const staleRenderer = manifest.rendererVersion !== RENDERER_VERSION;
+  const ids = ['site', ...published.map(p => safeId(p.id))];
+  const render = [];
+  for (const id of ids) {
+    const stored = !staleRenderer && manifest.cards[id];
+    if (!cardExists(id) || !stored || stored !== current[id]) render.push(id);
+  }
+  return { render, skip: ids.length - render.length, total: ids.length };
 }
 
 // --- meta tags ---------------------------------------------------------------------
@@ -216,6 +380,7 @@ function pruneCards(projects) {
     if (keep.has(entry)) continue;
     try { fs.unlinkSync(path.join(CARDS_DIR, entry)); removed++; } catch (_) { /* ignore */ }
   }
+  pruneManifest(projects);
   return removed;
 }
 
@@ -227,10 +392,11 @@ function decodeDataUrl(dataUrl) {
   return Buffer.from(m[2], 'base64');
 }
 
-async function writeCards(cards) {
+async function writeCards(cards, projects, settings) {
   if (!Array.isArray(cards)) throw new Error('cards must be an array');
   fs.mkdirSync(CARDS_DIR, { recursive: true });
   const written = [];
+  const writtenIds = [];
   const warnings = [];
   for (const card of cards) {
     if (!card || card.id == null || !card.dataUrl) continue;
@@ -242,9 +408,13 @@ async function writeCards(cards) {
         .jpeg({ quality: 85, progressive: true, mozjpeg: true })
         .toFile(path.join(CARDS_DIR, file));
       written.push(`share/cards/${file}`);
+      writtenIds.push(card.id);
     } catch (err) {
       warnings.push(`${file}: ${err.message}`);
     }
+  }
+  if (writtenIds.length && Array.isArray(projects) && settings) {
+    recordWrittenCards(writtenIds, projects, settings);
   }
   return { written: written.length, files: written, warnings };
 }
@@ -252,12 +422,14 @@ async function writeCards(cards) {
 module.exports = {
   SHARE_DIR,
   CARDS_DIR,
+  RENDERER_VERSION,
   siteConfig,
   stripHtml,
   buildSiteMeta,
   writeProjectPages,
   pruneCards,
   writeCards,
+  planCards,
   projectShareUrl,
   cardWebPath
 };

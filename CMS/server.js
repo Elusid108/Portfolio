@@ -292,11 +292,20 @@ app.post('/api/media/cleanup', async (req, res) => {
 
 // --- Publish ---
 
+// Which share cards actually need a canvas remake (missing JPEG or changed inputs).
+app.get('/api/share-cards/plan', (req, res) => {
+  try {
+    res.json(share.planCards(data.getProjects(), data.getSettings()));
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // Social preview cards rendered by the admin UI (canvas -> JPEG data URLs).
 // Called right before /api/publish so the meta tags can reference them.
 app.post('/api/share-cards', async (req, res) => {
   try {
-    const result = await share.writeCards(req.body?.cards || []);
+    const result = await share.writeCards(req.body?.cards || [], data.getProjects(), data.getSettings());
     if (result.warnings.length) console.warn('[share] card warnings:', result.warnings);
     res.json({ success: true, ...result });
   } catch (err) {

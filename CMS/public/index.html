@@ -92,7 +92,7 @@
   <div id="app" class="max-w-5xl mx-auto p-6">
     <div class="flex justify-between items-center mb-8">
       <div>
-        <h1 class="text-3xl font-bold text-slate-800">Portfolio CMS <span class="text-sm font-medium text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full align-middle">v2.5.2 Local</span></h1>
+        <h1 class="text-3xl font-bold text-slate-800">Portfolio CMS <span class="text-sm font-medium text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full align-middle">v2.5.3 Local</span></h1>
         <p class="text-slate-500 text-sm mt-1">Local portfolio manager</p>
       </div>
       <div class="flex gap-3 items-center">
@@ -3104,15 +3104,26 @@
         // 1. Share cards (best effort — publishing still proceeds if this fails)
         let cardResult = null;
         try {
-          const [latestProjects, latestSettings] = await Promise.all([api.get('/projects'), api.get('/settings')]);
+          const [latestProjects, latestSettings, plan] = await Promise.all([
+            api.get('/projects'),
+            api.get('/settings'),
+            api.get('/share-cards/plan').catch(() => null)
+          ]);
           cachedSettings = latestSettings || cachedSettings;
           if (window.ShareCards) {
-            const cards = await ShareCards.renderAll(latestProjects, latestSettings, (done, total) => {
-              loadingText.innerText = `Rendering share cards... ${done}/${total}`;
-            });
-            loadingText.innerText = "Saving share cards...";
-            cardResult = await api.post('/share-cards', { cards });
-            if (cardResult.warnings?.length) console.warn('Share card warnings:', cardResult.warnings);
+            const ids = plan && Array.isArray(plan.render) ? plan.render : null;
+            const skipped = plan && Number.isFinite(plan.skip) ? plan.skip : 0;
+            if (ids && ids.length === 0) {
+              cardResult = { written: 0, skipped };
+            } else {
+              const cards = await ShareCards.renderAll(latestProjects, latestSettings, (done, total) => {
+                loadingText.innerText = `Rendering share cards... ${done}/${total}`;
+              }, ids);
+              loadingText.innerText = "Saving share cards...";
+              cardResult = await api.post('/share-cards', { cards });
+              cardResult.skipped = skipped;
+              if (cardResult.warnings?.length) console.warn('Share card warnings:', cardResult.warnings);
+            }
           }
         } catch (err) {
           console.error('Share cards failed:', err);
@@ -3129,7 +3140,8 @@
         const share = res.share || {};
         const summary = document.getElementById('publishShareSummary');
         summary.textContent = `${share.pages ?? 0} project share page(s) written to share/` +
-          (cardResult ? `, ${cardResult.written} preview card(s) rendered` : '') +
+          (cardResult && cardResult.written ? `, ${cardResult.written} preview card(s) rendered` : '') +
+          (cardResult && cardResult.skipped ? `, ${cardResult.skipped} unchanged card(s) skipped` : '') +
           (share.removedPages ? `, ${share.removedPages} stale page(s) removed` : '') + '.';
         const cardBox = document.getElementById('publishShareCard');
         if (share.siteCard) {
@@ -3804,7 +3816,7 @@
       </div>
 
       <p class="text-[10px] text-slate-400 font-mono tabular-nums mt-6 text-center">
-        Portfolio CMS v2.5.2 Local
+        Portfolio CMS v2.5.3 Local
       </p>
     </div>
   </div>

@@ -235,7 +235,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-12T01:03:01.269Z",
     "wip": false,
-    "order": 2,
+    "order": 0,
     "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>PD60 (x144)</strong><br><em>ColorfulLighting • LED • beam 4° • 60W • RGBW • infinite pan &amp; tilt</em></p><p><strong>LSM150 (x12)</strong><br><em>ColorfulLighting • LED • spot 15° • 150W • pan 520° • tilt 270° • 7 colors + white • 6 static gobos • 6 rotating gobos • 3 facet prism</em></p><p><strong>WFP12, (x40)</strong><br><em>ColorfulLighting • LED • wash 35° • 280W • RGBWA+UV</em></p><p><strong>Radiance Hazer, (x2)</strong><br><em>Ultratec • hazer • DMX • 120Vac • 500W</em></p><h2>PIXELS &amp; DISPLAY</h2><p><strong>Dancefloor Pixel Pillars (x10)</strong><br><em>x8 + 4m • RGBW (6000k) • 60/m • 20px/m</em></p><p><strong>WiFi VIP Pixel Tables (x32)</strong><br><em>2.1m • RGBW (6000k) • 60/m • 20px/m</em></p><p><strong>Ceiling Screen (x1)</strong><br><em>3.5m x 23m • P4.81 • 728 x 4784</em></p><p><strong>DJ Booth Screen (x1)</strong><br><em>7m x 1.5m • P4.81 • 1456 x 312</em></p><p><strong>Marquee Left Screen (x1)</strong><br><em>14m x 1m • P4.81 • 2912 x 208</em></p><p><strong>Marquee Right Screen (x1)</strong><br><em>18m x 1m • P4.81 • 3744 x 208</em></p><p><strong>Monolith Screens (x1)</strong><br><em>1.5m x 3m (x2) • P4.81 • 312 x 624 (x2)</em></p>",
     "related": [
       {
@@ -253,6 +253,10 @@
       {
         "name": "Glass VIP Wall",
         "url": "#project/8983"
+      },
+      {
+        "name": "LED Video Panel Service",
+        "url": "#project/4623"
       }
     ],
     "bannerFit": {
@@ -2272,7 +2276,7 @@
     ],
     "files": [],
     "video": "",
-    "order": 4,
+    "order": 2,
     "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>Short Tubes (x4)</strong><br><em>2x UCS1903 strand (23m) • clear lens • 6 LED • RGB • 5px/m • 24Vdc • 115px</em></p><p><strong>Long Tubes (x4)</strong><br><em>2x UCS1903 strand (30m) • clear lens • 6 LED • RGB • 5px/m • 24Vdc • 150px</em></p><h2>POWER &amp; DISTRIBUTION</h2><p><strong>Power Supply (x16)</strong><br><em>MEAN WELL • HLG-240H-24 • 24Vdc • 10A</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x16)</strong><br><em>Athom • LS4P-WLED-LA • WLED</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>Pixel Mapping</strong><br><em>Resolume Arena</em></p>",
     "related": [
       {
@@ -3662,7 +3666,12 @@
     "id": "5045",
     "order": 14,
     "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>Intimidator Spot 255 IRC (x6)</strong><br><em>Chauvet • profile • 60w white • 15° • 8 colors + white • 7 rotating gobos + open</em></p><p><strong>Generic UV LED (x6)</strong><br><em>dmx</em></p><p><strong>Wood Slats (x62)</strong><br><em>20px</em></p><p><strong>Drink Rails (x3)</strong><br><em>frost diffusion</em></p><h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixel Modules (x1500)</strong><br><em>WS2801 • RGB • 12Vdc</em></p><p><strong>LED Video Panels (x21)</strong><br><em>480mm x 480mm • 192 x 192 • 2.5P</em></p><h2>POWER &amp; DISTRIBUTION</h2><p><strong>Power Supplies (x5)</strong><br><em>MEAN WELL • 12Vdc</em></p><p><strong>Pixel Decoder (x1)</strong><br><em>Advatek • Pixlite 16 Long Range MKII</em></p><p><strong>Pixel Receiver (x5)</strong><br><em>Advatek • PixLite Long Range Receiver</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>Pixel Control</strong><br><em>LightJams</em></p><p><strong>Video Control</strong><br><em>Resolume Arena</em></p>",
-    "related": [],
+    "related": [
+      {
+        "name": "LED Video Panel Service",
+        "url": "#project/4623"
+      }
+    ],
     "thumbnailFit": {
       "scale": 1,
       "x": 52,
@@ -5028,7 +5037,7 @@
     "video": "",
     "timestamp": "2026-07-20T21:09:12.884Z",
     "id": "6808",
-    "order": 7,
+    "order": 6,
     "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x1152)</strong><br><em>19.2m • WS2815 • RGB • 60px/m • 12Vdc</em></p><h2>POWER &amp; DISTRIBUTION</h2><p><strong>Power Supplies (x1)</strong><br><em>MEAN WELL • HLG-320H-12 • 12Vdc • 22A</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>Louver Lights (x96)</strong><br><em>custom • 3D printed • 45deg • louvers • corner fixture</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>Pixel Control</strong><br><em>Madrix 5.x</em></p>",
     "related": [
       {
@@ -6087,7 +6096,7 @@
     "video": "",
     "timestamp": "2026-08-01T17:08:27.719Z",
     "id": "1612",
-    "order": 3,
+    "order": 1,
     "thumbnail": "media/Lighting/Blackout Ceiling Tubes/20240619_123414-thumb.webp",
     "specsData": [
       {
@@ -7775,7 +7784,7 @@
     "video": "",
     "timestamp": "2026-08-09T12:31:15.774Z",
     "id": "1088",
-    "order": 5,
+    "order": 4,
     "thumbnail": "media/Lighting/Pyramid Steps/20240713_100537-thumb.webp",
     "specsData": [
       {
@@ -9025,7 +9034,7 @@
     "video": "",
     "timestamp": "2026-08-14T21:28:07.028Z",
     "id": "7026",
-    "order": 8,
+    "order": 7,
     "specsData": [
       {
         "id": "48a6bb27-606d-4cac-a29c-5b7a3c2a72e7",
@@ -9371,7 +9380,7 @@
     "video": "",
     "timestamp": "2026-08-14T23:16:48.264Z",
     "id": "9280",
-    "order": 6,
+    "order": 5,
     "specsData": [
       {
         "id": "b17a8cbf-3ff5-462f-80b7-56c22280151c",
@@ -11396,7 +11405,7 @@
     "video": "",
     "timestamp": "2026-09-05T01:35:46.632Z",
     "id": "2395",
-    "order": 1,
+    "order": 3,
     "thumbnail": "media/Lighting/Lighting Layer/20260620_121930-thumb.webp"
   },
   {
@@ -11435,7 +11444,7 @@
     "video": "",
     "timestamp": "2026-09-05T01:37:47.811Z",
     "id": "299",
-    "order": 0
+    "order": 8
   },
   {
     "title": "Home Light Rig",
@@ -11598,154 +11607,287 @@
     "order": 2
   },
   {
-    "title": "LED Video Repair",
+    "title": "LED Video Panel Service",
     "category": "Tooling",
-    "image": "media/Fabrication/LED Video Repair/20260620_121930.webp",
-    "thumbnail": "media/Fabrication/LED Video Repair/20260620_121930-thumb.webp",
-    "description": "<p>Add info and images about my skills in repairing LED videowalls. Lots of images from BNP</p>",
-    "longDescription": "<p><br></p>",
+    "image": "media/Fabrication/LED Video Panel Service/IMG_20170706_164945.webp",
+    "thumbnail": "media/Fabrication/LED Video Panel Service/20260620_121930-thumb.webp",
+    "description": "<p>One enamel-wire jumper pinched a live screw pad. The panel caught fire on site. I never routed a repair that way again.</p>",
+    "longDescription": "<p>The worst module I ever put back out taught me the hard way. I had jumped a ripped pad with enamel wire and did not know the screw pads in that frame were electrically live. The wire got pinched under a screw. On site, during the day, the panel caught fire. The crew put it out fast. I took the burned board apart until I understood exactly what I had done, and I never routed a jumper that close to a mounting hole again.</p><p>At Brown Note Productions I was the LED video panel tech across two stints that added up to about three years. Cases came back from festivals missing LEDs, pads, and sometimes chunks of board. Absen and ROE sent technicians to train me on their products, everything else I taught myself on the bench.</p><p>Most of the work was a reflow station putting knocked-off pixels back on. When the pads were gone, a short enamel wire jumped the break in the multiplexed array. These were mostly waterproof screens, so the iron never went straight to the face. Mask off, silicone scraped out, and on the bad ones the PCB came out of the housing so the plastic did not melt while I worked. Beyond the diodes I straightened bent frames and repaired the large spine PCBs that held the receiving cards, plus power supplies, ports, latches, and front masks.</p><p>Speed mattered. Damaged panels rotated in constantly. I marked every dead pixel with a dry-erase marker, pulled modules out of the frames in a batch, and worked the easy ones first. A normal day was a hundred to a hundred and fifty LEDs, often fifty or more modules. Trace repairs waited until later. End of day, silicone on everything finished. Next morning, masks back on, modules into the repaired stock, and the cycle started over.</p><p>I took the same bench process to Temple San Francisco to keep the immersive video ceiling alive when replacement modules were scarce, and to the wall in the basement at Triangle.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "draft": true,
-    "tags": [],
+    "draft": false,
+    "tags": [
+      "SMD Soldering",
+      "Reflow",
+      "Repair",
+      "LED Video"
+    ],
     "gallery": [
       {
-        "url": "media/Fabrication/LED Video Repair/20160902_142353.webp",
-        "thumbnail": "media/Fabrication/LED Video Repair/20160902_142353-thumb.webp"
+        "url": "media/Fabrication/LED Video Panel Service/IMG_20180326_110653-EDIT.webp",
+        "fit": {
+          "scale": 1,
+          "x": 50,
+          "y": 69.7
+        },
+        "thumbnail": "media/Fabrication/LED Video Panel Service/IMG_20180326_110653-EDIT-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Repair/20161221_161507.webp",
-        "thumbnail": "media/Fabrication/LED Video Repair/20161221_161507-thumb.webp"
+        "url": "media/Fabrication/LED Video Panel Service/20160902_142353.webp",
+        "fit": {
+          "scale": 1,
+          "x": 50,
+          "y": 49.4
+        },
+        "thumbnail": "media/Fabrication/LED Video Panel Service/20160902_142353-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Repair/20230816_100613.webp",
-        "thumbnail": "media/Fabrication/LED Video Repair/20230816_100613-thumb.webp"
+        "url": "media/Fabrication/LED Video Panel Service/20161221_161507.webp",
+        "fit": {
+          "scale": 1.25,
+          "x": 23.6,
+          "y": 7.3
+        },
+        "thumbnail": "media/Fabrication/LED Video Panel Service/20161221_161507-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Repair/20230816_102426.webp",
-        "thumbnail": "media/Fabrication/LED Video Repair/20230816_102426-thumb.webp"
+        "url": "media/Fabrication/LED Video Panel Service/20230816_100613.webp",
+        "fit": {
+          "scale": 1,
+          "x": 49.3,
+          "y": 44.9
+        },
+        "thumbnail": "media/Fabrication/LED Video Panel Service/20230816_100613-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Repair/20230816_102438.webp",
-        "thumbnail": "media/Fabrication/LED Video Repair/20230816_102438-thumb.webp"
+        "url": "media/Fabrication/LED Video Panel Service/20230816_102426.webp",
+        "fit": {
+          "scale": 1.5,
+          "x": 51.2,
+          "y": 64.8
+        },
+        "thumbnail": "media/Fabrication/LED Video Panel Service/20230816_102426-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Repair/20230904_123407.webp",
-        "thumbnail": "media/Fabrication/LED Video Repair/20230904_123407-thumb.webp"
+        "url": "media/Fabrication/LED Video Panel Service/20230816_102438.webp",
+        "fit": {
+          "scale": 1.45,
+          "x": 44.1,
+          "y": 67.1
+        },
+        "thumbnail": "media/Fabrication/LED Video Panel Service/20230816_102438-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Repair/20231025_162809.webp",
-        "thumbnail": "media/Fabrication/LED Video Repair/20231025_162809-thumb.webp"
+        "url": "media/Fabrication/LED Video Panel Service/20230904_123407.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/20230904_123407-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Repair/20231025_164259.webp",
-        "thumbnail": "media/Fabrication/LED Video Repair/20231025_164259-thumb.webp"
+        "url": "media/Fabrication/LED Video Panel Service/20231025_162809.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/20231025_162809-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Repair/IMG_20170327_091628.webp",
-        "thumbnail": "media/Fabrication/LED Video Repair/IMG_20170327_091628-thumb.webp"
+        "url": "media/Fabrication/LED Video Panel Service/20231025_164259.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/20231025_164259-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Repair/IMG_20170613_094813.webp",
-        "thumbnail": "media/Fabrication/LED Video Repair/IMG_20170613_094813-thumb.webp"
+        "url": "media/Fabrication/LED Video Panel Service/IMG_20170327_091628.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/IMG_20170327_091628-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Repair/IMG_20170616_093518.webp",
-        "thumbnail": "media/Fabrication/LED Video Repair/IMG_20170616_093518-thumb.webp"
+        "url": "media/Fabrication/LED Video Panel Service/IMG_20170613_094813.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/IMG_20170613_094813-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Repair/IMG_20170616_155731.webp",
-        "thumbnail": "media/Fabrication/LED Video Repair/IMG_20170616_155731-thumb.webp"
+        "url": "media/Fabrication/LED Video Panel Service/IMG_20170616_093518.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/IMG_20170616_093518-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Repair/IMG_20170616_155910.webp",
-        "thumbnail": "media/Fabrication/LED Video Repair/IMG_20170616_155910-thumb.webp"
+        "url": "media/Fabrication/LED Video Panel Service/IMG_20170616_155731.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/IMG_20170616_155731-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Repair/IMG_20170706_163007.webp",
-        "thumbnail": "media/Fabrication/LED Video Repair/IMG_20170706_163007-thumb.webp"
+        "url": "media/Fabrication/LED Video Panel Service/IMG_20170616_155910.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/IMG_20170616_155910-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Repair/IMG_20170706_163257_385.webp",
-        "thumbnail": "media/Fabrication/LED Video Repair/IMG_20170706_163257_385-thumb.webp"
+        "url": "media/Fabrication/LED Video Panel Service/IMG_20170706_163007.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/IMG_20170706_163007-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Repair/IMG_20170706_164945.webp",
-        "thumbnail": "media/Fabrication/LED Video Repair/IMG_20170706_164945-thumb.webp"
+        "url": "media/Fabrication/LED Video Panel Service/IMG_20170706_164945.webp",
+        "fit": {
+          "scale": 1.15,
+          "x": 69.2,
+          "y": 59.5
+        },
+        "thumbnail": "media/Fabrication/LED Video Panel Service/IMG_20170706_164945-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Repair/IMG_20170706_165850.webp",
-        "thumbnail": "media/Fabrication/LED Video Repair/IMG_20170706_165850-thumb.webp"
+        "url": "media/Fabrication/LED Video Panel Service/IMG_20170706_165850.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/IMG_20170706_165850-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Repair/IMG_20170706_173402.webp",
-        "thumbnail": "media/Fabrication/LED Video Repair/IMG_20170706_173402-thumb.webp"
+        "url": "media/Fabrication/LED Video Panel Service/IMG_20170706_173402.webp",
+        "fit": {
+          "scale": 1,
+          "x": 49.5,
+          "y": 58.6
+        },
+        "thumbnail": "media/Fabrication/LED Video Panel Service/IMG_20170706_173402-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Repair/IMG_20170706_182027_692.webp",
-        "thumbnail": "media/Fabrication/LED Video Repair/IMG_20170706_182027_692-thumb.webp"
+        "url": "media/Fabrication/LED Video Panel Service/IMG_20170720_134641.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/IMG_20170720_134641-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Repair/IMG_20170720_134636.webp",
-        "thumbnail": "media/Fabrication/LED Video Repair/IMG_20170720_134636-thumb.webp"
+        "url": "media/Fabrication/LED Video Panel Service/IMG_20170720_150009.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/IMG_20170720_150009-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Repair/IMG_20170720_134641.webp",
-        "thumbnail": "media/Fabrication/LED Video Repair/IMG_20170720_134641-thumb.webp"
+        "url": "media/Fabrication/LED Video Panel Service/IMG_20170720_150016.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/IMG_20170720_150016-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Repair/IMG_20170720_150009.webp",
-        "thumbnail": "media/Fabrication/LED Video Repair/IMG_20170720_150009-thumb.webp"
+        "url": "media/Fabrication/LED Video Panel Service/IMG_20170922_171122.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/IMG_20170922_171122-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Repair/IMG_20170720_150016.webp",
-        "thumbnail": "media/Fabrication/LED Video Repair/IMG_20170720_150016-thumb.webp"
+        "url": "media/Fabrication/LED Video Panel Service/IMG_20171020_115436.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/IMG_20171020_115436-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Repair/IMG_20170922_171122.webp",
-        "thumbnail": "media/Fabrication/LED Video Repair/IMG_20170922_171122-thumb.webp"
+        "url": "media/Fabrication/LED Video Panel Service/IMG_20171212_144450.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/IMG_20171212_144450-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Repair/IMG_20170922_171359_753.webp",
-        "thumbnail": "media/Fabrication/LED Video Repair/IMG_20170922_171359_753-thumb.webp"
+        "url": "media/Fabrication/LED Video Panel Service/IMG_20180116_111648.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/IMG_20180116_111648-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Repair/IMG_20171020_115436.webp",
-        "thumbnail": "media/Fabrication/LED Video Repair/IMG_20171020_115436-thumb.webp"
+        "url": "media/Fabrication/LED Video Panel Service/IMG_20180129_140135.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/IMG_20180129_140135-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Repair/IMG_20171212_144450.webp",
-        "thumbnail": "media/Fabrication/LED Video Repair/IMG_20171212_144450-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/LED Video Repair/IMG_20180116_111648.webp",
-        "thumbnail": "media/Fabrication/LED Video Repair/IMG_20180116_111648-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/LED Video Repair/IMG_20180129_140135.webp",
-        "thumbnail": "media/Fabrication/LED Video Repair/IMG_20180129_140135-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/LED Video Repair/IMG_20180216_172725.webp",
-        "thumbnail": "media/Fabrication/LED Video Repair/IMG_20180216_172725-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/LED Video Repair/IMG_20180326_110653-EDIT.webp",
-        "thumbnail": "media/Fabrication/LED Video Repair/IMG_20180326_110653-EDIT-thumb.webp"
+        "url": "media/Fabrication/LED Video Panel Service/IMG_20180216_172725.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/IMG_20180216_172725-thumb.webp"
       }
     ],
     "files": [],
-    "specsData": [],
-    "specs": "",
-    "related": [],
+    "specsData": [
+      {
+        "id": "eb1923b4-b8d9-43d8-b984-ebf380aa07ac",
+        "title": "PANEL BRANDS",
+        "items": [
+          {
+            "id": "c30bc728-49df-4699-98bb-187391d5a6b9",
+            "name": "Absen",
+            "qty": "",
+            "specs": "Primary product; factory tech training"
+          },
+          {
+            "id": "0d65cbae-b878-47d5-9016-19458a1f7bf0",
+            "name": "ROE",
+            "qty": "",
+            "specs": "Primary product; factory tech training"
+          },
+          {
+            "id": "624ffa5a-a4df-42af-bcd5-3a340e8eff0e",
+            "name": "GTEK",
+            "qty": "",
+            "specs": ""
+          }
+        ]
+      },
+      {
+        "id": "e8d95ba9-44c6-4b36-ae9e-5a9b8bffebe7",
+        "title": "BENCH & THROUGHPUT",
+        "items": [
+          {
+            "id": "0706cdc9-d909-46d0-a555-326a8504d46c",
+            "name": "Typical day",
+            "qty": "",
+            "specs": "100-150 LED pixels, ~50+ modules"
+          },
+          {
+            "id": "2f815fb9-f2d1-49ad-928c-761479c2ab33",
+            "name": "Tenure",
+            "qty": "",
+            "specs": "~3 years across two stints at Brown Note Productions"
+          },
+          {
+            "id": "433f2b8e-2d78-4980-87cf-69d9a2278c9c",
+            "name": "Reflow station",
+            "qty": "",
+            "specs": "Knocked-off SMD LED replacement"
+          },
+          {
+            "id": "96a9e67e-6336-4bd3-9355-a9c7a2976cc1",
+            "name": "Trace repair",
+            "qty": "",
+            "specs": "Enamel wire jumper on multiplexed arrays"
+          }
+        ]
+      },
+      {
+        "id": "5db90def-122f-49fe-b284-889e08afe8cf",
+        "title": "REPAIR SCOPE",
+        "items": [
+          {
+            "id": "0a136417-df81-44ef-b369-7c0aa6cd1652",
+            "name": "Pixels & pads",
+            "qty": "",
+            "specs": "Reflow, ripped-pad jumpers"
+          },
+          {
+            "id": "4cde529f-072b-4900-95a6-6f832e76d254",
+            "name": "Waterproof prep",
+            "qty": "",
+            "specs": "Mask removal, silicone scrape, PCB pull from housing"
+          },
+          {
+            "id": "604a1bca-041c-4131-aa21-43ea5f001f54",
+            "name": "Mechanicals",
+            "qty": "",
+            "specs": "Bent frames, latches, front masks"
+          },
+          {
+            "id": "2859036b-0b39-40ae-8e34-9c1936915cc6",
+            "name": "Electronics",
+            "qty": "",
+            "specs": "Spine PCB, receiving cards, power supplies, ports"
+          }
+        ]
+      }
+    ],
+    "specs": "<h2>PANEL BRANDS</h2><p><strong>Absen</strong><br><em>Primary product; factory tech training</em></p><p><strong>ROE</strong><br><em>Primary product; factory tech training</em></p><p><strong>GTEK</strong></p><h2>BENCH &amp; THROUGHPUT</h2><p><strong>Typical day</strong><br><em>100-150 LED pixels • ~50+ modules</em></p><p><strong>Tenure</strong><br><em>~3 years across two stints at Brown Note Productions</em></p><p><strong>Reflow station</strong><br><em>Knocked-off SMD LED replacement</em></p><p><strong>Trace repair</strong><br><em>Enamel wire jumper on multiplexed arrays</em></p><h2>REPAIR SCOPE</h2><p><strong>Pixels &amp; pads</strong><br><em>Reflow • ripped-pad jumpers</em></p><p><strong>Waterproof prep</strong><br><em>Mask removal • silicone scrape • PCB pull from housing</em></p><p><strong>Mechanicals</strong><br><em>Bent frames • latches • front masks</em></p><p><strong>Electronics</strong><br><em>Spine PCB • receiving cards • power supplies • ports</em></p>",
+    "related": [
+      {
+        "name": "Immersive Dance Lighting Rig",
+        "url": "#project/1"
+      },
+      {
+        "name": "The Basement",
+        "url": "#project/5045"
+      }
+    ],
     "video": "",
     "timestamp": "2026-09-05T01:53:03.450Z",
     "id": "4623",
-    "order": 1
+    "order": 1,
+    "thumbnailFit": {
+      "scale": 1.1,
+      "x": 84,
+      "y": 57.6
+    },
+    "bannerFit": {
+      "scale": 1,
+      "x": 59.5,
+      "y": 55.7
+    }
   },
   {
     "title": "Chain Hoist Service & Repair",
