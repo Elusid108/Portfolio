@@ -933,7 +933,7 @@
       {
         "name": "Mini Pyramid.zip",
         "url": "media/Art/Mini Pyramid/files/Mini Pyramid.zip",
-        "description": "Multi‑plate .3mf with every printed part for the Mini Pyramid, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
+        "description": "Single‑plate .3mf with every printed part for the Mini Pyramid, ready to slice and assemble. Fits a 8x8 WS2812b matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
         "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale.",
         "image": "media/Art/Mini Pyramid/Screenshot 2026-09-05 214615.webp",
         "thumbnail": "media/Art/Mini Pyramid/Screenshot 2026-09-05 214615-thumb.webp",
@@ -1810,7 +1810,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-17T17:46:42.266Z",
     "wip": false,
-    "order": 4,
+    "order": 3,
     "specs": "<h2>SOFTWARE &amp; STACK</h2><p><strong>Pixel Control</strong><br><em>Madrix 5.x</em></p>",
     "related": [
       {
@@ -3419,7 +3419,7 @@
     ],
     "files": [],
     "video": "",
-    "order": 3,
+    "order": 2,
     "specs": "",
     "related": [
       {
@@ -3438,7 +3438,8 @@
       "y": 29.8
     },
     "thumbnail": "media/Electronics/The Orb/MVIMG_20190303_010156_1 (1)-thumb.webp",
-    "specsData": []
+    "specsData": [],
+    "draft": false
   },
   {
     "title": "The Basement",
@@ -5449,7 +5450,7 @@
     "video": "",
     "timestamp": "2026-07-31T21:40:01.374Z",
     "id": "6371",
-    "order": 2,
+    "order": 0,
     "thumbnailFit": {
       "scale": 1.15,
       "x": 33.2,
@@ -5610,7 +5611,7 @@
     "video": "",
     "timestamp": "2026-08-01T15:14:28.453Z",
     "id": "2052",
-    "order": 6,
+    "order": 4,
     "thumbnailFit": {
       "scale": 1.2,
       "x": 0.4,
@@ -5689,7 +5690,8 @@
           }
         ]
       }
-    ]
+    ],
+    "draft": false
   },
   {
     "title": "Blackout Ceiling Tubes",
@@ -6465,7 +6467,7 @@
     "video": "",
     "timestamp": "2026-08-08T00:49:03.114Z",
     "id": "8983",
-    "order": 5,
+    "order": 6,
     "thumbnail": "media/Electronics/Glass VIP Wall/Screenshot 2026-08-07 204525-thumb.webp",
     "specsData": [
       {
@@ -10900,7 +10902,7 @@
     "video": "",
     "timestamp": "2026-09-05T01:34:07.514Z",
     "id": 5614,
-    "order": 0
+    "order": 5
   },
   {
     "title": "Lighting Layer",
@@ -11569,7 +11571,7 @@
       {
         "name": "Mini Heart.zip",
         "url": "media/Art/Mini Heart/files/Mini Heart.zip",
-        "description": "Multi‑plate .3mf with every printed part for the Mini Heart, ready to slice and assemble. Fits a 16x16 WS2815 matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
+        "description": "Single‑plate .3mf with every printed part for the Mini Heart, ready to slice and assemble. Fits a 8x8 WS2812b matrix (electronics not included). Read SAFETY NOTICE.txt before wiring.",
         "license": "CC BY‑NC‑SA 4.0 — free to print and remix, not for resale.",
         "image": "media/Art/Mini Heart/Screenshot 2026-09-05 214550.webp",
         "thumbnail": "media/Art/Mini Heart/Screenshot 2026-09-05 214550-thumb.webp",
