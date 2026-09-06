@@ -291,12 +291,12 @@
         // viewer settings (up axis, per-part color + opacity) on the gallery item.
         const isModelUrl = (url) => typeof url === 'string' && /\.glb$/i.test(url.split('?')[0]);
         const isModelItem = (item) => (typeof item === 'object' && item?.type === 'model') || isModelUrl(mediaSrc(item));
+        // The GLB is a reduced-poly preview only; no original file is stored or offered.
         const mediaModel = (item) => {
-            if (typeof item !== 'object' || !item) return { up: 'z', parts: [], source: '', format: '' };
+            if (typeof item !== 'object' || !item) return { up: 'z', parts: [], format: '' };
             return {
                 up: item.up === 'y' ? 'y' : 'z',
                 parts: Array.isArray(item.parts) ? item.parts : [],
-                source: item.source || '',
                 format: item.format || ''
             };
         };
@@ -841,7 +841,7 @@
             const [isFullscreen, setIsFullscreen] = useState(false);
             const [pseudoFullscreen, setPseudoFullscreen] = useState(false);
             const [showHint, setShowHint] = useState(true);
-            const info = model || { up: 'z', parts: [], source: '', format: '' };
+            const info = model || { up: 'z', parts: [], format: '' };
 
             useEffect(() => {
                 let cancelled = false;
@@ -927,7 +927,7 @@
             };
 
             const fullscreenActive = isFullscreen || pseudoFullscreen;
-            const fmt = (info.format || (info.source ? info.source.split('.').pop() : '') || 'glb').toUpperCase();
+            const fmt = (info.format || 'glb').toUpperCase();
             const pct = Math.round(progress * 100);
 
             return (
@@ -958,9 +958,6 @@
                         <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-zinc-900 text-zinc-300 p-6 text-center z-10" role="alert">
                             <Box size={32} className="text-zinc-600" aria-hidden="true" />
                             <p className="text-sm">{error}</p>
-                            {info.source && (
-                                <a href={ensureProtocol(info.source)} download onClick={stop} className="text-xs font-bold text-cyan-400 hover:text-cyan-300 underline">Download the original file instead</a>
-                            )}
                         </div>
                     )}
 
@@ -983,11 +980,6 @@
                             {info.parts && info.parts.length > 1 ? `${info.parts.length} parts` : ''}
                         </span>
                         <span className="flex-1 sm:hidden"></span>
-                        {info.source && (
-                            <a href={ensureProtocol(info.source)} download onClick={stop} aria-label={`Download original ${fmt} file`} title={`Download original ${fmt}`} className="text-white hover:text-cyan-400 transition-colors flex-shrink-0 flex items-center gap-1 text-xs font-bold">
-                                <Download size={18} /> <span className="hidden sm:inline">{fmt}</span>
-                            </a>
-                        )}
                         <button type="button" onClick={toggleFullscreen} aria-label={fullscreenActive ? 'Exit fullscreen' : 'Enter fullscreen'} className="text-white hover:text-cyan-400 transition-colors flex-shrink-0">
                             {fullscreenActive ? <Minimize size={18} /> : <Maximize size={18} />}
                         </button>
