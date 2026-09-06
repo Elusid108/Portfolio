@@ -2,7 +2,7 @@
 
 This is the source for my personal portfolio website — a showcase of work spanning lighting design, art installations, electronics, apps, fabrication, and systems integration.
 
-The local authoring tool is **CMS v2.5 Local**.
+The local authoring tool is **CMS v2.5.1 Local**.
 
 The live site (`[index.html](index.html)`) is a single, self-contained static page built with React 18 (UMD), Babel Standalone, and Tailwind CSS (all via CDN). It reads its content from a JSON block embedded directly in the page, so there's no build step and no backend required to host or view it — it can be served as-is from GitHub Pages or any static file host. Alongside it, the `[share/](share/)` folder holds small generated pages and preview images that give each project a proper social-media link preview.
 
@@ -27,7 +27,7 @@ Portfolio/
 │   └── <Category>/<Project>/
 │       ├── *.webp, *.mp4        # Images (+ -thumb), videos (+ -poster)
 │       ├── files/               # Downloadable attachments
-│       └── models/              # 3D models: <name>.glb (viewer) + original .stl/.3mf/.step + poster
+│       └── models/              # 3D models: <name>.glb preview + poster (originals are never stored)
 ├── CMS/                 # Local admin tool used to edit content & publish index.html
 │   ├── server.js               # Express server (API + admin UI + preview)
 │   ├── lib/
@@ -89,10 +89,10 @@ Then open `http://localhost:3000` in a browser. On Windows, `[CMS/launch.bat](CM
 The admin UI lets you manage, per project:
 
 - Title, category, and tags
-- Banner image (uploaded or linked by path/URL)
+- Banner image (uploaded or linked by path/URL), with a crop tool for the card thumbnail and page banner that overlays an alignment grid (rule of thirds or golden ratio, toggleable)
 - Short and long descriptions, edited with a rich-text (Quill) editor. Sparkle buttons on those toolbars can generate copy through Gemini (API key in Settings; writing prompts stay on the server and are never published). Interview questions and long-copy shape are steered by the project's category (Lighting, Art, Fixtures, Software, Tooling, Systems; Sculpture follows Art)
 - A gallery of images, self-hosted videos, YouTube links and **3D models**, with drag-to-reorder and thumbnail previews
-- A **3D model editor** per model: live preview, per-part color and opacity, up-axis (Z-up / Y-up), and "capture thumbnail from this view"
+- A **3D model editor** per model: live preview, per-part color and opacity (slider, exact number field, or mouse wheel over either), up-axis (Z-up / Y-up), and "capture thumbnail from this view"
 - Action links — website, launch app, GitHub, shop
 - Downloadable files (name, URL, optional description, license, and toast thumbnail with WebP upload + 16:9 crop)
 - **Featured** and **WIP** flags
@@ -135,8 +135,8 @@ Videos go through `[CMS/lib/video.js](CMS/lib/video.js)` (ffmpeg): H.264 MP4 cap
 Gallery rows can also hold 3D models. Pick **3D Model** in the gallery toolbar and choose `.stl`, `.3mf`, `.step` or `.stp` files:
 
 1. The file is converted **in the admin browser** by `[CMS/public/js/model-tools.js](CMS/public/js/model-tools.js)` — STL and 3MF via three.js loaders, STEP via OpenCascade compiled to WebAssembly (`occt-import-js`, served from `node_modules` at `/vendor/occt`). Everything is exported as a single **GLB**.
-2. The GLB and the original file are uploaded together (`POST /api/media/upload-model`) into `media/<Category>/<Project>/models/`. The original stays downloadable from the viewer.
-3. A default thumbnail is captured automatically, then the **3D editor** opens: each part (body/object in the source file) gets a color picker and an opacity slider so the preview can match the real object (e.g. a translucent diffuser). You can also switch the up axis and re-capture the thumbnail from any angle.
+2. Only the GLB is uploaded (`POST /api/media/upload-model`) into `media/<Category>/<Project>/models/`. It is a reduced-poly preview for the website: the original STL/3MF/STEP never leaves your machine, is not committed to the repo, and the viewer offers no download. Printable files still go through the project's **Downloadable files** section if you want to share them.
+3. A default thumbnail is captured automatically, then the **3D editor** opens: each part (body/object in the source file) gets a color picker and an opacity control — drag the slider, type an exact percentage, or hover either and use the mouse wheel (Shift for 5% steps) — so the preview can match the real object (e.g. a translucent diffuser). You can also switch the up axis and re-capture the thumbnail from any angle; the crop tool always shows the latest capture.
 
 The gallery item stores everything the site needs:
 
@@ -144,7 +144,6 @@ The gallery item stores everything the site needs:
 {
   "type": "model",
   "url": "media/Art/Pyramid/models/pyramid.glb",
-  "source": "media/Art/Pyramid/models/pyramid.3mf",
   "format": "3mf",
   "up": "z",
   "parts": [

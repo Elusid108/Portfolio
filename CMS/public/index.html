@@ -92,7 +92,7 @@
   <div id="app" class="max-w-5xl mx-auto p-6">
     <div class="flex justify-between items-center mb-8">
       <div>
-        <h1 class="text-3xl font-bold text-slate-800">Portfolio CMS <span class="text-sm font-medium text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full align-middle">v2.5 Local</span></h1>
+        <h1 class="text-3xl font-bold text-slate-800">Portfolio CMS <span class="text-sm font-medium text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full align-middle">v2.5.1 Local</span></h1>
         <p class="text-slate-500 text-sm mt-1">Local portfolio manager</p>
       </div>
       <div class="flex gap-3 items-center">
@@ -2467,10 +2467,27 @@
           </div>
           <div class="flex items-center gap-2 text-[10px] text-zinc-400">
             <span class="w-14 uppercase font-bold">Opacity</span>
-            <input type="range" min="0" max="100" value="${Math.round(p.opacity * 100)}" class="model-part-opacity flex-1 accent-indigo-500" oninput="onModelPartOpacity(${i}, this.value)">
-            <span class="model-part-opacity-label w-9 text-right font-mono">${Math.round(p.opacity * 100)}%</span>
+            <input type="range" min="0" max="100" step="1" value="${Math.round(p.opacity * 100)}" class="model-part-opacity flex-1 accent-indigo-500" title="Drag, or hover and use the mouse wheel (Shift = 5% steps)" oninput="onModelPartOpacity(${i}, this.value)">
+            <div class="flex items-center gap-0.5 font-mono">
+              <input type="number" min="0" max="100" step="1" value="${Math.round(p.opacity * 100)}" class="model-part-opacity-num w-12 bg-zinc-900 border border-zinc-700 rounded px-1 py-0.5 text-right text-xs text-zinc-200 focus:border-indigo-500 outline-none" title="Type an exact opacity" oninput="onModelPartOpacity(${i}, this.value, true)" onblur="this.value = Math.round((modelEditor.viewer?.listParts()[${i}]?.opacity ?? 1) * 100)">
+              <span>%</span>
+            </div>
           </div>
         </div>`).join('');
+
+      // Mouse wheel over the slider or the number field nudges opacity (1%, or 5% with Shift).
+      // Non-passive so the parts panel does not scroll while adjusting.
+      partsEl.querySelectorAll('.model-part').forEach(card => {
+        const i = Number(card.dataset.index);
+        const onWheel = (e) => {
+          e.preventDefault();
+          const step = e.shiftKey ? 5 : 1;
+          const current = Math.round((modelEditor.viewer?.listParts()[i]?.opacity ?? 1) * 100);
+          onModelPartOpacity(i, current + (e.deltaY < 0 ? step : -step));
+        };
+        card.querySelector('.model-part-opacity').addEventListener('wheel', onWheel, { passive: false });
+        card.querySelector('.model-part-opacity-num').addEventListener('wheel', onWheel, { passive: false });
+      });
     }
 
     function syncRowFromViewer() {
@@ -2488,11 +2505,21 @@
       modelEditor.viewer?.setPart(i, { color: value });
       syncRowFromViewer();
     }
-    function onModelPartOpacity(i, value) {
-      const o = Math.max(0, Math.min(100, Number(value))) / 100;
-      modelEditor.viewer?.setPart(i, { opacity: o });
-      const label = document.querySelector(`#model-editor-parts .model-part[data-index="${i}"] .model-part-opacity-label`);
-      if (label) label.textContent = Math.round(o * 100) + '%';
+    // value: 0-100. fromNumField: the user is typing in the number input, so leave
+    // its text alone (only clamp when out of range) to avoid clobbering mid-edit.
+    function onModelPartOpacity(i, value, fromNumField = false) {
+      if (value === '' || value === null || value === undefined) return; // mid-edit in the number field
+      const n = Number(value);
+      if (!Number.isFinite(n)) return;
+      const pct = Math.max(0, Math.min(100, Math.round(n)));
+      modelEditor.viewer?.setPart(i, { opacity: pct / 100 });
+      const card = document.querySelector(`#model-editor-parts .model-part[data-index="${i}"]`);
+      if (card) {
+        const slider = card.querySelector('.model-part-opacity');
+        const num = card.querySelector('.model-part-opacity-num');
+        if (slider && Number(slider.value) !== pct) slider.value = pct;
+        if (num && (!fromNumField || n !== pct) && Number(num.value) !== pct) num.value = pct;
+      }
       syncRowFromViewer();
     }
     function onModelPartName(i, value) {
@@ -2507,7 +2534,7 @@
       if (card && p) {
         card.querySelector('.model-part-color').value = p.color;
         card.querySelector('.model-part-opacity').value = Math.round(p.opacity * 100);
-        card.querySelector('.model-part-opacity-label').textContent = Math.round(p.opacity * 100) + '%';
+        card.querySelector('.model-part-opacity-num').value = Math.round(p.opacity * 100);
       }
       syncRowFromViewer();
     }
@@ -3194,10 +3221,56 @@
       box.style.height = Math.round(maxW * aspectH / aspectW) + 'px';
 
       const img = document.getElementById('crop-preview-img');
-      img.src = imgSrc;
+      // Local media keeps the same filename when re-captured (e.g. a new 3D
+      // model thumbnail or video frame), so bust the browser cache to always
+      // show the current file rather than the first one loaded this session.
+      img.src = /^\/?media\//.test(imgSrc)
+        ? `${getThumbnailSrc(imgSrc.replace(/^\//, ''))}?t=${Date.now()}`
+        : imgSrc;
 
+      renderCropGrid();
       updateCropPreview();
       document.getElementById('crop-modal').classList.remove('hidden');
+    }
+
+    // --- Crop grid overlay (rule of thirds / golden ratio) ---
+    const CROP_GRID_MODES = [
+      { id: 'thirds', label: 'Thirds', stops: [33.333, 66.667] },
+      { id: 'golden', label: 'Golden', stops: [38.197, 61.803] },
+      { id: 'off', label: 'Grid off', stops: null }
+    ];
+    let cropGridMode = (() => {
+      try { return localStorage.getItem('cms.cropGrid') || 'thirds'; } catch { return 'thirds'; }
+    })();
+
+    function renderCropGrid() {
+      const grid = document.getElementById('crop-grid');
+      const btn = document.getElementById('crop-grid-btn');
+      const mode = CROP_GRID_MODES.find(m => m.id === cropGridMode) || CROP_GRID_MODES[0];
+      if (btn) btn.innerHTML = `<i class="ph ph-grid-four"></i> ${mode.label}`;
+      if (!grid) return;
+      if (!mode.stops) { grid.style.backgroundImage = 'none'; return; }
+      // Each line is a 1px light stroke with a 1px dark stroke beside it so it
+      // stays visible over both bright and dark photos.
+      const line = (pos, vertical) => {
+        const dir = vertical ? 'to right' : 'to bottom';
+        return `linear-gradient(${dir}, transparent calc(${pos}% - 1px), rgba(0,0,0,0.45) calc(${pos}% - 1px), rgba(0,0,0,0.45) ${pos}%, rgba(255,255,255,0.75) ${pos}%, rgba(255,255,255,0.75) calc(${pos}% + 1px), transparent calc(${pos}% + 1px))`;
+      };
+      const center = (vertical) => {
+        const dir = vertical ? 'to right' : 'to bottom';
+        return `linear-gradient(${dir}, transparent calc(50% - 0.5px), rgba(255,255,255,0.35) calc(50% - 0.5px), rgba(255,255,255,0.35) calc(50% + 0.5px), transparent calc(50% + 0.5px))`;
+      };
+      const layers = [];
+      mode.stops.forEach(p => { layers.push(line(p, true)); layers.push(line(p, false)); });
+      layers.push(center(true), center(false));
+      grid.style.backgroundImage = layers.join(',');
+    }
+
+    function cycleCropGrid() {
+      const i = CROP_GRID_MODES.findIndex(m => m.id === cropGridMode);
+      cropGridMode = CROP_GRID_MODES[(i + 1) % CROP_GRID_MODES.length].id;
+      try { localStorage.setItem('cms.cropGrid', cropGridMode); } catch {}
+      renderCropGrid();
     }
 
     function updateCropPreview() {
@@ -3356,7 +3429,7 @@
           const thumbnailInput = row.querySelector('.gallery-thumbnail');
           if (posterInput) posterInput.value = result.path;
           if (thumbnailInput) thumbnailInput.value = result.thumbnail || '';
-          if (thumbImg) thumbImg.src = getThumbnailSrc(result.path);
+          if (thumbImg) thumbImg.src = getThumbnailSrc(result.path) + '?t=' + Date.now();
           if (thumbWrap) thumbWrap.classList.remove('hidden');
           isDirty = true;
 
@@ -3476,6 +3549,7 @@
              class="absolute inset-0 w-full h-full object-cover pointer-events-none"
              style="transform-origin:50% 50%; transform:scale(1); object-position:50% 50%;"
              src="" alt="">
+        <div id="crop-grid" class="absolute inset-0 pointer-events-none" aria-hidden="true"></div>
       </div>
       <div class="flex items-center gap-3">
         <i class="ph ph-magnifying-glass-minus text-slate-400 text-lg"></i>
@@ -3486,10 +3560,16 @@
       </div>
       <div id="crop-readout" class="text-xs text-center font-mono text-slate-500 -mt-1">Zoom 1.00× · X 50% · Y 50%</div>
       <div class="flex justify-between items-center pt-2 border-t border-slate-100">
-        <button type="button" onclick="resetCrop()"
-                class="text-sm text-slate-500 hover:text-slate-700 px-3 py-1.5 rounded hover:bg-slate-100 transition-colors">
-          <i class="ph ph-arrow-counter-clockwise"></i> Reset
-        </button>
+        <div class="flex items-center gap-1">
+          <button type="button" onclick="resetCrop()"
+                  class="text-sm text-slate-500 hover:text-slate-700 px-3 py-1.5 rounded hover:bg-slate-100 transition-colors">
+            <i class="ph ph-arrow-counter-clockwise"></i> Reset
+          </button>
+          <button type="button" id="crop-grid-btn" onclick="cycleCropGrid()" title="Cycle alignment grid: rule of thirds, golden ratio, off"
+                  class="text-sm text-slate-500 hover:text-slate-700 px-3 py-1.5 rounded hover:bg-slate-100 transition-colors">
+            <i class="ph ph-grid-four"></i> Thirds
+          </button>
+        </div>
         <div class="flex gap-3">
           <button type="button" onclick="closeCropModal()"
                   class="px-4 py-2 border border-slate-200 rounded-lg text-slate-600 hover:bg-slate-50 text-sm transition-colors">
@@ -3724,7 +3804,7 @@
       </div>
 
       <p class="text-[10px] text-slate-400 font-mono tabular-nums mt-6 text-center">
-        Portfolio CMS v2.5 Local
+        Portfolio CMS v2.5.1 Local
       </p>
     </div>
   </div>

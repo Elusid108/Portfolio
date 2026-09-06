@@ -764,7 +764,6 @@
       {
         "url": "media/Art/Pyramid/models/pyramid_preview.glb",
         "type": "model",
-        "source": "media/Art/Pyramid/models/pyramid_preview.3mf",
         "format": "3mf",
         "up": "z",
         "parts": [
