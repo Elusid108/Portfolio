@@ -4441,6 +4441,31 @@
       {
         "url": "media/Art/Celtic Owl/Screenshot 2026-07-02 185618.webp",
         "thumbnail": "media/Art/Celtic Owl/Screenshot 2026-07-02 185618-thumb.webp"
+      },
+      {
+        "url": "media/Art/Celtic Owl/models/celtic_owl_preview.glb",
+        "type": "model",
+        "format": "3mf",
+        "up": "z",
+        "parts": [
+          {
+            "name": "diffusion",
+            "color": "#c7c7c7",
+            "opacity": 1
+          },
+          {
+            "name": "mask / frame",
+            "color": "#000000",
+            "opacity": 1
+          }
+        ],
+        "fit": {
+          "scale": 1.35,
+          "x": 57.4,
+          "y": 33.1
+        },
+        "poster": "media/Art/Celtic Owl/celtic_owl_preview-poster.webp",
+        "thumbnail": "media/Art/Celtic Owl/celtic_owl_preview-poster-thumb.webp"
       }
     ],
     "files": [

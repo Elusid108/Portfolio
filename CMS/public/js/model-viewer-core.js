@@ -114,6 +114,14 @@
     controls.autoRotateSpeed = 1.6;
     controls.target.set(0, 0, 0);
 
+    // OrbitControls pan moves camera AND target together. After a pan, rotate
+    // would otherwise orbit a point that is no longer the model's bbox center
+    // (world origin after applyUp). Snap the target back every frame so pan
+    // trucks the camera while rotate/zoom stay locked to the model.
+    function lockOrbitTarget() {
+      controls.target.set(0, 0, 0);
+    }
+
     // --- model graph ----------------------------------------------------------------
     // pivot (world origin) -> upGroup (up-axis rotation, offset so bbox center sits at origin) -> gltf scene
     const pivot = new THREE.Group();
@@ -148,6 +156,7 @@
       camera.updateProjectionMatrix();
       controls.minDistance = boundingRadius * 0.15;
       controls.maxDistance = boundingRadius * 12;
+      lockOrbitTarget();
       requestRender();
     }
 
@@ -157,8 +166,9 @@
       const dir = new THREE.Vector3(1, 0.75, 1.25).normalize();
       camera.position.copy(dir.multiplyScalar(dist));
       camera.lookAt(0, 0, 0);
-      controls.target.set(0, 0, 0);
+      lockOrbitTarget();
       controls.update();
+      lockOrbitTarget();
       requestRender();
     }
 
@@ -307,6 +317,7 @@
       rafId = requestAnimationFrame(tick);
       if (!intersecting) return;
       const moved = controls.update();
+      lockOrbitTarget();
       if (moved || needsRender || controls.autoRotate) {
         renderer.render(scene, camera);
         needsRender = false;

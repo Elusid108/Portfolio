@@ -2,7 +2,7 @@
 
 This is the source for my personal portfolio website — a showcase of work spanning lighting design, art installations, electronics, apps, fabrication, and systems integration.
 
-The local authoring tool is **CMS v2.5.1 Local**.
+The local authoring tool is **CMS v2.5.2 Local**.
 
 The live site (`[index.html](index.html)`) is a single, self-contained static page built with React 18 (UMD), Babel Standalone, and Tailwind CSS (all via CDN). It reads its content from a JSON block embedded directly in the page, so there's no build step and no backend required to host or view it — it can be served as-is from GitHub Pages or any static file host. Alongside it, the `[share/](share/)` folder holds small generated pages and preview images that give each project a proper social-media link preview.
 
@@ -19,9 +19,11 @@ Projects are organized into six categories that map to folders under `[media/](m
 
 ```
 Portfolio/
+├── CNAME                # Pins GitHub Pages to chrismoore.me
+├── .nojekyll            # Stops Pages from skipping share/ or rewriting paths
 ├── index.html          # Published static site (generated — edit via the CMS, not by hand)
 ├── share/               # Generated social-sharing output (commit alongside index.html)
-│   ├── <id>.html            # One Open Graph page per published project -> redirects to /#project/<id>
+│   ├── <id>.html            # One Open Graph page per published project (crawler-safe; humans go to /#project/<id>)
 │   └── cards/               # 1200x630 preview cards: <id>.jpg per project + site.jpg (hero board)
 ├── media/               # Project images/video/3D models, organized by category/project
 │   └── <Category>/<Project>/
@@ -155,7 +157,7 @@ The gallery item stores everything the site needs:
 }
 ```
 
-On the live site, models open in the lightbox in a three.js viewer (`[CMS/public/js/model-viewer-core.js](CMS/public/js/model-viewer-core.js)`, inlined into `index.html` at publish time). The model's bounding-box center is placed at the origin, and navigation follows CAD conventions — drag to orbit, right-drag or two-finger drag to pan, wheel or pinch to zoom — with mouse, touch and stylus all handled through pointer events. three.js is loaded from a CDN import map only when a model is actually opened, so pages without models pay nothing.
+On the live site, models open in the lightbox in a three.js viewer (`[CMS/public/js/model-viewer-core.js](CMS/public/js/model-viewer-core.js)`, inlined into `index.html` at publish time). The model's bounding-box center is placed at the origin, and navigation follows CAD conventions — drag to orbit, right-drag or two-finger drag to pan, wheel or pinch to zoom — with mouse, touch and stylus all handled through pointer events. After a pan, orbit and zoom stay locked to that model-center pivot (the camera trucks; the target does not drift). three.js is loaded from a CDN import map only when a model is actually opened, so pages without models pay nothing.
 
 ### Publishing
 
@@ -177,9 +179,11 @@ The site is a single page with hash routing (`#project/<id>`), and social crawle
 
 - `share/cards/<id>.jpg` — a 1200x630 card per project: the project thumbnail with the title, short description, category, and `chrismoore.me` on it.
 - `share/cards/site.jpg` — a site card built from the hero board (the featured thumbnail from each of the six categories).
-- `share/<id>.html` — a tiny page per project carrying `og:*` and `twitter:*` tags pointing at that card. Crawlers read the tags; humans are redirected to `/#project/<id>` immediately.
+- `share/<id>.html` — a tiny page per project carrying `og:*` and `twitter:*` tags pointing at that card. Crawlers stay on this HTML so they can read the tags. Humans get a short delay, then are sent to `/#project/<id>` (known social-bot user agents skip the redirect entirely). There is no instant meta-refresh.
 
 The **Share** button on a project (and the copy-link buttons in the CMS project list) hands out `https://chrismoore.me/share/<id>`, which is what should be pasted into Facebook, LinkedIn, X, iMessage, etc. `index.html` itself carries the site-wide tags, so sharing the bare domain also gets a rich preview. The public URL, title and description live in Settings.
+
+Share links and card images only work on `chrismoore.me` once that domain is answered by GitHub Pages (see **Custom domain** below). While Squarespace still owns the domain, every path — including `/share/<id>` and `/share/cards/<id>.jpg` — 301s to the GitHub Pages homepage, and Facebook/LinkedIn scrape the generic site tags with no project image.
 
 ### Migrating Existing Data
 
@@ -194,9 +198,22 @@ npm run migrate
 
 Once you're happy with the preview:
 
-1. Commit the updated `index.html`, the `share/` folder, and any new files under `media/`.
+1. Commit the updated `index.html`, the `share/` folder, `CNAME`, `.nojekyll`, and any new files under `media/`.
 2. Push to your Git remote.
-3. If using GitHub Pages (or a similar static host), the updated site goes live automatically.
+3. GitHub Pages serves the site. After the custom-domain cutover below, that is `https://chrismoore.me` (a project site under a custom domain is mounted at the domain root, so `/share/670` maps to `share/670.html`).
+
+### Custom domain (chrismoore.me)
+
+`site_url` in Settings is already `https://chrismoore.me`. A repo-root `CNAME` file pins GitHub Pages to that host. Squarespace must **stop answering** the domain or every path will keep 301ing to the homepage and social previews will stay broken.
+
+One-time cutover:
+
+1. Push a commit that includes `CNAME` and `.nojekyll`.
+2. Repo **Settings → Pages**: set Custom domain to `chrismoore.me`, check **Enforce HTTPS**, and wait for the TLS certificate.
+3. At the registrar, **remove** Squarespace A / CNAME / forwarding records. For the apex domain add GitHub's A records (`185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`) and the IPv6 AAAA set from [GitHub's custom-domain docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site). Optional: `www` CNAME → `elusid108.github.io`.
+4. After DNS and HTTPS are green, re-scrape `https://chrismoore.me/share/670` in the [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/) and [LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/). Until then, `chrismoore.me/share/...` will still 301 to the homepage.
+
+A working check after the flip: `https://chrismoore.me/share/670` should be `200` from GitHub (not a Squarespace 301), and `https://chrismoore.me/share/cards/670.jpg` should be `image/jpeg`.
 
 ## Tech Stack
 

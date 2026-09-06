@@ -153,8 +153,17 @@ function projectPageHtml(project, settings) {
     <title>${escapeHtml(title)}</title>
     ${metaBlock({ url: pageUrl, title: project.title || 'Project', description, image, imageAlt: project.title, type: 'article', siteName: site.title })}
     <meta name="robots" content="noindex, follow">
-    <meta http-equiv="refresh" content="0; url=${escapeHtml(target)}">
-    <script>window.location.replace(${JSON.stringify(target)});</script>
+    <script>
+    (function () {
+      var target = ${JSON.stringify(target)};
+      var ua = navigator.userAgent || '';
+      // Social crawlers must stay on this HTML so they can read the Open Graph tags.
+      // An instant meta-refresh / location.replace sends them to index.html, which
+      // has no per-project image (URL hashes are ignored).
+      if (/facebookexternalhit|Facebot|LinkedInBot|Twitterbot|Slackbot|WhatsApp|Discordbot|TelegramBot|Pinterest|Googlebot|bingbot|Applebot|Embedly|outbrain|vkShare|W3C_Validator|Quora Link Preview/i.test(ua)) return;
+      setTimeout(function () { window.location.assign(target); }, 2500);
+    })();
+    </script>
     <style>
         body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#09090b;color:#e4e4e7;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
         main{max-width:640px;padding:32px;text-align:center}
@@ -171,7 +180,7 @@ function projectPageHtml(project, settings) {
         <h1>${escapeHtml(project.title || 'Project')}</h1>
         <p>${escapeHtml(description)}</p>
         <a href="${escapeHtml(target)}">View this project on ${escapeHtml(site.url.replace(/^https?:\/\//, ''))} →</a>
-        <small>Redirecting…</small>
+        <small>Opening the project…</small>
     </main>
 </body>
 </html>
