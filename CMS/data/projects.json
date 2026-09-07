@@ -171,7 +171,7 @@
           },
           {
             "name": "mesh_6_1",
-            "color": "#ffffff",
+            "color": "#e5e5e5",
             "opacity": 1
           },
           {
@@ -662,7 +662,7 @@
           {
             "name": "mesh_55_1",
             "color": "#e5e5e5",
-            "opacity": 1
+            "opacity": 0.99
           },
           {
             "name": "mesh_56",
@@ -766,27 +766,27 @@
           },
           {
             "name": "mesh_66",
-            "color": "#bcbcbc",
+            "color": "#000000",
             "opacity": 1
           },
           {
             "name": "mesh_67",
-            "color": "#bcbcbc",
+            "color": "#000000",
             "opacity": 1
           },
           {
             "name": "mesh_68",
-            "color": "#bcbcbc",
+            "color": "#000000",
             "opacity": 1
           },
           {
             "name": "mesh_69",
-            "color": "#bcbcbc",
+            "color": "#000000",
             "opacity": 1
           },
           {
             "name": "mesh_70",
-            "color": "#bcbcbc",
+            "color": "#000000",
             "opacity": 1
           },
           {
@@ -796,27 +796,27 @@
           },
           {
             "name": "mesh_72",
-            "color": "#bcbcbc",
+            "color": "#000000",
             "opacity": 1
           },
           {
             "name": "mesh_73",
-            "color": "#bcbcbc",
+            "color": "#000000",
             "opacity": 1
           },
           {
             "name": "mesh_74",
-            "color": "#bcbcbc",
+            "color": "#000000",
             "opacity": 1
           },
           {
             "name": "mesh_75",
-            "color": "#bcbcbc",
+            "color": "#000000",
             "opacity": 1
           },
           {
             "name": "mesh_76",
-            "color": "#bcbcbc",
+            "color": "#000000",
             "opacity": 1
           },
           {
@@ -1132,7 +1132,7 @@
           {
             "name": "mesh_139",
             "color": "#505050",
-            "opacity": 1
+            "opacity": 0
           },
           {
             "name": "mesh_140",
@@ -1152,12 +1152,12 @@
           {
             "name": "mesh_143",
             "color": "#e5e5e5",
-            "opacity": 1
+            "opacity": 0
           },
           {
             "name": "mesh_144",
             "color": "#e5e5e5",
-            "opacity": 1
+            "opacity": 0
           },
           {
             "name": "mesh_145",
@@ -36451,14 +36451,14 @@
           }
         ],
         "view": {
-          "theta": -0.4635,
-          "phi": 1.2538,
-          "radiusScale": 2.201,
-          "panX": 0.0758,
-          "panY": 0.0368
+          "theta": 0.6747,
+          "phi": 1.3195,
+          "radiusScale": 1.616,
+          "panX": -0.0482,
+          "panY": 0.0613
         },
-        "poster": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-026612.webp",
-        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-026612-thumb.webp"
+        "poster": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-7d761c.webp",
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-7d761c-thumb.webp"
       },
       {
         "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-298b15.webp",
@@ -48138,16 +48138,12 @@
         "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-9227c5-thumb.webp"
       },
       {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-423905.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-423905-thumb.webp"
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-d6e25c.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-d6e25c-thumb.webp"
       },
       {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-70da94.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-70da94-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-e14860.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-e14860-thumb.webp"
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-36f360.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-36f360-thumb.webp"
       },
       {
         "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-772679.webp",
@@ -48176,22 +48172,6 @@
       {
         "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-ae6dd6.webp",
         "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-ae6dd6-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-211dd1.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-211dd1-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-d6e25c.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-d6e25c-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-36f360.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-36f360-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-73d08f.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-73d08f-thumb.webp"
       },
       {
         "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-1c4256.webp",
@@ -48453,8 +48433,8 @@
   {
     "title": "Lighting & SFX Repair",
     "category": "Tooling",
-    "image": "media/Fabrication/Lighting Repair/Lighting-SFX-Repair-img-bd1e3a.webp",
-    "thumbnail": "media/Fabrication/Lighting Repair/Lighting-SFX-Repair-img-bd1e3a-thumb.webp",
+    "image": "media/Fabrication/Lighting & SFX Repair/Lighting-SFX-Repair-img-bd1e3a.webp",
+    "thumbnail": "media/Fabrication/Lighting & SFX Repair/Lighting-SFX-Repair-img-bd1e3a-thumb.webp",
     "description": "<p>Add info about my skills in repairing lighting and SFX equipment</p>",
     "longDescription": "<p><br></p>",
     "websiteLink": "",
@@ -48465,15 +48445,25 @@
     "wip": false,
     "draft": true,
     "tags": [],
-    "gallery": [],
+    "gallery": [
+      {
+        "url": "media/Fabrication/Lighting & SFX Repair/Lighting-SFX-Repair-img-fc6b5b.webp",
+        "thumbnail": "media/Fabrication/Lighting & SFX Repair/Lighting-SFX-Repair-img-fc6b5b-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Lighting & SFX Repair/Lighting-SFX-Repair-img-b54bad.webp",
+        "thumbnail": "media/Fabrication/Lighting & SFX Repair/Lighting-SFX-Repair-img-b54bad-thumb.webp"
+      }
+    ],
     "files": [],
     "specsData": [],
     "specs": "",
     "related": [],
     "video": "",
     "timestamp": "2026-09-05T01:52:02.598Z",
-    "id": 1862,
-    "order": 2
+    "id": "1862",
+    "order": 2,
+    "linkHeroImages": true
   },
   {
     "title": "LED Video Panel Service",

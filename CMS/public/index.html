@@ -143,7 +143,7 @@
     <header class="h-11 shrink-0 flex items-center justify-between px-3 border-b border-zinc-800 bg-zinc-900">
       <div class="flex items-center gap-3 min-w-0">
         <span class="text-sm font-semibold tracking-wide text-zinc-100">CMS</span>
-        <span class="text-[10px] font-mono text-zinc-500">v2.8.1</span>
+        <span class="text-[10px] font-mono text-zinc-500">v2.8.2</span>
         <span id="dirtyDot" class="w-1.5 h-1.5 rounded-full bg-zinc-600 opacity-30" title="Unsaved changes"></span>
       </div>
       <div class="flex items-center gap-1.5">
@@ -3683,7 +3683,7 @@
     }
 
     // --- MODEL EDITOR MODAL ---
-    let modelEditor = { row: null, viewer: null, autoRotate: false, scrollLocked: false, bodyOverflow: '' };
+    let modelEditor = { row: null, viewer: null, autoRotate: false, scrollLocked: false, bodyOverflow: '', hoverIndex: null };
 
     function trapModelEditorScroll(e) {
       const modal = document.getElementById('model-editor-modal');
@@ -3769,7 +3769,9 @@
           up: model.up,
           parts: model.parts,
           view: model.view,
-          onProgress: (f) => { status.textContent = `Loading ${Math.round(f * 100)}%`; }
+          onProgress: (f) => { status.textContent = `Loading ${Math.round(f * 100)}%`; },
+          onPartHover: onModelPartHover,
+          onPartActivate: onModelPartActivate
         });
         status.textContent = '';
         if (modelEditor.row !== row) return; // closed while loading
@@ -3830,6 +3832,52 @@
       if (view) next.view = view;
       writeRowModel(row, next);
       isDirty = true;
+    }
+
+    function onModelPartHover(hit) {
+      const flag = document.getElementById('model-editor-part-flag');
+      if (!hit) {
+        flag?.classList.add('hidden');
+        if (modelEditor.hoverIndex != null) {
+          document.querySelector(`#model-editor-parts .model-part[data-index="${modelEditor.hoverIndex}"]`)
+            ?.classList.remove('ring-1', 'ring-cyan-400');
+          modelEditor.hoverIndex = null;
+        }
+        return;
+      }
+      const card = document.querySelector(`#model-editor-parts .model-part[data-index="${hit.index}"]`);
+      const name = (card?.querySelector('.model-part-name')?.value || '').trim() || hit.name || '';
+      if (flag) {
+        flag.textContent = name;
+        flag.classList.remove('hidden');
+        const pad = 12;
+        let x = hit.x + pad;
+        let y = hit.y + pad;
+        const fw = flag.offsetWidth;
+        const fh = flag.offsetHeight;
+        if (x + fw > window.innerWidth - 8) x = hit.x - fw - pad;
+        if (y + fh > window.innerHeight - 8) y = hit.y - fh - pad;
+        if (x < 8) x = 8;
+        if (y < 8) y = 8;
+        flag.style.left = `${x}px`;
+        flag.style.top = `${y}px`;
+      }
+      if (modelEditor.hoverIndex !== hit.index) {
+        if (modelEditor.hoverIndex != null) {
+          document.querySelector(`#model-editor-parts .model-part[data-index="${modelEditor.hoverIndex}"]`)
+            ?.classList.remove('ring-1', 'ring-cyan-400');
+        }
+        modelEditor.hoverIndex = hit.index;
+        if (card) {
+          card.classList.add('ring-1', 'ring-cyan-400');
+          card.scrollIntoView({ block: 'nearest' });
+        }
+      }
+    }
+
+    function onModelPartActivate(hit) {
+      if (!hit || hit.index == null) return;
+      onModelPartOpacity(hit.index, 0);
     }
 
     function onModelPartColor(i, value) {
@@ -3920,6 +3968,8 @@
       if (modelEditor.viewer) { try { modelEditor.viewer.dispose(); } catch {} }
       modelEditor.viewer = null;
       modelEditor.row = null;
+      modelEditor.hoverIndex = null;
+      onModelPartHover(null);
       unlockModelEditorScroll();
       document.getElementById('model-editor-modal')?.classList.add('hidden');
       if (!silent) updateListIndices('gallery-container');
@@ -5017,6 +5067,7 @@
       <div class="flex-1 flex flex-col md:flex-row min-h-0">
         <div class="relative flex-1 bg-zinc-950 min-h-[300px] md:min-h-[480px]">
           <div id="model-editor-stage" class="absolute inset-0"></div>
+          <div id="model-editor-part-flag" class="hidden pointer-events-none fixed z-[80] px-2 py-1 rounded-md bg-black/70 text-[11px] text-zinc-200 whitespace-nowrap max-w-xs truncate"></div>
           <div class="absolute left-3 bottom-3 flex items-center gap-2">
             <button type="button" onclick="onModelResetView()" class="px-2.5 py-1.5 rounded-lg bg-zinc-800/90 text-zinc-300 hover:text-white text-xs font-bold flex items-center gap-1" title="Reset view"><i class="ph ph-arrows-in-cardinal"></i> Reset</button>
             <button type="button" id="model-editor-rotate" onclick="onModelToggleRotate()" class="px-2.5 py-1.5 rounded-lg bg-zinc-800/90 text-zinc-300 hover:text-white text-xs font-bold flex items-center gap-1" title="Auto-rotate"><i class="ph ph-arrow-clockwise"></i> Spin</button>
@@ -5025,7 +5076,7 @@
               <button type="button" data-up="y" onclick="onModelUp('y')" class="px-2.5 py-1.5 text-zinc-300">Y up</button>
             </div>
           </div>
-          <p class="absolute right-3 bottom-3 text-[10px] text-zinc-500 hidden md:block">Click a point to orbit around it · Click empty space for center · Drag: rotate · Right-drag / two fingers: pan · Wheel / pinch: zoom</p>
+          <p class="absolute right-3 bottom-3 text-[10px] text-zinc-500 hidden md:block">Ctrl+click to hide a part · Click a point to orbit around it · Click empty space for center · Drag: rotate · Right-drag / two fingers: pan · Wheel / pinch: zoom</p>
         </div>
         <div class="w-full md:w-80 flex flex-col border-t md:border-t-0 md:border-l border-zinc-800 min-h-0">
           <div class="px-4 py-3 border-b border-zinc-800">
@@ -5196,7 +5247,7 @@
       </div>
 
       <p class="text-[10px] text-zinc-600 font-mono tabular-nums mt-6 text-center">
-        Portfolio CMS v2.8.1 Local
+        Portfolio CMS v2.8.2 Local
       </p>
     </div>
   </div>

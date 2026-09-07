@@ -9,7 +9,8 @@
 //
 // Usage:
 //   const viewer = await ModelViewerCore.createModelViewer(containerEl, {
-//     url, parts, up, view, onProgress(fraction), onReady({ parts })
+//     url, parts, up, view, onProgress(fraction), onReady({ parts }),
+//     onPartHover(hit|null), onPartActivate(hit)  // CMS editor only
 //   });
 //   viewer.setPart(0, { color: '#ff0000', opacity: 0.5 });
 //   viewer.resetView(); viewer.setAutoRotate(true); await viewer.capture();
@@ -190,6 +191,41 @@
       if (!panning) panLast = null;
     }
 
+    const hoverEnabled = typeof opts.onPartHover === 'function';
+    const activateEnabled = typeof opts.onPartActivate === 'function';
+    const ndc = new THREE.Vector2();
+    const raycaster = new THREE.Raycaster();
+    let hoverQueued = null;
+    let hoverRaf = 0;
+    let lastHoverKey = undefined;
+    let parts = []; // { mesh, material, name, fileColor, fileOpacity, color, opacity, hasVertexColors }
+
+    function emitHover(hit) {
+      if (!hoverEnabled) return;
+      const key = hit ? hit.index : null;
+      if (key === lastHoverKey && !hit) return;
+      lastHoverKey = key;
+      opts.onPartHover(hit);
+    }
+
+    function scheduleHover(e) {
+      if (!hoverEnabled) return;
+      if (pointers.size > 0 || isPanning()) {
+        hoverQueued = null;
+        emitHover(null);
+        return;
+      }
+      hoverQueued = { x: e.clientX, y: e.clientY };
+      if (hoverRaf) return;
+      hoverRaf = requestAnimationFrame(() => {
+        hoverRaf = 0;
+        const q = hoverQueued;
+        if (!q || pointers.size > 0) return;
+        const hit = hitTest(q.x, q.y);
+        emitHover(hit ? { index: hit.index, name: hit.name, x: q.x, y: q.y } : null);
+      });
+    }
+
     function onPointerDown(e) {
       pointers.set(e.pointerId, { x: e.clientX, y: e.clientY, button: e.button });
       if (e.button === 0 && pointers.size === 1) {
@@ -199,41 +235,65 @@
       }
       if (e.button === 2 || pointers.size >= 2) panLast = pointerMidpoint();
       syncPanRotate();
+      emitHover(null);
     }
 
     function onPointerMove(e) {
-      if (!pointers.has(e.pointerId)) return;
-      pointers.set(e.pointerId, { x: e.clientX, y: e.clientY, button: pointers.get(e.pointerId).button });
-      if (clickCandidate && clickCandidate.pointerId === e.pointerId) {
-        if (Math.hypot(e.clientX - clickCandidate.x, e.clientY - clickCandidate.y) > CLICK_PX) {
+      if (pointers.has(e.pointerId)) {
+        pointers.set(e.pointerId, { x: e.clientX, y: e.clientY, button: pointers.get(e.pointerId).button });
+        if (clickCandidate && clickCandidate.pointerId === e.pointerId) {
+          if (Math.hypot(e.clientX - clickCandidate.x, e.clientY - clickCandidate.y) > CLICK_PX) {
+            clickCandidate = null;
+          }
+        }
+        if (isPanning()) {
           clickCandidate = null;
+          const now = pointerMidpoint();
+          if (!panLast) { panLast = now; return; }
+          const w = Math.max(1, container.clientWidth);
+          const h = Math.max(1, container.clientHeight);
+          viewPan.x -= (now.x - panLast.x) / w;
+          viewPan.y -= (now.y - panLast.y) / h;
+          panLast = now;
+          applyViewPan();
+          return;
         }
       }
-      if (!isPanning()) return;
-      clickCandidate = null;
-      const now = pointerMidpoint();
-      if (!panLast) { panLast = now; return; }
-      const w = Math.max(1, container.clientWidth);
-      const h = Math.max(1, container.clientHeight);
-      viewPan.x -= (now.x - panLast.x) / w;
-      viewPan.y -= (now.y - panLast.y) / h;
-      panLast = now;
-      applyViewPan();
+      scheduleHover(e);
     }
 
-    function trySetPivotFromClick(e) {
+    function hitTest(clientX, clientY) {
       const rect = canvas.getBoundingClientRect();
       const w = Math.max(1, rect.width);
       const h = Math.max(1, rect.height);
-      const ndc = new THREE.Vector2(
-        ((e.clientX - rect.left) / w) * 2 - 1,
-        -((e.clientY - rect.top) / h) * 2 + 1
+      ndc.set(
+        ((clientX - rect.left) / w) * 2 - 1,
+        -((clientY - rect.top) / h) * 2 + 1
       );
-      const raycaster = new THREE.Raycaster();
       raycaster.setFromCamera(ndc, camera);
-      const meshes = parts.map((p) => p.mesh).filter(Boolean);
-      const hits = meshes.length ? raycaster.intersectObjects(meshes, false) : [];
-      if (hits.length) setOrbitPivot(hits[0].point);
+      const meshes = [];
+      for (let i = 0; i < parts.length; i++) {
+        const p = parts[i];
+        if (p.mesh && clamp01(p.opacity, 1) > 0) meshes.push(p.mesh);
+      }
+      if (!meshes.length) return null;
+      const hits = raycaster.intersectObjects(meshes, false);
+      if (!hits.length) return null;
+      const mesh = hits[0].object;
+      const index = typeof mesh.userData.partIndex === 'number'
+        ? mesh.userData.partIndex
+        : parts.findIndex((p) => p.mesh === mesh);
+      if (index < 0 || !parts[index]) return null;
+      return { index, name: parts[index].name, point: hits[0].point };
+    }
+
+    function trySetPivotFromClick(e) {
+      const hit = hitTest(e.clientX, e.clientY);
+      if ((e.ctrlKey || e.metaKey) && activateEnabled) {
+        if (hit) opts.onPartActivate({ index: hit.index, name: hit.name });
+        return;
+      }
+      if (hit) setOrbitPivot(hit.point);
       else resetOrbitPivot();
     }
 
@@ -247,6 +307,12 @@
       if (wasClick) trySetPivotFromClick(e);
       clickCandidate = null;
       syncPanRotate();
+      scheduleHover(e);
+    }
+
+    function onPointerLeave() {
+      hoverQueued = null;
+      emitHover(null);
     }
 
     function onContextMenu(e) { e.preventDefault(); }
@@ -255,6 +321,7 @@
     canvas.addEventListener('pointermove', onPointerMove);
     canvas.addEventListener('pointerup', onPointerUp);
     canvas.addEventListener('pointercancel', onPointerUp);
+    canvas.addEventListener('pointerleave', onPointerLeave);
     canvas.addEventListener('contextmenu', onContextMenu);
 
     // --- model graph ----------------------------------------------------------------
@@ -265,7 +332,6 @@
     pivot.add(upGroup);
 
     let modelRoot = null;
-    let parts = []; // { mesh, material, name, fileColor, fileOpacity, color, opacity, hasVertexColors }
     let boundingRadius = 1;
     let needsRender = true;
     let rafId = 0;
@@ -382,6 +448,7 @@
         const hasVertexColors = !!(obj.geometry.attributes.color);
         const fileColor = hasVertexColors ? null : ('#' + material.color.getHexString());
         const name = (obj.name || (obj.parent && obj.parent.name) || '').trim() || `Part ${found.length + 1}`;
+        obj.userData.partIndex = found.length;
         found.push({
           mesh: obj,
           material,
@@ -547,11 +614,13 @@
       if (state.disposed) return;
       state.disposed = true;
       cancelAnimationFrame(rafId);
+      if (hoverRaf) cancelAnimationFrame(hoverRaf);
       controls.removeEventListener('change', requestRender);
       canvas.removeEventListener('pointerdown', onPointerDown);
       canvas.removeEventListener('pointermove', onPointerMove);
       canvas.removeEventListener('pointerup', onPointerUp);
       canvas.removeEventListener('pointercancel', onPointerUp);
+      canvas.removeEventListener('pointerleave', onPointerLeave);
       canvas.removeEventListener('contextmenu', onContextMenu);
       controls.dispose();
       if (ro) ro.disconnect();
