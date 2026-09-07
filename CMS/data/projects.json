@@ -48501,8 +48501,8 @@
     "category": "Tooling",
     "image": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Service-img-d2e5bf.webp",
     "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Service-img-2bbe39-thumb.webp",
-    "description": "<p>Add info about my skills in repairing lighting and SFX equipment</p>",
-    "longDescription": "<p><br></p>",
+    "description": "<p>I wired AC into the DC side of a VL1000. The capacitors exploded and fire came out the side.</p>",
+    "longDescription": "<p>The VL1000 taught me the same lesson as every other fire I have caused. I was replacing a power supply at Barbizon Light of the Rockies and wired the AC input into the DC output. The capacitors exploded and the fixture shot fire out the side. You make that mistake once.</p><p>That was my first lighting service gig, about a year, mentored part time in their shop. The bench ran from cracked porcelain sockets and crumbling wiring to unreleased demo heads: movers, scanners, color scrollers, fog, haze, film lights, consoles, dimmer racks.</p><p>On a dead or stuttering mover I power it on first and watch whether it moves. Then I kill power, grab the mechanicals, and feel for resistance. Failing steppers grind. I look for anything blocking travel, missing parts, then trace the harness. A spare motor goes in next. If the fault follows, the driver board is next.</p><p>Dust is the other killer. On a rotating service cycle it is mostly blowing fans and wiping optics. Let it go and a fan stops, a thermal trip fails to trip, and the inside of a moving head goes thermonuclear. I opened an old ElektraLite where every plastic part had melted and puddled in the bottom of the housing.</p><p>SFX came through the same shops: hazers, foggers, cryo, snow, confetti, bubbles. Foggers are the worst repair on the list. Hands down. A mess.</p><p>At Brown Note I helped push 30 to 40 lights a week for about two years. At Tracks and Temple, keeping the rooms alive was part of the job, and so was teaching other techs the same cycle. Under Chris Moore Designs I pushed a maintenance clause on installs with my name on them. Glow Lounge was the test: I hung the rig, then cleaned it monthly for about a year after.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -48668,8 +48668,8 @@
   {
     "title": "LED Video Panel Service",
     "category": "Tooling",
-    "image": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-74bdfb.webp",
-    "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-74bdfb-thumb.webp",
+    "image": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-616e44.webp",
+    "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-a9782d-thumb.webp",
     "description": "<p>One enamel-wire jumper pinched a live screw pad. The panel caught fire on site. I never routed a repair that way again.</p>",
     "longDescription": "<p>The worst module I ever put back out taught me the hard way. I had jumped a ripped pad with enamel wire and did not know the screw pads in that frame were electrically live. The wire got pinched under a screw. On site, during the day, the panel caught fire. The crew put it out fast. I took the burned board apart until I understood exactly what I had done, and I never routed a jumper that close to a mounting hole again.</p><p>At Brown Note Productions I was the LED video panel tech across two stints that added up to about three years. Cases came back from festivals missing LEDs, pads, and sometimes chunks of board. Absen and ROE sent technicians to train me on their products, everything else I taught myself on the bench.</p><p>Most of the work was a reflow station putting knocked-off pixels back on. When the pads were gone, a short enamel wire jumped the break in the multiplexed array. These were mostly waterproof screens, so the iron never went straight to the face. Mask off, silicone scraped out, and on the bad ones the PCB came out of the housing so the plastic did not melt while I worked. Beyond the diodes I straightened bent frames and repaired the large spine PCBs that held the receiving cards, plus power supplies, ports, latches, and front masks.</p><p>Speed mattered. Damaged panels rotated in constantly. I marked every dead pixel with a dry-erase marker, pulled modules out of the frames in a batch, and worked the easy ones first. A normal day was a hundred to a hundred and fifty LEDs, often fifty or more modules. Trace repairs waited until later. End of day, silicone on everything finished. Next morning, masks back on, modules into the repaired stock, and the cycle started over.</p><p>I took the same bench process to Temple San Francisco to keep the immersive video ceiling alive when replacement modules were scarce, and to the wall in the basement at Triangle.</p>",
     "websiteLink": "",
@@ -48977,15 +48977,16 @@
     "order": 1,
     "thumbnailFit": {
       "scale": 1,
-      "x": 83.1,
-      "y": 60
+      "x": 3.2,
+      "y": 20.7,
+      "rotate": 0
     },
     "bannerFit": {
       "scale": 1,
       "x": 59.3,
       "y": 60.8
     },
-    "linkHeroImages": true
+    "linkHeroImages": false
   },
   {
     "title": "Chain Hoist Service & Repair",

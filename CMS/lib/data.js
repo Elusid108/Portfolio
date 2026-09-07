@@ -79,6 +79,68 @@ function allSkillsSet(settings) {
   return set;
 }
 
+function parseProjectHash(url) {
+  if (!url || typeof url !== 'string') return null;
+  const trimmed = url.trim();
+  if (!trimmed.startsWith('#project/')) return null;
+  try { return decodeURIComponent(trimmed.slice('#project/'.length)); }
+  catch { return trimmed.slice('#project/'.length); }
+}
+
+function relatedUrlFor(id) {
+  return '#project/' + encodeURIComponent(String(id));
+}
+
+function relatedPointsAt(entry, id) {
+  return String(parseProjectHash(entry && entry.url) || '') === String(id);
+}
+
+function relatedTargetIds(related, selfId) {
+  const ids = new Set();
+  (related || []).forEach(r => {
+    const id = parseProjectHash(r && r.url);
+    if (id && String(id) !== String(selfId)) ids.add(String(id));
+  });
+  return ids;
+}
+
+function syncRelatedLinks(projects, saved, previousRelated) {
+  const savedId = String(saved.id);
+  const savedUrl = relatedUrlFor(saved.id);
+  const newIds = relatedTargetIds(saved.related, savedId);
+  const oldIds = relatedTargetIds(previousRelated, savedId);
+
+  oldIds.forEach(id => {
+    if (newIds.has(id)) return;
+    const target = projects.find(p => String(p.id) === id);
+    if (!target || !Array.isArray(target.related)) return;
+    target.related = target.related.filter(r => !relatedPointsAt(r, savedId));
+  });
+
+  newIds.forEach(id => {
+    const target = projects.find(p => String(p.id) === id);
+    if (!target) return;
+    target.related = Array.isArray(target.related) ? target.related : [];
+    const existing = target.related.find(r => relatedPointsAt(r, savedId));
+    if (existing) {
+      existing.name = saved.title;
+      existing.url = savedUrl;
+    } else {
+      target.related.push({ name: saved.title, url: savedUrl });
+    }
+  });
+
+  projects.forEach(p => {
+    if (String(p.id) === savedId) return;
+    (p.related || []).forEach(r => {
+      if (relatedPointsAt(r, savedId)) {
+        r.name = saved.title;
+        r.url = savedUrl;
+      }
+    });
+  });
+}
+
 function saveProject(project) {
   const projects = getProjects();
 
@@ -99,6 +161,7 @@ function saveProject(project) {
   }
 
   const existingIndex = projects.findIndex(p => String(p.id) === String(project.id));
+  const previousRelated = existingIndex !== -1 ? (projects[existingIndex].related || []) : [];
   if (existingIndex !== -1) {
     const existing = projects[existingIndex];
     if (project.category !== existing.category) {
@@ -121,6 +184,9 @@ function saveProject(project) {
     project.order = 0;
     projects.push(project);
   }
+
+  const saved = projects.find(p => String(p.id) === String(project.id));
+  syncRelatedLinks(projects, saved, previousRelated);
 
   writeJSON('projects.json', projects);
 
@@ -165,6 +231,10 @@ function reorderProjects(items) {
 function deleteProject(id) {
   let projects = getProjects();
   projects = projects.filter(p => String(p.id) !== String(id));
+  projects.forEach(p => {
+    if (!Array.isArray(p.related) || p.related.length === 0) return;
+    p.related = p.related.filter(r => !relatedPointsAt(r, id));
+  });
   writeJSON('projects.json', projects);
   return { success: true };
 }
