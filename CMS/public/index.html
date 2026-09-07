@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -10,22 +10,61 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
   <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-  <!-- Inter is the site's typeface; loaded here so share cards render with the same font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-    .list-item-enter { animation: fadeIn 0.3s ease-out; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
-    .ql-toolbar { border-top-left-radius: 0.5rem; border-top-right-radius: 0.5rem; background-color: #f8fafc; border-color: #e2e8f0 !important; }
-    .ql-container { border-bottom-left-radius: 0.5rem; border-bottom-right-radius: 0.5rem; background-color: #ffffff; border-color: #e2e8f0 !important; font-family: inherit !important; font-size: 0.875rem !important; }
-    .ql-editor { min-height: 80px; }
+    :root { color-scheme: dark; }
+    html, body { height: 100%; }
+    body { font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+    .font-mono, input.font-mono, textarea.font-mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+    .list-item-enter { animation: fadeIn 0.2s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #09090b; }
+    ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #52525b; }
+    #editor.hidden, #settingsForm.hidden, #emptyState.hidden, #item-edit-modal.hidden,
+    #gemini-copy-modal.hidden, #gemini-settings-modal.hidden { display: none !important; }
+    #editor:not(.hidden), #settingsForm:not(.hidden) { display: flex; }
+    #emptyState:not(.hidden) { display: flex; }
+    #item-edit-modal:not(.hidden),
+    #gemini-copy-modal:not(.hidden),
+    #gemini-settings-modal:not(.hidden) { display: flex; }
+    .ql-toolbar.ql-snow {
+      background: #18181b;
+      border-color: #27272a !important;
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
+    }
+    .ql-container.ql-snow {
+      background: #09090b;
+      border-color: #27272a !important;
+      font-family: Inter, sans-serif !important;
+      font-size: 0.875rem !important;
+      color: #e4e4e7;
+      border-bottom-left-radius: 0.5rem;
+      border-bottom-right-radius: 0.5rem;
+    }
+    .ql-editor { min-height: 88px; color: #e4e4e7; }
+    .ql-editor.ql-blank::before { color: #71717a !important; font-style: normal !important; }
+    .ql-snow .ql-stroke { stroke: #a1a1aa; }
+    .ql-snow .ql-fill { fill: #a1a1aa; }
+    .ql-snow .ql-picker { color: #a1a1aa; }
+    .ql-snow .ql-picker-options { background: #18181b; border-color: #27272a !important; }
+    .ql-toolbar.ql-snow button:hover .ql-stroke,
+    .ql-snow.ql-toolbar button.ql-active .ql-stroke { stroke: #22d3ee; }
+    .ql-toolbar.ql-snow button:hover .ql-fill,
+    .ql-snow.ql-toolbar button.ql-active .ql-fill { fill: #22d3ee; }
+    #panel-copy #description-editor .ql-editor { min-height: 120px; }
+    #panel-copy #longDescription-editor .ql-editor { min-height: 260px; }
+    #panel-about #about-editor .ql-editor { min-height: 220px; }
     .upload-zone { transition: all 0.2s; }
-    .upload-zone.dragover { border-color: #6366f1; background-color: #eef2ff; }
+    .upload-zone.dragover { border-color: #22d3ee; background-color: rgba(34, 211, 238, 0.08); }
     .crop-grabbing { cursor: grabbing !important; }
     #crop-zoom-slider { height: 4px; }
-    .spec-item-card:hover .spec-item-controls { opacity: 1; }
+    .spec-item-row:hover .spec-item-controls { opacity: 1; }
     .spec-item-controls { opacity: 0; transition: opacity 0.15s; }
-    #gemini-settings-modal select option { background-color: #fff; color: #1e293b; }
+    #gemini-settings-modal select option { background-color: #18181b; color: #e4e4e7; }
     .ql-toolbar.ql-snow button.ql-ai-short,
     .ql-toolbar.ql-snow button.ql-ai-long,
     .ql-snow.ql-toolbar button.ql-ai-short,
@@ -48,15 +87,22 @@
       margin: 0 auto;
     }
     .ql-toolbar.ql-snow button.ql-ai-short:hover,
-    .ql-toolbar.ql-snow button.ql-ai-long:hover {
-      opacity: 0.9;
-    }
-    .ql-toolbar.ql-snow button.ql-ai-busy {
-      opacity: 0.65;
-      pointer-events: none;
-    }
+    .ql-toolbar.ql-snow button.ql-ai-long:hover { opacity: 0.9; }
+    .ql-toolbar.ql-snow button.ql-ai-busy { opacity: 0.65; pointer-events: none; }
     @keyframes ql-ai-spin { to { transform: rotate(360deg); } }
     .ql-ai-spin { animation: ql-ai-spin 0.8s linear infinite; }
+    .tab-btn { border-bottom: 2px solid transparent; color: #71717a; }
+    .tab-btn.is-active { color: #22d3ee; border-bottom-color: #22d3ee; }
+    .rail-btn.rail-active { background: #18181b; color: #22d3ee; box-shadow: inset 2px 0 0 #22d3ee; }
+    .project-card.is-active { background: #18181b; box-shadow: inset 2px 0 0 #22d3ee; }
+    .field { width: 100%; background: #09090b; border: 1px solid #27272a; color: #e4e4e7; border-radius: 0.5rem; padding: 0.5rem 0.75rem; font-size: 0.875rem; outline: none; }
+    .field:focus { border-color: #22d3ee; }
+    .btn-quiet { display: inline-flex; align-items: center; gap: 0.375rem; font-size: 0.75rem; font-weight: 500; padding: 0.375rem 0.625rem; border-radius: 0.5rem; background: #18181b; border: 1px solid #27272a; color: #d4d4d8; cursor: pointer; }
+    .btn-quiet:hover { border-color: #52525b; color: #fff; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 0.375rem; font-size: 0.875rem; font-weight: 600; padding: 0.5rem 1rem; border-radius: 0.5rem; background: #22d3ee; color: #09090b; }
+    .btn-primary:hover { background: #67e8f9; }
+    .kv-row { display: flex; align-items: center; gap: 0.75rem; width: 100%; text-align: left; padding: 0.5rem 0.75rem; border-radius: 0.5rem; border: 1px solid #27272a; background: #18181b; }
+    .kv-row:hover { border-color: #3f3f46; }
   </style>
   <script src="/js/gemini-settings.js"></script>
   <script src="/js/gemini-copy.js"></script>
@@ -73,418 +119,469 @@
   <script type="module" src="/js/model-tools.js"></script>
   <script src="/js/share-cards.js"></script>
 </head>
-<body class="bg-slate-50 text-slate-900 min-h-screen relative">
+<body class="bg-zinc-950 text-zinc-200 h-screen overflow-hidden">
 
   <div id="loadingOverlay" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70">
-      <div class="bg-white p-6 rounded-xl shadow-2xl flex items-center gap-4 animate-bounce">
-          <div class="w-6 h-6 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
-          <span id="loadingText" class="font-bold text-slate-700 text-lg">Saving Changes...</span>
+      <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-xl shadow-2xl flex items-center gap-4">
+          <div class="w-6 h-6 border-4 border-cyan-400 border-t-transparent rounded-full animate-spin"></div>
+          <span id="loadingText" class="font-semibold text-zinc-200 text-lg">Saving Changes...</span>
       </div>
   </div>
 
   <div id="aiBusyOverlay" class="hidden fixed inset-0 z-[90] flex items-center justify-center bg-black/50" role="status" aria-live="polite" aria-busy="true">
-      <div class="bg-white p-6 rounded-xl shadow-2xl flex items-center gap-4">
-          <div class="w-6 h-6 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
-          <span id="aiBusyText" class="font-bold text-slate-700 text-lg">Working…</span>
+      <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-xl shadow-2xl flex items-center gap-4">
+          <div class="w-6 h-6 border-4 border-cyan-400 border-t-transparent rounded-full animate-spin"></div>
+          <span id="aiBusyText" class="font-semibold text-zinc-200 text-lg">Working…</span>
       </div>
   </div>
 
-  <div id="app" class="max-w-5xl mx-auto p-6">
-    <div class="flex justify-between items-center mb-8">
-      <div>
-        <h1 class="text-3xl font-bold text-slate-800">Portfolio CMS <span class="text-sm font-medium text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full align-middle">v2.5.3 Local</span></h1>
-        <p class="text-slate-500 text-sm mt-1">Local portfolio manager</p>
+  <div id="app" class="h-screen flex flex-col overflow-hidden">
+    <header class="h-11 shrink-0 flex items-center justify-between px-3 border-b border-zinc-800 bg-zinc-900">
+      <div class="flex items-center gap-3 min-w-0">
+        <span class="text-sm font-semibold tracking-wide text-zinc-100">CMS</span>
+        <span class="text-[10px] font-mono text-zinc-500">v2.5.3</span>
+        <span id="dirtyDot" class="w-1.5 h-1.5 rounded-full bg-zinc-600 opacity-30" title="Unsaved changes"></span>
       </div>
-      <div class="flex gap-3 items-center">
+      <div class="flex items-center gap-1.5">
         <button type="button" onclick="GeminiSettings.open()" title="Gemini settings" aria-label="Gemini settings"
-          class="h-10 w-10 rounded-xl bg-gradient-to-br from-purple-600 to-blue-500 flex items-center justify-center shadow-md hover:opacity-90 shrink-0">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5" aria-hidden="true">
+          class="h-8 w-8 rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 flex items-center justify-center hover:opacity-90 shrink-0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4" aria-hidden="true">
             <path fill="#fbbf24" d="M12 2.4 13.55 7.1 18.4 8.6l-4.85 1.5L12 14.8l-1.55-4.7L5.6 8.6l4.85-1.5L12 2.4z"/>
             <path fill="#f59e0b" d="M5.2 14.4 6 16.7l2.3.8-2.3.8-.8 2.3-.8-2.3-2.3-.8 2.3-.8.8-2.3z"/>
             <path fill="#fcd34d" d="M18.6 13.1 19.2 14.9 21 15.5l-1.8.6-.6 1.8-.6-1.8-1.8-.6 1.8-.6.6-1.8z"/>
           </svg>
         </button>
-        <button onclick="tryRefresh()" class="px-4 py-2 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-600 flex items-center gap-2">
+        <button type="button" onclick="tryRefresh()" class="btn-quiet h-8">
           <i class="ph ph-arrow-clockwise"></i> Refresh
         </button>
-        <button onclick="cleanupMedia()" id="cleanupBtn" class="px-4 py-2 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-600 flex items-center gap-2">
+        <button type="button" onclick="cleanupMedia()" id="cleanupBtn" class="btn-quiet h-8">
           <i class="ph ph-broom"></i> Cleanup
         </button>
-        <button onclick="publish()" id="pubBtn" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 shadow-md flex items-center gap-2 font-medium">
-          <i class="ph ph-export"></i> Publish Website
+        <button type="button" onclick="publish()" id="pubBtn" class="btn-primary h-8 py-0">
+          <i class="ph ph-export"></i> Publish
         </button>
       </div>
-    </div>
+    </header>
 
-    <div id="status" class="hidden fixed bottom-4 right-4 z-50 w-80 p-4 rounded-xl shadow-2xl border flex items-start gap-3 bg-blue-50 text-blue-800 border-blue-100 transition-all duration-300">
-      <i class="ph ph-spinner animate-spin text-xl flex-shrink-0 mt-0.5"></i>
+    <div id="status" class="hidden fixed bottom-4 right-4 z-50 w-80 p-4 rounded-xl shadow-2xl border flex items-start gap-3 bg-zinc-900 text-zinc-200 border-zinc-800 transition-all duration-300">
+      <i class="ph ph-spinner animate-spin text-xl flex-shrink-0 mt-0.5 text-cyan-400"></i>
       <span id="statusMsg" class="text-sm font-medium leading-snug">Loading...</span>
     </div>
 
-  <div id="upload-queue" class="hidden fixed bottom-4 right-4 z-50 w-96 bg-white rounded-xl shadow-2xl border border-slate-200 overflow-hidden transition-all duration-300">
-    <div class="px-4 py-3 bg-slate-800 flex justify-between items-center">
-      <span class="font-semibold text-sm text-white flex items-center gap-2">
-        <i id="queue-header-icon" class="ph ph-spinner animate-spin text-indigo-400"></i>
-        <span id="queue-header-label">Processing uploads…</span>
-      </span>
-      <span id="queue-eta" class="text-xs text-slate-400 font-mono"></span>
-    </div>
-    <div id="queue-items" class="divide-y divide-slate-100 max-h-72 overflow-y-auto"></div>
-  </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="md:col-span-1 space-y-4">
-        <button onclick="tryShowSettings()" class="w-full py-3 bg-slate-800 text-white rounded-xl font-bold hover:bg-slate-700 transition-colors flex items-center justify-center gap-2 shadow-sm">
-          <i class="ph ph-sliders-horizontal"></i> Main Interface
-        </button>
-        <div class="border-t border-slate-200 my-2"></div>
-        <button onclick="tryNewItem()" class="w-full py-3 border-2 border-dashed border-slate-300 rounded-xl text-slate-400 font-bold hover:border-indigo-400 hover:text-indigo-500 transition-colors">
-          + New Project
-        </button>
-        <div id="projectList" class="space-y-2 max-h-[70vh] overflow-y-auto pr-2">
-          <div class="animate-pulse bg-white h-20 rounded-xl"></div>
-        </div>
+    <div id="upload-queue" class="hidden fixed bottom-4 right-4 z-50 w-96 bg-zinc-900 rounded-xl shadow-2xl border border-zinc-800 overflow-hidden transition-all duration-300">
+      <div class="px-4 py-3 bg-zinc-950 flex justify-between items-center border-b border-zinc-800">
+        <span class="font-semibold text-sm text-white flex items-center gap-2">
+          <i id="queue-header-icon" class="ph ph-spinner animate-spin text-cyan-400"></i>
+          <span id="queue-header-label">Processing uploads…</span>
+        </span>
+        <span id="queue-eta" class="text-xs text-zinc-500 font-mono"></span>
       </div>
+      <div id="queue-items" class="divide-y divide-zinc-800 max-h-72 overflow-y-auto"></div>
+    </div>
 
-      <div class="md:col-span-2 bg-white rounded-2xl shadow-xl border border-slate-100 p-6 sticky top-6 min-h-[600px]">
+    <div class="flex flex-1 min-h-0">
+      <aside class="w-[260px] shrink-0 border-r border-zinc-800 bg-zinc-950 flex flex-col min-h-0">
+        <div class="p-2 space-y-1 shrink-0">
+          <button type="button" id="railSettingsBtn" onclick="tryShowSettings()" class="rail-btn w-full h-8 px-2 rounded-md text-left text-xs font-medium text-zinc-300 hover:bg-zinc-900 hover:text-white transition-colors flex items-center gap-2">
+            <i class="ph ph-sliders-horizontal text-sm"></i> Main Interface
+          </button>
+          <button type="button" onclick="tryNewItem()" class="w-full h-8 px-2 rounded-md text-left text-xs font-medium text-zinc-500 hover:text-cyan-400 hover:bg-zinc-900 transition-colors flex items-center gap-2">
+            <i class="ph ph-plus text-sm"></i> New Project
+          </button>
+        </div>
+        <div id="projectList" class="flex-1 overflow-y-auto px-2 pb-3 space-y-1">
+          <div class="animate-pulse bg-zinc-900 h-8 rounded-md"></div>
+        </div>
+      </aside>
 
-        <div id="emptyState" class="h-full flex flex-col items-center justify-center text-slate-300">
-          <i class="ph ph-pencil-simple-slash text-6xl mb-4"></i>
-          <p>Select a project or the Main Interface to edit</p>
+      <main class="flex-1 min-w-0 min-h-0 flex flex-col bg-zinc-950">
+        <div id="emptyState" class="flex-1 flex-col items-center justify-center text-zinc-600">
+          <i class="ph ph-pencil-simple-slash text-5xl mb-3"></i>
+          <p class="text-sm">Select a project or the Main Interface to edit</p>
         </div>
 
         <!-- PROJECT EDITOR -->
-        <form id="editor" class="hidden space-y-4" onsubmit="event.preventDefault(); saveCurrent();">
-          <div class="flex justify-between items-center mb-4 border-b border-slate-100 pb-2">
-            <h2 class="text-lg font-bold text-slate-700">Edit Project</h2>
-            <div class="flex items-center gap-3">
-               <label class="flex items-center gap-2 bg-orange-50 px-3 py-1 rounded border border-orange-200 cursor-pointer select-none">
-                  <input type="checkbox" id="draft" class="sr-only peer" checked>
-                  <span class="relative w-9 h-5 bg-slate-200 rounded-full transition-colors peer-checked:bg-orange-500 after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:w-4 after:h-4 after:bg-white after:rounded-full after:shadow after:transition-transform peer-checked:after:translate-x-4"></span>
-                  <span class="text-xs font-bold text-orange-700 uppercase">Draft</span>
-               </label>
-               <div class="flex items-center gap-2 bg-yellow-50 px-3 py-1 rounded border border-yellow-200">
-                  <input type="checkbox" id="featured" class="w-4 h-4 text-yellow-500 rounded focus:ring-yellow-500 border-gray-300">
-                  <label for="featured" class="text-xs font-bold text-yellow-700 uppercase cursor-pointer">Featured</label>
-               </div>
-               <div class="flex items-center gap-2 bg-purple-50 px-3 py-1 rounded border border-purple-200">
-                  <input type="checkbox" id="wip" class="w-4 h-4 text-purple-500 rounded focus:ring-purple-500 border-gray-300">
-                  <label for="wip" class="text-xs font-bold text-purple-700 uppercase cursor-pointer">WIP</label>
-               </div>
-            </div>
-          </div>
-
+        <form id="editor" class="hidden flex-1 min-h-0 flex-col" onsubmit="event.preventDefault(); saveCurrent();">
           <input type="hidden" id="id">
           <input type="hidden" id="timestamp">
           <input type="hidden" id="thumbnail">
           <input type="hidden" id="thumbnailFit">
           <input type="hidden" id="bannerFit">
 
-          <div class="grid grid-cols-2 gap-4">
-            <div>
-              <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Title</label>
-              <input type="text" id="title" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+          <nav class="shrink-0 flex items-center gap-1 px-4 border-b border-zinc-800 bg-zinc-900/80">
+            <button type="button" class="tab-btn editor-tab-btn is-active px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider" data-tab="overview" onclick="switchEditorTab('overview')">Overview</button>
+            <button type="button" class="tab-btn editor-tab-btn px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider" data-tab="copy" onclick="switchEditorTab('copy')">Copy</button>
+            <button type="button" class="tab-btn editor-tab-btn px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider" data-tab="media" onclick="switchEditorTab('media')">Media</button>
+            <button type="button" class="tab-btn editor-tab-btn px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider" data-tab="specs" onclick="switchEditorTab('specs')">Specs</button>
+            <button type="button" class="tab-btn editor-tab-btn px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider" data-tab="files" onclick="switchEditorTab('files')">Files</button>
+            <button type="button" class="tab-btn editor-tab-btn px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider" data-tab="links" onclick="switchEditorTab('links')">Links</button>
+          </nav>
+
+          <div id="editor-scroll" class="flex-1 min-h-0 overflow-y-auto p-5">
+            <div id="panel-overview" class="editor-tab space-y-5" data-tab="overview">
+              <div class="flex flex-wrap items-center gap-3">
+                <label class="flex items-center gap-2 cursor-pointer select-none">
+                  <input type="checkbox" id="draft" class="sr-only peer" checked>
+                  <span class="relative w-8 h-4 bg-zinc-800 rounded-full transition-colors peer-checked:bg-orange-500 after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:w-3 after:h-3 after:bg-white after:rounded-full after:transition-transform peer-checked:after:translate-x-4"></span>
+                  <span class="text-[10px] font-mono font-bold tracking-wider text-zinc-400">DRAFT</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer select-none">
+                  <input type="checkbox" id="featured" class="sr-only peer">
+                  <span class="relative w-8 h-4 bg-zinc-800 rounded-full transition-colors peer-checked:bg-yellow-400 after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:w-3 after:h-3 after:bg-zinc-950 after:rounded-full after:transition-transform peer-checked:after:translate-x-4"></span>
+                  <span class="text-[10px] font-mono font-bold tracking-wider text-zinc-400">FEAT</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer select-none">
+                  <input type="checkbox" id="wip" class="sr-only peer">
+                  <span class="relative w-8 h-4 bg-zinc-800 rounded-full transition-colors peer-checked:bg-violet-500 after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:w-3 after:h-3 after:bg-white after:rounded-full after:transition-transform peer-checked:after:translate-x-4"></span>
+                  <span class="text-[10px] font-mono font-bold tracking-wider text-zinc-400">WIP</span>
+                </label>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Title</label>
+                  <input type="text" id="title" class="field" required>
+                </div>
+                <div>
+                  <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Category</label>
+                  <select id="category" class="field">
+                    <option>Lighting</option>
+                    <option>Art</option>
+                    <option>Fixtures</option>
+                    <option>Software</option>
+                    <option value="Tooling">Shop (Tools &amp; Repair)</option>
+                    <option>Systems</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Banner Image</label>
+                <div class="flex gap-2">
+                  <input type="text" id="image" placeholder="Path or URL" class="field font-mono text-xs">
+                  <label class="btn-quiet whitespace-nowrap cursor-pointer">
+                    <i class="ph ph-upload-simple"></i> Upload
+                    <input type="file" accept="image/*" class="hidden" onchange="handleImageUpload(this, 'image')">
+                  </label>
+                </div>
+                <div class="flex gap-2 mt-2 items-center">
+                  <button type="button" onclick="openBannerCrop('thumbnail')" class="btn-quiet">
+                    <i class="ph ph-crop"></i> Thumbnail
+                  </button>
+                  <button type="button" onclick="openBannerCrop('banner')" class="btn-quiet">
+                    <i class="ph ph-crop"></i> Banner
+                  </button>
+                  <span id="banner-fit-status" class="text-[11px] font-mono text-cyan-400 ml-auto"></span>
+                </div>
+              </div>
+
+              <div class="relative" id="tags-autocomplete-wrapper">
+                <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Tags</label>
+                <textarea id="tags" rows="2" placeholder="Arduino, LED, Design" class="field font-mono text-xs"></textarea>
+                <div id="tags-dropdown" class="hidden absolute left-0 right-0 z-50 bg-zinc-900 border border-zinc-800 rounded-lg shadow-lg max-h-40 overflow-y-auto mt-1"></div>
+                <div id="tag-pills" class="flex flex-wrap gap-1.5 mt-2 empty:hidden"></div>
+              </div>
             </div>
-            <div>
-              <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Category</label>
-              <select id="category" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2">
-                <option>Lighting</option>
-                <option>Art</option>
-                <option>Fixtures</option>
-                <option>Software</option>
-                <option value="Tooling">Shop (Tools &amp; Repair)</option>
-                <option>Systems</option>
-              </select>
+
+            <div id="panel-copy" class="editor-tab hidden space-y-5" data-tab="copy">
+              <div>
+                <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Description (Short)</label>
+                <div id="description-editor"></div>
+              </div>
+              <div>
+                <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Long Description (Detailed)</label>
+                <div id="longDescription-editor"></div>
+              </div>
+            </div>
+
+            <div id="panel-media" class="editor-tab hidden" data-tab="media">
+              <div class="flex justify-between items-center mb-3">
+                <h3 class="text-[10px] font-bold text-zinc-500 uppercase tracking-wider">Gallery</h3>
+                <div class="flex gap-1.5 flex-wrap justify-end">
+                  <label class="btn-quiet cursor-pointer">
+                    <i class="ph ph-upload-simple"></i> Image
+                    <input type="file" accept="image/*" multiple class="hidden" onchange="handleGalleryMultiUpload(this)">
+                  </label>
+                  <button type="button" onclick="openVideoAudioPrompt()" class="btn-quiet">
+                    <i class="ph ph-film-slate"></i> Video
+                  </button>
+                  <input type="file" id="gallery-video-input" accept="video/*" multiple class="hidden" onchange="handleGalleryVideoUpload(this)">
+                  <label class="btn-quiet cursor-pointer" title="STL, 3MF or STEP — converted to GLB in the browser">
+                    <i class="ph ph-cube"></i> 3D
+                    <input type="file" id="gallery-model-input" accept=".stl,.3mf,.step,.stp,model/stl,model/3mf,application/step" multiple class="hidden" onchange="handleGalleryModelUpload(this)">
+                  </label>
+                  <button type="button" onclick="addGalleryRow()" class="btn-quiet">+ URL</button>
+                </div>
+              </div>
+              <div id="gallery-container" class="flex flex-wrap gap-2"></div>
+            </div>
+
+            <div id="panel-specs" class="editor-tab hidden" data-tab="specs">
+              <div class="flex justify-between items-center mb-3">
+                <h3 class="text-[10px] font-bold text-zinc-500 uppercase tracking-wider">Specifications</h3>
+                <button type="button" onclick="openCopySpecsModal()" class="btn-quiet">
+                  <i class="ph ph-copy"></i> Copy from project
+                </button>
+              </div>
+              <p class="text-[11px] text-zinc-500 mb-3">Comma-separated specs auto-format with bullets.</p>
+              <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 items-start">
+                <div>
+                  <div id="specs-builder" class="space-y-2 mb-3"></div>
+                  <button type="button" onclick="addSpecCategory()" class="btn-quiet w-full justify-center">
+                    <i class="ph ph-plus"></i> Add Category
+                  </button>
+                </div>
+                <div id="specs-preview" class="bg-black rounded-xl p-5 border border-zinc-800 min-h-[120px]">
+                  <h5 class="text-zinc-500 text-[10px] font-bold tracking-[0.2em] mb-4 uppercase">Specifications</h5>
+                  <div id="specs-preview-body" class="text-zinc-200 text-sm"></div>
+                </div>
+              </div>
+            </div>
+
+            <div id="panel-files" class="editor-tab hidden" data-tab="files">
+              <div class="flex justify-between items-center mb-3">
+                <h3 class="text-[10px] font-bold text-zinc-500 uppercase tracking-wider">Downloadable Files</h3>
+                <div class="flex gap-1.5">
+                  <label class="btn-quiet cursor-pointer">
+                    <i class="ph ph-upload-simple"></i> Upload
+                    <input type="file" class="hidden" multiple onchange="handleFileUpload(this)">
+                  </label>
+                  <button type="button" onclick="addFileRow()" class="btn-quiet">+ URL</button>
+                </div>
+              </div>
+              <div id="files-container" class="space-y-1"></div>
+            </div>
+
+            <div id="panel-links" class="editor-tab hidden space-y-6" data-tab="links">
+              <div>
+                <h3 class="text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-2">Actions</h3>
+                <div class="space-y-1" id="action-links-list">
+                  <button type="button" class="kv-row" data-field="websiteLink" onclick="openKvEdit('websiteLink','Website / Project Link','https://mysite.com')">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-500 w-20 shrink-0">Website</span>
+                    <span class="kv-value flex-1 truncate font-mono text-xs text-zinc-400"></span>
+                    <i class="ph ph-pencil-simple text-zinc-600"></i>
+                  </button>
+                  <button type="button" class="kv-row" data-field="launchLink" onclick="openKvEdit('launchLink','Launch App Link','https://app...')">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-500 w-20 shrink-0">Launch</span>
+                    <span class="kv-value flex-1 truncate font-mono text-xs text-zinc-400"></span>
+                    <i class="ph ph-pencil-simple text-zinc-600"></i>
+                  </button>
+                  <button type="button" class="kv-row" data-field="githubLink" onclick="openKvEdit('githubLink','GitHub Link','https://github.com/...')">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-500 w-20 shrink-0">GitHub</span>
+                    <span class="kv-value flex-1 truncate font-mono text-xs text-zinc-400"></span>
+                    <i class="ph ph-pencil-simple text-zinc-600"></i>
+                  </button>
+                  <button type="button" class="kv-row" data-field="shopLink" onclick="openKvEdit('shopLink','Shop Link','https://store...')">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-500 w-20 shrink-0">Shop</span>
+                    <span class="kv-value flex-1 truncate font-mono text-xs text-zinc-400"></span>
+                    <i class="ph ph-pencil-simple text-zinc-600"></i>
+                  </button>
+                </div>
+                <input type="text" id="websiteLink" class="hidden" placeholder="https://mysite.com">
+                <input type="text" id="launchLink" class="hidden" placeholder="https://app...">
+                <input type="text" id="githubLink" class="hidden" placeholder="https://github.com/...">
+                <input type="text" id="shopLink" class="hidden" placeholder="https://store...">
+              </div>
+              <div>
+                <div class="flex justify-between items-center mb-2">
+                  <h3 class="text-[10px] font-bold text-zinc-500 uppercase tracking-wider">Related</h3>
+                  <button type="button" onclick="addRelatedRow()" class="btn-quiet">+ Add Link</button>
+                </div>
+                <div id="related-container" class="space-y-1"></div>
+              </div>
             </div>
           </div>
 
-          <div>
-             <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Banner Image</label>
-             <div class="flex gap-2">
-               <input type="text" id="image" placeholder="Path or URL" class="flex-1 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-mono">
-               <label class="cursor-pointer bg-indigo-100 text-indigo-600 px-3 py-2 rounded-lg hover:bg-indigo-200 flex items-center gap-1 text-sm font-bold whitespace-nowrap">
-                 <i class="ph ph-upload-simple"></i> Image Upload
-                 <input type="file" accept="image/*" class="hidden" onchange="handleImageUpload(this, 'image')">
-               </label>
-             </div>
-             <div class="flex gap-2 mt-2 items-center">
-               <button type="button" onclick="openBannerCrop('thumbnail')"
-                       class="flex items-center gap-1 text-xs bg-slate-100 hover:bg-indigo-100 hover:text-indigo-600 text-slate-600 px-3 py-1.5 rounded-lg font-bold transition-colors">
-                 <i class="ph ph-crop"></i> Thumbnail Crop
-               </button>
-               <button type="button" onclick="openBannerCrop('banner')"
-                       class="flex items-center gap-1 text-xs bg-slate-100 hover:bg-indigo-100 hover:text-indigo-600 text-slate-600 px-3 py-1.5 rounded-lg font-bold transition-colors">
-                 <i class="ph ph-crop"></i> Banner Crop
-               </button>
-               <span id="banner-fit-status" class="text-xs text-indigo-500 font-medium ml-auto"></span>
-             </div>
-          </div>
-
-          <div>
-             <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Description (Short)</label>
-             <div id="description-editor" class="bg-white"></div>
-          </div>
-
-          <div>
-             <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Long Description (Detailed)</label>
-             <div id="longDescription-editor" class="bg-white"></div>
-          </div>
-
-          <!-- Specifications -->
-          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
-             <div class="flex justify-between items-center mb-3 border-b border-slate-200 pb-2">
-                 <h3 class="text-xs font-bold text-slate-500 uppercase">Specifications</h3>
-                 <button type="button" onclick="openCopySpecsModal()" class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded hover:bg-indigo-200 font-bold flex items-center gap-1">
-                   <i class="ph ph-copy"></i> Copy from project
-                 </button>
-             </div>
-             <p class="text-xs text-slate-500 mb-4">Enter comma-separated values in the specs field, and they will auto-format with bullets.</p>
-             <div id="specs-builder" class="space-y-4 mb-6"></div>
-             <button type="button" onclick="addSpecCategory()" class="w-full py-3 bg-slate-800 text-white rounded-lg text-sm font-bold hover:bg-slate-700 transition-colors flex items-center justify-center gap-2 mb-6">
-               <i class="ph ph-plus"></i> Add Category
-             </button>
-             <div>
-               <h4 class="text-xs font-bold text-slate-500 uppercase mb-3">Live Preview</h4>
-               <div id="specs-preview" class="bg-black rounded-xl p-6 border border-slate-800 min-h-[120px]">
-                 <h5 class="text-zinc-500 text-[10px] font-bold tracking-[0.2em] mb-4 uppercase">Specifications</h5>
-                 <div id="specs-preview-body" class="text-zinc-200 text-sm"></div>
-               </div>
-             </div>
-          </div>
-
-          <!-- Gallery -->
-          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
-             <div class="flex justify-between items-center mb-3 border-b border-slate-200 pb-2">
-                 <h3 class="text-xs font-bold text-slate-500 uppercase">Gallery Images / Videos / 3D Models</h3>
-                 <div class="flex gap-2 flex-wrap justify-end">
-                   <label class="cursor-pointer text-xs bg-green-100 text-green-600 px-2 py-1 rounded hover:bg-green-200 font-bold flex items-center gap-1">
-                     <i class="ph ph-upload-simple"></i> Image Upload
-                     <input type="file" accept="image/*" multiple class="hidden" onchange="handleGalleryMultiUpload(this)">
-                   </label>
-                   <button type="button" onclick="openVideoAudioPrompt()" class="text-xs bg-sky-100 text-sky-600 px-2 py-1 rounded hover:bg-sky-200 font-bold flex items-center gap-1">
-                     <i class="ph ph-film-slate"></i> Upload Video
-                   </button>
-                   <input type="file" id="gallery-video-input" accept="video/*" multiple class="hidden" onchange="handleGalleryVideoUpload(this)">
-                   <label class="cursor-pointer text-xs bg-amber-100 text-amber-700 px-2 py-1 rounded hover:bg-amber-200 font-bold flex items-center gap-1" title="STL, 3MF or STEP — converted to GLB in the browser">
-                     <i class="ph ph-cube"></i> 3D Model
-                     <input type="file" id="gallery-model-input" accept=".stl,.3mf,.step,.stp,model/stl,model/3mf,application/step" multiple class="hidden" onchange="handleGalleryModelUpload(this)">
-                   </label>
-                   <button type="button" onclick="addGalleryRow()" class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded hover:bg-indigo-200 font-bold">+ Add URL</button>
-                 </div>
-             </div>
-             <div id="gallery-container" class="space-y-2"></div>
-          </div>
-
-          <!-- Actions -->
-          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
-             <h3 class="text-xs font-bold text-slate-500 uppercase mb-3 border-b border-slate-200 pb-2">Actions</h3>
-             <div class="grid grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Website / Project Link</label>
-                  <input type="text" id="websiteLink" placeholder="https://mysite.com" class="w-full bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono">
-                </div>
-                <div>
-                  <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Launch App Link</label>
-                  <input type="text" id="launchLink" placeholder="https://app..." class="w-full bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono">
-                </div>
-                <div>
-                  <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">GitHub Link</label>
-                  <input type="text" id="githubLink" placeholder="https://github.com/..." class="w-full bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono">
-                </div>
-                <div>
-                  <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Shop Link</label>
-                  <input type="text" id="shopLink" placeholder="https://store..." class="w-full bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono">
-                </div>
-             </div>
-          </div>
-
-          <!-- Downloads -->
-          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
-             <div class="flex justify-between items-center mb-3 border-b border-slate-200 pb-2">
-                 <h3 class="text-xs font-bold text-slate-500 uppercase">Downloadable Files</h3>
-                 <div class="flex gap-2">
-                     <label class="cursor-pointer text-xs bg-green-100 text-green-600 px-2 py-1 rounded hover:bg-green-200 font-bold flex items-center gap-1">
-                         <i class="ph ph-upload-simple"></i> Upload
-                         <input type="file" class="hidden" multiple onchange="handleFileUpload(this)">
-                     </label>
-                     <button type="button" onclick="addFileRow()" class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded hover:bg-indigo-200 font-bold">+ Add URL</button>
-                 </div>
-             </div>
-             <div id="files-container" class="space-y-2"></div>
-          </div>
-
-          <!-- Related -->
-          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
-             <div class="flex justify-between items-center mb-3 border-b border-slate-200 pb-2">
-                 <h3 class="text-xs font-bold text-slate-500 uppercase">Related</h3>
-                 <button type="button" onclick="addRelatedRow()" class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded hover:bg-indigo-200 font-bold">+ Add Link</button>
-             </div>
-             <div id="related-container" class="space-y-2"></div>
-          </div>
-
-          <div class="mt-4 relative" id="tags-autocomplete-wrapper">
-            <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Tags (Comma separated)</label>
-            <textarea id="tags" rows="2" placeholder="Arduino, LED, Design" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs font-mono"></textarea>
-            <div id="tags-dropdown" class="hidden absolute left-0 right-0 z-50 bg-white border border-slate-200 rounded-lg shadow-lg max-h-40 overflow-y-auto mt-1"></div>
-            <div id="tag-pills" class="flex flex-wrap gap-1.5 mt-2 empty:hidden"></div>
-          </div>
-
-          <div class="pt-4 flex justify-between items-center border-t border-slate-100 mt-4">
-             <button type="button" onclick="deleteCurrent()" class="text-red-400 hover:text-red-600 text-sm font-bold px-3">Delete</button>
-             <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-lg shadow-lg shadow-indigo-200 transition-all">Save Project</button>
+          <div class="shrink-0 flex justify-between items-center px-5 py-3 border-t border-zinc-800 bg-zinc-900">
+            <button type="button" onclick="deleteCurrent()" class="text-zinc-500 hover:text-red-400 text-sm font-medium px-2">Delete</button>
+            <button type="submit" class="btn-primary">Save Project</button>
           </div>
         </form>
 
         <!-- SETTINGS FORM -->
-        <form id="settingsForm" class="hidden space-y-6" onsubmit="event.preventDefault(); saveSettings();">
-          <div class="flex justify-between items-center mb-4 border-b border-slate-100 pb-2">
-            <h2 class="text-lg font-bold text-slate-700">Main Interface Settings</h2>
-          </div>
+        <form id="settingsForm" class="hidden flex-1 min-h-0 flex-col" onsubmit="event.preventDefault(); saveSettings();">
+          <nav class="shrink-0 flex items-center gap-1 px-4 border-b border-zinc-800 bg-zinc-900/80">
+            <button type="button" class="tab-btn settings-tab-btn is-active px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider" data-tab="about" onclick="switchSettingsTab('about')">About</button>
+            <button type="button" class="tab-btn settings-tab-btn px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider" data-tab="skills" onclick="switchSettingsTab('skills')">Skills</button>
+            <button type="button" class="tab-btn settings-tab-btn px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider" data-tab="social" onclick="switchSettingsTab('social')">Social</button>
+            <button type="button" class="tab-btn settings-tab-btn px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider" data-tab="sharing" onclick="switchSettingsTab('sharing')">Sharing</button>
+            <button type="button" class="tab-btn settings-tab-btn px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider" data-tab="contact" onclick="switchSettingsTab('contact')">Contact</button>
+          </nav>
 
-          <div class="mb-6 border-b border-slate-200 pb-6">
-              <h3 class="text-xs font-bold text-slate-500 uppercase mb-3">About Me Configuration</h3>
-              <div class="mb-4">
-                  <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Headshot</label>
-                  <div class="flex gap-2">
-                    <input type="text" id="about_headshot" placeholder="Path or URL" class="flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono">
-                    <label class="cursor-pointer bg-indigo-100 text-indigo-600 px-3 py-1 rounded hover:bg-indigo-200 flex items-center gap-1 text-sm font-bold whitespace-nowrap">
-                      <i class="ph ph-upload-simple"></i> Upload
-                      <input type="file" accept="image/*" class="hidden" onchange="handleHeadshotUpload(this)">
-                    </label>
-                  </div>
+          <div id="settings-scroll" class="flex-1 min-h-0 overflow-y-auto p-5">
+            <div id="panel-about" class="settings-tab space-y-4" data-tab="about">
+              <div>
+                <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Headshot</label>
+                <div class="flex gap-2">
+                  <input type="text" id="about_headshot" placeholder="Path or URL" class="field font-mono text-xs">
+                  <label class="btn-quiet whitespace-nowrap cursor-pointer">
+                    <i class="ph ph-upload-simple"></i> Upload
+                    <input type="file" accept="image/*" class="hidden" onchange="handleHeadshotUpload(this)">
+                  </label>
+                </div>
               </div>
               <div>
-                   <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">About Me Content</label>
-                   <div id="about-editor" class="bg-white"></div>
-              </div>
-              <div class="mt-4 pt-4 border-t border-slate-200 space-y-3">
-                  <h3 class="text-xs font-bold text-slate-500 uppercase mb-1">Skills <span class="font-normal normal-case text-slate-400">(comma-separated per category)</span></h3>
-                  <div>
-                      <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Hardware &amp; Electronics</label>
-                      <input type="text" id="skills_hardware" placeholder="PCB Design, Arduino, ..." class="w-full bg-slate-50 border border-slate-200 rounded px-3 py-2 text-sm font-mono">
-                  </div>
-                  <div>
-                      <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Lighting &amp; Show Control</label>
-                      <input type="text" id="skills_lighting" placeholder="DMX, ArtNet, ..." class="w-full bg-slate-50 border border-slate-200 rounded px-3 py-2 text-sm font-mono">
-                  </div>
-                  <div>
-                      <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Software &amp; Automation</label>
-                      <input type="text" id="skills_software" placeholder="React, Node.js, ..." class="w-full bg-slate-50 border border-slate-200 rounded px-3 py-2 text-sm font-mono">
-                  </div>
-                  <div>
-                      <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Fabrication &amp; R&amp;D</label>
-                      <input type="text" id="skills_fabrication" placeholder="FDM 3D Printing, SolidWorks, ..." class="w-full bg-slate-50 border border-slate-200 rounded px-3 py-2 text-sm font-mono">
-                  </div>
-                  <div>
-                      <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Systems Integration</label>
-                      <input type="text" id="skills_systems" placeholder="Ethernet, SPI, CAN, ..." class="w-full bg-slate-50 border border-slate-200 rounded px-3 py-2 text-sm font-mono">
-                  </div>
-              </div>
-          </div>
-
-          <div>
-            <h3 class="text-xs font-bold text-slate-500 uppercase mb-3">Social Links</h3>
-            <div class="space-y-3">
-              <div class="flex gap-2 items-center">
-                <i class="ph ph-envelope text-slate-400 text-lg w-6"></i>
-                <input type="text" id="email" placeholder="Email Address" class="w-full bg-slate-50 border border-slate-200 rounded px-3 py-2 text-sm">
-              </div>
-              <div class="flex gap-2 items-center">
-                <i class="ph ph-instagram-logo text-slate-400 text-lg w-6"></i>
-                <input type="text" id="instagram" placeholder="Instagram URL" class="w-full bg-slate-50 border border-slate-200 rounded px-3 py-2 text-sm font-mono">
-              </div>
-              <div class="flex gap-2 items-center">
-                <i class="ph ph-linkedin-logo text-slate-400 text-lg w-6"></i>
-                <input type="text" id="linkedin" placeholder="LinkedIn URL" class="w-full bg-slate-50 border border-slate-200 rounded px-3 py-2 text-sm font-mono">
-              </div>
-              <div class="flex gap-2 items-center">
-                <i class="ph ph-github-logo text-slate-400 text-lg w-6"></i>
-                <input type="text" id="github" placeholder="GitHub URL" class="w-full bg-slate-50 border border-slate-200 rounded px-3 py-2 text-sm font-mono">
+                <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">About Me Content</label>
+                <div id="about-editor"></div>
               </div>
             </div>
-          </div>
 
-          <div class="bg-amber-50 p-4 rounded-xl border border-amber-100 mt-4">
-            <h3 class="text-xs font-bold text-amber-800 uppercase mb-2">Sharing &amp; Social Previews</h3>
-            <p class="text-[10px] text-amber-700 mb-3">Used for the link previews Facebook, LinkedIn, X and iMessage show when the site or a project is shared. Publishing writes one <code>share/&lt;id&gt;.html</code> page and a 1200x630 card per project, plus a site card built from the hero board.</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div id="panel-skills" class="settings-tab hidden space-y-1" data-tab="skills">
+              <p class="text-[11px] text-zinc-500 mb-3">Comma-separated per category. Click a row to edit.</p>
+              <button type="button" class="kv-row" data-field="skills_hardware" onclick="openKvEdit('skills_hardware','Hardware & Electronics','PCB Design, Arduino, ...')">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-500 w-36 shrink-0">Hardware</span>
+                <span class="kv-value flex-1 truncate font-mono text-xs text-zinc-400"></span>
+                <i class="ph ph-pencil-simple text-zinc-600"></i>
+              </button>
+              <button type="button" class="kv-row" data-field="skills_lighting" onclick="openKvEdit('skills_lighting','Lighting & Show Control','DMX, ArtNet, ...')">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-500 w-36 shrink-0">Lighting</span>
+                <span class="kv-value flex-1 truncate font-mono text-xs text-zinc-400"></span>
+                <i class="ph ph-pencil-simple text-zinc-600"></i>
+              </button>
+              <button type="button" class="kv-row" data-field="skills_software" onclick="openKvEdit('skills_software','Software & Automation','React, Node.js, ...')">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-500 w-36 shrink-0">Software</span>
+                <span class="kv-value flex-1 truncate font-mono text-xs text-zinc-400"></span>
+                <i class="ph ph-pencil-simple text-zinc-600"></i>
+              </button>
+              <button type="button" class="kv-row" data-field="skills_fabrication" onclick="openKvEdit('skills_fabrication','Fabrication & R&D','FDM 3D Printing, SolidWorks, ...')">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-500 w-36 shrink-0">Fabrication</span>
+                <span class="kv-value flex-1 truncate font-mono text-xs text-zinc-400"></span>
+                <i class="ph ph-pencil-simple text-zinc-600"></i>
+              </button>
+              <button type="button" class="kv-row" data-field="skills_systems" onclick="openKvEdit('skills_systems','Systems Integration','Ethernet, SPI, CAN, ...')">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-500 w-36 shrink-0">Systems</span>
+                <span class="kv-value flex-1 truncate font-mono text-xs text-zinc-400"></span>
+                <i class="ph ph-pencil-simple text-zinc-600"></i>
+              </button>
+              <input type="text" id="skills_hardware" class="hidden" placeholder="PCB Design, Arduino, ...">
+              <input type="text" id="skills_lighting" class="hidden" placeholder="DMX, ArtNet, ...">
+              <input type="text" id="skills_software" class="hidden" placeholder="React, Node.js, ...">
+              <input type="text" id="skills_fabrication" class="hidden" placeholder="FDM 3D Printing, SolidWorks, ...">
+              <input type="text" id="skills_systems" class="hidden" placeholder="Ethernet, SPI, CAN, ...">
+            </div>
+
+            <div id="panel-social" class="settings-tab hidden space-y-1" data-tab="social">
+              <button type="button" class="kv-row" data-field="email" onclick="openKvEdit('email','Email Address','you@example.com')">
+                <i class="ph ph-envelope text-zinc-500 w-6"></i>
+                <span class="kv-value flex-1 truncate font-mono text-xs text-zinc-400"></span>
+                <i class="ph ph-pencil-simple text-zinc-600"></i>
+              </button>
+              <button type="button" class="kv-row" data-field="instagram" onclick="openKvEdit('instagram','Instagram URL','https://instagram.com/...')">
+                <i class="ph ph-instagram-logo text-zinc-500 w-6"></i>
+                <span class="kv-value flex-1 truncate font-mono text-xs text-zinc-400"></span>
+                <i class="ph ph-pencil-simple text-zinc-600"></i>
+              </button>
+              <button type="button" class="kv-row" data-field="linkedin" onclick="openKvEdit('linkedin','LinkedIn URL','https://linkedin.com/...')">
+                <i class="ph ph-linkedin-logo text-zinc-500 w-6"></i>
+                <span class="kv-value flex-1 truncate font-mono text-xs text-zinc-400"></span>
+                <i class="ph ph-pencil-simple text-zinc-600"></i>
+              </button>
+              <button type="button" class="kv-row" data-field="github" onclick="openKvEdit('github','GitHub URL','https://github.com/...')">
+                <i class="ph ph-github-logo text-zinc-500 w-6"></i>
+                <span class="kv-value flex-1 truncate font-mono text-xs text-zinc-400"></span>
+                <i class="ph ph-pencil-simple text-zinc-600"></i>
+              </button>
+              <input type="text" id="email" class="hidden" placeholder="Email Address">
+              <input type="text" id="instagram" class="hidden" placeholder="Instagram URL">
+              <input type="text" id="linkedin" class="hidden" placeholder="LinkedIn URL">
+              <input type="text" id="github" class="hidden" placeholder="GitHub URL">
+            </div>
+
+            <div id="panel-sharing" class="settings-tab hidden space-y-4" data-tab="sharing">
+              <p class="text-[11px] text-zinc-500">Used for the link previews Facebook, LinkedIn, X and iMessage show when the site or a project is shared. Publishing writes one <code class="font-mono text-zinc-400">share/&lt;id&gt;.html</code> page and a 1200x630 card per project, plus a site card built from the hero board.</p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                 <div>
-                  <label class="block text-[10px] font-bold text-amber-700 uppercase mb-1">Public Site URL</label>
-                  <input type="text" id="site_url" placeholder="https://chrismoore.me" class="w-full bg-white border border-amber-200 rounded px-2 py-1 text-xs font-mono">
+                  <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Public Site URL</label>
+                  <input type="text" id="site_url" placeholder="https://chrismoore.me" class="field font-mono text-xs">
                 </div>
                 <div>
-                  <label class="block text-[10px] font-bold text-amber-700 uppercase mb-1">Site Title</label>
-                  <input type="text" id="site_title" placeholder="Chris Moore Designs" class="w-full bg-white border border-amber-200 rounded px-2 py-1 text-xs">
+                  <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Site Title</label>
+                  <input type="text" id="site_title" placeholder="Chris Moore Designs" class="field">
                 </div>
                 <div class="md:col-span-2">
-                  <label class="block text-[10px] font-bold text-amber-700 uppercase mb-1">Site Description <span class="font-normal normal-case">(one line, shown under the title in previews)</span></label>
-                  <input type="text" id="site_description" placeholder="Creative Technologist &amp; Systems Integrator" class="w-full bg-white border border-amber-200 rounded px-2 py-1 text-xs">
+                  <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Site Description</label>
+                  <input type="text" id="site_description" placeholder="Creative Technologist &amp; Systems Integrator" class="field">
                 </div>
+              </div>
+            </div>
+
+            <div id="panel-contact" class="settings-tab hidden space-y-3" data-tab="contact">
+              <p class="text-[11px] text-zinc-500">Leave blank to use default email client (mailto). To send directly from the site, sign up at <a href="https://www.emailjs.com/" target="_blank" class="text-cyan-400 hover:underline">emailjs.com</a>.</p>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+                <input type="text" id="emailjs_service" placeholder="Service ID" class="field font-mono text-xs">
+                <input type="text" id="emailjs_template" placeholder="Template ID" class="field font-mono text-xs">
+                <input type="text" id="emailjs_public_key" placeholder="Public Key" class="field font-mono text-xs">
+              </div>
             </div>
           </div>
 
-          <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-100 mt-4">
-            <h3 class="text-xs font-bold text-indigo-800 uppercase mb-2">Contact Form Configuration (EmailJS)</h3>
-            <p class="text-[10px] text-indigo-600 mb-3">Leave blank to use default email client (mailto). To send directly from the site, sign up at <a href="https://www.emailjs.com/" target="_blank" class="underline">emailjs.com</a>.</p>
-            <div class="grid grid-cols-3 gap-2">
-                <input type="text" id="emailjs_service" placeholder="Service ID" class="bg-white border border-indigo-200 rounded px-2 py-1 text-xs font-mono">
-                <input type="text" id="emailjs_template" placeholder="Template ID" class="bg-white border border-indigo-200 rounded px-2 py-1 text-xs font-mono">
-                <input type="text" id="emailjs_public_key" placeholder="Public Key" class="bg-white border border-indigo-200 rounded px-2 py-1 text-xs font-mono">
-            </div>
-          </div>
-
-          <div class="pt-4 border-t border-slate-100 flex justify-end">
-             <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-lg shadow-lg shadow-indigo-200 transition-all">Save Settings</button>
+          <div class="shrink-0 flex justify-end items-center px-5 py-3 border-t border-zinc-800 bg-zinc-900">
+            <button type="submit" class="btn-primary">Save Settings</button>
           </div>
         </form>
+      </main>
+    </div>
+  </div>
+
+  <!-- Item edit popup -->
+  <div id="item-edit-modal" class="hidden fixed inset-0 z-[65] bg-black/70 items-center justify-center p-4" onclick="if(event.target===this)closeItemEdit(false)">
+    <div class="bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl w-full max-w-md p-5" onclick="event.stopPropagation()">
+      <div class="flex justify-between items-start mb-4">
+        <h2 id="item-edit-title" class="text-sm font-semibold text-zinc-100">Edit</h2>
+        <button type="button" onclick="closeItemEdit(false)" class="text-zinc-500 hover:text-white" aria-label="Close"><i class="ph ph-x text-xl"></i></button>
+      </div>
+      <div id="item-edit-fields" class="space-y-3"></div>
+      <div class="flex justify-end gap-2 mt-5">
+        <button type="button" onclick="closeItemEdit(false)" class="btn-quiet">Cancel</button>
+        <button type="button" onclick="closeItemEdit(true)" class="btn-primary">Done</button>
       </div>
     </div>
   </div>
 
   <!-- Unsaved Changes Modal -->
-  <div id="unsavedModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-    <div class="bg-white rounded-xl shadow-2xl p-6 max-w-sm w-full mx-4">
-        <h3 class="text-lg font-bold text-slate-800 mb-2">Unsaved Changes</h3>
-        <p class="text-sm text-slate-600 mb-6">You have unsaved changes. What would you like to do?</p>
-        <div class="flex flex-col gap-3">
-            <button onclick="resolveUnsaved('save')" class="w-full py-2 bg-indigo-600 text-white rounded-lg font-bold hover:bg-indigo-700">Save & Continue</button>
-            <button onclick="resolveUnsaved('discard')" class="w-full py-2 bg-red-100 text-red-700 rounded-lg font-bold hover:bg-red-200">Discard Changes</button>
-            <button onclick="resolveUnsaved('cancel')" class="w-full py-2 border border-slate-300 text-slate-600 rounded-lg font-bold hover:bg-slate-50">Cancel</button>
+  <div id="unsavedModal" class="hidden fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
+    <div class="bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl p-6 max-w-sm w-full mx-4">
+        <h3 class="text-lg font-semibold text-zinc-100 mb-2">Unsaved Changes</h3>
+        <p class="text-sm text-zinc-400 mb-6">You have unsaved changes. What would you like to do?</p>
+        <div class="flex flex-col gap-2">
+            <button onclick="resolveUnsaved('save')" class="btn-primary w-full justify-center">Save & Continue</button>
+            <button onclick="resolveUnsaved('discard')" class="w-full py-2 rounded-lg bg-red-950/50 text-red-300 border border-red-900 font-medium hover:bg-red-950">Discard Changes</button>
+            <button onclick="resolveUnsaved('cancel')" class="btn-quiet w-full justify-center">Cancel</button>
         </div>
     </div>
   </div>
 
   <!-- Publish Modal -->
-  <div id="publishModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-      <div class="bg-white rounded-xl shadow-2xl p-6 max-w-2xl w-full flex flex-col h-[80vh]">
+  <div id="publishModal" class="hidden fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
+      <div class="bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl p-6 max-w-2xl w-full flex flex-col h-[80vh]">
           <div class="flex justify-between items-center mb-4">
-              <h2 class="text-xl font-bold text-slate-800">Website Published!</h2>
-              <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600"><i class="ph ph-x text-xl"></i></button>
+              <h2 class="text-xl font-semibold text-zinc-100">Website Published</h2>
+              <button onclick="closeModal()" class="text-zinc-500 hover:text-white"><i class="ph ph-x text-xl"></i></button>
           </div>
           <div class="mb-4 space-y-2">
-            <p class="text-sm text-slate-600">Your site has been generated at <code class="bg-slate-100 px-1 rounded text-xs">index.html</code> in the Portfolio root.</p>
-            <p id="publishShareSummary" class="text-xs text-slate-500"></p>
+            <p class="text-sm text-zinc-400">Your site has been generated at <code class="bg-zinc-800 px-1 rounded text-xs font-mono text-zinc-300">index.html</code> in the Portfolio root.</p>
+            <p id="publishShareSummary" class="text-xs text-zinc-500"></p>
             <div class="flex gap-3 text-sm">
-                <a href="/preview" target="_blank" class="text-indigo-600 hover:underline flex items-center gap-1"><i class="ph ph-desktop"></i> Preview Locally</a>
+                <a href="/preview" target="_blank" class="text-cyan-400 hover:underline flex items-center gap-1"><i class="ph ph-desktop"></i> Preview Locally</a>
             </div>
           </div>
           <div id="publishShareCard" class="hidden mb-4 flex gap-4 items-start">
-            <img id="publishShareCardImg" src="" alt="Site share card preview" class="w-64 aspect-[1200/630] object-cover rounded-lg border border-slate-200 shadow-sm flex-shrink-0">
-            <div class="text-xs text-slate-500 leading-relaxed">
-              <p class="font-bold text-slate-700 mb-1">Social preview card</p>
-              <p>This image (and one per project in <code class="bg-slate-100 px-1 rounded">share/cards/</code>) is what Facebook, LinkedIn and X show when a link is shared. Commit the <code class="bg-slate-100 px-1 rounded">share/</code> folder along with <code class="bg-slate-100 px-1 rounded">index.html</code>.</p>
-              <p class="mt-1">Project share links look like <code id="publishShareExample" class="bg-slate-100 px-1 rounded"></code></p>
+            <img id="publishShareCardImg" src="" alt="Site share card preview" class="w-64 aspect-[1200/630] object-cover rounded-lg border border-zinc-800 shadow-sm flex-shrink-0">
+            <div class="text-xs text-zinc-500 leading-relaxed">
+              <p class="font-semibold text-zinc-300 mb-1">Social preview card</p>
+              <p>This image (and one per project in <code class="bg-zinc-800 px-1 rounded font-mono">share/cards/</code>) is what Facebook, LinkedIn and X show when a link is shared. Commit the <code class="bg-zinc-800 px-1 rounded font-mono">share/</code> folder along with <code class="bg-zinc-800 px-1 rounded font-mono">index.html</code>.</p>
+              <p class="mt-1">Project share links look like <code id="publishShareExample" class="bg-zinc-800 px-1 rounded font-mono"></code></p>
             </div>
           </div>
-          <div class="flex-grow relative border border-slate-200 rounded-lg bg-slate-50 overflow-hidden mb-4">
-              <textarea id="publishCode" class="w-full h-full p-4 font-mono text-xs focus:outline-none resize-none" readonly></textarea>
+          <div class="flex-grow relative border border-zinc-800 rounded-lg bg-zinc-950 overflow-hidden mb-4">
+              <textarea id="publishCode" class="w-full h-full p-4 font-mono text-xs text-zinc-300 bg-transparent focus:outline-none resize-none" readonly></textarea>
           </div>
-          <div class="flex gap-3 justify-end">
-              <button onclick="downloadSource()" class="px-4 py-2 border border-slate-300 rounded-lg hover:bg-slate-50 font-medium text-slate-700 flex items-center gap-2">
+          <div class="flex gap-2 justify-end">
+              <button onclick="downloadSource()" class="btn-quiet">
                    <i class="ph ph-download-simple"></i> Download HTML
               </button>
-              <button onclick="copyCode()" class="px-4 py-2 border border-slate-300 rounded-lg hover:bg-slate-50 font-medium text-slate-700"><i class="ph ph-copy"></i> Copy Code</button>
-              <a href="/preview" target="_blank" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-medium flex items-center gap-2"><i class="ph ph-desktop"></i> Preview Site</a>
+              <button onclick="copyCode()" class="btn-quiet"><i class="ph ph-copy"></i> Copy Code</button>
+              <a href="/preview" target="_blank" class="btn-primary"><i class="ph ph-desktop"></i> Preview Site</a>
           </div>
       </div>
   </div>
@@ -558,6 +655,109 @@
     let currentEditIndex = -1;
     let quillShort, quillLong, quillAbout;
     let specsCategories = [];
+    let currentEditorTab = 'overview';
+    let currentSettingsTab = 'about';
+    let itemEditState = { apply: null, row: null };
+
+    function updateDirtyChrome() {
+        const dot = document.getElementById('dirtyDot');
+        if (!dot) return;
+        const dirty = isDirty || listOrderDirty;
+        dot.classList.toggle('opacity-100', dirty);
+        dot.classList.toggle('bg-cyan-400', dirty);
+        dot.classList.toggle('opacity-30', !dirty);
+        dot.classList.toggle('bg-zinc-600', !dirty);
+    }
+
+    function switchEditorTab(name) {
+        currentEditorTab = name;
+        document.querySelectorAll('.editor-tab').forEach(el => {
+            el.classList.toggle('hidden', el.dataset.tab !== name);
+        });
+        document.querySelectorAll('.editor-tab-btn').forEach(btn => {
+            btn.classList.toggle('is-active', btn.dataset.tab === name);
+        });
+        if (name === 'copy') {
+            quillShort?.update();
+            quillLong?.update();
+        }
+    }
+
+    function switchSettingsTab(name) {
+        currentSettingsTab = name;
+        document.querySelectorAll('.settings-tab').forEach(el => {
+            el.classList.toggle('hidden', el.dataset.tab !== name);
+        });
+        document.querySelectorAll('.settings-tab-btn').forEach(btn => {
+            btn.classList.toggle('is-active', btn.dataset.tab === name);
+        });
+        if (name === 'about') quillAbout?.update();
+    }
+
+    function refreshKvRows() {
+        document.querySelectorAll('.kv-row[data-field]').forEach(row => {
+            const input = document.getElementById(row.dataset.field);
+            const val = (input?.value || '').trim();
+            const el = row.querySelector('.kv-value');
+            if (!el) return;
+            el.textContent = val || 'Add';
+            el.classList.toggle('italic', !val);
+            el.classList.toggle('text-zinc-600', !val);
+            el.classList.toggle('text-zinc-300', !!val);
+        });
+    }
+
+    function fileBaseName(url) {
+        if (!url) return '';
+        const path = String(url).split('?')[0];
+        try { return decodeURIComponent(path.split('/').pop() || path); }
+        catch { return path.split('/').pop() || path; }
+    }
+
+    function fileExt(url) {
+        const n = fileBaseName(url);
+        const i = n.lastIndexOf('.');
+        return i > 0 ? n.slice(i + 1).toUpperCase() : '';
+    }
+
+    function openItemEditModal({ title, html, onApply, focusSelector }) {
+        const modal = document.getElementById('item-edit-modal');
+        document.getElementById('item-edit-title').textContent = title;
+        document.getElementById('item-edit-fields').innerHTML = html;
+        itemEditState.apply = onApply;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        const focusEl = focusSelector ? modal.querySelector(focusSelector) : modal.querySelector('input, textarea, select');
+        setTimeout(() => focusEl?.focus(), 30);
+    }
+
+    function closeItemEdit(apply) {
+        const modal = document.getElementById('item-edit-modal');
+        if (apply && itemEditState.apply) itemEditState.apply();
+        itemEditState.apply = null;
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+    }
+
+    function kvFieldClass(fieldId) {
+        if (fieldId === 'email' || fieldId === 'site_title' || fieldId === 'site_description') return 'field';
+        return 'field font-mono text-xs';
+    }
+
+    function openKvEdit(fieldId, label, placeholder) {
+        const input = document.getElementById(fieldId);
+        openItemEditModal({
+            title: label,
+            html: `<label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">${escapeHtml(label)}</label>
+                   <input type="text" id="item-edit-kv" class="${kvFieldClass(fieldId)}" placeholder="${escAttr(placeholder || '')}" value="${escAttr(input?.value || '')}">`,
+            onApply: () => {
+                if (input) input.value = document.getElementById('item-edit-kv').value;
+                isDirty = true;
+                refreshKvRows();
+            },
+            focusSelector: '#item-edit-kv'
+        });
+    }
 
     const CATEGORY_ORDER = ['Lighting','Art','Fixtures','Software','Tooling','Systems'];
     const CATEGORY_LABELS = { Lighting:'Lighting', Art:'Art', Fixtures:'Fixtures', Software:'Software', Tooling:'Shop', Systems:'Systems' };
@@ -636,6 +836,7 @@
 
     function markSpecsDirty() {
         isDirty = true;
+        updateDirtyChrome();
         renderSpecsPreview();
     }
 
@@ -671,9 +872,11 @@
     function addSpecItem(categoryId) {
         const cat = specsCategories.find(c => c.id === categoryId);
         if (!cat) return;
-        cat.items.push({ id: newSpecId(), name: '', qty: '', specs: '' });
+        const item = { id: newSpecId(), name: '', qty: '', specs: '' };
+        cat.items.push(item);
         markSpecsDirty();
         renderSpecsBuilder();
+        openSpecItemEdit(categoryId, item.id);
     }
 
     function updateSpecItem(categoryId, itemId, field, value) {
@@ -710,59 +913,43 @@
         if (!container) return;
 
         if (specsCategories.length === 0) {
-            container.innerHTML = '<p class="text-xs text-slate-400 italic">No categories yet. Click &ldquo;Add Category&rdquo; to start.</p>';
+            container.innerHTML = '<p class="text-xs text-zinc-600 italic">No categories yet. Click “Add Category” to start.</p>';
             renderSpecsPreview();
             return;
         }
 
         container.innerHTML = specsCategories.map((cat, catIndex) => `
-            <div class="bg-white rounded-xl border border-slate-200 overflow-hidden" data-cat-id="${escAttr(cat.id)}">
-              <div class="bg-slate-100 p-3 border-b border-slate-200 flex items-center justify-between gap-2">
-                <input type="text" placeholder="CATEGORY NAME (e.g., FIXTURES)"
-                  class="bg-transparent font-bold text-sm uppercase tracking-wide w-full outline-none placeholder-slate-400"
+            <div class="rounded-lg border border-zinc-800 overflow-hidden bg-zinc-900/40" data-cat-id="${escAttr(cat.id)}">
+              <div class="px-2 py-1.5 flex items-center justify-between gap-2 border-b border-zinc-800">
+                <input type="text" placeholder="CATEGORY NAME"
+                  class="bg-transparent font-semibold text-xs uppercase tracking-wide w-full outline-none placeholder-zinc-600 text-zinc-200"
                   value="${escAttr(cat.title)}"
                   oninput="updateSpecCategory('${cat.id}', this.value)">
-                <div class="flex items-center gap-0.5 text-slate-500 flex-shrink-0">
-                  <button type="button" onclick="moveSpecCategory(${catIndex}, -1)" class="p-1 hover:bg-slate-200 rounded" title="Move Up"><i class="ph ph-caret-up"></i></button>
-                  <button type="button" onclick="moveSpecCategory(${catIndex}, 1)" class="p-1 hover:bg-slate-200 rounded" title="Move Down"><i class="ph ph-caret-down"></i></button>
-                  <button type="button" onclick="deleteSpecCategory('${cat.id}')" class="p-1 hover:bg-red-100 hover:text-red-600 rounded" title="Delete Category"><i class="ph ph-trash"></i></button>
+                <div class="flex items-center gap-0.5 text-zinc-500 flex-shrink-0">
+                  <button type="button" onclick="moveSpecCategory(${catIndex}, -1)" class="p-1 hover:text-white" title="Move Up"><i class="ph ph-caret-up"></i></button>
+                  <button type="button" onclick="moveSpecCategory(${catIndex}, 1)" class="p-1 hover:text-white" title="Move Down"><i class="ph ph-caret-down"></i></button>
+                  <button type="button" onclick="deleteSpecCategory('${cat.id}')" class="p-1 hover:text-red-400" title="Delete Category"><i class="ph ph-trash"></i></button>
                 </div>
               </div>
-              <div class="p-3 space-y-3">
-                ${cat.items.map((item, itemIndex) => `
-                  <div class="spec-item-card relative bg-slate-50 rounded-lg p-3 border border-slate-100 hover:border-indigo-200 transition-all">
-                    <div class="flex gap-3 mb-2 pr-16">
-                      <div class="flex-1">
-                        <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Item Name</label>
-                        <input type="text" placeholder="e.g., SolaSpot 1000"
-                          class="w-full border border-slate-200 rounded px-2 py-1.5 text-sm focus:border-indigo-500 outline-none"
-                          value="${escAttr(item.name)}"
-                          oninput="updateSpecItem('${cat.id}', '${item.id}', 'name', this.value)">
-                      </div>
-                      <div class="w-24">
-                        <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Qty</label>
-                        <input type="text" placeholder="e.g., 12"
-                          class="w-full border border-slate-200 rounded px-2 py-1.5 text-sm focus:border-indigo-500 outline-none"
-                          value="${escAttr(item.qty)}"
-                          oninput="updateSpecItem('${cat.id}', '${item.id}', 'qty', this.value)">
-                      </div>
+              <div>
+                ${cat.items.map((item, itemIndex) => {
+                  const chips = (item.specs || '').split(',').map(s => s.trim()).filter(Boolean).slice(0, 4).join(' · ');
+                  return `
+                  <div class="spec-item-row relative flex items-center gap-2 px-2 py-1.5 border-t border-zinc-800 hover:bg-zinc-900 cursor-pointer group"
+                       onclick="if(!event.target.closest('button')) openSpecItemEdit('${cat.id}', '${item.id}')">
+                    <span class="flex-1 min-w-0 text-sm text-zinc-200 truncate">${item.name ? escapeHtml(item.name) : '<span class="italic text-zinc-600">Untitled</span>'}</span>
+                    ${item.qty ? `<span class="text-[10px] font-mono text-zinc-500 shrink-0">×${escapeHtml(item.qty)}</span>` : ''}
+                    <span class="hidden sm:block max-w-[40%] truncate text-[10px] text-zinc-500">${escapeHtml(chips)}</span>
+                    <div class="spec-item-controls flex items-center shrink-0" onclick="event.stopPropagation()">
+                      <button type="button" onclick="openSpecItemEdit('${cat.id}', '${item.id}')" class="p-1 text-zinc-500 hover:text-cyan-400" title="Edit"><i class="ph ph-pencil-simple"></i></button>
+                      <button type="button" onclick="moveSpecItem('${cat.id}', ${itemIndex}, -1)" class="p-1 text-zinc-500 hover:text-white" title="Move Up"><i class="ph ph-caret-up"></i></button>
+                      <button type="button" onclick="moveSpecItem('${cat.id}', ${itemIndex}, 1)" class="p-1 text-zinc-500 hover:text-white" title="Move Down"><i class="ph ph-caret-down"></i></button>
+                      <button type="button" onclick="deleteSpecItem('${cat.id}', '${item.id}')" class="p-1 text-zinc-500 hover:text-red-400" title="Delete"><i class="ph ph-trash"></i></button>
                     </div>
-                    <div>
-                      <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Specifications (comma separated)</label>
-                      <input type="text" placeholder="e.g., Spot, LED, CMY, Framing"
-                        class="w-full border border-slate-200 rounded px-2 py-1.5 text-sm focus:border-indigo-500 outline-none"
-                        value="${escAttr(item.specs)}"
-                        oninput="updateSpecItem('${cat.id}', '${item.id}', 'specs', this.value)">
-                    </div>
-                    <div class="spec-item-controls absolute top-2 right-2 flex bg-white shadow-sm rounded-md border border-slate-200">
-                      <button type="button" onclick="moveSpecItem('${cat.id}', ${itemIndex}, -1)" class="p-1.5 hover:bg-slate-100 text-slate-500" title="Move Up"><i class="ph ph-caret-up"></i></button>
-                      <button type="button" onclick="moveSpecItem('${cat.id}', ${itemIndex}, 1)" class="p-1.5 hover:bg-slate-100 text-slate-500 border-l border-r border-slate-200" title="Move Down"><i class="ph ph-caret-down"></i></button>
-                      <button type="button" onclick="deleteSpecItem('${cat.id}', '${item.id}')" class="p-1.5 hover:bg-red-50 text-red-500" title="Delete Item"><i class="ph ph-trash"></i></button>
-                    </div>
-                  </div>
-                `).join('')}
+                  </div>`;
+                }).join('')}
                 <button type="button" onclick="addSpecItem('${cat.id}')"
-                  class="w-full py-2 border-2 border-dashed border-slate-300 text-slate-500 rounded-lg text-sm font-medium hover:border-indigo-400 hover:text-indigo-600 transition-colors flex items-center justify-center gap-2">
+                  class="w-full py-1.5 border-t border-zinc-800 text-zinc-500 text-xs hover:text-cyan-400 hover:bg-zinc-900 transition-colors flex items-center justify-center gap-1">
                   <i class="ph ph-plus"></i> Add Item
                 </button>
               </div>
@@ -770,6 +957,38 @@
         `).join('');
 
         renderSpecsPreview();
+    }
+
+    function openSpecItemEdit(categoryId, itemId) {
+        const cat = specsCategories.find(c => c.id === categoryId);
+        const item = cat?.items.find(i => i.id === itemId);
+        if (!item) return;
+        openItemEditModal({
+            title: item.name || 'Spec item',
+            html: `
+              <div class="flex gap-3">
+                <div class="flex-1">
+                  <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Item Name</label>
+                  <input type="text" id="item-edit-spec-name" class="field" placeholder="e.g., SolaSpot 1000" value="${escAttr(item.name)}">
+                </div>
+                <div class="w-24">
+                  <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Qty</label>
+                  <input type="text" id="item-edit-spec-qty" class="field" placeholder="12" value="${escAttr(item.qty)}">
+                </div>
+              </div>
+              <div>
+                <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Specifications (comma separated)</label>
+                <input type="text" id="item-edit-spec-specs" class="field" placeholder="Spot, LED, CMY, Framing" value="${escAttr(item.specs)}">
+              </div>`,
+            onApply: () => {
+                item.name = document.getElementById('item-edit-spec-name').value;
+                item.qty = document.getElementById('item-edit-spec-qty').value;
+                item.specs = document.getElementById('item-edit-spec-specs').value;
+                markSpecsDirty();
+                renderSpecsBuilder();
+            },
+            focusSelector: '#item-edit-spec-name'
+        });
     }
 
     function renderSpecsPreview() {
@@ -900,7 +1119,7 @@
         if (!list) return;
         const matches = getCopyableProjects();
         if (matches.length === 0) {
-            list.innerHTML = '<p class="text-xs text-slate-400 italic py-3 text-center">No matching projects.</p>';
+            list.innerHTML = '<p class="text-xs text-zinc-600 italic py-3 text-center">No matching projects.</p>';
             return;
         }
 
@@ -914,16 +1133,16 @@
 
         list.innerHTML = groups.map(group => `
             <div class="mb-2">
-              <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wide px-1 mb-1">${escapeHtml(CATEGORY_LABELS[group.cat] || group.cat)}</p>
+              <p class="text-[10px] font-bold text-zinc-500 uppercase tracking-wide px-1 mb-1">${escapeHtml(CATEGORY_LABELS[group.cat] || group.cat)}</p>
               ${group.items.map(p => {
                   const selected = String(p.id) === String(copySpecsState.sourceId);
                   const count = specItemCount(p);
                   const nCats = p.specsData.length;
                   return `
                     <button type="button" onclick="selectCopySpecsSource('${escAttr(String(p.id))}')"
-                      class="w-full text-left px-3 py-2 rounded-lg border mb-1 transition-colors ${selected ? 'border-indigo-500 bg-indigo-50 ring-1 ring-indigo-500' : 'border-slate-200 hover:border-indigo-300 hover:bg-slate-50'}">
-                      <div class="font-bold text-sm text-slate-800 truncate">${escapeHtml(p.title || 'Untitled')}</div>
-                      <div class="text-xs text-slate-500">${nCats} ${nCats === 1 ? 'category' : 'categories'} · ${count} ${count === 1 ? 'item' : 'items'}</div>
+                      class="w-full text-left px-3 py-2 rounded-lg border mb-1 transition-colors ${selected ? 'border-cyan-500 bg-cyan-950/40 ring-1 ring-cyan-500' : 'border-zinc-800 hover:border-zinc-600 hover:bg-zinc-900'}">
+                      <div class="font-semibold text-sm text-zinc-200 truncate">${escapeHtml(p.title || 'Untitled')}</div>
+                      <div class="text-xs text-zinc-500">${nCats} ${nCats === 1 ? 'category' : 'categories'} · ${count} ${count === 1 ? 'item' : 'items'}</div>
                     </button>`;
               }).join('')}
             </div>
@@ -941,7 +1160,7 @@
         }
         wrap.classList.remove('hidden');
         wrap.innerHTML = `
-            <p class="text-xs font-bold text-slate-500 uppercase mb-2">Categories to copy</p>
+            <p class="text-xs font-bold text-zinc-500 uppercase mb-2">Categories to copy</p>
             <div class="space-y-1.5">
               ${source.specsData.map((cat, i) => {
                   const id = specCatId(cat, i);
@@ -949,12 +1168,12 @@
                   const n = Array.isArray(cat.items) ? cat.items.length : 0;
                   const title = cat.title || 'Untitled category';
                   return `
-                    <label class="flex items-center gap-2 px-3 py-2 rounded-lg border border-slate-200 bg-slate-50 hover:border-indigo-200 cursor-pointer">
-                      <input type="checkbox" class="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+                    <label class="flex items-center gap-2 px-3 py-2 rounded-lg border border-zinc-800 bg-zinc-900 hover:border-zinc-600 cursor-pointer">
+                      <input type="checkbox" class="rounded border-zinc-600 bg-zinc-950 text-cyan-500 focus:ring-cyan-500"
                         ${checked ? 'checked' : ''}
                         onchange="toggleCopySpecsCategory('${escAttr(id)}', this.checked)">
-                      <span class="flex-1 text-sm font-medium text-slate-700 truncate">${escapeHtml(title)}</span>
-                      <span class="text-xs text-slate-400 flex-shrink-0">${n} ${n === 1 ? 'item' : 'items'}</span>
+                      <span class="flex-1 text-sm font-medium text-zinc-200 truncate">${escapeHtml(title)}</span>
+                      <span class="text-xs text-zinc-500 flex-shrink-0">${n} ${n === 1 ? 'item' : 'items'}</span>
                     </label>`;
               }).join('')}
             </div>`;
@@ -969,18 +1188,18 @@
         if (!destinationHasSpecs()) {
             el.innerHTML = `
                 <button type="button" ${disabledAttr} onclick="applyCopiedSpecs('replace')"
-                  class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-bold text-sm transition-colors ${disabledCls}">
+                  class="btn-primary ${disabledCls}">
                   Copy
                 </button>`;
             return;
         }
         el.innerHTML = `
             <button type="button" ${disabledAttr} onclick="applyCopiedSpecs('append')"
-              class="px-4 py-2 border border-slate-200 rounded-lg text-slate-700 hover:bg-slate-50 font-medium text-sm transition-colors ${disabledCls}">
+              class="btn-quiet ${disabledCls}">
               Append
             </button>
             <button type="button" ${disabledAttr} onclick="applyCopiedSpecs('replace')"
-              class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-bold text-sm transition-colors ${disabledCls}">
+              class="btn-primary ${disabledCls}">
               Replace
             </button>`;
     }
@@ -1000,7 +1219,7 @@
         Toastify({
             text: `Specs ${verb} from ${source.title || 'project'}.`,
             duration: 3000,
-            backgroundColor: '#4f46e5'
+            backgroundColor: '#0891b2'
         }).showToast();
         closeCopySpecsModal();
     }
@@ -1034,6 +1253,15 @@
         setupRelatedDragDrop();
         setupFileDragDrop();
         setupTagsAutocomplete();
+        document.addEventListener('keydown', (e) => {
+            if (e.key !== 'Escape') return;
+            const itemModal = document.getElementById('item-edit-modal');
+            if (itemModal && !itemModal.classList.contains('hidden')) {
+                closeItemEdit(false);
+                e.preventDefault();
+            }
+        });
+        setInterval(updateDirtyChrome, 400);
         document.getElementById('tag-pills').addEventListener('click', (e) => {
             const pill = e.target.closest('.tag-pill');
             if (!pill) return;
@@ -1057,7 +1285,7 @@
             const input = document.createElement('input');
             input.type = 'number';
             input.value = current;
-            input.className = 'w-8 text-[10px] font-bold text-indigo-600 border border-indigo-300 rounded text-center outline-none p-0';
+            input.className = 'w-8 text-[10px] font-bold text-cyan-400 border border-cyan-700 bg-zinc-950 rounded text-center outline-none p-0';
             badge.innerHTML = '';
             badge.appendChild(input);
             input.focus();
@@ -1124,7 +1352,7 @@
 
             highlightedIdx = -1;
             dropdown.innerHTML = matches.map((s, i) =>
-                `<div class="tag-suggestion px-3 py-1.5 text-xs font-mono cursor-pointer hover:bg-indigo-50 hover:text-indigo-700 transition-colors" data-index="${i}" data-value="${escAttr(s)}">${escAttr(s)}</div>`
+                `<div class="tag-suggestion px-3 py-1.5 text-xs font-mono cursor-pointer hover:bg-zinc-800 hover:text-cyan-400 transition-colors" data-index="${i}" data-value="${escAttr(s)}">${escAttr(s)}</div>`
             ).join('');
             dropdown.classList.remove('hidden');
         }
@@ -1147,8 +1375,8 @@
         function updateHighlight() {
             const items = dropdown.querySelectorAll('.tag-suggestion');
             items.forEach((el, i) => {
-                el.classList.toggle('bg-indigo-50', i === highlightedIdx);
-                el.classList.toggle('text-indigo-700', i === highlightedIdx);
+                el.classList.toggle('bg-zinc-800', i === highlightedIdx);
+                el.classList.toggle('text-cyan-400', i === highlightedIdx);
             });
         }
 
@@ -1200,7 +1428,7 @@
         );
         const available = getAllSkills().filter(s => !existing.has(s.toLowerCase()));
         container.innerHTML = available.map(s =>
-            `<button type="button" class="tag-pill text-xs font-mono px-2 py-0.5 bg-slate-800 text-cyan-400 border border-cyan-500/30 rounded uppercase hover:bg-cyan-500/20 hover:border-cyan-500/60 transition-colors cursor-pointer" data-tag="${escAttr(s)}">${escAttr(s)}</button>`
+            `<button type="button" class="tag-pill text-xs font-mono px-2 py-0.5 bg-zinc-800 text-cyan-400 border border-cyan-500/30 rounded uppercase hover:bg-cyan-500/20 hover:border-cyan-500/60 transition-colors cursor-pointer" data-tag="${escAttr(s)}">${escAttr(s)}</button>`
         ).join('');
     }
 
@@ -1377,6 +1605,7 @@
         const mark = (e) => {
             if(e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') {
                 isDirty = true;
+                updateDirtyChrome();
             }
         };
         document.body.addEventListener('input', mark);
@@ -1459,7 +1688,7 @@
           const idx = projects.findIndex(p => String(p.id) === String(lastSavedId));
           if (idx !== -1) {
               editItem(idx);
-              Toastify({ text: "Project Saved!", duration: 3000, backgroundColor: "#4f46e5" }).showToast();
+              Toastify({ text: "Project Saved!", duration: 3000, backgroundColor: "#0891b2" }).showToast();
           }
           lastSavedId = null;
       } else if (projects.length > 0 && document.getElementById('editor').classList.contains('hidden') && document.getElementById('settingsForm').classList.contains('hidden')) {
@@ -1470,33 +1699,39 @@
     function projectCardHtml(p) {
         const isActive = String(p.id) === String(projects[currentEditIndex]?.id);
         const imgSrc = p.image || 'https://via.placeholder.com/50';
+        const flags = [
+            p.draft ? '<span class="text-[8px] font-mono font-bold text-orange-400">DRAFT</span>' : '',
+            !p.draft && p.wip ? '<span class="text-[8px] font-mono font-bold text-violet-400">WIP</span>' : '',
+            p.featured ? '<span class="text-[8px] font-mono font-bold text-yellow-400">FEAT</span>' : ''
+        ].filter(Boolean).join('');
         return `
-        <div draggable="true" data-id="${p.id}" onclick="tryEditById('${p.id}')" class="project-card bg-white p-3 rounded-xl border ${isActive ? 'border-indigo-500 ring-2 ring-indigo-500 bg-indigo-50' : 'border-slate-200'} hover:border-indigo-400 cursor-pointer transition-all shadow-sm hover:shadow-md flex gap-3 items-center group list-item-enter">
-          <span class="card-drag-handle cursor-grab text-slate-300 hover:text-slate-500" onclick="event.stopPropagation()"><i class="ph ph-dots-six-vertical"></i></span>
-          <div class="w-12 h-12 bg-slate-100 rounded-lg overflow-hidden flex-shrink-0 relative">
+        <div draggable="true" data-id="${p.id}" onclick="tryEditById('${p.id}')" class="project-card ${isActive ? 'is-active' : ''} px-1.5 py-1 rounded-md hover:bg-zinc-900 cursor-pointer transition-colors flex gap-2 items-center group list-item-enter">
+          <span class="card-drag-handle cursor-grab text-zinc-700 hover:text-zinc-400" onclick="event.stopPropagation()"><i class="ph ph-dots-six-vertical text-xs"></i></span>
+          <div class="w-7 h-7 bg-zinc-800 rounded overflow-hidden flex-shrink-0 relative">
              <img src="${imgSrc}" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/50'"/>
-             ${p.featured ? '<div class="absolute bottom-0 right-0 w-3 h-3 bg-yellow-400 border border-white rounded-full shadow-sm"></div>' : ''}
-             ${p.draft ? '<div class="absolute top-0 left-0 bg-orange-500 text-white text-[8px] font-bold px-1 rounded-br">DRAFT</div>' : (p.wip ? '<div class="absolute top-0 left-0 bg-purple-600 text-white text-[8px] font-bold px-1 rounded-br">WIP</div>' : '')}
           </div>
           <div class="overflow-hidden flex-1 min-w-0">
-             <h3 class="font-bold text-slate-800 truncate group-hover:text-indigo-600">${p.title}</h3>
+             <div class="flex items-center gap-1.5">
+               <h3 class="text-xs font-medium text-zinc-200 truncate ${isActive ? 'text-cyan-400' : 'group-hover:text-white'}">${p.title}</h3>
+               ${flags}
+             </div>
           </div>
           <button
             onclick="event.stopPropagation(); copyProjectHash('${p.id}')"
             title="Copy in-site link (#project/…). Shift-click for the public share link."
-            class="opacity-0 group-hover:opacity-100 text-slate-400 hover:text-indigo-500 transition-all p-1 rounded flex-shrink-0"
-          ><i class="ph ph-link-simple"></i></button>
+            class="opacity-0 group-hover:opacity-100 text-zinc-600 hover:text-cyan-400 transition-all p-0.5 rounded flex-shrink-0"
+          ><i class="ph ph-link-simple text-sm"></i></button>
           <button
             onclick="event.stopPropagation(); copyProjectShareUrl('${p.id}')"
             title="Copy public share link (Open Graph preview for Facebook / LinkedIn)"
-            class="opacity-0 group-hover:opacity-100 text-slate-400 hover:text-indigo-500 transition-all p-1 rounded flex-shrink-0"
-          ><i class="ph ph-share-network"></i></button>
+            class="opacity-0 group-hover:opacity-100 text-zinc-600 hover:text-cyan-400 transition-all p-0.5 rounded flex-shrink-0"
+          ><i class="ph ph-share-network text-sm"></i></button>
         </div>`;
     }
 
     function renderList() {
       const list = document.getElementById('projectList');
-      if(projects.length === 0) { list.innerHTML = '<div class="text-center text-slate-400 py-4">No projects found.</div>'; return; }
+      if(projects.length === 0) { list.innerHTML = '<div class="text-center text-zinc-600 py-4 text-xs">No projects found.</div>'; return; }
 
       const collapsed = getCollapsedSet();
       list.innerHTML = CATEGORY_ORDER.map(cat => {
@@ -1506,16 +1741,16 @@
         const isCollapsed = collapsed.has(cat);
         const cardsHtml = items.map(projectCardHtml).join('');
         return `
-        <div class="cat-group mb-2">
-          <div onclick="toggleCategory('${cat}')" class="flex items-center justify-between px-3 py-2 bg-slate-100 rounded-lg cursor-pointer select-none hover:bg-slate-200 transition-colors">
-            <div class="flex items-center gap-2">
-              <i class="ph ph-caret-down cat-chevron text-slate-500 transition-transform" data-category="${cat}" style="${isCollapsed ? 'transform: rotate(-90deg);' : ''}"></i>
-              <span class="font-bold text-slate-700 text-sm uppercase tracking-wide">${CATEGORY_LABELS[cat]}</span>
+        <div class="cat-group mb-1">
+          <div onclick="toggleCategory('${cat}')" class="flex items-center justify-between px-1.5 py-1 cursor-pointer select-none hover:bg-zinc-900 rounded-md transition-colors">
+            <div class="flex items-center gap-1.5">
+              <i class="ph ph-caret-down cat-chevron text-zinc-600 text-xs transition-transform" data-category="${cat}" style="${isCollapsed ? 'transform: rotate(-90deg);' : ''}"></i>
+              <span class="font-semibold text-zinc-500 text-[10px] uppercase tracking-wider">${CATEGORY_LABELS[cat]}</span>
             </div>
-            <span class="text-xs font-bold text-slate-400 bg-white px-2 py-0.5 rounded-full">${items.length}</span>
+            <span class="text-[10px] font-mono text-zinc-600">${items.length}</span>
           </div>
-          <div class="cat-body space-y-2 mt-2 ${isCollapsed ? 'hidden' : ''}" data-category="${cat}">
-            ${cardsHtml || '<div class="text-center text-slate-300 text-xs py-3 border border-dashed border-slate-200 rounded-lg">Drop here</div>'}
+          <div class="cat-body space-y-0.5 mt-0.5 ${isCollapsed ? 'hidden' : ''}" data-category="${cat}">
+            ${cardsHtml || '<div class="text-center text-zinc-700 text-[10px] py-2 border border-dashed border-zinc-800 rounded-md">Drop here</div>'}
           </div>
         </div>`;
       }).join('');
@@ -1539,7 +1774,7 @@
           document.body.removeChild(el);
         })
         .finally(() => {
-          Toastify({ text: '📋 Copied: ' + text, duration: 3000, backgroundColor: '#4f46e5' }).showToast();
+          Toastify({ text: '📋 Copied: ' + text, duration: 3000, backgroundColor: '#0891b2' }).showToast();
         });
     }
 
@@ -1561,6 +1796,7 @@
       document.getElementById('emptyState').classList.add('hidden');
       document.getElementById('editor').classList.add('hidden');
       document.getElementById('settingsForm').classList.add('hidden');
+      document.getElementById('railSettingsBtn')?.classList.remove('rail-active');
     }
 
     // --- PROJECT EDITOR ---
@@ -1572,10 +1808,12 @@
 
       const p = projects[index];
       document.getElementById('editor').classList.remove('hidden');
+      switchEditorTab(currentEditorTab || 'overview');
 
       setTimeout(() => {
         if (document.activeElement) document.activeElement.blur();
-        window.scrollTo({ top: 0 });
+        const sc = document.getElementById('editor-scroll');
+        if (sc) sc.scrollTop = 0;
       }, 0);
 
       ['id', 'title', 'category', 'image', 'websiteLink', 'launchLink', 'githubLink', 'shopLink', 'timestamp'].forEach(id => {
@@ -1606,8 +1844,6 @@
             if (typeof f === 'string') addFileRow("Download", f, '', true);
             else addFileRow(f.name, f.url, f.description || '', true, f.license || '', f.image || '', f.thumbnail || '', f.thumbnailFit || null);
          });
-      } else {
-        addFileRow("", "", '', true);
       }
 
       const galleryContainer = document.getElementById('gallery-container');
@@ -1617,18 +1853,15 @@
             if (typeof item === 'string') addGalleryRow(item, '', null, true);
             else addGalleryRow(item?.url || '', item?.caption || '', item?.fit || null, true, item?.poster || '', item?.thumbnail || '', !!item?.hasAudio, modelDescriptor(item));
          });
-      } else {
-        addGalleryRow("", "", null, true);
       }
 
       const relatedContainer = document.getElementById('related-container');
       relatedContainer.innerHTML = '';
       if (Array.isArray(p.related) && p.related.length > 0) {
           p.related.forEach(r => addRelatedRow(r.name, r.url, true));
-      } else {
-          addRelatedRow("", "", true);
       }
 
+      refreshKvRows();
       setTimeout(() => isDirty = false, 200);
     }
 
@@ -1649,14 +1882,12 @@
       document.getElementById('bannerFit').value = '';
       updateBannerFitStatus();
 
-      addFileRow("", "", "", true);
-      addGalleryRow("", "", null, true);
-      addRelatedRow("", "", true);
-
       document.getElementById('editor').classList.remove('hidden');
+      switchEditorTab('overview');
       document.getElementById('id').value = "";
       document.getElementById('timestamp').value = "";
       document.getElementById('draft').checked = true;
+      refreshKvRows();
       syncTagPills();
       setTimeout(() => isDirty = false, 200);
     }
@@ -1677,6 +1908,8 @@
 
             isDirty = false;
             document.getElementById('settingsForm').classList.remove('hidden');
+            document.getElementById('railSettingsBtn')?.classList.add('rail-active');
+            switchSettingsTab(currentSettingsTab || 'about');
             ['email', 'instagram', 'linkedin', 'github', 'emailjs_service', 'emailjs_template', 'emailjs_public_key', 'about_headshot', 'skills_hardware', 'skills_lighting', 'skills_software', 'skills_fabrication', 'skills_systems', 'site_url', 'site_title', 'site_description'].forEach(key => {
                 document.getElementById(key).value = settings[key] || '';
             });
@@ -1684,6 +1917,7 @@
             if (settings.about_text) quillAbout.clipboard.dangerouslyPasteHTML(settings.about_text);
             else quillAbout.setText('');
 
+            refreshKvRows();
             setTimeout(() => isDirty = false, 200);
       }).catch(onError);
     }
@@ -1704,46 +1938,124 @@
     function addFileRow(name = "", url = "", description = "", isBulk = false, license = "", image = "", thumbnail = "", thumbnailFit = null) {
         const container = document.getElementById('files-container');
         const div = document.createElement('div');
-        div.className = "file-row space-y-1";
+        div.className = "file-row group flex items-center gap-2 px-2 py-1.5 rounded-lg border border-zinc-800 hover:border-zinc-600 bg-zinc-900/40";
         div.draggable = true;
         const fitJson = thumbnailFit ? JSON.stringify(thumbnailFit) : '';
         const hasFit = !!fitJson;
         const previewSrc = getThumbnailSrc(thumbnail || image);
         const hasImage = !!(image || thumbnail);
+        const ext = fileExt(url);
         div.innerHTML = `
-            <div class="flex gap-2 items-center">
-                <span class="drag-handle cursor-grab text-slate-300 hover:text-slate-500 px-1 flex-shrink-0"><i class="ph ph-dots-six-vertical"></i></span>
-                <span class="index-badge text-[10px] font-bold text-slate-400 w-6 flex-shrink-0"></span>
-                <input type="text" placeholder="File Name" value="${escAttr(name)}" class="file-name flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="isDirty=true">
-                <input type="text" placeholder="Download URL" value="${escAttr(url)}" class="file-url flex-[2] bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="isDirty=true">
-                <button type="button" onclick="this.closest('.file-row').remove(); updateListIndices('files-container'); isDirty=true;" class="text-red-400 hover:text-red-600 px-2 transition-colors"><i class="ph ph-trash"></i></button>
+            <span class="drag-handle cursor-grab text-zinc-700 hover:text-zinc-400 px-0.5 flex-shrink-0"><i class="ph ph-dots-six-vertical"></i></span>
+            <span class="index-badge text-[10px] font-mono text-zinc-600 w-6 flex-shrink-0"></span>
+            <div class="file-thumb-wrap relative w-8 h-8 flex-shrink-0 overflow-hidden rounded bg-zinc-800 ${hasImage ? '' : 'hidden'}">
+                <img class="file-thumb w-8 h-8 object-cover" src="${escAttr(previewSrc)}" alt="" onerror="this.closest('.file-thumb-wrap').classList.add('hidden')">
             </div>
-            <input type="text" placeholder="Description (optional — shown in popout on portfolio)" value="${escAttr(description)}" class="file-desc w-full bg-white border border-slate-200 rounded px-2 py-1 text-xs text-slate-500 focus:border-indigo-500 outline-none" oninput="isDirty=true">
-            <input type="text" placeholder="License (optional — e.g. CC BY-NC-SA 4.0)" value="${escAttr(license)}" class="file-license w-full bg-white border border-slate-200 rounded px-2 py-1 text-xs text-slate-500 focus:border-indigo-500 outline-none" oninput="isDirty=true">
-            <div class="flex gap-2 items-center">
-                <div class="file-thumb-wrap relative w-10 h-10 flex-shrink-0 overflow-hidden rounded bg-slate-100 ${hasImage ? '' : 'hidden'}">
-                    <img class="file-thumb w-10 h-10 object-cover" src="${escAttr(previewSrc)}" alt="" onerror="this.closest('.file-thumb-wrap').classList.add('hidden')">
+            <div class="flex-1 min-w-0 cursor-pointer" onclick="openFileEdit(this.closest('.file-row'))">
+                <div class="flex items-center gap-2">
+                    <span class="file-summary-name text-sm text-zinc-200 truncate">${escapeHtml(name || fileBaseName(url) || 'Untitled')}</span>
+                    ${ext ? `<span class="file-summary-ext text-[10px] font-mono text-zinc-500 shrink-0">${escapeHtml(ext)}</span>` : '<span class="file-summary-ext text-[10px] font-mono text-zinc-500 shrink-0"></span>'}
+                    ${license ? `<span class="file-summary-license text-[10px] font-mono text-cyan-500/80 shrink-0 truncate max-w-[8rem]">${escapeHtml(license)}</span>` : '<span class="file-summary-license text-[10px] font-mono text-cyan-500/80 shrink-0 truncate max-w-[8rem]"></span>'}
                 </div>
-                <input type="text" placeholder="Toast thumbnail (optional — path or URL)" value="${escAttr(image)}" class="file-image flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-xs font-mono text-slate-500 focus:border-indigo-500 outline-none" oninput="onFileImageChange(this)">
-                <label class="cursor-pointer bg-indigo-100 text-indigo-600 px-2 py-1 rounded hover:bg-indigo-200 flex items-center gap-1 text-xs font-bold whitespace-nowrap">
-                    <i class="ph ph-upload-simple"></i> Image Upload
-                    <input type="file" accept="image/*" class="hidden" onchange="handleFileThumbUpload(this)">
-                </label>
-                <button type="button" onclick="openFileThumbCrop(this.closest('.file-row'))" title="Set crop"
-                        class="file-crop-btn flex-shrink-0 px-2 transition-colors ${hasFit ? 'text-indigo-500' : 'text-slate-300 hover:text-indigo-500'}">
-                    <i class="ph ph-crop"></i>
-                </button>
-                <button type="button" onclick="clearFileThumb(this.closest('.file-row'))" title="Remove thumbnail"
-                        class="file-thumb-clear flex-shrink-0 px-1 text-slate-300 hover:text-red-500 transition-colors ${hasImage ? '' : 'hidden'}">
-                    <i class="ph ph-x"></i>
-                </button>
             </div>
+            <button type="button" onclick="openFileEdit(this.closest('.file-row'))" class="opacity-0 group-hover:opacity-100 text-zinc-500 hover:text-cyan-400 p-1" title="Edit"><i class="ph ph-pencil-simple"></i></button>
+            <button type="button" onclick="this.closest('.file-row').remove(); updateListIndices('files-container'); isDirty=true;" class="opacity-0 group-hover:opacity-100 text-zinc-600 hover:text-red-400 p-1" title="Delete"><i class="ph ph-trash"></i></button>
+            <input type="hidden" class="file-name" value="${escAttr(name)}">
+            <input type="hidden" class="file-url" value="${escAttr(url)}">
+            <input type="hidden" class="file-desc" value="${escAttr(description)}">
+            <input type="hidden" class="file-license" value="${escAttr(license)}">
+            <input type="hidden" class="file-image" value="${escAttr(image)}">
             <input type="hidden" class="file-thumbnail" value="${escAttr(thumbnail)}">
             <input type="hidden" class="file-fit" value="${escAttr(fitJson)}">
+            <button type="button" onclick="openFileThumbCrop(this.closest('.file-row'))" class="file-crop-btn hidden ${hasFit ? 'text-cyan-400' : ''}"></button>
+            <button type="button" onclick="clearFileThumb(this.closest('.file-row'))" class="file-thumb-clear hidden"></button>
+            <input type="file" accept="image/*" class="file-thumb-upload hidden" onchange="handleFileThumbUpload(this); refreshFileVisual(this.closest('.file-row'))">
         `;
         container.appendChild(div);
         updateListIndices('files-container');
-        if (!isBulk) isDirty = true;
+        refreshFileVisual(div);
+        if (!isBulk) {
+            isDirty = true;
+            openFileEdit(div);
+        }
+        return div;
+    }
+
+    function refreshFileVisual(row) {
+        const name = row.querySelector('.file-name')?.value.trim() || '';
+        const url = row.querySelector('.file-url')?.value.trim() || '';
+        const license = row.querySelector('.file-license')?.value.trim() || '';
+        const image = row.querySelector('.file-image')?.value.trim() || '';
+        const thumbnail = row.querySelector('.file-thumbnail')?.value.trim() || '';
+        const nameEl = row.querySelector('.file-summary-name');
+        const extEl = row.querySelector('.file-summary-ext');
+        const licEl = row.querySelector('.file-summary-license');
+        if (nameEl) nameEl.textContent = name || fileBaseName(url) || 'Untitled';
+        if (extEl) extEl.textContent = fileExt(url);
+        if (licEl) licEl.textContent = license;
+        updateFileThumbPreview(row);
+        const hasFit = !!(row.querySelector('.file-fit')?.value.trim());
+        setFileCropBtnState(row, hasFit);
+    }
+
+    function openFileEdit(row) {
+        if (!row) return;
+        itemEditState.row = row;
+        const name = row.querySelector('.file-name')?.value || '';
+        const url = row.querySelector('.file-url')?.value || '';
+        const description = row.querySelector('.file-desc')?.value || '';
+        const license = row.querySelector('.file-license')?.value || '';
+        const image = row.querySelector('.file-image')?.value || '';
+        openItemEditModal({
+            title: name || 'Downloadable file',
+            html: `
+              <div>
+                <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">File Name</label>
+                <input type="text" id="item-edit-file-name" class="field" value="${escAttr(name)}" placeholder="File Name">
+              </div>
+              <div>
+                <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Download URL</label>
+                <input type="text" id="item-edit-file-url" class="field font-mono text-xs" value="${escAttr(url)}" placeholder="Download URL">
+              </div>
+              <div>
+                <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Description</label>
+                <input type="text" id="item-edit-file-desc" class="field" value="${escAttr(description)}" placeholder="Shown in popout on portfolio">
+              </div>
+              <div>
+                <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">License</label>
+                <input type="text" id="item-edit-file-license" class="field font-mono text-xs" value="${escAttr(license)}" placeholder="e.g. CC BY-NC-SA 4.0">
+              </div>
+              <div>
+                <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Toast thumbnail</label>
+                <div class="flex gap-2">
+                  <input type="text" id="item-edit-file-image" class="field font-mono text-xs" value="${escAttr(image)}" placeholder="Path or URL">
+                  <button type="button" class="btn-quiet whitespace-nowrap" onclick="itemEditState.row.querySelector('.file-thumb-upload')?.click()"><i class="ph ph-upload-simple"></i> Upload</button>
+                  <button type="button" class="btn-quiet whitespace-nowrap" onclick="applyFileEditFields(); closeItemEdit(false); openFileThumbCrop(itemEditState.row)"><i class="ph ph-crop"></i> Crop</button>
+                </div>
+              </div>`,
+            onApply: () => { applyFileEditFields(); refreshFileVisual(row); },
+            focusSelector: '#item-edit-file-name'
+        });
+    }
+
+    function applyFileEditFields() {
+        const row = itemEditState.row;
+        if (!row) return;
+        const set = (cls, id) => { const el = row.querySelector('.' + cls); const src = document.getElementById(id); if (el && src) el.value = src.value; };
+        set('file-name', 'item-edit-file-name');
+        set('file-url', 'item-edit-file-url');
+        set('file-desc', 'item-edit-file-desc');
+        set('file-license', 'item-edit-file-license');
+        const imgInput = document.getElementById('item-edit-file-image');
+        if (imgInput) {
+            const prev = row.querySelector('.file-image');
+            if (prev && prev.value !== imgInput.value) {
+                prev.value = imgInput.value;
+                const thumbInput = row.querySelector('.file-thumbnail');
+                if (thumbInput) thumbInput.value = '';
+            }
+        }
+        isDirty = true;
     }
 
     function onFileImageChange(input) {
@@ -1774,9 +2086,9 @@
     function setFileCropBtnState(row, hasFit) {
         const cropBtn = row.querySelector('.file-crop-btn');
         if (!cropBtn) return;
-        cropBtn.classList.toggle('text-indigo-500', !!hasFit);
-        cropBtn.classList.toggle('text-slate-300', !hasFit);
-        cropBtn.classList.toggle('hover:text-indigo-500', !hasFit);
+        cropBtn.classList.toggle('text-cyan-400', !!hasFit);
+        cropBtn.classList.toggle('text-zinc-600', !hasFit);
+        cropBtn.classList.toggle('hover:text-cyan-400', !hasFit);
     }
 
     function clearFileThumb(row) {
@@ -1829,18 +2141,69 @@
     function addRelatedRow(name = "", url = "", isBulk = false) {
         const container = document.getElementById('related-container');
         const div = document.createElement('div');
-        div.className = "flex gap-2 related-row items-center";
+        div.className = "related-row group flex items-center gap-2 px-2 py-1.5 rounded-lg border border-zinc-800 hover:border-zinc-600 bg-zinc-900/40";
         div.draggable = true;
+        let host = '';
+        try { host = url ? new URL(url, window.location.origin).host : ''; } catch { host = url; }
         div.innerHTML = `
-            <span class="drag-handle cursor-grab text-slate-300 hover:text-slate-500 px-1 flex-shrink-0"><i class="ph ph-dots-six-vertical"></i></span>
-            <span class="index-badge text-[10px] font-bold text-slate-400 w-6 flex-shrink-0"></span>
-            <input type="text" placeholder="Link Name" value="${escAttr(name)}" class="related-name flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="isDirty=true">
-            <input type="text" placeholder="URL" value="${escAttr(url)}" class="related-url flex-[2] bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="onRelatedUrlChange(this)">
-            <button type="button" onclick="this.parentElement.remove(); updateListIndices('related-container'); isDirty=true;" class="text-red-400 hover:text-red-600 px-2 transition-colors flex-shrink-0"><i class="ph ph-trash"></i></button>
+            <span class="drag-handle cursor-grab text-zinc-700 hover:text-zinc-400 px-0.5 flex-shrink-0"><i class="ph ph-dots-six-vertical"></i></span>
+            <span class="index-badge text-[10px] font-mono text-zinc-600 w-6 flex-shrink-0"></span>
+            <div class="flex-1 min-w-0 cursor-pointer" onclick="openRelatedEdit(this.closest('.related-row'))">
+                <span class="related-summary-name text-sm text-zinc-200 truncate">${escapeHtml(name || 'Untitled')}</span>
+                <span class="related-summary-host block text-[10px] font-mono text-zinc-500 truncate">${escapeHtml(host)}</span>
+            </div>
+            <button type="button" onclick="openRelatedEdit(this.closest('.related-row'))" class="opacity-0 group-hover:opacity-100 text-zinc-500 hover:text-cyan-400 p-1" title="Edit"><i class="ph ph-pencil-simple"></i></button>
+            <button type="button" onclick="this.closest('.related-row').remove(); updateListIndices('related-container'); isDirty=true;" class="opacity-0 group-hover:opacity-100 text-zinc-600 hover:text-red-400 p-1" title="Delete"><i class="ph ph-trash"></i></button>
+            <input type="hidden" class="related-name" value="${escAttr(name)}">
+            <input type="hidden" class="related-url" value="${escAttr(url)}">
         `;
         container.appendChild(div);
         updateListIndices('related-container');
-        if (!isBulk) isDirty = true;
+        if (!isBulk) {
+            isDirty = true;
+            openRelatedEdit(div);
+        }
+        return div;
+    }
+
+    function refreshRelatedVisual(row) {
+        const name = row.querySelector('.related-name')?.value.trim() || '';
+        const url = row.querySelector('.related-url')?.value.trim() || '';
+        const nameEl = row.querySelector('.related-summary-name');
+        const hostEl = row.querySelector('.related-summary-host');
+        if (nameEl) nameEl.textContent = name || 'Untitled';
+        if (hostEl) {
+            try { hostEl.textContent = url ? new URL(url, window.location.origin).host : ''; }
+            catch { hostEl.textContent = url; }
+        }
+    }
+
+    function openRelatedEdit(row) {
+        if (!row) return;
+        itemEditState.row = row;
+        const name = row.querySelector('.related-name')?.value || '';
+        const url = row.querySelector('.related-url')?.value || '';
+        openItemEditModal({
+            title: name || 'Related link',
+            html: `
+              <div>
+                <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Link Name</label>
+                <input type="text" id="item-edit-related-name" class="field" value="${escAttr(name)}" placeholder="Link Name">
+              </div>
+              <div>
+                <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">URL</label>
+                <input type="text" id="item-edit-related-url" class="field font-mono text-xs" value="${escAttr(url)}" placeholder="#project/… or https://">
+              </div>`,
+            onApply: () => {
+                const nameInput = row.querySelector('.related-name');
+                const urlInput = row.querySelector('.related-url');
+                nameInput.value = document.getElementById('item-edit-related-name').value;
+                urlInput.value = document.getElementById('item-edit-related-url').value;
+                onRelatedUrlChange(urlInput);
+                refreshRelatedVisual(row);
+            },
+            focusSelector: '#item-edit-related-name'
+        });
     }
 
     function onRelatedUrlChange(input) {
@@ -1857,7 +2220,7 @@
     function addGalleryRow(url = "", caption = "", fit = null, isBulk = false, poster = "", thumbnail = "", hasAudio = false, model = null) {
         const container = document.getElementById('gallery-container');
         const div = document.createElement('div');
-        div.className = "gallery-row space-y-1 bg-white border border-slate-200 rounded p-1";
+        div.className = "gallery-row relative group w-[92px]";
         div.draggable = true;
         const fitJson = fit ? JSON.stringify(fit) : '';
         const hasFit = !!fitJson;
@@ -1865,38 +2228,117 @@
         const isModel = !!model || isModelPath(url);
         const modelJson = isModel ? JSON.stringify(model || { type: 'model', format: '', up: 'z', parts: [] }) : '';
         const thumbSrc = poster ? getThumbnailSrc(poster) : (isModel ? '' : getThumbnailSrc(url));
-        const previewAttr = isVideo
-            ? 'onclick="openVideoPreview(this.closest(\'.gallery-row\'))" title="Click to preview video" style="cursor:pointer"'
-            : (isModel ? 'onclick="openModelEditor(this.closest(\'.gallery-row\'))" title="Click to open the 3D editor" style="cursor:pointer"' : '');
         div.innerHTML = `
-            <div class="flex gap-2 items-center">
-                <span class="drag-handle cursor-grab text-slate-300 hover:text-slate-500 px-1"><i class="ph ph-dots-six-vertical"></i></span>
-                <span class="index-badge text-[10px] font-bold text-slate-400 w-6"></span>
-                <div class="gallery-thumb-wrap relative w-10 h-10 flex-shrink-0 ${(url && (thumbSrc || isModel)) ? '' : 'hidden'}" ${previewAttr}>
-                    <img class="gallery-thumb w-10 h-10 object-cover rounded bg-slate-100 ${isVideo || isModel ? '' : 'cursor-zoom-in'}" src="${escAttr(thumbSrc)}" ${isVideo ? `data-video-url="${escAttr(url)}"` : ''} onerror="${isModel ? "this.removeAttribute('src')" : "this.closest('.gallery-thumb-wrap').classList.add('hidden')"}">
-                    ${isVideo ? '<i class="ph ph-play-circle absolute inset-0 flex items-center justify-center text-white text-lg drop-shadow pointer-events-none"></i>' : ''}
-                    ${isModel ? '<i class="ph ph-cube absolute inset-0 flex items-center justify-center text-white text-lg drop-shadow pointer-events-none"></i>' : ''}
-                </div>
-                <input type="text" placeholder="Image path, video path, GLB path, URL, or YouTube link" value="${escAttr(url)}" class="gallery-url flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-sm font-mono focus:border-indigo-500 outline-none" oninput="onGalleryUrlChange(this)">
-                <button type="button" onclick="openModelEditor(this.closest('.gallery-row'))" title="3D model: colors, transparency, thumbnail"
-                        class="gallery-model-btn flex-shrink-0 px-2 text-[10px] font-bold rounded transition-colors ${isModel ? '' : 'hidden'} bg-amber-100 text-amber-700 hover:bg-amber-200">3D</button>
-                <button type="button" onclick="openGalleryCrop(this.closest('.gallery-row'))" title="Set crop"
-                        class="gallery-crop-btn flex-shrink-0 px-2 transition-colors ${(isVideo || isModel) && !poster ? 'hidden' : ''} ${hasFit ? 'text-indigo-500' : 'text-slate-300 hover:text-indigo-500'}">
-                    <i class="ph ph-crop"></i>
-                </button>
-                <button type="button" onclick="this.closest('.gallery-row').remove(); updateListIndices('gallery-container'); isDirty=true;" class="text-red-400 hover:text-red-600 px-2 transition-colors"><i class="ph ph-trash"></i></button>
+            <span class="drag-handle absolute top-1 left-1 z-10 cursor-grab text-white/80 drop-shadow"><i class="ph ph-dots-six-vertical"></i></span>
+            <span class="index-badge absolute top-1 right-1 z-10 text-[9px] font-mono font-bold text-white drop-shadow bg-black/50 rounded px-1"></span>
+            <div class="gallery-thumb-wrap relative aspect-square rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800 cursor-pointer" onclick="if(!event.target.closest('.drag-handle,.index-badge,.gallery-row-actions')) openGalleryEdit(this.closest('.gallery-row'))">
+                <img class="gallery-thumb w-full h-full object-cover ${isVideo || isModel ? '' : ''}" src="${escAttr(thumbSrc)}" ${isVideo ? `data-video-url="${escAttr(url)}"` : ''} onerror="${isModel ? "this.removeAttribute('src')" : "this.style.opacity=0"}">
+                ${isVideo ? '<i class="gallery-type-icon ph ph-play-circle absolute inset-0 flex items-center justify-center text-white text-2xl drop-shadow pointer-events-none"></i>' : ''}
+                ${isModel ? '<i class="gallery-type-icon ph ph-cube absolute inset-0 flex items-center justify-center text-white text-2xl drop-shadow pointer-events-none"></i>' : ''}
+                <div class="gallery-caption-overlay absolute bottom-0 inset-x-0 px-1 py-0.5 bg-gradient-to-t from-black/80 text-[9px] text-zinc-200 truncate ${caption ? '' : 'hidden'}">${escapeHtml(caption)}</div>
             </div>
-            <input type="text" placeholder="Caption (optional — shown in the media viewer)" value="${escAttr(caption)}" class="gallery-caption w-full bg-white border border-slate-200 rounded px-2 py-1 text-xs text-slate-500 focus:border-indigo-500 outline-none" oninput="isDirty=true">
+            <div class="gallery-row-actions absolute bottom-1 right-1 z-10 opacity-0 group-hover:opacity-100 flex gap-0.5">
+                <button type="button" onclick="openGalleryEdit(this.closest('.gallery-row'))" class="p-0.5 rounded bg-black/60 text-white hover:text-cyan-400" title="Edit"><i class="ph ph-pencil-simple text-xs"></i></button>
+                <button type="button" onclick="this.closest('.gallery-row').remove(); updateListIndices('gallery-container'); isDirty=true;" class="p-0.5 rounded bg-black/60 text-white hover:text-red-400" title="Delete"><i class="ph ph-trash text-xs"></i></button>
+            </div>
+            <input type="hidden" class="gallery-url" value="${escAttr(url)}">
+            <input type="hidden" class="gallery-caption" value="${escAttr(caption)}">
             <input type="hidden" class="gallery-fit" value="${escAttr(fitJson)}">
             <input type="hidden" class="gallery-poster" value="${escAttr(poster)}">
             <input type="hidden" class="gallery-thumbnail" value="${escAttr(thumbnail)}">
             <input type="hidden" class="gallery-has-audio" value="${hasAudio ? 'true' : ''}">
             <input type="hidden" class="gallery-model" value="${escAttr(modelJson)}">
+            <button type="button" onclick="openModelEditor(this.closest('.gallery-row'))" class="gallery-model-btn hidden ${isModel ? '' : 'hidden'}"></button>
+            <button type="button" onclick="openGalleryCrop(this.closest('.gallery-row'))" class="gallery-crop-btn hidden ${(isVideo || isModel) && !poster ? 'hidden' : ''} ${hasFit ? 'text-cyan-400' : ''}"></button>
         `;
         container.appendChild(div);
         updateListIndices('gallery-container');
-        if (!isBulk) isDirty = true;
+        refreshGalleryVisual(div);
+        if (!isBulk) {
+            isDirty = true;
+            openGalleryEdit(div);
+        }
         return div;
+    }
+
+    function refreshGalleryVisual(row) {
+        if (!row) return;
+        const url = row.querySelector('.gallery-url')?.value.trim() || '';
+        const caption = row.querySelector('.gallery-caption')?.value.trim() || '';
+        const poster = row.querySelector('.gallery-poster')?.value.trim() || '';
+        const isVideo = isVideoPath(url);
+        const isModel = !!readRowModel(row) || isModelPath(url);
+        const wrap = row.querySelector('.gallery-thumb-wrap');
+        const thumb = row.querySelector('.gallery-thumb');
+        const overlay = row.querySelector('.gallery-caption-overlay');
+        wrap?.querySelectorAll('.gallery-type-icon').forEach(el => el.remove());
+        if (isVideo) {
+            const i = document.createElement('i');
+            i.className = 'gallery-type-icon ph ph-play-circle absolute inset-0 flex items-center justify-center text-white text-2xl drop-shadow pointer-events-none';
+            wrap?.appendChild(i);
+            if (thumb) thumb.dataset.videoUrl = url;
+        } else if (thumb) {
+            delete thumb.dataset.videoUrl;
+        }
+        if (isModel) {
+            const i = document.createElement('i');
+            i.className = 'gallery-type-icon ph ph-cube absolute inset-0 flex items-center justify-center text-white text-2xl drop-shadow pointer-events-none';
+            wrap?.appendChild(i);
+        }
+        const src = poster ? getThumbnailSrc(poster) : (isModel ? (thumb?.src || '') : getThumbnailSrc(url));
+        if (thumb) {
+            if (src) { thumb.src = src; thumb.style.opacity = '1'; }
+            else if (!isModel) { thumb.removeAttribute('src'); thumb.style.opacity = '0'; }
+        }
+        wrap?.classList.remove('hidden');
+        if (overlay) {
+            overlay.textContent = caption;
+            overlay.classList.toggle('hidden', !caption);
+        }
+        row.querySelector('.gallery-model-btn')?.classList.toggle('hidden', !isModel);
+        const cropBtn = row.querySelector('.gallery-crop-btn');
+        if (cropBtn) cropBtn.classList.toggle('hidden', (isVideo || isModel) && !poster);
+    }
+
+    function openGalleryEdit(row) {
+        if (!row) return;
+        itemEditState.row = row;
+        const url = row.querySelector('.gallery-url')?.value || '';
+        const caption = row.querySelector('.gallery-caption')?.value || '';
+        const isVideo = isVideoPath(url);
+        const isModel = !!readRowModel(row) || isModelPath(url);
+        let actions = '';
+        if (isVideo) actions += `<button type="button" class="btn-quiet" onclick="applyGalleryEditFields(); closeItemEdit(false); openVideoPreview(itemEditState.row)"><i class="ph ph-play"></i> Preview</button>`;
+        if (isModel) actions += `<button type="button" class="btn-quiet" onclick="applyGalleryEditFields(); closeItemEdit(false); openModelEditor(itemEditState.row)"><i class="ph ph-cube"></i> 3D</button>`;
+        actions += `<button type="button" class="btn-quiet" onclick="applyGalleryEditFields(); closeItemEdit(false); openGalleryCrop(itemEditState.row)"><i class="ph ph-crop"></i> Crop</button>`;
+        openItemEditModal({
+            title: fileBaseName(url) || 'Gallery item',
+            html: `
+              <div>
+                <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">URL / path</label>
+                <input type="text" id="item-edit-gallery-url" class="field font-mono text-xs" value="${escAttr(url)}" placeholder="Image, video, GLB, or YouTube">
+              </div>
+              <div>
+                <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Caption</label>
+                <input type="text" id="item-edit-gallery-caption" class="field" value="${escAttr(caption)}" placeholder="Shown in the media viewer">
+              </div>
+              <div class="flex flex-wrap gap-1.5 pt-1">${actions}</div>`,
+            onApply: () => { applyGalleryEditFields(); refreshGalleryVisual(row); },
+            focusSelector: '#item-edit-gallery-url'
+        });
+    }
+
+    function applyGalleryEditFields() {
+        const row = itemEditState.row;
+        if (!row) return;
+        const urlEl = row.querySelector('.gallery-url');
+        const capEl = row.querySelector('.gallery-caption');
+        const urlInput = document.getElementById('item-edit-gallery-url');
+        const capInput = document.getElementById('item-edit-gallery-caption');
+        if (urlEl && urlInput) urlEl.value = urlInput.value;
+        if (capEl && capInput) capEl.value = capInput.value;
+        onGalleryUrlChange(urlEl);
+        isDirty = true;
     }
 
     function readRowModel(row) {
@@ -1916,28 +2358,18 @@
     function onGalleryUrlChange(input) {
         isDirty = true;
         const row = input.closest('.gallery-row');
-        const wrap = row.querySelector('.gallery-thumb-wrap');
-        const thumb = row.querySelector('.gallery-thumb');
-        const cropBtn = row.querySelector('.gallery-crop-btn');
         const posterInput = row.querySelector('.gallery-poster');
         const hasAudioInput = row.querySelector('.gallery-has-audio');
         const isModel = isModelPath(input.value);
-        // The URL changed by hand, so any previously-generated poster no longer applies.
         if (posterInput) posterInput.value = '';
         if (hasAudioInput) hasAudioInput.value = '';
         if (isModel) {
-            // Keep any existing model settings; start fresh ones for a hand-entered GLB path.
             if (!readRowModel(row)) writeRowModel(row, { type: 'model', format: 'glb', up: 'z', parts: [] });
             else row.querySelector('.gallery-model-btn')?.classList.remove('hidden');
         } else {
             writeRowModel(row, null);
         }
-        if (cropBtn) cropBtn.classList.toggle('hidden', (isVideoPath(input.value) || isModel) && !posterInput?.value?.trim());
-        if (isVideoPath(input.value)) thumb.dataset.videoUrl = input.value;
-        else delete thumb.dataset.videoUrl;
-        const src = isModel ? '' : getThumbnailSrc(input.value);
-        if (src) { thumb.src = src; wrap.classList.remove('hidden'); }
-        else { wrap.classList.add('hidden'); }
+        refreshGalleryVisual(row);
     }
 
     function setupGalleryDragDrop() {
@@ -1963,29 +2395,39 @@
         container.addEventListener('dragover', (e) => {
             e.preventDefault();
             if (!dragEl) return;
-            const after = getDragAfterElement(container, e.clientY);
+            const after = getDragAfterElement(container, e.clientX, e.clientY);
             if (after == null) container.appendChild(dragEl);
             else container.insertBefore(dragEl, after);
 
-            const zone = 80;
-            if (e.clientY < zone) window.scrollBy(0, -10);
-            else if (e.clientY > window.innerHeight - zone) window.scrollBy(0, 10);
+            const sc = document.getElementById('editor-scroll');
+            if (sc) {
+                const rect = sc.getBoundingClientRect();
+                const zone = 64;
+                if (e.clientY < rect.top + zone) sc.scrollTop -= 12;
+                else if (e.clientY > rect.bottom - zone) sc.scrollTop += 12;
+            }
         });
 
         window.addEventListener('wheel', (e) => {
             if (!dragEl) return;
-            window.scrollBy(0, e.deltaY);
+            const sc = document.getElementById('editor-scroll');
+            if (sc) sc.scrollTop += e.deltaY;
         }, { passive: true });
     }
 
-    function getDragAfterElement(container, y) {
+    function getDragAfterElement(container, x, y) {
         const rows = [...container.querySelectorAll('.gallery-row:not(.opacity-50)')];
-        return rows.reduce((closest, child) => {
+        if (!rows.length) return null;
+        let best = { dist: Infinity, el: null, box: null };
+        rows.forEach(child => {
             const box = child.getBoundingClientRect();
-            const offset = y - box.top - box.height / 2;
-            if (offset < 0 && offset > closest.offset) return { offset, element: child };
-            return closest;
-        }, { offset: -Infinity }).element;
+            const dist = Math.hypot(x - (box.left + box.width / 2), y - (box.top + box.height / 2));
+            if (dist < best.dist) best = { dist, el: child, box };
+        });
+        if (!best.el) return null;
+        const box = best.box;
+        const past = x > box.left + box.width / 2 || (Math.abs(x - (box.left + box.width / 2)) < box.width / 2 && y > box.top + box.height / 2);
+        return past ? best.el.nextElementSibling : best.el;
     }
 
     function setupRelatedDragDrop() {
@@ -2174,11 +2616,11 @@
         el.className = 'px-4 py-2.5 transition-opacity duration-500';
         el.innerHTML = `
           <div class="flex justify-between items-center mb-1.5">
-            <span class="text-xs font-medium text-slate-700 truncate flex-1 mr-2">${label}</span>
-            <span class="queue-status text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-400 flex-shrink-0">Queued</span>
+            <span class="text-xs font-medium text-zinc-300 truncate flex-1 mr-2">${label}</span>
+            <span class="queue-status text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-zinc-800 text-zinc-500 flex-shrink-0">Queued</span>
           </div>
-          <div class="h-1.5 bg-slate-100 rounded-full overflow-hidden">
-            <div class="queue-bar h-full rounded-full transition-[width] duration-300 ease-out" style="width:0%;background:${type==='video'?'#f59e0b':type==='file'?'#10b981':'#6366f1'}"></div>
+          <div class="h-1.5 bg-zinc-800 rounded-full overflow-hidden">
+            <div class="queue-bar h-full rounded-full transition-[width] duration-300 ease-out" style="width:0%;background:${type==='video'?'#22d3ee':type==='file'?'#22d3ee':'#22d3ee'}"></div>
           </div>`;
         document.getElementById('queue-items').appendChild(el);
 
@@ -2190,7 +2632,7 @@
           setProgress(pct, text) {
             bar.style.width = pct + '%';
             statusBadge.textContent = text || Math.round(pct) + '%';
-            statusBadge.className = 'queue-status text-[10px] font-semibold px-1.5 py-0.5 rounded-full flex-shrink-0 bg-indigo-50 text-indigo-600';
+            statusBadge.className = 'queue-status text-[10px] font-semibold px-1.5 py-0.5 rounded-full flex-shrink-0 bg-cyan-950 text-cyan-400';
             uploadQueue._updateEta();
           },
           startTimer() {
@@ -2201,7 +2643,7 @@
               const pct = Math.min(95, (elapsed / this.estimatedMs) * 100);
               bar.style.width = pct + '%';
               statusBadge.textContent = Math.round(pct) + '%';
-              statusBadge.className = 'queue-status text-[10px] font-semibold px-1.5 py-0.5 rounded-full flex-shrink-0 bg-indigo-50 text-indigo-600';
+              statusBadge.className = 'queue-status text-[10px] font-semibold px-1.5 py-0.5 rounded-full flex-shrink-0 bg-cyan-950 text-cyan-400';
               uploadQueue._updateEta();
             }, 200);
           },
@@ -2210,7 +2652,7 @@
             this.stopTimer();
             bar.style.width = '100%';
             statusBadge.textContent = 'Done';
-            statusBadge.className = 'queue-status text-[10px] font-semibold px-1.5 py-0.5 rounded-full flex-shrink-0 bg-green-50 text-green-600';
+            statusBadge.className = 'queue-status text-[10px] font-semibold px-1.5 py-0.5 rounded-full flex-shrink-0 bg-emerald-950 text-emerald-400';
             setTimeout(() => el.classList.add('opacity-40'), 400);
           },
           taskFn,
@@ -2227,7 +2669,7 @@
         this._running = true;
         const headerIcon = document.getElementById('queue-header-icon');
         const headerLabel = document.getElementById('queue-header-label');
-        if (headerIcon) { headerIcon.className = 'ph ph-spinner animate-spin text-indigo-400'; }
+        if (headerIcon) { headerIcon.className = 'ph ph-spinner animate-spin text-cyan-400'; }
         if (headerLabel) headerLabel.textContent = 'Processing uploads…';
 
         while (this._tasks.length) {
@@ -2319,7 +2761,7 @@
             form.append('category', category);
             form.append('project', project);
             const result = await uploadXhr('/api/media/upload', form, (pct) => task.setProgress(pct, pct + '%'));
-            addGalleryRow(result.path, '', null, false, '', result.thumbnail || '');
+            addGalleryRow(result.path, '', null, true, '', result.thumbnail || '');
             isDirty = true;
             succeeded++;
             if (idx === total - 1) {
@@ -2361,6 +2803,7 @@
       if (thumbWrap) thumbWrap.classList.remove('hidden');
       const cropBtn = row.querySelector('.gallery-crop-btn');
       if (cropBtn) cropBtn.classList.remove('hidden');
+      refreshGalleryVisual(row);
       isDirty = true;
       return result;
     }
@@ -2415,7 +2858,7 @@
               up: 'z',
               parts: converted.parts.map(p => ({ name: p.name, color: p.color || undefined, opacity: typeof p.opacity === 'number' ? p.opacity : 1 }))
             };
-            const row = addGalleryRow(result.path, '', null, false, '', '', false, model);
+            const row = addGalleryRow(result.path, '', null, true, '', '', false, model);
             isDirty = true;
             task.setProgress(85, 'Thumbnail');
             try { await autoCaptureModelThumbnail(row); }
@@ -2501,12 +2944,12 @@
       document.getElementById('model-editor-title').textContent = url.split('/').pop();
       document.getElementById('model-editor-source').textContent = `${(model.format || 'glb').toUpperCase()} preview · only this GLB is stored, the source file is never published`;
       document.querySelectorAll('#model-editor-up button').forEach(b => {
-        b.classList.toggle('bg-indigo-600', b.dataset.up === model.up);
+        b.classList.toggle('bg-cyan-600', b.dataset.up === model.up);
         b.classList.toggle('text-white', b.dataset.up === model.up);
         b.classList.toggle('text-zinc-300', b.dataset.up !== model.up);
       });
       const rotBtn = document.getElementById('model-editor-rotate');
-      rotBtn.classList.remove('bg-indigo-600', 'text-white');
+      rotBtn.classList.remove('bg-cyan-600', 'text-white');
       modal.classList.remove('hidden');
       lockModelEditorScroll();
 
@@ -2537,14 +2980,14 @@
         <div class="model-part flex flex-col gap-1.5 p-2 rounded-lg bg-zinc-800/70 border border-zinc-700" data-index="${i}">
           <div class="flex items-center gap-2">
             <input type="color" value="${escAttr(p.color)}" class="model-part-color w-8 h-8 rounded cursor-pointer bg-transparent border-0 p-0" title="Part color" oninput="onModelPartColor(${i}, this.value)" autocomplete="off">
-            <input type="text" name="model-part-name-${i}" value="${escAttr(p.name)}" class="model-part-name flex-1 min-w-0 bg-transparent text-xs text-zinc-200 border-b border-transparent focus:border-indigo-500 outline-none" title="Part name (shown in the viewer)" oninput="onModelPartName(${i}, this.value)" autocomplete="off" data-1p-ignore="true" data-lpignore="true">
+            <input type="text" name="model-part-name-${i}" value="${escAttr(p.name)}" class="model-part-name flex-1 min-w-0 bg-transparent text-xs text-zinc-200 border-b border-transparent focus:border-cyan-500 outline-none" title="Part name (shown in the viewer)" oninput="onModelPartName(${i}, this.value)" autocomplete="off" data-1p-ignore="true" data-lpignore="true">
             <button type="button" onclick="onModelPartReset(${i})" class="text-zinc-500 hover:text-white text-xs" title="Reset to file color"><i class="ph ph-arrow-counter-clockwise"></i></button>
           </div>
           <div class="flex items-center gap-2 text-[10px] text-zinc-400">
             <span class="w-14 uppercase font-bold">Opacity</span>
-            <input type="range" min="0" max="100" step="1" value="${Math.round(p.opacity * 100)}" class="model-part-opacity flex-1 accent-indigo-500" title="Drag, or hover and use the mouse wheel (Shift = 5% steps)" oninput="onModelPartOpacity(${i}, this.value)">
+            <input type="range" min="0" max="100" step="1" value="${Math.round(p.opacity * 100)}" class="model-part-opacity flex-1 accent-cyan-400" title="Drag, or hover and use the mouse wheel (Shift = 5% steps)" oninput="onModelPartOpacity(${i}, this.value)">
             <div class="flex items-center gap-0.5 font-mono">
-              <input type="number" name="model-opacity-${i}" min="0" max="100" step="1" inputmode="decimal" value="${Math.round(p.opacity * 100)}" class="model-part-opacity-num w-12 bg-zinc-900 border border-zinc-700 rounded px-1 py-0.5 text-right text-xs text-zinc-200 focus:border-indigo-500 outline-none" title="Type an exact opacity" oninput="onModelPartOpacity(${i}, this.value, true)" onblur="this.value = Math.round((modelEditor.viewer?.listParts()[${i}]?.opacity ?? 1) * 100)" autocomplete="off" data-1p-ignore="true" data-lpignore="true">
+              <input type="number" name="model-opacity-${i}" min="0" max="100" step="1" inputmode="decimal" value="${Math.round(p.opacity * 100)}" class="model-part-opacity-num w-12 bg-zinc-900 border border-zinc-700 rounded px-1 py-0.5 text-right text-xs text-zinc-200 focus:border-cyan-500 outline-none" title="Type an exact opacity" oninput="onModelPartOpacity(${i}, this.value, true)" onblur="this.value = Math.round((modelEditor.viewer?.listParts()[${i}]?.opacity ?? 1) * 100)" autocomplete="off" data-1p-ignore="true" data-lpignore="true">
               <span>%</span>
             </div>
           </div>
@@ -2620,7 +3063,7 @@
       modelEditor.viewer?.setUp(axis);
       document.querySelectorAll('#model-editor-up button').forEach(b => {
         const on = b.dataset.up === axis;
-        b.classList.toggle('bg-indigo-600', on);
+        b.classList.toggle('bg-cyan-600', on);
         b.classList.toggle('text-white', on);
         b.classList.toggle('text-zinc-300', !on);
       });
@@ -2634,7 +3077,7 @@
       modelEditor.autoRotate = !modelEditor.autoRotate;
       modelEditor.viewer?.setAutoRotate(modelEditor.autoRotate);
       const btn = document.getElementById('model-editor-rotate');
-      btn.classList.toggle('bg-indigo-600', modelEditor.autoRotate);
+      btn.classList.toggle('bg-cyan-600', modelEditor.autoRotate);
       btn.classList.toggle('text-white', modelEditor.autoRotate);
     }
 
@@ -2650,6 +3093,7 @@
         status.textContent = 'Uploading thumbnail…';
         const url = row.querySelector('.gallery-url').value.trim();
         await uploadModelPoster(row, blob, url.split('/').pop().replace(/\.glb$/i, ''));
+        refreshGalleryVisual(row);
         status.textContent = 'Thumbnail saved';
         Toastify({ text: 'Thumbnail updated', duration: 2000, backgroundColor: '#10b981' }).showToast();
         setTimeout(() => { if (status.textContent === 'Thumbnail saved') status.textContent = ''; }, 2000);
@@ -2755,7 +3199,7 @@
           try {
             const result = await api.uploadVideo(file, category, project, jobId, keepAudio);
             evtSource.close();
-            addGalleryRow(result.path, '', null, false, result.poster || '', result.posterThumbnail || '', !!result.hasAudio);
+            addGalleryRow(result.path, '', null, true, result.poster || '', result.posterThumbnail || '', !!result.hasAudio);
             isDirty = true;
             succeeded++;
             if (idx === total - 1 && succeeded > 0) {
@@ -2797,7 +3241,7 @@
           form.append('category', category);
           form.append('project', project);
           const result = await uploadXhr('/api/media/upload-file', form, (pct) => task.setProgress(pct, pct + '%'));
-          addFileRow(file.name, result.path, '');
+          addFileRow(file.name, result.path, '', true);
           isDirty = true;
           succeeded++;
           if (idx === total - 1) {
@@ -2827,6 +3271,8 @@
         if (thumbInput) thumbInput.value = result.thumbnail || '';
         isDirty = true;
         updateFileThumbPreview(row);
+        const modalImg = document.getElementById('item-edit-file-image');
+        if (modalImg) modalImg.value = result.path;
         hideStatus();
         Toastify({ text: "Image uploaded!", duration: 2000, backgroundColor: "#10b981" }).showToast();
       } catch (err) {
@@ -2967,7 +3413,7 @@
                // A pending navigation is waiting — skip lastSavedId so onDataLoaded
                // doesn't re-navigate back to the saved project after the refresh.
                await refreshData();
-               Toastify({ text: "Project Saved!", duration: 3000, backgroundColor: "#4f46e5" }).showToast();
+               Toastify({ text: "Project Saved!", duration: 3000, backgroundColor: "#0891b2" }).showToast();
                postSaveCallback();
            } else {
                lastSavedId = res.project?.id || formData.id;
@@ -3287,23 +3733,23 @@
         const el = document.getElementById("publishCode");
         el.select();
         navigator.clipboard.writeText(el.value);
-        Toastify({ text: "Copied to clipboard!", duration: 2000, backgroundColor: "#4f46e5" }).showToast();
+        Toastify({ text: "Copied to clipboard!", duration: 2000, backgroundColor: "#0891b2" }).showToast();
     }
 
     function showStatus(msg, color="blue") {
       const el = document.getElementById('status');
       const icon = el.querySelector('i');
-      el.classList.remove('hidden', 'bg-red-50', 'text-red-800', 'border-red-100', 'bg-green-50', 'text-green-800', 'border-green-100', 'bg-blue-50', 'text-blue-800', 'border-blue-100');
+      el.classList.remove('hidden', 'bg-red-950/80', 'text-red-200', 'border-red-900', 'bg-emerald-950/80', 'text-emerald-200', 'border-emerald-900', 'bg-zinc-900', 'text-zinc-200', 'border-zinc-800');
       const colors = {
-        red:   ['bg-red-50',   'text-red-800',   'border-red-100'],
-        green: ['bg-green-50', 'text-green-800', 'border-green-100'],
-        blue:  ['bg-blue-50',  'text-blue-800',  'border-blue-100']
+        red:   ['bg-red-950/80',   'text-red-200',   'border-red-900'],
+        green: ['bg-emerald-950/80', 'text-emerald-200', 'border-emerald-900'],
+        blue:  ['bg-zinc-900',  'text-zinc-200',  'border-zinc-800']
       };
       el.classList.add(...(colors[color] || colors.blue));
       if (icon) {
-        icon.className = color === 'red'   ? 'ph ph-warning-circle text-xl flex-shrink-0 mt-0.5' :
-                         color === 'green' ? 'ph ph-check-circle text-xl flex-shrink-0 mt-0.5' :
-                                             'ph ph-spinner animate-spin text-xl flex-shrink-0 mt-0.5';
+        icon.className = color === 'red'   ? 'ph ph-warning-circle text-xl flex-shrink-0 mt-0.5 text-red-400' :
+                         color === 'green' ? 'ph ph-check-circle text-xl flex-shrink-0 mt-0.5 text-emerald-400' :
+                                             'ph ph-spinner animate-spin text-xl flex-shrink-0 mt-0.5 text-cyan-400';
       }
       document.getElementById('statusMsg').innerText = msg;
     }
@@ -3461,7 +3907,8 @@
         fitInput.value = JSON.stringify(fit);
         isDirty = true;
         const cropBtn = row.querySelector('.gallery-crop-btn');
-        if (cropBtn) cropBtn.className = cropBtn.className.replace('text-slate-300', 'text-indigo-500');
+        if (cropBtn) cropBtn.className = cropBtn.className.replace('text-zinc-600', 'text-cyan-400');
+        refreshGalleryVisual(row);
       });
     }
 
@@ -3479,6 +3926,7 @@
         fitInput.value = JSON.stringify(fit);
         isDirty = true;
         setFileCropBtnState(row, true);
+        refreshFileVisual(row);
       });
     }
 
@@ -3543,11 +3991,12 @@
 
           const cropBtn = row.querySelector('.gallery-crop-btn');
           if (cropBtn) {
-            cropBtn.classList.remove('hidden', 'text-slate-300', 'hover:text-indigo-500');
-            cropBtn.classList.add('text-indigo-500');
+            cropBtn.classList.remove('hidden', 'text-zinc-600', 'hover:text-cyan-400');
+            cropBtn.classList.add('text-cyan-400');
           }
 
           closeVideoPreview();
+          refreshGalleryVisual(row);
         } catch (err) {
           hideStatus();
           onError(err);
@@ -3579,7 +4028,7 @@
         const dy = e.clientY - cropState.lastY;
         cropState.lastX = e.clientX;
         cropState.lastY = e.clientY;
-        // Grab-and-drag: moving mouse right reveals more of left side → x decreases.
+        // Grab-and-drag: moving mouse right reveals more of left side -> x decreases.
         // Divide by scale so panning is finer when zoomed in.
         const sensitivity = 100 / cropState.scale;
         cropState.x = Math.max(0, Math.min(100, cropState.x - (dx / rect.width) * sensitivity));
@@ -3611,42 +4060,39 @@
     })();
   </script>
   <!-- COPY SPECS MODAL -->
-  <div id="copy-specs-modal" class="hidden fixed inset-0 bg-black/60 z-[60] flex items-center justify-center p-4" onclick="if(event.target===this)closeCopySpecsModal()">
-    <div class="bg-white rounded-xl shadow-2xl w-full flex flex-col overflow-hidden" style="max-width:520px;max-height:90vh;">
+  <div id="copy-specs-modal" class="hidden fixed inset-0 bg-black/70 z-[60] flex items-center justify-center p-4" onclick="if(event.target===this)closeCopySpecsModal()">
+    <div class="bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl w-full flex flex-col overflow-hidden" style="max-width:520px;max-height:90vh;">
       <div class="flex justify-between items-start p-6 pb-3 flex-shrink-0">
         <div>
-          <h2 class="text-lg font-bold text-slate-800">Copy Specs from Project</h2>
-          <p class="text-sm text-slate-500 mt-0.5">Pick a project, then choose which categories to copy.</p>
+          <h2 class="text-lg font-semibold text-zinc-100">Copy Specs from Project</h2>
+          <p class="text-sm text-zinc-500 mt-0.5">Pick a project, then choose which categories to copy.</p>
         </div>
-        <button type="button" onclick="closeCopySpecsModal()" class="text-slate-400 hover:text-slate-600 mt-0.5"><i class="ph ph-x text-xl"></i></button>
+        <button type="button" onclick="closeCopySpecsModal()" class="text-zinc-500 hover:text-white mt-0.5"><i class="ph ph-x text-xl"></i></button>
       </div>
       <div class="px-6 pb-3 flex-shrink-0">
         <input type="search" id="copy-specs-search" placeholder="Search projects…"
-          class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none focus:border-indigo-500"
+          class="field"
           oninput="onCopySpecsSearch(this.value)">
       </div>
       <div id="copy-specs-project-list" class="px-6 overflow-y-auto flex-1 min-h-0" style="max-height:220px;"></div>
-      <div id="copy-specs-categories" class="px-6 py-3 border-t border-slate-100 overflow-y-auto hidden" style="max-height:200px;"></div>
-      <div class="flex justify-end items-center gap-3 p-6 pt-4 border-t border-slate-100 flex-shrink-0">
-        <button type="button" onclick="closeCopySpecsModal()"
-                class="px-4 py-2 border border-slate-200 rounded-lg text-slate-600 hover:bg-slate-50 text-sm transition-colors">
-          Cancel
-        </button>
+      <div id="copy-specs-categories" class="px-6 py-3 border-t border-zinc-800 overflow-y-auto hidden" style="max-height:200px;"></div>
+      <div class="flex justify-end items-center gap-3 p-6 pt-4 border-t border-zinc-800 flex-shrink-0">
+        <button type="button" onclick="closeCopySpecsModal()" class="btn-quiet">Cancel</button>
         <div id="copy-specs-actions" class="flex gap-3"></div>
       </div>
     </div>
   </div>
   <!-- CROP MODAL -->
-  <div id="crop-modal" class="hidden fixed inset-0 bg-black/60 z-[60] flex items-center justify-center p-4">
-    <div class="bg-white rounded-xl shadow-2xl p-6 w-full flex flex-col gap-4" style="max-width:640px;">
+  <div id="crop-modal" class="hidden fixed inset-0 bg-black/70 z-[60] flex items-center justify-center p-4">
+    <div class="bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl p-6 w-full flex flex-col gap-4" style="max-width:640px;">
       <div class="flex justify-between items-start">
         <div>
-          <h2 class="text-lg font-bold text-slate-800">Set Crop</h2>
-          <p id="crop-modal-label" class="text-sm text-slate-500"></p>
+          <h2 class="text-lg font-semibold text-zinc-100">Set Crop</h2>
+          <p id="crop-modal-label" class="text-sm text-zinc-500"></p>
         </div>
-        <button type="button" onclick="closeCropModal()" class="text-slate-400 hover:text-slate-600 mt-0.5"><i class="ph ph-x text-xl"></i></button>
+        <button type="button" onclick="closeCropModal()" class="text-zinc-500 hover:text-white mt-0.5"><i class="ph ph-x text-xl"></i></button>
       </div>
-      <p class="text-xs text-slate-400 -mt-2">
+      <p class="text-xs text-zinc-500 -mt-2">
         <i class="ph ph-hand"></i> Drag to pan &nbsp;·&nbsp;
         <i class="ph ph-magnifying-glass"></i> Scroll or use slider to zoom
       </p>
@@ -3660,50 +4106,44 @@
         <div id="crop-grid" class="absolute inset-0 pointer-events-none" aria-hidden="true"></div>
       </div>
       <div class="flex items-center gap-3">
-        <i class="ph ph-magnifying-glass-minus text-slate-400 text-lg"></i>
+        <i class="ph ph-magnifying-glass-minus text-zinc-500 text-lg"></i>
         <input type="range" id="crop-zoom-slider" min="1" max="4" step="0.05" value="1"
-               class="flex-1 accent-indigo-600"
+               class="flex-1 accent-cyan-400"
                oninput="cropState.scale = parseFloat(this.value); updateCropPreview();">
-        <i class="ph ph-magnifying-glass-plus text-slate-400 text-lg"></i>
+        <i class="ph ph-magnifying-glass-plus text-zinc-500 text-lg"></i>
       </div>
-      <div id="crop-readout" class="text-xs text-center font-mono text-slate-500 -mt-1">Zoom 1.00× · X 50% · Y 50%</div>
-      <div class="flex justify-between items-center pt-2 border-t border-slate-100">
+      <div id="crop-readout" class="text-xs text-center font-mono text-zinc-500 -mt-1">Zoom 1.00× · X 50% · Y 50%</div>
+      <div class="flex justify-between items-center pt-2 border-t border-zinc-800">
         <div class="flex items-center gap-1">
           <button type="button" onclick="resetCrop()"
-                  class="text-sm text-slate-500 hover:text-slate-700 px-3 py-1.5 rounded hover:bg-slate-100 transition-colors">
+                  class="text-sm text-zinc-500 hover:text-zinc-200 px-3 py-1.5 rounded hover:bg-zinc-800 transition-colors">
             <i class="ph ph-arrow-counter-clockwise"></i> Reset
           </button>
           <button type="button" id="crop-grid-btn" onclick="cycleCropGrid()" title="Cycle alignment grid: rule of thirds, golden ratio, off"
-                  class="text-sm text-slate-500 hover:text-slate-700 px-3 py-1.5 rounded hover:bg-slate-100 transition-colors">
+                  class="text-sm text-zinc-500 hover:text-zinc-200 px-3 py-1.5 rounded hover:bg-zinc-800 transition-colors">
             <i class="ph ph-grid-four"></i> Thirds
           </button>
         </div>
-        <div class="flex gap-3">
-          <button type="button" onclick="closeCropModal()"
-                  class="px-4 py-2 border border-slate-200 rounded-lg text-slate-600 hover:bg-slate-50 text-sm transition-colors">
-            Cancel
-          </button>
-          <button type="button" onclick="saveCropModal()"
-                  class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-bold text-sm transition-colors">
-            Save Crop
-          </button>
+        <div class="flex gap-2">
+          <button type="button" onclick="closeCropModal()" class="btn-quiet">Cancel</button>
+          <button type="button" onclick="saveCropModal()" class="btn-primary">Save Crop</button>
         </div>
       </div>
     </div>
   </div>
   <!-- VIDEO PREVIEW MODAL -->
   <div id="video-preview-modal" class="hidden fixed inset-0 bg-black/80 z-[70] flex items-center justify-center p-4" onclick="if(event.target===this)closeVideoPreview()">
-    <div class="bg-zinc-900 rounded-xl shadow-2xl flex flex-col overflow-hidden" style="max-width:900px;width:100%;max-height:90vh;">
-      <div class="flex justify-between items-center px-4 py-3 border-b border-zinc-700 flex-shrink-0">
-        <h2 class="text-sm font-bold text-white">Video Preview</h2>
+    <div class="bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl flex flex-col overflow-hidden" style="max-width:900px;width:100%;max-height:90vh;">
+      <div class="flex justify-between items-center px-4 py-3 border-b border-zinc-800 flex-shrink-0">
+        <h2 class="text-sm font-semibold text-white">Video Preview</h2>
         <button type="button" onclick="closeVideoPreview()" class="text-zinc-400 hover:text-white transition-colors"><i class="ph ph-x text-xl"></i></button>
       </div>
       <div class="flex-1 bg-black flex items-center justify-center overflow-hidden">
         <video id="video-preview-el" class="max-w-full max-h-[65vh] w-full" controls playsinline></video>
       </div>
-      <div class="flex justify-center gap-3 p-4 border-t border-zinc-700 flex-shrink-0">
+      <div class="flex justify-center gap-3 p-4 border-t border-zinc-800 flex-shrink-0">
         <p class="text-xs text-zinc-500 self-center mr-auto">Play or pause — then capture the current frame as the thumbnail.</p>
-        <button type="button" onclick="captureVideoFrame()" class="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-bold text-sm transition-colors">
+        <button type="button" onclick="captureVideoFrame()" class="btn-primary">
           <i class="ph ph-camera"></i> Use As Thumbnail
         </button>
       </div>
@@ -3711,10 +4151,10 @@
   </div>
   <!-- 3D MODEL EDITOR MODAL -->
   <div id="model-editor-modal" class="hidden fixed inset-0 bg-black/80 z-[70] flex items-center justify-center p-4" onclick="if(event.target===this)closeModelEditor()">
-    <div class="bg-zinc-900 rounded-xl shadow-2xl flex flex-col overflow-hidden" style="max-width:1100px;width:100%;max-height:92vh;">
-      <div class="flex justify-between items-center px-4 py-3 border-b border-zinc-700 flex-shrink-0 gap-3">
+    <div class="bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl flex flex-col overflow-hidden" style="max-width:1100px;width:100%;max-height:92vh;">
+      <div class="flex justify-between items-center px-4 py-3 border-b border-zinc-800 flex-shrink-0 gap-3">
         <div class="min-w-0">
-          <h2 class="text-sm font-bold text-white truncate"><i class="ph ph-cube mr-1 text-amber-400"></i> <span id="model-editor-title">3D Model</span></h2>
+          <h2 class="text-sm font-semibold text-white truncate"><i class="ph ph-cube mr-1 text-cyan-400"></i> <span id="model-editor-title">3D Model</span></h2>
           <p id="model-editor-source" class="text-[11px] text-zinc-500 truncate"></p>
         </div>
         <div class="flex items-center gap-2 flex-shrink-0">
@@ -3735,66 +4175,66 @@
           </div>
           <p class="absolute right-3 bottom-3 text-[10px] text-zinc-500 hidden md:block">Drag: rotate · Right-drag / two fingers: pan · Wheel / pinch: zoom</p>
         </div>
-        <div class="w-full md:w-80 flex flex-col border-t md:border-t-0 md:border-l border-zinc-700 min-h-0">
-          <div class="px-4 py-3 border-b border-zinc-700">
+        <div class="w-full md:w-80 flex flex-col border-t md:border-t-0 md:border-l border-zinc-800 min-h-0">
+          <div class="px-4 py-3 border-b border-zinc-800">
             <h3 class="text-[10px] font-bold text-zinc-400 uppercase">Parts &amp; Materials</h3>
             <p class="text-[11px] text-zinc-500 mt-0.5">Set a color and opacity per part to match the real object. Changes save with the project.</p>
           </div>
           <div id="model-editor-parts" class="flex-1 overflow-y-auto p-3 space-y-2 min-h-[120px] max-h-[40vh] md:max-h-none"></div>
-          <div class="p-3 border-t border-zinc-700 flex flex-col gap-2">
-            <button type="button" onclick="captureModelThumbnail()" class="w-full flex items-center justify-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-bold text-sm transition-colors">
+          <div class="p-3 border-t border-zinc-800 flex flex-col gap-2">
+            <button type="button" onclick="captureModelThumbnail()" class="btn-primary w-full justify-center">
               <i class="ph ph-camera"></i> Capture Thumbnail From This View
             </button>
-            <button type="button" onclick="closeModelEditor()" class="w-full px-4 py-2 border border-zinc-600 text-zinc-200 rounded-lg hover:bg-zinc-800 font-bold text-sm transition-colors">Done</button>
+            <button type="button" onclick="closeModelEditor()" class="btn-quiet w-full justify-center">Done</button>
           </div>
         </div>
       </div>
     </div>
   </div>
   <!-- VIDEO AUDIO PROMPT -->
-  <div id="video-audio-modal" class="hidden fixed inset-0 z-[80] bg-black/50 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="video-audio-title" onclick="if(event.target===this)closeVideoAudioPrompt()">
-    <div class="bg-white rounded-xl shadow-2xl p-6 max-w-sm w-full" onclick="event.stopPropagation()">
-      <h2 id="video-audio-title" class="text-lg font-bold text-slate-800 mb-2">Include audio?</h2>
-      <p class="text-sm text-slate-600 mb-6">Include audio on the files being uploaded?</p>
-      <div class="flex flex-col gap-3">
-        <button type="button" id="video-audio-no" onclick="resolveVideoAudioPrompt(false)" class="w-full py-2 bg-indigo-600 text-white rounded-lg font-bold hover:bg-indigo-700">No — strip audio</button>
-        <button type="button" onclick="resolveVideoAudioPrompt(true)" class="w-full py-2 border border-slate-300 text-slate-700 rounded-lg font-bold hover:bg-slate-50">Yes — keep audio</button>
-        <button type="button" onclick="closeVideoAudioPrompt()" class="w-full py-2 text-slate-500 rounded-lg font-bold hover:bg-slate-50">Cancel</button>
+  <div id="video-audio-modal" class="hidden fixed inset-0 z-[80] bg-black/70 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="video-audio-title" onclick="if(event.target===this)closeVideoAudioPrompt()">
+    <div class="bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl p-6 max-w-sm w-full" onclick="event.stopPropagation()">
+      <h2 id="video-audio-title" class="text-lg font-semibold text-zinc-100 mb-2">Include audio?</h2>
+      <p class="text-sm text-zinc-400 mb-6">Include audio on the files being uploaded?</p>
+      <div class="flex flex-col gap-2">
+        <button type="button" id="video-audio-no" onclick="resolveVideoAudioPrompt(false)" class="btn-primary w-full justify-center">No — strip audio</button>
+        <button type="button" onclick="resolveVideoAudioPrompt(true)" class="btn-quiet w-full justify-center">Yes — keep audio</button>
+        <button type="button" onclick="closeVideoAudioPrompt()" class="w-full py-2 text-zinc-500 rounded-lg font-medium hover:bg-zinc-800">Cancel</button>
       </div>
     </div>
   </div>
 
   <!-- GEMINI COPY INTERVIEW MODAL -->
-  <div id="gemini-copy-modal" class="hidden fixed inset-0 z-[85] bg-black/50 items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="gemini-copy-title">
-    <div class="bg-white rounded-xl shadow-2xl p-6 max-w-lg w-full max-h-[90vh] overflow-y-auto flex flex-col" onclick="event.stopPropagation()">
+  <div id="gemini-copy-modal" class="hidden fixed inset-0 z-[85] bg-black/70 items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="gemini-copy-title">
+    <div class="bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl p-6 max-w-lg w-full max-h-[90vh] overflow-y-auto flex flex-col" onclick="event.stopPropagation()">
       <div class="flex justify-between items-start mb-4">
         <div>
-          <h2 id="gemini-copy-title" class="text-lg font-bold text-slate-800">Polish long description</h2>
-          <p id="gemini-copy-status" class="text-sm text-slate-500 mt-0.5">Answer, skip, or generate now. Close leaves the current text.</p>
+          <h2 id="gemini-copy-title" class="text-lg font-semibold text-zinc-100">Polish long description</h2>
+          <p id="gemini-copy-status" class="text-sm text-zinc-500 mt-0.5">Answer, skip, or generate now. Close leaves the current text.</p>
         </div>
-        <button type="button" id="gemini-copy-close" class="text-slate-400 hover:text-slate-600 mt-0.5" aria-label="Close">
+        <button type="button" id="gemini-copy-close" class="text-zinc-500 hover:text-white mt-0.5" aria-label="Close">
           <i class="ph ph-x text-xl"></i>
         </button>
       </div>
-      <div id="gemini-copy-log" class="hidden mb-4 max-h-40 overflow-y-auto border border-slate-200 rounded-lg p-3 bg-slate-50"></div>
+      <div id="gemini-copy-log" class="hidden mb-4 max-h-40 overflow-y-auto border border-zinc-800 rounded-lg p-3 bg-zinc-950"></div>
       <div id="gemini-copy-questions" class="mb-4"></div>
-      <label for="gemini-copy-answers" class="block text-xs font-bold text-slate-400 uppercase tracking-wide mb-1">Your answer</label>
+      <label for="gemini-copy-answers" class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Your answer</label>
       <textarea id="gemini-copy-answers" rows="4" placeholder="Answer in fragments. Ctrl+Enter to send."
-        class="w-full bg-slate-50 border border-slate-200 text-slate-800 rounded-lg px-3 py-2 text-sm outline-none focus:border-indigo-500 mb-4"></textarea>
+        class="field mb-4"></textarea>
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <button type="button" id="gemini-copy-skip"
-          class="px-4 py-2 border border-slate-200 rounded-lg text-slate-600 hover:bg-slate-50 text-sm transition-colors flex items-center justify-center gap-2">
+          class="btn-quiet justify-center">
           <i id="gemini-copy-skip-icon" class="ph ph-spinner animate-spin text-sm hidden"></i>
           <span id="gemini-copy-skip-label">Skip</span>
         </button>
-        <div class="flex flex-col sm:flex-row gap-3 sm:justify-end">
+        <div class="flex flex-col sm:flex-row gap-2 sm:justify-end">
           <button type="button" id="gemini-copy-send"
-            class="px-4 py-2 border border-slate-200 rounded-lg text-slate-700 hover:bg-slate-50 font-medium text-sm transition-colors flex items-center justify-center gap-2">
+            class="btn-quiet justify-center">
             <i id="gemini-copy-send-icon" class="ph ph-spinner animate-spin text-sm hidden"></i>
             <span id="gemini-copy-send-label">Send answer</span>
           </button>
           <button type="button" id="gemini-copy-generate"
-            class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-bold text-sm transition-colors flex items-center justify-center gap-2">
+            class="btn-primary justify-center">
             <i id="gemini-copy-generate-icon" class="ph ph-spinner animate-spin text-sm hidden"></i>
             <span id="gemini-copy-generate-label">Generate</span>
           </button>
@@ -3804,27 +4244,27 @@
   </div>
 
   <!-- GEMINI SETTINGS MODAL -->
-  <div id="gemini-settings-modal" class="hidden fixed inset-0 z-[80] bg-black/50 items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="gemini-settings-title">
-    <div class="bg-white rounded-xl shadow-2xl p-6 max-w-lg w-full max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
+  <div id="gemini-settings-modal" class="hidden fixed inset-0 z-[80] bg-black/70 items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="gemini-settings-title">
+    <div class="bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl p-6 max-w-lg w-full max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
       <div class="flex justify-between items-start mb-6">
         <div>
-          <h2 id="gemini-settings-title" class="text-lg font-bold text-slate-800">Settings</h2>
-          <p class="text-sm text-slate-500 mt-0.5">API key and models stay in this browser only.</p>
+          <h2 id="gemini-settings-title" class="text-lg font-semibold text-zinc-100">Settings</h2>
+          <p class="text-sm text-zinc-500 mt-0.5">API key and models stay in this browser only.</p>
         </div>
-        <button type="button" id="gemini-settings-close" class="hidden text-slate-400 hover:text-slate-600 mt-0.5" aria-label="Close settings">
+        <button type="button" id="gemini-settings-close" class="hidden text-zinc-500 hover:text-white mt-0.5" aria-label="Close settings">
           <i class="ph ph-x text-xl"></i>
         </button>
       </div>
 
       <div class="space-y-4 mb-8">
-        <div class="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-wide">
+        <div class="flex items-center gap-2 text-[10px] font-bold text-zinc-500 uppercase tracking-wider">
           <i class="ph ph-key text-sm"></i>
           Google AI API Key
         </div>
 
-        <div id="gemini-key-required" class="p-3 bg-amber-50 border border-amber-200 rounded-lg">
-          <p class="text-amber-800 text-xs font-medium mb-1">API Key Required</p>
-          <p class="text-slate-600 text-xs">
+        <div id="gemini-key-required" class="p-3 bg-amber-950/40 border border-amber-900/60 rounded-lg">
+          <p class="text-amber-300 text-xs font-medium mb-1">API Key Required</p>
+          <p class="text-zinc-400 text-xs">
             The CMS needs a Google AI API key to generate project copy. Your key is stored locally in this browser and never written to the repo or sent anywhere except Google's API.
           </p>
         </div>
@@ -3835,30 +4275,27 @@
             type="password"
             autocomplete="off"
             placeholder="Enter your Google AI API key..."
-            class="flex-1 bg-slate-50 border border-slate-200 text-slate-800 rounded-lg px-3 py-2 text-sm outline-none focus:border-indigo-500"
+            class="field"
           >
-          <button type="button" id="gemini-save-key"
-            class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-bold text-sm transition-colors">
-            Save
-          </button>
+          <button type="button" id="gemini-save-key" class="btn-primary">Save</button>
         </div>
 
         <a
           href="https://aistudio.google.com/apikey"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-xs text-indigo-600 hover:underline flex items-center gap-1"
+          class="text-xs text-cyan-400 hover:underline flex items-center gap-1"
         >
           Get a free API key from Google AI Studio
           <i class="ph ph-arrow-square-out text-[10px]"></i>
         </a>
 
-        <div id="gemini-models-row" class="hidden flex-col sm:flex-row sm:justify-between sm:items-center gap-3 p-3 bg-slate-50 border border-slate-200 rounded-lg">
-          <span id="gemini-models-count" class="text-xs text-slate-500">No models loaded — refresh to scan your account</span>
+        <div id="gemini-models-row" class="hidden flex-col sm:flex-row sm:justify-between sm:items-center gap-3 p-3 bg-zinc-950 border border-zinc-800 rounded-lg">
+          <span id="gemini-models-count" class="text-xs text-zinc-500">No models loaded — refresh to scan your account</span>
           <button
             type="button"
             id="gemini-refresh-models"
-            class="text-xs px-3 py-2 bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 rounded-lg transition-colors flex items-center justify-center gap-2 font-medium disabled:opacity-50"
+            class="btn-quiet justify-center disabled:opacity-50"
           >
             <i id="gemini-refresh-icon" class="ph ph-arrow-clockwise text-sm shrink-0"></i>
             <span id="gemini-refresh-label">Refresh List</span>
@@ -3866,53 +4303,47 @@
         </div>
 
         <div id="gemini-text-model-wrap" class="hidden">
-          <label for="gemini-text-model" class="block text-xs font-bold text-slate-400 uppercase tracking-wide mb-1">
+          <label for="gemini-text-model" class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">
             Text generation model
           </label>
-          <select
-            id="gemini-text-model"
-            class="w-full bg-white border border-slate-200 text-slate-800 rounded-lg px-3 py-2 text-sm outline-none focus:border-indigo-500"
-          ></select>
+          <select id="gemini-text-model" class="field"></select>
         </div>
 
         <div id="gemini-image-model-wrap" class="hidden">
-          <label for="gemini-image-model" class="block text-xs font-bold text-slate-400 uppercase tracking-wide mb-1">
+          <label for="gemini-image-model" class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">
             Image generation model
           </label>
-          <select
-            id="gemini-image-model"
-            class="w-full bg-white border border-slate-200 text-slate-800 rounded-lg px-3 py-2 text-sm outline-none focus:border-indigo-500"
-          ></select>
+          <select id="gemini-image-model" class="field"></select>
         </div>
       </div>
 
       <div class="space-y-3">
-        <div class="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-wide">
+        <div class="flex items-center gap-2 text-[10px] font-bold text-zinc-500 uppercase tracking-wider">
           <i class="ph ph-hard-drives text-sm"></i>
           Local Storage
         </div>
 
-        <div id="gemini-storage-box" class="hidden p-4 bg-slate-50 rounded-lg border border-slate-200">
+        <div id="gemini-storage-box" class="hidden p-4 bg-zinc-950 rounded-lg border border-zinc-800">
           <div class="flex justify-between text-sm mb-2">
-            <span class="text-slate-500">Used</span>
-            <span id="gemini-storage-used" class="text-slate-800 font-mono">—</span>
+            <span class="text-zinc-500">Used</span>
+            <span id="gemini-storage-used" class="text-zinc-200 font-mono">—</span>
           </div>
           <div id="gemini-storage-available-row" class="flex justify-between text-sm mb-3">
-            <span class="text-slate-500">Available</span>
-            <span id="gemini-storage-available" class="text-slate-800 font-mono">—</span>
+            <span class="text-zinc-500">Available</span>
+            <span id="gemini-storage-available" class="text-zinc-200 font-mono">—</span>
           </div>
-          <div class="w-full bg-slate-200 rounded-full h-2">
-            <div id="gemini-storage-bar" class="bg-indigo-600 h-2 rounded-full transition-all" style="width: 0%"></div>
+          <div class="w-full bg-zinc-800 rounded-full h-2">
+            <div id="gemini-storage-bar" class="bg-cyan-400 h-2 rounded-full transition-all" style="width: 0%"></div>
           </div>
-          <p id="gemini-storage-percent" class="text-xs text-slate-500 mt-1"></p>
+          <p id="gemini-storage-percent" class="text-xs text-zinc-500 mt-1"></p>
         </div>
 
-        <p class="text-xs text-slate-500">
+        <p class="text-xs text-zinc-500">
           Media, project data, and the published site live on disk. The API key and model choices stay in this browser only.
         </p>
       </div>
 
-      <p class="text-[10px] text-slate-400 font-mono tabular-nums mt-6 text-center">
+      <p class="text-[10px] text-zinc-600 font-mono tabular-nums mt-6 text-center">
         Portfolio CMS v2.5.3 Local
       </p>
     </div>

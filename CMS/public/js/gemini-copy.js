@@ -35,7 +35,7 @@
   }
 
   function toast(text, kind) {
-    const colors = { success: '#10b981', warning: '#f59e0b', error: '#ef4444', info: '#4f46e5' };
+    const colors = { success: '#10b981', warning: '#f59e0b', error: '#ef4444', info: '#0891b2' };
     if (typeof Toastify === 'function') {
       Toastify({ text, duration: 4000, backgroundColor: colors[kind] || colors.info }).showToast();
     }
@@ -204,7 +204,7 @@
         logEl.innerHTML = interview.answered
           .map(
             (pair) =>
-              `<div class="mb-3 last:mb-0"><p class="text-[10px] font-bold uppercase tracking-wide text-slate-400 mb-1">${escapeHtml(pair.question)}</p><p class="text-sm text-slate-700 whitespace-pre-wrap">${escapeHtml(pair.answer)}</p></div>`
+              `<div class="mb-3 last:mb-0"><p class="text-[10px] font-bold uppercase tracking-wide text-zinc-500 mb-1">${escapeHtml(pair.question)}</p><p class="text-sm text-zinc-200 whitespace-pre-wrap">${escapeHtml(pair.answer)}</p></div>`
           )
           .join('');
       }
@@ -212,12 +212,12 @@
 
     if (qEl) {
       if (interview.asking && !interview.question) {
-        qEl.innerHTML = '<p class="text-sm text-slate-500">Reading the current draft…</p>';
+        qEl.innerHTML = '<p class="text-sm text-zinc-500">Reading the current draft…</p>';
       } else if (interview.question) {
-        qEl.innerHTML = `<p class="text-sm font-medium text-slate-800">${escapeHtml(interview.question)}</p>`;
+        qEl.innerHTML = `<p class="text-sm font-medium text-zinc-100">${escapeHtml(interview.question)}</p>`;
       } else {
         qEl.innerHTML =
-          '<p class="text-sm text-slate-500">You can generate now to polish what is already there, or wait for a question.</p>';
+          '<p class="text-sm text-zinc-500">You can generate now to polish what is already there, or wait for a question.</p>';
       }
     }
 

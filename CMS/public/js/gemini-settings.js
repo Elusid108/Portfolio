@@ -186,7 +186,7 @@
   }
 
   function toast(text, kind) {
-    const colors = { success: '#10b981', warning: '#f59e0b', error: '#ef4444', info: '#4f46e5' };
+    const colors = { success: '#10b981', warning: '#f59e0b', error: '#ef4444', info: '#0891b2' };
     if (typeof Toastify === 'function') {
       Toastify({
         text,
