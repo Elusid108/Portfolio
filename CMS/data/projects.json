@@ -1019,21 +1019,28 @@
         "up": "z",
         "parts": [
           {
-            "name": "bounce",
+            "name": "Part_1",
             "color": "#9ca3af",
             "opacity": 1
           },
           {
-            "name": "mask / frame",
+            "name": "Part_2",
             "color": "#000000",
             "opacity": 1
           },
           {
-            "name": "diffusion",
+            "name": "Part_3",
             "color": "#9ca3af",
             "opacity": 0.5
           }
         ],
+        "view": {
+          "theta": 0.6747,
+          "phi": 1.1326,
+          "radiusScale": 3.275,
+          "panX": 0,
+          "panY": 0
+        },
         "fit": {
           "scale": 1.1,
           "x": 54.2,
@@ -1218,21 +1225,28 @@
         "up": "z",
         "parts": [
           {
-            "name": "bounce",
+            "name": "Part_1",
             "color": "#9ca3af",
             "opacity": 1
           },
           {
-            "name": "mask / frame",
+            "name": "Part_2",
             "color": "#000000",
             "opacity": 1
           },
           {
-            "name": "diffusion",
+            "name": "Part_3",
             "color": "#9ca3af",
             "opacity": 0.5
           }
         ],
+        "view": {
+          "theta": 0.0386,
+          "phi": 0.8381,
+          "radiusScale": 3.275,
+          "panX": 0,
+          "panY": 0
+        },
         "fit": {
           "scale": 1.2,
           "x": 60.3,
@@ -1620,6 +1634,13 @@
             "opacity": 1
           }
         ],
+        "view": {
+          "theta": -2.5218,
+          "phi": 0.9029,
+          "radiusScale": 2.852,
+          "panX": -0.0115,
+          "panY": 0.0625
+        },
         "fit": {
           "scale": 1.3,
           "x": 52.3,
@@ -3284,6 +3305,13 @@
             "opacity": 1
           }
         ],
+        "view": {
+          "theta": -0.9451,
+          "phi": 1.0796,
+          "radiusScale": 3.275,
+          "panX": -0.0263,
+          "panY": 0.0625
+        },
         "fit": {
           "scale": 1.35,
           "x": 54.6,
@@ -4302,16 +4330,23 @@
         "up": "z",
         "parts": [
           {
-            "name": "diffusion",
+            "name": "Part_1",
             "color": "#9ca3af",
             "opacity": 1
           },
           {
-            "name": "mask / border",
+            "name": "Part_2",
             "color": "#000000",
             "opacity": 1
           }
         ],
+        "view": {
+          "theta": -0.0085,
+          "phi": 0,
+          "radiusScale": 3.275,
+          "panX": 0,
+          "panY": 0
+        },
         "fit": {
           "scale": 1.2,
           "x": 75.4,
@@ -4492,16 +4527,23 @@
         "up": "z",
         "parts": [
           {
-            "name": "diffusion",
+            "name": "Part_1",
             "color": "#9ca3af",
             "opacity": 1
           },
           {
-            "name": "mask / border",
+            "name": "Part_2",
             "color": "#000000",
             "opacity": 1
           }
         ],
+        "view": {
+          "theta": 0.0091,
+          "phi": 0,
+          "radiusScale": 3.275,
+          "panX": 0,
+          "panY": 0
+        },
         "fit": {
           "scale": 1.15,
           "x": 53.1,
@@ -4702,6 +4744,13 @@
             "opacity": 1
           }
         ],
+        "view": {
+          "theta": 0.0032,
+          "phi": 0.3845,
+          "radiusScale": 3.275,
+          "panX": 0,
+          "panY": 0
+        },
         "fit": {
           "scale": 1.25,
           "x": 62.1,
@@ -5896,6 +5945,13 @@
             "opacity": 1
           }
         ],
+        "view": {
+          "theta": 1.576,
+          "phi": 3.1416,
+          "radiusScale": 2.16,
+          "panX": 0,
+          "panY": 0
+        },
         "fit": {
           "scale": 1,
           "x": 50,
@@ -9596,21 +9652,28 @@
         "up": "z",
         "parts": [
           {
-            "name": "bounce",
+            "name": "Part_1",
             "color": "#9ca3af",
             "opacity": 1
           },
           {
-            "name": "mask / frame",
+            "name": "Part_2",
             "color": "#000000",
             "opacity": 1
           },
           {
-            "name": "diffusion",
+            "name": "Part_3",
             "color": "#9ca3af",
             "opacity": 0.5
           }
         ],
+        "view": {
+          "theta": 0.0268,
+          "phi": 0.6614,
+          "radiusScale": 3.275,
+          "panX": 0,
+          "panY": 0
+        },
         "fit": {
           "scale": 1.4,
           "x": 56.4,
@@ -9768,16 +9831,23 @@
         "up": "z",
         "parts": [
           {
-            "name": "diffusion",
+            "name": "Part_1",
             "color": "#9ca3af",
             "opacity": 1
           },
           {
-            "name": "mask / frame",
+            "name": "Part_2",
             "color": "#000000",
             "opacity": 1
           }
         ],
+        "view": {
+          "theta": -0.0026,
+          "phi": 0,
+          "radiusScale": 3.275,
+          "panX": 0,
+          "panY": 0
+        },
         "fit": {
           "scale": 1.25,
           "x": 60.7,
@@ -9951,6 +10021,13 @@
             "opacity": 1
           }
         ],
+        "view": {
+          "theta": -0.0027,
+          "phi": 0.3846,
+          "radiusScale": 3.275,
+          "panX": 0,
+          "panY": 0
+        },
         "fit": {
           "scale": 1.3,
           "x": 69.2,
@@ -10093,16 +10170,23 @@
         "up": "z",
         "parts": [
           {
-            "name": "mask / frame",
+            "name": "Part_1",
             "color": "#000000",
             "opacity": 1
           },
           {
-            "name": "bounce / diffusion",
+            "name": "Part_2",
             "color": "#9ca3af",
             "opacity": 1
           }
         ],
+        "view": {
+          "theta": -0.0027,
+          "phi": 0.3551,
+          "radiusScale": 3.275,
+          "panX": 0,
+          "panY": 0
+        },
         "fit": {
           "scale": 1.35,
           "x": 51.7,
@@ -10273,16 +10357,23 @@
         "up": "z",
         "parts": [
           {
-            "name": "bounce / diffusion",
+            "name": "Part_1",
             "color": "#9ca3af",
             "opacity": 1
           },
           {
-            "name": "mask",
+            "name": "Part_2",
             "color": "#000000",
             "opacity": 1
           }
         ],
+        "view": {
+          "theta": 0.0032,
+          "phi": 0.6025,
+          "radiusScale": 3.275,
+          "panX": -0.0141,
+          "panY": 0.0646
+        },
         "fit": {
           "scale": 1.45,
           "x": 62.2,
@@ -10435,16 +10526,23 @@
         "up": "z",
         "parts": [
           {
-            "name": "bounce / diffusion",
+            "name": "Part_1",
             "color": "#9ca3af",
             "opacity": 1
           },
           {
-            "name": "mask",
+            "name": "Part_2",
             "color": "#000000",
             "opacity": 1
           }
         ],
+        "view": {
+          "theta": 0.8161,
+          "phi": 0.3374,
+          "radiusScale": 3.275,
+          "panX": -0.0186,
+          "panY": 0.0417
+        },
         "fit": {
           "scale": 1.45,
           "x": 64.2,
@@ -10595,16 +10693,23 @@
         "up": "z",
         "parts": [
           {
-            "name": "diffusion",
+            "name": "Part_1",
             "color": "#9ca3af",
             "opacity": 1
           },
           {
-            "name": "mask / frame",
+            "name": "Part_2",
             "color": "#000000",
             "opacity": 1
           }
         ],
+        "view": {
+          "theta": 0.0032,
+          "phi": 0,
+          "radiusScale": 3.275,
+          "panX": 0,
+          "panY": 0
+        },
         "fit": {
           "scale": 1.25,
           "x": 51.7,
@@ -10767,16 +10872,23 @@
         "up": "z",
         "parts": [
           {
-            "name": "mask / border",
+            "name": "Part_1",
             "color": "#000000",
             "opacity": 1
           },
           {
-            "name": "diffusion",
+            "name": "Part_2",
             "color": "#9ca3af",
             "opacity": 1
           }
         ],
+        "view": {
+          "theta": -0.0027,
+          "phi": 0,
+          "radiusScale": 3.275,
+          "panX": 0,
+          "panY": 0
+        },
         "fit": {
           "scale": 1.25,
           "x": 59.1,
@@ -10949,6 +11061,13 @@
             "opacity": 1
           }
         ],
+        "view": {
+          "theta": -0.0085,
+          "phi": 0,
+          "radiusScale": 3.275,
+          "panX": 0,
+          "panY": 0
+        },
         "fit": {
           "scale": 1.3,
           "x": 52.4,
@@ -11111,16 +11230,23 @@
         "up": "z",
         "parts": [
           {
-            "name": "diffusion",
+            "name": "Part_1",
             "color": "#9ca3af",
             "opacity": 1
           },
           {
-            "name": "mask / border",
+            "name": "Part_2",
             "color": "#000000",
             "opacity": 1
           }
         ],
+        "view": {
+          "theta": 0.0091,
+          "phi": 0,
+          "radiusScale": 3.275,
+          "panX": 0,
+          "panY": 0
+        },
         "fit": {
           "scale": 1.2,
           "x": 76.8,
@@ -11713,21 +11839,28 @@
         "up": "z",
         "parts": [
           {
-            "name": "mask / frame",
+            "name": "Part_1",
             "color": "#000000",
             "opacity": 1
           },
           {
-            "name": "bounce",
+            "name": "Part_2",
             "color": "#9ca3af",
             "opacity": 1
           },
           {
-            "name": "diffusion",
+            "name": "Part_3",
             "color": "#9ca3af",
             "opacity": 0.5
           }
         ],
+        "view": {
+          "theta": 0.6747,
+          "phi": 1.1326,
+          "radiusScale": 3.275,
+          "panX": 0,
+          "panY": 0
+        },
         "fit": {
           "scale": 1.4,
           "x": 54.9,
@@ -12427,6 +12560,13 @@
             "opacity": 1
           }
         ],
+        "view": {
+          "theta": -0.0262,
+          "phi": 0.3257,
+          "radiusScale": 3.275,
+          "panX": 0,
+          "panY": 0
+        },
         "fit": {
           "scale": 1.35,
           "x": 63.8,
