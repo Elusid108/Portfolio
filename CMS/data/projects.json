@@ -116,12 +116,12 @@
         "parts": [
           {
             "name": "mesh_0",
-            "color": "#bcbcbc",
+            "color": "#505050",
             "opacity": 1
           },
           {
             "name": "mesh_1",
-            "color": "#bcbcbc",
+            "color": "#505050",
             "opacity": 1
           },
           {
@@ -171,7 +171,7 @@
           },
           {
             "name": "mesh_6_1",
-            "color": "#e5e5e5",
+            "color": "#ffffff",
             "opacity": 1
           },
           {
@@ -212,7 +212,7 @@
           {
             "name": "mesh_10_1",
             "color": "#e5e5e5",
-            "opacity": 1
+            "opacity": 0.99
           },
           {
             "name": "mesh_11",
@@ -227,7 +227,7 @@
           {
             "name": "mesh_12",
             "color": "#ffffff",
-            "opacity": 1
+            "opacity": 0.99
           },
           {
             "name": "mesh_12_1",
@@ -1126,28 +1126,28 @@
           },
           {
             "name": "mesh_138",
-            "color": "#bcbcbc",
+            "color": "#505050",
             "opacity": 1
           },
           {
             "name": "mesh_139",
-            "color": "#bcbcbc",
+            "color": "#505050",
             "opacity": 1
           },
           {
             "name": "mesh_140",
-            "color": "#bcbcbc",
+            "color": "#505050",
             "opacity": 1
           },
           {
             "name": "mesh_141",
-            "color": "#bcbcbc",
+            "color": "#505050",
             "opacity": 1
           },
           {
             "name": "mesh_142",
             "color": "#bcbcbc",
-            "opacity": 1
+            "opacity": 0
           },
           {
             "name": "mesh_143",
@@ -36451,14 +36451,14 @@
           }
         ],
         "view": {
-          "theta": -0.5389,
-          "phi": 1.4857,
-          "radiusScale": 1.402,
-          "panX": 0.0206,
-          "panY": 0.0671
+          "theta": -0.4635,
+          "phi": 1.2538,
+          "radiusScale": 2.201,
+          "panX": 0.0758,
+          "panY": 0.0368
         },
-        "poster": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-gfx-831de2-poster.webp",
-        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-gfx-831de2-poster-thumb.webp"
+        "poster": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-026612.webp",
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-026612-thumb.webp"
       },
       {
         "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-298b15.webp",
@@ -36494,8 +36494,7 @@
           "x": 48,
           "y": 32.5
         },
-        "poster": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-31d519-poster.webp",
-        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-31d519-poster-thumb.webp"
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-d34cff-thumb.webp"
       },
       {
         "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-1f0f04.mp4",
@@ -37788,6 +37787,16 @@
         "thumbnail": "media/Integration/Temple SF/Temple-SF-vid-6d9c52-poster-thumb.webp"
       },
       {
+        "url": "media/Integration/Temple SF/Temple-SF-img-19b882.webp",
+        "fit": {
+          "scale": 1,
+          "x": 43.2,
+          "y": 67.6,
+          "rotate": 0
+        },
+        "thumbnail": "media/Integration/Temple SF/Temple-SF-img-19b882-thumb.webp"
+      },
+      {
         "url": "media/Integration/Temple SF/Temple-SF-vid-32a61b.mp4",
         "poster": "media/Integration/Temple SF/Temple-SF-vid-32a61b-poster.webp",
         "thumbnail": "media/Integration/Temple SF/Temple-SF-vid-32a61b-poster-thumb.webp"
@@ -37952,7 +37961,9 @@
           }
         ]
       }
-    ]
+    ],
+    "linkHeroImages": true,
+    "draft": false
   },
   {
     "id": "9517",
@@ -45753,7 +45764,6 @@
       },
       {
         "url": "media/Lighting/Glow Lounge/Glow-Lounge-vid-dfb38d.mp4",
-        "poster": "media/Lighting/Glow Lounge/Glow-Lounge-vid-dfb38d-poster.webp",
         "thumbnail": "media/Lighting/Glow Lounge/Glow-Lounge-vid-dfb38d-poster-thumb.webp"
       }
     ],
@@ -48070,8 +48080,42 @@
     "tags": [],
     "gallery": [
       {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-5b563c.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-5b563c-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-06abcd.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-06abcd-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-09be9b.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-09be9b-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-2f62a3.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-2f62a3-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-6a9d71.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-6a9d71-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-eeeda3.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-eeeda3-thumb.webp"
+      },
+      {
         "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-3d7247.webp",
         "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-3d7247-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-vid-7e8c3d.mp4",
+        "poster": "media/Lighting/Lighting Layer/Lighting-Layer-vid-7e8c3d-poster.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-vid-7e8c3d-poster-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-vid-224b49.mp4",
+        "poster": "media/Lighting/Lighting Layer/Lighting-Layer-vid-224b49-poster.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-vid-224b49-poster-thumb.webp"
       }
     ],
     "files": [],
@@ -48082,7 +48126,8 @@
     "timestamp": "2026-09-05T01:35:46.632Z",
     "id": "2395",
     "order": 3,
-    "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-3ea1df-thumb.webp"
+    "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-3ea1df-thumb.webp",
+    "linkHeroImages": true
   },
   {
     "title": "Architectural Lighting",
