@@ -38073,7 +38073,7 @@
         }
       }
     ],
-    "featured": true,
+    "featured": false,
     "websiteLink": "",
     "timestamp": "2026-01-13T00:23:48.073Z",
     "wip": false,
@@ -48502,16 +48502,26 @@
     "image": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Service-img-d2e5bf.webp",
     "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Service-img-2bbe39-thumb.webp",
     "description": "<p>I wired AC into the DC side of a VL1000. The capacitors exploded and fire came out the side.</p>",
-    "longDescription": "<p>The VL1000 taught me the same lesson as every other fire I have caused. I was replacing a power supply at Barbizon Light of the Rockies and wired the AC input into the DC output. The capacitors exploded and the fixture shot fire out the side. You make that mistake once.</p><p>That was my first lighting service gig, about a year, mentored part time in their shop. The bench ran from cracked porcelain sockets and crumbling wiring to unreleased demo heads: movers, scanners, color scrollers, fog, haze, film lights, consoles, dimmer racks.</p><p>On a dead or stuttering mover I power it on first and watch whether it moves. Then I kill power, grab the mechanicals, and feel for resistance. Failing steppers grind. I look for anything blocking travel, missing parts, then trace the harness. A spare motor goes in next. If the fault follows, the driver board is next.</p><p>Dust is the other killer. On a rotating service cycle it is mostly blowing fans and wiping optics. Let it go and a fan stops, a thermal trip fails to trip, and the inside of a moving head goes thermonuclear. I opened an old ElektraLite where every plastic part had melted and puddled in the bottom of the housing.</p><p>SFX came through the same shops: hazers, foggers, cryo, snow, confetti, bubbles. Foggers are the worst repair on the list. Hands down. A mess.</p><p>At Brown Note I helped push 30 to 40 lights a week for about two years. At Tracks and Temple, keeping the rooms alive was part of the job, and so was teaching other techs the same cycle. Under Chris Moore Designs I pushed a maintenance clause on installs with my name on them. Glow Lounge was the test: I hung the rig, then cleaned it monthly for about a year after.</p>",
+    "longDescription": "<p>I wired the AC input of a VL1000 into the DC output while replacing a power supply at Barbizon Light of the Rockies. The capacitors exploded and the fixture shot fire out the side. You make that mistake once.</p><p>That was my first lighting service gig, about a year, mentored part time in their shop. The bench ran from cracked porcelain sockets and crumbling wiring to unreleased demo heads: movers, scanners, color scrollers, fog, haze, film lights, consoles, dimmer racks.</p><p>On a dead or stuttering mover I power it on first and watch whether it moves. Then I kill power, grab the mechanicals, and feel for resistance. Failing steppers grind. I look for anything blocking travel, missing parts, then trace the harness. A spare motor goes in next. If the fault follows, the driver board is next.</p><p>Dust is the other killer. On a rotating service cycle it is mostly blowing fans and wiping optics. Let it go and a fan stops. I had a thermal switch fail to trip before, and the inside of a moving head went thermonuclear. I opened the old ElektraLite and every plastic part had melted and puddled in the bottom of the housing.</p><p>SFX came through the same shops: hazers, foggers, cryo, snow, confetti, bubbles. Foggers are the worst repair on the list. Hands down. A mess.</p><p>At Brown Note I helped push 30 to 40 lights a week for about two years. At Tracks and Temple, keeping the rooms alive was part of the job, and so was teaching other techs the same cycle. Under Chris Moore Designs I pushed a maintenance clause on installs with my name on them. Glow Lounge was the test: I hung the rig, then cleaned it monthly for about a year after.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
     "shopLink": "",
-    "featured": false,
+    "featured": true,
     "wip": false,
     "draft": false,
     "tags": [],
     "gallery": [
+      {
+        "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Service-img-6c7554.webp",
+        "fit": {
+          "scale": 1.75,
+          "x": 27,
+          "y": 16.2,
+          "rotate": 0
+        },
+        "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Service-img-6c7554-thumb.webp"
+      },
       {
         "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-fc6b5b.webp",
         "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-fc6b5b-thumb.webp"
@@ -48543,16 +48553,6 @@
       {
         "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Service-img-00a65c.webp",
         "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Service-img-00a65c-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Service-img-6c7554.webp",
-        "fit": {
-          "scale": 1.75,
-          "x": 27,
-          "y": 16.2,
-          "rotate": 0
-        },
-        "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Service-img-6c7554-thumb.webp"
       },
       {
         "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-90a2a8.webp",
@@ -48669,7 +48669,7 @@
     "title": "LED Video Panel Service",
     "category": "Tooling",
     "image": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-616e44.webp",
-    "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-a9782d-thumb.webp",
+    "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-fde23f-thumb.webp",
     "description": "<p>One enamel-wire jumper pinched a live screw pad. The panel caught fire on site. I never routed a repair that way again.</p>",
     "longDescription": "<p>The worst module I ever put back out taught me the hard way. I had jumped a ripped pad with enamel wire and did not know the screw pads in that frame were electrically live. The wire got pinched under a screw. On site, during the day, the panel caught fire. The crew put it out fast. I took the burned board apart until I understood exactly what I had done, and I never routed a jumper that close to a mounting hole again.</p><p>At Brown Note Productions I was the LED video panel tech across two stints that added up to about three years. Cases came back from festivals missing LEDs, pads, and sometimes chunks of board. Absen and ROE sent technicians to train me on their products, everything else I taught myself on the bench.</p><p>Most of the work was a reflow station putting knocked-off pixels back on. When the pads were gone, a short enamel wire jumped the break in the multiplexed array. These were mostly waterproof screens, so the iron never went straight to the face. Mask off, silicone scraped out, and on the bad ones the PCB came out of the housing so the plastic did not melt while I worked. Beyond the diodes I straightened bent frames and repaired the large spine PCBs that held the receiving cards, plus power supplies, ports, latches, and front masks.</p><p>Speed mattered. Damaged panels rotated in constantly. I marked every dead pixel with a dry-erase marker, pulled modules out of the frames in a batch, and worked the easy ones first. A normal day was a hundred to a hundred and fifty LEDs, often fifty or more modules. Trace repairs waited until later. End of day, silicone on everything finished. Next morning, masks back on, modules into the repaired stock, and the cycle started over.</p><p>I took the same bench process to Temple San Francisco to keep the immersive video ceiling alive when replacement modules were scarce, and to the wall in the basement at Triangle.</p>",
     "websiteLink": "",
@@ -48686,6 +48686,52 @@
       "LED Video"
     ],
     "gallery": [
+      {
+        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-b16a82.webp",
+        "fit": {
+          "scale": 1,
+          "x": 53.2,
+          "y": 8.7,
+          "rotate": 0
+        },
+        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-b16a82-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-3161d6.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-3161d6-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-f1e8d6.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-f1e8d6-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-ca2758.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-ca2758-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-3f3c60.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-3f3c60-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-4db34a.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-4db34a-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-b917bc.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-b917bc-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-1a7457.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-1a7457-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-c3dd72.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-c3dd72-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-ed960b.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-ed960b-thumb.webp"
+      },
       {
         "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-b4a337.webp",
         "fit": {
@@ -48837,40 +48883,6 @@
       {
         "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-69cf8c.webp",
         "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-69cf8c-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-c3dd72.webp",
-        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-c3dd72-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-ed960b.webp",
-        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-ed960b-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-b16a82.webp",
-        "fit": {
-          "scale": 1,
-          "x": 53.2,
-          "y": 8.7,
-          "rotate": 0
-        },
-        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-b16a82-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-b917bc.webp",
-        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-b917bc-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-3f3c60.webp",
-        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-3f3c60-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-1a7457.webp",
-        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-1a7457-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-4db34a.webp",
-        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-4db34a-thumb.webp"
       }
     ],
     "files": [],
@@ -48977,8 +48989,8 @@
     "order": 1,
     "thumbnailFit": {
       "scale": 1,
-      "x": 3.2,
-      "y": 20.7,
+      "x": 50,
+      "y": 37.9,
       "rotate": 0
     },
     "bannerFit": {
@@ -48991,8 +49003,8 @@
   {
     "title": "Chain Hoist Service & Repair",
     "category": "Tooling",
-    "image": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-b33f67.webp",
-    "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-b33f67-thumb.webp",
+    "image": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-24e9d8.webp",
+    "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-24e9d8-thumb.webp",
     "description": "<p>My time doing CM chain hoist servicing. Images and specs. Get specific.</p>",
     "longDescription": "<p><br></p>",
     "websiteLink": "",
@@ -49312,7 +49324,20 @@
     "video": "",
     "timestamp": "2026-09-05T01:55:24.530Z",
     "id": "989",
-    "order": 0
+    "order": 0,
+    "thumbnailFit": {
+      "scale": 1.2,
+      "x": 47,
+      "y": 42.2,
+      "rotate": 0
+    },
+    "bannerFit": {
+      "scale": 1,
+      "x": 49.8,
+      "y": 54.8,
+      "rotate": 0
+    },
+    "linkHeroImages": true
   },
   {
     "title": "Mini Heart",
