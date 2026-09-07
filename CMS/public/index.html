@@ -32,6 +32,8 @@
     #gemini-settings-modal:not(.hidden),
     #delete-confirm-modal:not(.hidden) { display: flex; }
     img.gallery-thumb, img.file-thumb, .hero-preview img, .fit-preview img { -webkit-user-drag: none; user-select: none; }
+    .gallery-row.gallery-drop-before { box-shadow: -3px 0 0 0 #22d3ee; }
+    .gallery-row.gallery-drop-after { box-shadow: 3px 0 0 0 #22d3ee; }
     #hero-thumb-source.hidden { display: none !important; }
     #hero-thumb-source:not(.hidden) { display: flex; }
     .ql-toolbar.ql-snow {
@@ -3174,6 +3176,23 @@
     function setupGalleryDragDrop() {
         const container = document.getElementById('gallery-container');
         let dragEl = null;
+        let dropAfter = undefined;
+
+        function clearGalleryDropMarker() {
+            container.querySelectorAll('.gallery-drop-before, .gallery-drop-after').forEach((el) => {
+                el.classList.remove('gallery-drop-before', 'gallery-drop-after');
+            });
+        }
+
+        function setGalleryDropMarker(after) {
+            clearGalleryDropMarker();
+            if (after && after !== dragEl) {
+                after.classList.add('gallery-drop-before');
+            } else {
+                const last = [...container.querySelectorAll('.gallery-row:not(.opacity-50)')].pop();
+                if (last) last.classList.add('gallery-drop-after');
+            }
+        }
 
         container.addEventListener('dragstart', (e) => {
             const row = e.target.closest('.gallery-row');
@@ -3185,20 +3204,33 @@
             document.getElementById('thumb-popout')?.classList.add('hidden');
             dragEl = row;
             row.classList.add('opacity-50');
+            dropAfter = row.nextElementSibling;
             try { e.dataTransfer.effectAllowed = 'move'; } catch (_) {}
         });
         container.addEventListener('dragend', () => {
-            if (dragEl) dragEl.classList.remove('opacity-50');
+            if (dragEl) {
+                let target = dropAfter;
+                if (target === dragEl) target = dragEl.nextElementSibling;
+                const already = target == null ? dragEl === container.lastElementChild : dragEl.nextElementSibling === target;
+                if (!already) {
+                    if (target == null) container.appendChild(dragEl);
+                    else container.insertBefore(dragEl, target);
+                }
+                dragEl.classList.remove('opacity-50');
+            }
+            clearGalleryDropMarker();
             dragEl = null;
+            dropAfter = undefined;
             updateListIndices('gallery-container');
             isDirty = true;
         });
         container.addEventListener('dragover', (e) => {
             e.preventDefault();
             if (!dragEl) return;
-            const after = getDragAfterElement(container, e.clientX, e.clientY);
-            if (after == null) container.appendChild(dragEl);
-            else container.insertBefore(dragEl, after);
+            const afterRaw = getDragAfterElement(container, e.clientX, e.clientY);
+            const after = afterRaw === dragEl ? dragEl.nextElementSibling : afterRaw;
+            dropAfter = after;
+            setGalleryDropMarker(after);
 
             const sc = document.getElementById('editor-scroll');
             if (sc) {
