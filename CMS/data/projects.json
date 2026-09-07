@@ -394,7 +394,7 @@
           },
           {
             "name": "Part_2",
-            "color": "#505050",
+            "color": "#000000",
             "opacity": 1
           },
           {
@@ -438,6 +438,13 @@
             "opacity": 1
           }
         ],
+        "view": {
+          "theta": -2.6864,
+          "phi": 1.2928,
+          "radiusScale": 3.252,
+          "panX": 0.0423,
+          "panY": 0.0167
+        },
         "fit": {
           "scale": 1.35,
           "x": 53.8,
@@ -484,23 +491,43 @@
       },
       {
         "url": "media/Art/Emmy Stand/Emmy-Stand-vid-82bfd3.mp4",
-        "poster": "media/Art/Emmy Stand/Emmy-Stand-vid-82bfd3-poster.webp",
-        "thumbnail": "media/Art/Emmy Stand/Emmy-Stand-vid-82bfd3-poster-thumb.webp"
+        "fit": {
+          "scale": 1,
+          "x": 50.2,
+          "y": 32.5
+        },
+        "poster": "media/Art/Emmy Stand/Emmy-Stand-img-1674a7.webp",
+        "thumbnail": "media/Art/Emmy Stand/Emmy-Stand-img-1674a7-thumb.webp"
       },
       {
         "url": "media/Art/Emmy Stand/Emmy-Stand-vid-50340a.mp4",
-        "poster": "media/Art/Emmy Stand/Emmy-Stand-vid-50340a-poster.webp",
-        "thumbnail": "media/Art/Emmy Stand/Emmy-Stand-vid-50340a-poster-thumb.webp"
+        "fit": {
+          "scale": 1,
+          "x": 45.7,
+          "y": 30
+        },
+        "poster": "media/Art/Emmy Stand/Emmy-Stand-img-c6fde0.webp",
+        "thumbnail": "media/Art/Emmy Stand/Emmy-Stand-img-c6fde0-thumb.webp"
       },
       {
         "url": "media/Art/Emmy Stand/Emmy-Stand-vid-904143.mp4",
-        "poster": "media/Art/Emmy Stand/Emmy-Stand-vid-904143-poster.webp",
-        "thumbnail": "media/Art/Emmy Stand/Emmy-Stand-vid-904143-poster-thumb.webp"
+        "fit": {
+          "scale": 1,
+          "x": 46.8,
+          "y": 29.7
+        },
+        "poster": "media/Art/Emmy Stand/Emmy-Stand-img-d9f13f.webp",
+        "thumbnail": "media/Art/Emmy Stand/Emmy-Stand-img-d9f13f-thumb.webp"
       },
       {
         "url": "media/Art/Emmy Stand/Emmy-Stand-vid-031a67.mp4",
-        "poster": "media/Art/Emmy Stand/Emmy-Stand-vid-031a67-poster.webp",
-        "thumbnail": "media/Art/Emmy Stand/Emmy-Stand-vid-031a67-poster-thumb.webp"
+        "fit": {
+          "scale": 1,
+          "x": 50.4,
+          "y": 17.6
+        },
+        "poster": "media/Art/Emmy Stand/Emmy-Stand-img-0de405.webp",
+        "thumbnail": "media/Art/Emmy Stand/Emmy-Stand-img-0de405-thumb.webp"
       },
       {
         "url": "media/Art/Emmy Stand/Emmy-Stand-img-05eb9f.webp",
@@ -3983,7 +4010,7 @@
     "timestamp": "2026-06-21T23:26:29.795Z",
     "id": "4113",
     "order": 0,
-    "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>Bar Tubes</strong></p><p><strong>Alabaster Bar Top</strong></p><p><strong>Bar Kicker</strong></p><p><strong>Backsplash</strong></p><p><strong>Curved Bottle Display</strong></p><p><strong>Pyramid Steps</strong></p><p><strong>Blackout Tubes</strong></p><p><strong>Mezzanine Bar</strong></p><p><strong>Acrylic Etchings</strong></p><p><strong>Epoxy Wedges</strong></p><p><strong>Patio Lighting</strong></p><h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x22800)</strong><br><em>WS2814 • WS2815 • SK6812</em></p><h2>COMPUTE &amp; CONTROL</h2><p><strong>Custom PC</strong><br><em>rackmount • RTX 2080 TI • slide-out KVM</em></p><p><strong>iPad Remote</strong><br><em>OSC/Pilot • custom touch control</em></p><h2>POWER &amp; DISTRIBUTION</h2><p><strong>Advatek PixLite 16 MK2 (x6)</strong><br><em>Bar Tubes</em></p><p><strong>Athom WLED Decoders</strong><br><em>Acrylic Etchings</em></p><p><strong>Advatek T8-S MK3 (x2)</strong><br><em>Alabaster Bar Top • Bar Kicker • Backsplash • Curved Bottle Display • Epoxy Wedges • Pyramid • Blackout Tubes • Mezzanine Tubes • Patio Lights • Roof-Line</em></p><p><strong>Advatek T4-DS (x11)</strong><br><em>Alabaster Bar Top • Bar Kicker • Backsplash • Curved Bottle Display • Epoxy Wedges • Pyramid • Blackout Tubes • Mezzanine Tubes • Roof-Line</em></p>",
+    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x22800)</strong><br><em>WS2814 • WS2815 • SK6812</em></p><h2>COMPUTE &amp; CONTROL</h2><p><strong>Custom PC</strong><br><em>rackmount • RTX 2080 TI • slide-out KVM</em></p><p><strong>iPad Remote</strong><br><em>OSC/Pilot • custom touch control</em></p><h2>POWER &amp; DISTRIBUTION</h2><p><strong>Advatek PixLite 16 MK2 (x6)</strong><br><em>Bar Tubes</em></p><p><strong>Athom WLED Decoders</strong><br><em>Acrylic Etchings</em></p><p><strong>Advatek T8-S MK3 (x2)</strong><br><em>Alabaster Bar Top • Bar Kicker • Backsplash • Curved Bottle Display • Epoxy Wedges • Pyramid • Blackout Tubes • Mezzanine Tubes • Patio Lights • Roof-Line</em></p><p><strong>Advatek T4-DS (x11)</strong><br><em>Alabaster Bar Top • Bar Kicker • Backsplash • Curved Bottle Display • Epoxy Wedges • Pyramid • Blackout Tubes • Mezzanine Tubes • Roof-Line</em></p>",
     "related": [
       {
         "name": "Mezz tubes",
@@ -4028,78 +4055,6 @@
     ],
     "thumbnail": "media/Integration/Que Bueno Suerte!/Que-Bueno-Suerte-img-5d2843-thumb.webp",
     "specsData": [
-      {
-        "id": "f3018628-8a44-49d1-bed4-4f984225a1d6",
-        "title": "FIXTURES & FX",
-        "items": [
-          {
-            "id": "3aafcc94-f37b-4c58-85d6-a7377c133ba5",
-            "name": "Bar Tubes",
-            "qty": "",
-            "specs": ""
-          },
-          {
-            "id": "c0fd943a-a3b3-4f16-b812-cd260a8e5da3",
-            "name": "Alabaster Bar Top",
-            "qty": "",
-            "specs": ""
-          },
-          {
-            "id": "c2eee51f-356a-4159-9b99-65ae60448369",
-            "name": "Bar Kicker",
-            "qty": "",
-            "specs": ""
-          },
-          {
-            "id": "4f2bd286-5bd0-4b8e-af91-559617abeb98",
-            "name": "Backsplash",
-            "qty": "",
-            "specs": ""
-          },
-          {
-            "id": "1fa4cdea-63ba-47bb-8d5e-e33104a984c2",
-            "name": "Curved Bottle Display",
-            "qty": "",
-            "specs": ""
-          },
-          {
-            "id": "eaf66dc6-2971-4d92-a256-0ccabb5f0107",
-            "name": "Pyramid Steps",
-            "qty": "",
-            "specs": ""
-          },
-          {
-            "id": "6ec608cf-785b-4d48-b871-4d0730434f64",
-            "name": "Blackout Tubes",
-            "qty": "",
-            "specs": ""
-          },
-          {
-            "id": "bb28a53e-6cb2-47f9-b9d2-b41dbf6648d4",
-            "name": "Mezzanine Bar",
-            "qty": "",
-            "specs": ""
-          },
-          {
-            "id": "5b5859cf-9cb5-454f-9f77-e2408b4c1835",
-            "name": "Acrylic Etchings",
-            "qty": "",
-            "specs": ""
-          },
-          {
-            "id": "d8bfd222-6eaf-4d2e-8de3-0987aa687791",
-            "name": "Epoxy Wedges",
-            "qty": "",
-            "specs": ""
-          },
-          {
-            "id": "0f3a4c37-0a89-4f45-ab6c-3ab6e6650801",
-            "name": "Patio Lighting",
-            "qty": "",
-            "specs": ""
-          }
-        ]
-      },
       {
         "id": "14cbca74-b0bf-4874-b9ba-991186b6aec7",
         "title": "PIXELS & DISPLAY",
@@ -4160,7 +4115,8 @@
           }
         ]
       }
-    ]
+    ],
+    "draft": false
   },
   {
     "title": "Bar Tubes",

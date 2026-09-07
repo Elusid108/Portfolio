@@ -294,10 +294,20 @@
         // The GLB is a reduced-poly preview only; no original file is stored or offered.
         const mediaModel = (item) => {
             if (typeof item !== 'object' || !item) return { up: 'z', parts: [], format: '' };
+            const view = item.view && typeof item.view === 'object' ? item.view : null;
             return {
                 up: item.up === 'y' ? 'y' : 'z',
                 parts: Array.isArray(item.parts) ? item.parts : [],
-                format: item.format || ''
+                format: item.format || '',
+                view: view && [view.theta, view.phi, view.radiusScale].every((n) => Number.isFinite(Number(n)))
+                    ? {
+                        theta: Number(view.theta),
+                        phi: Number(view.phi),
+                        radiusScale: Number(view.radiusScale),
+                        panX: Number.isFinite(Number(view.panX)) ? Number(view.panX) : 0,
+                        panY: Number.isFinite(Number(view.panY)) ? Number(view.panY) : 0
+                    }
+                    : undefined
             };
         };
 
@@ -828,8 +838,7 @@
         // Rendering is delegated to ModelViewerCore (shared with the CMS and inlined at
         // publish time), which pulls three.js through the import map the first time a
         // model is opened. Navigation: drag to orbit, right-drag / two-finger drag to
-        // pan, wheel / pinch to zoom — mouse, touch and stylus all go through pointer
-        // events. The model's bounding-box center is placed at the origin.
+        // pan (view offset — orbit stays on the model center), wheel / pinch to zoom.
         const ModelViewer = ({ src, model, className = "", label = "3D model" }) => {
             const hostRef = useRef(null);
             const containerRef = useRef(null);
@@ -862,6 +871,7 @@
                     url: src,
                     up: info.up,
                     parts: info.parts,
+                    view: info.view,
                     label,
                     onProgress: (f) => { if (!cancelled) setProgress(f); }
                 }).then((viewer) => {

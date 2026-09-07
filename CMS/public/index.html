@@ -1236,16 +1236,36 @@
         return typeof url === 'string' && /\.glb$/i.test(url.split('?')[0]);
     }
 
-    // Builds the model descriptor stored on a gallery item ({ type, format, up, parts }).
+    // Builds the model descriptor stored on a gallery item ({ type, format, up, parts, view }).
+    function modelView(view) {
+        if (!view || typeof view !== 'object') return undefined;
+        const theta = Number(view.theta);
+        const phi = Number(view.phi);
+        const radiusScale = Number(view.radiusScale);
+        if (![theta, phi, radiusScale].every(Number.isFinite)) return undefined;
+        const panX = Number(view.panX);
+        const panY = Number(view.panY);
+        return {
+            theta,
+            phi,
+            radiusScale,
+            panX: Number.isFinite(panX) ? panX : 0,
+            panY: Number.isFinite(panY) ? panY : 0
+        };
+    }
+
     function modelDescriptor(item) {
         if (!item || typeof item !== 'object') return null;
         if (item.type !== 'model' && !isModelPath(item.url)) return null;
-        return {
+        const desc = {
             type: 'model',
             format: item.format || '',
             up: item.up === 'y' ? 'y' : 'z',
             parts: Array.isArray(item.parts) ? item.parts : []
         };
+        const view = modelView(item.view);
+        if (view) desc.view = view;
+        return desc;
     }
 
     function initQuill() {
@@ -1927,6 +1947,10 @@
         container.addEventListener('dragstart', (e) => {
             const row = e.target.closest('.gallery-row');
             if (!row) return;
+            if (!e.target.closest('.drag-handle')) {
+                e.preventDefault();
+                return;
+            }
             dragEl = row;
             row.classList.add('opacity-50');
         });
@@ -1971,6 +1995,10 @@
         container.addEventListener('dragstart', (e) => {
             const row = e.target.closest('.related-row');
             if (!row) return;
+            if (!e.target.closest('.drag-handle')) {
+                e.preventDefault();
+                return;
+            }
             dragEl = row;
             row.classList.add('opacity-50');
         });
@@ -2405,7 +2433,52 @@
     }
 
     // --- MODEL EDITOR MODAL ---
-    let modelEditor = { row: null, viewer: null, autoRotate: false };
+    let modelEditor = { row: null, viewer: null, autoRotate: false, scrollLocked: false, bodyOverflow: '' };
+
+    function trapModelEditorScroll(e) {
+      const modal = document.getElementById('model-editor-modal');
+      if (!modal || modal.classList.contains('hidden')) return;
+      const parts = document.getElementById('model-editor-parts');
+      const canvas = modelEditor.viewer?.canvas;
+      if (parts && parts.contains(e.target)) {
+        e.stopPropagation();
+        if (e.type === 'touchmove') return;
+        const canScroll = parts.scrollHeight > parts.clientHeight + 1;
+        if (!canScroll) {
+          e.preventDefault();
+          return;
+        }
+        if (e.deltaY < 0 && parts.scrollTop <= 0) e.preventDefault();
+        if (e.deltaY > 0 && parts.scrollTop + parts.clientHeight >= parts.scrollHeight - 1) e.preventDefault();
+        return;
+      }
+      if (canvas && (e.target === canvas || canvas.contains?.(e.target))) {
+        if (e.type === 'wheel') e.preventDefault();
+        return;
+      }
+      e.preventDefault();
+    }
+
+    function lockModelEditorScroll() {
+      if (modelEditor.scrollLocked) return;
+      const modal = document.getElementById('model-editor-modal');
+      if (!modal) return;
+      modelEditor.bodyOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      modelEditor.scrollLocked = true;
+      modal.addEventListener('wheel', trapModelEditorScroll, { passive: false });
+      modal.addEventListener('touchmove', trapModelEditorScroll, { passive: false });
+    }
+
+    function unlockModelEditorScroll() {
+      document.body.style.overflow = modelEditor.bodyOverflow || '';
+      const modal = document.getElementById('model-editor-modal');
+      if (modal && modelEditor.scrollLocked) {
+        modal.removeEventListener('wheel', trapModelEditorScroll);
+        modal.removeEventListener('touchmove', trapModelEditorScroll);
+      }
+      modelEditor.scrollLocked = false;
+    }
 
     async function openModelEditor(row) {
       if (!row) return;
@@ -2435,12 +2508,14 @@
       const rotBtn = document.getElementById('model-editor-rotate');
       rotBtn.classList.remove('bg-indigo-600', 'text-white');
       modal.classList.remove('hidden');
+      lockModelEditorScroll();
 
       try {
         modelEditor.viewer = await ModelViewerCore.createModelViewer(stage, {
           url: getThumbnailSrc(url) || url,
           up: model.up,
           parts: model.parts,
+          view: model.view,
           onProgress: (f) => { status.textContent = `Loading ${Math.round(f * 100)}%`; }
         });
         status.textContent = '';
@@ -2461,15 +2536,15 @@
       partsEl.innerHTML = parts.map((p, i) => `
         <div class="model-part flex flex-col gap-1.5 p-2 rounded-lg bg-zinc-800/70 border border-zinc-700" data-index="${i}">
           <div class="flex items-center gap-2">
-            <input type="color" value="${escAttr(p.color)}" class="model-part-color w-8 h-8 rounded cursor-pointer bg-transparent border-0 p-0" title="Part color" oninput="onModelPartColor(${i}, this.value)">
-            <input type="text" value="${escAttr(p.name)}" class="model-part-name flex-1 min-w-0 bg-transparent text-xs text-zinc-200 border-b border-transparent focus:border-indigo-500 outline-none" title="Part name (shown in the viewer)" oninput="onModelPartName(${i}, this.value)">
+            <input type="color" value="${escAttr(p.color)}" class="model-part-color w-8 h-8 rounded cursor-pointer bg-transparent border-0 p-0" title="Part color" oninput="onModelPartColor(${i}, this.value)" autocomplete="off">
+            <input type="text" name="model-part-name-${i}" value="${escAttr(p.name)}" class="model-part-name flex-1 min-w-0 bg-transparent text-xs text-zinc-200 border-b border-transparent focus:border-indigo-500 outline-none" title="Part name (shown in the viewer)" oninput="onModelPartName(${i}, this.value)" autocomplete="off" data-1p-ignore="true" data-lpignore="true">
             <button type="button" onclick="onModelPartReset(${i})" class="text-zinc-500 hover:text-white text-xs" title="Reset to file color"><i class="ph ph-arrow-counter-clockwise"></i></button>
           </div>
           <div class="flex items-center gap-2 text-[10px] text-zinc-400">
             <span class="w-14 uppercase font-bold">Opacity</span>
             <input type="range" min="0" max="100" step="1" value="${Math.round(p.opacity * 100)}" class="model-part-opacity flex-1 accent-indigo-500" title="Drag, or hover and use the mouse wheel (Shift = 5% steps)" oninput="onModelPartOpacity(${i}, this.value)">
             <div class="flex items-center gap-0.5 font-mono">
-              <input type="number" min="0" max="100" step="1" value="${Math.round(p.opacity * 100)}" class="model-part-opacity-num w-12 bg-zinc-900 border border-zinc-700 rounded px-1 py-0.5 text-right text-xs text-zinc-200 focus:border-indigo-500 outline-none" title="Type an exact opacity" oninput="onModelPartOpacity(${i}, this.value, true)" onblur="this.value = Math.round((modelEditor.viewer?.listParts()[${i}]?.opacity ?? 1) * 100)">
+              <input type="number" name="model-opacity-${i}" min="0" max="100" step="1" inputmode="decimal" value="${Math.round(p.opacity * 100)}" class="model-part-opacity-num w-12 bg-zinc-900 border border-zinc-700 rounded px-1 py-0.5 text-right text-xs text-zinc-200 focus:border-indigo-500 outline-none" title="Type an exact opacity" oninput="onModelPartOpacity(${i}, this.value, true)" onblur="this.value = Math.round((modelEditor.viewer?.listParts()[${i}]?.opacity ?? 1) * 100)" autocomplete="off" data-1p-ignore="true" data-lpignore="true">
               <span>%</span>
             </div>
           </div>
@@ -2497,7 +2572,10 @@
       const state = viewer.getState();
       const names = Array.from(document.querySelectorAll('#model-editor-parts .model-part-name')).map(el => el.value.trim());
       const parts = state.parts.map((p, i) => ({ ...p, name: names[i] || p.name }));
-      writeRowModel(row, { type: 'model', format: prev.format || 'glb', up: state.up, parts });
+      const next = { type: 'model', format: prev.format || 'glb', up: state.up, parts };
+      const view = modelView(state.view);
+      if (view) next.view = view;
+      writeRowModel(row, next);
       isDirty = true;
     }
 
@@ -2548,7 +2626,10 @@
       });
       syncRowFromViewer();
     }
-    function onModelResetView() { modelEditor.viewer?.resetView(); }
+    function onModelResetView() {
+      modelEditor.viewer?.resetView();
+      syncRowFromViewer();
+    }
     function onModelToggleRotate() {
       modelEditor.autoRotate = !modelEditor.autoRotate;
       modelEditor.viewer?.setAutoRotate(modelEditor.autoRotate);
@@ -2579,9 +2660,13 @@
     }
 
     function closeModelEditor(silent = false) {
+      if (modelEditor.viewer && modelEditor.row) {
+        try { syncRowFromViewer(); } catch (_) {}
+      }
       if (modelEditor.viewer) { try { modelEditor.viewer.dispose(); } catch {} }
       modelEditor.viewer = null;
       modelEditor.row = null;
+      unlockModelEditorScroll();
       document.getElementById('model-editor-modal')?.classList.add('hidden');
       if (!silent) updateListIndices('gallery-container');
     }
@@ -2825,6 +2910,8 @@
                           opacity: typeof p?.opacity === 'number' ? Math.round(p.opacity * 1000) / 1000 : 1
                       }));
                   }
+                  const view = modelView(model.view);
+                  if (view) obj.view = view;
               }
               if (caption) obj.caption = caption;
               if (fit) obj.fit = fit;
@@ -3746,6 +3833,7 @@
           <input
             id="gemini-api-key"
             type="password"
+            autocomplete="off"
             placeholder="Enter your Google AI API key..."
             class="flex-1 bg-slate-50 border border-slate-200 text-slate-800 rounded-lg px-3 py-2 text-sm outline-none focus:border-indigo-500"
           >

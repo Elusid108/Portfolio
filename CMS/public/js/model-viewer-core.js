@@ -9,11 +9,11 @@
 //
 // Usage:
 //   const viewer = await ModelViewerCore.createModelViewer(containerEl, {
-//     url, parts, up, onProgress(fraction), onReady({ parts })
+//     url, parts, up, view, onProgress(fraction), onReady({ parts })
 //   });
 //   viewer.setPart(0, { color: '#ff0000', opacity: 0.5 });
 //   viewer.resetView(); viewer.setAutoRotate(true); await viewer.capture();
-//   viewer.dispose();
+//   viewer.getView(); viewer.dispose();
 (function () {
   if (typeof window === 'undefined') return;
   if (window.ModelViewerCore) return;
@@ -100,27 +100,99 @@
     scene.add(rim);
 
     // --- controls -------------------------------------------------------------------
-    // Default "CAD" navigation: left-drag rotate, right-drag / two-finger pan,
-    // wheel / pinch zoom. OrbitControls is pointer-event based, so mouse, touch
-    // and stylus all work without special handling.
+    // Left-drag rotates around the model's bbox center (world origin after applyUp).
+    // Right-drag / two-finger pan shifts the projection (setViewOffset) so the model
+    // can leave the middle of the viewport without moving the orbit pivot. Wheel /
+    // pinch still zoom toward that center.
     const controls = new OrbitControls(camera, canvas);
     controls.enableDamping = true;
     controls.dampingFactor = 0.08;
     controls.rotateSpeed = 0.9;
     controls.zoomSpeed = 0.9;
-    controls.panSpeed = 0.8;
-    controls.screenSpacePanning = true;
+    controls.enablePan = false;
     controls.autoRotate = state.autoRotate;
     controls.autoRotateSpeed = 1.6;
     controls.target.set(0, 0, 0);
 
-    // OrbitControls pan moves camera AND target together. After a pan, rotate
-    // would otherwise orbit a point that is no longer the model's bbox center
-    // (world origin after applyUp). Snap the target back every frame so pan
-    // trucks the camera while rotate/zoom stay locked to the model.
+    const viewPan = { x: 0, y: 0 };
+
     function lockOrbitTarget() {
       controls.target.set(0, 0, 0);
     }
+
+    function applyViewPanTo(cam, w, h) {
+      const width = Math.max(1, w);
+      const height = Math.max(1, h);
+      if (!viewPan.x && !viewPan.y) {
+        cam.clearViewOffset();
+      } else {
+        cam.setViewOffset(width, height, viewPan.x * width, viewPan.y * height, width, height);
+      }
+      cam.updateProjectionMatrix();
+    }
+
+    function applyViewPan() {
+      applyViewPanTo(camera, container.clientWidth, container.clientHeight);
+      requestRender();
+    }
+
+    const pointers = new Map();
+    let panLast = null;
+
+    function pointerMidpoint() {
+      let x = 0;
+      let y = 0;
+      pointers.forEach((p) => { x += p.x; y += p.y; });
+      const n = Math.max(1, pointers.size);
+      return { x: x / n, y: y / n };
+    }
+
+    function isPanning() {
+      if (pointers.size >= 2) return true;
+      for (const p of pointers.values()) {
+        if (p.button === 2) return true;
+      }
+      return false;
+    }
+
+    function syncPanRotate() {
+      const panning = isPanning();
+      controls.enableRotate = !panning;
+      if (!panning) panLast = null;
+    }
+
+    function onPointerDown(e) {
+      pointers.set(e.pointerId, { x: e.clientX, y: e.clientY, button: e.button });
+      if (e.button === 2 || pointers.size >= 2) panLast = pointerMidpoint();
+      syncPanRotate();
+    }
+
+    function onPointerMove(e) {
+      if (!pointers.has(e.pointerId)) return;
+      pointers.set(e.pointerId, { x: e.clientX, y: e.clientY, button: pointers.get(e.pointerId).button });
+      if (!isPanning()) return;
+      const now = pointerMidpoint();
+      if (!panLast) { panLast = now; return; }
+      const w = Math.max(1, container.clientWidth);
+      const h = Math.max(1, container.clientHeight);
+      viewPan.x -= (now.x - panLast.x) / w;
+      viewPan.y -= (now.y - panLast.y) / h;
+      panLast = now;
+      applyViewPan();
+    }
+
+    function onPointerUp(e) {
+      pointers.delete(e.pointerId);
+      syncPanRotate();
+    }
+
+    function onContextMenu(e) { e.preventDefault(); }
+
+    canvas.addEventListener('pointerdown', onPointerDown);
+    canvas.addEventListener('pointermove', onPointerMove);
+    canvas.addEventListener('pointerup', onPointerUp);
+    canvas.addEventListener('pointercancel', onPointerUp);
+    canvas.addEventListener('contextmenu', onContextMenu);
 
     // --- model graph ----------------------------------------------------------------
     // pivot (world origin) -> upGroup (up-axis rotation, offset so bbox center sits at origin) -> gltf scene
@@ -160,11 +232,64 @@
       requestRender();
     }
 
-    function resetView() {
+    function defaultDistance() {
       const fov = THREE.MathUtils.degToRad(camera.fov);
-      const dist = (boundingRadius / Math.sin(fov / 2)) * 1.12;
+      return (boundingRadius / Math.sin(fov / 2)) * 1.12;
+    }
+
+    function roundViewNum(n, digits) {
+      const f = 10 ** digits;
+      return Math.round(n * f) / f;
+    }
+
+    function getView() {
+      lockOrbitTarget();
+      const spherical = new THREE.Spherical().setFromVector3(camera.position);
+      return {
+        theta: roundViewNum(spherical.theta, 4),
+        phi: roundViewNum(spherical.phi, 4),
+        radiusScale: roundViewNum(spherical.radius / Math.max(boundingRadius, 1e-6), 3),
+        panX: roundViewNum(viewPan.x, 4),
+        panY: roundViewNum(viewPan.y, 4)
+      };
+    }
+
+    function setView(view) {
+      if (!view || typeof view !== 'object') {
+        resetView();
+        return;
+      }
+      const theta = Number(view.theta);
+      const phi = Number(view.phi);
+      const radiusScale = Number(view.radiusScale);
+      if (![theta, phi, radiusScale].every(Number.isFinite)) {
+        resetView();
+        return;
+      }
+      const radius = Math.max(
+        controls.minDistance,
+        Math.min(controls.maxDistance, radiusScale * boundingRadius)
+      );
+      const spherical = new THREE.Spherical(radius, phi, theta);
+      camera.position.setFromSpherical(spherical);
+      camera.lookAt(0, 0, 0);
+      lockOrbitTarget();
+      const panX = Number(view.panX);
+      const panY = Number(view.panY);
+      viewPan.x = Number.isFinite(panX) ? panX : 0;
+      viewPan.y = Number.isFinite(panY) ? panY : 0;
+      applyViewPan();
+      controls.update();
+      lockOrbitTarget();
+      requestRender();
+    }
+
+    function resetView() {
+      viewPan.x = 0;
+      viewPan.y = 0;
+      applyViewPan();
       const dir = new THREE.Vector3(1, 0.75, 1.25).normalize();
-      camera.position.copy(dir.multiplyScalar(dist));
+      camera.position.copy(dir.multiplyScalar(defaultDistance()));
       camera.lookAt(0, 0, 0);
       lockOrbitTarget();
       controls.update();
@@ -272,7 +397,8 @@
           name: p.name,
           color: p.color || p.fileColor || DEFAULT_COLOR,
           opacity: Math.round(clamp01(p.opacity, 1) * 1000) / 1000
-        }))
+        })),
+        view: getView()
       };
     }
 
@@ -294,7 +420,7 @@
       const h = Math.max(1, container.clientHeight);
       renderer.setSize(w, h, false);
       camera.aspect = w / h;
-      camera.updateProjectionMatrix();
+      applyViewPanTo(camera, w, h);
       requestRender();
     }
     const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(() => resize()) : null;
@@ -334,7 +460,7 @@
       renderer.setPixelRatio(1);
       renderer.setSize(width, height, false);
       camera.aspect = width / height;
-      camera.updateProjectionMatrix();
+      applyViewPanTo(camera, width, height);
       renderer.render(scene, camera);
       let blob;
       try {
@@ -356,6 +482,11 @@
       state.disposed = true;
       cancelAnimationFrame(rafId);
       controls.removeEventListener('change', requestRender);
+      canvas.removeEventListener('pointerdown', onPointerDown);
+      canvas.removeEventListener('pointermove', onPointerMove);
+      canvas.removeEventListener('pointerup', onPointerUp);
+      canvas.removeEventListener('pointercancel', onPointerUp);
+      canvas.removeEventListener('contextmenu', onContextMenu);
       controls.dispose();
       if (ro) ro.disconnect();
       if (io) io.disconnect();
@@ -398,7 +529,8 @@
     parts.forEach(applyPart);
     applyOverrides(opts.parts);
     applyUp();
-    resetView();
+    if (opts.view) setView(opts.view);
+    else resetView();
     resize();
     renderer.render(scene, camera);
 
@@ -409,6 +541,8 @@
       setUp,
       getUp: () => state.up,
       resetView,
+      getView,
+      setView,
       setAutoRotate,
       isAutoRotating: () => state.autoRotate,
       listParts,
