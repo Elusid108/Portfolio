@@ -2,7 +2,7 @@
 
 This is the source for my personal portfolio website — a showcase of work spanning lighting design, art installations, electronics, apps, fabrication, and systems integration.
 
-The local authoring tool is **CMS v2.6.0 Local**.
+The local authoring tool is **CMS v2.7.0 Local**.
 
 The live site (`[index.html](index.html)`) is a single, self-contained static page built with React 18 (UMD), Babel Standalone, and Tailwind CSS (all via CDN). It reads its content from a JSON block embedded directly in the page, so there's no build step and no backend required to host or view it — it can be served as-is from GitHub Pages or any static file host. Alongside it, the `[share/](share/)` folder holds small generated pages and preview images that give each project a proper social-media link preview.
 
@@ -93,13 +93,14 @@ Then open `http://localhost:3000` in a browser. On Windows, `[CMS/launch.bat](CM
 The admin UI lets you manage, per project:
 
 - Title, category, and tags
-- Banner image (uploaded or linked by path/URL), with a crop tool for the card thumbnail and page banner that overlays an alignment grid (rule of thirds or golden ratio, toggleable)
-- Short and long descriptions, edited with a rich-text (Quill) editor. Sparkle buttons on those toolbars can generate copy through Gemini (API key in Settings; writing prompts stay on the server and are never published). Interview questions and long-copy shape are steered by the project's category (Lighting, Art, Fixtures, Software, Tooling, Systems; Sculpture follows Art)
-- A gallery of images, self-hosted videos, YouTube links and **3D models**, with drag-to-reorder and thumbnail previews
+- Independent **card thumbnail** and **page banner** images, each with a cropped preview (16:9 and 16:5). They start linked so one upload fills both; uncheck **Link thumbnail and banner** to assign different photos. Crops overlay an alignment grid (rule of thirds or golden ratio, toggleable)
+- Short and long descriptions on the **Story** tab, edited with a rich-text (Quill) editor. Sparkle buttons on those toolbars can generate copy through Gemini (API key in Settings; writing prompts stay on the server and are never published). Interview questions and long-copy shape are steered by the project's category (Lighting, Art, Fixtures, Software, Tooling, Systems; Sculpture follows Art)
+- A gallery of images, self-hosted videos, YouTube links and **3D models**, with drag-to-reorder (drag the tile) and thumbnail previews. Edit popups show the cropped thumbnail
 - A **3D model editor** per model: live preview, click a point to orbit around it (click empty space to return to the model center), per-part color and opacity (slider, exact number field, or mouse wheel over either), up-axis (Z-up / Y-up), and "capture thumbnail from this view"
-- Action links — website, launch app, GitHub, shop
-- Downloadable files (name, URL, optional description, license, and toast thumbnail with WebP upload + 16:9 crop)
+- Action links — website, launch app, GitHub, shop. Related project links show the live card title, description, and cropped thumbnail when they point at another project on the site
+- Downloadable files (name, URL, optional description, license, and toast thumbnail with WebP upload + 16:9 crop); the edit popup shows that cropped preview
 - **Featured** and **WIP** flags
+- Recycle-bin actions (gallery, files, related links, specs, tasks, and the project itself) ask for confirmation before removing anything
 
 It also has a **Tasks** screen (rail item next to Main Interface) for a site-wide work list: tasks and one level of sub-tasks, each with a status (To do / In progress / Blocked / Done), a short description, and notes. Tasks live in `[CMS/data/tasks.json](CMS/data/tasks.json)` and are **never published** to the live site.
 

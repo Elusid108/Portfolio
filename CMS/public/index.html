@@ -24,12 +24,16 @@
     ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: #52525b; }
     #editor.hidden, #settingsForm.hidden, #tasksForm.hidden, #emptyState.hidden, #item-edit-modal.hidden,
-    #gemini-copy-modal.hidden, #gemini-settings-modal.hidden { display: none !important; }
+    #gemini-copy-modal.hidden, #gemini-settings-modal.hidden, #delete-confirm-modal.hidden { display: none !important; }
     #editor:not(.hidden), #settingsForm:not(.hidden), #tasksForm:not(.hidden) { display: flex; }
     #emptyState:not(.hidden) { display: flex; }
     #item-edit-modal:not(.hidden),
     #gemini-copy-modal:not(.hidden),
-    #gemini-settings-modal:not(.hidden) { display: flex; }
+    #gemini-settings-modal:not(.hidden),
+    #delete-confirm-modal:not(.hidden) { display: flex; }
+    img.gallery-thumb, img.file-thumb, .hero-preview img, .fit-preview img { -webkit-user-drag: none; user-select: none; }
+    #hero-thumb-source.hidden { display: none !important; }
+    #hero-thumb-source:not(.hidden) { display: flex; }
     .ql-toolbar.ql-snow {
       background: #18181b;
       border-color: #27272a !important;
@@ -139,7 +143,7 @@
     <header class="h-11 shrink-0 flex items-center justify-between px-3 border-b border-zinc-800 bg-zinc-900">
       <div class="flex items-center gap-3 min-w-0">
         <span class="text-sm font-semibold tracking-wide text-zinc-100">CMS</span>
-        <span class="text-[10px] font-mono text-zinc-500">v2.6.0</span>
+        <span class="text-[10px] font-mono text-zinc-500">v2.7.0</span>
         <span id="dirtyDot" class="w-1.5 h-1.5 rounded-full bg-zinc-600 opacity-30" title="Unsaved changes"></span>
       </div>
       <div class="flex items-center gap-1.5">
@@ -207,13 +211,12 @@
         <form id="editor" class="hidden flex-1 min-h-0 flex-col" onsubmit="event.preventDefault(); saveCurrent();">
           <input type="hidden" id="id">
           <input type="hidden" id="timestamp">
-          <input type="hidden" id="thumbnail">
           <input type="hidden" id="thumbnailFit">
           <input type="hidden" id="bannerFit">
 
           <nav class="shrink-0 flex items-center gap-1 px-4 border-b border-zinc-800 bg-zinc-900/80">
             <button type="button" class="tab-btn editor-tab-btn is-active px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider" data-tab="overview" onclick="switchEditorTab('overview')">Overview</button>
-            <button type="button" class="tab-btn editor-tab-btn px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider" data-tab="copy" onclick="switchEditorTab('copy')">Copy</button>
+            <button type="button" class="tab-btn editor-tab-btn px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider" data-tab="copy" onclick="switchEditorTab('copy')">Story</button>
             <button type="button" class="tab-btn editor-tab-btn px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider" data-tab="media" onclick="switchEditorTab('media')">Media</button>
             <button type="button" class="tab-btn editor-tab-btn px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider" data-tab="specs" onclick="switchEditorTab('specs')">Specs</button>
             <button type="button" class="tab-btn editor-tab-btn px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider" data-tab="files" onclick="switchEditorTab('files')">Files</button>
@@ -259,23 +262,48 @@
               </div>
 
               <div>
-                <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Banner Image</label>
-                <div class="flex gap-2">
-                  <input type="text" id="image" placeholder="Path or URL" class="field font-mono text-xs">
-                  <label class="btn-quiet whitespace-nowrap cursor-pointer">
-                    <i class="ph ph-upload-simple"></i> Upload
-                    <input type="file" accept="image/*" class="hidden" onchange="handleImageUpload(this, 'image')">
+                <div class="flex items-center justify-between gap-3 mb-2">
+                  <span class="text-[10px] font-bold text-zinc-500 uppercase tracking-wider">Hero images</span>
+                  <label class="flex items-center gap-2 text-[11px] text-zinc-400 cursor-pointer select-none">
+                    <input type="checkbox" id="linkHeroImages" checked onchange="onLinkHeroImagesChange()" class="accent-cyan-400">
+                    Link thumbnail and banner
                   </label>
                 </div>
-                <div class="flex gap-2 mt-2 items-center">
-                  <button type="button" onclick="openBannerCrop('thumbnail')" class="btn-quiet">
-                    <i class="ph ph-crop"></i> Thumbnail
-                  </button>
-                  <button type="button" onclick="openBannerCrop('banner')" class="btn-quiet">
-                    <i class="ph ph-crop"></i> Banner
-                  </button>
-                  <span id="banner-fit-status" class="text-[11px] font-mono text-cyan-400 ml-auto"></span>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <div>
+                    <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Card thumbnail</label>
+                    <div class="hero-preview aspect-video rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800 mb-2">
+                      <img id="hero-thumb-preview-img" class="w-full h-full object-cover" draggable="false" alt="">
+                    </div>
+                    <div id="hero-thumb-source" class="hidden flex gap-2">
+                      <input type="text" id="thumbnail" placeholder="Path or URL" class="field font-mono text-xs" oninput="onHeroSourceInput('thumbnail')">
+                      <label class="btn-quiet whitespace-nowrap cursor-pointer">
+                        <i class="ph ph-upload-simple"></i> Upload
+                        <input type="file" accept="image/*" class="hidden" onchange="handleImageUpload(this, 'thumbnail')">
+                      </label>
+                    </div>
+                    <button type="button" onclick="openBannerCrop('thumbnail')" class="btn-quiet mt-2">
+                      <i class="ph ph-crop"></i> Crop
+                    </button>
+                  </div>
+                  <div>
+                    <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Page banner</label>
+                    <div class="hero-preview rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800 mb-2" style="aspect-ratio:16/5">
+                      <img id="hero-banner-preview-img" class="w-full h-full object-cover" draggable="false" alt="">
+                    </div>
+                    <div class="flex gap-2">
+                      <input type="text" id="image" placeholder="Path or URL" class="field font-mono text-xs" oninput="onHeroSourceInput('image')">
+                      <label class="btn-quiet whitespace-nowrap cursor-pointer">
+                        <i class="ph ph-upload-simple"></i> Upload
+                        <input type="file" accept="image/*" class="hidden" onchange="handleImageUpload(this, 'image')">
+                      </label>
+                    </div>
+                    <button type="button" onclick="openBannerCrop('banner')" class="btn-quiet mt-2">
+                      <i class="ph ph-crop"></i> Crop
+                    </button>
+                  </div>
                 </div>
+                <p id="banner-fit-status" class="text-[11px] font-mono text-cyan-400 mt-2"></p>
               </div>
 
               <div class="relative" id="tags-autocomplete-wrapper">
@@ -558,6 +586,18 @@
     </div>
   </div>
 
+  <!-- Delete confirmation -->
+  <div id="delete-confirm-modal" class="hidden fixed inset-0 bg-black/70 z-[80] items-center justify-center p-4" onclick="if(event.target===this)closeDeleteConfirm(false)">
+    <div class="bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl p-6 max-w-sm w-full mx-4" onclick="event.stopPropagation()">
+      <h3 id="delete-confirm-title" class="text-lg font-semibold text-zinc-100 mb-2">Delete?</h3>
+      <p id="delete-confirm-message" class="text-sm text-zinc-400 mb-6">This item will be removed.</p>
+      <div class="flex flex-col gap-2">
+        <button type="button" onclick="closeDeleteConfirm(true)" class="w-full py-2 rounded-lg bg-red-950/50 text-red-300 border border-red-900 font-medium hover:bg-red-950">Delete</button>
+        <button type="button" onclick="closeDeleteConfirm(false)" class="btn-quiet w-full justify-center">Cancel</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Unsaved Changes Modal -->
   <div id="unsavedModal" class="hidden fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
     <div class="bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl p-6 max-w-sm w-full mx-4">
@@ -679,6 +719,8 @@
     let currentEditorTab = 'overview';
     let currentSettingsTab = 'about';
     let itemEditState = { apply: null, row: null };
+    let lastBannerDerivedThumb = '';
+    let deleteConfirmState = { onConfirm: null };
 
     function updateDirtyChrome() {
         const dot = document.getElementById('dirtyDot');
@@ -758,6 +800,49 @@
         itemEditState.apply = null;
         modal.classList.add('hidden');
         modal.classList.remove('flex');
+    }
+
+    function confirmDelete({ title, message, onConfirm }) {
+        deleteConfirmState.onConfirm = onConfirm;
+        const titleEl = document.getElementById('delete-confirm-title');
+        const msgEl = document.getElementById('delete-confirm-message');
+        if (titleEl) titleEl.textContent = title || 'Delete?';
+        if (msgEl) msgEl.textContent = message || 'This item will be removed.';
+        document.getElementById('delete-confirm-modal')?.classList.remove('hidden');
+    }
+
+    function closeDeleteConfirm(proceed) {
+        const fn = deleteConfirmState.onConfirm;
+        deleteConfirmState.onConfirm = null;
+        document.getElementById('delete-confirm-modal')?.classList.add('hidden');
+        if (proceed && typeof fn === 'function') fn();
+    }
+
+    function confirmDeleteGallery(row) {
+        if (!row) return;
+        confirmDelete({
+            title: 'Delete gallery item?',
+            message: 'Remove this item from the gallery. Save the project to keep the change.',
+            onConfirm: () => { row.remove(); updateListIndices('gallery-container'); isDirty = true; }
+        });
+    }
+
+    function confirmDeleteFile(row) {
+        if (!row) return;
+        confirmDelete({
+            title: 'Delete file?',
+            message: 'Remove this downloadable file from the project. Save the project to keep the change.',
+            onConfirm: () => { row.remove(); updateListIndices('files-container'); isDirty = true; }
+        });
+    }
+
+    function confirmDeleteRelated(row) {
+        if (!row) return;
+        confirmDelete({
+            title: 'Delete related link?',
+            message: 'Remove this related link. Save the project to keep the change.',
+            onConfirm: () => { row.remove(); updateListIndices('related-container'); isDirty = true; }
+        });
     }
 
     function kvFieldClass(fieldId) {
@@ -875,9 +960,16 @@
     }
 
     function deleteSpecCategory(id) {
-        specsCategories = specsCategories.filter(c => c.id !== id);
-        markSpecsDirty();
-        renderSpecsBuilder();
+        const cat = specsCategories.find(c => c.id === id);
+        confirmDelete({
+            title: 'Delete spec category?',
+            message: `Remove “${cat?.title || 'this category'}” and all of its items.`,
+            onConfirm: () => {
+                specsCategories = specsCategories.filter(c => c.id !== id);
+                markSpecsDirty();
+                renderSpecsBuilder();
+            }
+        });
     }
 
     function moveSpecCategory(index, dir) {
@@ -912,9 +1004,16 @@
     function deleteSpecItem(categoryId, itemId) {
         const cat = specsCategories.find(c => c.id === categoryId);
         if (!cat) return;
-        cat.items = cat.items.filter(i => i.id !== itemId);
-        markSpecsDirty();
-        renderSpecsBuilder();
+        const item = (cat.items || []).find(i => i.id === itemId);
+        confirmDelete({
+            title: 'Delete spec item?',
+            message: `Remove “${item?.name || 'this item'}” from ${cat.title || 'this category'}.`,
+            onConfirm: () => {
+                cat.items = (cat.items || []).filter(i => i.id !== itemId);
+                markSpecsDirty();
+                renderSpecsBuilder();
+            }
+        });
     }
 
     function moveSpecItem(categoryId, itemIndex, dir) {
@@ -1277,6 +1376,12 @@
         setupTagsAutocomplete();
         document.addEventListener('keydown', (e) => {
             if (e.key !== 'Escape') return;
+            const deleteModal = document.getElementById('delete-confirm-modal');
+            if (deleteModal && !deleteModal.classList.contains('hidden')) {
+                closeDeleteConfirm(false);
+                e.preventDefault();
+                return;
+            }
             const itemModal = document.getElementById('item-edit-modal');
             if (itemModal && !itemModal.classList.contains('hidden')) {
                 closeItemEdit(false);
@@ -1476,6 +1581,122 @@
         if (yt) return `https://img.youtube.com/vi/${yt}/hqdefault.jpg`;
         if (url.startsWith('media/')) return '/' + url;
         return url;
+    }
+
+    function parseFitValue(raw) {
+        if (!raw) return null;
+        if (typeof raw === 'object') return raw;
+        try { return JSON.parse(raw); } catch { return null; }
+    }
+
+    function applyFitStyle(el, fit) {
+        if (!el) return;
+        fit = parseFitValue(fit);
+        if (!fit) {
+            el.style.transform = '';
+            el.style.transformOrigin = '';
+            el.style.objectPosition = '50% 50%';
+            return;
+        }
+        const scale = Number(fit.scale);
+        const x = fit.x != null ? fit.x : 50;
+        const y = fit.y != null ? fit.y : 50;
+        el.style.objectPosition = `${x}% ${y}%`;
+        if (!Number.isFinite(scale) || scale <= 1) {
+            el.style.transform = '';
+            el.style.transformOrigin = '';
+        } else {
+            el.style.transform = `scale(${scale})`;
+            el.style.transformOrigin = `${x}% ${y}%`;
+        }
+    }
+
+    function setFitPreviewImg(img, src, fit) {
+        if (!img) return;
+        if (!src) {
+            img.removeAttribute('src');
+            img.style.opacity = '0';
+            applyFitStyle(img, null);
+            return;
+        }
+        img.src = getThumbnailSrc(src);
+        img.style.opacity = '1';
+        applyFitStyle(img, fit);
+    }
+
+    function stripHtmlText(html) {
+        const d = document.createElement('div');
+        d.innerHTML = html || '';
+        return (d.textContent || '').replace(/\s+/g, ' ').trim();
+    }
+
+    function parseRelatedProjectId(url) {
+        if (!url || typeof url !== 'string' || !url.startsWith('#project/')) return null;
+        try { return decodeURIComponent(url.slice('#project/'.length)); }
+        catch { return url.slice('#project/'.length); }
+    }
+
+    function findProjectById(id) {
+        if (id == null || id === '') return null;
+        return projects.find(p => String(p.id) === String(id)) || null;
+    }
+
+    function projectCardImage(p) {
+        if (!p) return '';
+        return p.thumbnail || p.image || '';
+    }
+
+    function isHeroLinked() {
+        return document.getElementById('linkHeroImages')?.checked !== false;
+    }
+
+    function onHeroSourceInput(which) {
+        if (which === 'image' && isHeroLinked()) {
+            document.getElementById('thumbnail').value = document.getElementById('image').value;
+            lastBannerDerivedThumb = '';
+        }
+        refreshHeroPreviews();
+    }
+
+    function onLinkHeroImagesChange() {
+        if (isHeroLinked()) {
+            const image = document.getElementById('image').value.trim();
+            if (image) document.getElementById('thumbnail').value = lastBannerDerivedThumb || image;
+        }
+        syncHeroLinkUi();
+        refreshHeroPreviews();
+        isDirty = true;
+    }
+
+    function syncHeroLinkUi() {
+        document.getElementById('hero-thumb-source')?.classList.toggle('hidden', isHeroLinked());
+    }
+
+    function refreshHeroPreviews() {
+        const image = document.getElementById('image')?.value.trim() || '';
+        const thumb = document.getElementById('thumbnail')?.value.trim() || '';
+        const cardSrc = thumb || image;
+        const bannerSrc = image || thumb;
+        setFitPreviewImg(document.getElementById('hero-thumb-preview-img'), cardSrc, document.getElementById('thumbnailFit')?.value);
+        setFitPreviewImg(document.getElementById('hero-banner-preview-img'), bannerSrc, document.getElementById('bannerFit')?.value);
+        updateBannerFitStatus();
+    }
+
+    function relatedCardPreviewHtml(url) {
+        const linked = findProjectById(parseRelatedProjectId(url));
+        if (!linked) return '';
+        const src = projectCardImage(linked);
+        const desc = stripHtmlText(linked.description);
+        const img = src
+            ? `<div class="fit-preview aspect-video rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800 mb-1">
+                 <img id="item-edit-related-preview-img" class="w-full h-full object-cover" draggable="false" src="${escAttr(getThumbnailSrc(src))}" alt="">
+               </div>`
+            : '';
+        return `<div class="rounded-lg border border-zinc-800 bg-zinc-900/40 p-2 mb-1">
+          ${img}
+          <p class="text-sm text-zinc-200 truncate">${escapeHtml(linked.title || 'Untitled')}</p>
+          ${desc ? `<p class="text-[11px] text-zinc-500 line-clamp-2 mt-0.5">${escapeHtml(desc)}</p>` : ''}
+        </div>`;
     }
 
     function isVideoPath(url) {
@@ -1854,11 +2075,14 @@
       document.getElementById('featured').checked = !!p.featured;
       document.getElementById('wip').checked = !!p.wip;
       document.getElementById('draft').checked = !!p.draft;
+      document.getElementById('linkHeroImages').checked = p.linkHeroImages !== false;
+      lastBannerDerivedThumb = (p.linkHeroImages !== false) ? (p.thumbnail || '') : '';
       document.getElementById('tags').value = Array.isArray(p.tags) ? p.tags.join(', ') : '';
       syncTagPills();
       document.getElementById('thumbnailFit').value = p.thumbnailFit ? JSON.stringify(p.thumbnailFit) : '';
       document.getElementById('bannerFit').value = p.bannerFit ? JSON.stringify(p.bannerFit) : '';
-      updateBannerFitStatus();
+      syncHeroLinkUi();
+      refreshHeroPreviews();
 
       if (p.description) quillShort.clipboard.dangerouslyPasteHTML(p.description);
       else quillShort.setText('');
@@ -1911,7 +2135,10 @@
       document.getElementById('thumbnail').value = '';
       document.getElementById('thumbnailFit').value = '';
       document.getElementById('bannerFit').value = '';
-      updateBannerFitStatus();
+      document.getElementById('linkHeroImages').checked = true;
+      lastBannerDerivedThumb = '';
+      syncHeroLinkUi();
+      refreshHeroPreviews();
 
       document.getElementById('editor').classList.remove('hidden');
       switchEditorTab('overview');
@@ -2101,17 +2328,31 @@
     }
 
     function deleteCmsTask(taskId) {
-      cmsTasks = cmsTasks.filter(t => t.id !== taskId);
-      markCmsTasksDirty();
-      renderCmsTasks();
+      const task = findCmsTask(taskId);
+      confirmDelete({
+        title: 'Delete task?',
+        message: `Remove “${task?.title || 'this task'}” and its sub-tasks.`,
+        onConfirm: () => {
+          cmsTasks = cmsTasks.filter(t => t.id !== taskId);
+          markCmsTasksDirty();
+          renderCmsTasks();
+        }
+      });
     }
 
     function deleteCmsSubtask(taskId, subId) {
       const task = findCmsTask(taskId);
       if (!task) return;
-      task.subtasks = (task.subtasks || []).filter(s => s.id !== subId);
-      markCmsTasksDirty();
-      renderCmsTasks();
+      const sub = (task.subtasks || []).find(s => s.id === subId);
+      confirmDelete({
+        title: 'Delete sub-task?',
+        message: `Remove “${sub?.title || 'this sub-task'}”.`,
+        onConfirm: () => {
+          task.subtasks = (task.subtasks || []).filter(s => s.id !== subId);
+          markCmsTasksDirty();
+          renderCmsTasks();
+        }
+      });
     }
 
     function openCmsTaskEdit(taskId, subId) {
@@ -2259,7 +2500,7 @@
             <span class="drag-handle cursor-grab text-zinc-700 hover:text-zinc-400 px-0.5 flex-shrink-0"><i class="ph ph-dots-six-vertical"></i></span>
             <span class="index-badge text-[10px] font-mono text-zinc-600 w-6 flex-shrink-0"></span>
             <div class="file-thumb-wrap relative w-8 h-8 flex-shrink-0 overflow-hidden rounded bg-zinc-800 ${hasImage ? '' : 'hidden'}">
-                <img class="file-thumb w-8 h-8 object-cover" src="${escAttr(previewSrc)}" alt="" onerror="this.closest('.file-thumb-wrap').classList.add('hidden')">
+                <img class="file-thumb w-8 h-8 object-cover" draggable="false" src="${escAttr(previewSrc)}" alt="" onerror="this.closest('.file-thumb-wrap').classList.add('hidden')">
             </div>
             <div class="flex-1 min-w-0 cursor-pointer" onclick="openFileEdit(this.closest('.file-row'))">
                 <div class="flex items-center gap-2">
@@ -2269,7 +2510,7 @@
                 </div>
             </div>
             <button type="button" onclick="openFileEdit(this.closest('.file-row'))" class="opacity-0 group-hover:opacity-100 text-zinc-500 hover:text-cyan-400 p-1" title="Edit"><i class="ph ph-pencil-simple"></i></button>
-            <button type="button" onclick="this.closest('.file-row').remove(); updateListIndices('files-container'); isDirty=true;" class="opacity-0 group-hover:opacity-100 text-zinc-600 hover:text-red-400 p-1" title="Delete"><i class="ph ph-trash"></i></button>
+            <button type="button" onclick="confirmDeleteFile(this.closest('.file-row'))" class="opacity-0 group-hover:opacity-100 text-zinc-600 hover:text-red-400 p-1" title="Delete"><i class="ph ph-trash"></i></button>
             <input type="hidden" class="file-name" value="${escAttr(name)}">
             <input type="hidden" class="file-url" value="${escAttr(url)}">
             <input type="hidden" class="file-desc" value="${escAttr(description)}">
@@ -2316,9 +2557,18 @@
         const description = row.querySelector('.file-desc')?.value || '';
         const license = row.querySelector('.file-license')?.value || '';
         const image = row.querySelector('.file-image')?.value || '';
+        const fileThumb = row.querySelector('.file-thumbnail')?.value || '';
+        const fileFit = row.querySelector('.file-fit')?.value || '';
+        const previewSrc = getThumbnailSrc(fileThumb || image);
+        const previewHtml = previewSrc
+            ? `<div class="fit-preview aspect-video rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800">
+                 <img id="item-edit-file-preview-img" class="w-full h-full object-cover" draggable="false" src="${escAttr(previewSrc)}" alt="">
+               </div>`
+            : '';
         openItemEditModal({
             title: name || 'Downloadable file',
             html: `
+              ${previewHtml}
               <div>
                 <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">File Name</label>
                 <input type="text" id="item-edit-file-name" class="field" value="${escAttr(name)}" placeholder="File Name">
@@ -2346,6 +2596,8 @@
             onApply: () => { applyFileEditFields(); refreshFileVisual(row); },
             focusSelector: '#item-edit-file-name'
         });
+        const previewImg = document.getElementById('item-edit-file-preview-img');
+        if (previewImg) applyFitStyle(previewImg, fileFit);
     }
 
     function applyFileEditFields() {
@@ -2384,7 +2636,10 @@
         const clearBtn = row.querySelector('.file-thumb-clear');
         const src = getThumbnailSrc(thumbnail || image);
         if (src) {
-            if (img) img.src = src;
+            if (img) {
+                img.src = src;
+                applyFitStyle(img, row.querySelector('.file-fit')?.value);
+            }
             wrap?.classList.remove('hidden');
             clearBtn?.classList.remove('hidden');
         } else {
@@ -2453,22 +2708,24 @@
         const div = document.createElement('div');
         div.className = "related-row group flex items-center gap-2 px-2 py-1.5 rounded-lg border border-zinc-800 hover:border-zinc-600 bg-zinc-900/40";
         div.draggable = true;
-        let host = '';
-        try { host = url ? new URL(url, window.location.origin).host : ''; } catch { host = url; }
         div.innerHTML = `
             <span class="drag-handle cursor-grab text-zinc-700 hover:text-zinc-400 px-0.5 flex-shrink-0"><i class="ph ph-dots-six-vertical"></i></span>
             <span class="index-badge text-[10px] font-mono text-zinc-600 w-6 flex-shrink-0"></span>
+            <div class="related-card-thumb w-10 h-10 rounded overflow-hidden bg-zinc-800 shrink-0 hidden">
+                <img class="related-card-thumb-img w-full h-full object-cover" draggable="false" alt="">
+            </div>
             <div class="flex-1 min-w-0 cursor-pointer" onclick="openRelatedEdit(this.closest('.related-row'))">
-                <span class="related-summary-name text-sm text-zinc-200 truncate">${escapeHtml(name || 'Untitled')}</span>
-                <span class="related-summary-host block text-[10px] font-mono text-zinc-500 truncate">${escapeHtml(host)}</span>
+                <span class="related-summary-name text-sm text-zinc-200 truncate"></span>
+                <span class="related-summary-host block text-[10px] text-zinc-500 truncate"></span>
             </div>
             <button type="button" onclick="openRelatedEdit(this.closest('.related-row'))" class="opacity-0 group-hover:opacity-100 text-zinc-500 hover:text-cyan-400 p-1" title="Edit"><i class="ph ph-pencil-simple"></i></button>
-            <button type="button" onclick="this.closest('.related-row').remove(); updateListIndices('related-container'); isDirty=true;" class="opacity-0 group-hover:opacity-100 text-zinc-600 hover:text-red-400 p-1" title="Delete"><i class="ph ph-trash"></i></button>
+            <button type="button" onclick="confirmDeleteRelated(this.closest('.related-row'))" class="opacity-0 group-hover:opacity-100 text-zinc-600 hover:text-red-400 p-1" title="Delete"><i class="ph ph-trash"></i></button>
             <input type="hidden" class="related-name" value="${escAttr(name)}">
             <input type="hidden" class="related-url" value="${escAttr(url)}">
         `;
         container.appendChild(div);
         updateListIndices('related-container');
+        refreshRelatedVisual(div);
         if (!isBulk) {
             isDirty = true;
             openRelatedEdit(div);
@@ -2477,14 +2734,36 @@
     }
 
     function refreshRelatedVisual(row) {
+        if (!row) return;
         const name = row.querySelector('.related-name')?.value.trim() || '';
         const url = row.querySelector('.related-url')?.value.trim() || '';
         const nameEl = row.querySelector('.related-summary-name');
         const hostEl = row.querySelector('.related-summary-host');
-        if (nameEl) nameEl.textContent = name || 'Untitled';
-        if (hostEl) {
-            try { hostEl.textContent = url ? new URL(url, window.location.origin).host : ''; }
-            catch { hostEl.textContent = url; }
+        const thumbWrap = row.querySelector('.related-card-thumb');
+        const thumbImg = row.querySelector('.related-card-thumb-img');
+        const linked = findProjectById(parseRelatedProjectId(url));
+        if (linked) {
+            if (nameEl) nameEl.textContent = linked.title || 'Untitled';
+            if (hostEl) {
+                hostEl.classList.remove('font-mono');
+                hostEl.textContent = stripHtmlText(linked.description);
+            }
+            const src = projectCardImage(linked);
+            if (src && thumbImg && thumbWrap) {
+                thumbImg.src = getThumbnailSrc(src);
+                applyFitStyle(thumbImg, linked.thumbnailFit);
+                thumbWrap.classList.remove('hidden');
+            } else {
+                thumbWrap?.classList.add('hidden');
+            }
+        } else {
+            if (nameEl) nameEl.textContent = name || 'Untitled';
+            if (hostEl) {
+                hostEl.classList.add('font-mono');
+                try { hostEl.textContent = url ? new URL(url, window.location.origin).host : ''; }
+                catch { hostEl.textContent = url; }
+            }
+            thumbWrap?.classList.add('hidden');
         }
     }
 
@@ -2493,9 +2772,11 @@
         itemEditState.row = row;
         const name = row.querySelector('.related-name')?.value || '';
         const url = row.querySelector('.related-url')?.value || '';
+        const cardHtml = relatedCardPreviewHtml(url);
         openItemEditModal({
             title: name || 'Related link',
             html: `
+              ${cardHtml}
               <div>
                 <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Link Name</label>
                 <input type="text" id="item-edit-related-name" class="field" value="${escAttr(name)}" placeholder="Link Name">
@@ -2514,6 +2795,9 @@
             },
             focusSelector: '#item-edit-related-name'
         });
+        const previewImg = document.getElementById('item-edit-related-preview-img');
+        const linked = findProjectById(parseRelatedProjectId(url));
+        if (previewImg && linked) applyFitStyle(previewImg, linked.thumbnailFit);
     }
 
     function onRelatedUrlChange(input) {
@@ -2525,6 +2809,7 @@
         if (!proj) return;
         const nameInput = input.closest('.related-row').querySelector('.related-name');
         if (nameInput && !nameInput.value.trim()) nameInput.value = proj.title;
+        refreshRelatedVisual(input.closest('.related-row'));
     }
 
     function addGalleryRow(url = "", caption = "", fit = null, isBulk = false, poster = "", thumbnail = "", hasAudio = false, model = null) {
@@ -2542,14 +2827,14 @@
             <span class="drag-handle absolute top-1 left-1 z-10 cursor-grab text-white/80 drop-shadow"><i class="ph ph-dots-six-vertical"></i></span>
             <span class="index-badge absolute top-1 right-1 z-10 text-[9px] font-mono font-bold text-white drop-shadow bg-black/50 rounded px-1"></span>
             <div class="gallery-thumb-wrap relative aspect-square rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800 cursor-pointer" onclick="if(!event.target.closest('.drag-handle,.index-badge,.gallery-row-actions')) openGalleryEdit(this.closest('.gallery-row'))">
-                <img class="gallery-thumb w-full h-full object-cover ${isVideo || isModel ? '' : ''}" src="${escAttr(thumbSrc)}" ${isVideo ? `data-video-url="${escAttr(url)}"` : ''} onerror="${isModel ? "this.removeAttribute('src')" : "this.style.opacity=0"}">
+                <img class="gallery-thumb w-full h-full object-cover ${isVideo || isModel ? '' : ''}" draggable="false" src="${escAttr(thumbSrc)}" ${isVideo ? `data-video-url="${escAttr(url)}"` : ''} onerror="${isModel ? "this.removeAttribute('src')" : "this.style.opacity=0"}">
                 ${isVideo ? '<i class="gallery-type-icon ph ph-play-circle absolute inset-0 flex items-center justify-center text-white text-2xl drop-shadow pointer-events-none"></i>' : ''}
                 ${isModel ? '<i class="gallery-type-icon ph ph-cube absolute inset-0 flex items-center justify-center text-white text-2xl drop-shadow pointer-events-none"></i>' : ''}
                 <div class="gallery-caption-overlay absolute bottom-0 inset-x-0 px-1 py-0.5 bg-gradient-to-t from-black/80 text-[9px] text-zinc-200 truncate ${caption ? '' : 'hidden'}">${escapeHtml(caption)}</div>
             </div>
             <div class="gallery-row-actions absolute bottom-1 right-1 z-10 opacity-0 group-hover:opacity-100 flex gap-0.5">
                 <button type="button" onclick="openGalleryEdit(this.closest('.gallery-row'))" class="p-0.5 rounded bg-black/60 text-white hover:text-cyan-400" title="Edit"><i class="ph ph-pencil-simple text-xs"></i></button>
-                <button type="button" onclick="this.closest('.gallery-row').remove(); updateListIndices('gallery-container'); isDirty=true;" class="p-0.5 rounded bg-black/60 text-white hover:text-red-400" title="Delete"><i class="ph ph-trash text-xs"></i></button>
+                <button type="button" onclick="confirmDeleteGallery(this.closest('.gallery-row'))" class="p-0.5 rounded bg-black/60 text-white hover:text-red-400" title="Delete"><i class="ph ph-trash text-xs"></i></button>
             </div>
             <input type="hidden" class="gallery-url" value="${escAttr(url)}">
             <input type="hidden" class="gallery-caption" value="${escAttr(caption)}">
@@ -2599,6 +2884,7 @@
         if (thumb) {
             if (src) { thumb.src = src; thumb.style.opacity = '1'; }
             else if (!isModel) { thumb.removeAttribute('src'); thumb.style.opacity = '0'; }
+            applyFitStyle(thumb, getYouTubeId(url) ? null : row.querySelector('.gallery-fit')?.value);
         }
         wrap?.classList.remove('hidden');
         if (overlay) {
@@ -2615,8 +2901,21 @@
         itemEditState.row = row;
         const url = row.querySelector('.gallery-url')?.value || '';
         const caption = row.querySelector('.gallery-caption')?.value || '';
+        const poster = row.querySelector('.gallery-poster')?.value || '';
+        const fitRaw = row.querySelector('.gallery-fit')?.value || '';
         const isVideo = isVideoPath(url);
         const isModel = !!readRowModel(row) || isModelPath(url);
+        const isYt = !!getYouTubeId(url);
+        const previewSrc = poster || (!isVideo && !isModel ? url : '');
+        let previewHtml = '';
+        if (previewSrc || isYt) {
+            const src = getThumbnailSrc(previewSrc || url);
+            previewHtml = `<div class="fit-preview aspect-video rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800">
+              <img id="item-edit-gallery-preview-img" class="w-full h-full object-cover" draggable="false" src="${escAttr(src)}" alt="">
+            </div>`;
+        } else if (isVideo || isModel) {
+            previewHtml = `<div class="aspect-video rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-500"><i class="ph ${isModel ? 'ph-cube' : 'ph-play-circle'} text-3xl"></i></div>`;
+        }
         let actions = '';
         if (isVideo) actions += `<button type="button" class="btn-quiet" onclick="applyGalleryEditFields(); closeItemEdit(false); openVideoPreview(itemEditState.row)"><i class="ph ph-play"></i> Preview</button>`;
         if (isModel) actions += `<button type="button" class="btn-quiet" onclick="applyGalleryEditFields(); closeItemEdit(false); openModelEditor(itemEditState.row)"><i class="ph ph-cube"></i> 3D</button>`;
@@ -2624,6 +2923,7 @@
         openItemEditModal({
             title: fileBaseName(url) || 'Gallery item',
             html: `
+              ${previewHtml}
               <div>
                 <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">URL / path</label>
                 <input type="text" id="item-edit-gallery-url" class="field font-mono text-xs" value="${escAttr(url)}" placeholder="Image, video, GLB, or YouTube">
@@ -2636,6 +2936,8 @@
             onApply: () => { applyGalleryEditFields(); refreshGalleryVisual(row); },
             focusSelector: '#item-edit-gallery-url'
         });
+        const previewImg = document.getElementById('item-edit-gallery-preview-img');
+        if (previewImg && !isYt) applyFitStyle(previewImg, fitRaw);
     }
 
     function applyGalleryEditFields() {
@@ -2689,12 +2991,14 @@
         container.addEventListener('dragstart', (e) => {
             const row = e.target.closest('.gallery-row');
             if (!row) return;
-            if (!e.target.closest('.drag-handle')) {
+            if (e.target.closest('.gallery-row-actions, .index-badge')) {
                 e.preventDefault();
                 return;
             }
+            document.getElementById('thumb-popout')?.classList.add('hidden');
             dragEl = row;
             row.classList.add('opacity-50');
+            try { e.dataTransfer.effectAllowed = 'move'; } catch (_) {}
         });
         container.addEventListener('dragend', () => {
             if (dragEl) dragEl.classList.remove('opacity-50');
@@ -3036,9 +3340,15 @@
         showStatus("Uploading image...");
         const result = await api.upload(file, category, project);
         document.getElementById(targetFieldId).value = result.path;
-        if (targetFieldId === 'image' && result.thumbnail) {
-          document.getElementById('thumbnail').value = result.thumbnail;
+        if (targetFieldId === 'image') {
+          lastBannerDerivedThumb = result.thumbnail || result.path;
+          if (isHeroLinked()) {
+            document.getElementById('thumbnail').value = result.thumbnail || result.path;
+          }
+        } else if (targetFieldId === 'thumbnail') {
+          if (result.thumbnail) document.getElementById('thumbnail').value = result.thumbnail;
         }
+        refreshHeroPreviews();
         isDirty = true;
         hideStatus();
         Toastify({ text: "Image uploaded!", duration: 2000, backgroundColor: "#10b981" }).showToast();
@@ -3696,6 +4006,7 @@
         thumbnail: document.getElementById('thumbnail').value || undefined,
         thumbnailFit: parseFit('thumbnailFit'),
         bannerFit: parseFit('bannerFit'),
+        linkHeroImages: isHeroLinked(),
         description: quillShort.root.innerHTML,
         longDescription: quillLong.root.innerHTML,
         websiteLink: document.getElementById('websiteLink').value,
@@ -3776,7 +4087,15 @@
 
     // --- DELETE ---
     function deleteCurrent() {
-      if(!confirm("Are you sure?")) return;
+      const title = document.getElementById('title').value.trim() || 'this project';
+      confirmDelete({
+        title: 'Delete project?',
+        message: `Delete “${title}” from the CMS. This cannot be undone.`,
+        onConfirm: performDeleteCurrent
+      });
+    }
+
+    function performDeleteCurrent() {
       const id = document.getElementById('id').value;
       if(!id) return;
       const deletedIndex = currentEditIndex;
@@ -4176,12 +4495,14 @@
     }
 
     function openBannerCrop(type) {
-      const imgSrc = document.getElementById('image').value.trim();
+      const image = document.getElementById('image').value.trim();
+      const thumb = document.getElementById('thumbnail').value.trim();
+      const isThumbnail = type === 'thumbnail';
+      const imgSrc = isThumbnail && !isHeroLinked() && thumb ? thumb : (image || thumb);
       if (!imgSrc) {
-        Toastify({ text: "Add a banner image URL first", duration: 2000, backgroundColor: "#ef4444" }).showToast();
+        Toastify({ text: isThumbnail ? "Add a card image first" : "Add a banner image URL first", duration: 2000, backgroundColor: "#ef4444" }).showToast();
         return;
       }
-      const isThumbnail = type === 'thumbnail';
       const fitId = isThumbnail ? 'thumbnailFit' : 'bannerFit';
       const label = isThumbnail ? 'Card Thumbnail  (16 : 9)' : 'Page Banner  (16 : 5)';
       const [aw, ah] = isThumbnail ? [16, 9] : [16, 5];
@@ -4190,7 +4511,7 @@
       openCropModal(imgSrc, aw, ah, label, currentFit, (fit) => {
         document.getElementById(fitId).value = JSON.stringify(fit);
         isDirty = true;
-        updateBannerFitStatus();
+        refreshHeroPreviews();
       });
     }
 
@@ -4661,7 +4982,7 @@
       </div>
 
       <p class="text-[10px] text-zinc-600 font-mono tabular-nums mt-6 text-center">
-        Portfolio CMS v2.6.0 Local
+        Portfolio CMS v2.7.0 Local
       </p>
     </div>
   </div>

@@ -109,118 +109,6 @@
     "video": "",
     "gallery": [
       {
-        "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-298b15.webp",
-        "fit": {
-          "scale": 1.15,
-          "x": 32,
-          "y": 69.3
-        },
-        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-298b15-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-a63f16.webp",
-        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-a63f16-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-8af979.mp4",
-        "fit": {
-          "scale": 1.3,
-          "x": 58.2,
-          "y": 51
-        },
-        "poster": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-8af979-poster.webp",
-        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-8af979-poster-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-af34b4.webp",
-        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-af34b4-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-31d519.mp4",
-        "fit": {
-          "scale": 1.25,
-          "x": 48,
-          "y": 32.5
-        },
-        "poster": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-31d519-poster.webp",
-        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-31d519-poster-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-1f0f04.mp4",
-        "poster": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-1f0f04-poster.webp",
-        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-1f0f04-poster-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-e6ef23.mp4",
-        "fit": {
-          "scale": 1.3,
-          "x": 12.7,
-          "y": 97.3
-        },
-        "poster": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-e6ef23-poster.webp",
-        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-e6ef23-poster-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-f282f4.webp",
-        "fit": {
-          "scale": 1,
-          "x": 0.2,
-          "y": 65.9
-        },
-        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-f282f4-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-cca585.mp4",
-        "fit": {
-          "scale": 1.05,
-          "x": 28.9,
-          "y": 50.3
-        },
-        "poster": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-cca585-poster.webp",
-        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-cca585-poster-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-d6b941.webp",
-        "fit": {
-          "scale": 1,
-          "x": 49.3,
-          "y": 84
-        },
-        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-d6b941-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-6245b0.mp4",
-        "poster": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-6245b0-poster.webp",
-        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-6245b0-poster-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-3b9d19.webp",
-        "fit": {
-          "scale": 1.15,
-          "x": 0,
-          "y": 39.4
-        },
-        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-3b9d19-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-c46c5a.webp",
-        "fit": {
-          "scale": 1,
-          "x": 50.5,
-          "y": 1.6
-        },
-        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-c46c5a-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-a1c734.webp",
-        "fit": {
-          "scale": 1,
-          "x": 47.7,
-          "y": 49
-        },
-        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-a1c734-thumb.webp"
-      },
-      {
         "url": "media/Lighting/Immersive Dance Lighting Rig/models/Immersive-Dance-Lighting-Rig-gfx-831de2.glb",
         "type": "model",
         "format": "glb",
@@ -36571,6 +36459,118 @@
         },
         "poster": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-ffb8d2.webp",
         "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-ffb8d2-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-298b15.webp",
+        "fit": {
+          "scale": 1.15,
+          "x": 32,
+          "y": 69.3
+        },
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-298b15-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-a63f16.webp",
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-a63f16-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-8af979.mp4",
+        "fit": {
+          "scale": 1.3,
+          "x": 58.2,
+          "y": 51
+        },
+        "poster": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-8af979-poster.webp",
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-8af979-poster-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-af34b4.webp",
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-af34b4-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-31d519.mp4",
+        "fit": {
+          "scale": 1.25,
+          "x": 48,
+          "y": 32.5
+        },
+        "poster": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-31d519-poster.webp",
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-31d519-poster-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-1f0f04.mp4",
+        "poster": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-1f0f04-poster.webp",
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-1f0f04-poster-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-e6ef23.mp4",
+        "fit": {
+          "scale": 1.3,
+          "x": 12.7,
+          "y": 97.3
+        },
+        "poster": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-e6ef23-poster.webp",
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-e6ef23-poster-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-f282f4.webp",
+        "fit": {
+          "scale": 1,
+          "x": 0.2,
+          "y": 65.9
+        },
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-f282f4-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-cca585.mp4",
+        "fit": {
+          "scale": 1.05,
+          "x": 28.9,
+          "y": 50.3
+        },
+        "poster": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-cca585-poster.webp",
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-cca585-poster-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-d6b941.webp",
+        "fit": {
+          "scale": 1,
+          "x": 49.3,
+          "y": 84
+        },
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-d6b941-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-6245b0.mp4",
+        "poster": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-6245b0-poster.webp",
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-6245b0-poster-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-3b9d19.webp",
+        "fit": {
+          "scale": 1.15,
+          "x": 0,
+          "y": 39.4
+        },
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-3b9d19-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-c46c5a.webp",
+        "fit": {
+          "scale": 1,
+          "x": 50.5,
+          "y": 1.6
+        },
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-c46c5a-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-a1c734.webp",
+        "fit": {
+          "scale": 1,
+          "x": 47.7,
+          "y": 49
+        },
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-a1c734-thumb.webp"
       }
     ],
     "launchLink": "",
@@ -36702,7 +36702,8 @@
         ]
       }
     ],
-    "draft": false
+    "draft": false,
+    "linkHeroImages": true
   },
   {
     "id": "8147",

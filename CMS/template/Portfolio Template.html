@@ -1654,7 +1654,7 @@
                                                     const linkedId = isLocalHash ? decodeURIComponent(r.url.slice('#project/'.length)) : null;
                                                     const linkedProject = linkedId ? projects.find(p => p.id === linkedId) : null;
                                                     const displayTitle = (isLocalHash && linkedProject) ? linkedProject.title : r.name;
-                                                    const displayImage = (isLocalHash && linkedProject) ? linkedProject.image : null;
+                                                    const displayImage = (isLocalHash && linkedProject) ? (linkedProject.thumbnail || linkedProject.image) : null;
 
                                                     if (isLocalHash) {
                                                         return (
@@ -1675,9 +1675,9 @@
                                                                 {hoveredRelated === i && linkedProject && (
                                                                     <div aria-hidden="true" className="hidden md:block absolute right-full bottom-0 mr-3 z-50 w-72 pointer-events-none">
                                                                         <div className="bg-zinc-900 border border-zinc-700 rounded-xl shadow-2xl overflow-hidden">
-                                                                            {linkedProject.image && (
+                                                                            {displayImage && (
                                                                                 <div className="aspect-video w-full overflow-hidden">
-                                                                                    <img src={linkedProject.image} alt="" className="w-full h-full object-cover" style={fitStyle(linkedProject.thumbnailFit)} />
+                                                                                    <img src={displayImage} alt="" className="w-full h-full object-cover" style={fitStyle(linkedProject.thumbnailFit)} />
                                                                                 </div>
                                                                             )}
                                                                             <div className="p-3">

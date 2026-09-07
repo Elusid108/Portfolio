@@ -71,6 +71,33 @@
           "order": 0
         }
       ]
+    },
+    {
+      "id": "7e672bd7-15bf-4d84-82f6-a4f18282aa89",
+      "title": "Make tag system pill shuffle",
+      "status": "todo",
+      "description": "I want the tags in the CMS to be clickable to move from the available options to what's in the project instead of it being text based. ",
+      "notes": "",
+      "order": 6,
+      "subtasks": []
+    },
+    {
+      "id": "6cfad008-6452-4510-828a-34f6f93c85b8",
+      "title": "Tag system list",
+      "status": "todo",
+      "description": "Change the main interface tag system from a CSV to a list+ to add pills and a perado and list of which are used",
+      "notes": "",
+      "order": 7,
+      "subtasks": []
+    },
+    {
+      "id": "6cbb5814-dced-4180-af29-453c2b667bc3",
+      "title": "Auto \"save\" task",
+      "status": "todo",
+      "description": "Task list shouldn't need a save button",
+      "notes": "",
+      "order": 8,
+      "subtasks": []
     }
   ]
 }
