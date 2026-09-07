@@ -1,6 +1,6 @@
 {
   "name": "portfolio-cms",
-  "version": "2.8.2",
+  "version": "2.8.3",
   "description": "Local CMS for managing and publishing a static portfolio website",
   "main": "server.js",
   "scripts": {
