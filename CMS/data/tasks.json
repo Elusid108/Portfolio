@@ -98,6 +98,15 @@
       "notes": "",
       "order": 8,
       "subtasks": []
+    },
+    {
+      "id": "02fc9a23-bea7-4e1a-8b26-2784e0492338",
+      "title": "Related links can't be drug to reorder",
+      "status": "todo",
+      "description": "",
+      "notes": "",
+      "order": 9,
+      "subtasks": []
     }
   ]
 }
