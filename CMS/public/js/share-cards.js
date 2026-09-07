@@ -62,7 +62,7 @@
     } catch (_) { /* fall back to system fonts */ }
   }
 
-  // Cover-fit an image into a rect, honoring the CMS crop ({ scale, x, y } in percent).
+  // Cover-fit an image into a rect, honoring the CMS crop ({ scale, x, y, rotate }).
   function drawCover(ctx, img, x, y, w, h, fit) {
     const base = Math.max(w / img.width, h / img.height);
     const scale = base * Math.max(1, Number(fit?.scale) || 1);
@@ -72,10 +72,18 @@
     const fy = (Number.isFinite(Number(fit?.y)) ? Number(fit.y) : 50) / 100;
     const dx = x - (dw - w) * fx;
     const dy = y - (dh - h) * fy;
+    const rotate = Number(fit?.rotate) || 0;
     ctx.save();
     ctx.beginPath();
     ctx.rect(x, y, w, h);
     ctx.clip();
+    if (rotate) {
+      const cx = x + w * fx;
+      const cy = y + h * fy;
+      ctx.translate(cx, cy);
+      ctx.rotate(rotate * Math.PI / 180);
+      ctx.translate(-cx, -cy);
+    }
     ctx.drawImage(img, dx, dy, dw, dh);
     ctx.restore();
   }

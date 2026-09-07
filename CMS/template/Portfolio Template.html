@@ -311,13 +311,21 @@
             };
         };
 
-        // Returns inline style for a cropped image. When scale=1, only objectPosition
-        // is set so CSS hover transitions (e.g. group-hover:scale-105) still work.
+        // Returns inline style for a cropped image. When scale=1 and rotate=0,
+        // only objectPosition is set so CSS hover transitions (e.g. group-hover:scale-105) still work.
         const fitStyle = (fit) => {
             if (!fit) return {};
-            const { scale = 1, x = 50, y = 50 } = fit;
-            if (scale <= 1) return { objectPosition: `${x}% ${y}%` };
-            return { transform: `scale(${scale})`, transformOrigin: `${x}% ${y}%`, objectPosition: `${x}% ${y}%` };
+            const { scale = 1, x = 50, y = 50, rotate = 0 } = fit;
+            const rot = Number(rotate) || 0;
+            const parts = [];
+            if (rot) parts.push(`rotate(${rot}deg)`);
+            if (scale > 1) parts.push(`scale(${scale})`);
+            const style = { objectPosition: `${x}% ${y}%` };
+            if (parts.length) {
+                style.transform = parts.join(' ');
+                style.transformOrigin = `${x}% ${y}%`;
+            }
+            return style;
         };
 
         const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), iframe, [tabindex]:not([tabindex="-1"])';

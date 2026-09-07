@@ -65,7 +65,7 @@
     .upload-zone { transition: all 0.2s; }
     .upload-zone.dragover { border-color: #22d3ee; background-color: rgba(34, 211, 238, 0.08); }
     .crop-grabbing { cursor: grabbing !important; }
-    #crop-zoom-slider { height: 4px; }
+    #crop-zoom-slider, #crop-rotate-slider { height: 4px; }
     .spec-item-row:hover .spec-item-controls { opacity: 1; }
     .spec-item-controls { opacity: 0; transition: opacity 0.15s; }
     #gemini-settings-modal select option { background-color: #18181b; color: #e4e4e7; }
@@ -143,7 +143,7 @@
     <header class="h-11 shrink-0 flex items-center justify-between px-3 border-b border-zinc-800 bg-zinc-900">
       <div class="flex items-center gap-3 min-w-0">
         <span class="text-sm font-semibold tracking-wide text-zinc-100">CMS</span>
-        <span class="text-[10px] font-mono text-zinc-500">v2.7.0</span>
+        <span class="text-[10px] font-mono text-zinc-500">v2.8.0</span>
         <span id="dirtyDot" class="w-1.5 h-1.5 rounded-full bg-zinc-600 opacity-30" title="Unsaved changes"></span>
       </div>
       <div class="flex items-center gap-1.5">
@@ -269,10 +269,10 @@
                     Link thumbnail and banner
                   </label>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div class="space-y-4">
                   <div>
                     <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Card thumbnail</label>
-                    <div class="hero-preview aspect-video rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800 mb-2">
+                    <div class="hero-preview aspect-video max-w-sm rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800 mb-2">
                       <img id="hero-thumb-preview-img" class="w-full h-full object-cover" draggable="false" alt="">
                     </div>
                     <div id="hero-thumb-source" class="hidden flex gap-2">
@@ -288,7 +288,7 @@
                   </div>
                   <div>
                     <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Page banner</label>
-                    <div class="hero-preview rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800 mb-2" style="aspect-ratio:16/5">
+                    <div class="hero-preview rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800 mb-2 w-full aspect-[8/3]">
                       <img id="hero-banner-preview-img" class="w-full h-full object-cover" draggable="false" alt="">
                     </div>
                     <div class="flex gap-2">
@@ -306,11 +306,12 @@
                 <p id="banner-fit-status" class="text-[11px] font-mono text-cyan-400 mt-2"></p>
               </div>
 
-              <div class="relative" id="tags-autocomplete-wrapper">
-                <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Tags</label>
-                <textarea id="tags" rows="2" placeholder="Arduino, LED, Design" class="field font-mono text-xs"></textarea>
-                <div id="tags-dropdown" class="hidden absolute left-0 right-0 z-50 bg-zinc-900 border border-zinc-800 rounded-lg shadow-lg max-h-40 overflow-y-auto mt-1"></div>
-                <div id="tag-pills" class="flex flex-wrap gap-1.5 mt-2 empty:hidden"></div>
+              <div id="tags-autocomplete-wrapper">
+                <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Project tags</label>
+                <input type="hidden" id="tags">
+                <div id="project-tags-active" class="flex flex-wrap gap-1.5 min-h-[2.25rem] p-1.5 rounded-lg border border-zinc-800 bg-zinc-900/40"></div>
+                <p class="text-[10px] font-bold text-zinc-500 uppercase tracking-wider mt-3 mb-1">Available</p>
+                <div id="tag-pills" class="flex flex-wrap gap-1.5 empty:hidden"></div>
               </div>
             </div>
 
@@ -457,33 +458,9 @@
               </div>
             </div>
 
-            <div id="panel-skills" class="settings-tab hidden space-y-1" data-tab="skills">
-              <p class="text-[11px] text-zinc-500 mb-3">Comma-separated per category. Click a row to edit.</p>
-              <button type="button" class="kv-row" data-field="skills_hardware" onclick="openKvEdit('skills_hardware','Hardware & Electronics','PCB Design, Arduino, ...')">
-                <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-500 w-36 shrink-0">Hardware</span>
-                <span class="kv-value flex-1 truncate font-mono text-xs text-zinc-400"></span>
-                <i class="ph ph-pencil-simple text-zinc-600"></i>
-              </button>
-              <button type="button" class="kv-row" data-field="skills_lighting" onclick="openKvEdit('skills_lighting','Lighting & Show Control','DMX, ArtNet, ...')">
-                <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-500 w-36 shrink-0">Lighting</span>
-                <span class="kv-value flex-1 truncate font-mono text-xs text-zinc-400"></span>
-                <i class="ph ph-pencil-simple text-zinc-600"></i>
-              </button>
-              <button type="button" class="kv-row" data-field="skills_software" onclick="openKvEdit('skills_software','Software & Automation','React, Node.js, ...')">
-                <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-500 w-36 shrink-0">Software</span>
-                <span class="kv-value flex-1 truncate font-mono text-xs text-zinc-400"></span>
-                <i class="ph ph-pencil-simple text-zinc-600"></i>
-              </button>
-              <button type="button" class="kv-row" data-field="skills_fabrication" onclick="openKvEdit('skills_fabrication','Fabrication & R&D','FDM 3D Printing, SolidWorks, ...')">
-                <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-500 w-36 shrink-0">Fabrication</span>
-                <span class="kv-value flex-1 truncate font-mono text-xs text-zinc-400"></span>
-                <i class="ph ph-pencil-simple text-zinc-600"></i>
-              </button>
-              <button type="button" class="kv-row" data-field="skills_systems" onclick="openKvEdit('skills_systems','Systems Integration','Ethernet, SPI, CAN, ...')">
-                <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-500 w-36 shrink-0">Systems</span>
-                <span class="kv-value flex-1 truncate font-mono text-xs text-zinc-400"></span>
-                <i class="ph ph-pencil-simple text-zinc-600"></i>
-              </button>
+            <div id="panel-skills" class="settings-tab hidden space-y-4" data-tab="skills">
+              <p class="text-[11px] text-zinc-500">Pills appear in this order on About Me. Drag to reorder, click + to add, × to remove. Save Settings to keep changes.</p>
+              <div id="skills-builder" class="space-y-4"></div>
               <input type="text" id="skills_hardware" class="hidden" placeholder="PCB Design, Arduino, ...">
               <input type="text" id="skills_lighting" class="hidden" placeholder="DMX, ArtNet, ...">
               <input type="text" id="skills_software" class="hidden" placeholder="React, Node.js, ...">
@@ -552,7 +529,7 @@
         </form>
 
         <!-- TASKS (CMS-only) -->
-        <form id="tasksForm" class="hidden flex-1 min-h-0 flex-col" onsubmit="event.preventDefault(); saveCmsTasks();">
+        <div id="tasksForm" class="hidden flex-1 min-h-0 flex-col">
           <nav class="shrink-0 flex items-center justify-between gap-3 px-4 border-b border-zinc-800 bg-zinc-900/80">
             <span class="px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-cyan-400">Tasks</span>
             <button type="button" onclick="addCmsTask()" class="btn-quiet my-1.5">
@@ -560,13 +537,10 @@
             </button>
           </nav>
           <div id="tasks-scroll" class="flex-1 min-h-0 overflow-y-auto p-5">
-            <p class="text-[11px] text-zinc-500 mb-3">Site-wide work list. Not published to the portfolio.</p>
-            <div id="tasks-builder" class="space-y-2"></div>
+            <p class="text-[11px] text-zinc-500 mb-3">Site-wide work list. Not published to the portfolio. Changes save automatically.</p>
+            <div id="tasks-builder" class="max-w-xl space-y-3"></div>
           </div>
-          <div class="shrink-0 flex justify-end items-center px-5 py-3 border-t border-zinc-800 bg-zinc-900">
-            <button type="submit" class="btn-primary">Save Tasks</button>
-          </div>
-        </form>
+        </div>
       </main>
     </div>
   </div>
@@ -716,6 +690,9 @@
     let quillShort, quillLong, quillAbout;
     let specsCategories = [];
     let cmsTasks = [];
+    const cmsTaskExpanded = new Set();
+    const cmsTaskGroupOpen = { todo: true, 'in-progress': true, blocked: true, done: false };
+    let cmsTasksSaveTimer = null;
     let currentEditorTab = 'overview';
     let currentSettingsTab = 'about';
     let itemEditState = { apply: null, row: null };
@@ -1373,7 +1350,8 @@
         setupRelatedDragDrop();
         setupFileDragDrop();
         setupCmsTaskDragDrop();
-        setupTagsAutocomplete();
+        setupProjectTagPills();
+        setupSkillPills();
         document.addEventListener('keydown', (e) => {
             if (e.key !== 'Escape') return;
             const deleteModal = document.getElementById('delete-confirm-modal');
@@ -1389,16 +1367,6 @@
             }
         });
         setInterval(updateDirtyChrome, 400);
-        document.getElementById('tag-pills').addEventListener('click', (e) => {
-            const pill = e.target.closest('.tag-pill');
-            if (!pill) return;
-            const tag = pill.dataset.tag;
-            const textarea = document.getElementById('tags');
-            const current = textarea.value.trim();
-            textarea.value = current ? current.replace(/,\s*$/, '') + ', ' + tag : tag;
-            isDirty = true;
-            syncTagPills();
-        });
         document.getElementById('gallery-container').addEventListener('click', (e) => {
             const badge = e.target.closest('.index-badge');
             if (!badge || badge.querySelector('input')) return;
@@ -1448,115 +1416,206 @@
         return [...all].sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
     }
 
-    function setupTagsAutocomplete() {
-        const textarea = document.getElementById('tags');
-        const dropdown = document.getElementById('tags-dropdown');
-        let highlightedIdx = -1;
+    function getProjectTagList() {
+        return (document.getElementById('tags')?.value || '').split(',').map(t => t.trim()).filter(Boolean);
+    }
 
-        function getCurrentToken() {
-            const val = textarea.value;
-            const cursor = textarea.selectionStart;
-            const before = val.substring(0, cursor);
-            const lastComma = before.lastIndexOf(',');
-            return { token: before.substring(lastComma + 1).trim(), lastComma, cursor };
-        }
+    function setProjectTagList(tags) {
+        document.getElementById('tags').value = tags.join(', ');
+        isDirty = true;
+        updateDirtyChrome();
+        renderProjectTagPills();
+    }
 
-        function getExistingTags() {
-            return textarea.value.split(',').map(t => t.trim().toLowerCase()).filter(Boolean);
-        }
+    function renderProjectTagPills() {
+        const activeEl = document.getElementById('project-tags-active');
+        const availEl = document.getElementById('tag-pills');
+        if (!activeEl || !availEl) return;
+        const active = getProjectTagList();
+        const activeLower = new Set(active.map(t => t.toLowerCase()));
+        activeEl.innerHTML = active.length
+            ? active.map(t => `
+                <span class="project-tag-pill inline-flex items-center gap-1 text-xs font-mono px-2 py-0.5 bg-cyan-950/60 text-cyan-300 border border-cyan-500/40 rounded uppercase cursor-grab select-none" draggable="true" data-tag="${escAttr(t)}">
+                  ${escAttr(t)}
+                  <button type="button" class="project-tag-remove text-cyan-600 hover:text-red-400 leading-none" data-tag="${escAttr(t)}" aria-label="Remove ${escAttr(t)}"><i class="ph ph-x"></i></button>
+                </span>`).join('')
+            : '<span class="text-[11px] text-zinc-600 italic px-1 py-0.5">Click a skill below to add it</span>';
+        const available = getAllSkills().filter(s => !activeLower.has(s.toLowerCase()));
+        availEl.innerHTML = available.map(s =>
+            `<button type="button" class="tag-pill text-xs font-mono px-2 py-0.5 bg-zinc-800 text-cyan-400 border border-cyan-500/30 rounded uppercase hover:bg-cyan-500/20 hover:border-cyan-500/60 transition-colors cursor-pointer" data-tag="${escAttr(s)}">${escAttr(s)}</button>`
+        ).join('');
+    }
 
-        function showSuggestions() {
-            const { token } = getCurrentToken();
-            if (!token) { dropdown.classList.add('hidden'); highlightedIdx = -1; return; }
+    function syncTagPills() { renderProjectTagPills(); }
 
-            const existing = getExistingTags();
-            const lower = token.toLowerCase();
-            const matches = getAllSkills().filter(s =>
-                s.toLowerCase().startsWith(lower) && !existing.includes(s.toLowerCase())
-            );
+    function setupProjectTagPills() {
+        const wrapper = document.getElementById('tags-autocomplete-wrapper');
+        const activeEl = document.getElementById('project-tags-active');
+        if (!wrapper || !activeEl) return;
+        let dragEl = null;
 
-            if (matches.length === 0) { dropdown.classList.add('hidden'); highlightedIdx = -1; return; }
+        wrapper.addEventListener('click', (e) => {
+            const remove = e.target.closest('.project-tag-remove');
+            if (remove) {
+                const tag = remove.dataset.tag;
+                setProjectTagList(getProjectTagList().filter(t => t.toLowerCase() !== String(tag).toLowerCase()));
+                return;
+            }
+            const avail = e.target.closest('#tag-pills .tag-pill');
+            if (!avail) return;
+            const tag = avail.dataset.tag;
+            const list = getProjectTagList();
+            if (!list.some(t => t.toLowerCase() === String(tag).toLowerCase())) {
+                list.push(tag);
+                setProjectTagList(list);
+            }
+        });
 
-            highlightedIdx = -1;
-            dropdown.innerHTML = matches.map((s, i) =>
-                `<div class="tag-suggestion px-3 py-1.5 text-xs font-mono cursor-pointer hover:bg-zinc-800 hover:text-cyan-400 transition-colors" data-index="${i}" data-value="${escAttr(s)}">${escAttr(s)}</div>`
-            ).join('');
-            dropdown.classList.remove('hidden');
-        }
-
-        function pickSuggestion(value) {
-            const { lastComma } = getCurrentToken();
-            const before = lastComma >= 0 ? textarea.value.substring(0, lastComma + 1) + ' ' : '';
-            const afterCursor = textarea.value.substring(textarea.selectionStart);
-            const nextComma = afterCursor.indexOf(',');
-            const after = nextComma >= 0 ? afterCursor.substring(nextComma) : '';
-            textarea.value = before + value + ', ' + after.replace(/^,\s*/, '');
-            const newPos = (before + value + ', ').length;
-            textarea.setSelectionRange(newPos, newPos);
-            dropdown.classList.add('hidden');
-            highlightedIdx = -1;
-            textarea.focus();
+        activeEl.addEventListener('dragstart', (e) => {
+            const pill = e.target.closest('.project-tag-pill');
+            if (!pill) { e.preventDefault(); return; }
+            dragEl = pill;
+            pill.classList.add('opacity-50');
+            e.dataTransfer.effectAllowed = 'move';
+        });
+        activeEl.addEventListener('dragend', () => {
+            if (dragEl) dragEl.classList.remove('opacity-50');
+            const tags = [...activeEl.querySelectorAll('.project-tag-pill')].map(el => el.dataset.tag);
+            dragEl = null;
+            document.getElementById('tags').value = tags.join(', ');
             isDirty = true;
-        }
-
-        function updateHighlight() {
-            const items = dropdown.querySelectorAll('.tag-suggestion');
-            items.forEach((el, i) => {
-                el.classList.toggle('bg-zinc-800', i === highlightedIdx);
-                el.classList.toggle('text-cyan-400', i === highlightedIdx);
-            });
-        }
-
-        textarea.addEventListener('input', () => { showSuggestions(); syncTagPills(); });
-        textarea.addEventListener('focus', showSuggestions);
-
-        textarea.addEventListener('keydown', (e) => {
-            if (dropdown.classList.contains('hidden')) return;
-            const items = dropdown.querySelectorAll('.tag-suggestion');
-            if (e.key === 'ArrowDown') {
-                e.preventDefault();
-                highlightedIdx = Math.min(highlightedIdx + 1, items.length - 1);
-                updateHighlight();
-                if (items[highlightedIdx]) items[highlightedIdx].scrollIntoView({ block: 'nearest' });
-            } else if (e.key === 'ArrowUp') {
-                e.preventDefault();
-                highlightedIdx = Math.max(highlightedIdx - 1, 0);
-                updateHighlight();
-                if (items[highlightedIdx]) items[highlightedIdx].scrollIntoView({ block: 'nearest' });
-            } else if ((e.key === 'Enter' || e.key === 'Tab') && highlightedIdx >= 0) {
-                e.preventDefault();
-                pickSuggestion(items[highlightedIdx].dataset.value);
-            } else if (e.key === 'Escape') {
-                dropdown.classList.add('hidden');
-                highlightedIdx = -1;
-            }
+            updateDirtyChrome();
+            renderProjectTagPills();
         });
-
-        dropdown.addEventListener('mousedown', (e) => {
+        activeEl.addEventListener('dragover', (e) => {
             e.preventDefault();
-            const item = e.target.closest('.tag-suggestion');
-            if (item) pickSuggestion(item.dataset.value);
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('#tags-autocomplete-wrapper')) {
-                dropdown.classList.add('hidden');
-                highlightedIdx = -1;
-            }
+            if (!dragEl) return;
+            const target = e.target.closest('.project-tag-pill');
+            if (!target || target === dragEl) return;
+            const rect = target.getBoundingClientRect();
+            const before = (e.clientX - rect.left) < rect.width / 2;
+            activeEl.insertBefore(dragEl, before ? target : target.nextSibling);
         });
     }
 
-    function syncTagPills() {
-        const textarea = document.getElementById('tags');
-        const container = document.getElementById('tag-pills');
-        if (!container) return;
-        const existing = new Set(
-            textarea.value.split(',').map(t => t.trim().toLowerCase()).filter(Boolean)
-        );
-        const available = getAllSkills().filter(s => !existing.has(s.toLowerCase()));
-        container.innerHTML = available.map(s =>
-            `<button type="button" class="tag-pill text-xs font-mono px-2 py-0.5 bg-zinc-800 text-cyan-400 border border-cyan-500/30 rounded uppercase hover:bg-cyan-500/20 hover:border-cyan-500/60 transition-colors cursor-pointer" data-tag="${escAttr(s)}">${escAttr(s)}</button>`
-        ).join('');
+    const SKILL_FIELDS = [
+        { id: 'skills_hardware', label: 'Hardware & Electronics' },
+        { id: 'skills_lighting', label: 'Lighting & Show Control' },
+        { id: 'skills_software', label: 'Software & Automation' },
+        { id: 'skills_fabrication', label: 'Fabrication & R&D' },
+        { id: 'skills_systems', label: 'Systems Integration' }
+    ];
+
+    function parseSkillList(id) {
+        return (document.getElementById(id)?.value || '').split(',').map(s => s.trim()).filter(Boolean);
+    }
+
+    function writeSkillList(id, items) {
+        const el = document.getElementById(id);
+        if (el) el.value = items.join(', ');
+        isDirty = true;
+        updateDirtyChrome();
+    }
+
+    function renderSkillPills() {
+        const builder = document.getElementById('skills-builder');
+        if (!builder) return;
+        builder.innerHTML = SKILL_FIELDS.map(cat => {
+            const items = parseSkillList(cat.id);
+            return `
+              <div class="skill-cat" data-field="${cat.id}">
+                <p class="text-[10px] font-bold uppercase tracking-wider text-zinc-500 mb-2">${cat.label}</p>
+                <div class="skill-pill-row flex flex-wrap gap-1.5 items-center">
+                  ${items.map(s => `
+                    <span class="skill-pill inline-flex items-center gap-1 text-xs font-mono px-2 py-0.5 bg-zinc-800 text-zinc-300 border border-zinc-700 rounded cursor-grab select-none" draggable="true" data-skill="${escAttr(s)}">
+                      ${escAttr(s)}
+                      <button type="button" class="skill-pill-remove text-zinc-500 hover:text-red-400 leading-none" data-skill="${escAttr(s)}" aria-label="Remove ${escAttr(s)}"><i class="ph ph-x"></i></button>
+                    </span>`).join('')}
+                  <button type="button" class="skill-pill-add inline-flex items-center justify-center h-6 w-6 rounded border border-dashed border-zinc-600 text-zinc-400 hover:text-cyan-400 hover:border-cyan-500/50" title="Add skill" aria-label="Add skill">
+                    <i class="ph ph-plus"></i>
+                  </button>
+                </div>
+              </div>`;
+        }).join('');
+    }
+
+    function startSkillAdd(btn) {
+        const row = btn.closest('.skill-pill-row');
+        if (!row || row.querySelector('.skill-add-input')) return;
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.className = 'skill-add-input field w-40 text-xs h-6 py-0';
+        input.placeholder = 'New skill';
+        btn.replaceWith(input);
+        input.focus();
+        let committed = false;
+        const commit = () => {
+            if (committed) return;
+            committed = true;
+            const val = input.value.trim();
+            const cat = row.closest('.skill-cat')?.dataset.field;
+            if (val && cat) {
+                const list = parseSkillList(cat);
+                if (!list.some(s => s.toLowerCase() === val.toLowerCase())) {
+                    list.push(val);
+                    writeSkillList(cat, list);
+                }
+            }
+            renderSkillPills();
+        };
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') { e.preventDefault(); commit(); }
+            if (e.key === 'Escape') { committed = true; renderSkillPills(); }
+        });
+        input.addEventListener('blur', commit);
+    }
+
+    function setupSkillPills() {
+        const builder = document.getElementById('skills-builder');
+        if (!builder) return;
+        let dragEl = null;
+
+        builder.addEventListener('click', (e) => {
+            const add = e.target.closest('.skill-pill-add');
+            if (add) { startSkillAdd(add); return; }
+            const remove = e.target.closest('.skill-pill-remove');
+            if (!remove) return;
+            const cat = remove.closest('.skill-cat')?.dataset.field;
+            const skill = remove.dataset.skill;
+            if (!cat || !skill) return;
+            writeSkillList(cat, parseSkillList(cat).filter(s => s.toLowerCase() !== skill.toLowerCase()));
+            renderSkillPills();
+        });
+
+        builder.addEventListener('dragstart', (e) => {
+            const pill = e.target.closest('.skill-pill');
+            if (!pill) { e.preventDefault(); return; }
+            dragEl = pill;
+            pill.classList.add('opacity-50');
+            e.dataTransfer.effectAllowed = 'move';
+        });
+        builder.addEventListener('dragend', () => {
+            if (!dragEl) return;
+            dragEl.classList.remove('opacity-50');
+            const row = dragEl.closest('.skill-pill-row');
+            const cat = dragEl.closest('.skill-cat')?.dataset.field;
+            const items = row ? [...row.querySelectorAll('.skill-pill')].map(el => el.dataset.skill) : [];
+            dragEl = null;
+            if (cat) {
+                writeSkillList(cat, items);
+                renderSkillPills();
+            }
+        });
+        builder.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            if (!dragEl) return;
+            const row = dragEl.closest('.skill-pill-row');
+            const target = e.target.closest('.skill-pill');
+            if (!row || !target || target === dragEl || target.closest('.skill-pill-row') !== row) return;
+            const rect = target.getBoundingClientRect();
+            const before = (e.clientX - rect.left) < rect.width / 2;
+            row.insertBefore(dragEl, before ? target : target.nextSibling);
+        });
     }
 
     function escAttr(value) {
@@ -1601,13 +1660,17 @@
         const scale = Number(fit.scale);
         const x = fit.x != null ? fit.x : 50;
         const y = fit.y != null ? fit.y : 50;
+        const rotate = Number(fit.rotate) || 0;
         el.style.objectPosition = `${x}% ${y}%`;
-        if (!Number.isFinite(scale) || scale <= 1) {
+        const parts = [];
+        if (rotate) parts.push(`rotate(${rotate}deg)`);
+        if (Number.isFinite(scale) && scale > 1) parts.push(`scale(${scale})`);
+        if (parts.length) {
+            el.style.transform = parts.join(' ');
+            el.style.transformOrigin = `${x}% ${y}%`;
+        } else {
             el.style.transform = '';
             el.style.transformOrigin = '';
-        } else {
-            el.style.transform = `scale(${scale})`;
-            el.style.transformOrigin = `${x}% ${y}%`;
         }
     }
 
@@ -1846,6 +1909,7 @@
 
     function setupDirtyTracking() {
         const mark = (e) => {
+            if (e.target.closest('#tasksForm')) return;
             if(e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') {
                 isDirty = true;
                 updateDirtyChrome();
@@ -2043,10 +2107,12 @@
     }
 
     function hideAllForms() {
+      const tasksForm = document.getElementById('tasksForm');
+      if (tasksForm && !tasksForm.classList.contains('hidden')) flushCmsTasks();
       document.getElementById('emptyState').classList.add('hidden');
       document.getElementById('editor').classList.add('hidden');
       document.getElementById('settingsForm').classList.add('hidden');
-      document.getElementById('tasksForm')?.classList.add('hidden');
+      tasksForm?.classList.add('hidden');
       document.getElementById('railSettingsBtn')?.classList.remove('rail-active');
       document.getElementById('railTasksBtn')?.classList.remove('rail-active');
     }
@@ -2176,6 +2242,7 @@
             else quillAbout.setText('');
 
             refreshKvRows();
+            renderSkillPills();
             setTimeout(() => isDirty = false, 200);
       }).catch(onError);
     }
@@ -2209,9 +2276,18 @@
       return cmsTasks.find(t => t.id === taskId);
     }
 
-    function markCmsTasksDirty() {
-      isDirty = true;
-      updateDirtyChrome();
+    function persistCmsTasksQuiet() {
+      clearTimeout(cmsTasksSaveTimer);
+      cmsTasksSaveTimer = setTimeout(() => {
+        cmsTasksSaveTimer = null;
+        api.post('/tasks', { tasks: cmsTasks }).catch(onError);
+      }, 300);
+    }
+
+    function flushCmsTasks() {
+      clearTimeout(cmsTasksSaveTimer);
+      cmsTasksSaveTimer = null;
+      return api.post('/tasks', { tasks: cmsTasks }).catch(onError);
     }
 
     function showTasks() {
@@ -2231,25 +2307,14 @@
         document.getElementById('tasksForm').classList.remove('hidden');
         document.getElementById('railTasksBtn')?.classList.add('rail-active');
         renderCmsTasks();
-        setTimeout(() => { isDirty = false; }, 200);
       }).catch(onError);
     }
 
     function saveCmsTasks(postSaveCallback = null) {
-      document.getElementById('loadingOverlay').classList.remove('hidden');
-      api.post('/tasks', { tasks: cmsTasks }).then((result) => {
-        cmsTasks = Array.isArray(result?.tasks) ? result.tasks : cmsTasks;
+      flushCmsTasks().then(() => {
         isDirty = false;
         updateDirtyChrome();
-        renderCmsTasks();
-        showStatus('Tasks Saved!', 'green');
-        Toastify({ text: 'Tasks Saved!', duration: 3000, backgroundColor: '#10b981' }).showToast();
-        document.getElementById('loadingOverlay').classList.add('hidden');
-        setTimeout(hideStatus, 1500);
         if (postSaveCallback) postSaveCallback();
-      }).catch(err => {
-        document.getElementById('loadingOverlay').classList.add('hidden');
-        onError(err);
       });
     }
 
@@ -2259,58 +2324,155 @@
       ).join('');
     }
 
-    function cmsTaskRowSummary(item) {
-      const meta = cmsTaskStatusMeta(item.status);
+    function cmsTaskTitleHtml(item) {
+      const done = item.status === 'done';
       const title = item.title ? escapeHtml(item.title) : '<span class="italic text-zinc-600">Untitled</span>';
-      const desc = (item.description || '').trim();
+      return `<span class="cms-task-title flex-1 min-w-0 text-sm truncate ${done ? 'text-zinc-500 line-through' : 'text-zinc-200'}">${title}</span>`;
+    }
+
+    function cmsTaskFieldsHtml(taskId, subId, item) {
+      const sid = subId || '';
       return `
-        <span class="text-[10px] font-mono font-bold ${meta.cls} w-10 shrink-0">${meta.pill}</span>
-        <span class="flex-1 min-w-0 text-sm text-zinc-200 truncate">${title}</span>
-        ${desc ? `<span class="hidden sm:block max-w-[40%] truncate text-[10px] text-zinc-500">${escapeHtml(desc)}</span>` : ''}
+        <input type="text" class="field text-sm" value="${escAttr(item.title)}" placeholder="Title"
+               onblur="onCmsTaskFieldBlur('${taskId}','${sid}','title',this.value)">
+        <textarea rows="2" class="field text-xs" placeholder="Description"
+                  onblur="onCmsTaskFieldBlur('${taskId}','${sid}','description',this.value)">${escAttr(item.description)}</textarea>
+        <textarea rows="3" class="field text-xs" placeholder="Notes"
+                  onblur="onCmsTaskFieldBlur('${taskId}','${sid}','notes',this.value)">${escAttr(item.notes)}</textarea>
       `;
     }
 
-    function renderCmsTasks() {
-      const container = document.getElementById('tasks-builder');
-      if (!container) return;
-      if (!cmsTasks.length) {
-        container.innerHTML = '<p class="text-xs text-zinc-600 italic">No tasks yet. Click Add Task to start.</p>';
-        return;
-      }
-      container.innerHTML = cmsTasks.map((task, taskIndex) => `
-        <div class="cms-task-row rounded-lg border border-zinc-800 overflow-hidden bg-zinc-900/40" data-task-id="${escAttr(task.id)}" draggable="true">
-          <div class="flex items-center gap-2 px-2 py-1.5 hover:bg-zinc-900 cursor-pointer group"
-               onclick="if(!event.target.closest('button,.drag-handle')) openCmsTaskEdit('${task.id}')">
+    function cmsSubtaskRowHtml(taskId, sub) {
+      const expanded = cmsTaskExpanded.has(sub.id);
+      const done = sub.status === 'done';
+      return `
+        <div class="cms-subtask-row rounded border border-zinc-800/80 bg-zinc-950/50" data-task-id="${escAttr(taskId)}" data-sub-id="${escAttr(sub.id)}" draggable="true">
+          <div class="flex items-center gap-2 px-2 py-1 hover:bg-zinc-900 cursor-pointer"
+               onclick="toggleCmsTaskExpand('${sub.id}', event)">
             <span class="drag-handle cursor-grab text-zinc-700 hover:text-zinc-400 px-0.5 shrink-0" onclick="event.stopPropagation()"><i class="ph ph-dots-six-vertical"></i></span>
-            ${cmsTaskRowSummary(task)}
+            <input type="checkbox" class="accent-cyan-400 shrink-0" ${done ? 'checked' : ''}
+                   onclick="event.stopPropagation()" onchange="setCmsTaskDone('${taskId}','${sub.id}', this.checked)">
+            ${cmsTaskTitleHtml(sub)}
+            <div class="flex items-center shrink-0" onclick="event.stopPropagation()">
+              <button type="button" onclick="openCmsTaskEdit('${taskId}','${sub.id}')" class="p-1 text-zinc-500 hover:text-cyan-400" title="Edit"><i class="ph ph-pencil-simple"></i></button>
+              <button type="button" onclick="deleteCmsSubtask('${taskId}','${sub.id}')" class="p-1 text-zinc-500 hover:text-red-400" title="Delete"><i class="ph ph-trash"></i></button>
+            </div>
+          </div>
+          <div class="cms-sub-body ${expanded ? '' : 'hidden'} px-2 pb-2 pl-8 space-y-1.5">
+            ${cmsTaskFieldsHtml(taskId, sub.id, sub)}
+          </div>
+        </div>
+      `;
+    }
+
+    function cmsTaskRowHtml(task) {
+      const expanded = cmsTaskExpanded.has(task.id);
+      const done = task.status === 'done';
+      const subs = Array.isArray(task.subtasks) ? task.subtasks.slice().sort((a, b) => (a.order || 0) - (b.order || 0)) : [];
+      return `
+        <div class="cms-task-row rounded-lg border border-zinc-800 overflow-hidden bg-zinc-900/40" data-task-id="${escAttr(task.id)}" draggable="true">
+          <div class="flex items-center gap-2 px-2 py-1.5 hover:bg-zinc-900 cursor-pointer"
+               onclick="toggleCmsTaskExpand('${task.id}', event)">
+            <span class="drag-handle cursor-grab text-zinc-700 hover:text-zinc-400 px-0.5 shrink-0" onclick="event.stopPropagation()"><i class="ph ph-dots-six-vertical"></i></span>
+            <input type="checkbox" class="accent-cyan-400 shrink-0" ${done ? 'checked' : ''}
+                   onclick="event.stopPropagation()" onchange="setCmsTaskDone('${task.id}','', this.checked)">
+            ${cmsTaskTitleHtml(task)}
             <div class="flex items-center shrink-0" onclick="event.stopPropagation()">
               <button type="button" onclick="openCmsTaskEdit('${task.id}')" class="p-1 text-zinc-500 hover:text-cyan-400" title="Edit"><i class="ph ph-pencil-simple"></i></button>
               <button type="button" onclick="addCmsSubtask('${task.id}')" class="p-1 text-zinc-500 hover:text-cyan-400" title="Add sub-task"><i class="ph ph-plus"></i></button>
               <button type="button" onclick="deleteCmsTask('${task.id}')" class="p-1 text-zinc-500 hover:text-red-400" title="Delete"><i class="ph ph-trash"></i></button>
             </div>
           </div>
-          <div class="cms-task-subs ${task.subtasks && task.subtasks.length ? 'border-t border-zinc-800' : ''}">
-            ${(task.subtasks || []).map((sub) => `
-              <div class="cms-subtask-row flex items-center gap-2 px-2 py-1.5 pl-8 border-t border-zinc-800/80 hover:bg-zinc-900 cursor-pointer group" data-task-id="${escAttr(task.id)}" data-sub-id="${escAttr(sub.id)}" draggable="true"
-                   onclick="if(!event.target.closest('button,.drag-handle')) openCmsTaskEdit('${task.id}','${sub.id}')">
-                <span class="drag-handle cursor-grab text-zinc-700 hover:text-zinc-400 px-0.5 shrink-0" onclick="event.stopPropagation()"><i class="ph ph-dots-six-vertical"></i></span>
-                ${cmsTaskRowSummary(sub)}
-                <div class="flex items-center shrink-0" onclick="event.stopPropagation()">
-                  <button type="button" onclick="openCmsTaskEdit('${task.id}','${sub.id}')" class="p-1 text-zinc-500 hover:text-cyan-400" title="Edit"><i class="ph ph-pencil-simple"></i></button>
-                  <button type="button" onclick="deleteCmsSubtask('${task.id}','${sub.id}')" class="p-1 text-zinc-500 hover:text-red-400" title="Delete"><i class="ph ph-trash"></i></button>
-                </div>
-              </div>
-            `).join('')}
+          <div class="cms-task-body ${expanded ? '' : 'hidden'} border-t border-zinc-800 px-2 py-2 pl-8 space-y-2">
+            ${cmsTaskFieldsHtml(task.id, '', task)}
+            <div class="cms-task-subs space-y-1.5">${subs.map(sub => cmsSubtaskRowHtml(task.id, sub)).join('')}</div>
           </div>
         </div>
-      `).join('');
+      `;
+    }
+
+    function renderCmsTasks() {
+      const container = document.getElementById('tasks-builder');
+      if (!container) return;
+      container.innerHTML = CMS_TASK_STATUSES.map(status => {
+        const items = cmsTasks
+          .filter(t => (t.status || 'todo') === status.id)
+          .sort((a, b) => (a.order || 0) - (b.order || 0));
+        const open = cmsTaskGroupOpen[status.id] !== false;
+        return `
+          <section class="cms-task-group" data-status="${status.id}">
+            <button type="button" class="flex items-center gap-2 w-full px-1 py-1.5 text-left hover:bg-zinc-900/60 rounded"
+                    onclick="toggleCmsTaskGroup('${status.id}')">
+              <i class="ph ${open ? 'ph-caret-down' : 'ph-caret-right'} text-zinc-500"></i>
+              <span class="text-[10px] font-bold uppercase tracking-wider ${status.cls}">${status.label}</span>
+              <span class="text-[10px] font-mono text-zinc-600">${items.length}</span>
+            </button>
+            <div class="cms-task-group-body space-y-2 ${open ? '' : 'hidden'}">
+              ${items.length ? items.map(cmsTaskRowHtml).join('') : '<p class="text-[11px] text-zinc-600 italic px-2 py-1">None</p>'}
+            </div>
+          </section>
+        `;
+      }).join('');
+    }
+
+    function toggleCmsTaskGroup(status) {
+      cmsTaskGroupOpen[status] = cmsTaskGroupOpen[status] === false;
+      renderCmsTasks();
+    }
+
+    function toggleCmsTaskExpand(id, event) {
+      if (event && event.target.closest('button, input, textarea, select, .drag-handle')) return;
+      if (cmsTaskExpanded.has(id)) cmsTaskExpanded.delete(id);
+      else cmsTaskExpanded.add(id);
+      renderCmsTasks();
+    }
+
+    function findCmsSubtask(taskId, subId) {
+      return (findCmsTask(taskId)?.subtasks || []).find(s => s.id === subId);
+    }
+
+    function onCmsTaskFieldBlur(taskId, subId, field, value) {
+      const item = subId ? findCmsSubtask(taskId, subId) : findCmsTask(taskId);
+      if (!item || item[field] === value) return;
+      item[field] = value;
+      if (field === 'title') {
+        const sel = subId
+          ? `.cms-subtask-row[data-sub-id="${CSS.escape(subId)}"] .cms-task-title`
+          : `.cms-task-row[data-task-id="${CSS.escape(taskId)}"] > div > .cms-task-title`;
+        const titleEl = document.querySelector(sel);
+        if (titleEl) {
+          titleEl.textContent = value.trim() || 'Untitled';
+          titleEl.classList.toggle('italic', !value.trim());
+        }
+      }
+      persistCmsTasksQuiet();
+    }
+
+    function setCmsTaskDone(taskId, subId, checked) {
+      if (subId) {
+        const sub = findCmsSubtask(taskId, subId);
+        if (!sub) return;
+        sub.status = checked ? 'done' : 'todo';
+      } else {
+        const task = findCmsTask(taskId);
+        if (!task) return;
+        if (checked) {
+          task.status = 'done';
+          (task.subtasks || []).forEach(s => { s.status = 'done'; });
+        } else {
+          task.status = 'todo';
+        }
+      }
+      persistCmsTasksQuiet();
+      renderCmsTasks();
     }
 
     function addCmsTask() {
       const task = blankCmsTask();
       task.order = cmsTasks.length;
       cmsTasks.push(task);
-      markCmsTasksDirty();
+      cmsTaskExpanded.add(task.id);
+      persistCmsTasksQuiet();
       renderCmsTasks();
       openCmsTaskEdit(task.id);
     }
@@ -2322,7 +2484,9 @@
       const sub = blankCmsSubtask();
       sub.order = task.subtasks.length;
       task.subtasks.push(sub);
-      markCmsTasksDirty();
+      cmsTaskExpanded.add(task.id);
+      cmsTaskExpanded.add(sub.id);
+      persistCmsTasksQuiet();
       renderCmsTasks();
       openCmsTaskEdit(taskId, sub.id);
     }
@@ -2334,7 +2498,7 @@
         message: `Remove “${task?.title || 'this task'}” and its sub-tasks.`,
         onConfirm: () => {
           cmsTasks = cmsTasks.filter(t => t.id !== taskId);
-          markCmsTasksDirty();
+          persistCmsTasksQuiet();
           renderCmsTasks();
         }
       });
@@ -2349,10 +2513,21 @@
         message: `Remove “${sub?.title || 'this sub-task'}”.`,
         onConfirm: () => {
           task.subtasks = (task.subtasks || []).filter(s => s.id !== subId);
-          markCmsTasksDirty();
+          persistCmsTasksQuiet();
           renderCmsTasks();
         }
       });
+    }
+
+    function applyCmsTaskEditFields(item, taskId, subId) {
+      item.title = document.getElementById('item-edit-task-title').value;
+      item.status = document.getElementById('item-edit-task-status').value;
+      item.description = document.getElementById('item-edit-task-description').value;
+      item.notes = document.getElementById('item-edit-task-notes').value;
+      if (!subId && item.status === 'done') {
+        (findCmsTask(taskId)?.subtasks || []).forEach(s => { s.status = 'done'; });
+      }
+      persistCmsTasksQuiet();
     }
 
     function openCmsTaskEdit(taskId, subId) {
@@ -2380,15 +2555,22 @@
             <textarea id="item-edit-task-notes" rows="4" class="field" placeholder="Notes">${escAttr(item.notes)}</textarea>
           </div>`,
         onApply: () => {
-          item.title = document.getElementById('item-edit-task-title').value;
-          item.status = document.getElementById('item-edit-task-status').value;
-          item.description = document.getElementById('item-edit-task-description').value;
-          item.notes = document.getElementById('item-edit-task-notes').value;
-          markCmsTasksDirty();
+          applyCmsTaskEditFields(item, taskId, subId);
           renderCmsTasks();
         },
         focusSelector: '#item-edit-task-title'
       });
+      const bindBlur = (id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const persist = () => applyCmsTaskEditFields(item, taskId, subId);
+        el.addEventListener('blur', persist);
+        if (el.tagName === 'SELECT') el.addEventListener('change', persist);
+      };
+      bindBlur('item-edit-task-title');
+      bindBlur('item-edit-task-status');
+      bindBlur('item-edit-task-description');
+      bindBlur('item-edit-task-notes');
     }
 
     function setupCmsTaskDragDrop() {
@@ -2420,21 +2602,23 @@
         if (dragKind === 'sub' && dragEl) syncCmsSubtaskOrderFromDom(dragEl.dataset.taskId);
         dragEl = null;
         dragKind = null;
-        markCmsTasksDirty();
+        persistCmsTasksQuiet();
       });
       container.addEventListener('dragover', (e) => {
         e.preventDefault();
         if (!dragEl) return;
         if (dragKind === 'task') {
-          const rows = [...container.querySelectorAll('.cms-task-row:not(.opacity-50)')];
+          const groupBody = dragEl.closest('.cms-task-group-body');
+          if (!groupBody) return;
+          const rows = [...groupBody.querySelectorAll(':scope > .cms-task-row:not(.opacity-50)')];
           const after = rows.reduce((closest, child) => {
             const box = child.getBoundingClientRect();
             const offset = e.clientY - box.top - box.height / 2;
             if (offset < 0 && offset > closest.offset) return { offset, element: child };
             return closest;
           }, { offset: -Infinity }).element;
-          if (after == null) container.appendChild(dragEl);
-          else container.insertBefore(dragEl, after);
+          if (after == null) groupBody.appendChild(dragEl);
+          else groupBody.insertBefore(dragEl, after);
         } else if (dragKind === 'sub') {
           const parent = dragEl.closest('.cms-task-row')?.querySelector('.cms-task-subs');
           if (!parent) return;
@@ -4124,24 +4308,29 @@
 
     // --- PUBLISH ---
     function publish() {
-      if (isDirty) {
-          if(!document.getElementById('editor').classList.contains('hidden')) {
-                saveCurrent(performPublish);
-          } else if(!document.getElementById('settingsForm').classList.contains('hidden')) {
-                saveSettings(async () => {
-                    await flushListOrder();
-                    performPublish();
-                });
-          } else if(!document.getElementById('tasksForm').classList.contains('hidden')) {
-                saveCmsTasks(performPublish);
-          } else {
-                flushListOrder().then(performPublish);
-          }
-      } else if (listOrderDirty) {
-          flushListOrder().then(performPublish);
-      } else {
-          performPublish();
-      }
+      const run = () => {
+        if (isDirty) {
+            if(!document.getElementById('editor').classList.contains('hidden')) {
+                  saveCurrent(performPublish);
+            } else if(!document.getElementById('settingsForm').classList.contains('hidden')) {
+                  saveSettings(async () => {
+                      await flushListOrder();
+                      performPublish();
+                  });
+            } else if(!document.getElementById('tasksForm').classList.contains('hidden')) {
+                  saveCmsTasks(performPublish);
+            } else {
+                  flushListOrder().then(performPublish);
+            }
+        } else if (listOrderDirty) {
+            flushListOrder().then(performPublish);
+        } else {
+            performPublish();
+        }
+      };
+      const tasksForm = document.getElementById('tasksForm');
+      if (tasksForm && !tasksForm.classList.contains('hidden')) flushCmsTasks().then(run);
+      else run();
     }
 
     function cleanupMedia() {
@@ -4151,24 +4340,29 @@
       }
       if (!confirm("This will move unlinked media into media/_trash, rename remaining gallery files to the project-img/vid/gfx pattern, update all links, and republish the site. Continue?")) return;
 
-      if (isDirty) {
-        if (!document.getElementById('editor').classList.contains('hidden')) {
-          saveCurrent(performCleanup);
-        } else if (!document.getElementById('settingsForm').classList.contains('hidden')) {
-          saveSettings(async () => {
-            await flushListOrder();
-            performCleanup();
-          });
-        } else if (!document.getElementById('tasksForm').classList.contains('hidden')) {
-          saveCmsTasks(performCleanup);
-        } else {
+      const run = () => {
+        if (isDirty) {
+          if (!document.getElementById('editor').classList.contains('hidden')) {
+            saveCurrent(performCleanup);
+          } else if (!document.getElementById('settingsForm').classList.contains('hidden')) {
+            saveSettings(async () => {
+              await flushListOrder();
+              performCleanup();
+            });
+          } else if (!document.getElementById('tasksForm').classList.contains('hidden')) {
+            saveCmsTasks(performCleanup);
+          } else {
+            flushListOrder().then(performCleanup);
+          }
+        } else if (listOrderDirty) {
           flushListOrder().then(performCleanup);
+        } else {
+          performCleanup();
         }
-      } else if (listOrderDirty) {
-        flushListOrder().then(performCleanup);
-      } else {
-        performCleanup();
-      }
+      };
+      const tasksForm = document.getElementById('tasksForm');
+      if (tasksForm && !tasksForm.classList.contains('hidden')) flushCmsTasks().then(run);
+      else run();
     }
 
     async function performCleanup() {
@@ -4393,13 +4587,14 @@
     function onError(err) { showStatus("Error: " + (err.message || err), "red"); console.error(err); }
 
     // ---- CROP MODAL ----
-    const cropState = { x: 50, y: 50, scale: 1, dragging: false, lastX: 0, lastY: 0, onSave: null };
+    const cropState = { x: 50, y: 50, scale: 1, rotate: 0, dragging: false, lastX: 0, lastY: 0, onSave: null };
 
     function openCropModal(imgSrc, aspectW, aspectH, label, currentFit, onSave) {
       const fit = currentFit || {};
       cropState.x = fit.x != null ? fit.x : 50;
       cropState.y = fit.y != null ? fit.y : 50;
       cropState.scale = fit.scale != null ? fit.scale : 1;
+      cropState.rotate = Number.isFinite(Number(fit.rotate)) ? Number(fit.rotate) : 0;
       cropState.dragging = false;
       cropState.onSave = onSave;
 
@@ -4465,13 +4660,19 @@
 
     function updateCropPreview() {
       const { x, y, scale } = cropState;
+      const rotate = Number(cropState.rotate) || 0;
       const img = document.getElementById('crop-preview-img');
-      img.style.transform = `scale(${scale})`;
+      const parts = [];
+      if (rotate) parts.push(`rotate(${rotate}deg)`);
+      parts.push(`scale(${scale})`);
+      img.style.transform = parts.join(' ');
       img.style.transformOrigin = `${x}% ${y}%`;
       img.style.objectPosition = `${x}% ${y}%`;
       document.getElementById('crop-zoom-slider').value = scale;
+      const rotSlider = document.getElementById('crop-rotate-slider');
+      if (rotSlider) rotSlider.value = rotate;
       document.getElementById('crop-readout').textContent =
-        `Zoom ${scale.toFixed(2)}\u00d7  \u00b7  X ${Math.round(x)}%  \u00b7  Y ${Math.round(y)}%`;
+        `Zoom ${scale.toFixed(2)}\u00d7  \u00b7  X ${Math.round(x)}%  \u00b7  Y ${Math.round(y)}%  \u00b7  R ${Math.round(rotate)}\u00b0`;
     }
 
     function closeCropModal() {
@@ -4480,17 +4681,19 @@
     }
 
     function saveCropModal() {
+      const rotate = Number(cropState.rotate) || 0;
       const fit = {
         scale: parseFloat(cropState.scale.toFixed(3)),
         x: parseFloat(cropState.x.toFixed(1)),
-        y: parseFloat(cropState.y.toFixed(1))
+        y: parseFloat(cropState.y.toFixed(1)),
+        rotate: parseFloat(rotate.toFixed(1))
       };
       if (cropState.onSave) cropState.onSave(fit);
       closeCropModal();
     }
 
     function resetCrop() {
-      cropState.x = 50; cropState.y = 50; cropState.scale = 1;
+      cropState.x = 50; cropState.y = 50; cropState.scale = 1; cropState.rotate = 0;
       updateCropPreview();
     }
 
@@ -4504,8 +4707,8 @@
         return;
       }
       const fitId = isThumbnail ? 'thumbnailFit' : 'bannerFit';
-      const label = isThumbnail ? 'Card Thumbnail  (16 : 9)' : 'Page Banner  (16 : 5)';
-      const [aw, ah] = isThumbnail ? [16, 9] : [16, 5];
+      const label = isThumbnail ? 'Card Thumbnail  (16 : 9)' : 'Page Banner  (8 : 3)';
+      const [aw, ah] = isThumbnail ? [16, 9] : [8, 3];
       let currentFit = null;
       try { currentFit = JSON.parse(document.getElementById(fitId).value || 'null'); } catch {}
       openCropModal(imgSrc, aw, ah, label, currentFit, (fit) => {
@@ -4732,7 +4935,8 @@
       </div>
       <p class="text-xs text-zinc-500 -mt-2">
         <i class="ph ph-hand"></i> Drag to pan &nbsp;·&nbsp;
-        <i class="ph ph-magnifying-glass"></i> Scroll or use slider to zoom
+        <i class="ph ph-magnifying-glass"></i> Scroll or use slider to zoom &nbsp;·&nbsp;
+        <i class="ph ph-arrow-clockwise"></i> Rotate
       </p>
       <div id="crop-preview-box"
            class="relative overflow-hidden rounded-lg bg-zinc-800 mx-auto select-none"
@@ -4750,7 +4954,14 @@
                oninput="cropState.scale = parseFloat(this.value); updateCropPreview();">
         <i class="ph ph-magnifying-glass-plus text-zinc-500 text-lg"></i>
       </div>
-      <div id="crop-readout" class="text-xs text-center font-mono text-zinc-500 -mt-1">Zoom 1.00× · X 50% · Y 50%</div>
+      <div class="flex items-center gap-3">
+        <i class="ph ph-arrow-counter-clockwise text-zinc-500 text-lg"></i>
+        <input type="range" id="crop-rotate-slider" min="-180" max="180" step="1" value="0"
+               class="flex-1 accent-cyan-400"
+               oninput="cropState.rotate = parseFloat(this.value); updateCropPreview();">
+        <i class="ph ph-arrow-clockwise text-zinc-500 text-lg"></i>
+      </div>
+      <div id="crop-readout" class="text-xs text-center font-mono text-zinc-500 -mt-1">Zoom 1.00× · X 50% · Y 50% · R 0°</div>
       <div class="flex justify-between items-center pt-2 border-t border-zinc-800">
         <div class="flex items-center gap-1">
           <button type="button" onclick="resetCrop()"
@@ -4982,7 +5193,7 @@
       </div>
 
       <p class="text-[10px] text-zinc-600 font-mono tabular-nums mt-6 text-center">
-        Portfolio CMS v2.7.0 Local
+        Portfolio CMS v2.8.0 Local
       </p>
     </div>
   </div>
