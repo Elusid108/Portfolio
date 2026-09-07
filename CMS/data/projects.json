@@ -36457,8 +36457,8 @@
           "panX": -0.0482,
           "panY": 0.0613
         },
-        "poster": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-7d761c.webp",
-        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-7d761c-thumb.webp"
+        "poster": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-gfx-831de2-poster.webp",
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-gfx-831de2-poster-thumb.webp"
       },
       {
         "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-298b15.webp",
@@ -36494,7 +36494,7 @@
           "x": 48,
           "y": 32.5
         },
-        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-d34cff-thumb.webp"
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-31d519-poster-thumb.webp"
       },
       {
         "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-1f0f04.mp4",
@@ -45760,7 +45760,7 @@
       },
       {
         "url": "media/Lighting/Glow Lounge/Glow-Lounge-vid-258729.mp4",
-        "thumbnail": "media/Lighting/Glow Lounge/Glow-Lounge-img-4f9013-thumb.webp"
+        "thumbnail": "media/Lighting/Glow Lounge/Glow-Lounge-vid-258729-poster-thumb.webp"
       },
       {
         "url": "media/Lighting/Glow Lounge/Glow-Lounge-vid-dfb38d.mp4",
@@ -48193,8 +48193,8 @@
       },
       {
         "url": "media/Lighting/Lighting Layer/Lighting-Layer-vid-3a8e94.mp4",
-        "poster": "media/Lighting/Lighting Layer/Lighting-Layer-img-5972ce.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-5972ce-thumb.webp"
+        "poster": "media/Lighting/Lighting Layer/Lighting-Layer-vid-3a8e94-poster.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-vid-3a8e94-poster-thumb.webp"
       }
     ],
     "files": [],
@@ -48222,7 +48222,7 @@
     "timestamp": "2026-09-05T01:35:46.632Z",
     "id": "2395",
     "order": 3,
-    "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-c5cc86-thumb.webp",
+    "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-4af53d-thumb.webp",
     "linkHeroImages": false,
     "thumbnailFit": {
       "scale": 1,
@@ -48241,7 +48241,7 @@
     "title": "Architectural Lighting",
     "category": "Lighting",
     "image": "media/Lighting/Architectural Lighting/Architectural-Lighting-img-ab4799.webp",
-    "thumbnail": "media/Lighting/Architectural Lighting/Architectural-Lighting-img-fb79a4-thumb.webp",
+    "thumbnail": "media/Lighting/Architectural Lighting/Architectural-Lighting-img-ab4799-thumb.webp",
     "description": "<p>The front PAR lights, roof line, and patio lighting for QBS</p>",
     "longDescription": "<p><br></p>",
     "websiteLink": "",
