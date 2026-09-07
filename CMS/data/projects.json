@@ -37825,6 +37825,14 @@
         "thumbnail": "media/Integration/Temple SF/Temple-SF-img-511f5a-thumb.webp"
       },
       {
+        "url": "media/Integration/Temple SF/Temple-SF-img-d516ba.webp",
+        "thumbnail": "media/Integration/Temple SF/Temple-SF-img-d516ba-thumb.webp"
+      },
+      {
+        "url": "media/Integration/Temple SF/Temple-SF-img-0bee5f.webp",
+        "thumbnail": "media/Integration/Temple SF/Temple-SF-img-0bee5f-thumb.webp"
+      },
+      {
         "url": "media/Integration/Temple SF/Temple-SF-vid-ba5554.mp4",
         "poster": "media/Integration/Temple SF/Temple-SF-vid-ba5554-poster.webp",
         "thumbnail": "media/Integration/Temple SF/Temple-SF-vid-ba5554-poster-thumb.webp"
@@ -37841,10 +37849,6 @@
       {
         "url": "media/Integration/Temple SF/Temple-SF-img-2b1fd2.webp",
         "thumbnail": "media/Integration/Temple SF/Temple-SF-img-2b1fd2-thumb.webp"
-      },
-      {
-        "url": "media/Integration/Temple SF/Temple-SF-img-0bee5f.webp",
-        "thumbnail": "media/Integration/Temple SF/Temple-SF-img-0bee5f-thumb.webp"
       },
       {
         "url": "media/Integration/Temple SF/Temple-SF-img-f103e9.webp",
@@ -38023,6 +38027,18 @@
         "thumbnail": "media/Fabrication/Field Solder Station/Field-Solder-Station-img-c2c0fc-thumb.webp"
       },
       {
+        "url": "media/Fabrication/Field Solder Station/Field-Solder-Station-img-811753.webp",
+        "thumbnail": "media/Fabrication/Field Solder Station/Field-Solder-Station-img-811753-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Field Solder Station/Field-Solder-Station-img-2c17c4.webp",
+        "thumbnail": "media/Fabrication/Field Solder Station/Field-Solder-Station-img-2c17c4-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Field Solder Station/Field-Solder-Station-img-78b471.webp",
+        "thumbnail": "media/Fabrication/Field Solder Station/Field-Solder-Station-img-78b471-thumb.webp"
+      },
+      {
         "url": "media/Fabrication/Field Solder Station/Field-Solder-Station-img-490841.webp",
         "thumbnail": "media/Fabrication/Field Solder Station/Field-Solder-Station-img-490841-thumb.webp"
       },
@@ -38107,7 +38123,8 @@
         ]
       }
     ],
-    "draft": false
+    "draft": false,
+    "linkHeroImages": true
   },
   {
     "id": "9469",
@@ -39862,6 +39879,10 @@
         "thumbnail": "media/Lighting/Club Lexi/Club-Lexi-img-1d2ac5-thumb.webp"
       },
       {
+        "url": "media/Lighting/Club Lexi/Club-Lexi-img-744547.webp",
+        "thumbnail": "media/Lighting/Club Lexi/Club-Lexi-img-744547-thumb.webp"
+      },
+      {
         "url": "media/Lighting/Club Lexi/Club-Lexi-img-9c15ac.webp",
         "thumbnail": "media/Lighting/Club Lexi/Club-Lexi-img-9c15ac-thumb.webp"
       },
@@ -39949,7 +39970,9 @@
           }
         ]
       }
-    ]
+    ],
+    "linkHeroImages": true,
+    "draft": false
   },
   {
     "id": "6841",
@@ -40036,6 +40059,10 @@
           "y": 32.3
         },
         "thumbnail": "media/Electronics/The Orb/The-Orb-img-e2c00d-thumb.webp"
+      },
+      {
+        "url": "media/Electronics/The Orb/The-Orb-img-bbf03f.webp",
+        "thumbnail": "media/Electronics/The Orb/The-Orb-img-bbf03f-thumb.webp"
       },
       {
         "url": "media/Electronics/The Orb/The-Orb-img-13cc8c.webp",
@@ -40133,7 +40160,8 @@
     },
     "thumbnail": "media/Electronics/The Orb/The-Orb-img-7491fa-thumb.webp",
     "specsData": [],
-    "draft": false
+    "draft": false,
+    "linkHeroImages": true
   },
   {
     "title": "The Basement",
@@ -41355,6 +41383,16 @@
         "thumbnail": "media/Electronics/Lobby Wall/Lobby-Wall-img-a15ae4-thumb.webp"
       },
       {
+        "url": "media/Electronics/Lobby Wall/Lobby-Wall-img-7a1b5b.webp",
+        "fit": {
+          "scale": 1,
+          "x": 79.5,
+          "y": 52.2,
+          "rotate": 0
+        },
+        "thumbnail": "media/Electronics/Lobby Wall/Lobby-Wall-img-7a1b5b-thumb.webp"
+      },
+      {
         "url": "media/Electronics/Lobby Wall/Lobby-Wall-img-11639b.webp",
         "fit": {
           "scale": 2.45,
@@ -41446,7 +41484,9 @@
           }
         ]
       }
-    ]
+    ],
+    "linkHeroImages": true,
+    "draft": false
   },
   {
     "title": "Curved Liquor Bottle Display",
@@ -46426,6 +46466,26 @@
         },
         "poster": "media/Art/Clay Face/Clay-Face-vid-3795d3-poster.webp",
         "thumbnail": "media/Art/Clay Face/Clay-Face-vid-3795d3-poster-thumb.webp"
+      },
+      {
+        "url": "media/Art/Clay Face/Clay-Face-img-7d6bbb.webp",
+        "fit": {
+          "scale": 1.2,
+          "x": 53.4,
+          "y": 47.5,
+          "rotate": 3
+        },
+        "thumbnail": "media/Art/Clay Face/Clay-Face-img-7d6bbb-thumb.webp"
+      },
+      {
+        "url": "media/Art/Clay Face/Clay-Face-img-2f12a8.webp",
+        "fit": {
+          "scale": 1.15,
+          "x": 63.4,
+          "y": 49,
+          "rotate": -3
+        },
+        "thumbnail": "media/Art/Clay Face/Clay-Face-img-2f12a8-thumb.webp"
       }
     ],
     "files": [
@@ -46510,7 +46570,8 @@
     "timestamp": "2026-08-16T19:55:48.429Z",
     "id": "8740",
     "order": 5,
-    "draft": false
+    "draft": false,
+    "linkHeroImages": true
   },
   {
     "title": "Scream-Face",
@@ -48485,6 +48546,12 @@
       },
       {
         "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Service-img-6c7554.webp",
+        "fit": {
+          "scale": 1.75,
+          "x": 27,
+          "y": 16.2,
+          "rotate": 0
+        },
         "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Service-img-6c7554-thumb.webp"
       },
       {
@@ -48780,6 +48847,16 @@
         "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-ed960b-thumb.webp"
       },
       {
+        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-b16a82.webp",
+        "fit": {
+          "scale": 1,
+          "x": 53.2,
+          "y": 8.7,
+          "rotate": 0
+        },
+        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-b16a82-thumb.webp"
+      },
+      {
         "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-b917bc.webp",
         "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-b917bc-thumb.webp"
       },
@@ -48794,10 +48871,6 @@
       {
         "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-4db34a.webp",
         "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-4db34a-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-b16a82.webp",
-        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-b16a82-thumb.webp"
       }
     ],
     "files": [],
