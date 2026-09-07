@@ -3,7 +3,7 @@
     {
       "id": "cfef743c-17ed-4ec8-98e3-162ba6c72f13",
       "title": "Bug Fixes",
-      "status": "todo",
+      "status": "done",
       "description": "Fix media drag and drop",
       "notes": "The media for projects isn't allowing me to drag and drop the thumbnails.",
       "order": 0,
@@ -30,7 +30,7 @@
     {
       "id": "864a26ef-6546-4d1a-a841-504b43d4ea8f",
       "title": "Image rotate crop tool",
-      "status": "todo",
+      "status": "done",
       "description": "Add the ability to rotate images in the crop tool for finer adjustment\n",
       "notes": "",
       "order": 2,
