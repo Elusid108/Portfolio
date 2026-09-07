@@ -48527,7 +48527,7 @@
     "title": "Lighting & SFX Service",
     "category": "Tooling",
     "image": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Service-img-d2e5bf.webp",
-    "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Service-img-d2e5bf-thumb.webp",
+    "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Service-img-27fb90-thumb.webp",
     "description": "<p>I wired AC into the DC side of a VL1000. The capacitors exploded and fire came out the side.</p>",
     "longDescription": "<p>I wired the AC input of a VL1000 into the DC output while replacing a power supply at Barbizon Light of the Rockies. The capacitors exploded and the fixture shot fire out the side. You make that mistake once.</p><p>That was my first lighting service gig, about a year, mentored part time in their shop. The bench ran from cracked porcelain sockets and crumbling wiring to unreleased demo heads: movers, scanners, color scrollers, fog, haze, film lights, consoles, dimmer racks.</p><p>On a dead or stuttering mover I power it on first and watch whether it moves. Then I kill power, grab the mechanicals, and feel for resistance. Failing steppers grind. I look for anything blocking travel, missing parts, then trace the harness. A spare motor goes in next. If the fault follows, the driver board is next.</p><p>Dust is the other killer. On a rotating service cycle it is mostly blowing fans and wiping optics. Let it go and a fan stops. I had a thermal switch fail to trip before, and the inside of a moving head went thermonuclear. I opened the old ElektraLite and every plastic part had melted and puddled in the bottom of the housing.</p><p>SFX came through the same shops: hazers, foggers, cryo, snow, confetti, bubbles. Foggers are the worst repair on the list. Hands down. A mess.</p><p>At Brown Note I helped push 30 to 40 lights a week for about two years. At Tracks and Temple, keeping the rooms alive was part of the job, and so was teaching other techs the same cycle. Under Chris Moore Designs I pushed a maintenance clause on installs with my name on them. Glow Lounge was the test: I hung the rig, then cleaned it monthly for about a year after.</p>",
     "websiteLink": "",
@@ -48550,20 +48550,20 @@
         "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Service-img-6c7554-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-fc6b5b.webp",
-        "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-fc6b5b-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-b54bad.webp",
-        "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-b54bad-thumb.webp"
+        "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-cdfe5c.webp",
+        "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-cdfe5c-thumb.webp"
       },
       {
         "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-ac7508.webp",
         "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-ac7508-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-cdfe5c.webp",
-        "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-cdfe5c-thumb.webp"
+        "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-fc6b5b.webp",
+        "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-fc6b5b-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-b54bad.webp",
+        "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-b54bad-thumb.webp"
       },
       {
         "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-415179.webp",
@@ -48594,20 +48594,12 @@
         "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-d64163-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-e0ff55.webp",
-        "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-e0ff55-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-1000e9.webp",
-        "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-1000e9-thumb.webp"
-      },
-      {
         "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Service-img-d54fa0.webp",
         "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Service-img-d54fa0-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-dcaa89.webp",
-        "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-dcaa89-thumb.webp"
+        "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-1000e9.webp",
+        "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-1000e9-thumb.webp"
       },
       {
         "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-18d2af.webp",
@@ -48630,24 +48622,20 @@
         "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-3f658b-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-c92315.webp",
-        "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-c92315-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Service-img-13fb78.webp",
-        "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Service-img-13fb78-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-dc86fb.webp",
-        "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-dc86fb-thumb.webp"
-      },
-      {
         "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-19093c.webp",
         "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-19093c-thumb.webp"
       },
       {
         "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-94558d.webp",
         "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-94558d-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-c92315.webp",
+        "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-c92315-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Service-img-13fb78.webp",
+        "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Service-img-13fb78-thumb.webp"
       },
       {
         "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Service-img-25352b.webp",
@@ -48659,8 +48647,147 @@
       }
     ],
     "files": [],
-    "specsData": [],
-    "specs": "",
+    "specsData": [
+      {
+        "id": "633e1d48-2914-4975-aad7-959746667474",
+        "title": "FIXTURE BRANDS",
+        "items": [
+          {
+            "id": "05cf8caa-c314-4e0b-a8a7-9c93c10c419e",
+            "name": "Martin",
+            "qty": "",
+            "specs": ""
+          },
+          {
+            "id": "7c5f518c-ef8d-48c8-8d92-5468a40549c4",
+            "name": "Clay Paky",
+            "qty": "",
+            "specs": ""
+          },
+          {
+            "id": "786cddaa-c21d-4388-9ffe-d9829afc2b2a",
+            "name": "ETC",
+            "qty": "",
+            "specs": ""
+          },
+          {
+            "id": "fdc911d8-e02c-4918-8e20-211a860b2421",
+            "name": "Vari-Lite",
+            "qty": "",
+            "specs": ""
+          },
+          {
+            "id": "bac8274c-22aa-48c6-a34a-0b9d25662790",
+            "name": "High End",
+            "qty": "",
+            "specs": ""
+          },
+          {
+            "id": "b8020ab6-d1ea-40dd-ac44-782dfc5f33a1",
+            "name": "ElektraLite",
+            "qty": "",
+            "specs": ""
+          },
+          {
+            "id": "ea0014fe-3c78-4bb9-b4d1-60559ca9e3eb",
+            "name": "Generic Clones",
+            "qty": "",
+            "specs": ""
+          }
+        ]
+      },
+      {
+        "id": "04cb2869-d455-4378-97ef-5af9a86fa0f4",
+        "title": "SFX",
+        "items": [
+          {
+            "id": "179973a3-28e6-4fed-b6b6-4fec664b0b5b",
+            "name": "Hazers",
+            "qty": "",
+            "specs": ""
+          },
+          {
+            "id": "ca6daeb6-f4d6-4df8-80e5-1343fa54ea30",
+            "name": "Foggers",
+            "qty": "",
+            "specs": "Worst repair on the list"
+          },
+          {
+            "id": "4f470875-379f-4758-9d31-507e26c8e6fa",
+            "name": "Cryo",
+            "qty": "",
+            "specs": ""
+          },
+          {
+            "id": "e9fe022b-7355-4862-9504-37c4db6abfae",
+            "name": "Snow",
+            "qty": "",
+            "specs": ""
+          },
+          {
+            "id": "a926673b-f24c-4aee-80ff-6ea9a0ebc870",
+            "name": "Confetti",
+            "qty": "",
+            "specs": ""
+          },
+          {
+            "id": "62809b52-d9f8-4cb4-a748-9c6d82eed69c",
+            "name": "Bubbles",
+            "qty": "",
+            "specs": ""
+          }
+        ]
+      },
+      {
+        "id": "48aa6ac1-780e-498a-8560-7e5143a0bc31",
+        "title": "BENCH & THROUGHPUT",
+        "items": [
+          {
+            "id": "c817370b-e720-4919-b888-59dcc8275ffc",
+            "name": "Typical week",
+            "qty": "",
+            "specs": "30-40 lights, Brown Note"
+          },
+          {
+            "id": "ec72b89d-8eed-4ad4-bd10-50dbd505146b",
+            "name": "Tenure",
+            "qty": "",
+            "specs": "~1 year Barbizon, ~2 years Brown Note lighting service"
+          },
+          {
+            "id": "9d3cc403-296b-46a6-a084-886b2cf86518",
+            "name": "Install maintenance",
+            "qty": "",
+            "specs": "Glow Lounge, monthly, about a year"
+          }
+        ]
+      },
+      {
+        "id": "741c27e6-92c1-4da9-90ec-991c0f69c2ac",
+        "title": "REPAIR SCOPE",
+        "items": [
+          {
+            "id": "970e1ee9-ccbb-4cab-ade5-2deabb874285",
+            "name": "Movers",
+            "qty": "",
+            "specs": "Power-on motion, feel for grinding steppers, harness, spare motor, then driver"
+          },
+          {
+            "id": "754ca6ef-d949-49c4-aba8-5d70a59f1968",
+            "name": "Preventive",
+            "qty": "",
+            "specs": "Blow fans, wipe optics"
+          },
+          {
+            "id": "f6908bf3-f949-4ce6-a9e0-db24b1bed81b",
+            "name": "Power supplies",
+            "qty": "",
+            "specs": "AC/DC isolation (VL1000 lesson)"
+          }
+        ]
+      }
+    ],
+    "specs": "<h2>FIXTURE BRANDS</h2><p><strong>Martin</strong></p><p><strong>Clay Paky</strong></p><p><strong>ETC</strong></p><p><strong>Vari-Lite</strong></p><p><strong>High End</strong></p><p><strong>ElektraLite</strong></p><p><strong>Generic Clones</strong></p><h2>SFX</h2><p><strong>Hazers</strong></p><p><strong>Foggers</strong><br><em>Worst repair on the list</em></p><p><strong>Cryo</strong></p><p><strong>Snow</strong></p><p><strong>Confetti</strong></p><p><strong>Bubbles</strong></p><h2>BENCH &amp; THROUGHPUT</h2><p><strong>Typical week</strong><br><em>30-40 lights • Brown Note</em></p><p><strong>Tenure</strong><br><em>~1 year Barbizon • ~2 years Brown Note lighting service</em></p><p><strong>Install maintenance</strong><br><em>Glow Lounge • monthly • about a year</em></p><h2>REPAIR SCOPE</h2><p><strong>Movers</strong><br><em>Power-on motion • feel for grinding steppers • harness • spare motor • then driver</em></p><p><strong>Preventive</strong><br><em>Blow fans • wipe optics</em></p><p><strong>Power supplies</strong><br><em>AC/DC isolation (VL1000 lesson)</em></p>",
     "related": [],
     "video": "",
     "timestamp": "2026-09-05T01:52:02.598Z",
@@ -49032,6 +49159,28 @@
     "tags": [],
     "gallery": [
       {
+        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-6f3e12.webp",
+        "fit": {
+          "scale": 1.15,
+          "x": 51.1,
+          "y": 0,
+          "rotate": 0
+        },
+        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-6f3e12-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-f2dacd.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-f2dacd-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-ec7251.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-ec7251-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-d4da64.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-d4da64-thumb.webp"
+      },
+      {
         "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-3c4389.webp",
         "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-3c4389-thumb.webp"
       },
@@ -49062,6 +49211,10 @@
       {
         "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-188ecc.webp",
         "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-188ecc-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-42ad2e.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-42ad2e-thumb.webp"
       },
       {
         "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-095438.webp",
@@ -49248,16 +49401,8 @@
         "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-179a3d-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-42ad2e.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-42ad2e-thumb.webp"
-      },
-      {
         "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-4dc5a5.webp",
         "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-4dc5a5-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-d4da64.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-d4da64-thumb.webp"
       },
       {
         "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-e3109e.webp",
@@ -49268,16 +49413,8 @@
         "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-f48395-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-ec7251.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-ec7251-thumb.webp"
-      },
-      {
         "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-e4bade.webp",
         "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-e4bade-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-f2dacd.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-f2dacd-thumb.webp"
       },
       {
         "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-135982.webp",
@@ -49302,22 +49439,6 @@
       {
         "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-b15e0c.webp",
         "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-b15e0c-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-6e7e94.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-6e7e94-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-dc91a2.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-dc91a2-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-d2169f.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-d2169f-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-830afd.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-830afd-thumb.webp"
       },
       {
         "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-78c8d0.webp",
