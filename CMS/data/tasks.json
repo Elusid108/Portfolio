@@ -1,0 +1,76 @@
+{
+  "tasks": [
+    {
+      "id": "cfef743c-17ed-4ec8-98e3-162ba6c72f13",
+      "title": "Bug Fixes",
+      "status": "todo",
+      "description": "Fix media drag and drop",
+      "notes": "The media for projects isn't allowing me to drag and drop the thumbnails.",
+      "order": 0,
+      "subtasks": []
+    },
+    {
+      "id": "ac51a977-6ba3-4403-98cd-13bdcf309720",
+      "title": "Split project thumbnail and banner",
+      "status": "todo",
+      "description": "Spit the two so they can be different images",
+      "notes": "",
+      "order": 1,
+      "subtasks": [
+        {
+          "id": "ab9fe3bd-0192-425b-9adc-993171f02d6c",
+          "title": "Add a preview in the CMS",
+          "status": "todo",
+          "description": "Add a preview for both the banner and thumbnail post-crop so I can see what they'll look like on the site.",
+          "notes": "",
+          "order": 0
+        }
+      ]
+    },
+    {
+      "id": "864a26ef-6546-4d1a-a841-504b43d4ea8f",
+      "title": "Image rotate crop tool",
+      "status": "todo",
+      "description": "Add the ability to rotate images in the crop tool for finer adjustment\n",
+      "notes": "",
+      "order": 2,
+      "subtasks": []
+    },
+    {
+      "id": "ba240c17-6980-48ea-b6e3-11beeaebd0ec",
+      "title": "COPY to STORY",
+      "status": "todo",
+      "description": "Change the CMS tab in projects from COPY to STORY. Makes more sense and still short",
+      "notes": "",
+      "order": 3,
+      "subtasks": []
+    },
+    {
+      "id": "90c6eeff-2aa4-4f80-a217-6d32724ecbd6",
+      "title": "Google Analytics",
+      "status": "todo",
+      "description": "Add google analytics to the portfolio so I can track traffic. Curious to see which projects draw the most attention and where it's coming from.",
+      "notes": "",
+      "order": 4,
+      "subtasks": []
+    },
+    {
+      "id": "089dc980-f621-4972-9fa3-08d9a4b19491",
+      "title": "Make CMS \"headless\"",
+      "status": "todo",
+      "description": "Make a webapp based version of the CMS that pushes to git. ",
+      "notes": "https://share.gemini.google/RX5EL8rCmDF8",
+      "order": 5,
+      "subtasks": [
+        {
+          "id": "951058a9-7b6a-47bc-941a-1244985d82e6",
+          "title": "Make CMS \"readonly\" for guests",
+          "status": "todo",
+          "description": "Make the headless CMS read only so I can use the CMS itself as a portfolio entry piece that users can actually interact with. I want to keep the theme of all software able to be used on my portfolio. ",
+          "notes": "",
+          "order": 0
+        }
+      ]
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 
 This is the source for my personal portfolio website — a showcase of work spanning lighting design, art installations, electronics, apps, fabrication, and systems integration.
 
-The local authoring tool is **CMS v2.5.3 Local**.
+The local authoring tool is **CMS v2.6.0 Local**.
 
 The live site (`[index.html](index.html)`) is a single, self-contained static page built with React 18 (UMD), Babel Standalone, and Tailwind CSS (all via CDN). It reads its content from a JSON block embedded directly in the page, so there's no build step and no backend required to host or view it — it can be served as-is from GitHub Pages or any static file host. Alongside it, the `[share/](share/)` folder holds small generated pages and preview images that give each project a proper social-media link preview.
 
@@ -33,7 +33,7 @@ Portfolio/
 ├── CMS/                 # Local admin tool used to edit content & publish index.html
 │   ├── server.js               # Express server (API + admin UI + preview)
 │   ├── lib/
-│   │   ├── data.js              # Project/settings CRUD, ordering & featured logic
+│   │   ├── data.js              # Project/settings/tasks CRUD, ordering & featured logic
 │   │   ├── gemini.js            # Server-side Gemini interview / short / long copy
 │   │   ├── media.js             # Image / file / 3D model upload handling, relocation & trash
 │   │   ├── video.js             # ffmpeg video transcoding + poster frames
@@ -46,7 +46,7 @@ Portfolio/
 │   │   ├── index.html           # The admin UI itself
 │   │   └── js/
 │   │       ├── model-viewer-core.js  # three.js GLB viewer shared by the CMS and the site
-│   │       ├── model-tools.js        # STL / 3MF / STEP -> GLB conversion (browser-side)
+│   │       ├── model-tools.js        # STL / 3MF / STEP -> GLB; native GLB pass-through
 │   │       ├── share-cards.js        # Canvas renderer for social preview cards
 │   │       └── gemini-*.js           # Gemini settings + copy helpers
 │   ├── template/
@@ -54,6 +54,7 @@ Portfolio/
 │   ├── data/
 │   │   ├── projects.json        # Source of truth for all portfolio projects
 │   │   ├── settings.json        # Site-wide settings (about, socials, contact form, sharing)
+│   │   ├── tasks.json           # CMS-only task list (never published)
 │   │   └── share-manifest.json  # Fingerprints of last-written share cards (CMS-local)
 │   └── scripts/
 │       └── migrate.js           # Re-extracts data from a published index.html
@@ -95,10 +96,12 @@ The admin UI lets you manage, per project:
 - Banner image (uploaded or linked by path/URL), with a crop tool for the card thumbnail and page banner that overlays an alignment grid (rule of thirds or golden ratio, toggleable)
 - Short and long descriptions, edited with a rich-text (Quill) editor. Sparkle buttons on those toolbars can generate copy through Gemini (API key in Settings; writing prompts stay on the server and are never published). Interview questions and long-copy shape are steered by the project's category (Lighting, Art, Fixtures, Software, Tooling, Systems; Sculpture follows Art)
 - A gallery of images, self-hosted videos, YouTube links and **3D models**, with drag-to-reorder and thumbnail previews
-- A **3D model editor** per model: live preview, per-part color and opacity (slider, exact number field, or mouse wheel over either), up-axis (Z-up / Y-up), and "capture thumbnail from this view"
+- A **3D model editor** per model: live preview, click a point to orbit around it (click empty space to return to the model center), per-part color and opacity (slider, exact number field, or mouse wheel over either), up-axis (Z-up / Y-up), and "capture thumbnail from this view"
 - Action links — website, launch app, GitHub, shop
 - Downloadable files (name, URL, optional description, license, and toast thumbnail with WebP upload + 16:9 crop)
 - **Featured** and **WIP** flags
+
+It also has a **Tasks** screen (rail item next to Main Interface) for a site-wide work list: tasks and one level of sub-tasks, each with a status (To do / In progress / Blocked / Done), a short description, and notes. Tasks live in `[CMS/data/tasks.json](CMS/data/tasks.json)` and are **never published** to the live site.
 
 It also has a "Main Interface" settings screen for site-wide configuration:
 
@@ -115,6 +118,7 @@ All content lives in plain JSON files, not a database:
 
 - `[CMS/data/projects.json](CMS/data/projects.json)` — every project and its metadata
 - `[CMS/data/settings.json](CMS/data/settings.json)` — global site settings
+- `[CMS/data/tasks.json](CMS/data/tasks.json)` — CMS-only task list (not included in publish)
 
 `[CMS/lib/data.js](CMS/lib/data.js)` handles reading and writing this data, and enforces a few content rules automatically:
 
@@ -133,12 +137,12 @@ A **Convert Media** action in the admin UI batch-converts any leftover non-WebP 
 
 Videos go through `[CMS/lib/video.js](CMS/lib/video.js)` (ffmpeg): H.264 MP4 capped at 1080p/30fps, audio stripped unless requested, plus a WebP poster frame and thumbnail.
 
-#### 3D models (STL, 3MF, STEP)
+#### 3D models (STL, 3MF, STEP, GLB)
 
-Gallery rows can also hold 3D models. Pick **3D Model** in the gallery toolbar and choose `.stl`, `.3mf`, `.step` or `.stp` files:
+Gallery rows can also hold 3D models. Pick **3D** in the gallery toolbar and choose `.stl`, `.3mf`, `.step`, `.stp`, or `.glb` files:
 
-1. The file is converted **in the admin browser** by `[CMS/public/js/model-tools.js](CMS/public/js/model-tools.js)` — STL and 3MF via three.js loaders, STEP via OpenCascade compiled to WebAssembly (`occt-import-js`, served from `node_modules` at `/vendor/occt`). Everything is exported as a single **GLB**.
-2. Only the GLB is uploaded (`POST /api/media/upload-model`) into `media/<Category>/<Project>/models/`. It is a reduced-poly preview for the website: the original STL/3MF/STEP never leaves your machine, is not committed to the repo, and the viewer offers no download. Printable files still go through the project's **Downloadable files** section if you want to share them.
+1. CAD files are converted **in the admin browser** by `[CMS/public/js/model-tools.js](CMS/public/js/model-tools.js)` — STL and 3MF via three.js loaders, STEP via OpenCascade compiled to WebAssembly (`occt-import-js`, served from `node_modules` at `/vendor/occt`) — then exported as a single **GLB**. Native `.glb` files are parsed for parts and uploaded **as-is** (no re-export), so materials and textures stay intact.
+2. Only the GLB is uploaded (`POST /api/media/upload-model`) into `media/<Category>/<Project>/models/`. Original STL/3MF/STEP never leave your machine, are not committed to the repo, and the viewer offers no download. Printable files still go through the project's **Downloadable files** section if you want to share them.
 3. A default thumbnail is captured automatically, then the **3D editor** opens: each part (body/object in the source file) gets a color picker and an opacity control — drag the slider, type an exact percentage, or hover either and use the mouse wheel (Shift for 5% steps) — so the preview can match the real object (e.g. a translucent diffuser). You can also switch the up axis and re-capture the thumbnail from any angle; the crop tool always shows the latest capture.
 
 The gallery item stores everything the site needs:
@@ -158,7 +162,7 @@ The gallery item stores everything the site needs:
 }
 ```
 
-On the live site, models open in the lightbox in a three.js viewer (`[CMS/public/js/model-viewer-core.js](CMS/public/js/model-viewer-core.js)`, inlined into `index.html` at publish time). The model's bounding-box center is placed at the origin, and navigation follows CAD conventions — drag to orbit, right-drag or two-finger drag to pan, wheel or pinch to zoom — with mouse, touch and stylus all handled through pointer events. After a pan, orbit and zoom stay locked to that model-center pivot (the camera trucks; the target does not drift). three.js is loaded from a CDN import map only when a model is actually opened, so pages without models pay nothing.
+On the live site, models open in the lightbox in a three.js viewer (`[CMS/public/js/model-viewer-core.js](CMS/public/js/model-viewer-core.js)`, inlined into `index.html` at publish time). The model's bounding-box center is placed at the origin. Left-click a point on the mesh to orbit around that point; click empty space (or Reset) to return the pivot to the center. Drag to orbit, right-drag or two-finger drag to pan, wheel or pinch to zoom — mouse, touch and stylus all go through pointer events. After a pan, the camera trucks via a view offset; the click-pivot is session-only and is not stored in the gallery JSON. three.js is loaded from a CDN import map only when a model is actually opened, so pages without models pay nothing.
 
 ### Publishing
 
@@ -226,7 +230,7 @@ A working check after the flip: `https://chrismoore.me/share/670` should be `200
 - HTML, Tailwind CSS (CDN), Quill.js, Phosphor Icons — admin UI
 - Sharp — image processing (WebP conversion, EXIF correction, share-card JPEGs)
 - ffmpeg (`fluent-ffmpeg` + static binaries) — video transcoding
-- three.js (CDN import map) + `occt-import-js` (OpenCascade WASM) — STL / 3MF / STEP to GLB conversion and 3D preview
+- three.js (CDN import map) + `occt-import-js` (OpenCascade WASM) — STL / 3MF / STEP to GLB conversion, native GLB import, and 3D preview
 - HTML Canvas — social preview card rendering
 - Flat JSON files — data storage
 

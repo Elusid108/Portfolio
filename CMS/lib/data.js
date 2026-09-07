@@ -197,4 +197,53 @@ function saveSettings(newSettings) {
   return { success: true };
 }
 
-module.exports = { getProjects, getSettings, saveProject, deleteProject, saveSettings, reorderProjects, writeJSON };
+const TASK_STATUSES = new Set(['todo', 'in-progress', 'blocked', 'done']);
+
+function newTaskId() {
+  return `t-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
+}
+
+function normalizeTaskItem(raw, withSubs) {
+  const status = TASK_STATUSES.has(raw?.status) ? raw.status : 'todo';
+  const item = {
+    id: String(raw?.id || '').trim() || newTaskId(),
+    title: String(raw?.title || '').trim(),
+    status,
+    description: String(raw?.description ?? ''),
+    notes: String(raw?.notes ?? ''),
+    order: typeof raw?.order === 'number' && Number.isFinite(raw.order) ? raw.order : 0
+  };
+  if (withSubs) {
+    const subs = Array.isArray(raw?.subtasks) ? raw.subtasks : [];
+    item.subtasks = subs.map((s, i) => {
+      const n = normalizeTaskItem(s, false);
+      n.order = i;
+      return n;
+    });
+  }
+  return item;
+}
+
+function getTasks() {
+  const raw = readJSON('tasks.json');
+  const list = Array.isArray(raw?.tasks) ? raw.tasks : (Array.isArray(raw) ? raw : []);
+  const tasks = list.map((t, i) => {
+    const n = normalizeTaskItem(t, true);
+    n.order = i;
+    return n;
+  });
+  return { tasks };
+}
+
+function saveTasks(payload) {
+  const list = Array.isArray(payload?.tasks) ? payload.tasks : [];
+  const tasks = list.map((t, i) => {
+    const n = normalizeTaskItem(t, true);
+    n.order = i;
+    return n;
+  });
+  writeJSON('tasks.json', { tasks });
+  return { success: true, tasks };
+}
+
+module.exports = { getProjects, getSettings, saveProject, deleteProject, saveSettings, reorderProjects, writeJSON, getTasks, saveTasks };

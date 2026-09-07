@@ -186,6 +186,24 @@ app.post('/api/settings', async (req, res) => {
   }
 });
 
+// --- Tasks (CMS-only; never published) ---
+
+app.get('/api/tasks', (req, res) => {
+  try {
+    res.json(data.getTasks());
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.post('/api/tasks', (req, res) => {
+  try {
+    res.json(data.saveTasks(req.body || {}));
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // --- Media ---
 
 app.post('/api/media/upload', upload.single('file'), async (req, res) => {
@@ -213,8 +231,8 @@ app.post('/api/media/upload-file', upload.single('file'), async (req, res) => {
   }
 });
 
-// 3D model upload: the admin UI converts STL/3MF/STEP to GLB in the browser and
-// sends only the GLB (preview asset) plus the source format / filename for naming.
+// 3D model upload: the admin UI converts STL/3MF/STEP to GLB in the browser
+// (native .glb is parsed then sent as-is) plus the source format / filename.
 app.post('/api/media/upload-model', uploadModel.single('glb'), async (req, res) => {
   try {
     const { category, project, format, originalName } = req.body;

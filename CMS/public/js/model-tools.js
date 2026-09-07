@@ -1,18 +1,21 @@
 // Model tools (CMS admin only) — converts STL / 3MF / STEP files to GLB in the
-// browser so the published site only ever needs GLTFLoader.
+// browser so the published site only ever needs GLTFLoader. Native .glb files
+// are parsed for parts then uploaded as-is (no re-export).
 //
 //   STL  -> three.js STLLoader
 //   3MF  -> three.js ThreeMFLoader
 //   STEP -> occt-import-js (OpenCascade WASM served from /vendor/occt)
+//   GLB  -> three.js GLTFLoader.parse (pass-through blob)
 //
 // Exposed as window.ModelTools = { convertToGlb, isModelFile, SUPPORTED_EXTS }.
 import * as THREE from 'three';
 import { STLLoader } from 'three/addons/loaders/STLLoader.js';
 import { ThreeMFLoader } from 'three/addons/loaders/3MFLoader.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { GLTFExporter } from 'three/addons/exporters/GLTFExporter.js';
 import { mergeVertices } from 'three/addons/utils/BufferGeometryUtils.js';
 
-const SUPPORTED_EXTS = ['stl', '3mf', 'step', 'stp'];
+const SUPPORTED_EXTS = ['stl', '3mf', 'step', 'stp', 'glb'];
 const DEFAULT_COLOR = 0x9ca3af;
 const OCCT_BASE = '/vendor/occt/';
 // Below this triangle count models are typically boxy prints where hard edges
@@ -252,30 +255,66 @@ function summarizeParts(root) {
     const geo = obj.geometry;
     const count = geo.index ? geo.index.count : geo.attributes.position.count;
     triangles += Math.floor(count / 3);
-    const m = obj.material;
+    const m = Array.isArray(obj.material) ? obj.material[0] : obj.material;
+    const vertexColors = !!(m && m.vertexColors);
+    let color = null;
+    if (m && m.color && !vertexColors) {
+      try { color = '#' + m.color.getHexString(); } catch (_) { color = null; }
+    }
     parts.push({
       name: obj.name,
-      color: m.vertexColors ? null : ('#' + m.color.getHexString()),
-      opacity: typeof m.opacity === 'number' ? m.opacity : 1
+      color,
+      opacity: (m && typeof m.opacity === 'number') ? m.opacity : 1
     });
   });
   return { parts, triangles };
 }
 
+function parseGlbBuffer(buffer) {
+  return new Promise((resolve, reject) => {
+    new GLTFLoader().parse(
+      buffer,
+      '',
+      resolve,
+      (err) => reject(err instanceof Error ? err : new Error('Failed to parse GLB'))
+    );
+  });
+}
+
+function disposeGraph(root) {
+  if (!root) return;
+  root.traverse((obj) => {
+    if (obj.geometry) obj.geometry.dispose();
+    const mats = Array.isArray(obj.material) ? obj.material : (obj.material ? [obj.material] : []);
+    mats.forEach((m) => { if (m && m.dispose) m.dispose(); });
+  });
+}
+
 /**
- * Convert a File (STL / 3MF / STEP) into a GLB Blob.
+ * Convert a File (STL / 3MF / STEP) into a GLB Blob, or pass through a native GLB.
  * @param {File} file
  * @param {(stage: string) => void} [onStage] progress callback with a human-readable stage label
  * @returns {Promise<{ glbBlob: Blob, parts: Array<{name:string,color:string|null,opacity:number}>, triangles: number, format: string, stem: string }>}
  */
 async function convertToGlb(file, onStage = () => {}) {
   const ext = extOf(file.name);
-  if (!SUPPORTED_EXTS.includes(ext)) throw new Error(`Unsupported model type ".${ext}" — use STL, 3MF or STEP.`);
+  if (!SUPPORTED_EXTS.includes(ext)) throw new Error(`Unsupported model type ".${ext}" — use STL, 3MF, STEP or GLB.`);
   const stem = stemOf(file.name);
   const format = ext === 'stp' ? 'step' : ext;
 
   onStage('Reading file…');
   const buffer = await readAsArrayBuffer(file);
+
+  if (ext === 'glb') {
+    onStage('Parsing GLB…');
+    const gltf = await parseGlbBuffer(buffer);
+    const root = gltf.scene || gltf.scenes?.[0];
+    if (!root) throw new Error('GLB file contained no scene.');
+    const { parts, triangles } = summarizeParts(root);
+    if (!parts.length) throw new Error('GLB file contained no mesh objects.');
+    disposeGraph(root);
+    return { glbBlob: file, parts, triangles, format: 'glb', stem };
+  }
 
   let root;
   if (ext === 'stl') {
@@ -300,12 +339,7 @@ async function convertToGlb(file, onStage = () => {}) {
   onStage('Exporting GLB…');
   const glbBlob = await exportGlb(root);
   const { parts, triangles } = summarizeParts(root);
-
-  // Free GPU-side objects we created (nothing was rendered, but geometries hold memory).
-  root.traverse((obj) => {
-    if (obj.geometry) obj.geometry.dispose();
-    if (obj.material && obj.material.dispose) obj.material.dispose();
-  });
+  disposeGraph(root);
 
   return { glbBlob, parts, triangles, format, stem };
 }

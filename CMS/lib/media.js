@@ -204,10 +204,10 @@ async function processFileUpload(file, category, projectName) {
 
 // --- 3D models ---
 //
-// Models are converted to GLB in the CMS browser (three.js loaders +
-// occt-import-js for STEP). Only the GLB is stored — it is a reduced-poly
-// preview for the website, so the original STL/3MF/STEP never lands in the
-// repo and is never offered for download.
+// Models: STL / 3MF / STEP are converted to GLB in the CMS browser (three.js
+// loaders + occt-import-js for STEP). Native .glb files are stored as uploaded.
+// Only the GLB is stored — original CAD files never land in the repo and are
+// never offered for download.
 
 const MODEL_FORMATS = ['stl', '3mf', 'step', 'glb'];
 

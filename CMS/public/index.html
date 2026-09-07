@@ -23,9 +23,9 @@
     ::-webkit-scrollbar-track { background: #09090b; }
     ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: #52525b; }
-    #editor.hidden, #settingsForm.hidden, #emptyState.hidden, #item-edit-modal.hidden,
+    #editor.hidden, #settingsForm.hidden, #tasksForm.hidden, #emptyState.hidden, #item-edit-modal.hidden,
     #gemini-copy-modal.hidden, #gemini-settings-modal.hidden { display: none !important; }
-    #editor:not(.hidden), #settingsForm:not(.hidden) { display: flex; }
+    #editor:not(.hidden), #settingsForm:not(.hidden), #tasksForm:not(.hidden) { display: flex; }
     #emptyState:not(.hidden) { display: flex; }
     #item-edit-modal:not(.hidden),
     #gemini-copy-modal:not(.hidden),
@@ -106,7 +106,7 @@
   </style>
   <script src="/js/gemini-settings.js"></script>
   <script src="/js/gemini-copy.js"></script>
-  <!-- three.js (3D model viewer + STL/3MF/STEP -> GLB conversion). Pinned; keep in sync with the site template. -->
+  <!-- three.js (3D model viewer + STL/3MF/STEP/GLB). Pinned; keep in sync with the site template. -->
   <script type="importmap">
   {
     "imports": {
@@ -139,7 +139,7 @@
     <header class="h-11 shrink-0 flex items-center justify-between px-3 border-b border-zinc-800 bg-zinc-900">
       <div class="flex items-center gap-3 min-w-0">
         <span class="text-sm font-semibold tracking-wide text-zinc-100">CMS</span>
-        <span class="text-[10px] font-mono text-zinc-500">v2.5.3</span>
+        <span class="text-[10px] font-mono text-zinc-500">v2.6.0</span>
         <span id="dirtyDot" class="w-1.5 h-1.5 rounded-full bg-zinc-600 opacity-30" title="Unsaved changes"></span>
       </div>
       <div class="flex items-center gap-1.5">
@@ -185,6 +185,9 @@
           <button type="button" id="railSettingsBtn" onclick="tryShowSettings()" class="rail-btn w-full h-8 px-2 rounded-md text-left text-xs font-medium text-zinc-300 hover:bg-zinc-900 hover:text-white transition-colors flex items-center gap-2">
             <i class="ph ph-sliders-horizontal text-sm"></i> Main Interface
           </button>
+          <button type="button" id="railTasksBtn" onclick="tryShowTasks()" class="rail-btn w-full h-8 px-2 rounded-md text-left text-xs font-medium text-zinc-300 hover:bg-zinc-900 hover:text-white transition-colors flex items-center gap-2">
+            <i class="ph ph-check-square text-sm"></i> Tasks
+          </button>
           <button type="button" onclick="tryNewItem()" class="w-full h-8 px-2 rounded-md text-left text-xs font-medium text-zinc-500 hover:text-cyan-400 hover:bg-zinc-900 transition-colors flex items-center gap-2">
             <i class="ph ph-plus text-sm"></i> New Project
           </button>
@@ -197,7 +200,7 @@
       <main class="flex-1 min-w-0 min-h-0 flex flex-col bg-zinc-950">
         <div id="emptyState" class="flex-1 flex-col items-center justify-center text-zinc-600">
           <i class="ph ph-pencil-simple-slash text-5xl mb-3"></i>
-          <p class="text-sm">Select a project or the Main Interface to edit</p>
+          <p class="text-sm">Select a project, Tasks, or the Main Interface to edit</p>
         </div>
 
         <!-- PROJECT EDITOR -->
@@ -306,9 +309,9 @@
                     <i class="ph ph-film-slate"></i> Video
                   </button>
                   <input type="file" id="gallery-video-input" accept="video/*" multiple class="hidden" onchange="handleGalleryVideoUpload(this)">
-                  <label class="btn-quiet cursor-pointer" title="STL, 3MF or STEP — converted to GLB in the browser">
+                  <label class="btn-quiet cursor-pointer" title="STL, 3MF, STEP or GLB — CAD files convert to GLB in the browser; native GLB is stored as-is">
                     <i class="ph ph-cube"></i> 3D
-                    <input type="file" id="gallery-model-input" accept=".stl,.3mf,.step,.stp,model/stl,model/3mf,application/step" multiple class="hidden" onchange="handleGalleryModelUpload(this)">
+                    <input type="file" id="gallery-model-input" accept=".stl,.3mf,.step,.stp,.glb,model/stl,model/3mf,application/step,model/gltf-binary" multiple class="hidden" onchange="handleGalleryModelUpload(this)">
                   </label>
                   <button type="button" onclick="addGalleryRow()" class="btn-quiet">+ URL</button>
                 </div>
@@ -519,6 +522,23 @@
             <button type="submit" class="btn-primary">Save Settings</button>
           </div>
         </form>
+
+        <!-- TASKS (CMS-only) -->
+        <form id="tasksForm" class="hidden flex-1 min-h-0 flex-col" onsubmit="event.preventDefault(); saveCmsTasks();">
+          <nav class="shrink-0 flex items-center justify-between gap-3 px-4 border-b border-zinc-800 bg-zinc-900/80">
+            <span class="px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-cyan-400">Tasks</span>
+            <button type="button" onclick="addCmsTask()" class="btn-quiet my-1.5">
+              <i class="ph ph-plus"></i> Add Task
+            </button>
+          </nav>
+          <div id="tasks-scroll" class="flex-1 min-h-0 overflow-y-auto p-5">
+            <p class="text-[11px] text-zinc-500 mb-3">Site-wide work list. Not published to the portfolio.</p>
+            <div id="tasks-builder" class="space-y-2"></div>
+          </div>
+          <div class="shrink-0 flex justify-end items-center px-5 py-3 border-t border-zinc-800 bg-zinc-900">
+            <button type="submit" class="btn-primary">Save Tasks</button>
+          </div>
+        </form>
       </main>
     </div>
   </div>
@@ -631,7 +651,7 @@
       async reorderProjects(items) {
         return this.post('/projects/reorder', { items });
       },
-      // 3D models: the browser converts to GLB first; only the GLB preview is stored
+      // 3D models: CAD files convert to GLB in the browser; native GLB is stored as-is
       // (the original file never leaves the machine).
       async uploadModel(glbBlob, originalName, format, category, project, onProgress) {
         const form = new FormData();
@@ -655,6 +675,7 @@
     let currentEditIndex = -1;
     let quillShort, quillLong, quillAbout;
     let specsCategories = [];
+    let cmsTasks = [];
     let currentEditorTab = 'overview';
     let currentSettingsTab = 'about';
     let itemEditState = { apply: null, row: null };
@@ -1252,6 +1273,7 @@
         setupGalleryHoverPreview();
         setupRelatedDragDrop();
         setupFileDragDrop();
+        setupCmsTaskDragDrop();
         setupTagsAutocomplete();
         document.addEventListener('keydown', (e) => {
             if (e.key !== 'Escape') return;
@@ -1644,6 +1666,12 @@
                      if(pendingNavigation) pendingNavigation();
                      pendingNavigation = null;
                  });
+            } else if(!document.getElementById('tasksForm').classList.contains('hidden')) {
+                 saveCmsTasks(() => {
+                     isDirty = false;
+                     if(pendingNavigation) pendingNavigation();
+                     pendingNavigation = null;
+                 });
             } else {
                  flushListOrder().then(() => {
                      isDirty = false;
@@ -1657,6 +1685,7 @@
     function tryRefresh() { handleNavigation(refreshData); }
     function tryNewItem() { handleNavigation(newItem); }
     function tryShowSettings() { handleNavigation(showSettings); }
+    function tryShowTasks() { handleNavigation(showTasks); }
     function tryEditItem(i) { handleNavigation(() => editItem(i)); }
 
     // --- DATA LOADING ---
@@ -1691,7 +1720,7 @@
               Toastify({ text: "Project Saved!", duration: 3000, backgroundColor: "#0891b2" }).showToast();
           }
           lastSavedId = null;
-      } else if (projects.length > 0 && document.getElementById('editor').classList.contains('hidden') && document.getElementById('settingsForm').classList.contains('hidden')) {
+      } else if (projects.length > 0 && document.getElementById('editor').classList.contains('hidden') && document.getElementById('settingsForm').classList.contains('hidden') && document.getElementById('tasksForm').classList.contains('hidden')) {
           editItem(0);
       }
     }
@@ -1796,7 +1825,9 @@
       document.getElementById('emptyState').classList.add('hidden');
       document.getElementById('editor').classList.add('hidden');
       document.getElementById('settingsForm').classList.add('hidden');
+      document.getElementById('tasksForm')?.classList.add('hidden');
       document.getElementById('railSettingsBtn')?.classList.remove('rail-active');
+      document.getElementById('railTasksBtn')?.classList.remove('rail-active');
     }
 
     // --- PROJECT EDITOR ---
@@ -1920,6 +1951,285 @@
             refreshKvRows();
             setTimeout(() => isDirty = false, 200);
       }).catch(onError);
+    }
+
+    // --- CMS TASKS (site-wide, never published) ---
+    const CMS_TASK_STATUSES = [
+      { id: 'todo', label: 'To do', pill: 'TODO', cls: 'text-zinc-400' },
+      { id: 'in-progress', label: 'In progress', pill: 'PROG', cls: 'text-cyan-400' },
+      { id: 'blocked', label: 'Blocked', pill: 'BLOCK', cls: 'text-orange-400' },
+      { id: 'done', label: 'Done', pill: 'DONE', cls: 'text-emerald-400' }
+    ];
+
+    function cmsTaskStatusMeta(status) {
+      return CMS_TASK_STATUSES.find(s => s.id === status) || CMS_TASK_STATUSES[0];
+    }
+
+    function newCmsTaskId() {
+      return (crypto.randomUUID && crypto.randomUUID()) ||
+        ('t-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8));
+    }
+
+    function blankCmsTask() {
+      return { id: newCmsTaskId(), title: '', status: 'todo', description: '', notes: '', order: 0, subtasks: [] };
+    }
+
+    function blankCmsSubtask() {
+      return { id: newCmsTaskId(), title: '', status: 'todo', description: '', notes: '', order: 0 };
+    }
+
+    function findCmsTask(taskId) {
+      return cmsTasks.find(t => t.id === taskId);
+    }
+
+    function markCmsTasksDirty() {
+      isDirty = true;
+      updateDirtyChrome();
+    }
+
+    function showTasks() {
+      hideAllForms();
+      currentEditIndex = -1;
+      renderList();
+      showStatus('Loading Tasks...');
+      document.getElementById('loadingOverlay').classList.remove('hidden');
+      document.getElementById('loadingText').innerText = 'Loading...';
+
+      api.get('/tasks').then(data => {
+        hideStatus();
+        document.getElementById('loadingOverlay').classList.add('hidden');
+        document.getElementById('loadingText').innerText = 'Saving Changes...';
+        cmsTasks = Array.isArray(data?.tasks) ? data.tasks : [];
+        isDirty = false;
+        document.getElementById('tasksForm').classList.remove('hidden');
+        document.getElementById('railTasksBtn')?.classList.add('rail-active');
+        renderCmsTasks();
+        setTimeout(() => { isDirty = false; }, 200);
+      }).catch(onError);
+    }
+
+    function saveCmsTasks(postSaveCallback = null) {
+      document.getElementById('loadingOverlay').classList.remove('hidden');
+      api.post('/tasks', { tasks: cmsTasks }).then((result) => {
+        cmsTasks = Array.isArray(result?.tasks) ? result.tasks : cmsTasks;
+        isDirty = false;
+        updateDirtyChrome();
+        renderCmsTasks();
+        showStatus('Tasks Saved!', 'green');
+        Toastify({ text: 'Tasks Saved!', duration: 3000, backgroundColor: '#10b981' }).showToast();
+        document.getElementById('loadingOverlay').classList.add('hidden');
+        setTimeout(hideStatus, 1500);
+        if (postSaveCallback) postSaveCallback();
+      }).catch(err => {
+        document.getElementById('loadingOverlay').classList.add('hidden');
+        onError(err);
+      });
+    }
+
+    function cmsTaskStatusSelectHtml(current) {
+      return CMS_TASK_STATUSES.map(s =>
+        `<option value="${s.id}" ${s.id === current ? 'selected' : ''}>${s.label}</option>`
+      ).join('');
+    }
+
+    function cmsTaskRowSummary(item) {
+      const meta = cmsTaskStatusMeta(item.status);
+      const title = item.title ? escapeHtml(item.title) : '<span class="italic text-zinc-600">Untitled</span>';
+      const desc = (item.description || '').trim();
+      return `
+        <span class="text-[10px] font-mono font-bold ${meta.cls} w-10 shrink-0">${meta.pill}</span>
+        <span class="flex-1 min-w-0 text-sm text-zinc-200 truncate">${title}</span>
+        ${desc ? `<span class="hidden sm:block max-w-[40%] truncate text-[10px] text-zinc-500">${escapeHtml(desc)}</span>` : ''}
+      `;
+    }
+
+    function renderCmsTasks() {
+      const container = document.getElementById('tasks-builder');
+      if (!container) return;
+      if (!cmsTasks.length) {
+        container.innerHTML = '<p class="text-xs text-zinc-600 italic">No tasks yet. Click Add Task to start.</p>';
+        return;
+      }
+      container.innerHTML = cmsTasks.map((task, taskIndex) => `
+        <div class="cms-task-row rounded-lg border border-zinc-800 overflow-hidden bg-zinc-900/40" data-task-id="${escAttr(task.id)}" draggable="true">
+          <div class="flex items-center gap-2 px-2 py-1.5 hover:bg-zinc-900 cursor-pointer group"
+               onclick="if(!event.target.closest('button,.drag-handle')) openCmsTaskEdit('${task.id}')">
+            <span class="drag-handle cursor-grab text-zinc-700 hover:text-zinc-400 px-0.5 shrink-0" onclick="event.stopPropagation()"><i class="ph ph-dots-six-vertical"></i></span>
+            ${cmsTaskRowSummary(task)}
+            <div class="flex items-center shrink-0" onclick="event.stopPropagation()">
+              <button type="button" onclick="openCmsTaskEdit('${task.id}')" class="p-1 text-zinc-500 hover:text-cyan-400" title="Edit"><i class="ph ph-pencil-simple"></i></button>
+              <button type="button" onclick="addCmsSubtask('${task.id}')" class="p-1 text-zinc-500 hover:text-cyan-400" title="Add sub-task"><i class="ph ph-plus"></i></button>
+              <button type="button" onclick="deleteCmsTask('${task.id}')" class="p-1 text-zinc-500 hover:text-red-400" title="Delete"><i class="ph ph-trash"></i></button>
+            </div>
+          </div>
+          <div class="cms-task-subs ${task.subtasks && task.subtasks.length ? 'border-t border-zinc-800' : ''}">
+            ${(task.subtasks || []).map((sub) => `
+              <div class="cms-subtask-row flex items-center gap-2 px-2 py-1.5 pl-8 border-t border-zinc-800/80 hover:bg-zinc-900 cursor-pointer group" data-task-id="${escAttr(task.id)}" data-sub-id="${escAttr(sub.id)}" draggable="true"
+                   onclick="if(!event.target.closest('button,.drag-handle')) openCmsTaskEdit('${task.id}','${sub.id}')">
+                <span class="drag-handle cursor-grab text-zinc-700 hover:text-zinc-400 px-0.5 shrink-0" onclick="event.stopPropagation()"><i class="ph ph-dots-six-vertical"></i></span>
+                ${cmsTaskRowSummary(sub)}
+                <div class="flex items-center shrink-0" onclick="event.stopPropagation()">
+                  <button type="button" onclick="openCmsTaskEdit('${task.id}','${sub.id}')" class="p-1 text-zinc-500 hover:text-cyan-400" title="Edit"><i class="ph ph-pencil-simple"></i></button>
+                  <button type="button" onclick="deleteCmsSubtask('${task.id}','${sub.id}')" class="p-1 text-zinc-500 hover:text-red-400" title="Delete"><i class="ph ph-trash"></i></button>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function addCmsTask() {
+      const task = blankCmsTask();
+      task.order = cmsTasks.length;
+      cmsTasks.push(task);
+      markCmsTasksDirty();
+      renderCmsTasks();
+      openCmsTaskEdit(task.id);
+    }
+
+    function addCmsSubtask(taskId) {
+      const task = findCmsTask(taskId);
+      if (!task) return;
+      if (!Array.isArray(task.subtasks)) task.subtasks = [];
+      const sub = blankCmsSubtask();
+      sub.order = task.subtasks.length;
+      task.subtasks.push(sub);
+      markCmsTasksDirty();
+      renderCmsTasks();
+      openCmsTaskEdit(taskId, sub.id);
+    }
+
+    function deleteCmsTask(taskId) {
+      cmsTasks = cmsTasks.filter(t => t.id !== taskId);
+      markCmsTasksDirty();
+      renderCmsTasks();
+    }
+
+    function deleteCmsSubtask(taskId, subId) {
+      const task = findCmsTask(taskId);
+      if (!task) return;
+      task.subtasks = (task.subtasks || []).filter(s => s.id !== subId);
+      markCmsTasksDirty();
+      renderCmsTasks();
+    }
+
+    function openCmsTaskEdit(taskId, subId) {
+      const task = findCmsTask(taskId);
+      if (!task) return;
+      const item = subId ? (task.subtasks || []).find(s => s.id === subId) : task;
+      if (!item) return;
+      openItemEditModal({
+        title: item.title || (subId ? 'Sub-task' : 'Task'),
+        html: `
+          <div>
+            <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Title</label>
+            <input type="text" id="item-edit-task-title" class="field" value="${escAttr(item.title)}" placeholder="Task title">
+          </div>
+          <div>
+            <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Status</label>
+            <select id="item-edit-task-status" class="field">${cmsTaskStatusSelectHtml(item.status)}</select>
+          </div>
+          <div>
+            <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Description</label>
+            <textarea id="item-edit-task-description" rows="2" class="field" placeholder="Short description">${escAttr(item.description)}</textarea>
+          </div>
+          <div>
+            <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Notes</label>
+            <textarea id="item-edit-task-notes" rows="4" class="field" placeholder="Notes">${escAttr(item.notes)}</textarea>
+          </div>`,
+        onApply: () => {
+          item.title = document.getElementById('item-edit-task-title').value;
+          item.status = document.getElementById('item-edit-task-status').value;
+          item.description = document.getElementById('item-edit-task-description').value;
+          item.notes = document.getElementById('item-edit-task-notes').value;
+          markCmsTasksDirty();
+          renderCmsTasks();
+        },
+        focusSelector: '#item-edit-task-title'
+      });
+    }
+
+    function setupCmsTaskDragDrop() {
+      const container = document.getElementById('tasks-builder');
+      if (!container) return;
+      let dragEl = null;
+      let dragKind = null;
+
+      container.addEventListener('dragstart', (e) => {
+        const sub = e.target.closest('.cms-subtask-row');
+        const row = e.target.closest('.cms-task-row');
+        if (sub) {
+          if (!e.target.closest('.drag-handle')) { e.preventDefault(); return; }
+          dragEl = sub;
+          dragKind = 'sub';
+          sub.classList.add('opacity-50');
+          e.stopPropagation();
+          return;
+        }
+        if (!row) return;
+        if (!e.target.closest('.drag-handle')) { e.preventDefault(); return; }
+        dragEl = row;
+        dragKind = 'task';
+        row.classList.add('opacity-50');
+      });
+      container.addEventListener('dragend', () => {
+        if (dragEl) dragEl.classList.remove('opacity-50');
+        if (dragKind === 'task') syncCmsTaskOrderFromDom();
+        if (dragKind === 'sub' && dragEl) syncCmsSubtaskOrderFromDom(dragEl.dataset.taskId);
+        dragEl = null;
+        dragKind = null;
+        markCmsTasksDirty();
+      });
+      container.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        if (!dragEl) return;
+        if (dragKind === 'task') {
+          const rows = [...container.querySelectorAll('.cms-task-row:not(.opacity-50)')];
+          const after = rows.reduce((closest, child) => {
+            const box = child.getBoundingClientRect();
+            const offset = e.clientY - box.top - box.height / 2;
+            if (offset < 0 && offset > closest.offset) return { offset, element: child };
+            return closest;
+          }, { offset: -Infinity }).element;
+          if (after == null) container.appendChild(dragEl);
+          else container.insertBefore(dragEl, after);
+        } else if (dragKind === 'sub') {
+          const parent = dragEl.closest('.cms-task-row')?.querySelector('.cms-task-subs');
+          if (!parent) return;
+          const rows = [...parent.querySelectorAll('.cms-subtask-row:not(.opacity-50)')];
+          const after = rows.reduce((closest, child) => {
+            const box = child.getBoundingClientRect();
+            const offset = e.clientY - box.top - box.height / 2;
+            if (offset < 0 && offset > closest.offset) return { offset, element: child };
+            return closest;
+          }, { offset: -Infinity }).element;
+          if (after == null) parent.appendChild(dragEl);
+          else parent.insertBefore(dragEl, after);
+        }
+      });
+    }
+
+    function syncCmsTaskOrderFromDom() {
+      const ids = [...document.querySelectorAll('#tasks-builder .cms-task-row')].map(el => el.dataset.taskId);
+      cmsTasks = ids.map((id, i) => {
+        const t = findCmsTask(id);
+        if (t) t.order = i;
+        return t;
+      }).filter(Boolean);
+    }
+
+    function syncCmsSubtaskOrderFromDom(taskId) {
+      const task = findCmsTask(taskId);
+      if (!task) return;
+      const row = document.querySelector(`.cms-task-row[data-task-id="${CSS.escape(taskId)}"]`);
+      if (!row) return;
+      const ids = [...row.querySelectorAll('.cms-subtask-row')].map(el => el.dataset.subId);
+      task.subtasks = ids.map((id, i) => {
+        const s = (task.subtasks || []).find(x => x.id === id);
+        if (s) s.order = i;
+        return s;
+      }).filter(Boolean);
     }
 
     // --- DYNAMIC ROWS ---
@@ -2777,7 +3087,7 @@
       input.value = '';
     }
 
-    // --- 3D MODELS (STL / 3MF / STEP -> GLB) ---
+    // --- 3D MODELS (STL / 3MF / STEP / GLB) ---
 
     function currentCategoryAndProject() {
       return {
@@ -2942,7 +3252,10 @@
       partsEl.innerHTML = '<p class="text-xs text-zinc-500">Loading model…</p>';
       status.textContent = '';
       document.getElementById('model-editor-title').textContent = url.split('/').pop();
-      document.getElementById('model-editor-source').textContent = `${(model.format || 'glb').toUpperCase()} preview · only this GLB is stored, the source file is never published`;
+      const fmt = (model.format || 'glb').toUpperCase();
+      document.getElementById('model-editor-source').textContent = fmt === 'GLB'
+        ? 'Native GLB · stored as uploaded'
+        : `${fmt} preview · converted to GLB in the browser; the source file is never published`;
       document.querySelectorAll('#model-editor-up button').forEach(b => {
         b.classList.toggle('bg-cyan-600', b.dataset.up === model.up);
         b.classList.toggle('text-white', b.dataset.up === model.up);
@@ -3500,6 +3813,8 @@
                     await flushListOrder();
                     performPublish();
                 });
+          } else if(!document.getElementById('tasksForm').classList.contains('hidden')) {
+                saveCmsTasks(performPublish);
           } else {
                 flushListOrder().then(performPublish);
           }
@@ -3525,6 +3840,8 @@
             await flushListOrder();
             performCleanup();
           });
+        } else if (!document.getElementById('tasksForm').classList.contains('hidden')) {
+          saveCmsTasks(performCleanup);
         } else {
           flushListOrder().then(performCleanup);
         }
@@ -4173,7 +4490,7 @@
               <button type="button" data-up="y" onclick="onModelUp('y')" class="px-2.5 py-1.5 text-zinc-300">Y up</button>
             </div>
           </div>
-          <p class="absolute right-3 bottom-3 text-[10px] text-zinc-500 hidden md:block">Drag: rotate · Right-drag / two fingers: pan · Wheel / pinch: zoom</p>
+          <p class="absolute right-3 bottom-3 text-[10px] text-zinc-500 hidden md:block">Click a point to orbit around it · Click empty space for center · Drag: rotate · Right-drag / two fingers: pan · Wheel / pinch: zoom</p>
         </div>
         <div class="w-full md:w-80 flex flex-col border-t md:border-t-0 md:border-l border-zinc-800 min-h-0">
           <div class="px-4 py-3 border-b border-zinc-800">
@@ -4344,7 +4661,7 @@
       </div>
 
       <p class="text-[10px] text-zinc-600 font-mono tabular-nums mt-6 text-center">
-        Portfolio CMS v2.5.3 Local
+        Portfolio CMS v2.6.0 Local
       </p>
     </div>
   </div>

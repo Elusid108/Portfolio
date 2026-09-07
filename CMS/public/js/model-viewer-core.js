@@ -100,10 +100,10 @@
     scene.add(rim);
 
     // --- controls -------------------------------------------------------------------
-    // Left-drag rotates around the model's bbox center (world origin after applyUp).
-    // Right-drag / two-finger pan shifts the projection (setViewOffset) so the model
-    // can leave the middle of the viewport without moving the orbit pivot. Wheel /
-    // pinch still zoom toward that center.
+    // Left-drag rotates around the current orbit pivot (bbox center by default).
+    // Left-click on the mesh sets that hit as the pivot; click empty space restores
+    // the bbox center. Right-drag / two-finger pan shifts the projection
+    // (setViewOffset). Wheel / pinch zoom toward the current pivot.
     const controls = new OrbitControls(camera, canvas);
     controls.enableDamping = true;
     controls.dampingFactor = 0.08;
@@ -115,9 +115,38 @@
     controls.target.set(0, 0, 0);
 
     const viewPan = { x: 0, y: 0 };
+    const CLICK_PX = 5;
+    let clickCandidate = null;
 
-    function lockOrbitTarget() {
-      controls.target.set(0, 0, 0);
+    const pivotMarker = new THREE.Mesh(
+      new THREE.SphereGeometry(1, 16, 12),
+      new THREE.MeshBasicMaterial({ color: 0x22d3ee, transparent: true, opacity: 0.85, depthTest: true })
+    );
+    pivotMarker.visible = false;
+    pivotMarker.renderOrder = 10;
+    scene.add(pivotMarker);
+
+    function orbitPivotIsCenter() {
+      return controls.target.lengthSq() < 1e-10;
+    }
+
+    function syncPivotMarker() {
+      pivotMarker.position.copy(controls.target);
+      const s = Math.max(boundingRadius * 0.018, 1e-4);
+      pivotMarker.scale.setScalar(s);
+      pivotMarker.visible = !orbitPivotIsCenter();
+    }
+
+    function setOrbitPivot(worldPoint) {
+      if (!worldPoint) controls.target.set(0, 0, 0);
+      else controls.target.copy(worldPoint);
+      controls.update();
+      syncPivotMarker();
+      requestRender();
+    }
+
+    function resetOrbitPivot() {
+      setOrbitPivot(null);
     }
 
     function applyViewPanTo(cam, w, h) {
@@ -163,6 +192,11 @@
 
     function onPointerDown(e) {
       pointers.set(e.pointerId, { x: e.clientX, y: e.clientY, button: e.button });
+      if (e.button === 0 && pointers.size === 1) {
+        clickCandidate = { x: e.clientX, y: e.clientY, pointerId: e.pointerId };
+      } else {
+        clickCandidate = null;
+      }
       if (e.button === 2 || pointers.size >= 2) panLast = pointerMidpoint();
       syncPanRotate();
     }
@@ -170,7 +204,13 @@
     function onPointerMove(e) {
       if (!pointers.has(e.pointerId)) return;
       pointers.set(e.pointerId, { x: e.clientX, y: e.clientY, button: pointers.get(e.pointerId).button });
+      if (clickCandidate && clickCandidate.pointerId === e.pointerId) {
+        if (Math.hypot(e.clientX - clickCandidate.x, e.clientY - clickCandidate.y) > CLICK_PX) {
+          clickCandidate = null;
+        }
+      }
       if (!isPanning()) return;
+      clickCandidate = null;
       const now = pointerMidpoint();
       if (!panLast) { panLast = now; return; }
       const w = Math.max(1, container.clientWidth);
@@ -181,8 +221,31 @@
       applyViewPan();
     }
 
+    function trySetPivotFromClick(e) {
+      const rect = canvas.getBoundingClientRect();
+      const w = Math.max(1, rect.width);
+      const h = Math.max(1, rect.height);
+      const ndc = new THREE.Vector2(
+        ((e.clientX - rect.left) / w) * 2 - 1,
+        -((e.clientY - rect.top) / h) * 2 + 1
+      );
+      const raycaster = new THREE.Raycaster();
+      raycaster.setFromCamera(ndc, camera);
+      const meshes = parts.map((p) => p.mesh).filter(Boolean);
+      const hits = meshes.length ? raycaster.intersectObjects(meshes, false) : [];
+      if (hits.length) setOrbitPivot(hits[0].point);
+      else resetOrbitPivot();
+    }
+
     function onPointerUp(e) {
+      const wasClick = clickCandidate
+        && clickCandidate.pointerId === e.pointerId
+        && e.button === 0
+        && pointers.size <= 1
+        && !isPanning();
       pointers.delete(e.pointerId);
+      if (wasClick) trySetPivotFromClick(e);
+      clickCandidate = null;
       syncPanRotate();
     }
 
@@ -228,7 +291,7 @@
       camera.updateProjectionMatrix();
       controls.minDistance = boundingRadius * 0.15;
       controls.maxDistance = boundingRadius * 12;
-      lockOrbitTarget();
+      resetOrbitPivot();
       requestRender();
     }
 
@@ -243,7 +306,7 @@
     }
 
     function getView() {
-      lockOrbitTarget();
+      // Origin-relative spherical from the live camera; click-pivot is session-only.
       const spherical = new THREE.Spherical().setFromVector3(camera.position);
       return {
         theta: roundViewNum(spherical.theta, 4),
@@ -273,14 +336,14 @@
       const spherical = new THREE.Spherical(radius, phi, theta);
       camera.position.setFromSpherical(spherical);
       camera.lookAt(0, 0, 0);
-      lockOrbitTarget();
+      resetOrbitPivot();
       const panX = Number(view.panX);
       const panY = Number(view.panY);
       viewPan.x = Number.isFinite(panX) ? panX : 0;
       viewPan.y = Number.isFinite(panY) ? panY : 0;
       applyViewPan();
       controls.update();
-      lockOrbitTarget();
+      resetOrbitPivot();
       requestRender();
     }
 
@@ -288,12 +351,12 @@
       viewPan.x = 0;
       viewPan.y = 0;
       applyViewPan();
+      resetOrbitPivot();
       const dir = new THREE.Vector3(1, 0.75, 1.25).normalize();
       camera.position.copy(dir.multiplyScalar(defaultDistance()));
       camera.lookAt(0, 0, 0);
-      lockOrbitTarget();
       controls.update();
-      lockOrbitTarget();
+      resetOrbitPivot();
       requestRender();
     }
 
@@ -443,7 +506,7 @@
       rafId = requestAnimationFrame(tick);
       if (!intersecting) return;
       const moved = controls.update();
-      lockOrbitTarget();
+      if (moved) syncPivotMarker();
       if (moved || needsRender || controls.autoRotate) {
         renderer.render(scene, camera);
         needsRender = false;
@@ -456,7 +519,9 @@
     async function capture(width = 1600, height = 1200, type = 'image/png', quality) {
       const prevRatio = renderer.getPixelRatio();
       const prevAutoRotate = controls.autoRotate;
+      const prevMarker = pivotMarker.visible;
       controls.autoRotate = false;
+      pivotMarker.visible = false;
       renderer.setPixelRatio(1);
       renderer.setSize(width, height, false);
       camera.aspect = width / height;
@@ -470,6 +535,7 @@
       } finally {
         renderer.setPixelRatio(prevRatio);
         controls.autoRotate = prevAutoRotate;
+        pivotMarker.visible = prevMarker;
         resize();
         renderer.render(scene, camera);
       }

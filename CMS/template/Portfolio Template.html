@@ -287,11 +287,11 @@
         // at another common container.
         const isVideoUrl = (url) => typeof url === 'string' && /\.(mp4|webm|mov|m4v)$/i.test(url.split('?')[0]);
 
-        // 3D models: the CMS converts STL / 3MF / STEP uploads to GLB and stores the
-        // viewer settings (up axis, per-part color + opacity) on the gallery item.
+        // 3D models: the CMS converts STL / 3MF / STEP uploads to GLB (native GLB
+        // is stored as-is) and stores viewer settings on the gallery item.
         const isModelUrl = (url) => typeof url === 'string' && /\.glb$/i.test(url.split('?')[0]);
         const isModelItem = (item) => (typeof item === 'object' && item?.type === 'model') || isModelUrl(mediaSrc(item));
-        // The GLB is a reduced-poly preview only; no original file is stored or offered.
+        // The published asset is always a GLB; CAD originals are never stored or offered.
         const mediaModel = (item) => {
             if (typeof item !== 'object' || !item) return { up: 'z', parts: [], format: '' };
             const view = item.view && typeof item.view === 'object' ? item.view : null;
@@ -837,8 +837,9 @@
         // Interactive 3D model viewer (GLB) with the same chrome pattern as VideoPlayer.
         // Rendering is delegated to ModelViewerCore (shared with the CMS and inlined at
         // publish time), which pulls three.js through the import map the first time a
-        // model is opened. Navigation: drag to orbit, right-drag / two-finger drag to
-        // pan (view offset — orbit stays on the model center), wheel / pinch to zoom.
+        // model is opened. Navigation: click a point to orbit around it, click empty
+        // space for center, drag to orbit, right-drag / two-finger drag to pan,
+        // wheel / pinch to zoom.
         const ModelViewer = ({ src, model, className = "", label = "3D model" }) => {
             const hostRef = useRef(null);
             const containerRef = useRef(null);
@@ -974,7 +975,7 @@
                     {status === 'ready' && showHint && (
                         <div aria-hidden="true" className="absolute inset-x-0 top-12 flex justify-center pointer-events-none z-10">
                             <span className="px-3 py-1.5 rounded-full bg-black/60 text-[11px] text-zinc-200 backdrop-blur-sm">
-                                Drag to rotate · Scroll or pinch to zoom · Right-drag or two fingers to pan
+                                Drag to rotate · Click a point to orbit around it · Click empty space for center
                             </span>
                         </div>
                     )}
