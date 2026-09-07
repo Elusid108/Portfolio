@@ -2,7 +2,7 @@
 
 This is the source for my personal portfolio website — a showcase of work spanning lighting design, art installations, electronics, apps, fabrication, and systems integration.
 
-The local authoring tool is **CMS v2.8.0 Local**.
+The local authoring tool is **CMS v2.8.1 Local**.
 
 The live site (`[index.html](index.html)`) is a single, self-contained static page built with React 18 (UMD), Babel Standalone, and Tailwind CSS (all via CDN). It reads its content from a JSON block embedded directly in the page, so there's no build step and no backend required to host or view it — it can be served as-is from GitHub Pages or any static file host. Alongside it, the `[share/](share/)` folder holds small generated pages and preview images that give each project a proper social-media link preview.
 
@@ -164,7 +164,7 @@ The gallery item stores everything the site needs:
 }
 ```
 
-On the live site, models open in the lightbox in a three.js viewer (`[CMS/public/js/model-viewer-core.js](CMS/public/js/model-viewer-core.js)`, inlined into `index.html` at publish time). The model's bounding-box center is placed at the origin. Left-click a point on the mesh to orbit around that point; click empty space (or Reset) to return the pivot to the center. Drag to orbit, right-drag or two-finger drag to pan, wheel or pinch to zoom — mouse, touch and stylus all go through pointer events. After a pan, the camera trucks via a view offset; the click-pivot is session-only and is not stored in the gallery JSON. three.js is loaded from a CDN import map only when a model is actually opened, so pages without models pay nothing.
+On the live site, models open in the lightbox in a three.js viewer (`[CMS/public/js/model-viewer-core.js](CMS/public/js/model-viewer-core.js)`, inlined into `index.html` at publish time). Auto-rotate is on by default; visitors can turn it off. The model's bounding-box center is placed at the origin. Left-click a point on the mesh to orbit around that point; click empty space (or Reset) to return the pivot to the center. Drag to orbit, right-drag or two-finger drag to pan, wheel or pinch to zoom — mouse, touch and stylus all go through pointer events. After a pan, the camera trucks via a view offset; the click-pivot is session-only and is not stored in the gallery JSON. three.js is loaded from a CDN import map only when a model is actually opened, so pages without models pay nothing. Self-hosted videos without audio loop by default; videos with audio do not. The lightbox has no share control — visitors share the project page instead. Opening a related in-site project remounts the project dialog at the top so the previous banner cannot flash through.
 
 ### Publishing
 

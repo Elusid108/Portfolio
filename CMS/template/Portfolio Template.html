@@ -658,7 +658,7 @@
             const [duration, setDuration] = useState(0);
             const [isFullscreen, setIsFullscreen] = useState(false);
             const [seeking, setSeeking] = useState(false);
-            const [looping, setLooping] = useState(false);
+            const [looping, setLooping] = useState(!hasAudio);
             const [muted, setMuted] = useState(!!hasAudio);
             const [volume, setVolume] = useState(1);
             const [buffering, setBuffering] = useState(!!autoPlay);
@@ -670,10 +670,13 @@
                 setBuffering(!!autoPlay);
                 setCurrentTime(0);
                 setDuration(0);
+                const nextLoop = !hasAudio;
+                setLooping(nextLoop);
                 if (v) {
                     v.playbackRate = 1;
                     v.muted = !!hasAudio;
                     v.volume = 1;
+                    v.loop = nextLoop;
                 }
                 setMuted(!!hasAudio);
                 setVolume(1);
@@ -855,7 +858,7 @@
             const [status, setStatus] = useState('loading'); // loading | ready | error
             const [progress, setProgress] = useState(0);
             const [error, setError] = useState('');
-            const [autoRotate, setAutoRotate] = useState(false);
+            const [autoRotate, setAutoRotate] = useState(true);
             const [isFullscreen, setIsFullscreen] = useState(false);
             const [pseudoFullscreen, setPseudoFullscreen] = useState(false);
             const [showHint, setShowHint] = useState(true);
@@ -866,7 +869,7 @@
                 setStatus('loading');
                 setProgress(0);
                 setError('');
-                setAutoRotate(false);
+                setAutoRotate(true);
                 setShowHint(true);
                 const host = hostRef.current;
                 if (!host) return;
@@ -882,6 +885,7 @@
                     parts: info.parts,
                     view: info.view,
                     label,
+                    autoRotate: true,
                     onProgress: (f) => { if (!cancelled) setProgress(f); }
                 }).then((viewer) => {
                     if (cancelled || !viewer) { if (viewer) viewer.dispose(); return; }
@@ -1016,7 +1020,6 @@
             const [zoom, setZoom] = useState(1);
             const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
             const [isDragging, setIsDragging] = useState(false);
-            const [shareCopied, setShareCopied] = useState(false);
             const dragStart = useRef(null);
             const touchStartX = useRef(null);
             const touchEndX = useRef(null);
@@ -1108,20 +1111,6 @@
                 }
             };
 
-            // --- Share handler ---
-            const handleLightboxShare = (e) => {
-                e.stopPropagation();
-                const shareTitle = `${projectTitle || 'Project'} — ${index + 1} of ${images.length}`;
-                if (navigator.share) {
-                    navigator.share({ title: shareTitle, url: currentUrl }).catch(() => {});
-                } else {
-                    navigator.clipboard.writeText(currentUrl).then(() => {
-                        setShareCopied(true);
-                        setTimeout(() => setShareCopied(false), 2000);
-                    }).catch(() => {});
-                }
-            };
-
             const currentItem = images[index];
             const currentUrl = mediaSrc(currentItem);
             const caption = mediaCaption(currentItem);
@@ -1154,9 +1143,6 @@
                      onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
                     <button onClick={(e) => { e.stopPropagation(); onClose(); }} aria-label="Close media viewer" className="absolute top-4 right-4 p-3 bg-zinc-800/80 rounded-full text-white hover:bg-zinc-700 transition-colors z-[210]">
                         <X size={24} aria-hidden="true" />
-                    </button>
-                    <button onClick={handleLightboxShare} aria-label="Share this media" className="absolute top-4 left-4 p-3 bg-zinc-800/80 rounded-full text-white hover:bg-cyan-500/80 transition-colors z-[210]">
-                        {shareCopied ? <Check size={20} aria-hidden="true" /> : <Share2 size={20} aria-hidden="true" />}
                     </button>
                     {/* min-h-0 lets this shrink below its content so the image's max-h-full
                         resolves against the space left over by the caption, instead of
@@ -1285,7 +1271,7 @@
             );
         };
 
-        const ProjectModal = ({ project, onClose, onFilterByTag }) => {
+        const ProjectModal = ({ project, onClose, onFilterByTag, onOpenProject }) => {
             const [lightboxIndex, setLightboxIndex] = useState(null);
             const [hoveredRelated, setHoveredRelated] = useState(null);
             const [hoveredFile, setHoveredFile] = useState(null);
@@ -1376,6 +1362,7 @@
                                 {/* Empty alt: the h2 below is the accessible name for this dialog. */}
                                 {hasBannerPlaceholder && (
                                     <img
+                                        key={project.thumbnail}
                                         src={project.thumbnail}
                                         alt=""
                                         className="absolute inset-0 w-full h-full object-cover"
@@ -1383,6 +1370,7 @@
                                     />
                                 )}
                                 <img
+                                    key={project.image}
                                     ref={bannerRef}
                                     src={project.image}
                                     alt=""
@@ -1667,7 +1655,17 @@
                                                     if (isLocalHash) {
                                                         return (
                                                             <li key={i} className="relative" onMouseEnter={() => setHoveredRelated(i)} onMouseLeave={() => setHoveredRelated(null)} onFocus={() => setHoveredRelated(i)} onBlur={() => setHoveredRelated(null)}>
-                                                                <a href={r.url} aria-label={`View related project: ${displayTitle}`} className="flex items-center gap-3 p-3 rounded-lg bg-zinc-800 hover:bg-zinc-700 transition-colors group">
+                                                                <a
+                                                                    href={r.url}
+                                                                    aria-label={`View related project: ${displayTitle}`}
+                                                                    className="flex items-center gap-3 p-3 rounded-lg bg-zinc-800 hover:bg-zinc-700 transition-colors group"
+                                                                    onClick={(e) => {
+                                                                        if (!linkedProject || !onOpenProject) return;
+                                                                        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+                                                                        e.preventDefault();
+                                                                        onOpenProject(linkedProject);
+                                                                    }}
+                                                                >
                                                                     {displayImage ? (
                                                                         <div className="w-10 h-10 rounded shrink-0 overflow-hidden bg-zinc-700">
                                                                             <img src={displayImage} alt="" className="w-full h-full object-cover" style={fitStyle(linkedProject.thumbnailFit)} />
@@ -2323,9 +2321,11 @@
                     
                     {selectedProject && (
                         <ProjectModal 
+                            key={selectedProject.id}
                             project={selectedProject} 
                             onClose={handleCloseProject}
                             onFilterByTag={handleFilterByTag}
+                            onOpenProject={handleOpenProject}
                         />
                     )}
                 </div>

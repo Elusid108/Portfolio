@@ -45742,6 +45742,19 @@
           "y": 31.7
         },
         "thumbnail": "media/Lighting/Glow Lounge/Glow-Lounge-img-e58276-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Glow Lounge/Glow-Lounge-img-3ae42b.webp",
+        "thumbnail": "media/Lighting/Glow Lounge/Glow-Lounge-img-3ae42b-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Glow Lounge/Glow-Lounge-vid-258729.mp4",
+        "thumbnail": "media/Lighting/Glow Lounge/Glow-Lounge-img-4f9013-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Glow Lounge/Glow-Lounge-vid-dfb38d.mp4",
+        "poster": "media/Lighting/Glow Lounge/Glow-Lounge-vid-dfb38d-poster.webp",
+        "thumbnail": "media/Lighting/Glow Lounge/Glow-Lounge-vid-dfb38d-poster-thumb.webp"
       }
     ],
     "files": [],
@@ -45788,7 +45801,9 @@
           }
         ]
       }
-    ]
+    ],
+    "linkHeroImages": true,
+    "draft": false
   },
   {
     "title": "Mezzanine Bar",
@@ -48072,8 +48087,8 @@
   {
     "title": "Architectural Lighting",
     "category": "Lighting",
-    "image": "media/Lighting/Architectural Lighting/Architectural-Lighting-img-856e9a.webp",
-    "thumbnail": "media/Lighting/Architectural Lighting/Architectural-Lighting-img-856e9a-thumb.webp",
+    "image": "media/Lighting/Architectural Lighting/Architectural-Lighting-img-ab4799.webp",
+    "thumbnail": "media/Lighting/Architectural Lighting/Architectural-Lighting-img-fb79a4-thumb.webp",
     "description": "<p>The front PAR lights, roof line, and patio lighting for QBS</p>",
     "longDescription": "<p><br></p>",
     "websiteLink": "",
@@ -48105,7 +48120,20 @@
     "video": "",
     "timestamp": "2026-09-05T01:37:47.811Z",
     "id": "299",
-    "order": 8
+    "order": 8,
+    "thumbnailFit": {
+      "scale": 1.4,
+      "x": 0,
+      "y": 46.7,
+      "rotate": 0
+    },
+    "bannerFit": {
+      "scale": 1.25,
+      "x": 3.7,
+      "y": 33,
+      "rotate": 0
+    },
+    "linkHeroImages": false
   },
   {
     "title": "Home Light Rig",
@@ -48305,8 +48333,16 @@
         "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-b4a337-thumb.webp"
       },
       {
+        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-696096.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-696096-thumb.webp"
+      },
+      {
         "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-c8eec6.webp",
         "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-c8eec6-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-b6506b.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-b6506b-thumb.webp"
       },
       {
         "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-0e5ab7.webp",
@@ -48424,10 +48460,6 @@
         "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-c9e156-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-b6506b.webp",
-        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-b6506b-thumb.webp"
-      },
-      {
         "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-c67e6a.webp",
         "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-c67e6a-thumb.webp"
       },
@@ -48442,6 +48474,30 @@
       {
         "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-69cf8c.webp",
         "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-69cf8c-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-c3dd72.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-c3dd72-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-ed960b.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-ed960b-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-b917bc.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-b917bc-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-3f3c60.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-3f3c60-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-1a7457.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-1a7457-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-4db34a.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-4db34a-thumb.webp"
       }
     ],
     "files": [],
@@ -48555,7 +48611,8 @@
       "scale": 1,
       "x": 59.3,
       "y": 60.8
-    }
+    },
+    "linkHeroImages": true
   },
   {
     "title": "Chain Hoist Service & Repair",
