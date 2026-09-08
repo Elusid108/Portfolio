@@ -36491,10 +36491,12 @@
         "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-31d519.mp4",
         "fit": {
           "scale": 1.25,
-          "x": 48,
-          "y": 32.5
+          "x": 33.3,
+          "y": 48.2,
+          "rotate": 0
         },
-        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-31d519-poster-thumb.webp"
+        "poster": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-a60a67.webp",
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-a60a67-thumb.webp"
       },
       {
         "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-1f0f04.mp4",
@@ -36608,6 +36610,10 @@
       {
         "name": "LED Video Panel Service",
         "url": "#project/4623"
+      },
+      {
+        "name": "Lighting & SFX Service",
+        "url": "#project/1862"
       }
     ],
     "bannerFit": {
@@ -37883,6 +37889,14 @@
       {
         "name": "LED Pixel Panel",
         "url": "#project/9469"
+      },
+      {
+        "name": "Lighting & SFX Service",
+        "url": "#project/1862"
+      },
+      {
+        "name": "LED Video Panel Service",
+        "url": "#project/4623"
       }
     ],
     "thumbnail": "media/Integration/Temple SF/Temple-SF-img-5779b3-thumb.webp",
@@ -39754,7 +39768,7 @@
     "video": "",
     "timestamp": "2026-06-21T22:41:13.337Z",
     "id": "707",
-    "order": 5,
+    "order": 4,
     "specs": "<h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>BambuLabs • X1C • | • TenLog • TL-D3</em></p><p><strong>Black PLA+</strong><br><em>Duramic • 1.75mm</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>SolidWorks 2022</strong></p>",
     "related": [],
     "thumbnailFit": {
@@ -40156,6 +40170,10 @@
       {
         "name": "Control system",
         "url": "#project/4382"
+      },
+      {
+        "name": "Chain Hoist Service & Repair",
+        "url": "#project/989"
       }
     ],
     "thumbnailFit": {
@@ -40278,6 +40296,10 @@
       {
         "name": "LED Video Panel Service",
         "url": "#project/4623"
+      },
+      {
+        "name": "Lighting & SFX Service",
+        "url": "#project/1862"
       }
     ],
     "thumbnailFit": {
@@ -41762,6 +41784,14 @@
       {
         "name": "MIRUS",
         "url": "#project/4939"
+      },
+      {
+        "name": "Lighting & SFX Service",
+        "url": "#project/1862"
+      },
+      {
+        "name": "Chain Hoist Service & Repair",
+        "url": "#project/989"
       }
     ],
     "thumbnail": "media/Integration/Temple Denver/Temple-Denver-img-473b00-thumb.webp",
@@ -41845,7 +41875,7 @@
     "video": "",
     "timestamp": "2026-07-26T23:20:01.923Z",
     "id": "5376",
-    "order": 6,
+    "order": 5,
     "thumbnailFit": {
       "scale": 1.05,
       "x": 5.3,
@@ -42243,7 +42273,7 @@
         "url": "#project/5376"
       },
       {
-        "name": "Immersive Lighting Rig",
+        "name": "Immersive Dance Lighting Rig",
         "url": "#project/1"
       },
       {
@@ -42870,7 +42900,7 @@
     "video": "",
     "timestamp": "2026-08-01T21:44:42.857Z",
     "id": "1430",
-    "order": 4,
+    "order": 6,
     "thumbnail": "media/Fabrication/LED PSU Boot Sequencer/LED-PSU-Boot-Sequencer-img-c72086-thumb.webp",
     "specsData": [
       {
@@ -43052,7 +43082,7 @@
     "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>VIP Tables (x32)</strong><br><em>22px • 2.1m • WiFI • acrylic • edge lighting</em></p><h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x704)</strong><br><em>67.2m • SM16704 • 60LED/m • 20px/m • 12Vdc</em></p><h2>POWER &amp; DISTRIBTUION</h2><p><strong>Battery Pack (x32)</strong><br><em>Li-Ion • 12Vdc</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Microcontroller (x32)</strong><br><em>ESP32</em></p>",
     "related": [
       {
-        "name": "Immersive lighting",
+        "name": "Immersive Dance Lighting Rig",
         "url": "#project/1"
       },
       {
@@ -44679,6 +44709,14 @@
       {
         "name": "Inflatable Tubes",
         "url": "#project/8787"
+      },
+      {
+        "name": "Lighting & SFX Service",
+        "url": "#project/1862"
+      },
+      {
+        "name": "LED Video Panel Service",
+        "url": "#project/4623"
       }
     ],
     "video": "",
@@ -45836,7 +45874,12 @@
     ],
     "files": [],
     "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>Beam (x8)</strong><br><em>ColorfulLighting • PD60 • LED • beam 4° • 60W • RGBW • infinite pan &amp; tilt</em></p><p><strong>Beye (x4)</strong><br><em>ColorfulLighting • B6 • LED • wash + FX hybrid • 240W • RGBW</em></p><p><strong>Hybrid (x2)</strong><br><em>Chauvet • Intimidator Hybrid</em></p><h2>COMPUTE &amp; CONTROL</h2><p><strong>Lighting Console (x1)</strong><br><em>WOLFMIX WMX1 • 1u unlocked</em></p>",
-    "related": [],
+    "related": [
+      {
+        "name": "Lighting & SFX Service",
+        "url": "#project/1862"
+      }
+    ],
     "video": "",
     "timestamp": "2026-08-14T22:12:34.696Z",
     "id": "3309",
@@ -48124,7 +48167,12 @@
     "files": [],
     "specsData": [],
     "specs": "",
-    "related": [],
+    "related": [
+      {
+        "name": "LED Video Panel Service",
+        "url": "#project/4623"
+      }
+    ],
     "video": "",
     "timestamp": "2026-09-05T01:32:22.408Z",
     "id": "4250",
@@ -48309,6 +48357,10 @@
       {
         "name": "Dance Floor Pillars",
         "url": "#project/6371"
+      },
+      {
+        "name": "Lighting & SFX Service",
+        "url": "#project/1862"
       }
     ],
     "video": "",
@@ -48362,7 +48414,12 @@
     "files": [],
     "specsData": [],
     "specs": "",
-    "related": [],
+    "related": [
+      {
+        "name": "Lighting & SFX Service",
+        "url": "#project/1862"
+      }
+    ],
     "video": "",
     "timestamp": "2026-09-05T01:37:47.811Z",
     "id": "299",
@@ -48582,10 +48639,6 @@
         "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Service-img-00a65c-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-90a2a8.webp",
-        "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-90a2a8-thumb.webp"
-      },
-      {
         "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-4971c3.webp",
         "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-4971c3-thumb.webp"
       },
@@ -48788,11 +48841,44 @@
       }
     ],
     "specs": "<h2>FIXTURE BRANDS</h2><p><strong>Martin</strong></p><p><strong>Clay Paky</strong></p><p><strong>ETC</strong></p><p><strong>Vari-Lite</strong></p><p><strong>High End</strong></p><p><strong>ElektraLite</strong></p><p><strong>Generic Clones</strong></p><h2>SFX</h2><p><strong>Hazers</strong></p><p><strong>Foggers</strong><br><em>Worst repair on the list</em></p><p><strong>Cryo</strong></p><p><strong>Snow</strong></p><p><strong>Confetti</strong></p><p><strong>Bubbles</strong></p><h2>BENCH &amp; THROUGHPUT</h2><p><strong>Typical week</strong><br><em>30-40 lights • Brown Note</em></p><p><strong>Tenure</strong><br><em>~1 year Barbizon • ~2 years Brown Note lighting service</em></p><p><strong>Install maintenance</strong><br><em>Glow Lounge • monthly • about a year</em></p><h2>REPAIR SCOPE</h2><p><strong>Movers</strong><br><em>Power-on motion • feel for grinding steppers • harness • spare motor • then driver</em></p><p><strong>Preventive</strong><br><em>Blow fans • wipe optics</em></p><p><strong>Power supplies</strong><br><em>AC/DC isolation (VL1000 lesson)</em></p>",
-    "related": [],
+    "related": [
+      {
+        "name": "Immersive Dance Lighting Rig",
+        "url": "#project/1"
+      },
+      {
+        "name": "Lighting Layer",
+        "url": "#project/2395"
+      },
+      {
+        "name": "Temple SF",
+        "url": "#project/8252"
+      },
+      {
+        "name": "Temple Denver",
+        "url": "#project/4382"
+      },
+      {
+        "name": "Tracks Discotheque",
+        "url": "#project/3671"
+      },
+      {
+        "name": "Glow Lounge",
+        "url": "#project/3309"
+      },
+      {
+        "name": "Architectural Lighting",
+        "url": "#project/299"
+      },
+      {
+        "name": "The Basement",
+        "url": "#project/5045"
+      }
+    ],
     "video": "",
     "timestamp": "2026-09-05T01:52:02.598Z",
     "id": "1862",
-    "order": 2,
+    "order": 1,
     "linkHeroImages": false,
     "thumbnailFit": {
       "scale": 1.15,
@@ -48875,6 +48961,10 @@
         "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-ed960b-thumb.webp"
       },
       {
+        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-696096.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-696096-thumb.webp"
+      },
+      {
         "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-b4a337.webp",
         "fit": {
           "scale": 1,
@@ -48884,16 +48974,42 @@
         "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-b4a337-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-696096.webp",
-        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-696096-thumb.webp"
-      },
-      {
         "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-c8eec6.webp",
         "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-c8eec6-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-b6506b.webp",
-        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-b6506b-thumb.webp"
+        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-69cf8c.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-69cf8c-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-2abedc.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-2abedc-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-053372.webp",
+        "fit": {
+          "scale": 1.15,
+          "x": 69.2,
+          "y": 59.5
+        },
+        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-053372-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-20aa74.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-20aa74-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-74bdfb.webp",
+        "fit": {
+          "scale": 1,
+          "x": 49.5,
+          "y": 58.6
+        },
+        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-74bdfb-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-24fb89.webp",
+        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-24fb89-thumb.webp"
       },
       {
         "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-0e5ab7.webp",
@@ -48923,24 +49039,6 @@
         "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-5b366e-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-743cb9.webp",
-        "fit": {
-          "scale": 1.5,
-          "x": 51.2,
-          "y": 64.8
-        },
-        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-743cb9-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-39a90a.webp",
-        "fit": {
-          "scale": 1.45,
-          "x": 44.1,
-          "y": 67.1
-        },
-        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-39a90a-thumb.webp"
-      },
-      {
         "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-1bc464.webp",
         "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-1bc464-thumb.webp"
       },
@@ -48957,10 +49055,6 @@
         "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-be5295-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-e8fbdc.webp",
-        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-e8fbdc-thumb.webp"
-      },
-      {
         "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-98f861.webp",
         "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-98f861-thumb.webp"
       },
@@ -48971,32 +49065,6 @@
       {
         "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-e5a24f.webp",
         "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-e5a24f-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-2abedc.webp",
-        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-2abedc-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-053372.webp",
-        "fit": {
-          "scale": 1.15,
-          "x": 69.2,
-          "y": 59.5
-        },
-        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-053372-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-20aa74.webp",
-        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-20aa74-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-74bdfb.webp",
-        "fit": {
-          "scale": 1,
-          "x": 49.5,
-          "y": 58.6
-        },
-        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-74bdfb-thumb.webp"
       },
       {
         "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-cda303.webp",
@@ -49015,16 +49083,8 @@
         "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-c67e6a-thumb.webp"
       },
       {
-        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-24fb89.webp",
-        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-24fb89-thumb.webp"
-      },
-      {
         "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-e9481e.webp",
         "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-e9481e-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-69cf8c.webp",
-        "thumbnail": "media/Fabrication/LED Video Panel Service/LED-Video-Panel-Service-img-69cf8c-thumb.webp"
       }
     ],
     "files": [],
@@ -49121,14 +49181,26 @@
         "url": "#project/1"
       },
       {
+        "name": "Video Ceiling",
+        "url": "#project/4250"
+      },
+      {
+        "name": "Temple SF",
+        "url": "#project/8252"
+      },
+      {
         "name": "The Basement",
         "url": "#project/5045"
+      },
+      {
+        "name": "Tracks Discotheque",
+        "url": "#project/3671"
       }
     ],
     "video": "",
     "timestamp": "2026-09-05T01:53:03.450Z",
     "id": "4623",
-    "order": 1,
+    "order": 0,
     "thumbnailFit": {
       "scale": 1,
       "x": 50,
@@ -49146,7 +49218,7 @@
     "title": "Chain Hoist Service & Repair",
     "category": "Tooling",
     "image": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-24e9d8.webp",
-    "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-24e9d8-thumb.webp",
+    "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-1b986b-thumb.webp",
     "description": "<p>My time doing CM chain hoist servicing. Images and specs. Get specific.</p>",
     "longDescription": "<p><br></p>",
     "websiteLink": "",
@@ -49155,7 +49227,7 @@
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "draft": true,
+    "draft": false,
     "tags": [],
     "gallery": [
       {
@@ -49181,32 +49253,12 @@
         "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-d4da64-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-3c4389.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-3c4389-thumb.webp"
-      },
-      {
         "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-5cb9c2.webp",
         "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-5cb9c2-thumb.webp"
       },
       {
         "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-737d1d.webp",
         "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-737d1d-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-12a265.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-12a265-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-3cc758.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-3cc758-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-c8f94d.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-c8f94d-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-b357ef.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-b357ef-thumb.webp"
       },
       {
         "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-188ecc.webp",
@@ -49221,136 +49273,96 @@
         "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-095438-thumb.webp"
       },
       {
+        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-c8f94d.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-c8f94d-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-e2631c.webp",
+        "fit": {
+          "scale": 1.2,
+          "x": 28.8,
+          "y": 30,
+          "rotate": 0
+        },
+        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-e2631c-thumb.webp"
+      },
+      {
         "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-dc4c1b.webp",
+        "fit": {
+          "scale": 1,
+          "x": 100,
+          "y": 29.2,
+          "rotate": 0
+        },
         "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-dc4c1b-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-75624a.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-75624a-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-38b15b.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-38b15b-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-0bd0e7.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-0bd0e7-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-e3109e.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-e3109e-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-70a230.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-70a230-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-b357ef.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-b357ef-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-e535cd.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-e535cd-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-ea5b8c.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-ea5b8c-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-c8d635.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-c8d635-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-8dc0a3.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-8dc0a3-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-9cc43b.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-9cc43b-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-b15e0c.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-b15e0c-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-c16a5b.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-c16a5b-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-97957e.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-97957e-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-3c5b4e.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-3c5b4e-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-00877c.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-00877c-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-99331c.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-99331c-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-79fd34.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-79fd34-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-9ecb9a.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-9ecb9a-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-c6420b.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-c6420b-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-35d606.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-35d606-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-5235fe.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-5235fe-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-e9a340.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-e9a340-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-342300.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-342300-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-907839.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-907839-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-2ec974.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-2ec974-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-1b4625.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-1b4625-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-fbc2ce.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-fbc2ce-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-6ae535.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-6ae535-thumb.webp"
       },
       {
         "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-c42453.webp",
         "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-c42453-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-3bca7a.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-3bca7a-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-fbc2ce.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-fbc2ce-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-9ed5a2.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-9ed5a2-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-342300.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-342300-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-12a265.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-12a265-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-5235fe.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-5235fe-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-3bca7a.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-3bca7a-thumb.webp"
       },
       {
         "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-b11de1.webp",
         "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-b11de1-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-68a6fb.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-68a6fb-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-97957e.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-97957e-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-25d301.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-25d301-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-99331c.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-99331c-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-16e0b9.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-16e0b9-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-296587.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-296587-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-45aecf.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-45aecf-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-e2631c.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-e2631c-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-9ed5a2.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-9ed5a2-thumb.webp"
       },
       {
         "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-58553b.webp",
@@ -49365,106 +49377,51 @@
         "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-edd5ca-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-ea5b8c.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-ea5b8c-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-75e89b.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-75e89b-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-335b84.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-335b84-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-27e777.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-27e777-thumb.webp"
-      },
-      {
         "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-45331e.webp",
         "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-45331e-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-cbd510.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-cbd510-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-38b15b.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-38b15b-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-907839.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-907839-thumb.webp"
       },
       {
         "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-55dba7.webp",
         "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-55dba7-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-179a3d.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-179a3d-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-4dc5a5.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-4dc5a5-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-e3109e.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-e3109e-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-f48395.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-f48395-thumb.webp"
-      },
-      {
         "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-e4bade.webp",
         "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-e4bade-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-135982.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-135982-thumb.webp"
       },
       {
         "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-739d50.webp",
         "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-739d50-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-935089.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-935089-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-7a3574.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-7a3574-thumb.webp"
-      },
-      {
         "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-e7bfc7.webp",
         "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-e7bfc7-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-b15e0c.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-b15e0c-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-78c8d0.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-78c8d0-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-45ba15.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-45ba15-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-6ae535.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-6ae535-thumb.webp"
       }
     ],
     "files": [],
     "specsData": [],
     "specs": "",
-    "related": [],
+    "related": [
+      {
+        "name": "Temple Denver",
+        "url": "#project/4382"
+      },
+      {
+        "name": "The Orb",
+        "url": "#project/6841"
+      }
+    ],
     "video": "",
     "timestamp": "2026-09-05T01:55:24.530Z",
     "id": "989",
-    "order": 0,
+    "order": 2,
     "thumbnailFit": {
-      "scale": 1.2,
-      "x": 47,
-      "y": 42.2,
+      "scale": 1,
+      "x": 53.9,
+      "y": 49.1,
       "rotate": 0
     },
     "bannerFit": {
@@ -49473,7 +49430,7 @@
       "y": 54.8,
       "rotate": 0
     },
-    "linkHeroImages": true
+    "linkHeroImages": false
   },
   {
     "title": "Mini Heart",

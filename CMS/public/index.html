@@ -43,6 +43,7 @@
     img.gallery-thumb, img.file-thumb, .hero-preview img, .fit-preview img { -webkit-user-drag: none; user-select: none; }
     .gallery-row.gallery-drop-before { box-shadow: -3px 0 0 0 #22d3ee; }
     .gallery-row.gallery-drop-after { box-shadow: 3px 0 0 0 #22d3ee; }
+    #gemini-api-key { -webkit-text-security: disc; }
     #hero-thumb-source.hidden { display: none !important; }
     #hero-thumb-source:not(.hidden) { display: flex; }
     .ql-toolbar.ql-snow {
@@ -154,7 +155,7 @@
     <header class="h-11 shrink-0 flex items-center justify-between px-3 border-b border-zinc-800 bg-zinc-900">
       <div class="flex items-center gap-3 min-w-0">
         <span class="text-sm font-semibold tracking-wide text-zinc-100">CMS</span>
-        <span class="text-[10px] font-mono text-zinc-500">v2.8.3</span>
+        <span class="text-[10px] font-mono text-zinc-500">v2.8.4</span>
         <span id="dirtyDot" class="w-1.5 h-1.5 rounded-full bg-zinc-600 opacity-30" title="Unsaved changes"></span>
       </div>
       <div class="flex items-center gap-1.5">
@@ -2902,9 +2903,8 @@
         const container = document.getElementById('related-container');
         const div = document.createElement('div');
         div.className = "related-row group flex items-center gap-2 px-2 py-1.5 rounded-lg border border-zinc-800 hover:border-zinc-600 bg-zinc-900/40";
-        div.draggable = true;
         div.innerHTML = `
-            <span class="drag-handle cursor-grab text-zinc-700 hover:text-zinc-400 px-0.5 flex-shrink-0"><i class="ph ph-dots-six-vertical"></i></span>
+            <span class="drag-handle cursor-grab text-zinc-700 hover:text-zinc-400 px-0.5 flex-shrink-0" draggable="true"><i class="ph ph-dots-six-vertical"></i></span>
             <span class="index-badge text-[10px] font-mono text-zinc-600 w-6 flex-shrink-0"></span>
             <div class="related-card-thumb w-10 h-10 rounded overflow-hidden bg-zinc-800 shrink-0 hidden">
                 <img class="related-card-thumb-img w-full h-full object-cover" draggable="false" alt="">
@@ -2974,11 +2974,11 @@
               ${cardHtml}
               <div>
                 <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Link Name</label>
-                <input type="text" id="item-edit-related-name" class="field" value="${escAttr(name)}" placeholder="Link Name">
+                <input type="text" id="item-edit-related-name" class="field" value="${escAttr(name)}" placeholder="Link Name" autocomplete="off" data-1p-ignore="true" data-lpignore="true">
               </div>
               <div>
                 <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">URL</label>
-                <input type="text" id="item-edit-related-url" class="field font-mono text-xs" value="${escAttr(url)}" placeholder="#project/… or https://">
+                <input type="text" id="item-edit-related-url" class="field font-mono text-xs" value="${escAttr(url)}" placeholder="#project/… or https://" autocomplete="off" data-1p-ignore="true" data-lpignore="true" data-form-type="other">
               </div>`,
             onApply: () => {
                 const nameInput = row.querySelector('.related-name');
@@ -3278,13 +3278,20 @@
 
         container.addEventListener('dragstart', (e) => {
             const row = e.target.closest('.related-row');
+            const handle = e.target.closest('.drag-handle');
             if (!row) return;
-            if (!e.target.closest('.drag-handle')) {
+            if (!handle) {
                 e.preventDefault();
                 return;
             }
             dragEl = row;
             row.classList.add('opacity-50');
+            try {
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('text/plain', row.querySelector('.related-url')?.value || 'related');
+                const rect = row.getBoundingClientRect();
+                e.dataTransfer.setDragImage(row, e.clientX - rect.left, e.clientY - rect.top);
+            } catch (_) {}
         });
         container.addEventListener('dragend', () => {
             if (dragEl) dragEl.classList.remove('opacity-50');
@@ -5216,8 +5223,11 @@
         <div class="flex gap-2">
           <input
             id="gemini-api-key"
-            type="password"
+            type="text"
             autocomplete="off"
+            data-1p-ignore="true"
+            data-lpignore="true"
+            data-form-type="other"
             placeholder="Enter your Google AI API key..."
             class="field"
           >
@@ -5288,7 +5298,7 @@
       </div>
 
       <p class="text-[10px] text-zinc-600 font-mono tabular-nums mt-6 text-center">
-        Portfolio CMS v2.8.3 Local
+        Portfolio CMS v2.8.4 Local
       </p>
     </div>
   </div>
