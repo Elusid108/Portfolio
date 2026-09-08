@@ -102,10 +102,28 @@
     {
       "id": "02fc9a23-bea7-4e1a-8b26-2784e0492338",
       "title": "Related links can't be drug to reorder",
-      "status": "todo",
+      "status": "done",
       "description": "",
       "notes": "",
       "order": 9,
+      "subtasks": []
+    },
+    {
+      "id": "3910d94d-9d58-4417-814e-b7dd0896ec39",
+      "title": "Adjust thumbnails for Service pages",
+      "status": "todo",
+      "description": "Images were dumped in. Cut, trim, and reorder as needed",
+      "notes": "",
+      "order": 10,
+      "subtasks": []
+    },
+    {
+      "id": "fbacaeca-6d59-41da-875a-10973423330d",
+      "title": "3D rig needs to be simplified",
+      "status": "todo",
+      "description": "Too many objects for the rig. Each screen and each pixel is its own object. ",
+      "notes": "",
+      "order": 11,
       "subtasks": []
     }
   ]

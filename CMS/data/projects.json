@@ -36556,15 +36556,6 @@
         "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-3b9d19-thumb.webp"
       },
       {
-        "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-c46c5a.webp",
-        "fit": {
-          "scale": 1,
-          "x": 50.5,
-          "y": 1.6
-        },
-        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-c46c5a-thumb.webp"
-      },
-      {
         "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-a1c734.webp",
         "fit": {
           "scale": 1,
@@ -48160,8 +48151,16 @@
     "tags": [],
     "gallery": [
       {
+        "url": "media/Electronics/Video Ceiling/Video-Ceiling-img-6b57e6.webp",
+        "thumbnail": "media/Electronics/Video Ceiling/Video-Ceiling-img-6b57e6-thumb.webp"
+      },
+      {
         "url": "media/Electronics/Video Ceiling/Video-Ceiling-img-4861d1.webp",
         "thumbnail": "media/Electronics/Video Ceiling/Video-Ceiling-img-4861d1-thumb.webp"
+      },
+      {
+        "url": "media/Electronics/Video Ceiling/Video-Ceiling-img-39340d.webp",
+        "thumbnail": "media/Electronics/Video Ceiling/Video-Ceiling-img-39340d-thumb.webp"
       },
       {
         "url": "media/Electronics/Video Ceiling/Video-Ceiling-img-37cb42.webp",
@@ -48170,10 +48169,6 @@
       {
         "url": "media/Electronics/Video Ceiling/Video-Ceiling-img-3fd531.webp",
         "thumbnail": "media/Electronics/Video Ceiling/Video-Ceiling-img-3fd531-thumb.webp"
-      },
-      {
-        "url": "media/Electronics/Video Ceiling/Video-Ceiling-img-39340d.webp",
-        "thumbnail": "media/Electronics/Video Ceiling/Video-Ceiling-img-39340d-thumb.webp"
       }
     ],
     "files": [],
