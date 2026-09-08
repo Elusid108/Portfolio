@@ -40168,11 +40168,11 @@
     "specs": "",
     "related": [
       {
-        "name": "Control system",
+        "name": "Temple Denver",
         "url": "#project/4382"
       },
       {
-        "name": "Chain Hoist Service & Repair",
+        "name": "Chain Hoist Service",
         "url": "#project/989"
       }
     ],
@@ -41744,6 +41744,16 @@
     ],
     "gallery": [
       {
+        "url": "media/Integration/Temple Denver/Temple-Denver-img-11ff6a.webp",
+        "fit": {
+          "scale": 1,
+          "x": 53.2,
+          "y": 100,
+          "rotate": 0
+        },
+        "thumbnail": "media/Integration/Temple Denver/Temple-Denver-img-11ff6a-thumb.webp"
+      },
+      {
         "url": "media/Integration/Temple Denver/Temple-Denver-img-473b00.webp",
         "thumbnail": "media/Integration/Temple Denver/Temple-Denver-img-473b00-thumb.webp"
       },
@@ -41790,12 +41800,14 @@
         "url": "#project/1862"
       },
       {
-        "name": "Chain Hoist Service & Repair",
+        "name": "Chain Hoist Service",
         "url": "#project/989"
       }
     ],
     "thumbnail": "media/Integration/Temple Denver/Temple-Denver-img-473b00-thumb.webp",
-    "specsData": []
+    "specsData": [],
+    "linkHeroImages": true,
+    "draft": false
   },
   {
     "title": "Extrusion Centering Sled",
@@ -48647,6 +48659,10 @@
         "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Repair-img-d64163-thumb.webp"
       },
       {
+        "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Service-img-ee3477.webp",
+        "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Service-img-ee3477-thumb.webp"
+      },
+      {
         "url": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Service-img-d54fa0.webp",
         "thumbnail": "media/Fabrication/Lighting & SFX Service/Lighting-SFX-Service-img-d54fa0-thumb.webp"
       },
@@ -49215,12 +49231,12 @@
     "linkHeroImages": false
   },
   {
-    "title": "Chain Hoist Service & Repair",
+    "title": "Chain Hoist Service",
     "category": "Tooling",
-    "image": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-24e9d8.webp",
-    "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-1b986b-thumb.webp",
-    "description": "<p>My time doing CM chain hoist servicing. Images and specs. Get specific.</p>",
-    "longDescription": "<p><br></p>",
+    "image": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-24e9d8.webp",
+    "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-1b986b-thumb.webp",
+    "description": "<p>A whole show of 1-ton motors sat in wet cases for days. Every one came apart for rust and new brake pads.</p>",
+    "longDescription": "<p>A whole show of 1-ton motors sat in their wet cases for a few days. The entire batch came apart: rust knocked off, brake pads replaced, every shell opened. It was exhausting.</p><p>At Brown Note Productions I was the full-time chain hoist tech for about two years of my first stint. Columbus McKinnon came in and trained a handful of us on Lodestar service. The certification was good for four years, which covered the time I was there. I was the one who actually did it full time. Before that, the company sent motors out to a third party. We took the work in-house and started servicing the inventory retroactively, gaskets included.</p><p>The warehouse was an endless rotation. Good equipment went out. Questionable equipment came back. Everything got cleaned and tested, then packed for the next gig or put into a service cycle. Hoists were no different, except people hang under them, so the pass was stricter. Service stickers tracked the dates. I kept written logs as well.</p><p>Chain inspection was always first. Then the shell came off. Rust was almost a guarantee. If it rained on a gig and the cases sat, motors rusted overnight. I knocked the rust out, replaced gaskets to slow the next round, changed brake pads, set limits, checked electrical, and repaired the control and power boxes that sit on the ground. Load tests closed the cycle. The gaskets helped, but every motor in the shop needed them.</p><p>I cycled through about fifty motors a week: quarter-ton, half-ton, 1-ton, and 2-ton CM touring Lodestars.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -49231,179 +49247,288 @@
     "tags": [],
     "gallery": [
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-6f3e12.webp",
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-6f3e12.webp",
         "fit": {
           "scale": 1.15,
           "x": 51.1,
           "y": 0,
           "rotate": 0
         },
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-6f3e12-thumb.webp"
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-6f3e12-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-f2dacd.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-f2dacd-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-f2dacd.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-f2dacd-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-ec7251.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-ec7251-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-ec7251.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-ec7251-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-d4da64.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-d4da64-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-d4da64.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-d4da64-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-5cb9c2.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-5cb9c2-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-5cb9c2.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-5cb9c2-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-737d1d.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-737d1d-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-737d1d.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-737d1d-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-188ecc.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-188ecc-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-188ecc.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-188ecc-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-42ad2e.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-42ad2e-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-095438.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-095438-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-095438.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-095438-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-42ad2e.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-42ad2e-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-c8f94d.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-c8f94d-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-e2631c.webp",
-        "fit": {
-          "scale": 1.2,
-          "x": 28.8,
-          "y": 30,
-          "rotate": 0
-        },
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-e2631c-thumb.webp"
-      },
-      {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-dc4c1b.webp",
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-dc4c1b.webp",
         "fit": {
           "scale": 1,
           "x": 100,
           "y": 29.2,
           "rotate": 0
         },
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-dc4c1b-thumb.webp"
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-dc4c1b-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-38b15b.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-38b15b-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-c8f94d.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-c8f94d-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-e3109e.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-e3109e-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-e2631c.webp",
+        "fit": {
+          "scale": 1.2,
+          "x": 28.8,
+          "y": 30,
+          "rotate": 0
+        },
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-e2631c-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-b357ef.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-b357ef-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-38b15b.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-38b15b-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-ea5b8c.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-ea5b8c-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-e3109e.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-e3109e-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-8dc0a3.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-8dc0a3-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-b357ef.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-b357ef-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-b15e0c.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-b15e0c-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-ea5b8c.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-ea5b8c-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-6ae535.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-6ae535-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-8dc0a3.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-8dc0a3-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-c42453.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-c42453-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-b15e0c.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-b15e0c-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-fbc2ce.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-fbc2ce-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-6ae535.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-6ae535-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-342300.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-342300-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-c42453.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-c42453-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-12a265.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-12a265-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-fbc2ce.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-fbc2ce-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-5235fe.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-5235fe-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-342300.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-342300-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-3bca7a.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-3bca7a-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-12a265.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-12a265-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-b11de1.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-b11de1-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-5235fe.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-5235fe-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-97957e.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-97957e-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-3bca7a.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-3bca7a-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-99331c.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-99331c-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-b11de1.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-b11de1-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-9ed5a2.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-9ed5a2-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-97957e.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-97957e-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-58553b.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-58553b-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-99331c.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-99331c-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-e2f785.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-e2f785-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-9ed5a2.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-9ed5a2-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-edd5ca.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-edd5ca-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-58553b.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-58553b-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-45331e.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-45331e-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-e2f785.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-e2f785-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-907839.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-907839-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-edd5ca.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-edd5ca-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-55dba7.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-55dba7-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-45331e.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-45331e-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-e4bade.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-e4bade-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-907839.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-907839-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-739d50.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-739d50-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-55dba7.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-55dba7-thumb.webp"
       },
       {
-        "url": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-e7bfc7.webp",
-        "thumbnail": "media/Fabrication/Chain Hoist Service & Repair/Chain-Hoist-Service-Repair-img-e7bfc7-thumb.webp"
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-e4bade.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-e4bade-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-739d50.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-739d50-thumb.webp"
+      },
+      {
+        "url": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-e7bfc7.webp",
+        "thumbnail": "media/Fabrication/Chain Hoist Service/Chain-Hoist-Service-Repair-img-e7bfc7-thumb.webp"
       }
     ],
     "files": [],
-    "specsData": [],
-    "specs": "",
+    "specsData": [
+      {
+        "id": "4e3fb172-4a20-4591-8fd4-665b9a4f13df",
+        "title": "MOTORS",
+        "items": [
+          {
+            "id": "d4135cd7-0b6d-4993-8f17-ca7b987872dd",
+            "name": "CM Lodestar",
+            "qty": "",
+            "specs": "Touring production series"
+          },
+          {
+            "id": "0f7bf28b-4633-4fb3-92bf-ffb795e6f356",
+            "name": "1/4 ton",
+            "qty": "",
+            "specs": ""
+          },
+          {
+            "id": "343d2570-2419-4728-9c99-e34d91aa3458",
+            "name": "1/2 ton",
+            "qty": "",
+            "specs": ""
+          },
+          {
+            "id": "702e26b0-13f1-4123-a079-da0edf4d91a0",
+            "name": "1 ton",
+            "qty": "",
+            "specs": ""
+          },
+          {
+            "id": "7bd8d4b2-d621-4bbd-8f0c-7a297b008a6f",
+            "name": "2 ton",
+            "qty": "",
+            "specs": ""
+          }
+        ]
+      },
+      {
+        "id": "88ebae37-79a8-4473-9301-9c77cf891d66",
+        "title": "BENCH & THROUGHPUT",
+        "items": [
+          {
+            "id": "fd4f032a-3305-47eb-9bee-3da06e7670e9",
+            "name": "Shop",
+            "qty": "",
+            "specs": "Brown Note Productions, full-time hoist tech"
+          },
+          {
+            "id": "9abedc97-9250-4bf3-8a75-5b6bf103ccce",
+            "name": "Training",
+            "qty": "",
+            "specs": "CM Lodestar, in-house, cert good 4 years"
+          },
+          {
+            "id": "5130ecfc-d955-49ed-830b-fabffaf94318",
+            "name": "Tenure",
+            "qty": "",
+            "specs": "~2 years, first stint"
+          },
+          {
+            "id": "44f51ab6-f3bb-42da-acc8-c9f49ff4a6f9",
+            "name": "Typical week",
+            "qty": "",
+            "specs": "~50 motors"
+          }
+        ]
+      },
+      {
+        "id": "20b8673a-b89a-4e1c-a467-dce28bf6f29f",
+        "title": "SERVICE SCOPE",
+        "items": [
+          {
+            "id": "9066381d-bba6-4cfc-b5da-ae290267bde1",
+            "name": "Records",
+            "qty": "",
+            "specs": "Service stickers, written logs"
+          },
+          {
+            "id": "ca1addac-b3da-495f-8287-cc569891c226",
+            "name": "First check",
+            "qty": "",
+            "specs": "Chain inspection"
+          },
+          {
+            "id": "a2a6bdfa-7646-497d-bbb3-e0f24630460a",
+            "name": "Corrosion",
+            "qty": "",
+            "specs": "Rust de-scale, gasket replacement"
+          },
+          {
+            "id": "645c284e-cfcb-48a9-b8d1-8b79eb4246e1",
+            "name": "Mechanical",
+            "qty": "",
+            "specs": "Brake pads, limits"
+          },
+          {
+            "id": "4ffd9504-97aa-4e22-b08b-f3218279d8df",
+            "name": "Electrical",
+            "qty": "",
+            "specs": "Components, ground control and power boxes"
+          },
+          {
+            "id": "dd9ea7b6-d0e8-442b-ad50-60a679207e68",
+            "name": "Proof",
+            "qty": "",
+            "specs": "Load test"
+          }
+        ]
+      }
+    ],
+    "specs": "<h2>MOTORS</h2><p><strong>CM Lodestar</strong><br><em>Touring production series</em></p><p><strong>1/4 ton</strong></p><p><strong>1/2 ton</strong></p><p><strong>1 ton</strong></p><p><strong>2 ton</strong></p><h2>BENCH &amp; THROUGHPUT</h2><p><strong>Shop</strong><br><em>Brown Note Productions • full-time hoist tech</em></p><p><strong>Training</strong><br><em>CM Lodestar • in-house • cert good 4 years</em></p><p><strong>Tenure</strong><br><em>~2 years • first stint</em></p><p><strong>Typical week</strong><br><em>~50 motors</em></p><h2>SERVICE SCOPE</h2><p><strong>Records</strong><br><em>Service stickers • written logs</em></p><p><strong>First check</strong><br><em>Chain inspection</em></p><p><strong>Corrosion</strong><br><em>Rust de-scale • gasket replacement</em></p><p><strong>Mechanical</strong><br><em>Brake pads • limits</em></p><p><strong>Electrical</strong><br><em>Components • ground control and power boxes</em></p><p><strong>Proof</strong><br><em>Load test</em></p>",
     "related": [
       {
         "name": "Temple Denver",
