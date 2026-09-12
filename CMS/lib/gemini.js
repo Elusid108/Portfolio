@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { getProjects } = require('./data');
 
 const PROMPTS_DIR = path.join(__dirname, '..', 'prompts');
 const WRITING_GUIDE_PATH = path.join(PROMPTS_DIR, 'writing-guide.md');
@@ -56,35 +57,132 @@ function relatedNames(project = {}) {
   return [];
 }
 
+function parseProjectHash(url) {
+  if (!url || typeof url !== 'string') return null;
+  const trimmed = url.trim();
+  if (!trimmed.startsWith('#project/')) return null;
+  try { return decodeURIComponent(trimmed.slice('#project/'.length)); }
+  catch { return trimmed.slice('#project/'.length); }
+}
+
+function stripHtml(value) {
+  return String(value || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+function firstSentence(value) {
+  const text = stripHtml(value);
+  if (!text) return '';
+  const match = text.match(/^(.+?[.!?])(?:\s|$)/);
+  const sentence = (match ? match[1] : text).trim();
+  return sentence.length > 240 ? `${sentence.slice(0, 237).trim()}...` : sentence;
+}
+
+function relatedEntries(project = {}) {
+  const raw = project.related;
+  if (!Array.isArray(raw)) {
+    return relatedNames(project).map((name) => ({ name, url: '' }));
+  }
+  return raw.map((item) => {
+    if (typeof item === 'string') return { name: item.trim(), url: '' };
+    return {
+      name: String(item && item.name ? item.name : '').trim(),
+      url: String(item && item.url ? item.url : '').trim(),
+    };
+  }).filter((item) => item.name || item.url);
+}
+
+function siblingCopyLines(project = {}) {
+  const entries = relatedEntries(project);
+  if (!entries.length) return [];
+
+  let catalog = [];
+  try {
+    catalog = getProjects() || [];
+  } catch {
+    catalog = [];
+  }
+
+  const selfId = project && project.id != null ? String(project.id) : '';
+  return entries.map((entry) => {
+    const id = parseProjectHash(entry.url);
+    let sibling = id && String(id) !== selfId
+      ? catalog.find((p) => String(p.id) === String(id))
+      : null;
+    if (!sibling && entry.name) {
+      const needle = entry.name.toLowerCase();
+      sibling = catalog.find((p) => String(p.id) !== selfId && String(p.title || '').trim().toLowerCase() === needle) || null;
+    }
+    if (!sibling) {
+      const label = entry.name || entry.url || '(unnamed related)';
+      return `- ${label}: unresolved or external. Do not invent its story.`;
+    }
+    const title = sibling.title || entry.name || '(untitled)';
+    const short = stripHtml(sibling.short || sibling.description);
+    const opens = firstSentence(sibling.long || sibling.longDescription);
+    if (short && opens) return `- ${title}: ${short} Opens: ${opens}`;
+    if (short) return `- ${title}: ${short}`;
+    if (opens) return `- ${title}: Opens: ${opens}`;
+    return `- ${title}: (no copy yet)`;
+  });
+}
+
 function categoryBankName(category) {
   const raw = String(category || '').trim();
   if (/^sculpture$/i.test(raw)) return 'Art';
   return raw || '(none)';
 }
 
+function isLighting(project = {}) {
+  return /^lighting$/i.test(String(project.category || '').trim());
+}
+
 function categorySteer(task, project = {}) {
   const bank = categoryBankName(project.category);
-  const isSatellite = relatedNames(project).length > 0;
+  const hasRelated = relatedNames(project).length > 0;
+  const lighting = isLighting(project);
+
   if (task === 'interview') {
-    const satellite = isSatellite
-      ? ' Related links are present, so treat this as a satellite: ask about the part, not how the whole venue came together.'
-      : '';
-    return `Use the Category interview bank for ${bank}. Sculpture uses Art. If this category has no bank, use the shared interview rules only and do not invent a bank.${satellite}`;
+    const parts = [
+      `Use the Category interview bank for ${bank}. Sculpture uses Art. If this category has no bank, use the shared interview rules only and do not invent a bank.`,
+    ];
+    if (hasRelated) {
+      parts.push('Related pages are listed below with their opening lines. Decide hub vs satellite from those titles: a hub is the whole room or rig; a satellite is one layer, fixture, or subsystem. Ask about this page. Do not retell a sibling. Do not steal a sibling\'s rule or closer.');
+    }
+    if (lighting && hasRelated) {
+      parts.push('Lighting with Related links: if this is a layer or subsystem, do not ask what rule he refused to break. Ask what this layer covers that the room page does not, or what the drawings got wrong.');
+    }
+    return parts.join(' ');
   }
-  const satellite = isSatellite
-    ? ' Related links are present, so treat this as a satellite: do not retell how the whole venue came together.'
-    : '';
-  return `Write the long body using the Category shape for ${bank}. Sculpture uses Art. If this category has no bank, use the shared long rules only and do not invent a shape.${satellite}`;
+
+  const parts = [
+    `Write the long body using the Category shape for ${bank}. Sculpture uses Art. If this category has no bank, use the shared long rules only and do not invent a shape.`,
+  ];
+  if (hasRelated) {
+    parts.push('Related pages are listed below with their opening lines. Already told: do not retell. Do not steal a rule, phrase, or closer from them. Decide hub vs satellite from the titles: a hub is the whole room or rig; a satellite is one layer, fixture, or subsystem. A hub may write the room look and its own rule if that rule is in this draft. A satellite must not invent a design rule or end on what the whole room did.');
+  }
+  if (lighting && hasRelated) {
+    parts.push('If this Lighting page is a layer or subsystem, open on what the layer is. Keep layout numbers from the draft (counts, pods, universes, service size). At most one install snag. Layout, power, and data are not snags. If this page is the room, open on the look or the rule only if that rule is in the draft.');
+  } else if (lighting) {
+    parts.push('Lighting hub: open on the look or the rule only if that rule is in the draft. Do not invent a rule to satisfy the shape.');
+  }
+  return parts.join(' ');
 }
 
 function projectBlock(project = {}) {
   const specs = project.specs ? String(project.specs).trim() : '';
   const related = relatedNames(project);
-  return [
+  const siblings = siblingCopyLines(project);
+  const lines = [
     `Title: ${project.title || '(untitled)'}`,
     `Category: ${project.category || '(none)'}`,
     `Tags: ${Array.isArray(project.tags) ? project.tags.join(', ') : (project.tags || '(none)')}`,
     related.length ? `Related: ${related.join(', ')}` : 'Related: (none)',
+  ];
+  if (siblings.length) {
+    lines.push('Related pages already on the site (already told; do not retell; do not steal a rule, phrase, or closer):');
+    lines.push(...siblings);
+  }
+  lines.push(
     specs ? `Specifications (do not dump these unless a number is the story):\n${specs}` : 'Specifications: (none)',
     '',
     'Current short description:',
@@ -92,7 +190,8 @@ function projectBlock(project = {}) {
     '',
     'Current long description:',
     (project.long || '(empty)').trim(),
-  ].join('\n');
+  );
+  return lines.join('\n');
 }
 
 function userPromptForTask(task, project, messages) {
@@ -255,7 +354,7 @@ async function runTask(body) {
     throw err;
   }
 
-  const temperature = task === 'short' ? 0.4 : task === 'interview' ? 0.5 : 0.7;
+  const temperature = task === 'short' ? 0.4 : task === 'interview' ? 0.5 : 0.45;
   const systemInstruction = buildSystemInstruction(task);
   const userPrompt = userPromptForTask(task, body.project || {}, body.messages || []);
   const raw = await callGemini({

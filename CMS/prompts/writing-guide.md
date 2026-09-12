@@ -49,16 +49,19 @@ Shared rules:
 - Do not ask for part numbers that belong in Specifications.
 - If he skipped a question, do not ask it again or a close variant.
 - If he says he does not remember, drop it. Never fill the gap yourself.
-- Hub vs satellite: if Related links exist, treat this as a satellite. Ask about the part, not how the whole venue came together.
+- Hub vs satellite: Related links mean other pages already exist. Read their titles and opening lines in the user prompt. A satellite is one layer, fixture, or subsystem of a larger venue. A hub is the whole room or rig, even if it also has Related links outbound. Ask about this page. Do not retell a sibling. Do not steal a sibling's rule or closer.
 
 Stop: if the category question is already answered in the draft, do not interview for sport. Your one question should tell him the draft is ready and he should generate.
 
 #### Category interview banks
 
 **Lighting**
-- Primary: what did the room look like, and what design rule did you refuse to break?
-- Allowed: a decision and what he gave up; the one number that is the story; what the room did when it opened.
-- Refuse: another install-struggle question (heat, height, what he was standing on) if the look and the rule are already on the page.
+- Hub (this page is the room or the whole rig): Primary: what did the room look like, and what design rule did you refuse to break?
+- Satellite (this page is one layer or subsystem): Primary: what is this layer that the related room page does not cover, or what did the drawings get wrong?
+- Allowed, hub: a decision and what he gave up; the one number that is the story; what the room did when it opened.
+- Allowed, satellite: fixture counts and grouping if they explain the layout; the power and data path; the one install snag.
+- Refuse, hub: another install-struggle question (heat, height, what he was standing on) if the look and the rule are already on the page.
+- Refuse, satellite: the venue origin story; "what rule did you refuse to break?"; crowd reaction; a look that belongs on the hub.
 
 **Fixtures**
 - Primary: what is the part, and why could you not buy it?
@@ -103,14 +106,16 @@ Shared shape rules:
 - The reader should know what the thing is by the end of the first paragraph, from the story. Never write a definition sentence ("X is a 16x16 matrix that...", "Unfold is a browser-based card game that...").
 - Never open on a hypothetical user walkthrough ("A user drops in a photo...", "You import a file...").
 - Never open with "I wanted to."
-- Middle: how it got built, in the order it happened. Include at most one thing that went sideways, and only if it serves the category question.
+- Middle: how it got built, in the order it happened. At most one install snag, and only if it serves the category question. Layout, power, data, fixture counts, and grouping are not snags; keep them if they are in the draft.
 - Not "the client loved it," "patrons gasped," "without a single glitch," "on the first try," or "deeply satisfying."
-- One failure maximum. One dry aside maximum.
-- Do not retell a whole venue origin story if this page is a satellite (Related links exist, or this is one fixture / one room system). Assume related pages exist.
+- One dry aside maximum.
+- Do not invent a design rule, look, cue, blackout, or "the room became X" if those words are not in the draft or the Q&A.
+- Do not retell a whole venue origin story if this page is a satellite (one fixture, one layer, or one room system). Related pages already told their stories. Do not reuse a sibling's rule or closer.
 
 #### Category shape
 
-- Lighting: open on the look, or the rule you would not break. End on what the room did.
+- Lighting hub: open on the look, or the rule you would not break. End on what the room did. Do not invent a rule that is not in the draft.
+- Lighting satellite: open on what this layer is. Do not invent a design rule. Do not reuse a sibling's rule or closer. Keep his layout numbers if they explain the object (counts, pods, universes, service size). End on the install condition or the one snag, not on what the whole room did.
 - Fixtures: open on the part you could not buy. Vary how you say it; do not open every page with "You cannot buy X." End on the install condition it survived.
 - Systems: open on what the missed handoff looked like to a person in the room, not on the protocol. Explain at most one protocol term in plain words and drop the rest. End on the test that proved one show, or on what the operators did with it.
 - Tooling, built object: open on the job-site failure, with the site named. End on a day using it.
@@ -120,7 +125,8 @@ Shared shape rules:
 
 ## Category question the body must answer
 
-- Lighting: what did the room look like, and what design rule did you refuse to break?
+- Lighting hub: what did the room look like, and what design rule did you refuse to break?
+- Lighting satellite: what is this layer, and how was it hung, powered, or controlled?
 - Fixtures: what is the part, and why could you not buy it?
 - Systems: what did the missed handoff cost, and how did independent machines become one show?
 - Tooling: what job-site failure made this object exist? For repair pages: how do you find the fault?
@@ -139,7 +145,7 @@ Shared shape rules:
 - Tacked-on benefit clauses ("...ensuring even diffusion"). Make it a real sentence or cut it.
 - Em dashes. Use commas, periods, or parentheses.
 - One adjective per noun, maximum.
-- Restating Specifications numbers unless the number is the point of the sentence (70 universes, 5000 solder joints, 80 percent load).
+- Restating Specifications numbers unless the number is the point of the sentence (70 universes, 5000 solder joints, 80 percent load, 144 dots, six universes). Layout math from the draft stays in the body when it explains the object.
 - "Walked away," "breaking point," "club funk," "slow toaster," and similar diary color unless those words are already in his notes.
 
 Do not force every project into Constraint / Mishap / Win. Vary shape. Some open on a scene, some on a problem, some on a blunt statement.
@@ -147,6 +153,8 @@ Do not force every project into Constraint / Mishap / Win. Vary shape. Some open
 ## Polish vs invent
 
 Most runs start from existing copy. Tighten it. Cut repetition. Keep his verbs. Do not add a fixture, brand, measurement, person, or outcome that is not in the source draft or the Q&A answers. If a connecting fact is missing, leave the gap. Prefer a tight 130 words over a padded 250.
+
+Do not invent a design rule to satisfy a category shape. If he did not write a rule, do not open with one. Keep numbers from the draft when they explain the object. Do not turn switched power, relays, or data paths into show cues unless he wrote that.
 
 ## Output format
 

@@ -1906,9 +1906,13 @@
             return cat.title ? `${cat.title}: ${items}` : items;
         }).filter(Boolean).join('\n');
         const related = Array.from(document.querySelectorAll('.related-row:not(.opacity-50)'))
-            .map((row) => row.querySelector('.related-name')?.value.trim())
-            .filter(Boolean);
+            .map((row) => ({
+                name: row.querySelector('.related-name')?.value.trim() || '',
+                url: row.querySelector('.related-url')?.value.trim() || '',
+            }))
+            .filter((item) => item.name || item.url);
         return {
+            id: document.getElementById('id')?.value || '',
             title: document.getElementById('title')?.value || '',
             category: document.getElementById('category')?.value || '',
             tags: document.getElementById('tags')?.value || '',

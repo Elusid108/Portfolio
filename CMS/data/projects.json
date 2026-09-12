@@ -36579,13 +36579,7 @@
     "launchLink": "",
     "githubLink": "",
     "shopLink": "",
-    "files": [
-      {
-        "name": "Instrument schedule",
-        "url": "media/Lighting/Immersive Dance Lighting Rig/files/Temple SF instrument schedule.pdf",
-        "description": "Instrument schedule for the 2020 remodel of the main room lighting rig at Temple Nightclub in San Francisco"
-      }
-    ],
+    "files": [],
     "featured": true,
     "websiteLink": "",
     "timestamp": "2026-01-12T01:03:01.269Z",
@@ -48319,8 +48313,8 @@
     "title": "Lighting Layer",
     "category": "Lighting",
     "image": "media/Lighting/Lighting Layer/Lighting-Layer-img-4af53d.webp",
-    "description": "<p>The lighting layer for the install at Temple SF, completing the 3 main focal points for the install.</p>",
-    "longDescription": "<p><br></p>",
+    "description": "<p>Individually a 4-degree RGBW beam is nothing. One hundred forty-four of them in haze is the lighting layer.</p>",
+    "longDescription": "<p>On either side of the video ceiling I hung 72 RGBW pixel dots, 144 total. Individually they are underwhelming: a 4-degree color-mixing beam with infinite pan and tilt, and that's it. Array them, put haze in the room, and they behave like pixel tape. One diode is a point of light. A grid of them is the show.</p><p>Profiles sat in the same line for texture: color wheel, gobos, prisms. RGBWA+UV washes covered floods, strobes, and blacklight. Everything was evenly spaced and mirrored so the room was one canvas, any angle. Fixtures hung on strut in pods. A pod was 12 dots, one LSM150, and three WFP12s. Two pods filled a universe. The layer ran on six. Power was 120 volt on the same 200-amp service as the dance floor pillars, on switched relays so unused fixtures went dark without touching the desk.</p><p>Straight runs down both sides of the room kept conduit cheap and fast. DMX was copper over CAT6 to Art-Net nodes in the rack. I kept every bit of processing on the ground. If the network died during a night, I wanted it in one place, away from the crowd.</p><p>The HVAC duct on stage right was not on the drawings. It sat in the path of the last strut run. I put a gradual angle on that pod to clear the vent. It framed the stage better than a straight line would have.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -48457,9 +48451,46 @@
         "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-vid-91a9bd-poster-thumb.webp"
       }
     ],
-    "files": [],
-    "specsData": [],
-    "specs": "",
+    "files": [
+      {
+        "name": "Temple SF instrument schedule.pdf",
+        "url": "media/Lighting/Lighting Layer/files/Temple SF instrument schedule.pdf",
+        "description": ""
+      }
+    ],
+    "specsData": [
+      {
+        "id": "0a631e24-1018-4382-8e08-2402273c28a2",
+        "title": "FIXTURES & FX",
+        "items": [
+          {
+            "id": "2793e069-ca84-4fd7-8104-9b764181c076",
+            "name": "PD60",
+            "qty": "144",
+            "specs": "ColorfulLighting, LED, beam 4°, 60W, RGBW, infinite pan & tilt "
+          },
+          {
+            "id": "d644104e-8dc9-478d-9449-daa6c4b85970",
+            "name": "LSM150",
+            "qty": "12",
+            "specs": "ColorfulLighting, LED, spot 15°, 150W, pan 520°, tilt 270°, 7 colors + white, 6 static gobos, 6 rotating gobos, 3 facet prism"
+          },
+          {
+            "id": "95845795-11d6-45cf-976b-3d917ad04148",
+            "name": "WFP12,",
+            "qty": "40",
+            "specs": "ColorfulLighting, LED, wash 35°, 280W, RGBWA+UV"
+          },
+          {
+            "id": "7faf3ad7-3ff1-4800-95df-7319cb36a60e",
+            "name": "Radiance Hazer,",
+            "qty": "2",
+            "specs": "Ultratec, hazer, DMX, 120Vac, 500W"
+          }
+        ]
+      }
+    ],
+    "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>PD60 (x144)</strong><br><em>ColorfulLighting • LED • beam 4° • 60W • RGBW • infinite pan &amp; tilt</em></p><p><strong>LSM150 (x12)</strong><br><em>ColorfulLighting • LED • spot 15° • 150W • pan 520° • tilt 270° • 7 colors + white • 6 static gobos • 6 rotating gobos • 3 facet prism</em></p><p><strong>WFP12, (x40)</strong><br><em>ColorfulLighting • LED • wash 35° • 280W • RGBWA+UV</em></p><p><strong>Radiance Hazer, (x2)</strong><br><em>Ultratec • hazer • DMX • 120Vac • 500W</em></p>",
     "related": [
       {
         "name": "Immersive Dance Lighting Rig",
@@ -48480,6 +48511,10 @@
       {
         "name": "Lighting & SFX Service",
         "url": "#project/1862"
+      },
+      {
+        "name": "LED Video Panel Service",
+        "url": "#project/4623"
       }
     ],
     "video": "",
@@ -49318,6 +49353,10 @@
       {
         "name": "Tracks Discotheque",
         "url": "#project/3671"
+      },
+      {
+        "name": "Lighting Layer",
+        "url": "#project/2395"
       }
     ],
     "video": "",
