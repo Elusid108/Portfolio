@@ -36556,6 +36556,17 @@
         "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-3b9d19-thumb.webp"
       },
       {
+        "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-vid-4141cf.mp4",
+        "fit": {
+          "scale": 1,
+          "x": 50.9,
+          "y": 100,
+          "rotate": 0
+        },
+        "poster": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-bb88b9.webp",
+        "thumbnail": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-bb88b9-thumb.webp"
+      },
+      {
         "url": "media/Lighting/Immersive Dance Lighting Rig/Immersive-Dance-Lighting-Rig-img-a1c734.webp",
         "fit": {
           "scale": 1,
@@ -36605,6 +36616,10 @@
       {
         "name": "Lighting & SFX Service",
         "url": "#project/1862"
+      },
+      {
+        "name": "Lighting Layer",
+        "url": "#project/2395"
       }
     ],
     "bannerFit": {
@@ -37888,6 +37903,10 @@
       {
         "name": "LED Video Panel Service",
         "url": "#project/4623"
+      },
+      {
+        "name": "Lighting Layer",
+        "url": "#project/2395"
       }
     ],
     "thumbnail": "media/Integration/Temple SF/Temple-SF-img-5779b3-thumb.webp",
@@ -42282,6 +42301,10 @@
       {
         "name": "Cross System Control",
         "url": "#project/8252"
+      },
+      {
+        "name": "Lighting Layer",
+        "url": "#project/2395"
       }
     ],
     "video": "",
@@ -42976,6 +42999,11 @@
     ],
     "gallery": [
       {
+        "url": "media/Electronics/WiFi VIP Tables/WiFi-VIP-Tables-vid-d659c4.mp4",
+        "poster": "media/Electronics/WiFi VIP Tables/WiFi-VIP-Tables-vid-d659c4-poster.webp",
+        "thumbnail": "media/Electronics/WiFi VIP Tables/WiFi-VIP-Tables-vid-d659c4-poster-thumb.webp"
+      },
+      {
         "url": "media/Electronics/WiFi VIP Tables/WiFi-VIP-Tables-vid-912f4c.mp4",
         "poster": "media/Electronics/WiFi VIP Tables/WiFi-VIP-Tables-vid-912f4c-poster.webp",
         "thumbnail": "media/Electronics/WiFi VIP Tables/WiFi-VIP-Tables-vid-912f4c-poster-thumb.webp"
@@ -43157,7 +43185,9 @@
           }
         ]
       }
-    ]
+    ],
+    "linkHeroImages": true,
+    "draft": false
   },
   {
     "title": "Glass VIP Wall",
@@ -48138,7 +48168,7 @@
   {
     "title": "Video Ceiling",
     "category": "Fixtures",
-    "image": "media/Electronics/Video Ceiling/Video-Ceiling-img-a62d4e.webp",
+    "image": "media/Electronics/Video Ceiling/Video-Ceiling-img-d92ffc.webp",
     "description": "<p>Video ceiling for the Temple SF rig</p>",
     "longDescription": "<p><br></p>",
     "websiteLink": "",
@@ -48151,8 +48181,53 @@
     "tags": [],
     "gallery": [
       {
+        "url": "media/Electronics/Video Ceiling/Video-Ceiling-vid-3a1fcb.mp4",
+        "poster": "media/Electronics/Video Ceiling/Video-Ceiling-vid-3a1fcb-poster.webp",
+        "thumbnail": "media/Electronics/Video Ceiling/Video-Ceiling-vid-3a1fcb-poster-thumb.webp"
+      },
+      {
+        "url": "media/Electronics/Video Ceiling/Video-Ceiling-vid-d94826.mp4",
+        "poster": "media/Electronics/Video Ceiling/Video-Ceiling-vid-d94826-poster.webp",
+        "thumbnail": "media/Electronics/Video Ceiling/Video-Ceiling-vid-d94826-poster-thumb.webp"
+      },
+      {
+        "url": "media/Electronics/Video Ceiling/Video-Ceiling-vid-482480.mp4",
+        "poster": "media/Electronics/Video Ceiling/Video-Ceiling-vid-482480-poster.webp",
+        "thumbnail": "media/Electronics/Video Ceiling/Video-Ceiling-vid-482480-poster-thumb.webp"
+      },
+      {
+        "url": "media/Electronics/Video Ceiling/Video-Ceiling-img-42fc2a.webp",
+        "thumbnail": "media/Electronics/Video Ceiling/Video-Ceiling-img-42fc2a-thumb.webp"
+      },
+      {
+        "url": "media/Electronics/Video Ceiling/Video-Ceiling-img-0b5797.webp",
+        "fit": {
+          "scale": 1,
+          "x": 48.9,
+          "y": 81.4,
+          "rotate": 0
+        },
+        "thumbnail": "media/Electronics/Video Ceiling/Video-Ceiling-img-0b5797-thumb.webp"
+      },
+      {
+        "url": "media/Electronics/Video Ceiling/Video-Ceiling-img-7bda41.webp",
+        "thumbnail": "media/Electronics/Video Ceiling/Video-Ceiling-img-7bda41-thumb.webp"
+      },
+      {
+        "url": "media/Electronics/Video Ceiling/Video-Ceiling-img-9a8c71.webp",
+        "thumbnail": "media/Electronics/Video Ceiling/Video-Ceiling-img-9a8c71-thumb.webp"
+      },
+      {
         "url": "media/Electronics/Video Ceiling/Video-Ceiling-img-6b57e6.webp",
         "thumbnail": "media/Electronics/Video Ceiling/Video-Ceiling-img-6b57e6-thumb.webp"
+      },
+      {
+        "url": "media/Electronics/Video Ceiling/Video-Ceiling-img-95aa5b.webp",
+        "thumbnail": "media/Electronics/Video Ceiling/Video-Ceiling-img-95aa5b-thumb.webp"
+      },
+      {
+        "url": "media/Electronics/Video Ceiling/Video-Ceiling-img-8b6b3a.webp",
+        "thumbnail": "media/Electronics/Video Ceiling/Video-Ceiling-img-8b6b3a-thumb.webp"
       },
       {
         "url": "media/Electronics/Video Ceiling/Video-Ceiling-img-4861d1.webp",
@@ -48178,14 +48253,30 @@
       {
         "name": "LED Video Panel Service",
         "url": "#project/4623"
+      },
+      {
+        "name": "Lighting Layer",
+        "url": "#project/2395"
       }
     ],
     "video": "",
     "timestamp": "2026-09-05T01:32:22.408Z",
     "id": "4250",
     "order": 1,
-    "thumbnail": "media/Electronics/Video Ceiling/Video-Ceiling-img-a62d4e-thumb.webp",
-    "linkHeroImages": true
+    "thumbnail": "media/Electronics/Video Ceiling/Video-Ceiling-img-d92ffc-thumb.webp",
+    "linkHeroImages": true,
+    "thumbnailFit": {
+      "scale": 1.05,
+      "x": 59.7,
+      "y": 0,
+      "rotate": 0
+    },
+    "bannerFit": {
+      "scale": 1.05,
+      "x": 50.2,
+      "y": 41.8,
+      "rotate": -1
+    }
   },
   {
     "title": "Acrylic Etchings",
@@ -48228,106 +48319,9 @@
     "tags": [],
     "gallery": [
       {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-5b563c.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-5b563c-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-06abcd.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-06abcd-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-09be9b.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-09be9b-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-2f62a3.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-2f62a3-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-6a9d71.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-6a9d71-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-eeeda3.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-eeeda3-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-3d7247.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-3d7247-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-vid-7e8c3d.mp4",
-        "poster": "media/Lighting/Lighting Layer/Lighting-Layer-vid-7e8c3d-poster.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-vid-7e8c3d-poster-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-vid-224b49.mp4",
-        "poster": "media/Lighting/Lighting Layer/Lighting-Layer-vid-224b49-poster.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-vid-224b49-poster-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-c4930c.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-c4930c-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-221658.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-221658-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-688c2b.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-688c2b-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-577740.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-577740-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-9227c5.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-9227c5-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-d6e25c.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-d6e25c-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-36f360.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-36f360-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-772679.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-772679-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-74c49a.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-74c49a-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-b833de.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-b833de-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-65c1e3.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-65c1e3-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-bf77ce.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-bf77ce-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-d37354.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-d37354-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-ae6dd6.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-ae6dd6-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-1c4256.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-1c4256-thumb.webp"
-      },
-      {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-6d568f.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-6d568f-thumb.webp"
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-vid-3a8e94.mp4",
+        "poster": "media/Lighting/Lighting Layer/Lighting-Layer-vid-3a8e94-poster.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-vid-3a8e94-poster-thumb.webp"
       },
       {
         "url": "media/Lighting/Lighting Layer/Lighting-Layer-vid-c83827.mp4",
@@ -48340,9 +48334,115 @@
         "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-vid-9f34da-poster-thumb.webp"
       },
       {
-        "url": "media/Lighting/Lighting Layer/Lighting-Layer-vid-3a8e94.mp4",
-        "poster": "media/Lighting/Lighting Layer/Lighting-Layer-vid-3a8e94-poster.webp",
-        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-vid-3a8e94-poster-thumb.webp"
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-36f360.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-36f360-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-d6e25c.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-d6e25c-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-772679.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-772679-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-ae6dd6.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-ae6dd6-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-74c49a.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-74c49a-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-9227c5.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-9227c5-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-vid-224b49.mp4",
+        "poster": "media/Lighting/Lighting Layer/Lighting-Layer-vid-224b49-poster.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-vid-224b49-poster-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-4642ab.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-4642ab-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-09be9b.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-09be9b-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-d37354.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-d37354-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-vid-7e8c3d.mp4",
+        "poster": "media/Lighting/Lighting Layer/Lighting-Layer-vid-7e8c3d-poster.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-vid-7e8c3d-poster-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-6a9d71.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-6a9d71-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-65c1e3.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-65c1e3-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-2f62a3.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-2f62a3-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-221658.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-221658-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-eeeda3.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-eeeda3-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-5b563c.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-5b563c-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-06abcd.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-06abcd-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-6d568f.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-6d568f-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-bf77ce.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-bf77ce-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-1c4256.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-1c4256-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-c4930c.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-c4930c-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-577740.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-577740-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-b833de.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-b833de-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-688c2b.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-688c2b-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-img-3d7247.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-img-3d7247-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Lighting Layer/Lighting-Layer-vid-91a9bd.mp4",
+        "poster": "media/Lighting/Lighting Layer/Lighting-Layer-vid-91a9bd-poster.webp",
+        "thumbnail": "media/Lighting/Lighting Layer/Lighting-Layer-vid-91a9bd-poster-thumb.webp"
       }
     ],
     "files": [],
