@@ -272,6 +272,24 @@
     await askQuestion();
   }
 
+  function bindBackdrop(el, onDismiss) {
+    if (typeof global.bindBackdropDismiss === 'function') {
+      global.bindBackdropDismiss(el, onDismiss);
+      return;
+    }
+    if (!el || typeof onDismiss !== 'function') return;
+    let downOnBackdrop = false;
+    el.addEventListener('pointerdown', (e) => { downOnBackdrop = e.target === el; });
+    el.addEventListener('click', (e) => {
+      if (e.target === el && downOnBackdrop) onDismiss();
+      downOnBackdrop = false;
+    });
+  }
+
+  function interviewFieldDirty() {
+    return !!(el('gemini-copy-answers')?.value || '').trim();
+  }
+
   function closeInterview() {
     hideAiBusy();
     const modal = el('gemini-copy-modal');
@@ -279,6 +297,15 @@
     modal.classList.add('hidden');
     modal.classList.remove('flex');
     interview = emptyInterview();
+  }
+
+  function requestCloseInterview() {
+    if (interview.generating) return;
+    if (interviewFieldDirty() && typeof global.confirmDiscardPopup === 'function') {
+      global.confirmDiscardPopup(() => closeInterview());
+      return;
+    }
+    closeInterview();
   }
 
   async function sendAnswer() {
@@ -340,15 +367,16 @@
   function bindModal() {
     if (modalBound) return;
     modalBound = true;
-    el('gemini-copy-close')?.addEventListener('click', closeInterview);
+    el('gemini-copy-close')?.addEventListener('click', requestCloseInterview);
     el('gemini-copy-send')?.addEventListener('click', () => void sendAnswer());
     el('gemini-copy-skip')?.addEventListener('click', () => void skipQuestion());
     el('gemini-copy-generate')?.addEventListener('click', () => void generateLong());
-    el('gemini-copy-modal')?.addEventListener('click', (e) => {
-      if (e.target === el('gemini-copy-modal') && !interview.asking && !interview.generating) {
-        closeInterview();
-      }
-    });
+    if (typeof bindBackdrop === 'function') {
+      bindBackdrop(el('gemini-copy-modal'), () => {
+        if (interview.asking || interview.generating) return;
+        requestCloseInterview();
+      });
+    }
     el('gemini-copy-answers')?.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
         e.preventDefault();
@@ -356,9 +384,11 @@
       }
     });
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && isInterviewOpen() && !interview.generating && !interview.asking) {
-        closeInterview();
-      }
+      if (e.key !== 'Escape' || !isInterviewOpen() || interview.generating || interview.asking) return;
+      const confirm = el('delete-confirm-modal');
+      if (confirm && !confirm.classList.contains('hidden')) return;
+      e.preventDefault();
+      requestCloseInterview();
     });
   }
 

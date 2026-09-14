@@ -200,7 +200,7 @@
     </script>
 
     <script type="text/babel">
-        const { useState, useEffect, useRef } = React;
+        const { useState, useEffect, useLayoutEffect, useRef } = React;
         
         // --- ICONS ---
         const Icon = ({ children, size = 24, className = "" }) => (<svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>{children}</svg>);
@@ -313,6 +313,13 @@
 
         // Returns inline style for a cropped image. When scale=1 and rotate=0,
         // only objectPosition is set so CSS hover transitions (e.g. group-hover:scale-105) still work.
+        const coverScaleForRotation = (iw, ih, w, h, theta) => {
+            const c = Math.abs(Math.cos(theta));
+            const s = Math.abs(Math.sin(theta));
+            if (!iw || !ih) return 1;
+            return Math.max((w * c + h * s) / iw, (w * s + h * c) / ih);
+        };
+
         const fitStyle = (fit) => {
             if (!fit) return {};
             const { scale = 1, x = 50, y = 50, rotate = 0 } = fit;
@@ -326,6 +333,86 @@
                 style.transformOrigin = `${x}% ${y}%`;
             }
             return style;
+        };
+
+        // rotate=0 keeps object-fit cover + object-position. Non-zero rotate sizes the
+        // source to cover the frame after rotation so the crop window stays axis-aligned.
+        const FitImg = ({ src, alt = '', fit, className, style, onLoad, ...imgProps }) => {
+            const imgRef = useRef(null);
+            const fitRef = useRef(fit);
+            fitRef.current = fit;
+            const rot = Number(fit?.rotate) || 0;
+            const fitKey = fit ? [fit.scale, fit.x, fit.y, fit.rotate].join('|') : '';
+            const [measured, setMeasured] = useState(null);
+
+            const measure = () => {
+                const el = imgRef.current;
+                const box = el && el.parentElement;
+                const current = fitRef.current;
+                const currentRot = Number(current?.rotate) || 0;
+                if (!el || !box || !currentRot) {
+                    setMeasured((prev) => (prev == null ? prev : null));
+                    return;
+                }
+                const w = box.clientWidth, h = box.clientHeight;
+                const iw = el.naturalWidth, ih = el.naturalHeight;
+                if (!w || !h || !iw || !ih) return;
+                const theta = currentRot * Math.PI / 180;
+                const userScale = Math.max(1, Number(current.scale) || 1);
+                const fx = (Number.isFinite(Number(current.x)) ? Number(current.x) : 50) / 100;
+                const fy = (Number.isFinite(Number(current.y)) ? Number(current.y) : 50) / 100;
+                const cover = coverScaleForRotation(iw, ih, w, h, theta) * userScale;
+                const dw = iw * cover, dh = ih * cover;
+                if (typeof window !== 'undefined' && window.getComputedStyle(box).position === 'static') {
+                    box.style.position = 'relative';
+                }
+                const next = {
+                    position: 'absolute',
+                    maxWidth: 'none',
+                    width: dw,
+                    height: dh,
+                    left: w * fx - dw * fx,
+                    top: h * fy - dh * fy,
+                    right: 'auto',
+                    bottom: 'auto',
+                    objectFit: 'fill',
+                    objectPosition: '50% 50%',
+                    transform: `rotate(${currentRot}deg)`,
+                    transformOrigin: `${fx * 100}% ${fy * 100}%`,
+                };
+                setMeasured((prev) => {
+                    if (prev && prev.width === next.width && prev.height === next.height && prev.left === next.left && prev.top === next.top && prev.transform === next.transform && prev.transformOrigin === next.transformOrigin) {
+                        return prev;
+                    }
+                    return next;
+                });
+            };
+
+            useLayoutEffect(() => {
+                measure();
+                const el = imgRef.current;
+                const box = el && el.parentElement;
+                if (!box || !rot || typeof ResizeObserver === 'undefined') return;
+                const ro = new ResizeObserver(measure);
+                ro.observe(box);
+                return () => ro.disconnect();
+            }, [src, fitKey, rot]);
+
+            const mergedStyle = rot
+                ? { ...(style || {}), ...(measured || { objectPosition: '50% 50%' }) }
+                : { ...(style || {}), ...fitStyle(fit) };
+
+            return (
+                <img
+                    ref={imgRef}
+                    src={src}
+                    alt={alt}
+                    className={className}
+                    style={mergedStyle}
+                    onLoad={(e) => { if (rot) measure(); if (onLoad) onLoad(e); }}
+                    {...imgProps}
+                />
+            );
         };
 
         const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), iframe, [tabindex]:not([tabindex="-1"])';
@@ -475,13 +562,13 @@
                         {/* Wrapper carries the hover-scale so inline crop transform on img
                             doesn't override it (inline styles beat CSS classes). */}
                         <div className="w-full h-full group-hover:scale-105 transition-transform duration-700">
-                        <img 
-                            src={project.thumbnail || project.image} 
-                            alt="" 
+                        <FitImg
+                            src={project.thumbnail || project.image}
+                            alt=""
                             loading="lazy"
                             decoding="async"
                             className={`w-full h-full object-cover transition-opacity duration-700 group-hover:opacity-100 ${imgLoaded ? 'opacity-80' : 'opacity-0'}`}
-                            style={fitStyle(project.thumbnailFit)}
+                            fit={project.thumbnailFit}
                             onLoad={() => setImgLoaded(true)}
                         />
                         </div>
@@ -1351,13 +1438,13 @@
                         <div ref={scrollRef} className="overflow-y-auto overflow-x-hidden custom-scrollbar flex-1">
                             <div className="relative h-64 md:h-96 w-full overflow-hidden bg-zinc-900">
                                 {/* Empty alt: the h2 below is the accessible name for this dialog. */}
-                                <img
+                                <FitImg
                                     src={project.image}
                                     alt=""
                                     loading="eager"
                                     fetchPriority="high"
                                     className="w-full h-full object-cover"
-                                    style={fitStyle(project.bannerFit)}
+                                    fit={project.bannerFit}
                                 />
                                 <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-zinc-950 to-transparent"></div>
                                 {/* SHARE BUTTON - scrolls with header */}
@@ -1449,7 +1536,7 @@
                                                                 <>
                                                                     {(mediaThumbnail(item) || mediaPoster(item)) ? (
                                                                         <div className="w-full h-full group-hover:scale-110 transition-transform duration-700">
-                                                                            <img src={mediaThumbnail(item) || mediaPoster(item)} loading="lazy" decoding="async" className="w-full h-full object-cover opacity-90" alt="" style={fitStyle(mediaFit(item))} />
+                                                                            <FitImg src={mediaThumbnail(item) || mediaPoster(item)} loading="lazy" decoding="async" className="w-full h-full object-cover opacity-90" alt="" fit={mediaFit(item)} />
                                                                         </div>
                                                                     ) : (
                                                                         <div className="w-full h-full bg-zinc-800 flex items-center justify-center">
@@ -1476,7 +1563,7 @@
                                                                 <>
                                                                     {mediaPoster(item) ? (
                                                                         <div className="w-full h-full group-hover:scale-110 transition-transform duration-700">
-                                                                            <img src={mediaThumbnail(item) || mediaPoster(item)} loading="lazy" decoding="async" className="w-full h-full object-cover opacity-90" alt="" style={fitStyle(mediaFit(item))} />
+                                                                            <FitImg src={mediaThumbnail(item) || mediaPoster(item)} loading="lazy" decoding="async" className="w-full h-full object-cover opacity-90" alt="" fit={mediaFit(item)} />
                                                                         </div>
                                                                     ) : (
                                                                         <div className="w-full h-full bg-zinc-800" />
@@ -1490,7 +1577,7 @@
                                                             ) : (
                                                                 <>
                                                                     <div className="w-full h-full group-hover:scale-110 transition-transform duration-700">
-                                                                        <img src={mediaThumbnail(item) || mediaUrl} loading="lazy" decoding="async" className="w-full h-full object-cover" alt="" style={fitStyle(mediaFit(item))} />
+                                                                        <FitImg src={mediaThumbnail(item) || mediaUrl} loading="lazy" decoding="async" className="w-full h-full object-cover" alt="" fit={mediaFit(item)} />
                                                                     </div>
                                                                     <div aria-hidden="true" className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
                                                                         <Maximize2 className="text-white opacity-0 group-hover:opacity-100 transition-opacity" size={24}/>
@@ -1562,7 +1649,7 @@
                                                             <a href={ensureProtocol(url)} download aria-label={`Download ${name}, ${getFileExt(url)} file${desc ? '. ' + desc : ''}`} className="flex items-center gap-3 p-3 rounded-lg bg-zinc-800 hover:bg-zinc-700 transition-colors group">
                                                                 {fileThumb ? (
                                                                     <div className="w-10 h-10 rounded shrink-0 overflow-hidden bg-zinc-700">
-                                                                        <img src={fileThumb} alt="" className="w-full h-full object-cover" style={fitStyle(fileFit)} />
+                                                                        <FitImg src={fileThumb} alt="" className="w-full h-full object-cover" fit={fileFit} />
                                                                     </div>
                                                                 ) : (
                                                                     <div aria-hidden="true" className="bg-zinc-900 p-2 rounded text-zinc-400 group-hover:text-white">
@@ -1580,7 +1667,7 @@
                                                                     <div className={`bg-zinc-900 border border-zinc-700 rounded-xl shadow-2xl ${fileImage ? 'overflow-hidden' : 'p-4'}`}>
                                                                         {fileImage && (
                                                                             <div className="aspect-video w-full overflow-hidden">
-                                                                                <img src={fileImage} alt="" className="w-full h-full object-cover" style={fitStyle(fileFit)} />
+                                                                                <FitImg src={fileImage} alt="" className="w-full h-full object-cover" fit={fileFit} />
                                                                             </div>
                                                                         )}
                                                                         <div className={fileImage ? 'p-4' : ''}>
@@ -1647,7 +1734,7 @@
                                                                 >
                                                                     {displayImage ? (
                                                                         <div className="w-10 h-10 rounded shrink-0 overflow-hidden bg-zinc-700">
-                                                                            <img src={displayImage} alt="" className="w-full h-full object-cover" style={fitStyle(linkedProject.thumbnailFit)} />
+                                                                            <FitImg src={displayImage} alt="" className="w-full h-full object-cover" fit={linkedProject.thumbnailFit} />
                                                                         </div>
                                                                     ) : (
                                                                         <div aria-hidden="true" className="w-10 h-10 rounded bg-zinc-700 shrink-0 flex items-center justify-center text-zinc-500">
@@ -1662,7 +1749,7 @@
                                                                         <div className="bg-zinc-900 border border-zinc-700 rounded-xl shadow-2xl overflow-hidden">
                                                                             {displayImage && (
                                                                                 <div className="aspect-video w-full overflow-hidden">
-                                                                                    <img src={displayImage} alt="" className="w-full h-full object-cover" style={fitStyle(linkedProject.thumbnailFit)} />
+                                                                                    <FitImg src={displayImage} alt="" className="w-full h-full object-cover" fit={linkedProject.thumbnailFit} />
                                                                                 </div>
                                                                             )}
                                                                             <div className="p-3">
@@ -1942,13 +2029,13 @@
                 >
                     <div className="absolute inset-0">
                         {/* PERFORMANCE: Lazy Loading on Hero Badges */}
-                        <img 
-                            src={image} 
-                            alt="" 
+                        <FitImg
+                            src={image}
+                            alt=""
                             loading="lazy"
                             decoding="async"
                             className={`w-full h-full object-cover group-hover:opacity-70 transition-opacity duration-500 scale-100 group-hover:scale-110 ${imgLoaded ? 'opacity-60 lg:opacity-40' : 'opacity-0'}`}
-                            style={fitStyle(thumbnailFit)}
+                            fit={thumbnailFit}
                             onLoad={() => setImgLoaded(true)}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>

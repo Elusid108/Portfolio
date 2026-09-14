@@ -41,6 +41,8 @@
     #gemini-settings-modal:not(.hidden),
     #delete-confirm-modal:not(.hidden) { display: flex; }
     img.gallery-thumb, img.file-thumb, .hero-preview img, .fit-preview img { -webkit-user-drag: none; user-select: none; }
+    .hero-preview, .fit-preview { position: relative; }
+    #crop-preview-img { max-width: none; }
     .gallery-row.gallery-drop-before { box-shadow: -3px 0 0 0 #22d3ee; }
     .gallery-row.gallery-drop-after { box-shadow: 3px 0 0 0 #22d3ee; }
     #gemini-api-key { -webkit-text-security: disc; }
@@ -558,7 +560,7 @@
   </div>
 
   <!-- Item edit popup -->
-  <div id="item-edit-modal" class="hidden fixed inset-0 z-[65] bg-black/70 items-center justify-center p-4" onclick="if(event.target===this)closeItemEdit(false)">
+  <div id="item-edit-modal" class="hidden fixed inset-0 z-[65] bg-black/70 items-center justify-center p-4">
     <div class="bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl w-full max-w-md p-5" onclick="event.stopPropagation()">
       <div class="flex justify-between items-start mb-4">
         <h2 id="item-edit-title" class="text-sm font-semibold text-zinc-100">Edit</h2>
@@ -572,14 +574,14 @@
     </div>
   </div>
 
-  <!-- Delete confirmation -->
-  <div id="delete-confirm-modal" class="hidden fixed inset-0 bg-black/70 z-[80] items-center justify-center p-4" onclick="if(event.target===this)closeDeleteConfirm(false)">
+  <!-- Confirm action (delete / discard) -->
+  <div id="delete-confirm-modal" class="hidden fixed inset-0 bg-black/70 z-[90] items-center justify-center p-4">
     <div class="bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl p-6 max-w-sm w-full mx-4" onclick="event.stopPropagation()">
       <h3 id="delete-confirm-title" class="text-lg font-semibold text-zinc-100 mb-2">Delete?</h3>
       <p id="delete-confirm-message" class="text-sm text-zinc-400 mb-6">This item will be removed.</p>
       <div class="flex flex-col gap-2">
-        <button type="button" onclick="closeDeleteConfirm(true)" class="w-full py-2 rounded-lg bg-red-950/50 text-red-300 border border-red-900 font-medium hover:bg-red-950">Delete</button>
-        <button type="button" onclick="closeDeleteConfirm(false)" class="btn-quiet w-full justify-center">Cancel</button>
+        <button type="button" id="delete-confirm-ok" onclick="closeDeleteConfirm(true)" class="w-full py-2 rounded-lg bg-red-950/50 text-red-300 border border-red-900 font-medium hover:bg-red-950">Delete</button>
+        <button type="button" id="delete-confirm-cancel" onclick="closeDeleteConfirm(false)" class="btn-quiet w-full justify-center">Cancel</button>
       </div>
     </div>
   </div>
@@ -707,9 +709,76 @@
     let cmsTasksSaveTimer = null;
     let currentEditorTab = 'overview';
     let currentSettingsTab = 'about';
-    let itemEditState = { apply: null, row: null };
+    let itemEditState = { apply: null, row: null, snapshot: '' };
     let lastBannerDerivedThumb = '';
     let deleteConfirmState = { onConfirm: null };
+
+    const CONFIRM_OK_DANGER = 'w-full py-2 rounded-lg bg-red-950/50 text-red-300 border border-red-900 font-medium hover:bg-red-950';
+
+    function bindBackdropDismiss(el, onDismiss) {
+        if (!el || typeof onDismiss !== 'function') return;
+        el._backdropOnDismiss = onDismiss;
+        if (el._backdropDismissBound) return;
+        el._backdropDismissBound = true;
+        let downOnBackdrop = false;
+        el.addEventListener('pointerdown', (e) => {
+            downOnBackdrop = e.target === el;
+        });
+        el.addEventListener('click', (e) => {
+            if (e.target === el && downOnBackdrop && typeof el._backdropOnDismiss === 'function') {
+                el._backdropOnDismiss();
+            }
+            downOnBackdrop = false;
+        });
+    }
+    window.bindBackdropDismiss = bindBackdropDismiss;
+
+    function setupOverlayDismiss() {
+        bindBackdropDismiss(document.getElementById('item-edit-modal'), () => closeItemEdit(false));
+        bindBackdropDismiss(document.getElementById('delete-confirm-modal'), () => closeDeleteConfirm(false));
+        bindBackdropDismiss(document.getElementById('copy-specs-modal'), () => closeCopySpecsModal());
+        bindBackdropDismiss(document.getElementById('crop-modal'), () => closeCropModal());
+        bindBackdropDismiss(document.getElementById('video-preview-modal'), () => closeVideoPreview());
+        bindBackdropDismiss(document.getElementById('model-editor-modal'), () => closeModelEditor());
+        bindBackdropDismiss(document.getElementById('video-audio-modal'), () => closeVideoAudioPrompt());
+    }
+
+    function itemEditFieldSnapshot() {
+        const root = document.getElementById('item-edit-fields');
+        if (!root) return '';
+        return [...root.querySelectorAll('input, textarea, select')].map((el) => {
+            if (el.type === 'checkbox' || el.type === 'radio') return el.checked ? '1' : '0';
+            return String(el.value ?? '');
+        }).join('\0');
+    }
+
+    function confirmAction({ title, message, confirmLabel, cancelLabel, danger, onConfirm }) {
+        deleteConfirmState.onConfirm = onConfirm;
+        const titleEl = document.getElementById('delete-confirm-title');
+        const msgEl = document.getElementById('delete-confirm-message');
+        const okBtn = document.getElementById('delete-confirm-ok');
+        const cancelBtn = document.getElementById('delete-confirm-cancel');
+        if (titleEl) titleEl.textContent = title || 'Confirm?';
+        if (msgEl) msgEl.textContent = message || '';
+        if (okBtn) {
+            okBtn.textContent = confirmLabel || 'OK';
+            okBtn.className = danger === false ? 'btn-primary w-full justify-center' : CONFIRM_OK_DANGER;
+        }
+        if (cancelBtn) cancelBtn.textContent = cancelLabel || 'Cancel';
+        document.getElementById('delete-confirm-modal')?.classList.remove('hidden');
+    }
+
+    function confirmDiscardPopup(onDiscard) {
+        confirmAction({
+            title: 'Discard changes?',
+            message: 'Close this popup without saving your edits?',
+            confirmLabel: 'Discard',
+            cancelLabel: 'Keep editing',
+            danger: true,
+            onConfirm: onDiscard
+        });
+    }
+    window.confirmDiscardPopup = confirmDiscardPopup;
 
     function updateDirtyChrome() {
         const dot = document.getElementById('dirtyDot');
@@ -777,27 +846,36 @@
         document.getElementById('item-edit-title').textContent = title;
         document.getElementById('item-edit-fields').innerHTML = html;
         itemEditState.apply = onApply;
+        itemEditState.snapshot = itemEditFieldSnapshot();
         modal.classList.remove('hidden');
         modal.classList.add('flex');
         const focusEl = focusSelector ? modal.querySelector(focusSelector) : modal.querySelector('input, textarea, select');
         setTimeout(() => focusEl?.focus(), 30);
     }
 
-    function closeItemEdit(apply) {
+    function closeItemEdit(apply, opts) {
+        const force = !!(opts && opts.force);
+        if (!apply && !force && itemEditState.snapshot && itemEditFieldSnapshot() !== itemEditState.snapshot) {
+            confirmDiscardPopup(() => closeItemEdit(false, { force: true }));
+            return;
+        }
         const modal = document.getElementById('item-edit-modal');
         if (apply && itemEditState.apply) itemEditState.apply();
         itemEditState.apply = null;
+        itemEditState.snapshot = '';
         modal.classList.add('hidden');
         modal.classList.remove('flex');
     }
 
     function confirmDelete({ title, message, onConfirm }) {
-        deleteConfirmState.onConfirm = onConfirm;
-        const titleEl = document.getElementById('delete-confirm-title');
-        const msgEl = document.getElementById('delete-confirm-message');
-        if (titleEl) titleEl.textContent = title || 'Delete?';
-        if (msgEl) msgEl.textContent = message || 'This item will be removed.';
-        document.getElementById('delete-confirm-modal')?.classList.remove('hidden');
+        confirmAction({
+            title: title || 'Delete?',
+            message: message || 'This item will be removed.',
+            confirmLabel: 'Delete',
+            cancelLabel: 'Cancel',
+            danger: true,
+            onConfirm
+        });
     }
 
     function closeDeleteConfirm(proceed) {
@@ -1364,6 +1442,7 @@
         setupCmsTaskDragDrop();
         setupProjectTagPills();
         setupSkillPills();
+        setupOverlayDismiss();
         document.addEventListener('keydown', (e) => {
             if (e.key !== 'Escape') return;
             const deleteModal = document.getElementById('delete-confirm-modal');
@@ -1375,6 +1454,12 @@
             const itemModal = document.getElementById('item-edit-modal');
             if (itemModal && !itemModal.classList.contains('hidden')) {
                 closeItemEdit(false);
+                e.preventDefault();
+                return;
+            }
+            const cropModal = document.getElementById('crop-modal');
+            if (cropModal && !cropModal.classList.contains('hidden')) {
+                closeCropModal();
                 e.preventDefault();
             }
         });
@@ -1660,29 +1745,106 @@
         try { return JSON.parse(raw); } catch { return null; }
     }
 
-    function applyFitStyle(el, fit) {
+    function coverScaleForRotation(iw, ih, w, h, thetaRad) {
+        const c = Math.abs(Math.cos(thetaRad));
+        const s = Math.abs(Math.sin(thetaRad));
+        if (!iw || !ih) return 1;
+        return Math.max((w * c + h * s) / iw, (w * s + h * c) / ih);
+    }
+
+    function clearFitLayout(el) {
         if (!el) return;
+        el.style.position = '';
+        el.style.maxWidth = '';
+        el.style.width = '';
+        el.style.height = '';
+        el.style.left = '';
+        el.style.top = '';
+        el.style.right = '';
+        el.style.bottom = '';
+        el.style.objectFit = '';
+        el.style.objectPosition = '';
+        el.style.transform = '';
+        el.style.transformOrigin = '';
+    }
+
+    function layoutFitImage(img, box, fit) {
+        if (!img || !box) return false;
+        const w = box.clientWidth;
+        const h = box.clientHeight;
+        const iw = img.naturalWidth;
+        const ih = img.naturalHeight;
+        if (!w || !h || !iw || !ih) return false;
+        fit = parseFitValue(fit) || {};
+        const theta = (Number(fit.rotate) || 0) * Math.PI / 180;
+        const userScale = Math.max(1, Number(fit.scale) || 1);
+        const fx = (Number.isFinite(Number(fit.x)) ? Number(fit.x) : 50) / 100;
+        const fy = (Number.isFinite(Number(fit.y)) ? Number(fit.y) : 50) / 100;
+        const cover = coverScaleForRotation(iw, ih, w, h, theta) * userScale;
+        const dw = iw * cover;
+        const dh = ih * cover;
+        const rot = Number(fit.rotate) || 0;
+        if (getComputedStyle(box).position === 'static') box.style.position = 'relative';
+        img.style.position = 'absolute';
+        img.style.maxWidth = 'none';
+        img.style.width = dw + 'px';
+        img.style.height = dh + 'px';
+        img.style.left = (w * fx - dw * fx) + 'px';
+        img.style.top = (h * fy - dh * fy) + 'px';
+        img.style.right = 'auto';
+        img.style.bottom = 'auto';
+        img.style.objectFit = 'fill';
+        img.style.objectPosition = '50% 50%';
+        img.style.transform = rot ? `rotate(${rot}deg)` : '';
+        img.style.transformOrigin = `${fx * 100}% ${fy * 100}%`;
+        return true;
+    }
+
+    function paintFit(el, fit) {
         fit = parseFitValue(fit);
         if (!fit) {
-            el.style.transform = '';
-            el.style.transformOrigin = '';
-            el.style.objectPosition = '50% 50%';
+            clearFitLayout(el);
             return;
         }
+        const rotate = Number(fit.rotate) || 0;
+        if (rotate) {
+            layoutFitImage(el, el.parentElement, fit);
+            return;
+        }
+        clearFitLayout(el);
         const scale = Number(fit.scale);
         const x = fit.x != null ? fit.x : 50;
         const y = fit.y != null ? fit.y : 50;
-        const rotate = Number(fit.rotate) || 0;
         el.style.objectPosition = `${x}% ${y}%`;
-        const parts = [];
-        if (rotate) parts.push(`rotate(${rotate}deg)`);
-        if (Number.isFinite(scale) && scale > 1) parts.push(`scale(${scale})`);
-        if (parts.length) {
-            el.style.transform = parts.join(' ');
+        if (Number.isFinite(scale) && scale > 1) {
+            el.style.transform = `scale(${scale})`;
             el.style.transformOrigin = `${x}% ${y}%`;
-        } else {
-            el.style.transform = '';
-            el.style.transformOrigin = '';
+        }
+    }
+
+    function applyFitStyle(el, fit) {
+        if (!el) return;
+        fit = parseFitValue(fit);
+        el._fitValue = fit;
+        if (el._fitOnLoad) {
+            el.removeEventListener('load', el._fitOnLoad);
+            el._fitOnLoad = null;
+        }
+        if (!fit) {
+            if (el._fitRO) { el._fitRO.disconnect(); el._fitRO = null; }
+            clearFitLayout(el);
+            return;
+        }
+        const run = () => paintFit(el, el._fitValue);
+        if (!el.complete || !el.naturalWidth) {
+            el._fitOnLoad = run;
+            el.addEventListener('load', run, { once: true });
+        }
+        run();
+        const parent = el.parentElement;
+        if (parent && !el._fitRO && typeof ResizeObserver !== 'undefined') {
+            el._fitRO = new ResizeObserver(() => paintFit(el, el._fitValue));
+            el._fitRO.observe(parent);
         }
     }
 
@@ -2790,7 +2952,7 @@
                 <div class="flex gap-2">
                   <input type="text" id="item-edit-file-image" class="field font-mono text-xs" value="${escAttr(image)}" placeholder="Path or URL">
                   <button type="button" class="btn-quiet whitespace-nowrap" onclick="itemEditState.row.querySelector('.file-thumb-upload')?.click()"><i class="ph ph-upload-simple"></i> Upload</button>
-                  <button type="button" class="btn-quiet whitespace-nowrap" onclick="applyFileEditFields(); closeItemEdit(false); openFileThumbCrop(itemEditState.row)"><i class="ph ph-crop"></i> Crop</button>
+                  <button type="button" class="btn-quiet whitespace-nowrap" onclick="applyFileEditFields(); closeItemEdit(false, { force: true }); openFileThumbCrop(itemEditState.row)"><i class="ph ph-crop"></i> Crop</button>
                 </div>
               </div>`,
             onApply: () => { applyFileEditFields(); refreshFileVisual(row); },
@@ -3117,9 +3279,9 @@
             previewHtml = `<div class="aspect-video rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-500"><i class="ph ${isModel ? 'ph-cube' : 'ph-play-circle'} text-3xl"></i></div>`;
         }
         let actions = '';
-        if (isVideo) actions += `<button type="button" class="btn-quiet" onclick="applyGalleryEditFields(); closeItemEdit(false); openVideoPreview(itemEditState.row)"><i class="ph ph-play"></i> Preview</button>`;
-        if (isModel) actions += `<button type="button" class="btn-quiet" onclick="applyGalleryEditFields(); closeItemEdit(false); openModelEditor(itemEditState.row)"><i class="ph ph-cube"></i> 3D</button>`;
-        actions += `<button type="button" class="btn-quiet" onclick="applyGalleryEditFields(); closeItemEdit(false); openGalleryCrop(itemEditState.row)"><i class="ph ph-crop"></i> Crop</button>`;
+        if (isVideo) actions += `<button type="button" class="btn-quiet" onclick="applyGalleryEditFields(); closeItemEdit(false, { force: true }); openVideoPreview(itemEditState.row)"><i class="ph ph-play"></i> Preview</button>`;
+        if (isModel) actions += `<button type="button" class="btn-quiet" onclick="applyGalleryEditFields(); closeItemEdit(false, { force: true }); openModelEditor(itemEditState.row)"><i class="ph ph-cube"></i> 3D</button>`;
+        actions += `<button type="button" class="btn-quiet" onclick="applyGalleryEditFields(); closeItemEdit(false, { force: true }); openGalleryCrop(itemEditState.row)"><i class="ph ph-crop"></i> Crop</button>`;
         openItemEditModal({
             title: fileBaseName(url) || 'Gallery item',
             html: `
@@ -4692,7 +4854,16 @@
     function onError(err) { showStatus("Error: " + (err.message || err), "red"); console.error(err); }
 
     // ---- CROP MODAL ----
-    const cropState = { x: 50, y: 50, scale: 1, rotate: 0, dragging: false, lastX: 0, lastY: 0, onSave: null };
+    const cropState = { x: 50, y: 50, scale: 1, rotate: 0, dragging: false, lastX: 0, lastY: 0, onSave: null, snapshot: '' };
+
+    function cropFitSnapshot() {
+      return [
+        Number(cropState.x).toFixed(3),
+        Number(cropState.y).toFixed(3),
+        Number(cropState.scale).toFixed(3),
+        Number(cropState.rotate).toFixed(3)
+      ].join(',');
+    }
 
     function openCropModal(imgSrc, aspectW, aspectH, label, currentFit, onSave) {
       const fit = currentFit || {};
@@ -4702,6 +4873,7 @@
       cropState.rotate = Number.isFinite(Number(fit.rotate)) ? Number(fit.rotate) : 0;
       cropState.dragging = false;
       cropState.onSave = onSave;
+      cropState.snapshot = cropFitSnapshot();
 
       document.getElementById('crop-modal-label').textContent = label;
 
@@ -4711,6 +4883,7 @@
       box.style.height = Math.round(maxW * aspectH / aspectW) + 'px';
 
       const img = document.getElementById('crop-preview-img');
+      img.onload = () => updateCropPreview();
       // Local media keeps the same filename when re-captured (e.g. a new 3D
       // model thumbnail or video frame), so bust the browser cache to always
       // show the current file rather than the first one loaded this session.
@@ -4719,8 +4892,8 @@
         : imgSrc;
 
       renderCropGrid();
-      updateCropPreview();
       document.getElementById('crop-modal').classList.remove('hidden');
+      requestAnimationFrame(() => updateCropPreview());
     }
 
     // --- Crop grid overlay (rule of thirds / golden ratio) ---
@@ -4767,12 +4940,8 @@
       const { x, y, scale } = cropState;
       const rotate = Number(cropState.rotate) || 0;
       const img = document.getElementById('crop-preview-img');
-      const parts = [];
-      if (rotate) parts.push(`rotate(${rotate}deg)`);
-      parts.push(`scale(${scale})`);
-      img.style.transform = parts.join(' ');
-      img.style.transformOrigin = `${x}% ${y}%`;
-      img.style.objectPosition = `${x}% ${y}%`;
+      const box = document.getElementById('crop-preview-box');
+      layoutFitImage(img, box, { x, y, scale, rotate });
       document.getElementById('crop-zoom-slider').value = scale;
       const rotSlider = document.getElementById('crop-rotate-slider');
       if (rotSlider) rotSlider.value = rotate;
@@ -4780,8 +4949,14 @@
         `Zoom ${scale.toFixed(2)}\u00d7  \u00b7  X ${Math.round(x)}%  \u00b7  Y ${Math.round(y)}%  \u00b7  R ${Math.round(rotate)}\u00b0`;
     }
 
-    function closeCropModal() {
+    function closeCropModal(opts) {
+      const force = !!(opts && opts.force);
+      if (!force && cropState.snapshot && cropFitSnapshot() !== cropState.snapshot) {
+        confirmDiscardPopup(() => closeCropModal({ force: true }));
+        return;
+      }
       cropState.dragging = false;
+      cropState.snapshot = '';
       document.getElementById('crop-modal').classList.add('hidden');
     }
 
@@ -4794,7 +4969,7 @@
         rotate: parseFloat(rotate.toFixed(1))
       };
       if (cropState.onSave) cropState.onSave(fit);
-      closeCropModal();
+      closeCropModal({ force: true });
     }
 
     function resetCrop() {
@@ -4998,15 +5173,10 @@
         cropState.scale = Math.max(1, Math.min(4, parseFloat((cropState.scale + delta).toFixed(3))));
         updateCropPreview();
       }, { passive: false });
-
-      // Close on backdrop click
-      document.getElementById('crop-modal').addEventListener('click', (e) => {
-        if (e.target === document.getElementById('crop-modal')) closeCropModal();
-      });
     })();
   </script>
   <!-- COPY SPECS MODAL -->
-  <div id="copy-specs-modal" class="hidden fixed inset-0 bg-black/70 z-[60] flex items-center justify-center p-4" onclick="if(event.target===this)closeCopySpecsModal()">
+  <div id="copy-specs-modal" class="hidden fixed inset-0 bg-black/70 z-[60] flex items-center justify-center p-4">
     <div class="bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl w-full flex flex-col overflow-hidden" style="max-width:520px;max-height:90vh;">
       <div class="flex justify-between items-start p-6 pb-3 flex-shrink-0">
         <div>
@@ -5047,8 +5217,8 @@
            class="relative overflow-hidden rounded-lg bg-zinc-800 mx-auto select-none"
            style="width:560px; height:315px; cursor:grab;">
         <img id="crop-preview-img"
-             class="absolute inset-0 w-full h-full object-cover pointer-events-none"
-             style="transform-origin:50% 50%; transform:scale(1); object-position:50% 50%;"
+             class="absolute pointer-events-none"
+             style="transform-origin:50% 50%;"
              src="" alt="">
         <div id="crop-grid" class="absolute inset-0 pointer-events-none" aria-hidden="true"></div>
       </div>
@@ -5086,7 +5256,7 @@
     </div>
   </div>
   <!-- VIDEO PREVIEW MODAL -->
-  <div id="video-preview-modal" class="hidden fixed inset-0 bg-black/80 z-[70] flex items-center justify-center p-4" onclick="if(event.target===this)closeVideoPreview()">
+  <div id="video-preview-modal" class="hidden fixed inset-0 bg-black/80 z-[70] flex items-center justify-center p-4">
     <div class="bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl flex flex-col overflow-hidden" style="max-width:900px;width:100%;max-height:90vh;">
       <div class="flex justify-between items-center px-4 py-3 border-b border-zinc-800 flex-shrink-0">
         <h2 class="text-sm font-semibold text-white">Video Preview</h2>
@@ -5104,7 +5274,7 @@
     </div>
   </div>
   <!-- 3D MODEL EDITOR MODAL -->
-  <div id="model-editor-modal" class="hidden fixed inset-0 bg-black/80 z-[70] flex items-center justify-center p-4" onclick="if(event.target===this)closeModelEditor()">
+  <div id="model-editor-modal" class="hidden fixed inset-0 bg-black/80 z-[70] flex items-center justify-center p-4">
     <div class="bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl flex flex-col overflow-hidden" style="max-width:1100px;width:100%;max-height:92vh;">
       <div class="flex justify-between items-center px-4 py-3 border-b border-zinc-800 flex-shrink-0 gap-3">
         <div class="min-w-0">
@@ -5147,7 +5317,7 @@
     </div>
   </div>
   <!-- VIDEO AUDIO PROMPT -->
-  <div id="video-audio-modal" class="hidden fixed inset-0 z-[80] bg-black/70 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="video-audio-title" onclick="if(event.target===this)closeVideoAudioPrompt()">
+  <div id="video-audio-modal" class="hidden fixed inset-0 z-[80] bg-black/70 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="video-audio-title">
     <div class="bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl p-6 max-w-sm w-full" onclick="event.stopPropagation()">
       <h2 id="video-audio-title" class="text-lg font-semibold text-zinc-100 mb-2">Include audio?</h2>
       <p class="text-sm text-zinc-400 mb-6">Include audio on the files being uploaded?</p>

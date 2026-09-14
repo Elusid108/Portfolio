@@ -390,6 +390,20 @@
     }
   }
 
+  function bindBackdrop(el, onDismiss) {
+    if (typeof global.bindBackdropDismiss === 'function') {
+      global.bindBackdropDismiss(el, onDismiss);
+      return;
+    }
+    if (!el || typeof onDismiss !== 'function') return;
+    let downOnBackdrop = false;
+    el.addEventListener('pointerdown', (e) => { downOnBackdrop = e.target === el; });
+    el.addEventListener('click', (e) => {
+      if (e.target === el && downOnBackdrop) onDismiss();
+      downOnBackdrop = false;
+    });
+  }
+
   function isOpen() {
     return !el('gemini-settings-modal')?.classList.contains('hidden');
   }
@@ -413,10 +427,23 @@
     modal.classList.remove('flex');
   }
 
+  function keyFieldDirty() {
+    const typed = (el('gemini-api-key')?.value || '').trim();
+    return typed !== (state.apiKey || '').trim();
+  }
+
+  function requestClose() {
+    if (keyFieldDirty() && typeof global.confirmDiscardPopup === 'function') {
+      global.confirmDiscardPopup(() => close());
+      return;
+    }
+    close();
+  }
+
   function bind() {
     el('gemini-save-key')?.addEventListener('click', () => void handleSaveKey());
     el('gemini-refresh-models')?.addEventListener('click', () => void handleRefreshModels());
-    el('gemini-settings-close')?.addEventListener('click', close);
+    el('gemini-settings-close')?.addEventListener('click', requestClose);
     el('gemini-api-key')?.addEventListener('input', render);
     el('gemini-api-key')?.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
@@ -430,11 +457,13 @@
     el('gemini-image-model')?.addEventListener('change', (e) => {
       void handleImageModelChange(e.target.value);
     });
-    el('gemini-settings-modal')?.addEventListener('click', (e) => {
-      if (e.target === el('gemini-settings-modal')) close();
-    });
+    bindBackdrop(el('gemini-settings-modal'), requestClose);
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && isOpen()) close();
+      if (e.key !== 'Escape' || !isOpen()) return;
+      const confirm = el('delete-confirm-modal');
+      if (confirm && !confirm.classList.contains('hidden')) return;
+      e.preventDefault();
+      requestClose();
     });
   }
 

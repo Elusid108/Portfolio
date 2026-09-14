@@ -63,28 +63,32 @@
   }
 
   // Cover-fit an image into a rect, honoring the CMS crop ({ scale, x, y, rotate }).
+  // Rotate the source, then cover-fit the axis-aligned frame (not crop-then-rotate).
+  function coverScaleForRotation(iw, ih, w, h, theta) {
+    const c = Math.abs(Math.cos(theta));
+    const s = Math.abs(Math.sin(theta));
+    if (!iw || !ih) return 1;
+    return Math.max((w * c + h * s) / iw, (w * s + h * c) / ih);
+  }
+
   function drawCover(ctx, img, x, y, w, h, fit) {
-    const base = Math.max(w / img.width, h / img.height);
-    const scale = base * Math.max(1, Number(fit?.scale) || 1);
-    const dw = img.width * scale;
-    const dh = img.height * scale;
+    const iw = img.width;
+    const ih = img.height;
+    if (!iw || !ih || !w || !h) return;
+    const theta = (Number(fit?.rotate) || 0) * Math.PI / 180;
+    const userScale = Math.max(1, Number(fit?.scale) || 1);
     const fx = (Number.isFinite(Number(fit?.x)) ? Number(fit.x) : 50) / 100;
     const fy = (Number.isFinite(Number(fit?.y)) ? Number(fit.y) : 50) / 100;
-    const dx = x - (dw - w) * fx;
-    const dy = y - (dh - h) * fy;
-    const rotate = Number(fit?.rotate) || 0;
+    const scale = coverScaleForRotation(iw, ih, w, h, theta) * userScale;
+    const dw = iw * scale;
+    const dh = ih * scale;
     ctx.save();
     ctx.beginPath();
     ctx.rect(x, y, w, h);
     ctx.clip();
-    if (rotate) {
-      const cx = x + w * fx;
-      const cy = y + h * fy;
-      ctx.translate(cx, cy);
-      ctx.rotate(rotate * Math.PI / 180);
-      ctx.translate(-cx, -cy);
-    }
-    ctx.drawImage(img, dx, dy, dw, dh);
+    ctx.translate(x + w * fx, y + h * fy);
+    if (theta) ctx.rotate(theta);
+    ctx.drawImage(img, -dw * fx, -dh * fy, dw, dh);
     ctx.restore();
   }
 
