@@ -125,6 +125,33 @@
       "notes": "",
       "order": 11,
       "subtasks": []
+    },
+    {
+      "id": "bb66517d-4423-4c33-936d-dfdd1a1d855f",
+      "title": "CMS won't load without internet",
+      "status": "todo",
+      "description": "CMS won't load without being connected to the internet. I suspect this may have something to do with setting an IP address for the NIC. ",
+      "notes": "",
+      "order": 12,
+      "subtasks": []
+    },
+    {
+      "id": "593eb66f-2e82-4440-bd79-aa009b826afa",
+      "title": "Highlighting deselection specs",
+      "status": "todo",
+      "description": "If I highlight the test inside an item on the specs list in a project and pull the mouse off the window before letting go of the mouse button, it will close the window",
+      "notes": "",
+      "order": 13,
+      "subtasks": []
+    },
+    {
+      "id": "440bed79-b42c-4bdd-a796-35cbead0ac19",
+      "title": "Architectural Lighting",
+      "status": "todo",
+      "description": "Find more images of the patio lighting for Que Bueno. Looking for ones for the side of the building",
+      "notes": "",
+      "order": 14,
+      "subtasks": []
     }
   ]
 }

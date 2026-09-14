@@ -36592,7 +36592,7 @@
         "url": "#project/8252"
       },
       {
-        "name": "Immersive Video Ceiling",
+        "name": "Immersive Video Layer",
         "url": "#project/4250"
       },
       {
@@ -37475,7 +37475,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-13T00:01:33.897Z",
     "wip": false,
-    "order": 13,
+    "order": 10,
     "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x64)</strong><br><em>WS2812b • RGB • 8 x 8 matrix • black flex pcb • 5Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border • case</em></p><p><strong>PLA+ ( White )</strong><br><em>bounce • QR code</em></p><p><strong>PLA+ ( &quot;Transparent&quot; )</strong><br><em>diffusion</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x1)</strong><br><em>ESP32-S3 • WLED • USB-C</em></p>",
     "related": [
       {
@@ -37670,7 +37670,7 @@
       }
     ],
     "video": "",
-    "order": 7,
+    "order": 5,
     "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x256)</strong><br><em>WS2815 • RGB • 16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>bounce</em></p><p><strong>PLA+ ( &quot;Transparent&quot; )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x1)</strong><br><em>Athom • LS2812B-WLED • ESP8266 • WLED</em></p>",
     "related": [
       {
@@ -37879,7 +37879,7 @@
         "url": "#project/1"
       },
       {
-        "name": "Immersive Video Ceiling",
+        "name": "Immersive Video Layer",
         "url": "#project/4250"
       },
       {
@@ -38224,7 +38224,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-13T00:48:58.329Z",
     "wip": false,
-    "order": 9,
+    "order": 10,
     "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>Custom PCB</strong><br><em>12 x 6 pixel matrix</em></p><h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x72)</strong><br><em>WS2818 • RGB • 24v</em></p><h2>FABRICATION &amp; DISTRIBUTION</h2><p><strong>Custom Rigging</strong><br><em>t-track • t-nuts • rubber washers • bolts</em></p>",
     "related": [
       {
@@ -38584,7 +38584,7 @@
     "websiteLink": "",
     "timestamp": "2026-01-17T17:47:45.485Z",
     "wip": false,
-    "order": 15,
+    "order": 16,
     "thumbnailFit": {
       "scale": 1.2,
       "x": 0,
@@ -39939,7 +39939,7 @@
     "video": "",
     "timestamp": "2026-06-21T22:45:09.610Z",
     "id": "6350",
-    "order": 11,
+    "order": 3,
     "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>Beam (x34)</strong><br><em>ColorfulLighting • PD60 • LED • beam 4° • 60W • RGBW • infinite pan &amp; tilt</em></p><p><strong>Zoom (x12)</strong><br><em>ColorfulLighting • LM150Z • LED • hybrid • 4.5°- 22 ° • 150W • pan 520° • tilt 270° • 7 colors + white • 5 rotating glass gobos + 2 open • 8 facet prism</em></p><p><strong>Beye (x18)</strong><br><em>ColorfulLighting • B6 • LED • wash + FX hybrid • 240W • RGBW</em></p><p><strong>Hazer (x1)</strong><br><em>Radiance Hazer • DMX • 120Vac • 500W</em></p><h2>COMPUTE &amp; CONTROL</h2><p><strong>Lighting Console (x1)</strong><br><em>WOLFMIX WMX1 • 4u unlocked</em></p>",
     "related": [],
     "thumbnailFit": {
@@ -40176,7 +40176,7 @@
     ],
     "files": [],
     "video": "",
-    "order": 2,
+    "order": 0,
     "specs": "",
     "related": [
       {
@@ -40302,7 +40302,7 @@
     "video": "",
     "timestamp": "2026-06-21T22:55:23.650Z",
     "id": "5045",
-    "order": 14,
+    "order": 15,
     "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>Intimidator Spot 255 IRC (x6)</strong><br><em>Chauvet • profile • 60w white • 15° • 8 colors + white • 7 rotating gobos + open</em></p><p><strong>Generic UV LED (x6)</strong><br><em>dmx</em></p><p><strong>Wood Slats (x62)</strong><br><em>20px</em></p><p><strong>Drink Rails (x3)</strong><br><em>frost diffusion</em></p><h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixel Modules (x1500)</strong><br><em>WS2801 • RGB • 12Vdc</em></p><p><strong>LED Video Panels (x21)</strong><br><em>480mm x 480mm • 192 x 192 • 2.5P</em></p><h2>POWER &amp; DISTRIBUTION</h2><p><strong>Power Supplies (x5)</strong><br><em>MEAN WELL • 12Vdc</em></p><p><strong>Pixel Decoder (x1)</strong><br><em>Advatek • Pixlite 16 Long Range MKII</em></p><p><strong>Pixel Receiver (x5)</strong><br><em>Advatek • PixLite Long Range Receiver</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>Pixel Control</strong><br><em>LightJams</em></p><p><strong>Video Control</strong><br><em>Resolume Arena</em></p>",
     "related": [
       {
@@ -40532,6 +40532,10 @@
       {
         "name": "LED PSU Boot Sequencer",
         "url": "#project/1430"
+      },
+      {
+        "name": "Architectural Lighting",
+        "url": "#project/299"
       }
     ],
     "thumbnail": "media/Integration/Que Bueno Suerte!/Que-Bueno-Suerte-img-5d2843-thumb.webp",
@@ -40660,7 +40664,7 @@
     "video": "",
     "timestamp": "2026-06-21T23:30:44.785Z",
     "id": "4411",
-    "order": 7,
+    "order": 4,
     "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>Short Tubes (x62)</strong><br><em>4ft • 60px</em></p><p><strong>Long tubes (x69)</strong><br><em>8ft • 120px</em></p><h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x11880)</strong><br><em>198m • WS281x • RGB 60px/m • 5Vdc</em></p><h2>POWER &amp; DISTRIBUTION</h2><p><strong>Power Supplies (x6)</strong><br><em>5Vdc</em></p><p><strong>Pixel Decoder (x6)</strong><br><em>Advatek • PixLite 16 MK12</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>Pixel Control</strong><br><em>Madrix 5.x</em></p>",
     "related": [
       {
@@ -40854,7 +40858,7 @@
     "video": "",
     "timestamp": "2026-07-02T22:15:06.716Z",
     "id": "2285",
-    "order": 15,
+    "order": 13,
     "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x256)</strong><br><em>WS2815 • RGB • 16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x1)</strong><br><em>Athom • LS2812B-WLED • ESP8266 • WLED</em></p>",
     "related": [
       {
@@ -41060,7 +41064,7 @@
     "video": "",
     "timestamp": "2026-07-02T22:16:10.943Z",
     "id": "9896",
-    "order": 16,
+    "order": 14,
     "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x256)</strong><br><em>WS2815 • RGB • 16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x1)</strong><br><em>Athom • LS2812B-WLED • ESP8266 • WLED</em></p>",
     "related": [
       {
@@ -41252,7 +41256,7 @@
     "video": "",
     "timestamp": "2026-07-02T23:00:41.951Z",
     "id": "8609",
-    "order": 3,
+    "order": 2,
     "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x256)</strong><br><em>WS2815 • RGB • 16 x 16 matrix • black flex pcb • 12Vdc</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>3D Printer</strong><br><em>Bambu Labs X1C</em></p><p><strong>PLA+ ( Black )</strong><br><em>mask • border</em></p><p><strong>PLA+ ( White )</strong><br><em>bounce • diffusion</em></p><p><strong>PETG ( Black )</strong><br><em>frame • internal support</em></p><h2>EMBEDDED ELECTRONICS</h2><p><strong>Pixel Decoder (x1)</strong><br><em>Athom • LS2812B-WLED • ESP8266 • WLED</em></p>",
     "related": [
       {
@@ -41654,7 +41658,7 @@
     "video": "",
     "timestamp": "2026-07-20T21:09:12.884Z",
     "id": "6808",
-    "order": 5,
+    "order": 6,
     "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x1152)</strong><br><em>19.2m • WS2815 • RGB • 60px/m • 12Vdc</em></p><h2>POWER &amp; DISTRIBUTION</h2><p><strong>Power Supplies (x1)</strong><br><em>MEAN WELL • HLG-320H-12 • 12Vdc • 22A</em></p><h2>FABRICATION &amp; MATERIALS</h2><p><strong>Louver Lights (x96)</strong><br><em>custom • 3D printed • 45deg • louvers • corner fixture</em></p><h2>SOFTWARE &amp; STACK</h2><p><strong>Pixel Control</strong><br><em>Madrix 5.x</em></p>",
     "related": [
       {
@@ -42301,7 +42305,7 @@
         "url": "#project/1"
       },
       {
-        "name": "Immersive Video Ceiling",
+        "name": "Immersive Video Layer",
         "url": "#project/4250"
       },
       {
@@ -42316,7 +42320,7 @@
     "video": "",
     "timestamp": "2026-07-31T21:40:01.374Z",
     "id": "6371",
-    "order": 0,
+    "order": 5,
     "thumbnailFit": {
       "scale": 1.15,
       "x": 33.2,
@@ -42524,7 +42528,7 @@
     "video": "",
     "timestamp": "2026-08-01T15:14:28.453Z",
     "id": "2052",
-    "order": 4,
+    "order": 1,
     "thumbnailFit": {
       "scale": 1.2,
       "x": 0.4,
@@ -43132,7 +43136,7 @@
     "video": "",
     "timestamp": "2026-08-07T23:07:28.368Z",
     "id": "496",
-    "order": 10,
+    "order": 2,
     "thumbnailFit": {
       "scale": 1.3,
       "x": 0,
@@ -43389,7 +43393,7 @@
     "video": "",
     "timestamp": "2026-08-08T00:49:03.114Z",
     "id": "8983",
-    "order": 6,
+    "order": 8,
     "thumbnail": "media/Electronics/Glass VIP Wall/Glass-VIP-Wall-img-c13cd6-thumb.webp",
     "specsData": [
       {
@@ -43631,7 +43635,7 @@
     "video": "",
     "timestamp": "2026-08-08T15:03:36.390Z",
     "id": "6179",
-    "order": 4,
+    "order": 3,
     "thumbnailFit": {
       "scale": 1.1,
       "x": 96.9,
@@ -44049,7 +44053,7 @@
     "video": "",
     "timestamp": "2026-08-08T20:07:41.799Z",
     "id": "5650",
-    "order": 8,
+    "order": 9,
     "thumbnailFit": {
       "scale": 1,
       "x": 50,
@@ -44487,7 +44491,7 @@
     "video": "",
     "timestamp": "2026-08-09T12:31:15.774Z",
     "id": "1088",
-    "order": 4,
+    "order": 7,
     "thumbnail": "media/Lighting/Pyramid Steps/Pyramid-Steps-img-74a78f-thumb.webp",
     "specsData": [
       {
@@ -44538,7 +44542,9 @@
           }
         ]
       }
-    ]
+    ],
+    "linkHeroImages": true,
+    "draft": false
   },
   {
     "title": "Tracks Discotheque",
@@ -44763,7 +44769,7 @@
     "video": "",
     "timestamp": "2026-08-09T16:56:13.594Z",
     "id": "3671",
-    "order": 16,
+    "order": 5,
     "thumbnailFit": {
       "scale": 1,
       "x": 69.8,
@@ -44999,7 +45005,7 @@
     "video": "",
     "timestamp": "2026-08-09T23:05:35.692Z",
     "id": "6654",
-    "order": 13,
+    "order": 14,
     "thumbnail": "media/Lighting/Remote Fill Fog Jets/Remote-Fill-Fog-Jets-img-11473d-thumb.webp",
     "specsData": [
       {
@@ -45211,7 +45217,7 @@
     "video": "",
     "timestamp": "2026-08-14T18:26:35.295Z",
     "id": "9525",
-    "order": 9,
+    "order": 12,
     "thumbnail": "media/Lighting/Alabaster Bar Top/Alabaster-Bar-Top-img-e1c078-thumb.webp",
     "thumbnailFit": {
       "scale": 1.35,
@@ -45448,7 +45454,7 @@
     "video": "",
     "timestamp": "2026-08-14T19:25:35.032Z",
     "id": "468",
-    "order": 10,
+    "order": 13,
     "thumbnail": "media/Lighting/Bar Kicker/Bar-Kicker-img-2250f7-thumb.webp",
     "thumbnailFit": {
       "scale": 1,
@@ -45745,7 +45751,7 @@
     "video": "",
     "timestamp": "2026-08-14T21:28:07.028Z",
     "id": "7026",
-    "order": 7,
+    "order": 10,
     "specsData": [
       {
         "id": "48a6bb27-606d-4cac-a29c-5b7a3c2a72e7",
@@ -45924,7 +45930,7 @@
     "video": "",
     "timestamp": "2026-08-14T22:12:34.696Z",
     "id": "3309",
-    "order": 12,
+    "order": 4,
     "specsData": [
       {
         "id": "27d573e7-38bd-4778-9512-591f50d76a13",
@@ -46110,7 +46116,7 @@
     "video": "",
     "timestamp": "2026-08-14T23:16:48.264Z",
     "id": "9280",
-    "order": 6,
+    "order": 9,
     "specsData": [
       {
         "id": "b17a8cbf-3ff5-462f-80b7-56c22280151c",
@@ -46320,7 +46326,7 @@
     "video": "",
     "timestamp": "2026-08-16T19:45:09.127Z",
     "id": "9191",
-    "order": 10,
+    "order": 7,
     "draft": false
   },
   {
@@ -46500,7 +46506,7 @@
     "video": "",
     "timestamp": "2026-08-16T19:50:18.919Z",
     "id": "7412",
-    "order": 18,
+    "order": 16,
     "draft": false
   },
   {
@@ -46680,7 +46686,7 @@
     "video": "",
     "timestamp": "2026-08-16T19:55:48.429Z",
     "id": "8740",
-    "order": 5,
+    "order": 4,
     "draft": false,
     "linkHeroImages": true
   },
@@ -46868,7 +46874,7 @@
     "video": "",
     "timestamp": "2026-08-16T20:00:30.235Z",
     "id": "1829",
-    "order": 8,
+    "order": 6,
     "draft": false
   },
   {
@@ -47037,7 +47043,7 @@
     "video": "",
     "timestamp": "2026-08-16T20:06:37.433Z",
     "id": "3139",
-    "order": 12,
+    "order": 9,
     "draft": false
   },
   {
@@ -47204,7 +47210,7 @@
     "video": "",
     "timestamp": "2026-08-16T20:11:26.500Z",
     "id": "4827",
-    "order": 11,
+    "order": 8,
     "draft": false
   },
   {
@@ -47383,7 +47389,7 @@
     "video": "",
     "timestamp": "2026-08-16T20:19:44.564Z",
     "id": "7080",
-    "order": 19,
+    "order": 17,
     "draft": false
   },
   {
@@ -47562,7 +47568,7 @@
     "video": "",
     "timestamp": "2026-08-16T20:23:22.050Z",
     "id": "5202",
-    "order": 17,
+    "order": 15,
     "draft": false
   },
   {
@@ -47741,7 +47747,7 @@
     "video": "",
     "timestamp": "2026-08-16T20:25:20.687Z",
     "id": "6865",
-    "order": 20,
+    "order": 18,
     "draft": false
   },
   {
@@ -47920,7 +47926,7 @@
     "video": "",
     "timestamp": "2026-08-16T20:29:37.203Z",
     "id": "2451",
-    "order": 14,
+    "order": 12,
     "draft": false
   },
   {
@@ -48174,101 +48180,138 @@
     "order": 1
   },
   {
-    "title": "Immersive Video Ceiling",
+    "title": "Immersive Video Layer",
     "category": "Fixtures",
-    "image": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-img-d92ffc.webp",
-    "description": "<p>Video ceiling for the Temple SF rig</p>",
-    "longDescription": "<p><br></p>",
+    "image": "media/Electronics/Immersive Video Layer/Video-Ceiling-img-d92ffc.webp",
+    "description": "<p>The eighty-foot screen pulled four hundred amps and cooked its stock power supplies in the club heat.</p>",
+    "longDescription": "<p>Nobody sells a mount to hang an eighty-foot video screen perfectly flat inside a hundred-year-old building. I had to build a custom suspension frame from strut channel, L-brackets, and allthread.</p><p>The owner wanted the fifteen-foot-wide ceiling to run the length of the dance floor and then curve down behind the DJ booth. I drove lag bolts into the beams and hung the strut. To get the grid level, I put a laser in the ceiling and used the washers on top of the strut as targets across the room. Each row of the curve needed its own set of allthread drops to hit the right angles. The corner plates for the video panels bolted directly over the strut, locking everything in place. We expanded the system during the pandemic lockdown, adding curved wings, marquee strips, and a freestanding monolith on the floor.</p><p>I gave the ceiling a 400-amp service on switched relay banks so it could run full white at full intensity. But the panels sat in the highest, hottest part of the room. The mix of club heat, vibration, and crowd moisture cooked the capacitors in the stock power supplies. We swapped the dead units for better replacements every night before doors until the rig finally stabilized.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "draft": true,
+    "draft": false,
     "tags": [],
     "gallery": [
       {
-        "url": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-vid-3a1fcb.mp4",
-        "poster": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-vid-3a1fcb-poster.webp",
-        "thumbnail": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-vid-3a1fcb-poster-thumb.webp"
+        "url": "media/Electronics/Immersive Video Layer/Video-Ceiling-vid-3a1fcb.mp4",
+        "poster": "media/Electronics/Immersive Video Layer/Video-Ceiling-vid-3a1fcb-poster.webp",
+        "thumbnail": "media/Electronics/Immersive Video Layer/Video-Ceiling-vid-3a1fcb-poster-thumb.webp"
       },
       {
-        "url": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-vid-d94826.mp4",
-        "poster": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-vid-d94826-poster.webp",
-        "thumbnail": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-vid-d94826-poster-thumb.webp"
+        "url": "media/Electronics/Immersive Video Layer/Video-Ceiling-vid-d94826.mp4",
+        "poster": "media/Electronics/Immersive Video Layer/Video-Ceiling-vid-d94826-poster.webp",
+        "thumbnail": "media/Electronics/Immersive Video Layer/Video-Ceiling-vid-d94826-poster-thumb.webp"
       },
       {
-        "url": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-vid-482480.mp4",
-        "poster": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-vid-482480-poster.webp",
-        "thumbnail": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-vid-482480-poster-thumb.webp"
+        "url": "media/Electronics/Immersive Video Layer/Video-Ceiling-vid-482480.mp4",
+        "poster": "media/Electronics/Immersive Video Layer/Video-Ceiling-vid-482480-poster.webp",
+        "thumbnail": "media/Electronics/Immersive Video Layer/Video-Ceiling-vid-482480-poster-thumb.webp"
       },
       {
-        "url": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-img-42fc2a.webp",
-        "thumbnail": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-img-42fc2a-thumb.webp"
+        "url": "media/Electronics/Immersive Video Layer/Video-Ceiling-img-42fc2a.webp",
+        "thumbnail": "media/Electronics/Immersive Video Layer/Video-Ceiling-img-42fc2a-thumb.webp"
       },
       {
-        "url": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-img-0b5797.webp",
+        "url": "media/Electronics/Immersive Video Layer/Video-Ceiling-img-0b5797.webp",
         "fit": {
           "scale": 1,
           "x": 48.9,
           "y": 81.4,
           "rotate": 0
         },
-        "thumbnail": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-img-0b5797-thumb.webp"
+        "thumbnail": "media/Electronics/Immersive Video Layer/Video-Ceiling-img-0b5797-thumb.webp"
       },
       {
-        "url": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-img-7bda41.webp",
-        "thumbnail": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-img-7bda41-thumb.webp"
+        "url": "media/Electronics/Immersive Video Layer/Video-Ceiling-img-7bda41.webp",
+        "thumbnail": "media/Electronics/Immersive Video Layer/Video-Ceiling-img-7bda41-thumb.webp"
       },
       {
-        "url": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-img-9a8c71.webp",
-        "thumbnail": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-img-9a8c71-thumb.webp"
+        "url": "media/Electronics/Immersive Video Layer/Video-Ceiling-img-9a8c71.webp",
+        "thumbnail": "media/Electronics/Immersive Video Layer/Video-Ceiling-img-9a8c71-thumb.webp"
       },
       {
-        "url": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-img-6b57e6.webp",
-        "thumbnail": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-img-6b57e6-thumb.webp"
+        "url": "media/Electronics/Immersive Video Layer/Video-Ceiling-img-6b57e6.webp",
+        "thumbnail": "media/Electronics/Immersive Video Layer/Video-Ceiling-img-6b57e6-thumb.webp"
       },
       {
-        "url": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-img-95aa5b.webp",
-        "thumbnail": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-img-95aa5b-thumb.webp"
+        "url": "media/Electronics/Immersive Video Layer/Video-Ceiling-img-95aa5b.webp",
+        "thumbnail": "media/Electronics/Immersive Video Layer/Video-Ceiling-img-95aa5b-thumb.webp"
       },
       {
-        "url": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-img-8b6b3a.webp",
-        "thumbnail": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-img-8b6b3a-thumb.webp"
+        "url": "media/Electronics/Immersive Video Layer/Video-Ceiling-img-8b6b3a.webp",
+        "thumbnail": "media/Electronics/Immersive Video Layer/Video-Ceiling-img-8b6b3a-thumb.webp"
       },
       {
-        "url": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-img-6db9d3.webp",
-        "thumbnail": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-img-6db9d3-thumb.webp"
+        "url": "media/Electronics/Immersive Video Layer/Video-Ceiling-img-6db9d3.webp",
+        "thumbnail": "media/Electronics/Immersive Video Layer/Video-Ceiling-img-6db9d3-thumb.webp"
       },
       {
-        "url": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-img-4861d1.webp",
-        "thumbnail": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-img-4861d1-thumb.webp"
+        "url": "media/Electronics/Immersive Video Layer/Video-Ceiling-img-4861d1.webp",
+        "thumbnail": "media/Electronics/Immersive Video Layer/Video-Ceiling-img-4861d1-thumb.webp"
       },
       {
-        "url": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-img-39340d.webp",
-        "thumbnail": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-img-39340d-thumb.webp"
+        "url": "media/Electronics/Immersive Video Layer/Video-Ceiling-img-39340d.webp",
+        "thumbnail": "media/Electronics/Immersive Video Layer/Video-Ceiling-img-39340d-thumb.webp"
       },
       {
-        "url": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-img-467d54.webp",
-        "thumbnail": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-img-467d54-thumb.webp"
+        "url": "media/Electronics/Immersive Video Layer/Video-Ceiling-img-467d54.webp",
+        "thumbnail": "media/Electronics/Immersive Video Layer/Video-Ceiling-img-467d54-thumb.webp"
       },
       {
-        "url": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-img-8f8ce0.webp",
-        "thumbnail": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-img-8f8ce0-thumb.webp"
+        "url": "media/Electronics/Immersive Video Layer/Video-Ceiling-img-8f8ce0.webp",
+        "thumbnail": "media/Electronics/Immersive Video Layer/Video-Ceiling-img-8f8ce0-thumb.webp"
       },
       {
-        "url": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-img-37cb42.webp",
-        "thumbnail": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-img-37cb42-thumb.webp"
+        "url": "media/Electronics/Immersive Video Layer/Video-Ceiling-img-37cb42.webp",
+        "thumbnail": "media/Electronics/Immersive Video Layer/Video-Ceiling-img-37cb42-thumb.webp"
       },
       {
-        "url": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-img-3fd531.webp",
-        "thumbnail": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-img-3fd531-thumb.webp"
+        "url": "media/Electronics/Immersive Video Layer/Video-Ceiling-img-3fd531.webp",
+        "thumbnail": "media/Electronics/Immersive Video Layer/Video-Ceiling-img-3fd531-thumb.webp"
       }
     ],
     "files": [],
-    "specsData": [],
-    "specs": "",
+    "specsData": [
+      {
+        "id": "89a9499f-6181-40e0-858a-ff7385b13bc3",
+        "title": "PIXELS & DISPLAY",
+        "items": [
+          {
+            "id": "eff4abc2-9b87-4402-9881-b10fc7270fdb",
+            "name": "Ceiling Screen",
+            "qty": "1",
+            "specs": "3.5m x 23m, P4.81, 728 x 4784, "
+          },
+          {
+            "id": "2342d1d2-0576-4c11-86e0-544f9f16e022",
+            "name": "DJ Booth Screen",
+            "qty": "1",
+            "specs": "7m x 1.5m, P4.81, 1456 x 312, "
+          },
+          {
+            "id": "1c9489bb-16ab-463a-b1f0-6dc7660700d7",
+            "name": "Marquee Left Screen",
+            "qty": "1",
+            "specs": "14m x 1m, P4.81, 2912 x 208, "
+          },
+          {
+            "id": "0aec4f34-da6d-43cb-8c0a-e3fd63da1376",
+            "name": "Marquee Right Screen",
+            "qty": "1",
+            "specs": "18m x 1m, P4.81, 3744 x 208, "
+          },
+          {
+            "id": "225ede6c-eda2-40b4-bc09-0b09b9d9792f",
+            "name": "Monolith Screens",
+            "qty": "1",
+            "specs": "1.5m x 3m (x2), P4.81, 312 x 624 (x2), "
+          }
+        ]
+      }
+    ],
+    "specs": "<h2>PIXELS &amp; DISPLAY</h2><p><strong>Ceiling Screen (x1)</strong><br><em>3.5m x 23m • P4.81 • 728 x 4784</em></p><p><strong>DJ Booth Screen (x1)</strong><br><em>7m x 1.5m • P4.81 • 1456 x 312</em></p><p><strong>Marquee Left Screen (x1)</strong><br><em>14m x 1m • P4.81 • 2912 x 208</em></p><p><strong>Marquee Right Screen (x1)</strong><br><em>18m x 1m • P4.81 • 3744 x 208</em></p><p><strong>Monolith Screens (x1)</strong><br><em>1.5m x 3m (x2) • P4.81 • 312 x 624 (x2)</em></p>",
     "related": [
       {
         "name": "Temple SF",
@@ -48294,8 +48337,8 @@
     "video": "",
     "timestamp": "2026-09-05T01:32:22.408Z",
     "id": "4250",
-    "order": 1,
-    "thumbnail": "media/Electronics/Immersive Video Ceiling/Video-Ceiling-img-d92ffc-thumb.webp",
+    "order": 6,
+    "thumbnail": "media/Electronics/Immersive Video Layer/Video-Ceiling-img-d92ffc-thumb.webp",
     "linkHeroImages": true,
     "thumbnailFit": {
       "scale": 1.05,
@@ -48333,7 +48376,7 @@
     "video": "",
     "timestamp": "2026-09-05T01:34:07.514Z",
     "id": 5614,
-    "order": 5
+    "order": 7
   },
   {
     "title": "Immersive Lighting Layer",
@@ -48527,7 +48570,7 @@
         "url": "#project/1"
       },
       {
-        "name": "Immersive Video Ceiling",
+        "name": "Immersive Video Layer",
         "url": "#project/4250"
       },
       {
@@ -48546,7 +48589,7 @@
     "video": "",
     "timestamp": "2026-09-05T01:35:46.632Z",
     "id": "2395",
-    "order": 3,
+    "order": 8,
     "thumbnail": "media/Lighting/Immersive Lighting Layer/Immersive-Lighting-Layer-img-77aa96-thumb.webp",
     "linkHeroImages": true,
     "thumbnailFit": {
@@ -48567,15 +48610,15 @@
     "category": "Lighting",
     "image": "media/Lighting/Architectural Lighting/Architectural-Lighting-img-ab4799.webp",
     "thumbnail": "media/Lighting/Architectural Lighting/Architectural-Lighting-img-ab4799-thumb.webp",
-    "description": "<p>The front PAR lights, roof line, and patio lighting for QBS</p>",
-    "longDescription": "<p><br></p>",
+    "description": "<p>I washed the light-colored walls and made the electricians come back to fix their jumped circuits.</p>",
+    "longDescription": "<p>I refused to allow fast movements or strobe effects on the exterior of the building. It is a hazard for drivers. The light-colored walls of Que Bueno Suerte! were a perfect canvas for wall washers. I used IP67 PARs to uplight the street-facing side and downlight the patio, then outlined the front roof edge with LED pixel bars.</p><p>I had an electrician come out to install GFI outlets and new breakers. For some reason, electricians tend not to believe me when I am specific about balancing power. They put the outlets in the right spots but jumped existing circuits to cut costs. I had them come back and fix their work. The pixel strips took an Advatek receiver, and the exterior fixtures patched into Madrix to run with the rest of the restaurant.</p><p>When the system powered on, you could clearly pick the venue out from a block away. It caught people's eyes as they walked down the street.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "draft": true,
+    "draft": false,
     "tags": [],
     "gallery": [
       {
@@ -48592,9 +48635,74 @@
       }
     ],
     "files": [],
-    "specsData": [],
-    "specs": "",
+    "specsData": [
+      {
+        "id": "e4e5167d-0158-4777-8ae5-f1476ca8fcbb",
+        "title": "FIXTURES & FX",
+        "items": [
+          {
+            "id": "129794a7-730c-4cb2-958a-ac88889535c1",
+            "name": "CL-FP7",
+            "qty": "4",
+            "specs": "ColorfulLighting, LED, wash 25°, 70W, RGBW, IP65"
+          },
+          {
+            "id": "cdc778aa-5b11-41a0-94c4-45a755cc132a",
+            "name": "CL-FP7",
+            "qty": "12",
+            "specs": "ColorfulLighting, LED, wash 45°, 70W, RGBW, IP65"
+          },
+          {
+            "id": "1b940bb1-fef2-47dd-bc10-390ab8350597",
+            "name": "CL-FP18",
+            "qty": "16",
+            "specs": "ColorfulLighting, LED, wash 45°, 180W, RGBW, IP65"
+          },
+          {
+            "id": "0d7b933b-9c89-43da-9a4d-80011c593d73",
+            "name": "Pixel Tubes",
+            "qty": "16",
+            "specs": "SuperLightingLED, 1m, 48 LED, 8 pix, white diffusion"
+          }
+        ]
+      },
+      {
+        "id": "6f2b32e4-f223-45e0-8da6-0c77aac0232b",
+        "title": "PIXELS & DISPLAY",
+        "items": [
+          {
+            "id": "b3a14aac-2d9e-424c-bef2-67bb9979e51e",
+            "name": "LED Pixels",
+            "qty": "128",
+            "specs": "UCS1903, RGB, 24v, "
+          }
+        ]
+      },
+      {
+        "id": "6fc32c9f-ea7a-48db-9185-2f7923c0dde3",
+        "title": "Power & Distribution",
+        "items": [
+          {
+            "id": "a4952355-d192-4f3d-95f6-194e16cb81cc",
+            "name": "Power Supply",
+            "qty": "1",
+            "specs": "MEAN WELL, HLG-240H-24, 24Vdc, 10A"
+          },
+          {
+            "id": "b23e1518-bfcc-4198-bf76-09b8f37088df",
+            "name": "Pixel Decoder",
+            "qty": "1",
+            "specs": "Advatek, R4D-S, 12 Universe"
+          }
+        ]
+      }
+    ],
+    "specs": "<h2>FIXTURES &amp; FX</h2><p><strong>CL-FP7 (x4)</strong><br><em>ColorfulLighting • LED • wash 25° • 70W • RGBW • IP65</em></p><p><strong>CL-FP7 (x12)</strong><br><em>ColorfulLighting • LED • wash 45° • 70W • RGBW • IP65</em></p><p><strong>CL-FP18 (x16)</strong><br><em>ColorfulLighting • LED • wash 45° • 180W • RGBW • IP65</em></p><p><strong>Pixel Tubes (x16)</strong><br><em>SuperLightingLED • 1m • 48 LED • 8 pix • white diffusion</em></p><h2>PIXELS &amp; DISPLAY</h2><p><strong>LED Pixels (x128)</strong><br><em>UCS1903 • RGB • 24v</em></p><h2>POWER &amp; DISTRIBUTION</h2><p><strong>Power Supply (x1)</strong><br><em>MEAN WELL • HLG-240H-24 • 24Vdc • 10A</em></p><p><strong>Pixel Decoder (x1)</strong><br><em>Advatek • R4D-S • 12 Universe</em></p>",
     "related": [
+      {
+        "name": "Que Bueno Suerte!",
+        "url": "#project/4113"
+      },
       {
         "name": "Lighting & SFX Service",
         "url": "#project/1862"
@@ -48603,7 +48711,7 @@
     "video": "",
     "timestamp": "2026-09-05T01:37:47.811Z",
     "id": "299",
-    "order": 8,
+    "order": 11,
     "thumbnailFit": {
       "scale": 1.4,
       "x": 0,
@@ -48680,7 +48788,7 @@
     "video": "",
     "timestamp": "2026-09-05T01:40:51.428Z",
     "id": "5839",
-    "order": 2,
+    "order": 20,
     "thumbnail": "media/Art/Home Light Rig/Home-Light-Rig-img-046609-thumb.webp"
   },
   {
@@ -48758,7 +48866,7 @@
     "video": "",
     "timestamp": "2026-09-05T01:42:23.411Z",
     "id": "1772",
-    "order": 9
+    "order": 19
   },
   {
     "title": "Lighting & SFX Service",
@@ -49365,7 +49473,7 @@
         "url": "#project/1"
       },
       {
-        "name": "Immersive Video Ceiling",
+        "name": "Immersive Video Layer",
         "url": "#project/4250"
       },
       {
@@ -49732,17 +49840,17 @@
   {
     "title": "Mini Heart",
     "category": "Art",
-    "image": "media/Art/Mini Heart/Mini-Heart-img-cdb410.webp",
-    "thumbnail": "media/Art/Mini Heart/Mini-Heart-img-cdb410-thumb.webp",
-    "description": "<p><br></p>",
-    "longDescription": "<p><br></p>",
+    "image": "media/Art/Mini Heart/Mini-Heart-img-ac4b50.webp",
+    "thumbnail": "media/Art/Mini Heart/Mini-Heart-img-2d5c96-thumb.webp",
+    "description": "<p>Even at this size, the LEDs generate enough heat to melt the plastic if the current runs wide open.</p>",
+    "longDescription": "<p>The idea was a simple subdivided heart I could hand out as gifts. This is the second 8x8 sculpture I built, scaled down to run off a standard USB port. I printed a two-material QR code directly into the base. Since the print is short, standard black and white PLA was enough to let the light punch through the surface.</p><p>I modeled the whole thing in Solidworks. The first batch came off an old TenLog IDEX printer, and the surface was rough. Moving the job to an X1C smoothed things out. Even at this size, the LEDs generate heat. I had to limit the current in software to prevent thermal runaway and damage to the model. I gave them to friends and family for Valentine's Day. They plug into any USB block and run a preset playlist of patterns.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "draft": true,
+    "draft": false,
     "tags": [],
     "gallery": [
       {
@@ -49776,6 +49884,36 @@
         },
         "poster": "media/Art/Mini Heart/Mini-Heart-gfx-1f75e6-poster.webp",
         "thumbnail": "media/Art/Mini Heart/Mini-Heart-gfx-1f75e6-poster-thumb.webp"
+      },
+      {
+        "url": "media/Art/Mini Heart/Mini-Heart-vid-820e04.mp4",
+        "poster": "media/Art/Mini Heart/Mini-Heart-img-1b8af8.webp",
+        "thumbnail": "media/Art/Mini Heart/Mini-Heart-img-1b8af8-thumb.webp"
+      },
+      {
+        "url": "media/Art/Mini Heart/Mini-Heart-vid-2549a4.mp4",
+        "poster": "media/Art/Mini Heart/Mini-Heart-vid-2549a4-poster.webp",
+        "thumbnail": "media/Art/Mini Heart/Mini-Heart-vid-2549a4-poster-thumb.webp"
+      },
+      {
+        "url": "media/Art/Mini Heart/Mini-Heart-img-2b2175.webp",
+        "thumbnail": "media/Art/Mini Heart/Mini-Heart-img-2b2175-thumb.webp"
+      },
+      {
+        "url": "media/Art/Mini Heart/Mini-Heart-img-4fbee1.webp",
+        "thumbnail": "media/Art/Mini Heart/Mini-Heart-img-4fbee1-thumb.webp"
+      },
+      {
+        "url": "media/Art/Mini Heart/Mini-Heart-img-16ca03.webp",
+        "thumbnail": "media/Art/Mini Heart/Mini-Heart-img-16ca03-thumb.webp"
+      },
+      {
+        "url": "media/Art/Mini Heart/Mini-Heart-img-73edfa.webp",
+        "thumbnail": "media/Art/Mini Heart/Mini-Heart-img-73edfa-thumb.webp"
+      },
+      {
+        "url": "media/Art/Mini Heart/Mini-Heart-img-948af8.webp",
+        "thumbnail": "media/Art/Mini Heart/Mini-Heart-img-948af8-thumb.webp"
       }
     ],
     "files": [
@@ -49799,6 +49937,19 @@
     "video": "",
     "timestamp": "2026-09-05T22:51:50.484Z",
     "id": "8230",
-    "order": 6
+    "order": 11,
+    "linkHeroImages": false,
+    "thumbnailFit": {
+      "scale": 1.1,
+      "x": 0.1,
+      "y": 44.7,
+      "rotate": 0
+    },
+    "bannerFit": {
+      "scale": 1.25,
+      "x": 100,
+      "y": 44.5,
+      "rotate": 0
+    }
   }
 ]
