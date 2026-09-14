@@ -1944,7 +1944,7 @@
         return typeof url === 'string' && /\.glb$/i.test(url.split('?')[0]);
     }
 
-    // Builds the model descriptor stored on a gallery item ({ type, format, up, parts, view }).
+    // Builds the model descriptor stored on a gallery item ({ type, format, up, parts, view, matrix }).
     function modelView(view) {
         if (!view || typeof view !== 'object') return undefined;
         const theta = Number(view.theta);
@@ -1973,6 +1973,11 @@
         };
         const view = modelView(item.view);
         if (view) desc.view = view;
+        const partCount = desc.parts.length;
+        const matrix = window.ModelViewerCore && typeof ModelViewerCore.sanitizeMatrix === 'function'
+            ? ModelViewerCore.sanitizeMatrix(item.matrix, partCount)
+            : null;
+        if (matrix) desc.matrix = matrix;
         return desc;
     }
 
@@ -3983,13 +3988,17 @@
           up: model.up,
           parts: model.parts,
           view: model.view,
+          matrix: model.matrix,
+          gizmo: true,
           onProgress: (f) => { status.textContent = `Loading ${Math.round(f * 100)}%`; },
           onPartHover: onModelPartHover,
-          onPartActivate: onModelPartActivate
+          onPartActivate: onModelPartActivate,
+          onMatrixChange: syncRowFromViewer
         });
         status.textContent = '';
         if (modelEditor.row !== row) return; // closed while loading
         renderModelEditorParts();
+        renderModelEditorMatrix();
         syncRowFromViewer();
       } catch (err) {
         partsEl.innerHTML = `<p class="text-xs text-red-400">Could not load model: ${escAttr(err.message || err)}</p>`;
@@ -4002,6 +4011,7 @@
       if (!viewer) return;
       const parts = viewer.listParts();
       if (!parts.length) { partsEl.innerHTML = '<p class="text-xs text-zinc-500">No meshes found in this model.</p>'; return; }
+      const hasMatrix = !!viewer.getMatrix?.();
       partsEl.innerHTML = parts.map((p, i) => `
         <div class="model-part flex flex-col gap-1.5 p-2 rounded-lg bg-zinc-800/70 border border-zinc-700" data-index="${i}">
           <div class="flex items-center gap-2">
@@ -4017,6 +4027,11 @@
               <span>%</span>
             </div>
           </div>
+          ${hasMatrix ? `
+          <label class="flex items-center gap-2 text-[10px] text-zinc-400 cursor-pointer">
+            <input type="checkbox" class="model-part-receive accent-cyan-400" ${p.receive ? 'checked' : ''} onchange="onModelPartReceive(${i}, this.checked)">
+            <span class="uppercase font-bold">Lit by matrix</span>
+          </label>` : ''}
         </div>`).join('');
 
       // Mouse wheel over the slider or the number field nudges opacity (1%, or 5% with Shift).
@@ -4044,6 +4059,7 @@
       const next = { type: 'model', format: prev.format || 'glb', up: state.up, parts };
       const view = modelView(state.view);
       if (view) next.view = view;
+      if (state.matrix) next.matrix = state.matrix;
       writeRowModel(row, next);
       isDirty = true;
     }
@@ -4130,6 +4146,132 @@
         card.querySelector('.model-part-opacity-num').value = Math.round(p.opacity * 100);
       }
       syncRowFromViewer();
+    }
+    function onModelPartReceive(i, checked) {
+      modelEditor.viewer?.setPartReceive(i, !!checked);
+      syncRowFromViewer();
+    }
+
+    function renderModelEditorMatrix() {
+      const viewer = modelEditor.viewer;
+      const empty = document.getElementById('model-editor-matrix-empty');
+      const controls = document.getElementById('model-editor-matrix-controls');
+      if (!empty || !controls) return;
+      const m = viewer?.getMatrix?.();
+      if (!m) {
+        empty.classList.remove('hidden');
+        controls.classList.add('hidden');
+        return;
+      }
+      empty.classList.add('hidden');
+      controls.classList.remove('hidden');
+      const sizeEl = document.getElementById('model-editor-matrix-size');
+      if (sizeEl) sizeEl.textContent = `${m.cols}×${m.rows}`;
+      const pitchEl = document.getElementById('model-editor-matrix-pitch');
+      if (pitchEl && document.activeElement !== pitchEl) pitchEl.value = String(Math.round(m.pitch * 1000) / 1000);
+      const presetEl = document.getElementById('model-editor-matrix-preset');
+      if (presetEl) presetEl.value = m.preset || 'rainbow';
+      fillMatrixLookControl('intensity', m.intensity, 0.32);
+      fillMatrixLookControl('bloom', m.bloom, 0.18);
+      bindMatrixLookWheels();
+      const mode = viewer.getGizmoMode?.() || 'translate';
+      document.querySelectorAll('#model-editor-matrix-gizmo [data-gizmo]').forEach((btn) => {
+        const on = btn.dataset.gizmo === mode;
+        btn.classList.toggle('bg-cyan-600', on);
+        btn.classList.toggle('text-white', on);
+        btn.classList.toggle('text-zinc-300', !on);
+      });
+    }
+
+    function fillMatrixLookControl(kind, value, fallback) {
+      const n = Number(value);
+      const pct = Math.round((Number.isFinite(n) ? Math.min(1, Math.max(0, n)) : fallback) * 100);
+      const slider = document.getElementById(`model-editor-matrix-${kind}`);
+      const num = document.getElementById(`model-editor-matrix-${kind}-num`);
+      if (slider && document.activeElement !== slider) slider.value = String(pct);
+      if (num && document.activeElement !== num) num.value = String(pct);
+    }
+
+    function bindMatrixLookWheels() {
+      ['intensity', 'bloom'].forEach((kind) => {
+        const slider = document.getElementById(`model-editor-matrix-${kind}`);
+        const num = document.getElementById(`model-editor-matrix-${kind}-num`);
+        if (!slider || !num || slider.dataset.wheelBound) return;
+        slider.dataset.wheelBound = '1';
+        const onWheel = (e) => {
+          e.preventDefault();
+          const step = e.shiftKey ? 5 : 1;
+          const current = Math.round(Number(slider.value) || 0);
+          onModelMatrixLook(kind, current + (e.deltaY < 0 ? step : -step));
+        };
+        slider.addEventListener('wheel', onWheel, { passive: false });
+        num.addEventListener('wheel', onWheel, { passive: false });
+      });
+    }
+
+    function onModelMatrixAdd(size) {
+      const viewer = modelEditor.viewer;
+      if (!viewer) return;
+      const n = Number(size) === 8 ? 8 : 16;
+      viewer.setMatrix({ cols: n, rows: n, pitch: 10, preset: 'rainbow', enabled: true }, { fit: true });
+      viewer.setGizmoMode('translate');
+      renderModelEditorMatrix();
+      renderModelEditorParts();
+      syncRowFromViewer();
+    }
+    function onModelMatrixRemove() {
+      const viewer = modelEditor.viewer;
+      if (!viewer) return;
+      viewer.removeMatrix();
+      renderModelEditorMatrix();
+      renderModelEditorParts();
+      syncRowFromViewer();
+    }
+    function onModelMatrixFit() {
+      const viewer = modelEditor.viewer;
+      if (!viewer) return;
+      viewer.fitMatrix();
+      viewer.setGizmoMode('translate');
+      renderModelEditorMatrix();
+      syncRowFromViewer();
+    }
+    function onModelMatrixPitch(value) {
+      const viewer = modelEditor.viewer;
+      if (!viewer) return;
+      const current = viewer.getMatrix();
+      if (!current) return;
+      const pitch = Number(value);
+      if (!Number.isFinite(pitch) || pitch <= 0) return;
+      viewer.setMatrix({ ...current, pitch });
+      renderModelEditorMatrix();
+      syncRowFromViewer();
+    }
+    function onModelMatrixPreset(value) {
+      const viewer = modelEditor.viewer;
+      if (!viewer) return;
+      viewer.setPreset(value);
+      syncRowFromViewer();
+    }
+    function onModelMatrixLook(kind, value, fromNumField = false) {
+      if (value === '' || value === null || value === undefined) return;
+      const viewer = modelEditor.viewer;
+      if (!viewer) return;
+      const n = Number(value);
+      if (!Number.isFinite(n)) return;
+      const pct = Math.max(0, Math.min(100, Math.round(n)));
+      if (kind === 'bloom') viewer.setBloom(pct / 100);
+      else viewer.setIntensity(pct / 100);
+      const slider = document.getElementById(`model-editor-matrix-${kind}`);
+      const num = document.getElementById(`model-editor-matrix-${kind}-num`);
+      if (slider && Number(slider.value) !== pct) slider.value = pct;
+      if (num && (!fromNumField || n !== pct) && Number(num.value) !== pct) num.value = pct;
+      syncRowFromViewer();
+    }
+    function onModelMatrixGizmo(mode) {
+      const viewer = modelEditor.viewer;
+      if (!viewer) return;
+      viewer.setGizmoMode(mode);
+      renderModelEditorMatrix();
     }
     function onModelUp(axis) {
       modelEditor.viewer?.setUp(axis);
@@ -4432,6 +4574,7 @@
                   }
                   const view = modelView(model.view);
                   if (view) obj.view = view;
+                  if (model.matrix) obj.matrix = model.matrix;
               }
               if (caption) obj.caption = caption;
               if (fit) obj.fit = fit;
@@ -5301,6 +5444,55 @@
           <p class="absolute right-3 bottom-3 text-[10px] text-zinc-500 hidden md:block">Ctrl+click to hide a part · Click a point to orbit around it · Click empty space for center · Drag: rotate · Right-drag / two fingers: pan · Wheel / pinch: zoom</p>
         </div>
         <div class="w-full md:w-80 flex flex-col border-t md:border-t-0 md:border-l border-zinc-800 min-h-0">
+          <div class="px-4 py-3 border-b border-zinc-800">
+            <h3 class="text-[10px] font-bold text-zinc-400 uppercase">LED Matrix</h3>
+            <p class="text-[11px] text-zinc-500 mt-0.5">Drop an 8×8 or 16×16 panel behind the print, then drag to place it.</p>
+            <div id="model-editor-matrix-empty" class="flex gap-2 mt-2">
+              <button type="button" onclick="onModelMatrixAdd(8)" class="btn-quiet flex-1 justify-center">Add 8×8</button>
+              <button type="button" onclick="onModelMatrixAdd(16)" class="btn-quiet flex-1 justify-center">Add 16×16</button>
+            </div>
+            <div id="model-editor-matrix-controls" class="hidden mt-2 space-y-2">
+              <div class="flex items-center justify-between gap-2">
+                <span id="model-editor-matrix-size" class="text-xs font-mono text-cyan-400">16×16</span>
+                <button type="button" onclick="onModelMatrixRemove()" class="text-[11px] text-zinc-500 hover:text-red-400">Remove</button>
+              </div>
+              <div class="flex items-center gap-2 text-[10px] text-zinc-400">
+                <span class="uppercase font-bold w-10">Pitch</span>
+                <input type="number" id="model-editor-matrix-pitch" min="0.1" step="0.1" class="flex-1 bg-zinc-900 border border-zinc-700 rounded px-1.5 py-1 text-xs text-zinc-200 font-mono focus:border-cyan-500 outline-none" onchange="onModelMatrixPitch(this.value)">
+                <span class="font-mono">mm</span>
+                <button type="button" onclick="onModelMatrixFit()" class="btn-quiet py-1 px-2" title="Fit to the inner grid">Fit</button>
+              </div>
+              <div class="flex items-center gap-2 text-[10px] text-zinc-400">
+                <span class="uppercase font-bold w-10">Preset</span>
+                <select id="model-editor-matrix-preset" class="flex-1 bg-zinc-900 border border-zinc-700 rounded px-1.5 py-1 text-xs text-zinc-200 focus:border-cyan-500 outline-none" onchange="onModelMatrixPreset(this.value)">
+                  <option value="rainbow">Rainbow</option>
+                  <option value="chase">Chase</option>
+                  <option value="plasma">Plasma</option>
+                  <option value="solid">Solid</option>
+                </select>
+              </div>
+              <div class="flex items-center gap-2 text-[10px] text-zinc-400">
+                <span class="uppercase font-bold w-16">Intensity</span>
+                <input type="range" min="0" max="100" step="1" value="32" id="model-editor-matrix-intensity" class="flex-1 accent-cyan-400" title="Overall LED brightness. Drag, or hover and use the mouse wheel (Shift = 5% steps)" oninput="onModelMatrixLook('intensity', this.value)">
+                <div class="flex items-center gap-0.5 font-mono">
+                  <input type="number" id="model-editor-matrix-intensity-num" min="0" max="100" step="1" inputmode="decimal" value="32" class="w-12 bg-zinc-900 border border-zinc-700 rounded px-1 py-0.5 text-right text-xs text-zinc-200 focus:border-cyan-500 outline-none" title="Type an exact intensity" oninput="onModelMatrixLook('intensity', this.value, true)" onblur="this.value = Math.round((modelEditor.viewer?.getMatrix()?.intensity ?? 0.32) * 100)" autocomplete="off" data-1p-ignore="true" data-lpignore="true">
+                  <span>%</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 text-[10px] text-zinc-400">
+                <span class="uppercase font-bold w-16">Bloom</span>
+                <input type="range" min="0" max="100" step="1" value="18" id="model-editor-matrix-bloom" class="flex-1 accent-cyan-400" title="Glow halo around the lit print. Drag, or hover and use the mouse wheel (Shift = 5% steps)" oninput="onModelMatrixLook('bloom', this.value)">
+                <div class="flex items-center gap-0.5 font-mono">
+                  <input type="number" id="model-editor-matrix-bloom-num" min="0" max="100" step="1" inputmode="decimal" value="18" class="w-12 bg-zinc-900 border border-zinc-700 rounded px-1 py-0.5 text-right text-xs text-zinc-200 focus:border-cyan-500 outline-none" title="Type an exact bloom amount" oninput="onModelMatrixLook('bloom', this.value, true)" onblur="this.value = Math.round((modelEditor.viewer?.getMatrix()?.bloom ?? 0.18) * 100)" autocomplete="off" data-1p-ignore="true" data-lpignore="true">
+                  <span>%</span>
+                </div>
+              </div>
+              <div id="model-editor-matrix-gizmo" class="flex rounded-lg overflow-hidden bg-zinc-800/90 text-[10px] font-bold uppercase">
+                <button type="button" data-gizmo="translate" onclick="onModelMatrixGizmo('translate')" class="flex-1 px-2 py-1.5 text-zinc-300">Move</button>
+                <button type="button" data-gizmo="rotate" onclick="onModelMatrixGizmo('rotate')" class="flex-1 px-2 py-1.5 text-zinc-300">Rotate</button>
+              </div>
+            </div>
+          </div>
           <div class="px-4 py-3 border-b border-zinc-800">
             <h3 class="text-[10px] font-bold text-zinc-400 uppercase">Parts &amp; Materials</h3>
             <p class="text-[11px] text-zinc-500 mt-0.5">Set a color and opacity per part to match the real object. Changes save with the project.</p>

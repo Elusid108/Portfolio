@@ -37201,6 +37201,38 @@
             "opacity": 0.5
           }
         ],
+        "view": {
+          "theta": -0.5078,
+          "phi": 1.3334,
+          "radiusScale": 3.275,
+          "panX": 0,
+          "panY": 0
+        },
+        "matrix": {
+          "enabled": true,
+          "cols": 16,
+          "rows": 16,
+          "pitch": 9.975,
+          "origin": [
+            151.31,
+            152.278,
+            -1.496
+          ],
+          "quaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "preset": "plasma",
+          "intensity": 0.42,
+          "bloom": 0.09,
+          "receive": [
+            false,
+            true,
+            true
+          ]
+        },
         "fit": {
           "scale": 1.3,
           "x": 55.5,
@@ -37353,7 +37385,8 @@
         ]
       }
     ],
-    "draft": false
+    "draft": false,
+    "linkHeroImages": true
   },
   {
     "id": "5632",
