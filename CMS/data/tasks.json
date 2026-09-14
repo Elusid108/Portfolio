@@ -152,6 +152,15 @@
       "notes": "",
       "order": 14,
       "subtasks": []
+    },
+    {
+      "id": "689fdc56-e638-49b8-b587-5d840c986b4a",
+      "title": "Header text replaacement",
+      "status": "todo",
+      "description": "Bringing complex ideas to life. Specialized systems design for unique physical spaces.\n",
+      "notes": "",
+      "order": 15,
+      "subtasks": []
     }
   ]
 }

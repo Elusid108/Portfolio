@@ -41010,6 +41010,17 @@
         "thumbnail": "media/Art/Seed of Life/Seed-of-Life-gfx-5268b5-poster-thumb.webp"
       },
       {
+        "url": "media/Art/Seed of Life/Seed-of-Life-vid-0c1c03.mp4",
+        "fit": {
+          "scale": 1,
+          "x": 51.1,
+          "y": 39.8,
+          "rotate": 0
+        },
+        "poster": "media/Art/Seed of Life/Seed-of-Life-img-dc2be0.webp",
+        "thumbnail": "media/Art/Seed of Life/Seed-of-Life-img-dc2be0-thumb.webp"
+      },
+      {
         "url": "media/Art/Seed of Life/Seed-of-Life-img-a0f17a.webp",
         "fit": {
           "scale": 1.15,
@@ -41159,7 +41170,8 @@
         ]
       }
     ],
-    "draft": false
+    "draft": false,
+    "linkHeroImages": true
   },
   {
     "title": "Celtic Owl",
@@ -42320,7 +42332,7 @@
     "video": "",
     "timestamp": "2026-07-31T21:40:01.374Z",
     "id": "6371",
-    "order": 5,
+    "order": 6,
     "thumbnailFit": {
       "scale": 1.15,
       "x": 33.2,
@@ -48337,7 +48349,7 @@
     "video": "",
     "timestamp": "2026-09-05T01:32:22.408Z",
     "id": "4250",
-    "order": 6,
+    "order": 7,
     "thumbnail": "media/Electronics/Immersive Video Layer/Video-Ceiling-img-d92ffc-thumb.webp",
     "linkHeroImages": true,
     "thumbnailFit": {
@@ -48356,27 +48368,100 @@
   {
     "title": "Acrylic Etchings",
     "category": "Fixtures",
-    "image": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-img-b9e0a1.webp",
-    "thumbnail": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-img-b9e0a1-thumb.webp",
-    "description": "<p>QBS Acrylic etching LED pixel retrofit</p>",
-    "longDescription": "<p><br></p>",
+    "image": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-img-07a72d.webp",
+    "thumbnail": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-img-46362f-thumb.webp",
+    "description": "<p>I hid wireless pixel decoders on the frames because the original power lines were mudded straight into the wall.</p>",
+    "longDescription": "<p>The venue had a series of acrylic etchings by an artist who had passed away. They had to stay. I wanted to replace their solid-color strips with pixel tape to see how the light would play with the etched effect. The original power lines were mudded straight into the wall, making new data cable impossible. I needed a wireless pixel controller small enough to hide on the frames.</p><p>I kept the original wires for DC power and used Athom decoders to catch the data over Wi-Fi. The etchings had an aluminum channel across the top. I laid RGBW tape inside the channel and mounted the decoders right on top.</p><p>It kept the walls intact, but 2.4GHz Wi-Fi in a crowded room is a mess. When the venue fills up, hundreds of cell phones fight the decoders for airspace. If I rebuilt these today, I would use an ESP32-C5 chip to get them onto a 5GHz network and out of the traffic.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
     "shopLink": "",
     "featured": false,
     "wip": false,
-    "draft": true,
+    "draft": false,
     "tags": [],
-    "gallery": [],
+    "gallery": [
+      {
+        "url": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-vid-23437f.mp4",
+        "poster": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-img-3b68fe.webp",
+        "thumbnail": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-img-3b68fe-thumb.webp"
+      },
+      {
+        "url": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-vid-9be44e.mp4",
+        "fit": {
+          "scale": 1.75,
+          "x": 36.3,
+          "y": 45.5,
+          "rotate": 0
+        },
+        "poster": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-img-6a980d.webp",
+        "thumbnail": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-img-6a980d-thumb.webp"
+      },
+      {
+        "url": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-vid-f269e1.mp4",
+        "poster": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-vid-f269e1-poster.webp",
+        "thumbnail": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-vid-f269e1-poster-thumb.webp"
+      },
+      {
+        "url": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-vid-a8acd4.mp4",
+        "poster": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-vid-a8acd4-poster.webp",
+        "thumbnail": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-vid-a8acd4-poster-thumb.webp"
+      },
+      {
+        "url": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-img-79a20a.webp",
+        "thumbnail": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-img-79a20a-thumb.webp"
+      },
+      {
+        "url": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-img-ed0c9e.webp",
+        "thumbnail": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-img-ed0c9e-thumb.webp"
+      },
+      {
+        "url": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-img-d1067a.webp",
+        "thumbnail": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-img-d1067a-thumb.webp"
+      },
+      {
+        "url": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-img-ba21de.webp",
+        "thumbnail": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-img-ba21de-thumb.webp"
+      },
+      {
+        "url": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-img-df5e00.webp",
+        "thumbnail": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-img-df5e00-thumb.webp"
+      },
+      {
+        "url": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-vid-084cbd.mp4",
+        "poster": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-vid-084cbd-poster.webp",
+        "thumbnail": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-vid-084cbd-poster-thumb.webp"
+      },
+      {
+        "url": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-img-357c9f.webp",
+        "thumbnail": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-img-357c9f-thumb.webp"
+      },
+      {
+        "url": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-img-f533c1.webp",
+        "thumbnail": "media/Electronics/Acrylic Etchings/Acrylic-Etchings-img-f533c1-thumb.webp"
+      }
+    ],
     "files": [],
     "specsData": [],
     "specs": "",
     "related": [],
     "video": "",
     "timestamp": "2026-09-05T01:34:07.514Z",
-    "id": 5614,
-    "order": 7
+    "id": "5614",
+    "order": 5,
+    "thumbnailFit": {
+      "scale": 1.3,
+      "x": 27.1,
+      "y": 19.2,
+      "rotate": 0
+    },
+    "bannerFit": {
+      "scale": 1.45,
+      "x": 19,
+      "y": 37.8,
+      "rotate": 0
+    },
+    "linkHeroImages": false
   },
   {
     "title": "Immersive Lighting Layer",
@@ -48632,6 +48717,18 @@
       {
         "url": "media/Lighting/Architectural Lighting/Architectural-Lighting-img-1044c9.webp",
         "thumbnail": "media/Lighting/Architectural Lighting/Architectural-Lighting-img-1044c9-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Architectural Lighting/Architectural-Lighting-img-a281f5.webp",
+        "thumbnail": "media/Lighting/Architectural Lighting/Architectural-Lighting-img-a281f5-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Architectural Lighting/Architectural-Lighting-img-e1ffd8.webp",
+        "thumbnail": "media/Lighting/Architectural Lighting/Architectural-Lighting-img-e1ffd8-thumb.webp"
+      },
+      {
+        "url": "media/Lighting/Architectural Lighting/Architectural-Lighting-img-74e953.webp",
+        "thumbnail": "media/Lighting/Architectural Lighting/Architectural-Lighting-img-74e953-thumb.webp"
       }
     ],
     "files": [],
@@ -48843,6 +48940,17 @@
         },
         "poster": "media/Art/Mound/Mound-gfx-aa8f40-poster.webp",
         "thumbnail": "media/Art/Mound/Mound-gfx-aa8f40-poster-thumb.webp"
+      },
+      {
+        "url": "media/Art/Mound/Mound-vid-92ac14.mp4",
+        "fit": {
+          "scale": 1,
+          "x": 49.3,
+          "y": 31.3,
+          "rotate": 0
+        },
+        "poster": "media/Art/Mound/Mound-img-c7b66f.webp",
+        "thumbnail": "media/Art/Mound/Mound-img-c7b66f-thumb.webp"
       }
     ],
     "files": [
@@ -48866,7 +48974,8 @@
     "video": "",
     "timestamp": "2026-09-05T01:42:23.411Z",
     "id": "1772",
-    "order": 19
+    "order": 19,
+    "linkHeroImages": true
   },
   {
     "title": "Lighting & SFX Service",
