@@ -4,7 +4,7 @@ This is the source for my personal portfolio website — a showcase of work span
 
 The local authoring tool is **CMS v2.8.4 Local**.
 
-The live site (`[index.html](index.html)`) is a single, self-contained static page built with React 18 (UMD), Babel Standalone, and Tailwind CSS (all via CDN). It reads its content from a JSON block embedded directly in the page, so there's no build step and no backend required to host or view it — it can be served as-is from GitHub Pages or any static file host. Alongside it, the `[share/](share/)` folder holds small generated pages and preview images that give each project a proper social-media link preview.
+The live site (`[index.html](index.html)`) is a static single-page app built with React 18. It reads its content from a JSON block embedded in the page and needs no backend, so GitHub Pages or any static host can serve it. When you publish, the CMS precompiles the page's JSX (esbuild) and its Tailwind CSS into `assets/`, so visitors never download a compiler. Publishing also writes a readable, search-indexable page per project under `[projects/](projects/)`, forwarding pages and social preview cards under `[share/](share/)`, and `sitemap.xml`, `robots.txt`, `404.html` and favicons.
 
 Projects are organized into six categories that map to folders under `[media/](media/)`:
 
@@ -21,9 +21,13 @@ Projects are organized into six categories that map to folders under `[media/](m
 Portfolio/
 ├── CNAME                # Pins GitHub Pages to chrismoore.me
 ├── .nojekyll            # Stops Pages from skipping share/ or rewriting paths
+├── .github/workflows/pages.yml  # Deploys only the site output (not CMS/) to GitHub Pages
 ├── index.html          # Published static site (generated — edit via the CMS, not by hand)
+├── assets/              # Generated: app.<hash>.js (compiled JSX) + site.<hash>.css (compiled Tailwind)
+├── projects/<slug>/     # Generated: one static, crawlable page per published project
+├── sitemap.xml, robots.txt, 404.html, favicon.svg, favicon-32.png, apple-touch-icon.png  # Generated
 ├── share/               # Generated social-sharing output (commit alongside index.html)
-│   ├── <id>.html            # One Open Graph page per published project (crawler-safe; humans go to /#project/<id>)
+│   ├── <id>.html            # Legacy share links: Open Graph tags + instant forward to projects/<slug>/
 │   └── cards/               # 1200x630 preview cards: <id>.jpg per project + site.jpg (hero board)
 ├── media/               # Project images/video/3D models, organized by category/project
 │   └── <Category>/<Project>/
@@ -37,8 +41,11 @@ Portfolio/
 │   │   ├── gemini.js            # Server-side Gemini interview / short / long copy
 │   │   ├── media.js             # Image / file / 3D model upload handling, relocation & trash
 │   │   ├── video.js             # ffmpeg video transcoding + poster frames
-│   │   ├── share.js             # Open Graph meta, share/<id>.html pages, share cards
-│   │   └── publish.js           # Injects data + viewer core + meta into the template -> index.html
+│   │   ├── share.js             # Open Graph meta, share/<id>.html forwards, share cards
+│   │   ├── build.js             # esbuild JSX + Tailwind compile -> assets/app.<hash>.js, site.<hash>.css
+│   │   ├── pages.js             # projects/<slug>/ pages, sitemap, robots, 404, favicons
+│   │   ├── slug.js              # Permanent per-project URL slugs (+ forwards for renamed ones)
+│   │   └── publish.js           # Runs the build and injects data + viewer core + meta -> index.html
 │   ├── prompts/
 │   │   ├── writing-guide.md     # Shared system prompt (per-category interview and long banks)
 │   │   └── sputnik.txt          # Voice sample (gitignored; never published)
@@ -57,7 +64,8 @@ Portfolio/
 │   │   ├── tasks.json           # CMS-only task list (never published)
 │   │   └── share-manifest.json  # Fingerprints of last-written share cards (CMS-local)
 │   └── scripts/
-│       └── migrate.js           # Re-extracts data from a published index.html
+│       ├── migrate.js           # Re-extracts data from a published index.html
+│       └── reencode-videos.js   # Re-encodes existing videos down to the 720p web cap, in place
 ```
 
 ## How the CMS Works
@@ -86,7 +94,7 @@ npm install
 npm start
 ```
 
-Then open `http://localhost:3000` in a browser. On Windows, `[CMS/launch.bat](CMS/launch.bat)` is a convenience script that frees up port 3000 if it's already in use, starts the server, and opens the admin UI automatically.
+Then open `http://localhost:3000` in a browser. The CMS has no login, so the server only listens on `127.0.0.1` (set `HOST` to override) and rejects API writes that come from other sites' pages. On Windows, `[CMS/launch.bat](CMS/launch.bat)` is a convenience script that frees up port 3000 if it's already in use, starts the server, and opens the admin UI automatically.
 
 ### Editing Content
 
@@ -108,6 +116,7 @@ It also has a "Main Interface" settings screen for site-wide configuration:
 
 - About Me text and headshot
 - Skills by category as draggable pills (order is the About Me order); + adds a pill
+- Resume (PDF upload or URL; the View Resume buttons hide when it's empty), an optional Shop link (the Visit Shop button hides when it's empty), and a toggle for the animated LED field behind the hero
 - Social links (email, Instagram, LinkedIn, GitHub)
 - Sharing & social previews — public site URL (`https://chrismoore.me`), site title and one-line description used for Open Graph / Twitter cards
 - EmailJS credentials for the contact form (service ID, template ID, public key)
@@ -137,7 +146,7 @@ Image uploads are handled by `[CMS/lib/media.js](CMS/lib/media.js)` using the [S
 
 A **Convert Media** action in the admin UI batch-converts any leftover non-WebP images already in `media/`, moves the originals into an `archive/` folder, and automatically rewrites any references to those files in `projects.json` and `settings.json`.
 
-Videos go through `[CMS/lib/video.js](CMS/lib/video.js)` (ffmpeg): H.264 MP4 capped at 1080p/30fps, audio stripped unless requested, plus a WebP poster frame and thumbnail.
+Videos go through `[CMS/lib/video.js](CMS/lib/video.js)` (ffmpeg): H.264 MP4 (CRF 26, faststart) with the short side capped at 720 px (1280x720 landscape, 720x1280 portrait) at 30fps, audio stripped unless requested, plus a WebP poster frame and thumbnail. `npm run reencode-videos` brings older uploads down to the same cap in place (same filenames, so project data doesn't change).
 
 #### 3D models (STL, 3MF, STEP, GLB)
 
@@ -170,11 +179,11 @@ On the live site, models open in the lightbox in a three.js viewer (`[CMS/public
 
 Clicking **Publish Website** first asks `GET /api/share-cards/plan` which cards actually changed, renders only those in the browser (`[CMS/public/js/share-cards.js](CMS/public/js/share-cards.js)`, uploaded via `POST /api/share-cards`), then triggers `[CMS/lib/publish.js](CMS/lib/publish.js)`, which:
 
-1. Reads the current `projects.json` and `settings.json` (drafts are excluded).
-2. Loads `[CMS/template/Portfolio Template.html](CMS/template/Portfolio%20Template.html)`, the React-based site template.
-3. Replaces `{{PORTFOLIO_DATA}}` with the project/settings JSON, `{{MODEL_VIEWER_CORE}}` with the 3D viewer source, and `{{SITE_META}}` with the site-wide Open Graph / Twitter tags.
+1. Reads the current `projects.json` and `settings.json` (drafts are excluded). Any project without a URL `slug` gets a permanent one, saved back to `projects.json`.
+2. Loads `[CMS/template/Portfolio Template.html](CMS/template/Portfolio%20Template.html)`, the React-based site template, and compiles it with `[CMS/lib/build.js](CMS/lib/build.js)`: the `<script type="text/babel">` JSX becomes `assets/app.<hash>.js`, and the Tailwind classes plus the template's `<style>` block become `assets/site.<hash>.css`. A compile error stops the publish.
+3. Replaces `{{PORTFOLIO_DATA}}` with the project/settings JSON, `{{MODEL_VIEWER_CORE}}` with the 3D viewer source, and `{{SITE_META}}` with the site-wide Open Graph / Twitter tags. CMS-only fields such as `specsData` are dropped. Models with more than 50 parts get their part list written to `<model>.parts.json` beside the GLB, which is loaded only when the model is opened.
 4. Writes the result to `index.html` at the repository root.
-5. Writes one `share/<id>.html` page per published project (via `[CMS/lib/share.js](CMS/lib/share.js)`) and removes pages/cards for projects that are no longer published.
+5. Writes `projects/<slug>/index.html` for each published project, plus `sitemap.xml`, `robots.txt`, `404.html` and favicons (`[CMS/lib/pages.js](CMS/lib/pages.js)`). It also writes the `share/<id>.html` forwards and removes pages and cards for projects that are no longer published.
 
 Before publishing (or any time after), you can preview the currently-published site locally at `http://localhost:3000/preview`.
 
@@ -186,11 +195,12 @@ The site is a single page with hash routing (`#project/<id>`), and social crawle
 
 - `share/cards/<id>.jpg` — a 1200x630 card per project: the project thumbnail with the title, short description, category, and `chrismoore.me` on it. Remade only when those fields, the thumbnail file, or site branding change.
 - `share/cards/site.jpg` — a site card built from the hero board (the featured thumbnail from each of the six categories). Remade when the hero tiles or site title/description/url change.
-- `share/<id>.html` — a tiny page per project carrying `og:*` and `twitter:*` tags pointing at that card. Crawlers stay on this HTML so they can read the tags. Humans get a short delay, then are sent to `/#project/<id>` (known social-bot user agents skip the redirect entirely). There is no instant meta-refresh.
+- `projects/<slug>/` — a full, readable page per project: story, specs, gallery, downloads with license, links and related projects. It carries `og:*` / `twitter:*` tags pointing at that card, a canonical URL and JSON-LD. It works without JavaScript and is what search engines index. An "Open in interactive portfolio" link goes to `/#project/<id>`. Slugs never change on their own. Renaming one in the CMS (Links tab) keeps the old address working as a forward.
+- `share/<id>.html` — kept so links that were already shared keep working. It has the same tags and forwards instantly to `projects/<slug>/`.
 
 The first publish after upgrading the CMS rebuilds every card and writes `[CMS/data/share-manifest.json](CMS/data/share-manifest.json)`. Later publishes skip unchanged cards. A card-layout change in `share-cards.js` is a `RENDERER_VERSION` bump in `[CMS/lib/share.js](CMS/lib/share.js)`, which remakes the set once.
 
-The **Share** button on a project (and the copy-link buttons in the CMS project list) hands out `https://chrismoore.me/share/<id>`, which is what should be pasted into Facebook, LinkedIn, X, iMessage, etc. `index.html` itself carries the site-wide tags, so sharing the bare domain also gets a rich preview. The public URL, title and description live in Settings.
+The **Share** button on a project (and the copy-link buttons in the CMS project list) hands out `https://chrismoore.me/projects/<slug>/`, which is what should be pasted into Facebook, LinkedIn, X, iMessage, etc. `index.html` itself carries the site-wide tags, so sharing the bare domain also gets a rich preview. The public URL, title and description live in Settings.
 
 Share links and card images only work on `chrismoore.me` once that domain is answered by GitHub Pages (see **Custom domain** below). While Squarespace still owns the domain, every path — including `/share/<id>` and `/share/cards/<id>.jpg` — 301s to the GitHub Pages homepage, and Facebook/LinkedIn scrape the generic site tags with no project image.
 
@@ -207,9 +217,10 @@ npm run migrate
 
 Once you're happy with the preview:
 
-1. Commit the updated `index.html`, the `share/` folder, `CNAME`, `.nojekyll`, and any new files under `media/`.
+1. Commit the updated `index.html`, `assets/`, `projects/`, `share/`, the root SEO files and favicons, and any new files under `media/`.
 2. Push to your Git remote.
-3. GitHub Pages serves the site. After the custom-domain cutover below, that is `https://chrismoore.me` (a project site under a custom domain is mounted at the domain root, so `/share/670` maps to `share/670.html`).
+3. The **Deploy site** workflow (`.github/workflows/pages.yml`) copies only the site output into a Pages artifact and deploys it. `CMS/`, which holds drafts, tasks and settings, is never served. One-time setup: repo **Settings → Pages → Source: GitHub Actions**.
+4. GitHub Pages serves the site. After the custom-domain cutover below, that is `https://chrismoore.me` (a project site under a custom domain is mounted at the domain root, so `/share/670` maps to `share/670.html`).
 
 ### Custom domain (chrismoore.me)
 
@@ -238,11 +249,11 @@ A working check after the flip: `https://chrismoore.me/share/670` should be `200
 
 **Published site**
 
-- React 18 (UMD build)
-- Babel Standalone (in-browser JSX)
-- Tailwind CSS (CDN)
+- React 18.3.1 (UMD build from jsDelivr, deferred)
+- JSX precompiled with esbuild at publish time
+- Tailwind CSS v3, compiled at publish time
 - three.js (CDN import map, loaded on demand) — 3D model viewer
-- EmailJS — serverless contact form
+- EmailJS — serverless contact form (loaded only when a message is sent)
 - Google Analytics 4
 
 ## Notes

@@ -41,9 +41,40 @@ fs.mkdirSync(UPLOAD_TEMP_DIR, { recursive: true });
 // Share cards arrive as base64 JPEG data URLs (dozens of ~150 KB images per publish).
 app.use(express.json({ limit: '100mb' }));
 
+// The CMS has no login, so it only listens on this machine (see app.listen) and
+// refuses state-changing API calls that come from another site's page (a form or
+// fetch aimed at localhost from anything you have open in the browser).
+const HOST = process.env.HOST || '127.0.0.1';
+function isLocalOrigin(value) {
+  if (!value) return true; // curl, scripts, same-origin navigation without Origin
+  try {
+    const { hostname, port } = new URL(value);
+    return ['localhost', '127.0.0.1', '[::1]'].includes(hostname) && String(port || 80) === String(PORT);
+  } catch (_) {
+    return false;
+  }
+}
+const LOCAL_HOSTNAMES = new Set(['localhost', '127.0.0.1', '::1', '[::1]']);
+app.use((req, res, next) => {
+  // DNS rebinding: a hostile domain pointed at 127.0.0.1 still carries its own Host header.
+  if (!LOCAL_HOSTNAMES.has(req.hostname)) return res.status(403).send('Forbidden host');
+  next();
+});
+app.use('/api', (req, res, next) => {
+  if (req.method === 'GET' || req.method === 'HEAD' || req.method === 'OPTIONS') return next();
+  if (isLocalOrigin(req.get('origin') || req.get('referer'))) return next();
+  res.status(403).json({ error: 'Cross-site request blocked' });
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/media', express.static(path.join(PORTFOLIO_ROOT, 'media')));
-app.use('/share', express.static(path.join(PORTFOLIO_ROOT, 'share')));
+app.use('/share', express.static(path.join(PORTFOLIO_ROOT, 'share'), { extensions: ['html'] }));
+// Published site output, so /preview renders exactly what GitHub Pages will serve.
+app.use('/assets', express.static(path.join(PORTFOLIO_ROOT, 'assets')));
+app.use('/projects', express.static(path.join(PORTFOLIO_ROOT, 'projects')));
+for (const file of ['favicon.svg', 'favicon-32.png', 'apple-touch-icon.png', 'robots.txt', 'sitemap.xml', '404.html']) {
+  app.get(`/${file}`, (req, res) => res.sendFile(path.join(PORTFOLIO_ROOT, file), (err) => { if (err) res.status(404).end(); }));
+}
 // OpenCascade WASM (STEP tessellation) — served to the admin UI for in-browser model conversion
 app.use('/vendor/occt', express.static(path.join(__dirname, 'node_modules', 'occt-import-js', 'dist')));
 
@@ -219,6 +250,17 @@ app.post('/api/media/upload', upload.single('file'), async (req, res) => {
   }
 });
 
+// Resume / CV document for the site's "View Resume" buttons (stored in media/Resume/).
+app.post('/api/media/upload-resume', upload.single('file'), async (req, res) => {
+  try {
+    if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
+    const relativePath = media.processResumeUpload(req.file);
+    res.json({ success: true, path: relativePath });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
 app.post('/api/media/upload-file', upload.single('file'), async (req, res) => {
   try {
     const { category, project } = req.body;
@@ -288,7 +330,7 @@ app.post('/api/media/upload-video', uploadVideo.single('file'), async (req, res)
 app.post('/api/media/fix-structure', async (req, res) => {
   try {
     const result = media.fixFileStructure();
-    const publishResult = publish();
+    const publishResult = await publish();
     res.json({ success: true, ...result, published: publishResult.success });
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -317,7 +359,7 @@ app.post('/api/media/cleanup', async (req, res) => {
       ...(trashAfter.warnings || [])
     ];
     if (warnings.length) console.warn('[cleanup]', warnings);
-    const publishResult = publish();
+    const publishResult = await publish();
     const moved = trashBefore.moved + trashAfter.moved;
     res.json({
       success: true,
@@ -358,9 +400,9 @@ app.post('/api/share-cards', async (req, res) => {
   }
 });
 
-app.post('/api/publish', (req, res) => {
+app.post('/api/publish', async (req, res) => {
   try {
-    const result = publish();
+    const result = await publish();
     res.json(result);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -488,7 +530,7 @@ app.post('/api/media/generate-thumbnails', async (req, res) => {
   }
 });
 
-const server = app.listen(PORT, () => {
+const server = app.listen(PORT, HOST, () => {
   console.log(`\n  Portfolio CMS running at http://localhost:${PORT}`);
   console.log(`  Preview:  http://localhost:${PORT}/preview\n`);
 });

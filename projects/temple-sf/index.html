@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temple SF | Chris Moore Designs</title>
+    <meta name="description" content="Six teardowns before three control systems would talk to each other. The test was one slow diagonal line dragging across the ceiling.">
+    <link rel="canonical" href="https://chrismoore.me/projects/temple-sf/">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Chris Moore Designs">
+    <meta property="og:url" content="https://chrismoore.me/projects/temple-sf/">
+    <meta property="og:title" content="Temple SF">
+    <meta property="og:description" content="Six teardowns before three control systems would talk to each other. The test was one slow diagonal line dragging across the ceiling.">
+    <meta property="og:image" content="https://chrismoore.me/share/cards/8252.jpg">
+    <meta property="og:image:secure_url" content="https://chrismoore.me/share/cards/8252.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Temple SF">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Temple SF">
+    <meta name="twitter:description" content="Six teardowns before three control systems would talk to each other. The test was one slow diagonal line dragging across the ceiling.">
+    <meta name="twitter:image" content="https://chrismoore.me/share/cards/8252.jpg">
+    <meta name="twitter:image:alt" content="Temple SF">
+    <meta name="theme-color" content="#09090b">
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="../../favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/site.98fd419dda.css">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"Temple SF","description":"Six teardowns before three control systems would talk to each other. The test was one slow diagonal line dragging across the ceiling.","url":"https://chrismoore.me/projects/temple-sf/","genre":"Systems","keywords":"OSCpilot, OSC, MIDI, DMX, ArtNet, sACN, Show Cockpit, Madrix, Resolume Arena, TCP/IP, Custom Fabrication, Roadhog 4, Pixel Mapping, Video Mapping, ESP32, Power Distribution, NDI","image":"https://chrismoore.me/share/cards/8252.jpg","isPartOf":{"@type":"WebSite","name":"Chris Moore Designs","url":"https://chrismoore.me/"}}</script>
+</head>
+<body class="bg-zinc-950 text-zinc-200">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header class="glass-panel sticky top-0 z-50">
+        <nav aria-label="Main" class="container mx-auto px-6 py-4 flex items-center justify-between gap-4">
+            <a href="../../" class="font-bold text-lg tracking-tight text-white">Chris Moore Designs</a>
+            <a href="../../#project/8252" class="text-sm font-semibold text-cyan-400 hover:text-cyan-300">Open in interactive portfolio →</a>
+        </nav>
+    </header>
+    <main id="main-content">
+        <div class="relative h-64 md:h-96 w-full overflow-hidden bg-zinc-900">
+            <img src="../../media/Integration/Temple%20SF/Temple-SF-img-5779b3-thumb.webp" srcset="../../media/Integration/Temple%20SF/Temple-SF-img-5779b3-thumb.webp 800w, ../../media/Integration/Temple%20SF/Temple-SF-img-5779b3.webp 1600w" sizes="100vw" alt="" fetchpriority="high" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 to-transparent"></div>
+            <div class="absolute bottom-6 left-0 right-0">
+                <div class="container mx-auto px-6">
+                    
+                    <p class="text-sm font-mono uppercase tracking-widest text-cyan-400 mb-2">Systems</p>
+                    <h1 class="text-3xl md:text-5xl font-bold text-white">Temple SF</h1>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto px-6 py-10 grid gap-10 md:grid-cols-3">
+            <article class="md:col-span-2 space-y-10 min-w-0">
+                <div class="text-xl text-zinc-300 leading-relaxed rich-text"><p>Six teardowns before three control systems would talk to each other. The test was one slow diagonal line dragging across the ceiling.</p></div>
+                <section>
+                    <h2 class="text-2xl font-bold text-white mb-4">About the project</h2>
+                    <div class="text-zinc-300 text-lg leading-relaxed break-words rich-text"><p>When a heavy track drops, the energy in the room explodes, and the lights have to explode with it. If they don't, you are standing in the dark for a few seconds longer than feels right, and everyone on the floor knows it. That was happening on every big drop at Temple. The operator was in sync with the DJ. The system was not. Releasing a DMX overwrite on the old Road Hog 4 took a macro that needed dozens of screen presses, and those lost seconds were the drop.</p><p>The owners wanted one person to run lighting, video, and pixels at once, so I rebuilt the routing around Madrix as the hub. Resolume and the Hog both fed Art-Net into Madrix on unused universes. Madrix merged them using highest takes priority, meaning whichever source was sending the brighter value won, and pushed the result to the decoders. That made the handoff instant. Black out one system and the other has the room. A video clip on the ceiling could slice across the main screens, override the console colors, and drive every pixel in the building at once.</p><p>I got a little ambitious with the control surface. I installed a 65-inch touchscreen running OSC Pilot for routing and live previews. It technically worked. Live operation under pressure is a different beast, and after a few months the operators ripped the screen out and went back to MIDI controllers.</p><p>I tore the mapping down and rebuilt it six times before all three systems talked to each other clean. Each rebuild meant a fresh Resolume advanced layout, a new canvas size and orientation for the enormous segmented display, re-adjusting Madrix for the pixels, and repatching the lighting on the Hog. Every pass taught me a new trick. My test was always the same: one diagonal line, slowed way down. I would trigger it and watch the ceiling, the back wall, and the pixels to see whether the line stayed one line as it dragged across all of them.</p></div>
+                </section>
+                <ul class="flex flex-wrap gap-2" aria-label="Skills and tools"><li class="text-xs font-mono px-2 py-1 bg-zinc-800 text-cyan-400 border border-cyan-500/30 rounded uppercase tracking-wider">OSCpilot</li><li class="text-xs font-mono px-2 py-1 bg-zinc-800 text-cyan-400 border border-cyan-500/30 rounded uppercase tracking-wider">OSC</li><li class="text-xs font-mono px-2 py-1 bg-zinc-800 text-cyan-400 border border-cyan-500/30 rounded uppercase tracking-wider">MIDI</li><li class="text-xs font-mono px-2 py-1 bg-zinc-800 text-cyan-400 border border-cyan-500/30 rounded uppercase tracking-wider">DMX</li><li class="text-xs font-mono px-2 py-1 bg-zinc-800 text-cyan-400 border border-cyan-500/30 rounded uppercase tracking-wider">ArtNet</li><li class="text-xs font-mono px-2 py-1 bg-zinc-800 text-cyan-400 border border-cyan-500/30 rounded uppercase tracking-wider">sACN</li><li class="text-xs font-mono px-2 py-1 bg-zinc-800 text-cyan-400 border border-cyan-500/30 rounded uppercase tracking-wider">Show Cockpit</li><li class="text-xs font-mono px-2 py-1 bg-zinc-800 text-cyan-400 border border-cyan-500/30 rounded uppercase tracking-wider">Madrix</li><li class="text-xs font-mono px-2 py-1 bg-zinc-800 text-cyan-400 border border-cyan-500/30 rounded uppercase tracking-wider">Resolume Arena</li><li class="text-xs font-mono px-2 py-1 bg-zinc-800 text-cyan-400 border border-cyan-500/30 rounded uppercase tracking-wider">TCP/IP</li><li class="text-xs font-mono px-2 py-1 bg-zinc-800 text-cyan-400 border border-cyan-500/30 rounded uppercase tracking-wider">Custom Fabrication</li><li class="text-xs font-mono px-2 py-1 bg-zinc-800 text-cyan-400 border border-cyan-500/30 rounded uppercase tracking-wider">Roadhog 4</li><li class="text-xs font-mono px-2 py-1 bg-zinc-800 text-cyan-400 border border-cyan-500/30 rounded uppercase tracking-wider">Pixel Mapping</li><li class="text-xs font-mono px-2 py-1 bg-zinc-800 text-cyan-400 border border-cyan-500/30 rounded uppercase tracking-wider">Video Mapping</li><li class="text-xs font-mono px-2 py-1 bg-zinc-800 text-cyan-400 border border-cyan-500/30 rounded uppercase tracking-wider">ESP32</li><li class="text-xs font-mono px-2 py-1 bg-zinc-800 text-cyan-400 border border-cyan-500/30 rounded uppercase tracking-wider">Power Distribution</li><li class="text-xs font-mono px-2 py-1 bg-zinc-800 text-cyan-400 border border-cyan-500/30 rounded uppercase tracking-wider">NDI</li></ul>
+                <section>
+                    <h2 class="text-2xl font-bold text-white mb-4">Gallery</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <figure class="rounded-lg overflow-hidden border border-zinc-800 bg-black">
+          <video controls playsinline preload="none" class="w-full aspect-video bg-black" poster="../../media/Integration/Temple%20SF/Temple-SF-vid-6d9c52-poster.webp" aria-label="Temple SF, 1 of 16">
+            <source src="../../media/Integration/Temple%20SF/Temple-SF-vid-6d9c52.mp4" type="video/mp4">
+          </video>
+        </figure>
+        <figure class="rounded-lg overflow-hidden border border-zinc-800 bg-zinc-900">
+          <a href="../../media/Integration/Temple%20SF/Temple-SF-img-19b882.webp" class="block aspect-video">
+            <img src="../../media/Integration/Temple%20SF/Temple-SF-img-19b882-thumb.webp" alt="Temple SF, 2 of 16" loading="lazy" decoding="async" class="w-full h-full object-cover">
+          </a>
+        </figure>
+        <figure class="rounded-lg overflow-hidden border border-zinc-800 bg-black">
+          <video controls playsinline preload="none" class="w-full aspect-video bg-black" poster="../../media/Integration/Temple%20SF/Temple-SF-vid-32a61b-poster.webp" aria-label="Temple SF, 3 of 16">
+            <source src="../../media/Integration/Temple%20SF/Temple-SF-vid-32a61b.mp4" type="video/mp4">
+          </video>
+        </figure>
+        <figure class="rounded-lg overflow-hidden border border-zinc-800 bg-black">
+          <video controls playsinline preload="none" class="w-full aspect-video bg-black" poster="../../media/Integration/Temple%20SF/Temple-SF-vid-2ad86e-poster.webp" aria-label="Temple SF, 4 of 16">
+            <source src="../../media/Integration/Temple%20SF/Temple-SF-vid-2ad86e.mp4" type="video/mp4">
+          </video>
+        </figure>
+        <figure class="rounded-lg overflow-hidden border border-zinc-800 bg-black">
+          <video controls playsinline preload="none" class="w-full aspect-video bg-black" poster="../../media/Integration/Temple%20SF/Temple-SF-vid-2432ff-poster.webp" aria-label="Temple SF, 5 of 16">
+            <source src="../../media/Integration/Temple%20SF/Temple-SF-vid-2432ff.mp4" type="video/mp4">
+          </video>
+        </figure>
+        <figure class="rounded-lg overflow-hidden border border-zinc-800 bg-black">
+          <video controls playsinline preload="none" class="w-full aspect-video bg-black" poster="../../media/Integration/Temple%20SF/Temple-SF-vid-5d4c34-poster.webp" aria-label="Temple SF, 6 of 16">
+            <source src="../../media/Integration/Temple%20SF/Temple-SF-vid-5d4c34.mp4" type="video/mp4">
+          </video>
+        </figure>
+        <figure class="rounded-lg overflow-hidden border border-zinc-800 bg-zinc-900">
+          <a href="../../media/Integration/Temple%20SF/Temple-SF-img-5601f4.webp" class="block aspect-video">
+            <img src="../../media/Integration/Temple%20SF/Temple-SF-img-5601f4-thumb.webp" alt="Temple SF, 7 of 16" loading="lazy" decoding="async" class="w-full h-full object-cover">
+          </a>
+        </figure>
+        <figure class="rounded-lg overflow-hidden border border-zinc-800 bg-zinc-900">
+          <a href="../../media/Integration/Temple%20SF/Temple-SF-img-511f5a.webp" class="block aspect-video">
+            <img src="../../media/Integration/Temple%20SF/Temple-SF-img-511f5a-thumb.webp" alt="Temple SF, 8 of 16" loading="lazy" decoding="async" class="w-full h-full object-cover">
+          </a>
+        </figure>
+        <figure class="rounded-lg overflow-hidden border border-zinc-800 bg-zinc-900">
+          <a href="../../media/Integration/Temple%20SF/Temple-SF-img-d516ba.webp" class="block aspect-video">
+            <img src="../../media/Integration/Temple%20SF/Temple-SF-img-d516ba-thumb.webp" alt="Temple SF, 9 of 16" loading="lazy" decoding="async" class="w-full h-full object-cover">
+          </a>
+        </figure>
+        <figure class="rounded-lg overflow-hidden border border-zinc-800 bg-zinc-900">
+          <a href="../../media/Integration/Temple%20SF/Temple-SF-img-0bee5f.webp" class="block aspect-video">
+            <img src="../../media/Integration/Temple%20SF/Temple-SF-img-0bee5f-thumb.webp" alt="Temple SF, 10 of 16" loading="lazy" decoding="async" class="w-full h-full object-cover">
+          </a>
+        </figure>
+        <figure class="rounded-lg overflow-hidden border border-zinc-800 bg-black">
+          <video controls playsinline preload="none" class="w-full aspect-video bg-black" poster="../../media/Integration/Temple%20SF/Temple-SF-vid-ba5554-poster.webp" aria-label="Temple SF, 11 of 16">
+            <source src="../../media/Integration/Temple%20SF/Temple-SF-vid-ba5554.mp4" type="video/mp4">
+          </video>
+        </figure>
+        <figure class="rounded-lg overflow-hidden border border-zinc-800 bg-black">
+          <video controls playsinline preload="none" class="w-full aspect-video bg-black" poster="../../media/Integration/Temple%20SF/Temple-SF-vid-706fe4-poster.webp" aria-label="Temple SF, 12 of 16">
+            <source src="../../media/Integration/Temple%20SF/Temple-SF-vid-706fe4.mp4" type="video/mp4">
+          </video>
+        </figure>
+        <figure class="rounded-lg overflow-hidden border border-zinc-800 bg-zinc-900">
+          <a href="../../media/Integration/Temple%20SF/Temple-SF-img-c8ae17.webp" class="block aspect-video">
+            <img src="../../media/Integration/Temple%20SF/Temple-SF-img-c8ae17-thumb.webp" alt="Temple SF, 13 of 16" loading="lazy" decoding="async" class="w-full h-full object-cover">
+          </a>
+        </figure>
+        <figure class="rounded-lg overflow-hidden border border-zinc-800 bg-zinc-900">
+          <a href="../../media/Integration/Temple%20SF/Temple-SF-img-2b1fd2.webp" class="block aspect-video">
+            <img src="../../media/Integration/Temple%20SF/Temple-SF-img-2b1fd2-thumb.webp" alt="Temple SF, 14 of 16" loading="lazy" decoding="async" class="w-full h-full object-cover">
+          </a>
+        </figure>
+        <figure class="rounded-lg overflow-hidden border border-zinc-800 bg-zinc-900">
+          <a href="../../media/Integration/Temple%20SF/Temple-SF-img-f103e9.webp" class="block aspect-video">
+            <img src="../../media/Integration/Temple%20SF/Temple-SF-img-f103e9-thumb.webp" alt="Temple SF, 15 of 16" loading="lazy" decoding="async" class="w-full h-full object-cover">
+          </a>
+        </figure>
+        <figure class="rounded-lg overflow-hidden border border-zinc-800 bg-zinc-900">
+          <a href="../../media/Integration/Temple%20SF/Temple-SF-img-e484e7.webp" class="block aspect-video">
+            <img src="../../media/Integration/Temple%20SF/Temple-SF-img-e484e7-thumb.webp" alt="Temple SF, 16 of 16" loading="lazy" decoding="async" class="w-full h-full object-cover">
+          </a>
+        </figure>
+                    </div>
+                </section>
+            </article>
+            <aside class="space-y-6 min-w-0">
+                <section class="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6">
+          <h2 class="text-sm font-bold text-zinc-400 uppercase tracking-widest mb-4">Specifications</h2>
+          <div class="rich-text specs-rich-text text-zinc-300 text-sm leading-relaxed"><h3 class="rt-h2">FIXTURES &amp; FX</h3><p><strong>Beam (x144)</strong><br><em>PD60 • LED • beam 4° • 60W • RGBW • infinite pan &amp; tilt</em></p><p><strong>Spot (x12)</strong><br><em>LSM150 • LED • spot 15° • 150W • pan 520° • tilt 270° • 7 colors + white • 6 static gobos • 6 rotating gobos • 3 facet prism</em></p><p><strong>Wash (x40)</strong><br><em>WFP12 • LED • wash 35° • 280W • RGBWA+UV</em></p><p><strong>Hazer (x2)</strong><br><em>Radiance Hazer • DMX • 120Vac • 500W</em></p><h3 class="rt-h2">PIXELS &amp; DISPLAY</h3><p><strong>Dancefloor Pixel Pillars (x10)</strong><br><em>x8 + 4m • RGBW (6000k) • 60/m • 20px/m</em></p><p><strong>WiFi VIP Pixel Tables (x32)</strong><br><em>2.1m • RGBW (6000k) • 60/m • 20px/m</em></p><p><strong>Ceiling Screen (x1)</strong><br><em>3.5m x 23m • P4.81 • 728 x 4784</em></p><p><strong>DJ Booth Screen (x1)</strong><br><em>7m x 1.5m • P4.81 • 1456 x 312</em></p><p><strong>Marquee Left Screen (x1)</strong><br><em>14m x 1m • P4.81 • 2912 x 208</em></p><p><strong>Marquee Right Screen (x1)</strong><br><em>18m x 1m • P4.81 • 3744 x 208</em></p><p><strong>Monolith Screens (x1)</strong><br><em>1.5m x 3m (x2) • P4.81 • 312 x 624 (x2)</em></p></div>
+        </section>
+                
+                
+                <section class="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6">
+          <h2 class="text-sm font-bold text-zinc-400 uppercase tracking-widest mb-4">Related</h2>
+          <ul class="space-y-2"><li><a href="../../projects/immersive-dance-lighting-rig/" class="block rounded-lg bg-zinc-800/60 hover:bg-zinc-800 p-3 text-white font-semibold">Immersive Dance Lighting Rig →</a></li>
+<li><a href="../../projects/immersive-video-layer/" class="block rounded-lg bg-zinc-800/60 hover:bg-zinc-800 p-3 text-white font-semibold">Immersive Video Layer →</a></li>
+<li><a href="../../projects/immersive-lighting-layer/" class="block rounded-lg bg-zinc-800/60 hover:bg-zinc-800 p-3 text-white font-semibold">Immersive Lighting Layer →</a></li>
+<li><a href="../../projects/immersive-dance-floor-pillars/" class="block rounded-lg bg-zinc-800/60 hover:bg-zinc-800 p-3 text-white font-semibold">Immersive Dance Floor Pillars →</a></li>
+<li><a href="../../projects/wifi-vip-tables/" class="block rounded-lg bg-zinc-800/60 hover:bg-zinc-800 p-3 text-white font-semibold">WiFi VIP Tables →</a></li>
+<li><a href="../../projects/glass-vip-wall/" class="block rounded-lg bg-zinc-800/60 hover:bg-zinc-800 p-3 text-white font-semibold">Glass VIP Wall →</a></li>
+<li><a href="../../projects/led-pixel-panel/" class="block rounded-lg bg-zinc-800/60 hover:bg-zinc-800 p-3 text-white font-semibold">LED Pixel Panel →</a></li>
+<li><a href="../../projects/led-video-panel-service/" class="block rounded-lg bg-zinc-800/60 hover:bg-zinc-800 p-3 text-white font-semibold">LED Video Panel Service →</a></li>
+<li><a href="../../projects/lighting-and-sfx-service/" class="block rounded-lg bg-zinc-800/60 hover:bg-zinc-800 p-3 text-white font-semibold">Lighting &amp; SFX Service →</a></li></ul>
+        </section>
+            </aside>
+        </div>
+    </main>
+    <footer class="border-t border-zinc-900 py-10">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row gap-4 justify-between text-sm text-zinc-400">
+            <a href="../../" class="hover:text-white">← All projects</a>
+            <span class="font-mono">&copy; 2026 Chris Moore Designs</span>
+        </div>
+    </footer>
+</body>
+</html>

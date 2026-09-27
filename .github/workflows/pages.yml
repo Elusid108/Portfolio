@@ -1,0 +1,50 @@
+# Deploys only the published site output to GitHub Pages.
+# The CMS (drafts, tasks, settings, prompts) and other repo files are never served.
+#
+# One-time setup: repo Settings -> Pages -> Build and deployment -> Source: "GitHub Actions".
+
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Assemble site output
+        run: |
+          mkdir _site
+          for f in index.html 404.html robots.txt sitemap.xml CNAME .nojekyll favicon.svg favicon-32.png apple-touch-icon.png; do
+            [ -e "$f" ] && cp "$f" _site/
+          done
+          for d in assets projects share media; do
+            [ -d "$d" ] && cp -r "$d" _site/
+          done
+          rm -rf _site/media/_trash
+          du -sh _site
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

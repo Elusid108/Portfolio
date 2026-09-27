@@ -37,7 +37,7 @@ const HERO_CATEGORIES = [
   { id: 'Art', label: 'Art' },
   { id: 'Fixtures', label: 'Fixtures' },
   { id: 'Software', label: 'Software' },
-  { id: 'Tooling', label: 'Shop' },
+  { id: 'Tooling', label: 'Tooling' },
   { id: 'Systems', label: 'Systems' }
 ];
 
@@ -188,6 +188,7 @@ function siteCardPayload(projects, site) {
       const image = p ? (p.thumbnail || p.image || '') : '';
       return {
         id: tile.id,
+        label: tile.label,
         projectId: p ? String(p.id) : null,
         image,
         fit: p ? fitStamp(p.thumbnailFit) : null,
@@ -295,8 +296,9 @@ function buildSiteMeta(settings) {
 
 // --- per-project pages -------------------------------------------------------------
 
-function projectShareUrl(settings, id) {
-  return `${siteConfig(settings).url}/share/${safeId(id)}`;
+function projectShareUrl(settings, id, slug) {
+  const site = siteConfig(settings).url;
+  return slug ? `${site}/projects/${slug}/` : `${site}/share/${safeId(id)}`;
 }
 
 function projectPageHtml(project, settings) {
@@ -305,8 +307,10 @@ function projectPageHtml(project, settings) {
   const title = `${project.title || 'Project'} | ${site.title}`;
   const description = truncate(stripHtml(project.description) || site.description, 200);
   const image = cardExists(project.id) ? `${site.url}/${cardWebPath(project.id)}` : '';
-  const pageUrl = projectShareUrl(settings, project.id);
-  const target = `../#project/${encodeURIComponent(String(project.id))}`;
+  // Links already shared as share/<id> keep their preview and forward to the
+  // static project page (projects/<slug>/), which carries the same tags.
+  const pageUrl = projectShareUrl(settings, project.id, project.slug);
+  const target = project.slug ? `../projects/${project.slug}/` : `../#project/${encodeURIComponent(String(project.id))}`;
   const fallbackImage = project.thumbnail || project.image || '';
 
   return `<!DOCTYPE html>
@@ -317,17 +321,8 @@ function projectPageHtml(project, settings) {
     <title>${escapeHtml(title)}</title>
     ${metaBlock({ url: pageUrl, title: project.title || 'Project', description, image, imageAlt: project.title, type: 'article', siteName: site.title })}
     <meta name="robots" content="noindex, follow">
-    <script>
-    (function () {
-      var target = ${JSON.stringify(target)};
-      var ua = navigator.userAgent || '';
-      // Social crawlers must stay on this HTML so they can read the Open Graph tags.
-      // An instant meta-refresh / location.replace sends them to index.html, which
-      // has no per-project image (URL hashes are ignored).
-      if (/facebookexternalhit|Facebot|LinkedInBot|Twitterbot|Slackbot|WhatsApp|Discordbot|TelegramBot|Pinterest|Googlebot|bingbot|Applebot|Embedly|outbrain|vkShare|W3C_Validator|Quora Link Preview/i.test(ua)) return;
-      setTimeout(function () { window.location.assign(target); }, 2500);
-    })();
-    </script>
+    <meta http-equiv="refresh" content="0; url=${escapeHtml(target)}">
+    <script>location.replace(${JSON.stringify(target).replace(/</g, '\\u003c')});</script>
     <style>
         body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#09090b;color:#e4e4e7;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
         main{max-width:640px;padding:32px;text-align:center}
@@ -344,7 +339,7 @@ function projectPageHtml(project, settings) {
         <h1>${escapeHtml(project.title || 'Project')}</h1>
         <p>${escapeHtml(description)}</p>
         <a href="${escapeHtml(target)}">View this project on ${escapeHtml(site.url.replace(/^https?:\/\//, ''))} →</a>
-        <small>Opening the project…</small>
+        <small>Opening the project page…</small>
     </main>
 </body>
 </html>
@@ -420,6 +415,10 @@ async function writeCards(cards, projects, settings) {
 }
 
 module.exports = {
+  escapeHtml,
+  truncate,
+  metaBlock,
+  cardExists,
   SHARE_DIR,
   CARDS_DIR,
   RENDERER_VERSION,

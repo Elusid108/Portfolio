@@ -23,8 +23,18 @@ const CATEGORY_FOLDER_MAP = {
   'Integration': 'Integration'
 };
 
+// Folder / file name component. Separators, reserved characters and dot runs
+// ("..") are replaced so a name can never climb out of its parent directory.
 function sanitize(name) {
-  return name.replace(/[<>:"/\\|?*]/g, '_');
+  const safe = String(name ?? '')
+    .replace(/[<>:"/\\|?*\x00-\x1f]/g, '_')
+    .replace(/\.{2,}/g, '_')
+    .replace(/^[.\s]+/, '');
+  return safe || '_';
+}
+
+function categoryFolder(category) {
+  return sanitize(CATEGORY_FOLDER_MAP[category] || category || 'Misc');
 }
 
 const MEDIA_KINDS = ['img', 'vid', 'gfx'];
@@ -125,7 +135,7 @@ async function processUpload(file, category, projectName) {
     webDir = 'media';
     stem = path.parse(originalName).name;
   } else {
-    const folder = CATEGORY_FOLDER_MAP[category] || category;
+    const folder = categoryFolder(category);
     const safeProject = sanitize(projectName);
     destDir = path.join(MEDIA_DIR, folder, safeProject);
     webDir = `media/${folder}/${safeProject}`;
@@ -190,7 +200,7 @@ async function processUpload(file, category, projectName) {
 
 async function processFileUpload(file, category, projectName) {
   const originalName = sanitize(file.originalname);
-  const folder = CATEGORY_FOLDER_MAP[category] || category;
+  const folder = categoryFolder(category);
   const safeProject = sanitize(projectName);
   const destDir = path.join(MEDIA_DIR, folder, safeProject, 'files');
   const webPath = `media/${folder}/${safeProject}/files/${originalName}`;
@@ -200,6 +210,21 @@ async function processFileUpload(file, category, projectName) {
   scheduleUnlink(file.path);
 
   return webPath;
+}
+
+const RESUME_EXTENSIONS = new Set(['.pdf', '.doc', '.docx']);
+
+function processResumeUpload(file) {
+  const originalName = sanitize(file.originalname);
+  if (!RESUME_EXTENSIONS.has(path.extname(originalName).toLowerCase())) {
+    scheduleUnlink(file.path);
+    throw new Error('Resume must be a PDF (or .doc/.docx) file');
+  }
+  const destDir = path.join(MEDIA_DIR, 'Resume');
+  fs.mkdirSync(destDir, { recursive: true });
+  fs.copyFileSync(file.path, path.join(destDir, originalName));
+  scheduleUnlink(file.path);
+  return `media/Resume/${originalName}`;
 }
 
 // --- 3D models ---
@@ -221,7 +246,7 @@ function normalizeModelFormat(format, fallbackName) {
 async function processModelUpload(glbFile, category, projectName, { format, originalName } = {}) {
   if (!glbFile) throw new Error('No GLB uploaded');
 
-  const folder = CATEGORY_FOLDER_MAP[category] || category;
+  const folder = categoryFolder(category);
   const safeProject = sanitize(projectName);
   const destDir = path.join(MEDIA_DIR, folder, safeProject, 'models');
   fs.mkdirSync(destDir, { recursive: true });
@@ -246,7 +271,7 @@ async function processModelUpload(glbFile, category, projectName, { format, orig
 // reference in projects.json, and removes whatever empty folders are left behind.
 
 function targetWebDirForProject(project) {
-  const folder = CATEGORY_FOLDER_MAP[project.category] || project.category || 'Misc';
+  const folder = categoryFolder(project.category);
   const safeProject = sanitize(project.title || 'Untitled');
   return `media/${folder}/${safeProject}`;
 }
@@ -255,8 +280,15 @@ function toWebPath(absPath) {
   return path.relative(PORTFOLIO_ROOT, absPath).split(path.sep).join('/');
 }
 
+// Resolves a site-relative path ("media/...") and refuses anything that would
+// land outside the portfolio folder (e.g. "media/../../Windows").
 function webPathToAbs(webPath) {
-  return path.join(PORTFOLIO_ROOT, ...webPath.split('/'));
+  const abs = path.resolve(PORTFOLIO_ROOT, ...String(webPath).split('/'));
+  const rel = path.relative(PORTFOLIO_ROOT, abs);
+  if (!rel || rel.startsWith('..') || path.isAbsolute(rel)) {
+    throw new Error(`Path is outside the portfolio folder: ${webPath}`);
+  }
+  return abs;
 }
 
 function uniquePath(destAbs) {
@@ -493,6 +525,10 @@ function collectPathsFromProject(project, set = new Set()) {
         addMediaPath(set, item.url);
         addMediaPath(set, item.poster);
         addMediaPath(set, item.thumbnail);
+        // Publish writes large part lists beside the GLB (lib/publish.js).
+        if (typeof item.url === 'string' && /\.glb$/i.test(item.url)) {
+          addMediaPath(set, item.url.replace(/\.glb$/i, '.parts.json'));
+        }
       }
     }
   }
@@ -516,6 +552,7 @@ function collectPathsFromProject(project, set = new Set()) {
 function collectPathsFromSettings(settings, set = new Set()) {
   if (!settings || typeof settings !== 'object') return set;
   addMediaPath(set, settings.about_headshot);
+  addMediaPath(set, settings.resume_url);
   extractMediaFromHtml(settings.about_text, set);
   return set;
 }
@@ -1108,6 +1145,7 @@ async function trashDroppedAssets(oldEntity, newEntity) {
 module.exports = {
   processUpload,
   processFileUpload,
+  processResumeUpload,
   processModelUpload,
   fixFileStructure,
   relocateProject,
@@ -1118,6 +1156,8 @@ module.exports = {
   mediaStem,
   titleSlug,
   CATEGORY_FOLDER_MAP,
+  categoryFolder,
+  webPathToAbs,
   sanitize,
   scheduleUnlink
 };

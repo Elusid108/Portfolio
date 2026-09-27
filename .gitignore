@@ -1,1 +1,7 @@
 media/_trash/
+
+# Local debug / scratch output (never publish)
+debug-*.log
+.cursor/
+_caption-test*
+CMS/public/_*.png

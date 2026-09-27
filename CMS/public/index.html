@@ -429,6 +429,16 @@
                 <input type="text" id="shopLink" class="hidden" placeholder="https://store...">
               </div>
               <div>
+                <h3 class="text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-2">Project Page</h3>
+                <button type="button" class="kv-row" data-field="slug" onclick="openKvEdit('slug','Page URL slug (projects/&lt;slug&gt;/)','assigned on first publish')">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-500 w-20 shrink-0">Slug</span>
+                  <span class="kv-value flex-1 truncate font-mono text-xs text-zinc-400"></span>
+                  <i class="ph ph-pencil-simple text-zinc-600"></i>
+                </button>
+                <p class="text-[11px] text-zinc-500 mt-1">Public page: <code class="font-mono">/projects/&lt;slug&gt;/</code>. Renaming keeps the old address working (it forwards).</p>
+                <input type="text" id="slug" class="hidden" placeholder="assigned on first publish">
+              </div>
+              <div>
                 <div class="flex justify-between items-center mb-2">
                   <h3 class="text-[10px] font-bold text-zinc-500 uppercase tracking-wider">Related</h3>
                   <button type="button" onclick="addRelatedRow()" class="btn-quiet">+ Add Link</button>
@@ -466,6 +476,25 @@
                   </label>
                 </div>
               </div>
+              <div>
+                <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Resume (PDF)</label>
+                <div class="flex gap-2">
+                  <input type="text" id="resume_url" placeholder="Path or URL — leave blank to hide the View Resume buttons" class="field font-mono text-xs">
+                  <label class="btn-quiet whitespace-nowrap cursor-pointer">
+                    <i class="ph ph-upload-simple"></i> Upload
+                    <input type="file" accept=".pdf,application/pdf" class="hidden" onchange="handleResumeUpload(this)">
+                  </label>
+                </div>
+              </div>
+              <div>
+                <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Shop Link</label>
+                <input type="text" id="shop_url" placeholder="https://… — leave blank to hide the Visit Shop button" class="field font-mono text-xs">
+              </div>
+              <label class="flex items-center gap-2 cursor-pointer select-none">
+                <input type="checkbox" id="hero_pixel_effect" class="sr-only peer">
+                <span class="relative w-8 h-4 bg-zinc-800 rounded-full transition-colors peer-checked:bg-cyan-500 after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:w-3 after:h-3 after:bg-zinc-950 after:rounded-full after:transition-transform peer-checked:after:translate-x-4"></span>
+                <span class="text-xs text-zinc-300">Animated LED field behind the hero</span>
+              </label>
               <div>
                 <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">About Me Content</label>
                 <div id="about-editor"></div>
@@ -510,7 +539,7 @@
             </div>
 
             <div id="panel-sharing" class="settings-tab hidden space-y-4" data-tab="sharing">
-              <p class="text-[11px] text-zinc-500">Used for the link previews Facebook, LinkedIn, X and iMessage show when the site or a project is shared. Publishing writes one <code class="font-mono text-zinc-400">share/&lt;id&gt;.html</code> page and a 1200x630 card per project, plus a site card built from the hero board.</p>
+              <p class="text-[11px] text-zinc-500">Used for the link previews Facebook, LinkedIn, X and iMessage show when the site or a project is shared. Publishing writes one readable, search-indexable page per project at <code class="font-mono text-zinc-400">projects/&lt;slug&gt;/</code> and a 1200x630 card per project, plus a site card built from the hero board. Older <code class="font-mono text-zinc-400">share/&lt;id&gt;</code> links forward to the project page.</p>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                 <div>
                   <label class="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">Public Site URL</label>
@@ -2276,7 +2305,9 @@
     }
 
     function projectShareUrl(id) {
-      const base = (cachedSettings.site_url || 'https://chrismoore.me').trim().replace(/\/+$/, '');
+      const base = (cachedSettings.site_url || '').trim().replace(/\/+$/, '') || window.location.origin;
+      const project = projects.find(p => String(p.id) === String(id));
+      if (project && project.slug) return `${base}/projects/${project.slug}/`;
       return `${base}/share/${String(id).replace(/[^A-Za-z0-9_-]/g, '_')}`;
     }
 
@@ -2317,7 +2348,7 @@
         if (sc) sc.scrollTop = 0;
       }, 0);
 
-      ['id', 'title', 'category', 'image', 'websiteLink', 'launchLink', 'githubLink', 'shopLink', 'timestamp'].forEach(id => {
+      ['id', 'title', 'category', 'image', 'websiteLink', 'launchLink', 'githubLink', 'shopLink', 'timestamp', 'slug'].forEach(id => {
          document.getElementById(id).value = p[id] || '';
       });
       document.getElementById('thumbnail').value = p.thumbnail || '';
@@ -2417,9 +2448,10 @@
             document.getElementById('settingsForm').classList.remove('hidden');
             document.getElementById('railSettingsBtn')?.classList.add('rail-active');
             switchSettingsTab(currentSettingsTab || 'about');
-            ['email', 'instagram', 'linkedin', 'github', 'emailjs_service', 'emailjs_template', 'emailjs_public_key', 'about_headshot', 'skills_hardware', 'skills_lighting', 'skills_software', 'skills_fabrication', 'skills_systems', 'site_url', 'site_title', 'site_description'].forEach(key => {
+            ['email', 'instagram', 'linkedin', 'github', 'emailjs_service', 'emailjs_template', 'emailjs_public_key', 'about_headshot', 'skills_hardware', 'skills_lighting', 'skills_software', 'skills_fabrication', 'skills_systems', 'site_url', 'site_title', 'site_description', 'resume_url', 'shop_url'].forEach(key => {
                 document.getElementById(key).value = settings[key] || '';
             });
+            document.getElementById('hero_pixel_effect').checked = settings.hero_pixel_effect !== false;
 
             if (settings.about_text) quillAbout.clipboard.dangerouslyPasteHTML(settings.about_text);
             else quillAbout.setText('');
@@ -4521,6 +4553,27 @@
       input.value = '';
     }
 
+    async function handleResumeUpload(input) {
+      const file = input.files[0];
+      if (!file) return;
+      try {
+        showStatus("Uploading resume...");
+        const form = new FormData();
+        form.append('file', file);
+        const res = await fetch('/api/media/upload-resume', { method: 'POST', body: form });
+        if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error || res.statusText);
+        const result = await res.json();
+        document.getElementById('resume_url').value = result.path;
+        isDirty = true;
+        hideStatus();
+        Toastify({ text: "Resume uploaded — save settings to publish it", duration: 3000, backgroundColor: "#10b981" }).showToast();
+      } catch (err) {
+        hideStatus();
+        onError(err);
+      }
+      input.value = '';
+    }
+
     // --- SAVE ---
     function saveCurrent(postSaveCallback = null) {
       document.getElementById('loadingOverlay').classList.remove('hidden');
@@ -4607,6 +4660,7 @@
         launchLink: document.getElementById('launchLink').value,
         githubLink: document.getElementById('githubLink').value,
         shopLink: document.getElementById('shopLink').value,
+        slug: document.getElementById('slug').value.trim() || undefined,
         featured: document.getElementById('featured').checked,
         wip: document.getElementById('wip').checked,
         draft: document.getElementById('draft').checked,
@@ -4663,7 +4717,10 @@
         skills_systems: document.getElementById('skills_systems').value,
         site_url: document.getElementById('site_url').value.trim().replace(/\/+$/, ''),
         site_title: document.getElementById('site_title').value.trim(),
-        site_description: document.getElementById('site_description').value.trim()
+        site_description: document.getElementById('site_description').value.trim(),
+        resume_url: document.getElementById('resume_url').value.trim(),
+        shop_url: document.getElementById('shop_url').value.trim(),
+        hero_pixel_effect: document.getElementById('hero_pixel_effect').checked
       };
 
       api.post('/settings', settings).then(() => {
@@ -4928,7 +4985,7 @@
         const cardBox = document.getElementById('publishShareCard');
         if (share.siteCard) {
           document.getElementById('publishShareCardImg').src = '/' + share.siteCard + '?t=' + Date.now();
-          document.getElementById('publishShareExample').textContent = `${share.siteUrl || ''}/share/<project-id>`;
+          document.getElementById('publishShareExample').textContent = `${share.siteUrl || ''}/projects/<slug>/`;
           cardBox.classList.remove('hidden');
         } else {
           cardBox.classList.add('hidden');

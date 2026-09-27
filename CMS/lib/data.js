@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { trackSlugChange } = require('./slug');
 
 const DATA_DIR = path.join(__dirname, '..', 'data');
 
@@ -164,6 +165,7 @@ function saveProject(project) {
   const previousRelated = existingIndex !== -1 ? (projects[existingIndex].related || []) : [];
   if (existingIndex !== -1) {
     const existing = projects[existingIndex];
+    trackSlugChange(existing, project);
     if (project.category !== existing.category) {
       projects.forEach(p => {
         if (p.category === project.category && String(p.id) !== String(project.id)) {

@@ -5,7 +5,7 @@ const sharp = require('sharp');
 const ffmpeg = require('fluent-ffmpeg');
 const ffmpegPath = require('ffmpeg-static');
 const ffprobePath = require('ffprobe-static').path;
-const { CATEGORY_FOLDER_MAP, sanitize, scheduleUnlink, allocateMediaStem } = require('./media');
+const { categoryFolder, sanitize, scheduleUnlink, allocateMediaStem } = require('./media');
 
 ffmpeg.setFfmpegPath(ffmpegPath);
 ffmpeg.setFfprobePath(ffprobePath);
@@ -24,12 +24,16 @@ function probeMedia(filePath) {
   });
 }
 
+// Web delivery cap: the short side is at most 720 px (landscape and portrait), 30 fps.
+const MAX_SHORT_SIDE = 720;
+const VIDEO_FILTER = `fps=30,scale='if(gt(iw,ih),-2,min(${MAX_SHORT_SIDE},iw))':'if(gt(iw,ih),min(${MAX_SHORT_SIDE},ih),-2)'`;
+
 function transcodeToH264(srcPath, destPath, onProgress, keepAudio) {
   return new Promise((resolve, reject) => {
     const cmd = ffmpeg(srcPath)
       .videoCodec('libx264')
-      .outputOptions(['-crf 23', '-preset medium', '-movflags +faststart', '-pix_fmt yuv420p'])
-      .videoFilters("fps=30,scale='min(1920,iw)':-2");
+      .outputOptions(['-crf 26', '-preset medium', '-movflags +faststart', '-pix_fmt yuv420p'])
+      .videoFilters(VIDEO_FILTER);
 
     if (keepAudio) {
       cmd.audioCodec('aac').audioBitrate('128k').audioChannels(2).audioFrequency(44100);
@@ -57,7 +61,7 @@ function extractFrame(srcPath, atSeconds, destDir, filename) {
 }
 
 async function processVideoUpload(file, category, projectName, onProgress, keepAudio = false) {
-  const folder = CATEGORY_FOLDER_MAP[category] || category;
+  const folder = categoryFolder(category);
   const safeProject = sanitize(projectName);
   const destDir = path.join(MEDIA_DIR, folder, safeProject);
   const stem = allocateMediaStem(destDir, projectName, 'vid');
@@ -127,4 +131,4 @@ async function processVideoUpload(file, category, projectName, onProgress, keepA
   };
 }
 
-module.exports = { processVideoUpload };
+module.exports = { processVideoUpload, transcodeToH264, MAX_SHORT_SIDE };

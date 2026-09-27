@@ -18,7 +18,7 @@
     { id: 'Art', label: 'Art' },
     { id: 'Fixtures', label: 'Fixtures' },
     { id: 'Software', label: 'Software' },
-    { id: 'Tooling', label: 'Shop' },
+    { id: 'Tooling', label: 'Tooling' },
     { id: 'Systems', label: 'Systems' }
   ];
 

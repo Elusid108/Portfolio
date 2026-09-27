@@ -87,7 +87,8 @@
           }
         ]
       }
-    ]
+    ],
+    "slug": "portfolio-cms"
   },
   {
     "id": "1",
@@ -36712,7 +36713,8 @@
       }
     ],
     "draft": false,
-    "linkHeroImages": true
+    "linkHeroImages": true,
+    "slug": "immersive-dance-lighting-rig"
   },
   {
     "id": "8147",
@@ -36987,7 +36989,8 @@
         ]
       }
     ],
-    "draft": false
+    "draft": false,
+    "slug": "emmy-stand"
   },
   {
     "id": "2944",
@@ -37058,7 +37061,8 @@
       }
     ],
     "thumbnail": "media/Apps/LithoLab/LithoLab-img-f923d0-thumb.webp",
-    "specsData": []
+    "specsData": [],
+    "slug": "litholab"
   },
   {
     "id": "3670",
@@ -37153,7 +37157,8 @@
           }
         ]
       }
-    ]
+    ],
+    "slug": "unfold"
   },
   {
     "id": "670",
@@ -37361,7 +37366,8 @@
       }
     ],
     "draft": false,
-    "linkHeroImages": true
+    "linkHeroImages": true,
+    "slug": "pyramid"
   },
   {
     "id": "5632",
@@ -37562,7 +37568,8 @@
         ]
       }
     ],
-    "draft": false
+    "draft": false,
+    "slug": "mini-pyramid"
   },
   {
     "id": "8000",
@@ -37763,7 +37770,8 @@
         ]
       }
     ],
-    "draft": false
+    "draft": false,
+    "slug": "plane-warp"
   },
   {
     "id": "8252",
@@ -38001,7 +38009,8 @@
       }
     ],
     "linkHeroImages": true,
-    "draft": false
+    "draft": false,
+    "slug": "temple-sf"
   },
   {
     "id": "9517",
@@ -38158,7 +38167,8 @@
       }
     ],
     "draft": false,
-    "linkHeroImages": true
+    "linkHeroImages": true,
+    "slug": "field-solder-station"
   },
   {
     "id": "9469",
@@ -38283,7 +38293,8 @@
           }
         ]
       }
-    ]
+    ],
+    "slug": "led-pixel-panel"
   },
   {
     "id": "5416",
@@ -38502,7 +38513,8 @@
           }
         ]
       }
-    ]
+    ],
+    "slug": "lvl"
   },
   {
     "id": "4939",
@@ -38670,7 +38682,8 @@
           }
         ]
       }
-    ]
+    ],
+    "slug": "mirus"
   },
   {
     "id": "8787",
@@ -38887,7 +38900,8 @@
           }
         ]
       }
-    ]
+    ],
+    "slug": "inflatable-tubes"
   },
   {
     "id": "9925",
@@ -39015,7 +39029,8 @@
           }
         ]
       }
-    ]
+    ],
+    "slug": "geolens-pro"
   },
   {
     "id": "3991",
@@ -39141,7 +39156,8 @@
           }
         ]
       }
-    ]
+    ],
+    "slug": "pixelforge"
   },
   {
     "id": "7085",
@@ -39279,7 +39295,8 @@
           }
         ]
       }
-    ]
+    ],
+    "slug": "chronicle-iterative-fiction-engine"
   },
   {
     "id": "6638",
@@ -39349,7 +39366,8 @@
       "x": 46.3,
       "y": 0
     },
-    "specsData": []
+    "specsData": [],
+    "slug": "strata-digital-notebook"
   },
   {
     "id": "6962",
@@ -39452,7 +39470,8 @@
           }
         ]
       }
-    ]
+    ],
+    "slug": "ideaforge-ai"
   },
   {
     "id": "648",
@@ -39592,7 +39611,8 @@
           }
         ]
       }
-    ]
+    ],
+    "slug": "chargen-ai"
   },
   {
     "id": "968",
@@ -39686,7 +39706,8 @@
           }
         ]
       }
-    ]
+    ],
+    "slug": "lithopalletgen"
   },
   {
     "title": "Field Bench PSU",
@@ -39834,7 +39855,8 @@
         ]
       }
     ],
-    "draft": false
+    "draft": false,
+    "slug": "field-bench-psu"
   },
   {
     "title": "Club Lexi",
@@ -40006,7 +40028,8 @@
       }
     ],
     "linkHeroImages": true,
-    "draft": false
+    "draft": false,
+    "slug": "club-lexi"
   },
   {
     "id": "6841",
@@ -40209,7 +40232,8 @@
     "thumbnail": "media/Electronics/The Orb/The-Orb-img-7491fa-thumb.webp",
     "specsData": [],
     "draft": false,
-    "linkHeroImages": true
+    "linkHeroImages": true,
+    "slug": "the-orb"
   },
   {
     "title": "The Basement",
@@ -40426,7 +40450,8 @@
       }
     ],
     "linkHeroImages": true,
-    "draft": false
+    "draft": false,
+    "slug": "the-basement"
   },
   {
     "title": "Que Bueno Suerte!",
@@ -40609,7 +40634,8 @@
         ]
       }
     ],
-    "draft": false
+    "draft": false,
+    "slug": "que-bueno-suerte"
   },
   {
     "title": "Bar Tubes",
@@ -40764,7 +40790,8 @@
           }
         ]
       }
-    ]
+    ],
+    "slug": "bar-tubes"
   },
   {
     "title": "Negative \"X\"",
@@ -40961,7 +40988,8 @@
         ]
       }
     ],
-    "draft": false
+    "draft": false,
+    "slug": "negative-x"
   },
   {
     "title": "Seed of Life",
@@ -41179,7 +41207,8 @@
       }
     ],
     "draft": false,
-    "linkHeroImages": true
+    "linkHeroImages": true,
+    "slug": "seed-of-life"
   },
   {
     "title": "Celtic Owl",
@@ -41362,7 +41391,8 @@
       }
     ],
     "draft": false,
-    "linkHeroImages": true
+    "linkHeroImages": true,
+    "slug": "celtic-owl"
   },
   {
     "title": "Lobby Wall",
@@ -41571,7 +41601,8 @@
       }
     ],
     "linkHeroImages": true,
-    "draft": false
+    "draft": false,
+    "slug": "lobby-wall"
   },
   {
     "title": "Curved Liquor Bottle Display",
@@ -41750,7 +41781,8 @@
           }
         ]
       }
-    ]
+    ],
+    "slug": "curved-liquor-bottle-display"
   },
   {
     "title": "Temple Denver",
@@ -41843,7 +41875,8 @@
     "thumbnail": "media/Integration/Temple Denver/Temple-Denver-img-473b00-thumb.webp",
     "specsData": [],
     "linkHeroImages": true,
-    "draft": false
+    "draft": false,
+    "slug": "temple-denver"
   },
   {
     "title": "Extrusion Centering Sled",
@@ -41967,7 +42000,8 @@
         ]
       }
     ],
-    "draft": false
+    "draft": false,
+    "slug": "extrusion-centering-sled"
   },
   {
     "title": "Immersive Dance Floor Pillars",
@@ -42421,7 +42455,8 @@
       }
     ],
     "linkHeroImages": true,
-    "draft": false
+    "draft": false,
+    "slug": "immersive-dance-floor-pillars"
   },
   {
     "title": "Pixel Louver Lights",
@@ -42628,7 +42663,8 @@
         ]
       }
     ],
-    "draft": false
+    "draft": false,
+    "slug": "pixel-louver-lights"
   },
   {
     "title": "Blackout Ceiling Tubes",
@@ -42859,7 +42895,8 @@
           }
         ]
       }
-    ]
+    ],
+    "slug": "blackout-ceiling-tubes"
   },
   {
     "title": "LED PSU Boot Sequencer",
@@ -42876,7 +42913,7 @@
       "y": 54.8
     },
     "description": "<p>Eighteen power supplies booting at once trip a breaker every time. Three boxes of relays stagger them five seconds apart.</p>",
-    "longDescription": "<p>I learned about inrush current at Tracks. A large video wall I helped instal kept tripping the breakers every time the room powered up, and it took a while to figure out that the power supplies were pulling a huge spike for a fraction of a second before settling down. I have read the inrush line on every spec sheet since.</p><p>So when I needed to run eighteen power supplies for the blackout ceiling tubes, I knew what to do. Pulling more electrical circuits cost too much. Instead I built three 3D-printed sequencer boxes to stagger the load. Six supplies per box. Inside, a small power supply runs a relay board as a switch bank. Packing high-voltage lines, relays, and a nest of WAGOs into a sealed case took a few printed revisions before everything fit. Every connection uses a locking connector. Indicator LEDs on the front show which outputs are live, and status lights on the back confirm AC power.</p><p>The boxes sit on the black wall just above the rafters. Flipping the main breaker starts a cascade of relay clicks across the room, and every five to ten seconds another section of ceiling wakes up as its capacitors charge. When the cascade finishes, the whole rig runs silent.</p>",
+    "longDescription": "<p>I learned about inrush current at Tracks. A large video wall I helped install kept tripping the breakers every time the room powered up, and it took a while to figure out that the power supplies were pulling a huge spike for a fraction of a second before settling down. I have read the inrush line on every spec sheet since.</p><p>So when I needed to run eighteen power supplies for the blackout ceiling tubes, I knew what to do. Pulling more electrical circuits cost too much. Instead I built three 3D-printed sequencer boxes to stagger the load. Six supplies per box. Inside, a small power supply runs a relay board as a switch bank. Packing high-voltage lines, relays, and a nest of WAGOs into a sealed case took a few printed revisions before everything fit. Every connection uses a locking connector. Indicator LEDs on the front show which outputs are live, and status lights on the back confirm AC power.</p><p>The boxes sit on the black wall just above the rafters. Flipping the main breaker starts a cascade of relay clicks across the room, and every five to ten seconds another section of ceiling wakes up as its capacitors charge. When the cascade finishes, the whole rig runs silent.</p>",
     "websiteLink": "",
     "launchLink": "",
     "githubLink": "",
@@ -42998,7 +43035,8 @@
         ]
       }
     ],
-    "draft": false
+    "draft": false,
+    "slug": "led-psu-boot-sequencer"
   },
   {
     "title": "WiFi VIP Tables",
@@ -43219,7 +43257,8 @@
       }
     ],
     "linkHeroImages": true,
-    "draft": false
+    "draft": false,
+    "slug": "wifi-vip-tables"
   },
   {
     "title": "Glass VIP Wall",
@@ -43458,7 +43497,8 @@
           }
         ]
       }
-    ]
+    ],
+    "slug": "glass-vip-wall"
   },
   {
     "title": "Pixel Rocks",
@@ -43734,7 +43774,8 @@
           }
         ]
       }
-    ]
+    ],
+    "slug": "pixel-rocks"
   },
   {
     "title": "Backboard",
@@ -43976,7 +44017,8 @@
           }
         ]
       }
-    ]
+    ],
+    "slug": "backboard"
   },
   {
     "title": "Entrance Hall",
@@ -44128,7 +44170,8 @@
           }
         ]
       }
-    ]
+    ],
+    "slug": "entrance-hall"
   },
   {
     "title": "Discobasket",
@@ -44282,7 +44325,8 @@
           }
         ]
       }
-    ]
+    ],
+    "slug": "discobasket"
   },
   {
     "title": "Pyramid Steps",
@@ -44564,7 +44608,8 @@
       }
     ],
     "linkHeroImages": true,
-    "draft": false
+    "draft": false,
+    "slug": "pyramid-steps"
   },
   {
     "title": "Tracks Discotheque",
@@ -44903,7 +44948,8 @@
           }
         ]
       }
-    ]
+    ],
+    "slug": "tracks-discotheque"
   },
   {
     "title": "Remote Fill Fog Jets",
@@ -45058,7 +45104,8 @@
           }
         ]
       }
-    ]
+    ],
+    "slug": "remote-fill-fog-jets"
   },
   {
     "title": "Alabaster Bar Top",
@@ -45292,7 +45339,8 @@
           }
         ]
       }
-    ]
+    ],
+    "slug": "alabaster-bar-top"
   },
   {
     "title": "Bar Kicker",
@@ -45541,7 +45589,8 @@
           }
         ]
       }
-    ]
+    ],
+    "slug": "bar-kicker"
   },
   {
     "title": "Bar Backsplash",
@@ -45803,7 +45852,8 @@
           }
         ]
       }
-    ]
+    ],
+    "slug": "bar-backsplash"
   },
   {
     "title": "Glow Lounge",
@@ -45990,7 +46040,8 @@
       }
     ],
     "linkHeroImages": true,
-    "draft": false
+    "draft": false,
+    "slug": "glow-lounge"
   },
   {
     "title": "Mezzanine Bar",
@@ -46168,7 +46219,8 @@
           }
         ]
       }
-    ]
+    ],
+    "slug": "mezzanine-bar"
   },
   {
     "title": "Bubblescape",
@@ -46347,7 +46399,8 @@
     "timestamp": "2026-08-16T19:45:09.127Z",
     "id": "9191",
     "order": 7,
-    "draft": false
+    "draft": false,
+    "slug": "bubblescape"
   },
   {
     "title": "Zig-Zag",
@@ -46527,7 +46580,8 @@
     "timestamp": "2026-08-16T19:50:18.919Z",
     "id": "7412",
     "order": 16,
-    "draft": false
+    "draft": false,
+    "slug": "zig-zag"
   },
   {
     "title": "Clay Face",
@@ -46708,7 +46762,8 @@
     "id": "8740",
     "order": 4,
     "draft": false,
-    "linkHeroImages": true
+    "linkHeroImages": true,
+    "slug": "clay-face"
   },
   {
     "title": "Scream-Face",
@@ -46895,7 +46950,8 @@
     "timestamp": "2026-08-16T20:00:30.235Z",
     "id": "1829",
     "order": 6,
-    "draft": false
+    "draft": false,
+    "slug": "scream-face"
   },
   {
     "title": "Clay Tree",
@@ -47064,7 +47120,8 @@
     "timestamp": "2026-08-16T20:06:37.433Z",
     "id": "3139",
     "order": 9,
-    "draft": false
+    "draft": false,
+    "slug": "clay-tree"
   },
   {
     "title": "Face",
@@ -47231,7 +47288,8 @@
     "timestamp": "2026-08-16T20:11:26.500Z",
     "id": "4827",
     "order": 8,
-    "draft": false
+    "draft": false,
+    "slug": "face"
   },
   {
     "title": "X",
@@ -47410,7 +47468,8 @@
     "timestamp": "2026-08-16T20:19:44.564Z",
     "id": "7080",
     "order": 17,
-    "draft": false
+    "draft": false,
+    "slug": "x"
   },
   {
     "title": "Dot Matrix",
@@ -47589,7 +47648,8 @@
     "timestamp": "2026-08-16T20:23:22.050Z",
     "id": "5202",
     "order": 15,
-    "draft": false
+    "draft": false,
+    "slug": "dot-matrix"
   },
   {
     "title": "Inverted Triangles",
@@ -47768,7 +47828,8 @@
     "timestamp": "2026-08-16T20:25:20.687Z",
     "id": "6865",
     "order": 18,
-    "draft": false
+    "draft": false,
+    "slug": "inverted-triangles"
   },
   {
     "title": "Circles Corner",
@@ -47947,7 +48008,8 @@
     "timestamp": "2026-08-16T20:29:37.203Z",
     "id": "2451",
     "order": 12,
-    "draft": false
+    "draft": false,
+    "slug": "circles-corner"
   },
   {
     "title": "TangiPix",
@@ -48101,7 +48163,8 @@
     "video": "",
     "timestamp": "2026-08-22T19:10:36.064Z",
     "id": "2955",
-    "order": 2
+    "order": 2,
+    "slug": "tangipix"
   },
   {
     "title": "BorderBuilder",
@@ -48197,7 +48260,8 @@
     "video": "",
     "timestamp": "2026-08-23T03:28:57.175Z",
     "id": "8287",
-    "order": 1
+    "order": 1,
+    "slug": "borderbuilder"
   },
   {
     "title": "Immersive Video Layer",
@@ -48371,7 +48435,8 @@
       "x": 50.2,
       "y": 41.8,
       "rotate": -1
-    }
+    },
+    "slug": "immersive-video-layer"
   },
   {
     "title": "Acrylic Etchings",
@@ -48469,7 +48534,8 @@
       "y": 37.8,
       "rotate": 0
     },
-    "linkHeroImages": false
+    "linkHeroImages": false,
+    "slug": "acrylic-etchings"
   },
   {
     "title": "Immersive Lighting Layer",
@@ -48696,7 +48762,8 @@
       "x": 88.3,
       "y": 69.9,
       "rotate": 0
-    }
+    },
+    "slug": "immersive-lighting-layer"
   },
   {
     "title": "Architectural Lighting",
@@ -48829,13 +48896,14 @@
       "y": 33,
       "rotate": 0
     },
-    "linkHeroImages": false
+    "linkHeroImages": false,
+    "slug": "architectural-lighting"
   },
   {
     "title": "Home Light Rig",
     "category": "Art",
     "image": "media/Art/Home Light Rig/Home-Light-Rig-img-046609.webp",
-    "description": "<p>Busking for beginers? Come up with a better name and get more video</p>",
+    "description": "<p>Busking for beginners? Come up with a better name and get more video</p>",
     "longDescription": "<p><br></p>",
     "websiteLink": "",
     "launchLink": "",
@@ -48894,7 +48962,8 @@
     "timestamp": "2026-09-05T01:40:51.428Z",
     "id": "5839",
     "order": 20,
-    "thumbnail": "media/Art/Home Light Rig/Home-Light-Rig-img-046609-thumb.webp"
+    "thumbnail": "media/Art/Home Light Rig/Home-Light-Rig-img-046609-thumb.webp",
+    "slug": "home-light-rig"
   },
   {
     "title": "Mound",
@@ -48983,7 +49052,8 @@
     "timestamp": "2026-09-05T01:42:23.411Z",
     "id": "1772",
     "order": 19,
-    "linkHeroImages": true
+    "linkHeroImages": true,
+    "slug": "mound"
   },
   {
     "title": "Lighting & SFX Service",
@@ -49300,7 +49370,8 @@
       "x": 47.9,
       "y": 21.9,
       "rotate": 0
-    }
+    },
+    "slug": "lighting-and-sfx-service"
   },
   {
     "title": "LED Video Panel Service",
@@ -49625,7 +49696,8 @@
       "x": 59.3,
       "y": 60.8
     },
-    "linkHeroImages": false
+    "linkHeroImages": false,
+    "slug": "led-video-panel-service"
   },
   {
     "title": "Chain Hoist Service",
@@ -49952,7 +50024,8 @@
       "y": 54.8,
       "rotate": 0
     },
-    "linkHeroImages": false
+    "linkHeroImages": false,
+    "slug": "chain-hoist-service"
   },
   {
     "title": "Mini Heart",
@@ -50067,6 +50140,7 @@
       "x": 100,
       "y": 44.5,
       "rotate": 0
-    }
+    },
+    "slug": "mini-heart"
   }
 ]
