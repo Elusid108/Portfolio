@@ -1,0 +1,11 @@
+---
+// Same wordmark as chrismoore.me: cyan bolt + "CHRIS MOORE.Designs".
+interface Props { href?: string; class?: string }
+const { href = '/', class: cls = '' } = Astro.props;
+---
+<a href={href} class={`font-bold text-xl tracking-tighter flex items-center gap-2 ${cls}`} aria-label="Chris Moore Designs — home">
+  <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-accent">
+    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+  </svg>
+  <span>CHRIS MOORE<span class="text-brand-accent">.Designs</span></span>
+</a>

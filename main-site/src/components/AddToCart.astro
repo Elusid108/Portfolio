@@ -1,0 +1,43 @@
+---
+// Renders the buy button for a product. At build time we try to resolve the
+// Shopify variant id from the handle; without Shopify configured the button
+// still renders (and the Cart island explains the store isn't connected).
+import { getProductByHandle, formatMoney } from '../lib/shopify';
+
+interface Props {
+  handle?: string;
+  placeholderPrice?: number;
+  label?: string;
+  class?: string;
+}
+const { handle, placeholderPrice, label = 'Add to cart', class: cls = '' } = Astro.props;
+
+let variantId: string | undefined;
+let price: string | undefined;
+let available = true;
+if (handle) {
+  try {
+    const p = await getProductByHandle(handle);
+    if (p) {
+      variantId = p.variants.nodes[0]?.id;
+      price = formatMoney(p.priceRange.minVariantPrice);
+      available = p.availableForSale;
+    }
+  } catch (err) {
+    console.warn(`[AddToCart] could not fetch "${handle}":`, (err as Error).message);
+  }
+}
+if (!price && placeholderPrice != null) price = `$${placeholderPrice}`;
+---
+<div class={`flex items-center gap-4 ${cls}`}>
+  {price && <span class="font-mono text-lg">{price}</span>}
+  <button
+    type="button"
+    class="px-6 py-3 bg-white text-black font-bold rounded-lg hover:bg-zinc-200 transition-colors disabled:opacity-50"
+    data-add-to-cart
+    data-variant-id={variantId}
+    disabled={!available}
+  >
+    {available ? label : 'Sold out'}
+  </button>
+</div>

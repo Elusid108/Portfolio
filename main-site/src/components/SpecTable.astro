@@ -1,0 +1,12 @@
+---
+interface Props { specs: Record<string, string>; class?: string }
+const { specs, class: cls = '' } = Astro.props;
+---
+<dl class={`divide-y divide-brand-border text-sm ${cls}`}>
+  {Object.entries(specs).map(([k, v]) => (
+    <div class="grid grid-cols-[minmax(7rem,1fr)_2fr] gap-4 py-2">
+      <dt class="font-mono text-xs uppercase tracking-wide text-brand-text-muted pt-0.5">{k}</dt>
+      <dd class="text-brand-text">{v}</dd>
+    </div>
+  ))}
+</dl>

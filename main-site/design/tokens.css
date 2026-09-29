@@ -1,0 +1,36 @@
+/*
+ * Tailwind v4 theme — the CSS rendering of design/tokens.json.
+ * Keep the two in sync by hand (see design/README.md).
+ *
+ * Exposes utilities such as bg-brand-bg, text-brand-accent, border-brand-border,
+ * font-sans / font-mono, text-cat-hardware, etc. The zinc/cyan/purple defaults
+ * from Tailwind remain available so markup copied from the portfolio keeps working.
+ */
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --color-brand-bg: #09090b;
+  --color-brand-bg-alt: #000000;
+  --color-brand-surface: #18181b;
+  --color-brand-surface-raised: #27272a;
+  --color-brand-border: #27272a;
+  --color-brand-border-strong: #3f3f46;
+  --color-brand-text: #e4e4e7;
+  --color-brand-text-muted: #a1a1aa;
+  --color-brand-text-subtle: #71717a;
+  --color-brand-accent: #22d3ee;
+  --color-brand-accent-strong: #06b6d4;
+  --color-brand-accent-deep: #0891b2;
+  --color-brand-secondary: #a855f7;
+  --color-brand-secondary-strong: #9333ea;
+
+  --color-cat-lighting: #facc15;
+  --color-cat-art: #f472b6;
+  --color-cat-hardware: #4ade80;
+  --color-cat-software: #c084fc;
+  --color-cat-tooling: #fb923c;
+  --color-cat-systems: #60a5fa;
+
+  --radius-pill: 9999px;
+}

@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Storefront First</title>
+<meta name="description" content="Direction 3 of 5 for chrismooredesigns.com: commerce is the front door. Price, variant, quantity and Add to cart above the fold.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','sans-serif'], mono: ['JetBrains Mono','ui-monospace','monospace'] } } } }</script>
+<style>
+  /* Layout: shop nav with search + cart subtotal → product-forward split hero → horizontal product shelf → support strip → made-to-order grid → trust footer. Single dark theme by brand. */
+  :root { --bg:#09090b; --surface:#18181b; --border:#27272a; --fg:#e4e4e7; --muted:#a1a1aa; --accent:#22d3ee; --secondary:#a855f7; color-scheme: dark; }
+  body { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; background: var(--bg); color: var(--fg); overflow-x: hidden; margin: 0; }
+  .render { background: radial-gradient(ellipse at 50% 40%, rgba(34,211,238,.28), transparent 60%), radial-gradient(circle at 1px 1px, rgba(255,255,255,.08) 1px, transparent 1.5px) 0 0/12px 12px, linear-gradient(160deg,#18181b,#000); }
+  .shelf { scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: #27272a transparent; }
+  .shelf > * { scroll-snap-align: start; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+  h1, h2, h3 { text-wrap: balance; }
+  .variant[aria-pressed="true"] { border-color: var(--accent); color: #fff; background: rgba(34,211,238,.1); }
+</style>
+</head>
+<body class="antialiased">
+
+<header class="sticky top-0 z-40 bg-zinc-950/90 backdrop-blur border-b border-zinc-900">
+  <div class="container mx-auto px-4 sm:px-6 h-16 flex items-center gap-4">
+    <a href="#hero" class="font-bold text-lg tracking-tighter flex items-center gap-2 shrink-0" aria-label="Chris Moore Designs">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      <span class="hidden sm:inline">CHRIS MOORE<span class="text-cyan-400">.Designs</span></span>
+    </a>
+    <nav class="hidden md:flex items-center gap-5 text-xs uppercase tracking-wide text-zinc-400 ml-4" aria-label="Main">
+      <a href="#families" class="text-white">Shop</a><a href="#software" class="hover:text-white">Firmware</a><a href="#software" class="hover:text-white">Docs</a><a href="#services" class="hover:text-white">Services</a><a href="https://chrismoore.me" class="hover:text-white">Portfolio ↗</a>
+    </nav>
+    <label class="flex-1 max-w-md ml-auto relative"><span class="sr-only">Search products</span>
+      <input id="search" type="search" placeholder="Search boards, firmware, docs…" class="w-full bg-zinc-900 border border-zinc-800 rounded-full pl-9 pr-4 py-2 text-sm placeholder:text-zinc-500 focus:border-cyan-500">
+      <svg aria-hidden="true" class="absolute left-3 top-2.5 text-zinc-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+    </label>
+    <button class="shrink-0 flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-white text-black font-bold text-sm hover:bg-cyan-400 transition-colors" data-cart-open aria-label="Open cart">
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+      <span class="font-mono" data-cart-subtotal>$0.00</span>
+    </button>
+  </div>
+</header>
+
+<section id="hero" class="container mx-auto px-4 sm:px-6 pt-8 pb-16 grid lg:grid-cols-2 gap-8 items-start">
+  <div class="render aspect-square lg:aspect-[4/3] rounded-2xl border border-zinc-800 relative overflow-hidden">
+    <span class="absolute top-4 left-4 text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-cyan-600 text-white">Best seller</span>
+    <span class="absolute bottom-4 left-4 font-mono text-xs text-zinc-400">PXD-8 · rev C</span>
+    <div class="absolute bottom-4 right-4 flex gap-1.5">
+      <span class="w-10 h-10 rounded border border-cyan-400 bg-zinc-900"></span><span class="w-10 h-10 rounded border border-zinc-700 bg-zinc-900"></span><span class="w-10 h-10 rounded border border-zinc-700 bg-zinc-900"></span>
+    </div>
+  </div>
+  <div class="space-y-6">
+    <div>
+      <p class="font-mono text-xs uppercase tracking-widest text-cyan-400">PixelDecode · hardware</p>
+      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mt-2">PXD-8 pixel decoder</h1>
+      <p class="text-zinc-400 mt-3 leading-relaxed">Eight fused, level-shifted outputs. Up to 4,096 pixels at 40 fps from Art-Net, sACN or DDP. Flash it from the browser, find it with PixelPilot.</p>
+    </div>
+    <div class="flex items-baseline gap-3"><span class="font-mono text-3xl" id="price">$89.00</span><span class="text-sm text-zinc-500">USD · in stock</span></div>
+    <div>
+      <div class="text-xs uppercase tracking-wide text-zinc-500 mb-2">Outputs</div>
+      <div class="flex flex-wrap gap-2" id="variants">
+        <button class="variant px-4 py-2 rounded-lg border border-zinc-700 text-sm text-zinc-300 font-mono" data-sku="PXD-MINI" data-price="39" aria-pressed="false">2 ch · Mini</button>
+        <button class="variant px-4 py-2 rounded-lg border border-zinc-700 text-sm text-zinc-300 font-mono" data-sku="PXD-8" data-price="89" aria-pressed="true">8 ch</button>
+        <button class="variant px-4 py-2 rounded-lg border border-zinc-700 text-sm text-zinc-300 font-mono" data-sku="PXD-16" data-price="149" aria-pressed="false">16 ch · Ethernet</button>
+      </div>
+    </div>
+    <div class="flex items-stretch gap-3">
+      <div class="flex items-center border border-zinc-700 rounded-lg">
+        <button class="w-11 h-12 text-lg hover:text-cyan-400" id="qty-minus" aria-label="Decrease quantity">−</button>
+        <input id="qty" type="number" min="1" value="1" class="w-12 h-12 text-center bg-transparent font-mono" aria-label="Quantity">
+        <button class="w-11 h-12 text-lg hover:text-cyan-400" id="qty-plus" aria-label="Increase quantity">+</button>
+      </div>
+      <button class="flex-1 h-12 bg-white text-black font-bold rounded-lg hover:bg-cyan-400 transition-colors" id="hero-add" data-add="PXD-8">Add to cart</button>
+    </div>
+    <ul class="grid grid-cols-2 gap-2 text-xs text-zinc-400 pt-2">
+      <li class="flex gap-2"><span class="text-cyan-400">✓</span> Ships in 1–2 days from the US</li>
+      <li class="flex gap-2"><span class="text-cyan-400">✓</span> 2-year warranty</li>
+      <li class="flex gap-2"><span class="text-cyan-400">✓</span> Open firmware, OTA updates</li>
+      <li class="flex gap-2"><span class="text-cyan-400">✓</span> Secure checkout on Shopify</li>
+    </ul>
+    <details class="border-t border-zinc-800 pt-4 text-sm"><summary class="cursor-pointer text-zinc-300 font-medium">Specifications</summary><dl class="mt-3 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1.5 text-zinc-400" id="hero-specs"></dl></details>
+  </div>
+</section>
+
+<section id="families" class="py-14 border-t border-zinc-900 bg-black">
+  <div class="container mx-auto px-4 sm:px-6">
+    <div class="flex items-end justify-between gap-4 mb-6">
+      <div><p class="font-mono text-xs uppercase tracking-widest text-cyan-400">Shop</p><h2 class="text-2xl md:text-3xl font-bold mt-1">Boards, controllers, bundles</h2></div>
+      <div class="hidden sm:flex gap-2 text-xs"><button class="px-3 py-1.5 rounded-full bg-zinc-800 text-white">All</button><button class="px-3 py-1.5 rounded-full border border-zinc-800 text-zinc-400 hover:text-white">PixelDecode</button><button class="px-3 py-1.5 rounded-full border border-zinc-800 text-zinc-400 hover:text-white">PixelPilot</button><button class="px-3 py-1.5 rounded-full border border-zinc-800 text-zinc-400 hover:text-white">Bundles</button></div>
+    </div>
+    <div class="shelf flex gap-4 overflow-x-auto pb-4 -mx-4 px-4 sm:mx-0 sm:px-0" id="shelf"></div>
+  </div>
+</section>
+
+<section id="software" class="py-12 border-t border-zinc-900">
+  <div class="container mx-auto px-4 sm:px-6">
+    <p class="font-mono text-xs uppercase tracking-widest text-cyan-400 mb-4">Included with every board</p>
+    <div class="grid sm:grid-cols-3 gap-4">
+      <div class="rounded-xl bg-zinc-900 border border-zinc-800 p-5 flex gap-4">
+        <span class="text-2xl text-cyan-400" aria-hidden="true">⚡</span>
+        <div><h3 class="font-bold">pxd-fw <span class="font-mono text-cyan-400 text-xs">v1.4.2</span></h3><p class="text-sm text-zinc-400 mt-1">Open firmware. OTA from PixelPilot or flash from the browser.</p><a href="#" class="text-xs uppercase tracking-wide text-purple-400 hover:underline mt-2 inline-block">Release notes</a></div>
+      </div>
+      <div class="rounded-xl bg-zinc-900 border border-zinc-800 p-5 flex gap-4">
+        <span class="text-2xl text-purple-400" aria-hidden="true">▣</span>
+        <div><h3 class="font-bold">PixelPilot Desktop</h3><p class="text-sm text-zinc-400 mt-1">Map pixels from a photo, preview live, flash boards. Win / macOS / Linux.</p><a href="https://github.com/Elusid108" class="text-xs uppercase tracking-wide text-purple-400 hover:underline mt-2 inline-block">Download free</a></div>
+      </div>
+      <div class="rounded-xl bg-zinc-900 border border-zinc-800 p-5 flex gap-4">
+        <span class="text-2xl text-green-400" aria-hidden="true">≡</span>
+        <div><h3 class="font-bold">Docs &amp; wiring guides</h3><p class="text-sm text-zinc-400 mt-1">Power budgeting, injection, Art-Net universes, first-boot captive portal.</p><a href="#" class="text-xs uppercase tracking-wide text-purple-400 hover:underline mt-2 inline-block">Read the docs</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="py-14 border-t border-zinc-900 bg-black">
+  <div class="container mx-auto px-4 sm:px-6">
+    <p class="font-mono text-xs uppercase tracking-widest text-cyan-400">Made to order</p>
+    <h2 class="text-2xl md:text-3xl font-bold mt-1 mb-6">Services</h2>
+    <div class="grid md:grid-cols-3 gap-4" id="services-grid"></div>
+  </div>
+</section>
+
+<footer id="footer" class="border-t border-zinc-900">
+  <div class="container mx-auto px-4 sm:px-6 py-8 grid sm:grid-cols-3 gap-4 text-xs text-zinc-400">
+    <div class="flex gap-3"><span class="text-cyan-400">🔒</span><span><strong class="text-white block">Secure checkout</strong>Payment handled by Shopify. This site never sees your card.</span></div>
+    <div class="flex gap-3"><span class="text-cyan-400">📦</span><span><strong class="text-white block">Ships from the US</strong>Tracked. Most orders leave within 2 business days.</span></div>
+    <div class="flex gap-3"><span class="text-cyan-400">🛠</span><span><strong class="text-white block">2-year warranty</strong>Open hardware, repairable, schematic published.</span></div>
+  </div>
+  <div class="container mx-auto px-4 sm:px-6 py-6 border-t border-zinc-900 flex flex-col md:flex-row justify-between gap-4 text-sm text-zinc-400">
+    <div class="font-mono">&copy; 2026 Chris Moore Designs. All rights reserved.</div>
+    <div class="flex flex-wrap gap-x-6 gap-y-2 uppercase tracking-wide text-xs"><a href="https://chrismoore.me" class="hover:text-white">Portfolio ↗</a><a href="https://github.com/Elusid108" class="hover:text-white">GitHub ↗</a><a href="#" class="hover:text-white">Shipping &amp; returns</a><a href="#" class="hover:text-white">Privacy</a></div>
+  </div>
+</footer>
+
+<script src="mock-data.js"></script>
+<script src="mock-cart.js"></script>
+<script>
+  const qty = document.getElementById('qty'), add = document.getElementById('hero-add');
+  document.getElementById('qty-minus').onclick = () => (qty.value = Math.max(1, +qty.value - 1));
+  document.getElementById('qty-plus').onclick = () => (qty.value = +qty.value + 1);
+  add.addEventListener('click', () => (add.dataset.qty = qty.value), true);
+  const specs = document.getElementById('hero-specs');
+  const showSpecs = (sku) => { specs.innerHTML = Object.entries(MOCK.productBySku(sku).specs).map(([k, v]) => `<dt class="font-mono text-xs uppercase text-zinc-500 pt-0.5">${k}</dt><dd>${v}</dd>`).join(''); };
+  showSpecs('PXD-8');
+  document.querySelectorAll('.variant').forEach((b) => b.addEventListener('click', () => {
+    document.querySelectorAll('.variant').forEach((x) => x.setAttribute('aria-pressed', 'false'));
+    b.setAttribute('aria-pressed', 'true');
+    add.dataset.add = b.dataset.sku;
+    document.getElementById('price').textContent = '$' + Number(b.dataset.price).toFixed(2);
+    showSpecs(b.dataset.sku);
+  }));
+
+  document.getElementById('shelf').innerHTML = MOCK.products.map((p) => `
+    <article class="w-64 shrink-0 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-cyan-500/50 transition-colors overflow-hidden flex flex-col">
+      <div class="render aspect-square relative">${p.bundle ? '<span class="absolute top-3 left-3 text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-purple-600 text-white">Bundle &amp; save</span>' : p.featured ? '<span class="absolute top-3 left-3 text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-cyan-600 text-white">Best seller</span>' : ''}</div>
+      <div class="p-4 flex flex-col gap-2 flex-1">
+        <div class="flex items-baseline justify-between gap-2"><h3 class="font-bold">${p.name}</h3><span class="font-mono">$${p.price}</span></div>
+        <p class="text-xs text-zinc-400 flex-1">${p.summary}</p>
+        <button class="mt-2 w-full py-2.5 bg-white text-black font-bold rounded-lg text-sm hover:bg-cyan-400 transition-colors" data-add="${p.sku}">Add to cart</button>
+      </div>
+    </article>`).join('');
+
+  document.getElementById('services-grid').innerHTML = MOCK.services.map((s) => `
+    <article class="rounded-xl bg-zinc-900 border border-zinc-800 p-5 flex flex-col">
+      <h3 class="font-bold">${s.name}</h3><p class="text-sm text-zinc-400 mt-2 flex-1">${s.summary}</p>
+      <div class="mt-4 flex items-center justify-between"><span class="font-mono text-sm text-zinc-300">${s.from ? 'from $' + s.from : 'By quote'}</span>
+        <a href="https://chrismoore.me/#contact" class="px-4 py-2 border border-zinc-700 rounded-lg text-sm hover:border-cyan-500 hover:text-white transition-colors">Request quote</a></div>
+    </article>`).join('');
+</script>
+</body>
+</html>

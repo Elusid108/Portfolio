@@ -1,0 +1,65 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { SHOPIFY_DOMAIN } from '../lib/shopify';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+const { title, description = 'Pixel hardware, firmware, software and custom fabrication for pro-sumer DIYers, by Chris Moore.', image = '/og.jpg' } = Astro.props;
+const fullTitle = title === 'Home' ? 'Chris Moore Designs' : `${title} · Chris Moore Designs`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+
+// GitHub Pages cannot set response headers, so the CSP lives in a meta tag.
+// frame-ancestors and report-uri are ignored in meta form (documented limit).
+const storeHost = SHOPIFY_DOMAIN ? `https://${SHOPIFY_DOMAIN}` : '';
+const csp = [
+  "default-src 'self'",
+  "script-src 'self'",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "font-src 'self' https://fonts.gstatic.com",
+  `img-src 'self' data: https://cdn.shopify.com https://chrismoore.me`,
+  `connect-src 'self' ${storeHost}`.trim(),
+  `form-action 'self' ${storeHost}`.trim(),
+  "base-uri 'self'",
+  "object-src 'none'",
+  'upgrade-insecure-requests',
+].join('; ');
+---
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Security-Policy" content={csp} />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Chris Moore Designs" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(image, Astro.site)} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#09090b" />
+    <!-- Fonts: same request as chrismoore.me. Self-hosting is the recommended follow-up (see docs/INTEGRATION.md). -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="min-h-screen antialiased">
+    <a href="#main" class="skip-link">Skip to content</a>
+    <Nav />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

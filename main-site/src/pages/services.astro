@@ -1,0 +1,28 @@
+---
+import { getCollection, getEntries, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const items = await Promise.all(services.map(async (s) => ({ s, Content: (await render(s)).Content, apps: await getEntries(s.data.relatedApps) })));
+---
+<Base title="Services" description="Custom color lithophanes, PCBA design and install commissioning.">
+  <section class="pt-32 pb-20 container mx-auto px-4 sm:px-6 max-w-3xl space-y-10">
+    <div>
+      <p class="font-mono text-xs uppercase tracking-widest text-brand-accent mb-2">Services</p>
+      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">Made to order</h1>
+    </div>
+    {items.map(({ s, Content, apps }) => (
+      <article class="rounded-xl bg-brand-surface border border-brand-border p-6">
+        <h2 class="text-2xl font-bold">{s.data.name}</h2>
+        <p class="text-brand-text-muted mt-2">{s.data.summary}</p>
+        <div class="text-brand-text-muted text-sm mt-3"><Content /></div>
+        {apps.length > 0 && (
+          <p class="mt-3 text-sm">Tools: {apps.map((a, i) => <><a class="text-brand-accent hover:underline" href={a.data.appUrl} rel="noopener">{a.data.name}</a>{i < apps.length - 1 ? ', ' : ''}</>)}</p>
+        )}
+        <div class="mt-5 flex items-center gap-4">
+          {s.data.startingPrice && <span class="font-mono">from ${s.data.startingPrice}</span>}
+          <a href="https://chrismoore.me/#contact" class="px-5 py-2.5 border border-brand-border-strong rounded-lg hover:border-brand-accent hover:text-white transition-colors text-sm font-medium">Request a quote ↗</a>
+        </div>
+      </article>
+    ))}
+  </section>
+</Base>

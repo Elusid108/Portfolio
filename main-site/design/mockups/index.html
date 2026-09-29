@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Main Site Directions</title>
+<meta name="description" content="Five candidate UI directions for chrismooredesigns.com, each a self-contained mockup matching the chrismoore.me design system.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','sans-serif'], mono: ['JetBrains Mono','ui-monospace','monospace'] } } } }</script>
+<style>
+  :root { --bg:#09090b; --surface:#18181b; --border:#27272a; --fg:#e4e4e7; --muted:#a1a1aa; --accent:#22d3ee; --secondary:#a855f7; color-scheme: dark; }
+  body { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; background: var(--bg); color: var(--fg); margin: 0; overflow-x: hidden; }
+  .headline-gradient { background: linear-gradient(90deg,var(--accent),var(--secondary)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .thumb { aspect-ratio: 16/10; background: #000; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+  .thumb .bar { position: absolute; left: 0; right: 0; top: 0; height: 9%; background: rgba(24,24,27,.9); border-bottom: 1px solid rgba(255,255,255,.08); }
+  .thumb .blk { position: absolute; background: #27272a; border-radius: 3px; }
+  .thumb .acc { background: rgba(34,211,238,.6); }
+  .thumb .pur { background: rgba(168,85,247,.5); }
+  .thumb .wht { background: #e4e4e7; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+  h1, h2, h3 { text-wrap: balance; }
+</style>
+</head>
+<body class="antialiased">
+<main class="container mx-auto px-4 sm:px-6 py-12 max-w-6xl">
+  <header class="mb-10">
+    <a href="https://chrismoore.me" class="font-bold tracking-tighter flex items-center gap-2 text-sm text-zinc-400 hover:text-white w-fit"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>CHRIS MOORE<span class="text-cyan-400">.Designs</span></a>
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mt-6" style="overflow-wrap:anywhere">Five directions for <span class="headline-gradient">chrismooredesigns.com</span></h1>
+    <p class="text-zinc-400 mt-4 max-w-2xl leading-relaxed">Each mockup is a complete homepage with the same content: two product families, firmware and software, services, and a working (fake) cart. They share the portfolio's palette, type and wordmark and differ in structure and tone. Open each at desktop and phone width.</p>
+    <p class="text-sm text-zinc-500 mt-3">Integration and security notes: <a href="https://github.com/Elusid108/chrismooredesigns/blob/main/docs/INTEGRATION.md" class="text-cyan-400 underline underline-offset-4">docs/INTEGRATION.md</a></p>
+  </header>
+
+  <div class="grid md:grid-cols-2 gap-6">
+    <a href="01-portfolio-twin.html" class="group rounded-xl bg-zinc-900 border border-zinc-800 hover:border-cyan-500/50 transition-colors overflow-hidden">
+      <div class="thumb"><div class="bar"></div>
+        <div class="blk" style="left:6%;top:22%;width:34%;height:8%"></div><div class="blk" style="left:6%;top:33%;width:26%;height:5%"></div><div class="blk wht" style="left:6%;top:44%;width:12%;height:6%"></div>
+        <div class="blk acc" style="left:52%;top:18%;width:20%;height:40%"></div><div class="blk pur" style="left:74%;top:18%;width:20%;height:18%"></div><div class="blk acc" style="left:74%;top:40%;width:20%;height:18%"></div>
+        <div class="blk" style="left:6%;top:70%;width:27%;height:22%"></div><div class="blk" style="left:36.5%;top:70%;width:27%;height:22%"></div><div class="blk" style="left:67%;top:70%;width:27%;height:22%"></div></div>
+      <div class="p-5"><div class="flex items-center justify-between"><h2 class="text-xl font-bold">01 · Portfolio Twin</h2><span class="font-mono text-xs text-zinc-500">control</span></div>
+        <p class="text-sm text-zinc-400 mt-2">The safest continuity option. Same glass nav, LED-field hero, and card grid as chrismoore.me. Cart is a nav badge with a drawer.</p></div>
+    </a>
+    <a href="02-datasheet.html" class="group rounded-xl bg-zinc-900 border border-zinc-800 hover:border-cyan-500/50 transition-colors overflow-hidden">
+      <div class="thumb"><div class="bar"></div>
+        <div class="blk" style="left:6%;top:18%;width:20%;height:14%"></div><div class="blk" style="left:6%;top:36%;width:36%;height:3%"></div><div class="blk" style="left:6%;top:42%;width:30%;height:3%"></div>
+        <div class="blk" style="left:46%;top:18%;width:30%;height:3%"></div><div class="blk" style="left:46%;top:24%;width:30%;height:3%"></div><div class="blk" style="left:46%;top:30%;width:30%;height:3%"></div><div class="blk" style="left:46%;top:36%;width:30%;height:3%"></div><div class="blk wht" style="left:62%;top:44%;width:14%;height:6%"></div>
+        <div class="blk acc" style="left:6%;top:58%;width:70%;height:1%"></div><div class="blk" style="left:6%;top:63%;width:70%;height:3%"></div><div class="blk" style="left:6%;top:69%;width:70%;height:3%"></div><div class="blk" style="left:6%;top:75%;width:70%;height:3%"></div><div class="blk" style="left:6%;top:81%;width:70%;height:3%"></div>
+        <div class="blk" style="left:80%;top:18%;width:14%;height:50%"></div></div>
+      <div class="p-5"><div class="flex items-center justify-between"><h2 class="text-xl font-bold">02 · Datasheet</h2><span class="font-mono text-xs text-zinc-500">dense · mono</span></div>
+        <p class="text-sm text-zinc-400 mt-2">Reads like a component datasheet: numbered sections, spec tables, revision history, a BOM rail instead of a cart. Almost no imagery.</p></div>
+    </a>
+    <a href="03-storefront.html" class="group rounded-xl bg-zinc-900 border border-zinc-800 hover:border-cyan-500/50 transition-colors overflow-hidden">
+      <div class="thumb"><div class="bar"></div><div class="blk wht" style="left:84%;top:2%;width:10%;height:5%"></div>
+        <div class="blk acc" style="left:6%;top:16%;width:40%;height:44%"></div>
+        <div class="blk" style="left:52%;top:18%;width:36%;height:7%"></div><div class="blk" style="left:52%;top:28%;width:14%;height:6%"></div><div class="blk" style="left:52%;top:38%;width:10%;height:5%"></div><div class="blk" style="left:63%;top:38%;width:10%;height:5%"></div><div class="blk" style="left:74%;top:38%;width:10%;height:5%"></div><div class="blk wht" style="left:52%;top:48%;width:42%;height:8%"></div>
+        <div class="blk" style="left:6%;top:68%;width:16%;height:26%"></div><div class="blk" style="left:25%;top:68%;width:16%;height:26%"></div><div class="blk pur" style="left:44%;top:68%;width:16%;height:26%"></div><div class="blk" style="left:63%;top:68%;width:16%;height:26%"></div><div class="blk" style="left:82%;top:68%;width:16%;height:26%"></div></div>
+      <div class="p-5"><div class="flex items-center justify-between"><h2 class="text-xl font-bold">03 · Storefront First</h2><span class="font-mono text-xs text-zinc-500">commerce</span></div>
+        <p class="text-sm text-zinc-400 mt-2">Price, variant, quantity and Add to cart above the fold. Product shelf, bundle badges, trust rows. Firmware and docs become a support strip.</p></div>
+    </a>
+    <a href="04-bento.html" class="group rounded-xl bg-zinc-900 border border-zinc-800 hover:border-cyan-500/50 transition-colors overflow-hidden">
+      <div class="thumb"><div class="blk" style="left:0;top:0;width:7%;height:100%;border-radius:0;background:#000;border-right:1px solid #27272a"></div>
+        <div class="blk" style="left:10%;top:8%;width:48%;height:46%"></div><div class="blk pur" style="left:61%;top:8%;width:34%;height:46%"></div>
+        <div class="blk" style="left:10%;top:58%;width:15%;height:16%"></div><div class="blk" style="left:27%;top:58%;width:15%;height:16%"></div><div class="blk acc" style="left:44%;top:58%;width:51%;height:16%"></div>
+        <div class="blk" style="left:10%;top:78%;width:26%;height:16%"></div><div class="blk" style="left:38%;top:78%;width:26%;height:16%"></div><div class="blk" style="left:66%;top:78%;width:29%;height:16%"></div></div>
+      <div class="p-5"><div class="flex items-center justify-between"><h2 class="text-xl font-bold">04 · Bento Dashboard</h2><span class="font-mono text-xs text-zinc-500">app-like</span></div>
+        <p class="text-sm text-zinc-400 mt-2">A control-panel feel echoing the PixelPilot UI. Icon sidebar, mixed-span tiles, a live device-status tile. Cart is a tile of its own. Most purple.</p></div>
+    </a>
+    <a href="05-docs-first.html" class="group rounded-xl bg-zinc-900 border border-zinc-800 hover:border-cyan-500/50 transition-colors overflow-hidden md:col-span-2 md:grid md:grid-cols-2">
+      <div class="thumb md:border-b-0 md:border-r md:border-zinc-800"><div class="bar"></div>
+        <div class="blk" style="left:0;top:9%;width:20%;height:91%;border-radius:0;background:#0c0c0f;border-right:1px solid #27272a"></div>
+        <div class="blk" style="left:3%;top:16%;width:12%;height:3%"></div><div class="blk acc" style="left:3%;top:22%;width:14%;height:3%"></div><div class="blk" style="left:3%;top:28%;width:10%;height:3%"></div><div class="blk" style="left:3%;top:34%;width:13%;height:3%"></div>
+        <div class="blk" style="left:26%;top:16%;width:36%;height:7%"></div><div class="blk" style="left:26%;top:27%;width:48%;height:3%"></div><div class="blk" style="left:26%;top:32%;width:44%;height:3%"></div>
+        <div class="blk" style="left:26%;top:40%;width:48%;height:16%;background:#000;border:1px solid #27272a"></div>
+        <div class="blk" style="left:26%;top:62%;width:48%;height:3%"></div><div class="blk" style="left:26%;top:68%;width:48%;height:3%"></div><div class="blk" style="left:26%;top:74%;width:48%;height:3%"></div>
+        <div class="blk" style="left:82%;top:16%;width:12%;height:2.5%"></div><div class="blk" style="left:82%;top:21%;width:10%;height:2.5%"></div><div class="blk" style="left:82%;top:26%;width:11%;height:2.5%"></div></div>
+      <div class="p-5"><div class="flex items-center justify-between"><h2 class="text-xl font-bold">05 · Docs First</h2><span class="font-mono text-xs text-zinc-500">developer</span></div>
+        <p class="text-sm text-zinc-400 mt-2">Reads like a Starlight docs site: nav tree, reference sections with spec tables and code blocks, "on this page" outline. Products are entries in the reference; Add to cart sits inline. Least marketing tone.</p>
+        <ul class="mt-4 text-xs text-zinc-500 space-y-1 font-mono"><li>hero → quickstart → power → hardware reference</li><li>firmware releases + web installer → software → services</li></ul></div>
+    </a>
+  </div>
+
+  <footer class="mt-16 pt-6 border-t border-zinc-900 font-mono text-xs text-zinc-500 flex flex-col sm:flex-row justify-between gap-2">
+    <span>Shared: Inter + JetBrains Mono · zinc / cyan #22d3ee / purple #a855f7 · same wordmark as chrismoore.me</span>
+    <span>mock cart only · no Shopify calls</span>
+  </footer>
+</main>
+</body>
+</html>

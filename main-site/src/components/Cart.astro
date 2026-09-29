@@ -1,0 +1,136 @@
+---
+// Cart button + slide-out drawer. One instance per page is enough; Nav renders
+// two buttons (desktop/mobile) that share the single drawer via data attributes.
+// All Shopify calls happen in the browser with the public Storefront token.
+// If Shopify is not configured the button still renders and explains why.
+---
+<button type="button" class="relative inline-flex items-center gap-2 text-brand-text-muted hover:text-white transition-colors" aria-label="Open cart" data-cart-open>
+  <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+  <span class="absolute -top-2 -right-2 min-w-[1.1rem] h-[1.1rem] px-1 rounded-pill bg-brand-accent text-brand-bg text-[10px] font-mono font-bold flex items-center justify-center hidden" data-cart-count>0</span>
+</button>
+
+<script>
+  import { cartCreate, cartGet, cartLinesAdd, cartLinesRemove, cartLinesUpdate, formatMoney, shopifyConfigured, type Cart } from '../lib/shopify';
+
+  const KEY = 'cmd.cartId';
+  let cart: Cart | null = null;
+
+  // The drawer is created once and appended to <body> on first use.
+  function drawer(): HTMLElement {
+    let el = document.querySelector<HTMLElement>('[data-cart-drawer]');
+    if (el) return el;
+    el = document.createElement('div');
+    el.setAttribute('data-cart-drawer', '');
+    el.className = 'fixed inset-0 z-[100] hidden';
+    el.innerHTML = `
+      <div class="absolute inset-0 bg-black/60" data-cart-close></div>
+      <aside role="dialog" aria-label="Cart" class="absolute right-0 top-0 h-full w-full max-w-md bg-brand-surface border-l border-brand-border flex flex-col">
+        <header class="flex items-center justify-between px-5 py-4 border-b border-brand-border">
+          <h2 class="font-bold">Cart</h2>
+          <button type="button" class="text-brand-text-muted hover:text-white" aria-label="Close cart" data-cart-close>✕</button>
+        </header>
+        <div class="flex-1 overflow-y-auto px-5 py-4 space-y-4 text-sm" data-cart-lines></div>
+        <footer class="px-5 py-4 border-t border-brand-border space-y-3">
+          <div class="flex justify-between font-mono text-sm"><span class="text-brand-text-muted">Subtotal</span><span data-cart-subtotal>—</span></div>
+          <a class="block w-full py-3 bg-white text-black font-bold rounded-lg text-center hover:bg-zinc-200 transition-colors" data-cart-checkout href="#">Checkout on Shopify</a>
+          <p class="text-xs text-brand-text-subtle">Prices confirmed at checkout. Payment is handled by Shopify; this site never sees card details.</p>
+        </footer>
+      </aside>`;
+    document.body.appendChild(el);
+    el.querySelectorAll('[data-cart-close]').forEach((b) => b.addEventListener('click', close));
+    return el;
+  }
+
+  function render() {
+    const d = drawer();
+    const lines = d.querySelector<HTMLElement>('[data-cart-lines]')!;
+    const subtotal = d.querySelector<HTMLElement>('[data-cart-subtotal]')!;
+    const checkout = d.querySelector<HTMLAnchorElement>('[data-cart-checkout]')!;
+    const count = cart?.totalQuantity ?? 0;
+    document.querySelectorAll<HTMLElement>('[data-cart-count]').forEach((c) => {
+      c.textContent = String(count);
+      c.classList.toggle('hidden', count === 0);
+    });
+    if (!shopifyConfigured) {
+      lines.innerHTML = '<p class="text-brand-text-muted">The store is not connected yet. Set <code class="font-mono text-brand-accent">PUBLIC_SHOPIFY_*</code> to enable the cart.</p>';
+      checkout.classList.add('pointer-events-none', 'opacity-40');
+      return;
+    }
+    if (!cart || cart.lines.nodes.length === 0) {
+      lines.innerHTML = '<p class="text-brand-text-muted">Your cart is empty.</p>';
+      subtotal.textContent = '—';
+      checkout.classList.add('pointer-events-none', 'opacity-40');
+      return;
+    }
+    checkout.classList.remove('pointer-events-none', 'opacity-40');
+    checkout.href = cart.checkoutUrl;
+    subtotal.textContent = formatMoney(cart.cost.subtotalAmount);
+    lines.innerHTML = cart.lines.nodes
+      .map(
+        (l) => `
+        <div class="flex items-start justify-between gap-3" data-line="${l.id}">
+          <div>
+            <div class="font-semibold">${l.merchandise.product.title}</div>
+            <div class="text-brand-text-muted text-xs">${l.merchandise.title !== 'Default Title' ? l.merchandise.title : ''}</div>
+            <div class="font-mono text-xs mt-1">${formatMoney(l.merchandise.price)}</div>
+          </div>
+          <div class="flex items-center gap-2">
+            <button type="button" class="w-7 h-7 rounded border border-brand-border-strong" data-qty="-1" aria-label="Decrease quantity">−</button>
+            <span class="font-mono w-6 text-center">${l.quantity}</span>
+            <button type="button" class="w-7 h-7 rounded border border-brand-border-strong" data-qty="1" aria-label="Increase quantity">+</button>
+            <button type="button" class="ml-1 text-brand-text-subtle hover:text-white" data-remove aria-label="Remove">✕</button>
+          </div>
+        </div>`,
+      )
+      .join('');
+    lines.querySelectorAll<HTMLElement>('[data-line]').forEach((row) => {
+      const id = row.dataset.line!;
+      const line = cart!.lines.nodes.find((l) => l.id === id)!;
+      row.querySelectorAll<HTMLButtonElement>('[data-qty]').forEach((b) =>
+        b.addEventListener('click', async () => {
+          const q = line.quantity + Number(b.dataset.qty);
+          cart = q <= 0 ? await cartLinesRemove(cart!.id, [id]) : await cartLinesUpdate(cart!.id, [{ id, quantity: q }]);
+          render();
+        }),
+      );
+      row.querySelector('[data-remove]')?.addEventListener('click', async () => {
+        cart = await cartLinesRemove(cart!.id, [id]);
+        render();
+      });
+    });
+  }
+
+  function open() { drawer().classList.remove('hidden'); render(); }
+  function close() { drawer().classList.add('hidden'); }
+
+  async function load() {
+    if (!shopifyConfigured) return;
+    try {
+      const id = localStorage.getItem(KEY);
+      if (id) cart = await cartGet(id);
+    } catch { cart = null; }
+    if (cart) render();
+  }
+
+  async function add(merchandiseId: string, quantity = 1) {
+    if (!shopifyConfigured) { open(); return; }
+    if (!cart) {
+      cart = await cartCreate([{ merchandiseId, quantity }]);
+      try { localStorage.setItem(KEY, cart.id); } catch { /* private mode */ }
+    } else {
+      cart = await cartLinesAdd(cart.id, [{ merchandiseId, quantity }]);
+    }
+    open();
+  }
+
+  document.querySelectorAll('[data-cart-open]').forEach((b) => b.addEventListener('click', open));
+  document.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('[data-add-to-cart]');
+    if (!btn) return;
+    const id = btn.dataset.variantId;
+    if (!id) { open(); return; }
+    btn.disabled = true;
+    add(id, Number(btn.dataset.quantity || 1)).finally(() => (btn.disabled = false));
+  });
+  load();
+</script>

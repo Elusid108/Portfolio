@@ -1,0 +1,93 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PixelField from '../components/PixelField.astro';
+
+const families = (await getCollection('families')).sort((a, b) => a.data.order - b.data.order);
+const products = (await getCollection('products')).sort((a, b) => a.data.order - b.data.order);
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const software = await getCollection('software');
+const firmware = (await getCollection('firmware')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const catColor: Record<string, string> = {
+  hardware: 'text-cat-hardware', software: 'text-cat-software', systems: 'text-cat-systems',
+  tooling: 'text-cat-tooling', lighting: 'text-cat-lighting', art: 'text-cat-art',
+};
+---
+<Base title="Home">
+  <!-- Placeholder home. Replace with the chosen mockup direction (see /mockups/). -->
+  <section id="hero" class="min-h-[80vh] flex items-center relative overflow-hidden pt-24 pb-12">
+    <PixelField class="absolute inset-0 w-full h-full" />
+    <div aria-hidden="true" class="absolute inset-0 pointer-events-none bg-gradient-to-r from-brand-bg/80 via-brand-bg/30 to-transparent"></div>
+    <div aria-hidden="true" class="absolute inset-x-0 bottom-0 h-40 pointer-events-none bg-gradient-to-t from-brand-bg to-transparent"></div>
+    <div class="container mx-auto px-4 sm:px-6 relative z-10 space-y-6 max-w-3xl">
+      <p class="text-sm font-semibold tracking-widest text-brand-accent uppercase">Pixel hardware · firmware · software · fabrication</p>
+      <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">Built for people <br /><span class="headline-gradient">who solder.</span></h1>
+      <p class="text-brand-text-muted text-lg max-w-lg">Open ESP32 pixel decoders, a Raspberry Pi controller, a desktop app that ties them together, and custom color lithophanes.</p>
+      <div class="flex flex-wrap gap-4 pt-2">
+        <a href="#families" class="px-6 py-3 bg-white text-black font-bold rounded-lg hover:bg-zinc-200 transition-colors">Shop the boards</a>
+        <a href="/mockups/" class="px-6 py-3 border border-brand-border-strong rounded-lg hover:bg-brand-surface transition-colors font-medium">View UI mockups</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="families" class="py-20 bg-black border-t border-zinc-900">
+    <div class="container mx-auto px-4 sm:px-6">
+      <p class="font-mono text-xs uppercase tracking-widest text-brand-accent mb-2">Product families</p>
+      <h2 class="text-3xl md:text-4xl font-bold mb-12">Hardware that works together</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        {families.map((f) => (
+          <a href={`/families/${f.id}/`} class="group rounded-xl bg-brand-surface border border-brand-border hover:border-cyan-500/50 transition-colors p-6 flex flex-col gap-3">
+            <span class={`font-mono text-xs uppercase tracking-widest ${catColor[f.data.category]}`}>{f.data.category}</span>
+            <h3 class="text-2xl font-bold group-hover:text-white">{f.data.name}</h3>
+            <p class="text-brand-text-muted text-sm">{f.data.tagline}</p>
+            <ul class="mt-2 flex flex-wrap gap-2">
+              {products.filter((p) => p.data.family.id === f.id).map((p) => (
+                <li class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-brand-surface-raised text-brand-accent border border-cyan-500/30">{p.data.sku}</li>
+              ))}
+            </ul>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="software" class="py-20 bg-brand-bg border-t border-zinc-900">
+    <div class="container mx-auto px-4 sm:px-6">
+      <p class="font-mono text-xs uppercase tracking-widest text-brand-accent mb-2">Software &amp; firmware</p>
+      <h2 class="text-3xl md:text-4xl font-bold mb-12">Open, flashable, updated</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {software.map((s) => (
+          <div class="rounded-xl bg-brand-surface border border-brand-border p-5">
+            <h3 class="font-bold">{s.data.name}</h3>
+            <p class="text-sm text-brand-text-muted mt-1">{s.data.summary}</p>
+            <div class="mt-3 flex flex-wrap gap-2">{s.data.platforms.map((p) => <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-brand-surface-raised text-brand-text-muted">{p}</span>)}</div>
+          </div>
+        ))}
+        {firmware.map((r) => (
+          <div class="rounded-xl bg-brand-surface border border-brand-border p-5">
+            <h3 class="font-bold">{r.data.name} <span class="font-mono text-brand-accent text-sm">v{r.data.version}</span></h3>
+            <p class="text-sm text-brand-text-muted mt-1">Targets {r.data.targets.join(', ')}</p>
+            <a href="/firmware/" class="mt-3 inline-block text-xs uppercase tracking-wide text-brand-accent hover:underline">Release notes</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="py-20 bg-black border-t border-zinc-900">
+    <div class="container mx-auto px-4 sm:px-6">
+      <p class="font-mono text-xs uppercase tracking-widest text-brand-accent mb-2">Services</p>
+      <h2 class="text-3xl md:text-4xl font-bold mb-12">Made to order</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        {services.map((s) => (
+          <div class="rounded-xl bg-brand-surface border border-brand-border p-5">
+            <h3 class="font-bold">{s.data.name}</h3>
+            <p class="text-sm text-brand-text-muted mt-1">{s.data.summary}</p>
+            {s.data.startingPrice && <p class="font-mono text-sm mt-3">from ${s.data.startingPrice}</p>}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

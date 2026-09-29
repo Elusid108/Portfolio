@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Datasheet</title>
+<meta name="description" content="Direction 2 of 5 for chrismooredesigns.com: the site reads like a component datasheet. Dense, mono, table-driven.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','sans-serif'], mono: ['JetBrains Mono','ui-monospace','monospace'] } } } }</script>
+<style>
+  /* Layout: thin part-number bar → two-column product brief (copy | spec table) → striped family table → revision history → custom-orders panel. BOM rail on the right at lg. Single dark theme by brand. */
+  :root { --bg:#09090b; --surface:#18181b; --border:#27272a; --fg:#e4e4e7; --muted:#a1a1aa; --accent:#22d3ee; --secondary:#a855f7; color-scheme: dark; }
+  body { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; background: var(--bg); color: var(--fg); overflow-x: hidden; margin: 0; font-variant-numeric: tabular-nums; }
+  .rule { border-bottom: 1px solid var(--accent); }
+  .hair { border-color: rgba(255,255,255,.08); }
+  table { border-collapse: collapse; }
+  .board { background: repeating-linear-gradient(90deg, transparent 0 17px, rgba(34,211,238,.12) 17px 18px), repeating-linear-gradient(0deg, transparent 0 17px, rgba(34,211,238,.12) 17px 18px), #0c0c0f; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  details > summary { list-style: none; cursor: pointer; } details > summary::-webkit-details-marker { display: none; }
+  h1, h2, h3 { text-wrap: balance; }
+</style>
+</head>
+<body class="antialiased">
+
+<header class="sticky top-0 z-40 bg-zinc-950/95 backdrop-blur border-b hair">
+  <div class="container mx-auto px-4 sm:px-6 h-12 flex items-center justify-between gap-4 font-mono text-xs">
+    <a href="#top" class="flex items-center gap-2 font-bold tracking-tight text-sm" aria-label="Chris Moore Designs">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      <span class="font-sans">CHRIS MOORE<span class="text-cyan-400">.Designs</span></span>
+    </a>
+    <nav aria-label="Breadcrumb" class="hidden md:flex items-center gap-2 text-zinc-500">
+      <span>CMD</span><span>/</span><a href="#families" class="hover:text-white">PIXEL</a><span>/</span><span class="text-cyan-400">PXD-8</span>
+    </nav>
+    <div class="flex items-center gap-5 uppercase tracking-wide">
+      <a href="#families" class="hidden sm:inline hover:text-white text-zinc-400">Parts</a>
+      <a href="#software" class="hidden sm:inline hover:text-white text-zinc-400">Revisions</a>
+      <a href="#services" class="hidden sm:inline hover:text-white text-zinc-400">Custom</a>
+      <a href="https://chrismoore.me" class="hidden sm:inline hover:text-white text-zinc-400">Portfolio ↗</a>
+      <button class="text-zinc-300 hover:text-white" data-cart-open>BOM [<span data-cart-count class="text-cyan-400">0</span>]</button>
+    </div>
+  </div>
+</header>
+
+<div class="container mx-auto px-4 sm:px-6 lg:grid lg:grid-cols-[1fr_280px] lg:gap-10" id="top">
+<main class="min-w-0">
+
+  <section id="hero" class="pt-12 pb-10">
+    <div class="rule pb-2 mb-6 flex flex-wrap items-baseline justify-between gap-2">
+      <span class="font-mono text-xs text-zinc-500">PRODUCT BRIEF · REV C · 2026-09</span>
+      <span class="font-mono text-xs text-zinc-500">chrismooredesigns.com</span>
+    </div>
+    <div class="grid md:grid-cols-2 gap-10">
+      <div>
+        <h1 class="font-mono text-6xl md:text-7xl font-bold tracking-tighter leading-none">PXD-8</h1>
+        <p class="mt-3 text-lg text-zinc-300">8-output ESP32-S3 pixel decoder</p>
+        <p class="mt-6 text-zinc-400 leading-relaxed max-w-prose">Takes an Art-Net, sACN or DDP stream on Wi-Fi and drives up to 4,096 WS281x / SK6812 / APA102 pixels at 40 fps across eight fused, level-shifted outputs. No PC in the loop. Open firmware, flashable from the browser.</p>
+        <div class="board aspect-[8/5] mt-8 border hair rounded relative">
+          <span class="absolute bottom-2 right-3 font-mono text-[10px] text-zinc-500">80 × 50 mm · not to scale</span>
+          <span class="absolute top-2 left-3 font-mono text-[10px] text-cyan-400">FIG. 1 — board outline</span>
+        </div>
+      </div>
+      <div>
+        <table class="w-full text-sm">
+          <caption class="text-left font-mono text-xs text-zinc-500 pb-2">TABLE 1 — key specifications</caption>
+          <tbody id="hero-specs" class="divide-y hair"></tbody>
+        </table>
+        <div class="mt-6 border hair rounded p-4 flex flex-wrap items-center justify-between gap-4">
+          <div><div class="font-mono text-xs text-zinc-500">UNIT PRICE · USD</div><div class="font-mono text-3xl">$89.00</div></div>
+          <div class="flex items-center gap-3">
+            <label class="font-mono text-xs text-zinc-500" for="qty">QTY</label>
+            <input id="qty" type="number" min="1" value="1" class="w-16 bg-zinc-900 border hair rounded px-2 py-2 font-mono text-sm">
+            <button class="px-5 py-2.5 bg-white text-black font-bold rounded hover:bg-cyan-400 transition-colors" data-add="PXD-8" id="hero-add">Add to BOM</button>
+          </div>
+        </div>
+        <p class="mt-2 font-mono text-[11px] text-zinc-500">In stock · ships from US · 2-yr warranty · checkout on Shopify</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="families" class="py-10 border-t hair">
+    <div class="rule pb-2 mb-4 flex items-baseline justify-between"><h2 class="font-mono text-sm font-bold uppercase tracking-widest">2. Ordering information</h2><span class="font-mono text-xs text-zinc-500">TABLE 2</span></div>
+    <div class="overflow-x-auto -mx-4 sm:mx-0"><table class="w-full text-sm min-w-[640px]">
+      <thead><tr class="text-left font-mono text-[11px] text-zinc-500 uppercase tracking-wide"><th class="py-2 px-4 sm:px-2">Part</th><th class="py-2 px-2">Family</th><th class="py-2 px-2">Description</th><th class="py-2 px-2 text-right">Outputs</th><th class="py-2 px-2 text-right">USD</th><th class="py-2 px-2 text-right">BOM</th></tr></thead>
+      <tbody id="parts" class="divide-y hair"></tbody>
+    </table></div>
+    <p class="mt-3 font-mono text-[11px] text-zinc-500">Click a part number to expand its specification block.</p>
+  </section>
+
+  <section id="software" class="py-10 border-t hair">
+    <div class="rule pb-2 mb-4 flex items-baseline justify-between"><h2 class="font-mono text-sm font-bold uppercase tracking-widest">3. Firmware revision history</h2><span class="font-mono text-xs text-zinc-500">TABLE 3</span></div>
+    <div class="overflow-x-auto -mx-4 sm:mx-0"><table class="w-full text-sm min-w-[640px]">
+      <thead><tr class="text-left font-mono text-[11px] text-zinc-500 uppercase tracking-wide"><th class="py-2 px-4 sm:px-2">Image</th><th class="py-2 px-2">Ver</th><th class="py-2 px-2">Date</th><th class="py-2 px-2">Targets</th><th class="py-2 px-2">Changes</th><th class="py-2 px-2">SHA-256</th><th class="py-2 px-2 text-right">Get</th></tr></thead>
+      <tbody id="revisions" class="divide-y hair"></tbody>
+    </table></div>
+    <div class="rule pb-2 mt-10 mb-4 flex items-baseline justify-between"><h2 class="font-mono text-sm font-bold uppercase tracking-widest">4. Companion software</h2><span class="font-mono text-xs text-zinc-500">TABLE 4</span></div>
+    <div class="overflow-x-auto -mx-4 sm:mx-0"><table class="w-full text-sm min-w-[560px]">
+      <thead><tr class="text-left font-mono text-[11px] text-zinc-500 uppercase tracking-wide"><th class="py-2 px-4 sm:px-2">Application</th><th class="py-2 px-2">Platforms</th><th class="py-2 px-2">Function</th><th class="py-2 px-2 text-right">Link</th></tr></thead>
+      <tbody id="apps" class="divide-y hair"></tbody>
+    </table></div>
+  </section>
+
+  <section id="services" class="py-10 border-t hair">
+    <div class="rule pb-2 mb-4 flex items-baseline justify-between"><h2 class="font-mono text-sm font-bold uppercase tracking-widest">5. Custom orders</h2><span class="font-mono text-xs text-zinc-500">SERVICES</span></div>
+    <div class="grid md:grid-cols-3 gap-px bg-zinc-800 border hair" id="services-grid"></div>
+    <p class="mt-4 text-sm text-zinc-400">Quotes by email. Lithophanes: supply a photo ≥ 2,000 px on the long edge; expect 5–7 business days.</p>
+  </section>
+
+  <footer id="footer" class="py-10 border-t hair font-mono text-[11px] text-zinc-500 flex flex-wrap justify-between gap-4">
+    <span>&copy; 2026 Chris Moore Designs. All rights reserved.</span>
+    <span class="flex gap-5"><a href="#" class="hover:text-white">Errata</a><a href="#" class="hover:text-white">Datasheet PDF</a><a href="https://github.com/Elusid108" class="hover:text-white">GitHub ↗</a><a href="https://chrismoore.me" class="hover:text-white">Portfolio ↗</a></span>
+  </footer>
+</main>
+
+<aside class="hidden lg:block sticky top-16 self-start pt-12" aria-label="Bill of materials">
+  <div class="border hair rounded">
+    <div class="px-4 py-3 border-b hair flex items-center justify-between font-mono text-xs"><span class="font-bold">BOM</span><span class="text-zinc-500"><span data-cart-count class="text-cyan-400">0</span> lines</span></div>
+    <div class="px-4 py-2 divide-y hair" data-cart-lines></div>
+    <div class="px-4 py-3 border-t hair font-mono text-sm flex justify-between"><span class="text-zinc-500">Subtotal</span><span data-cart-subtotal>$0.00</span></div>
+    <div class="px-4 pb-4"><button class="w-full py-2.5 bg-white text-black font-bold rounded hover:bg-cyan-400 transition-colors text-sm" data-cart-open>Review &amp; checkout</button></div>
+  </div>
+</aside>
+</div>
+
+<!-- Mobile sticky BOM bar -->
+<div class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-zinc-900/95 backdrop-blur border-t hair px-4 py-3 flex items-center justify-between font-mono text-sm" style="padding-bottom: calc(.75rem + env(safe-area-inset-bottom, 0px))">
+  <span class="text-zinc-400">BOM · <span data-cart-count class="text-cyan-400">0</span> lines · <span data-cart-subtotal>$0.00</span></span>
+  <button class="px-4 py-2 bg-white text-black font-bold rounded" data-cart-open>Review</button>
+</div>
+<div class="lg:hidden h-16"></div>
+
+<script src="mock-data.js"></script>
+<script src="mock-cart.js"></script>
+<script>
+  const P = MOCK.productBySku('PXD-8');
+  document.getElementById('hero-specs').innerHTML = Object.entries(P.specs).map(([k, v]) => `<tr><th scope="row" class="py-2 pr-4 text-left font-mono text-xs text-zinc-500 uppercase align-top w-32">${k}</th><td class="py-2">${v}</td></tr>`).join('');
+  document.getElementById('hero-add').addEventListener('click', (e) => { e.currentTarget.dataset.qty = document.getElementById('qty').value; });
+
+  const fam = (id) => MOCK.families.find((f) => f.id === id);
+  document.getElementById('parts').innerHTML = MOCK.products.map((p) => `
+    <tr class="hover:bg-zinc-900/60">
+      <td class="py-2.5 px-4 sm:px-2 font-mono"><details><summary class="text-cyan-400 hover:underline">${p.sku}</summary>
+        <dl class="mt-2 text-xs text-zinc-400 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 font-sans">${Object.entries(p.specs).map(([k, v]) => `<dt class="font-mono uppercase text-zinc-500">${k}</dt><dd>${v}</dd>`).join('') || '<dd class="col-span-2">See included parts.</dd>'}</dl></details></td>
+      <td class="py-2.5 px-2 text-zinc-400 align-top">${fam(p.family).name}</td>
+      <td class="py-2.5 px-2 align-top">${p.summary}</td>
+      <td class="py-2.5 px-2 text-right font-mono align-top">${p.specs.Outputs ? p.specs.Outputs.split(' ')[0] : '—'}</td>
+      <td class="py-2.5 px-2 text-right font-mono align-top">${p.price.toFixed(2)}</td>
+      <td class="py-2.5 px-2 text-right align-top"><button class="px-2.5 py-1 border hair rounded font-mono text-xs hover:border-cyan-400 hover:text-cyan-400" data-add="${p.sku}" data-quiet>+1</button></td>
+    </tr>`).join('');
+
+  document.getElementById('revisions').innerHTML = MOCK.firmware.map((r) => `
+    <tr class="align-top">
+      <td class="py-2.5 px-4 sm:px-2 font-mono">${r.name}</td>
+      <td class="py-2.5 px-2 font-mono text-cyan-400">${r.version}</td>
+      <td class="py-2.5 px-2 font-mono text-zinc-400">${r.date}</td>
+      <td class="py-2.5 px-2 font-mono text-xs text-zinc-400">${r.targets.join('<br>')}</td>
+      <td class="py-2.5 px-2"><ul class="list-disc pl-4 text-zinc-300">${r.notes.map((n) => `<li>${n}</li>`).join('')}</ul></td>
+      <td class="py-2.5 px-2 font-mono text-xs text-zinc-500">${r.sha256}</td>
+      <td class="py-2.5 px-2 text-right font-mono text-xs whitespace-nowrap">${r.web ? '<a href="#" class="text-cyan-400 hover:underline">flash</a> · ' : ''}<a href="#" class="hover:underline">.bin</a></td>
+    </tr>`).join('');
+
+  document.getElementById('apps').innerHTML = MOCK.software.map((s) => `
+    <tr class="align-top"><td class="py-2.5 px-4 sm:px-2 font-mono">${s.name}${s.wip ? ' <span class="text-purple-400">(wip)</span>' : ''}</td><td class="py-2.5 px-2 font-mono text-xs text-zinc-400">${s.platforms.join(' / ')}</td><td class="py-2.5 px-2">${s.summary}</td><td class="py-2.5 px-2 text-right font-mono text-xs"><a href="${s.url}" class="text-cyan-400 hover:underline">open ↗</a></td></tr>`).join('');
+
+  document.getElementById('services-grid').innerHTML = MOCK.services.map((s, i) => `
+    <div class="bg-zinc-950 p-5"><div class="font-mono text-xs text-zinc-500 mb-1">5.${i + 1}</div><h3 class="font-bold">${s.name}</h3><p class="mt-2 text-sm text-zinc-400">${s.summary}</p>
+      <div class="mt-4 flex items-center justify-between font-mono text-xs"><span class="text-zinc-500">${s.from ? 'from $' + s.from : 'quote'}</span><a href="https://chrismoore.me/#contact" class="text-cyan-400 hover:underline">request ↗</a></div></div>`).join('');
+</script>
+</body>
+</html>
