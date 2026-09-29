@@ -3,7 +3,7 @@
 The portfolio at chrismoore.me is one of two sites. The product/store site for
 pro-sumer DIYers lives in its own repository:
 
-- **Repo:** https://github.com/Elusid108/chrismooredesigns
+- **Repo:** https://github.com/Elusid108/chris-moore-designs
 - **Stack:** Astro + Tailwind v4, built by GitHub Actions, served by GitHub Pages
 - **Store:** Shopify Storefront API (cart on-site, hosted checkout on Shopify)
 - **Design tokens:** `design/tokens.json` and `design/tokens.css` in that repo are
